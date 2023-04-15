@@ -87,6 +87,7 @@ Route106_EventScript_BrawlyEvent::
 	waitmovement 0
 	applymovement LOCALID_BRAWLY, Common_Movement_FaceUp
 	waitmovement 0
+	speakername Common_Name_Brawly
 	msgbox Route106_Text_Brawly, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_BRAWLY, Common_Movement_WalkDown6
@@ -104,7 +105,9 @@ Route106_EventScript_BrawlyEvent::
 Route106_EventScript_Wally::
 	lock
 	msgbox Route106_Text_Wally, MSGBOX_NPC
+	speakername Common_Name_Wally
 	trainerbattle_no_intro TRAINER_WALLY_2, Route106_Text_WallyDefeat
+	speakername Common_Name_Wally
 	msgbox Route106_Text_DontUnderstand, MSGBOX_NPC
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
 	waitmovement 0
@@ -121,20 +124,20 @@ Route106_EventScript_Wally::
 
 
 Route106_Text_GoClobbopus:
-	.string "???: Go, Clobbopus!\n"
+	.string "Go, Clobbopus!\n"
 	.string "Use Karate Chop!$"
 
 
 Route106_Text_NoMyPokemon:
-	.string "Grunts: No!\n"
+	.string "No!\n"
 	.string "My Pokémon!$"
 
 
 Route106_Text_GetHim:
-	.string "???: Get him, guys!$"
+	.string "Get him, guys!$"
 
 Route106_Text_FilthyHands:
-	.string "Grunt: N-no!\n"
+	.string "N-no!\n"
 	.string "Get your filthy hands off me!$"
 
 Route106_Text_Whew:
@@ -172,7 +175,7 @@ Route106_Text_Brawly:
 
 
 Route106_Text_Wally:
-	.string "Wally: {PLAYER}!\n"
+	.string "{PLAYER}!\n"
 	.string "You're here too, huh…\p"
 	.string "I've-\n"
 	.string "Cough…\p"
@@ -305,7 +308,7 @@ Route106_Text_MinerCastle:
 	.string "…I wonder what's in it, though.$"
 
 Route106_Text_DontUnderstand:
-	.string "Wally: I don't understand, {PLAYER}.\p"
+	.string "I don't understand, {PLAYER}.\p"
 	.string "We're… We're both new Trainers,\n"
 	.string "right?\p"
 	.string "And…\n"
@@ -323,4 +326,8 @@ Route106_Text_DontUnderstand:
 	.string "I'll defeat you.\p"
 	.string "Just…\n"
 	.string "Cough…\p"
-	.string "Just you wait…!$"
+	.string "Just you wait for me…!$"
+
+
+Common_Name_Brawly:
+	.string "Brawly$"

@@ -4,13 +4,13 @@
   "layout": "LAYOUT_GRANITE_CAVE_B1F",
   "music": "MUS_AEGIS_CAVE",
   "region_map_section": "MAPSEC_GRANITE_CAVE",
-  "requires_flash": false,
+  "requires_flash": true,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",
   "allow_cycling": true,
   "allow_escaping": true,
   "allow_running": true,
-  "show_map_name": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": 0,
   "object_events": [
@@ -37,8 +37,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "GraniteCave_EventScript_ItemNugget",
+      "flag": "FLAG_RECEIVED_GRANITE_CAVE_NUGGET"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
@@ -107,16 +107,16 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
-      "x": 39,
-      "y": 37,
+      "x": 55,
+      "y": 18,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "GraniteCave_1F_EventScript_ItemEscapeRope",
+      "flag": "FLAG_RECEIVED_GRANITE_ESCAPE_ROPE"
     }
   ],
   "warp_events": [
@@ -192,6 +192,78 @@
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "EventScript_SaveTotem"
+    },
+    {
+      "type": "sign",
+      "x": 27,
+      "y": 33,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Granite_EventScript_Grimer"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 43,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Granite_EventScript_GeneratorFloorB1F"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 43,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Granite_EventScript_GeneratorFloorB1F"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 42,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Granite_EventScript_GeneratorFloorB1F"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 42,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Granite_EventScript_GeneratorFloorB1F"
+    },
+    {
+      "type": "sign",
+      "x": 55,
+      "y": 42,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Granite_EventScript_GeneratorFloorB1F"
+    },
+    {
+      "type": "sign",
+      "x": 54,
+      "y": 42,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Granite_EventScript_GeneratorFloorB1F"
+    },
+    {
+      "type": "sign",
+      "x": 54,
+      "y": 41,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Granite_EventScript_GeneratorFloorB1F"
+    },
+    {
+      "type": "sign",
+      "x": 55,
+      "y": 41,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Granite_EventScript_GeneratorFloorB1F"
     }
   ]
 }

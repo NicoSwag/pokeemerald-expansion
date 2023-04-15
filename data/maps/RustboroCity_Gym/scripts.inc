@@ -60,15 +60,19 @@ RustboroCity_Gym_EventScript_Lass::
 	setobjectxy LOCALID_ROXANNE, 2, 2
 	applymovement LOCALID_ROXANNE, RustboroCity_Gym_Movement_RoxanneGoesInPlace
 	waitmovement 0
+	speakername Common_Name_Roxanne
 	msgbox RustboroCity_Gym_Text_ClassStarting, MSGBOX_NPC
 	applymovement LOCALID_ROXANNE, RustboroCity_Gym_Movement_RoxanneGoesBlackBoard
 	waitmovement 0
+	speakername Common_Name_Roxanne
 	msgbox RustboroCity_Gym_Text_GymBattles, MSGBOX_NPC
 	applymovement LOCALID_ROXANNE, RustboroCity_Gym_Movement_RoxanneWalksRight
 	waitmovement 0
+	speakername Common_Name_Roxanne
 	msgbox RustboroCity_Gym_Text_DifferentChallenges, MSGBOX_NPC
 	applymovement LOCALID_ROXANNE, RustboroCity_Gym_Movement_ReturnToDesk
 	waitmovement 0
+	speakername Common_Name_Roxanne
 	msgbox RustboroCity_Gym_Text_SeeMeAfterClass, MSGBOX_NPC
 	applymovement LOCALID_ROXANNE, RustboroCity_Gym_Movement_GoAway
 	waitmovement 0
@@ -130,8 +134,11 @@ RustboroCity_Gym_Text_CanChallengeRoxanne:
 RustboroCity_Gym_Text_WaitHere:
 	.string "Now wait here, please.$"
 
+Common_Name_Roxanne:
+	.string "Roxanne$"
+
 RustboroCity_Gym_Text_ClassStarting:
-	.string "Roxanne: Good day, class!\p"
+	.string "Good day, class!\p"
 	.string "Today we'll be covering…\n"
 	.string "Gym challenges!$"
 

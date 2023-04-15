@@ -85,6 +85,11 @@ GraniteCave_EventScript_ItemGyroBall::
 	finditem ITEM_TM_GYRO_BALL
 	end
 
+GraniteCave_EventScript_ItemNugget::
+	finditem ITEM_NUGGET
+	end
+
+
 
 Route105_EventScript_ItemIron::
 	finditem ITEM_IRON

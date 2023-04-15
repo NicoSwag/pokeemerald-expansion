@@ -354,11 +354,13 @@ OldaleTown_EventScript_ShowRivalMessage::
 	end
 
 OldaleTown_EventScript_ShowMayMessage::
+call Common_Set_Name_Rival
 	msgbox OldaleTown_Text_MayLetsGoBack, MSGBOX_DEFAULT
 	goto OldaleTown_EventScript_RivalFinish
 	end
 
 OldaleTown_EventScript_ShowBrendanMessage::
+call Common_Set_Name_Rival
 	msgbox OldaleTown_Text_BrendanLetsGoBack, MSGBOX_DEFAULT
 	goto OldaleTown_EventScript_RivalFinish
 	end
@@ -553,12 +555,12 @@ OldaleTown_Text_GiveEevee:
 	.string "Please, do me a favor and accept it!$"
 
 OldaleTown_Text_MayLetsGoBack:
-	.string "MAY: I'm heading back to my dad's\n"
+	.string "I'm heading back to my dad's\n"
 	.string "LAB now.\l"
 	.string "{PLAYER}, hurry up!$"
 
 OldaleTown_Text_BrendanLetsGoBack:
-	.string "BRENDAN: I'm heading back to my dad's\n"
+	.string "I'm heading back to my dad's\n"
 	.string "LAB now.\l"
 	.string "{PLAYER}, hurry up!$"
 

@@ -29,7 +29,7 @@ GraniteCave_EventScript_Magma2::
 
 
 GraniteCave_Text_Magma2Intro:
-	.string "We're gonna make so much money off\n"
+	.string "We're gonna make so much money from\n"
 	.string "this cave!$"
 
 

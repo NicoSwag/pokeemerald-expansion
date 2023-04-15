@@ -2,7 +2,7 @@
   "id": "MAP_PETALBURG_WOODS",
   "name": "PetalburgWoods",
   "layout": "LAYOUT_PETALBURG_WOODS",
-  "music": "MUS_PETALBURG_WOODS",
+  "music": "MUS_DARK_FOREST",
   "region_map_section": "MAPSEC_PETALBURG_WOODS",
   "requires_flash": false,
   "weather": "WEATHER_SHADE",
@@ -296,8 +296,8 @@
     },
     {
       "type": "sign",
-      "x": 12,
-      "y": 7,
+      "x": 13,
+      "y": 6,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "PetalburgWoods_EventScript_Sign2"

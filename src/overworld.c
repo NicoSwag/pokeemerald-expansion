@@ -731,6 +731,8 @@ static void SetWarpDestinationToDiveWarp(void)
     sWarpDestination = sFixedDiveWarp;
 }
 
+
+
 void SetFixedHoleWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y)
 {
     SetWarpData(&sFixedHoleWarp, mapGroup, mapNum, warpId, x, y);
@@ -3304,4 +3306,9 @@ void CB2_ReturnToFullScreenStartMenu(void)
     }
 
 	StartMenuFull_Init(CB2_ReturnToField);
+}
+
+void ResetFlash(void){
+    ScanlineEffect_Clear();
+    InitCurrentFlashLevelScanlineEffect();
 }

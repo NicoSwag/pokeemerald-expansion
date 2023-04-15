@@ -1350,5 +1350,10 @@ $(MID_SUBDIR)/mus_pyrite_town.s: %.s: %.mid
 $(MID_SUBDIR)/mus_waterfall_colosseum.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
 
+$(MID_SUBDIR)/mus_dark_forest.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_tournament.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
 
 

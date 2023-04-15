@@ -29,6 +29,7 @@ Route103_EventScript_Rival::
 	end
 
 Route103_EventScript_RivalMay::
+	call Common_Set_Name_Rival
 	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_ENCOUNTER_MAY, TRUE
@@ -36,10 +37,12 @@ Route103_EventScript_RivalMay::
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
+	call Common_Set_Name_Rival
 	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
+	call Common_Set_Name_Rival
 	msgbox Route103_Text_Suckers, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
@@ -50,6 +53,7 @@ Route103_EventScript_RivalMay::
 	end
 
 Route103_EventScript_RivalBrendan::
+call Common_Set_Name_Rival
 	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
@@ -57,10 +61,12 @@ Route103_EventScript_RivalBrendan::
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
+	call Common_Set_Name_Rival
 	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
+	call Common_Set_Name_Rival
 	msgbox Route103_Text_Suckers, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
@@ -183,6 +189,7 @@ Route103_EventScript_StartBrendanBattleMudkip::
 	end
 
 Route103_EventScript_AfterMayBattle::
+speakername Common_Name_Courtney
 msgbox Route103_Text_Revenge, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER Route103_Movement_Stepup
@@ -192,11 +199,13 @@ msgbox Route103_Text_Revenge, MSGBOX_DEFAULT
 	applymovement LOCALID_MAGMAF Route_103_Magmaf_Exit
 	waitmovement 0
 	playbgm MUS_ENCOUNTER_MAY, FALSE
+	call Common_Set_Name_Rival
 	msgbox Route103_Text_MayTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
 
 Route103_EventScript_AfterBrendanBattle::
+speakername Common_Name_Courtney
 	msgbox Route103_Text_Revenge, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER Route103_Movement_Stepup
@@ -206,6 +215,7 @@ Route103_EventScript_AfterBrendanBattle::
 	applymovement LOCALID_MAGMAF Route_103_Magmaf_Exit
 	waitmovement 0
 	playbgm MUS_ENCOUNTER_BRENDAN, FALSE
+	call Common_Set_Name_Rival
 	msgbox Route103_Text_BrendanTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
@@ -264,7 +274,7 @@ Magma1DefeatText::
 	.string "U… Unbelievable…$"
 
 Magma2DefeatText::
-	.string "COURTNEY: No! This isn't how it was\n"
+	.string "No! This isn't how it was\n"
 	.string "supposed to go!$"
 
 Route103_EventScript_RivalExit::
@@ -472,7 +482,7 @@ Route103_EventScript_Isabelle::
 	end
 
 Route103_Text_MayRoute103Pokemon:
-	.string "MAY: Let's see… The POKéMON found\n"
+	.string "Let's see… The POKéMON found\n"
 	.string "on PILGRIM'S PASSAGE include…$"
 
 Route103_Text_MayLetsBattle:
@@ -505,7 +515,7 @@ Route103_Text_MayTimeToHeadBack:
 	.string "Don't trip over yourself.$"
 
 Route103_Text_BrendanRoute103Pokemon:
-	.string "BRENDAN: Okay, so it's this one and\n"
+	.string "Okay, so it's this one and\n"
 	.string "that one that live on PILGRIM'S\l"
 	.string "PASSAGE…$"
 
@@ -530,7 +540,7 @@ Route103_Text_Suckers:
 	.string "Your uniforms are ridicolous!$"
 
 Route_103_Text_SayWhat:
-	.string "COURTNEY: What was that, kid?\p"
+	.string "What was that, kid?\p"
 	.string "I'll let you know, I'm already\n"
 	.string "in a bad mood!\p"
 	.string "We've been sent here to investigate\n"
@@ -540,13 +550,14 @@ Route_103_Text_SayWhat:
 	.string "samples we need from here, but…\p"
 	.string "Gah! Why am I saying this to you?!\n"
 	.string "Now I'm even more upset!\p"
-	.string "Prepare to get steamed, kids!$"
+	.string "Get ready to face the wrath of\n"
+	.string "Courtney of Team Magma!$"
 
 Route103_Text_BrendanDefeated:
 	.string "Huh, {PLAYER}, you're not too shabby.$"
 
 Route103_Text_BrendanTimeToHeadBack:
-	.string "BRENDAN: Well, that was decent.\n"
+	.string "Well, that was decent.\n"
 	.string "I suppose you can handle a POKéMON.\p"
 	.string "Maybe my dad wasn't wrong on that one.\p"
 	.string "Well, I'm heading back to the lab now.\n"
@@ -567,10 +578,13 @@ Route103_Text_RouteSign:
 	.string "{DOWN_ARROW} OLDALE TOWN$"
 
 Route103_Text_Volcanic_Rocks:
-	.string "COURTNEY: Hmm, no doubt about it…\n"
+	.string "Hmm, no doubt about it…\n"
 	.string "These are volcanic formations.\p"
 	.string "Better take some samples.$"
 
 Route103_Text_Complaining:
 	.string "Why do we always have to do\n"
 	.string "the dirty work?$"
+
+Common_Name_Courtney:
+	.string "Courtney$"

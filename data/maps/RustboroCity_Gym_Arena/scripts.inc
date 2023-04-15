@@ -7,6 +7,7 @@ RustboroCity_Gym_Arena_MapScripts::
 RustboroCity_Gym_EventScript_Roxanne2::
 	lock
 	goto_if_set FLAG_BADGE01_GET, RustboroCity_Gym_EventScript_GoodLuckRoxanne
+	speakername Common_Name_Roxanne
 	msgbox RustboroCity_Gym_Text_WelcomeRoxanne, MSGBOX_NPC
 	applymovement LOCALID_ROXANNE, Common_Movement_FaceLeft
 	switch VAR_FACING
@@ -17,6 +18,7 @@ RustboroCity_Gym_EventScript_Roxanne2::
 	end
 
 RustboroCity_Gym_EventScript_GoodLuckRoxanne::
+speakername Common_Name_Roxanne
 	msgbox RustboroCity_Gym_Text_GoodLuckRoxanne, MSGBOX_NPC
 	release
 	end
@@ -60,10 +62,12 @@ RustboroCity_Gym_EventScript_RoxannePostBattle::
 	setobjectmovementtype LOCALID_ROXANNE, MOVEMENT_TYPE_FACE_DOWN
 	applymovement LOCALID_ROXANNE, RustboroCity_Gym_Movement_RoxanneWalksLeft
 	waitmovement 0
+	speakername Common_Name_Roxanne
 	msgbox RustboroCity_Gym_Text_DropTheAct, MSGBOX_DEFAULT
 	message RustboroCity_Gym_Text_ReceivedStoneBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare	
+	speakername Common_Name_Roxanne
 	msgbox RustboroCity_Gym_Text_StoneBadge, MSGBOX_DEFAULT
 	call Common_EventScript_SetGymTrainers
 	goto RustboroCity_Gym_EventScript_GivePrizes
@@ -77,12 +81,14 @@ RustboroCity_Gym_EventScript_GivePrizes::
 	end
 
 RustboroGym_EventScript_BagIsFull::
+speakername Common_Name_Roxanne
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	fadedefaultbgm
 	releaseall
 	end
 
 RustboroGym_EventScript_PostRoxanneContinue::
+speakername Common_Name_Roxanne
 	msgbox RustboroCity_Gym_Text_ExplainSandstorm, MSGBOX_DEFAULT
 	additem ITEM_HP_UP, 2
 	additem ITEM_PROTEIN, 2
@@ -136,7 +142,7 @@ RustboroCity_Gym_Text_RoxanneStart:
 	.string "battle, and with which Pokémon?$"
 
 RustboroCity_Gym_Text_WelcomeRoxanne:
-	.string "Roxanne: Welcome, my dear student.\n"
+	.string "Welcome, my dear student.\n"
 	.string "I'm very happy to see you.\p"
 	.string "Did you enjoy your little lesson\n"
 	.string "from earlier?\p"

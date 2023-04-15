@@ -27,19 +27,27 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_AquaEntrance
 	waitmovement 0
+	speakername NULL
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou, MSGBOX_DEFAULT
+	speakername Common_Name_Shady
+	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou2, MSGBOX_DEFAULT
+	speakername Common_Name_Shelly
+	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou3, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonLooksDown
 	waitmovement 0
+	speakername Common_Name_Shady
 	msgbox PetalburgWoods_Text_DealIsOff, MSGBOX_DEFAULT
 	waitmovement 0
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonEscapes
 	waitmovement 0
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_GruntFacesPlayerLeft
+	speakername Common_Name_Shelly
 	msgbox PetalburgWoods_Text_HandOverThosePapers, MSGBOX_DEFAULT
 	closemessage
 	trainerbattle_no_intro TRAINER_GRUNT_PETALBURG_WOODS, PetalburgWoods_Text_YoureKiddingMe
+	speakername Common_Name_Shelly
 	msgbox PetalburgWoods_Text_YouHaveToHelpMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_GruntLeaves
@@ -54,11 +62,13 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	playbgm MUS_LOOKER_THEME, FALSE
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	speakername Common_Name_Looker
 	msgbox PetalburgWoods_Text_LookerLate, MSGBOX_DEFAULT
 	closemessage
 	giveitem ITEM_EXP_SHARE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_EXP_SHARE
+	speakername Common_Name_Looker
 	msgbox PetalburgWoods_Text_LookerFarewell, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_LOOKER, PetalburgWoods_Movement_LookerByeLeft
@@ -76,19 +86,27 @@ PetalburgWoods_EventScript_DevonResearcherRight::
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_AquaEntrance
 	waitmovement 0
+	speakername NULL
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou, MSGBOX_DEFAULT
+	speakername Common_Name_Shady
+	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou2, MSGBOX_DEFAULT
+	speakername Common_Name_Shelly
+	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou3, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonLooksDown
 	waitmovement 0
+	speakername Common_Name_Shady
 	msgbox PetalburgWoods_Text_DealIsOff, MSGBOX_DEFAULT
 	waitmovement 0
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonEscapes
 	waitmovement 0
 	removeobject LOCALID_DEVON_EMPLOYEE
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_GruntFacesPlayerRight
+	speakername Common_Name_Shelly
 	msgbox PetalburgWoods_Text_HandOverThosePapers, MSGBOX_DEFAULT
 	closemessage
 	trainerbattle_no_intro TRAINER_GRUNT_PETALBURG_WOODS, PetalburgWoods_Text_YoureKiddingMe
+	speakername Common_Name_Shelly
 	msgbox PetalburgWoods_Text_YouHaveToHelpMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_GruntLeaves
@@ -101,11 +119,13 @@ PetalburgWoods_EventScript_DevonResearcherRight::
 	applymovement LOCALID_LOOKER, PetalburgWoods_Movement_LookerGoesUp
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	speakername Common_Name_Looker
 	msgbox PetalburgWoods_Text_LookerLate, MSGBOX_DEFAULT
 	closemessage
 	giveitem ITEM_EXP_SHARE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_EXP_SHARE
+	speakername Common_Name_Looker
 	msgbox PetalburgWoods_Text_LookerFarewell, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_LOOKER, PetalburgWoods_Movement_LookerByeRight
@@ -118,6 +138,7 @@ PetalburgWoods_EventScript_DevonResearcherRight::
 PetalburgWoods_EventScript_DevonResearcherIntro::
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherLookAround
 	waitmovement 0
+	speakername Common_Name_Shady
 	msgbox PetalburgWoods_Text_NotAOneToBeFound, MSGBOX_DEFAULT
 	closemessage
 	return
@@ -420,7 +441,7 @@ PetalburgWoods_EventScript_JamesRematch::
 	end
 
 PetalburgWoods_Text_NotAOneToBeFound:
-	.string "DEVON MANAGER: Hmmm…\n"
+	.string "Hmmm…\n"
 	.string "Sh-she's late…$"
 
 PetalburgWoods_Text_HaveYouSeenShroomish:
@@ -429,32 +450,37 @@ PetalburgWoods_Text_HaveYouSeenShroomish:
 	.string "I really love that POKéMON.$"
 
 PetalburgWoods_Text_IWasGoingToAmbushYou:
-	.string "SHELLY: Yo, guy.\p"
+	.string "Yo, guy.\p"
 	.string "As promised, you got me the\n"
-	.string "GOODS, right?\p"
-	.string "DEVON MANAGER: O-o-of\n"
-	.string "course! And I made sure to not\l"
-	.string "be followed!\p"
-	.string "SHELLY: Oh yeah? Who's that\n"
+	.string "Goods, right?$"
+	
+PetalburgWoods_Text_IWasGoingToAmbushYou2:
+	.string "O-o-of course, Shelly!\p"
+	.string "And I made sure to not be\n"
+	.string "followed!$"
+
+
+
+PetalburgWoods_Text_IWasGoingToAmbushYou3:
+	.string "Oh yeah? Who's that\n"
 	.string "behind you, then?$"
 
 PetalburgWoods_Text_DealIsOff:
-	.string "DEVON MANAGER: W-w-we've\n"
-	.string "been caught!\p"
+	.string "W-w-we've been caught!\p"
 	.string "I'm sorry, but the deal is off!$"
 
 
 PetalburgWoods_Text_HandOverThosePapers:
-	.string "SHELLY: You!\p"
+	.string "You!\p"
 	.string "Thanks to you, that guy's run\n"
-	.string "off with the GOODS!\p"
+	.string "off with the Goods!\p"
 	.string "Do you even have any idea of who\n"
 	.string "you're messing with?\p"
 	.string "Prepare to feel the wrath of\n"
-	.string "TEAM AQUA's second-in-command!$"
+	.string "Team Aqua's second-in-command!$"
 
 PetalburgWoods_Text_YouHaveToHelpMe:
-	.string "SHELLY: Listen!\p"
+	.string "Listen!\p"
 	.string "You only got off easy because\n"
 	.string "I wasn't expecting any fight!\p"
 	.string "Next time we meet, you'll get it!\p"
@@ -462,7 +488,7 @@ PetalburgWoods_Text_YouHaveToHelpMe:
 	.string "you saw, or else!$"
 
 PetalburgWoods_Text_LookerLate:
-	.string "LOOKER: At long last, I arrive!\n"
+	.string "At long last, I arrive!\n"
 	.string "Pardon the lateness, my friend.\p"
 	.string "… … … …\p"
 	.string "Whaaaaaaat?\n"
@@ -637,3 +663,12 @@ PetalburgWoods_Text_TrainerTipsPP:
 	.string "The fantastic FEEBAS PRO SHOP PRISM\n"
 	.string "has just opened!\p"
 	.string "Find us north of PETALBURG WOODS.$"
+
+Common_Name_Manager:
+	.string "Manager$"
+
+Common_Name_Shady:
+	.string "Shady Guy$"
+
+Common_Name_Shelly:
+	.string "Shelly$"

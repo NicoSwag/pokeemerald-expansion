@@ -669,12 +669,12 @@
 #define FLAG_QUEST_MENU_ACTIVE  0x272 // Unused Flag
 #define FLAG_HIDE_WALLY_106  0x273 // Unused Flag
 #define FLAG_RECEIVED_GYRO_BALL  0x274 // Unused Flag
-#define FLAG_UNUSED_Ox275  0x275 // Unused Flag
-#define FLAG_UNUSED_0x276  0x276 // Unused Flag
-#define FLAG_UNUSED_0x277  0x277 // Unused Flag
-#define FLAG_UNUSED_0x278  0x278 // Unused Flag
-#define FLAG_UNUSED_0x279  0x279 // Unused Flag
-#define FLAG_UNUSED_0x27A  0x27A // Unused Flag
+#define FLAG_RECEIVED_GRANITE_CAVE_NUGGET  0x275 // Unused Flag
+#define FLAG_PREVENT_RUNNING  0x276 // Unused Flag
+#define FLAG_GRIMER_GRANITE  0x277 // Unused Flag
+#define FLAG_GENERATOR_ACTIVE  0x278 // Unused Flag
+#define FLAG_RECEIVED_GRANITE_ESCAPE_ROPE  0x279 // Unused Flag
+#define FLAG_BRINEY_MENTIONED_BACKSTORY  0x27A // Unused Flag
 #define FLAG_UNUSED_0x27B  0x27B // Unused Flag
 #define FLAG_UNUSED_0x27C  0x27C // Unused Flag
 #define FLAG_UNUSED_0x27D  0x27D // Unused Flag
@@ -1383,7 +1383,7 @@
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
-#define FLAG_UNUSED_0x881                           (SYSTEM_FLAGS + 0x21) // Unused Flag
+#define FLAG_SUPPRESS_SPEAKER_NAME                  (SYSTEM_FLAGS + 0x21) // Unused Flag
 #define FLAG_UNUSED_0x882                           (SYSTEM_FLAGS + 0x22) // Unused Flag
 #define FLAG_UNUSED_0x883                           (SYSTEM_FLAGS + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag

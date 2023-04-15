@@ -87,6 +87,7 @@ RustboroCity_EventScript_PositionForLookerEvent:
 
 
 RustboroCity_EventScript_Mr_Briney::
+speakername Common_Name_Briney
 	goto_if_eq VAR_RUSTBORO_CITY_STATE, 10, RustboroCity_EventScript_Mr_BrineyHappy
 	msgbox RustboroCity_Text_Mr_Briney, MSGBOX_NPC
 	end
@@ -456,11 +457,12 @@ RustboroCity_EventScript_NinjaBoy::
 	end
 
 RustboroCity_EventScript_Engineer_1::
-	lock
-	faceplayer
 	msgbox RustboroCity_Text_StaringAtMe, MSGBOX_NPC
-	release
+	closemessage
 	end
+
+Common_Name_Test:
+	.string "Engineer$"
 
 RustboroCity_EventScript_Engineer_2::
 	lock
@@ -570,6 +572,7 @@ RustboroCity_EventScript_StolenGoodsTrigger4::
 	end
 
 RustboroCity_EventScript_StolenGoodsScene::
+speakername Common_Name_Looker
 	msgbox RustboroCity_Text_OutOfTheWay, MSGBOX_DEFAULT
 	setflag FLAG_HIDE_RUSTBORO_CITY_LOOKER
 	closemessage
@@ -608,23 +611,29 @@ RustboroCity_EventScript_Looker_Cutscene::
 
 RustboroCity_EventScript_Looker_CutsceneFinal::
 	setvar VAR_RUSTBORO_CITY_STATE, 11
-	msgbox RustboroCity_Text_LookerTired, MSGBOX_NPC
-	msgbox RustboroCity_Text_LookerDotDotDot, MSGBOX_NPC
+	speakername Common_Name_Looker
+	msgbox RustboroCity_Text_LookerTired, MSGBOX_DEFAULT
+	msgbox RustboroCity_Text_LookerDotDotDot, MSGBOX_DEFAULT
+	closemessage
 	playse SE_PIN
 	applymovement LOCALID_LOOKER, Common_Movement_ExclamationMark
 	waitmovement 0
+	speakername Common_Name_Looker
 	msgbox RustboroCity_Text_LookerISee, MSGBOX_NPC
 	playse SE_PIN
 	applymovement LOCALID_MR_BRINEY, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_MR_BRINEY, Common_Movement_FaceDown
 	waitmovement 0
+	speakername Common_Name_Briney
 	msgbox RustboroCity_Text_MrBrineyDewford, MSGBOX_NPC
 	applymovement LOCALID_LOOKER, Common_Movement_FaceUp
 	waitmovement 0
+	speakername Common_Name_Looker
 	msgbox RustboroCity_Text_LookerVeryGood, MSGBOX_DEFAULT
 	applymovement LOCALID_LOOKER, Common_Movement_FacePlayer
 	waitmovement 0
+	speakername Common_Name_Looker
 	msgbox RustboroCity_Text_LookerMission, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_LOOKER_THEME, FALSE
@@ -668,6 +677,7 @@ RustboroCity_EventScript_Looker_CutsceneFinal::
 	applymovement LOCALID_WANDAS_BF, RustboroCity_Movement_DownAndRight
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	speakername NULL
 	msgbox RustboroCity_Text_BoyfriendLeave, MSGBOX_NPC
 	fadedefaultbgm
 	applymovement LOCALID_WANDAS_BF, RustboroCity_Movement_BoyfriendLeave
@@ -675,6 +685,7 @@ RustboroCity_EventScript_Looker_CutsceneFinal::
 	removeobject LOCALID_WANDAS_BF
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
+	speakername Common_Name_Briney
 	msgbox RustboroCity_Text_MrBrineyOffer, MSGBOX_NPC
 	closemessage
 	applymovement LOCALID_MR_BRINEY, RustboroCity_Movement_BrineyLeave
@@ -718,6 +729,7 @@ RustboroCity_EventScript_Looker_FaceAnyOther::
 
 RustboroCity_EventScript_Looker_ContinueScene::
 	faceplayer
+	speakername Common_Name_Looker
 	msgbox RustboroCity_Text_AhMyFriend, MSGBOX_NPC
 	call_if_eq VAR_0x8008, 1, RustboroCity_EventScript_Looker_MoveUp
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
@@ -737,6 +749,7 @@ RustboroCity_EventScript_Looker_ContinueScene::
 
 
 RustboroCity_EventScript_StevenTime:
+speakername Common_Name_Looker
 	msgbox RustboroCity_Text_WatchAndLearn, MSGBOX_NPC
 	call_if_eq VAR_0x8008, 1, RustboroCity_EventScript_StevenPlayerFacesLeft
 	call_if_eq VAR_0x8008, 2, RustboroCity_EventScript_StevenPlayerFacesRight
@@ -768,6 +781,7 @@ RustboroCity_EventScript_StevenTime:
 	waitmovement 0
 	applymovement LOCALID_STEVEN, Common_Movement_FacePlayer
 	waitmovement 0
+	speakername Common_Name_Looker
 	msgbox RustboroCity_Text_TheWayIsOpen, MSGBOX_NPC
 	applymovement LOCALID_STEVEN, RustboroCity_Movement_StevenLeave
 	waitmovement 0
@@ -1583,7 +1597,7 @@ RustboroCity_EventScript_Boy1::
 	end
 
 RustboroCity_Text_WeShortenItToDevon:
-	.string "DEVON wants to expand in the forest\n"
+	.string "Devon wants to expand in the forest\n"
 	.string "up north, but it seems that a strange\l"
 	.string "group is giving them trouble.\p"
 	.string "I fear that the situation may turn\n"
@@ -1595,28 +1609,28 @@ RustboroCity_Text_SneakyLookingManWentAroundCorner:
 	.string "looking guy went around the corner.$"
 
 RustboroCity_Text_HaveYouChallengedGym:
-	.string "ROXANNE is such a hard worker.\p"
-	.string "Not only she's our GYM LEADER,\n"
+	.string "Roxanne is such a hard worker.\p"
+	.string "Not only she's our Gym Leader,\n"
 	.string "but she's also a teacher!\p"
 	.string "I don't know how she does it!$"
 
 
 
 RustboroCity_Text_HeyThatsRustborosGymBadge:
-	.string "Hey, that's RUSTBORO's GYM BADGE!\p"
-	.string "Out of all the POKéMON GYM BADGES,\n"
-	.string "RUSTBORO's is the coolest, I'd say.$"
+	.string "Hey, that's Rustboro's Gym Badge!\p"
+	.string "Out of all the Pokémon Gym Badges,\n"
+	.string "Rustboro's is the coolest, I'd say.$"
 
 RustboroCity_Text_YoureNewAroundHere:
 	.string "Oh? Who might you be?\n"
 	.string "You're a new face around these parts.\p"
 	.string "Have you just transferred into the\n"
-	.string "POKéMON TRAINER'S SCHOOL?$"
+	.string "Pokémon Trainer School?$"
 
 RustboroCity_Text_GymLeaderIsntEasyWithFire:
-	.string "RUSTBORO CITY wasn't always like this.\p"
-	.string "But things changed DEVON's current CEO,\n"
-	.string "ALLAN STONE, inherited the company from\l"
+	.string "Rustboro City wasn't always like this.\p"
+	.string "But things changed Devon's current CEO,\n"
+	.string "Allan Stone, inherited the company from\l"
 	.string "his father.\p"
 	.string "Believe it or not, when I was a young\n"
 	.string "lass, this place was so much greener\l"
@@ -1628,23 +1642,23 @@ RustboroCity_Text_MrBrineyWalksInTheTunnel:
 	.string "How come I'm still homeless?$"
 
 RustboroCity_Text_MrBrineyLovesPeeko:
-	.string "The old sailor MR. BRINEY lives in\n"
+	.string "The old sailor Mr. Briney lives in\n"
 	.string "a cottage by the sea.\p"
 	.string "He said he was going shopping in\n"
-	.string "SLATEPORT for his pet, PEEKO.\p"
+	.string "Slateport for his pet, Peeko.\p"
 	.string "That old sea dog, he must really love\n"
-	.string "that PEEKO.$"
+	.string "that Peeko.$"
 
 RustboroCity_Text_WowYouHavePokemon:
-	.string "Wow, you have POKéMON with you, too.\p"
+	.string "Wow, you have Pokémon with you, too.\p"
 	.string "When I get bigger, I'm going to get\n"
-	.string "POKEMON too and leave this stinky\l"
+	.string "Pokémon too and leave this stinky\l"
 	.string "place.$"
 
 RustboroCity_Text_CatchRarePokemonIfIGoToSchool:
-	.string "POKéMON TRAINER'S SCHOOL!\p"
+	.string "Pokémon Trainer School!\p"
 	.string "If I go to this school, I will\n"
-	.string "learn everything about POKEMON\l"
+	.string "learn everything about Pokémon\l"
 	.string "battles!$"
 
 RustboroCity_Text_PokemonCanChangeLookFromExp:
@@ -1853,13 +1867,13 @@ RustboroCity_Text_IdBetterGetBackToWork:
 
 RustboroCity_Text_YouCanHave2On2Battle:
 	.string "This city is home to the headquarters\n"
-	.string "of DEVON.\p"
-	.string "DEVON is a multinational corporation\n"
+	.string "of Devon.\p"
+	.string "Devon is a multiregional corporation\n"
 	.string "that deals with, well, pretty much\l"
 	.string "everything.\p"
 	.string "Real estate, technology, POKEMON…\p"
 	.string "If you can name it, you can buy it\n"
-	.string "from DEVON.\p"
+	.string "from Devon.\p"
 	.string "Recently, they've been targeted\n"
 	.string "by many protests over so-called\l"
 	.string "environmental concerns…\p"
@@ -1879,18 +1893,18 @@ RustboroCity_Text_Diglett:
 
 RustboroCity_Text_DumbBird:
 	.string "Sigh…\p"
-	.string "DELIBIRD is supposed to help in\n"
+	.string "Delibird is supposed to help in\n"
 	.string "carrying construction material to\l"
 	.string "its proper place, but…\p"
 	.string "It doesn't look like he's quite got\n"
 	.string "what the assignement is.$"
 
 RustboroCity_Text_Delibird:
-	.string "DELIBIRD: Kwaaah!$"
+	.string "Kwaaah!$"
 
 RustboroCity_Text_LookerDisguise:
 	.string "Psst! Hey!\n"
-	.string "It is me, LOOKER!\p"
+	.string "It is me, Looker!\p"
 	.string "Quite the disguise, is it not?\p"
 	.string "You see, I have reason to believe that\n"
 	.string "the suspicious man we encountered\l"
@@ -1911,9 +1925,9 @@ RustboroCity_Text_MagmaProtest:
 	.string "I'm protesting for a good cause!$"
 
 RustboroCity_Text_BoyProtest:
-	.string "DEVON wants to demolish this park to\n"
+	.string "Devon wants to demolish this park to\n"
 	.string "build a new department store, since\l"
-	.string "the one in LILYCOVE was closed.\p"
+	.string "the one in Lilycove was closed.\p"
 	.string "But we won't stand for it!$"
 
 RustboroCity_Text_GirlProtest:
@@ -1938,7 +1952,7 @@ Rustborocity_Text_OldMan:
 	.string "construction!$"
 
 RustboroCity_Text_Mr_Briney:
-	.string "MR BRINEY: Oh, the misery…\n"
+	.string "Oh, the misery…\n"
 	.string "Oh, poor little old me!\p"
 	.string "Ye see, I was walking me PEEKO as usual,\n"
 	.string "when…\p"
@@ -1947,12 +1961,12 @@ RustboroCity_Text_Mr_Briney:
 	.string "Now he's on the other side, but…\n"
 	.string "This rapscallion of a man isn't letting\l"
 	.string "me go through to save me boy!\p"
-	.string "Oh, PEEKO, me love…\n"
-	.string "Oh, PEEKO, me son!\p"
+	.string "Oh, Peeko, me love…\n"
+	.string "Oh, Peeko, me girl!\p"
 	.string "I can but pray for yer safety!$"
 
 RustboroCity_Text_AhMyFriend:
-	.string "LOOKER: Ah, my friend… Huff!\p"
+	.string "Ah, my friend… Huff!\p"
 	.string "That scoundrel, he… Puff!\n"
 	.string "Slithered away, yes…\p"
 	.string "And now, this man here taking\n"
@@ -1964,10 +1978,10 @@ RustboroCity_Text_AhMyFriend:
 	.string "get us out of this pickle!$"
 
 RustboroCity_Text_WatchAndLearn:
-	.string "LOOKER: And now, observe.$"
+	.string "And now, observe.$"
 
 RustboroCity_Text_TheWayIsOpen:
-	.string "LOOKER: And as we say in my\n"
+	.string "And as we say in my\n"
 	.string "home region: voilà!\p"
 	.string "Yes my friend, the way is clear,\n"
 	.string "and we can proceed after our ruffian.\p"
@@ -2006,11 +2020,11 @@ RustboroCity_Text_PeekoCry:
 	.string "PEEKO: Kyahh!$"
 
 RustboroCity_Text_Mr_BrineyHappy:
-	.string "MR. BRINEY: Oh, PEEKO!\n"
+	.string "Oh, Peeko!\n"
 	.string "Yer back!$"
 
 RustboroCity_Text_LookerTired:
-	.string "LOOKER: Ah… Huff…\n"
+	.string "Ah… Huff…\n"
 	.string "My friend…! Puff…\p"
 	.string "Please excuse me. My breath…\n"
 	.string "Huff… Needs some catching…\p"
@@ -2050,14 +2064,14 @@ RustboroCity_Text_LookerISee:
 	.string "Quite far from here, indeed.$"
 
 RustboroCity_Text_MrBrineyDewford:
-	.string "MR. BRINEY: DEWFORD?\n"
+	.string "Dewford?\n"
 	.string "Why, me young fellow, I can take ye\l"
 	.string "there!\p"
-	.string "Me SPEED BOAT always welcomes friends\n"
-	.string "of PEEKO!$"
+	.string "Me Speed Boat always welcomes friends\n"
+	.string "of Peeko!$"
 
 RustboroCity_Text_LookerVeryGood:
-	.string "LOOKER: Ah! Very good!$"
+	.string "Ah! Very good!$"
 
 RustboroCity_Text_LookerMission:
 	.string "My friend, you have a new mission.\p"
@@ -2094,7 +2108,7 @@ RustboroCity_Text_BoyfriendLeave:
 	.string "Is he a secret agent for real?\p"
 	.string "Today has been a crazy day…\p"
 	.string "Speaking of which, I'm gonna go and\n"
-	.string "visit my WANDA.\p"
+	.string "visit my Wanda.\p"
 	.string "If you happen to pass by VERDANTURF\n"
 	.string "feel free to stop by, eh?$"
 
@@ -2109,12 +2123,11 @@ RustboroCity_Movement_BoyfriendLeave:
 	step_end
 
 RustboroCity_Text_MrBrineyOffer:
-	.string "MR. BRINEY: Time to take me leave too\n"
-	.string "then!\p"
+	.string "Time to take me leave too, then!\p"
 	.string "But if ye ever find yerself in need of\n"
 	.string "me boat…\p"
-	.string "Ye can find me in me cottage in PEARLY\n"
-	.string "SEASIDE! Gyaha!\p"
+	.string "Ye can find me in me cottage in Pearly\n"
+	.string "Seaside! Gyaha!\p"
 	.string "Well then! I'm off!\n"
 	.string "Let's go, me boy!$"
 
@@ -2171,6 +2184,9 @@ RustboroCity_EventScript_ManHole::
 
 
 RustboroCity_Text_Manhole:
-	.string "A suspicuous manhole.\p"
+	.string "A suspicious manhole.\p"
 	.string "A Pokémon might be strong enough to\n"
 	.string "force it open.$"
+
+Common_Name_Briney:
+	.string "Mr. Briney$"

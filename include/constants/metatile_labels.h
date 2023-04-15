@@ -249,6 +249,21 @@
 #define METATILE_GenericBuilding_TrickHouse_Door_Closed  0x21B
 #define METATILE_GenericBuilding_TrickHouse_Stairs_Down  0x219
 
+// gTileset_GraniteCave
+#define METATILE_GraniteCave_BridgeDown         0x3C9
+#define METATILE_GraniteCave_BridgeMiddle       0x3C1
+#define METATILE_GraniteCave_BridgeUp           0x3B9
+#define METATILE_GraniteCave_Floor              0x321
+#define METATILE_GraniteCave_GateRailLeft       0x2E5
+#define METATILE_GraniteCave_GateRailMiddle     0x2E6
+#define METATILE_GraniteCave_GateRailRight      0x2E7
+#define METATILE_GraniteCave_NormalGate         0x37A
+#define METATILE_GraniteCave_RailLeft           0x2B8
+#define METATILE_GraniteCave_RailMiddle         0x3F1
+#define METATILE_GraniteCave_RailRight          0x2BA
+#define METATILE_GraniteCave_RightEdgeOverVoid  0x3B7
+#define METATILE_GraniteCave_Void               0x3C0
+
 // gTileset_InsideOfTruck
 #define METATILE_InsideOfTruck_DoorClosedFloor_Bottom  0x21D
 #define METATILE_InsideOfTruck_DoorClosedFloor_Mid     0x215

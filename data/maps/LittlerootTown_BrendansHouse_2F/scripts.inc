@@ -85,6 +85,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanNorth::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
+	call Common_Set_Name_Rival
 	msgbox RivalsHouse_2F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanNorth
@@ -97,6 +98,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanSouth::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
+	call Common_Set_Name_Rival
 	msgbox RivalsHouse_2F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanSouth
@@ -109,6 +111,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanWest::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
+	call Common_Set_Name_Rival
 	msgbox RivalsHouse_2F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanWest
@@ -121,6 +124,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanEast::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
+	call Common_Set_Name_Rival
 	msgbox RivalsHouse_2F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCEast
@@ -277,7 +281,7 @@ PlayersHouse_2F_Text_ClockIsStopped:
 	.string "You manage to reset it.$"
 
 PlayersHouse_2F_Text_HowDoYouLikeYourRoom:
-	.string "MOM: {PLAYER}, how do you like your\n"
+	.string "{PLAYER}, how do you like your\n"
 	.string "new room?\p"
 	.string "Good! Everything's put away neatly!\p"
 	.string "They finished moving everything in\n"

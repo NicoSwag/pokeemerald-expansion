@@ -348,6 +348,7 @@ RusturfTunnel_EventScript_Peeko::
 
 RusturfTunnel_EventScript_Grunt::
 	lock
+	speakername Common_Name_Manager
 	msgbox RusturfTunnel_Message_dontyoudare, MSGBOX_NPC
 	closemessage
 	applymovement LOCALID_DEVON_EMPLOYEE, RusturfTunnel_Movement_Retreat
@@ -387,12 +388,14 @@ RusturfTunnel_EventScript_Grunt2::
 	closemessage
 	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_FaceLeft
 	waitmovement 0
+	speakername Common_Name_Manager
 	msgbox RusturfTunnel_Message_Fine, MSGBOX_NPC
 	closemessage
 	call_if_eq VAR_TEMP_1, 1, RusturfTunnel_EventScript_Grunt2PlayerWalkDown
 	call_if_eq VAR_TEMP_1, 2, RusturfTunnel_EventScript_Grunt2PlayerWalkUp
 	trainerbattle_no_intro TRAINER_DEVON_MANAGER_1, RustturfTunnel_Message_DevonDefeat
 	setvar VAR_RUSTURF_TUNNEL_STATE, 5
+	speakername Common_Name_Manager
 	msgbox RusturfTunnel_Message_GetItThen, MSGBOX_DEFAULT
 	closemessage
 	addobject LOCALID_BALL
@@ -400,6 +403,7 @@ RusturfTunnel_EventScript_Grunt2::
 	applymovement LOCALID_BALL, RusturfTunnel_Movement_BallThrow
 	waitmovement 0
 	playse SE_WALL_HIT
+	speakername Common_Name_Manager
 	msgbox RusturfTunnel_Message_Escape, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_DEVON_EMPLOYEE, RusturfTunnel_Movement_DevonEscapes
@@ -541,7 +545,7 @@ RusturfTunnel_Text_ComeAndGetSome:
 	.string "Come and get some, then!$"
 
 RusturfTunnel_Text_Peeko:
-	.string "PEEKO: Pii pihyoh!$"
+	.string "Pii pihyoh!$"
 
 RusturfTunnel_Text_GruntIntro:
 	.string "Grah, keelhaul it all!\p"
@@ -592,7 +596,7 @@ RustturfTunnel_Message_AfterHim:
 	.string "Go! After him!$"
 
 RusturfTunnel_Message_dontyoudare:
-	.string "DEVON MANAGER: S-stop it right there!\p"
+	.string "S-stop it right there!\p"
 	.string "Don't you dare move a step…\n"
 	.string "Or this WINGULL is gonna get it!$"
 
@@ -655,7 +659,7 @@ RusturfTunnel_Message_Noyoudont:
 
 
 RusturfTunnel_Message_Fine:
-	.string "DEVON MANAGER: …F-fine!\p"
+	.string " …F-fine!\p"
 	.string "You want me so badly?\n"
 	.string "Come and get me, then!\p"
 	.string "I-I'll let you know…\p"
@@ -669,11 +673,11 @@ RustturfTunnel_Message_DevonDefeat:
 
 
 RusturfTunnel_Message_GetItThen:
-	.string "DEVON MANAGER: W-what have I even\n"
+	.string " W-what have I even\n"
 	.string "done to you!?\p"
 	.string "Ha… Hahaha!\n"
 	.string "I get it!\p"
-	.string "You're after the GOODS, aren't you?\p"
+	.string "You're after the Goods, aren't you?\p"
 	.string "T-then go ahead and get them!$"
 
 
@@ -685,9 +689,9 @@ RusturfTunnel_Message_Thud:
 	.string "THUD!$"
 
 RusturfTunnel_Message_Escape:
-	.string "DEVON MANAGER: And finally, without\n"
-	.string "that junk slowing me down…\p"
-	.string "I can finally make my escape!\p"
+	.string "And finally, without that junk\n"
+	.string "slowing me down…\p"
+	.string "I can make my escape!\p"
 	.string "G-gyahaha!\p"
 	.string "See you later, suckers!$"
 
@@ -713,7 +717,7 @@ RusturfTunnel_Movement_DevonEscapes:
 	step_end
 
 RusturfTunnel_Message_HolyMiltank:
-	.string "Holy MILTANK, man!\p"
+	.string "Holy Miltank, man!\p"
 	.string "Did you see how fast that guy ran?\p"
 	.string "Guess this weird package was really\n"
 	.string "weighing him down.\p"
@@ -794,5 +798,4 @@ RusturfTunnel_Text_Heyquitit:
 	.string "You're spoiling my focus!$"
 
 RusturfTunnel_Text_Sign:
-	.string "KEEP OUT\p"
 	.string "Looks like the door is locked.$"

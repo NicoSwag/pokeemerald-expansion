@@ -33,6 +33,7 @@ Route104_MrBrineysHouse_EventScript_Briney::
 
 Route104_MrBrineysHouse_EventScript_SailingIntro::
 	setflag FLAG_MR_BRINEY_SAILING_INTRO
+	speakername Common_Name_Briney
 	msgbox Route104_MrBrineysHouse_Text_WaitUpPeeko, MSGBOX_DEFAULT
 	msgbox Route104_MrBrineysHouse_Text_ItsYouLetsSailToDewford, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_DeclineDeliverySailing
@@ -50,28 +51,33 @@ Route104_MrBrineysHouse_EventScript_WhereAreWeBound::
 	end
 
 Route104_MrBrineysHouse_EventScript_SailBothDeliveries::
+speakername Common_Name_Briney
 	msgbox Route104_MrBrineysHouse_Text_NeedToMakeDeliveriesSailToDewford, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_DeclineDeliverySailing
 	goto Route104_MrBrineysHouse_EventScript_SailToDewford
 	end
 
 Route104_MrBrineysHouse_EventScript_SailDeliverPackage::
+speakername Common_Name_Briney
 	msgbox Route104_MrBrineysHouse_Text_NeedToDeliverPackageSailToDewford, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route104_MrBrineysHouse_EventScript_DeclineDeliverySailing
 	goto Route104_MrBrineysHouse_EventScript_SailToDewford
 	end
 
 Route104_MrBrineysHouse_EventScript_DeclineDeliverySailing::
+speakername Common_Name_Briney
 	msgbox Route104_MrBrineysHouse_Text_DeclineDeliverySail, MSGBOX_DEFAULT
 	release
 	end
 
 Route104_MrBrineysHouse_EventScript_DeclineSailing::
+speakername Common_Name_Briney
 	msgbox Route104_MrBrineysHouse_Text_TellMeWheneverYouWantToSail, MSGBOX_DEFAULT
 	release
 	end
 
 Route104_MrBrineysHouse_EventScript_SailToDewford::
+speakername Common_Name_Briney
 	msgbox Route104_MrBrineysHouse_Text_SetSailForDewford, MSGBOX_DEFAULT
 	call EventScript_BackupMrBrineyLocation
 	setvar VAR_BOARD_BRINEY_BOAT_STATE, 1
@@ -94,7 +100,7 @@ Route104_MrBrineysHouse_EventScript_Peeko::
 	end
 
 Route104_MrBrineysHouse_Text_WaitUpPeeko:
-	.string "MR. BRINEY: Hold on, lass!\n"
+	.string "Hold on, lass!\n"
 	.string "Wait up, PEEKO!$"
 
 Route104_MrBrineysHouse_Text_ItsYouLetsSailToDewford:
@@ -110,40 +116,40 @@ Route104_MrBrineysHouse_Text_ItsYouLetsSailToDewford:
 	.string "We'll set sail for DEWFORD.$"
 
 Route104_MrBrineysHouse_Text_SetSailForDewford:
-	.string "MR. BRINEY: DEWFORD it is, then!\p"
+	.string "DEWFORD it is, then!\p"
 	.string "Anchors aweigh!\n"
 	.string "PEEKO, we're setting sail, me darling!$"
 
 Route104_MrBrineysHouse_Text_DeclineDeliverySail:
-	.string "MR. BRINEY: Is that so?\n"
+	.string "Is that so?\n"
 	.string "Yer job can wait?\p"
 	.string "Yer just go on and tell me whenever\n"
 	.string "ye want to set sail!$"
 
 Route104_MrBrineysHouse_Text_NeedToMakeDeliveriesSailToDewford:
-	.string "MR. BRINEY: Ahoy!\n"
+	.string "Ahoy!\n"
 	.string "I know exactly what ye want to say!\p"
 	.string "What ye need me to do is no problem\n"
 	.string "at all--I'm the man for the job!\p"
 	.string "We'll set sail for DEWFORD.$"
 
 Route104_MrBrineysHouse_Text_NeedToDeliverPackageSailToDewford:
-	.string "MR. BRINEY: Ahoy!\n"
+	.string "Ahoy!\n"
 	.string "I know exactly what ye want to say!\p"
 	.string "What you need me to do is no problem\n"
 	.string "at all--I'm the man for the job!\p"
 	.string "We'll set sail for DEWFORD.$"
 
 Route104_MrBrineysHouse_Text_WhereAreWeBound:
-	.string "MR. BRINEY: Ahoy!\n"
+	.string "Ahoy!\n"
 	.string "For ye, I'll go out to sea anytime!\p"
 	.string "Now, me friend, where are we bound?$"
 
 Route104_MrBrineysHouse_Text_TellMeWheneverYouWantToSail:
-	.string "MR. BRINEY: Is that so?\n"
+	.string "Is that so?\n"
 	.string "Well, PEEKO owes her life to ye.\p"
 	.string "Ye just go on and tell me whenever\n"
 	.string "ye want to set sail!$"
 
 Route104_MrBrineysHouse_Text_Peeko:
-	.string "PEEKO: Pii piihyoro!$"
+	.string "Pii piihyoro!$"

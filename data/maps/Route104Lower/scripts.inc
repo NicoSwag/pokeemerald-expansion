@@ -223,8 +223,13 @@ Route104_EventScript_ArriveInDewford::
 
 Route104_EventScript_DeliverLetterReminder::
 	msgbox Route104_Text_LandedInDewfordDeliverLetter, MSGBOX_DEFAULT
+	call_if_unset FLAG_BRINEY_MENTIONED_BACKSTORY, Route104_EventScript_ThanksPlayer
 	releaseall
 	end
+
+Route104_EventScript_ThanksPlayer::
+	setflag FLAG_BRINEY_MENTIONED_BACKSTORY
+	msgbox Route104_Text_WantToThankYe, MSGBOX_DEFAULT
 
 Route104_EventScript_LandedInDewford::
 	msgbox DewfordTown_Text_BrineyLandedInDewford, MSGBOX_DEFAULT

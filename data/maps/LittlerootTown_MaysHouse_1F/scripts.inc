@@ -189,6 +189,7 @@ LittlerootTown_MaysHouse_1F_EventScript_MeetRival::
 	call_if_eq VAR_0x8008, 0, LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer0
 	call_if_eq VAR_0x8008, 1, LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer1
 	call_if_eq VAR_0x8008, 2, LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer2
+	call Common_Set_Name_Rival
 	msgbox RivalsHouse_1F_Text_MayWhoAreYou, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_0x8008, 0, LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs0
@@ -406,3 +407,25 @@ RivalsHouse_1F_Text_DoYouHavePokemon:
 	.string "Hi, neighbor!\p"
 	.string "Do you already have your\n"
 	.string "own POKéMON?$"
+
+Common_Set_Name_Rival:
+	checkplayergender
+	call_if_eq VAR_RESULT, MALE, Common_Set_Name_May
+	call_if_eq VAR_RESULT, FEMALE, Common_Set_Name_Brendan
+	return
+
+Common_Set_Name_May::
+	speakername Common_Name_May
+	return
+
+Common_Set_Name_Brendan::
+	speakername Common_Name_Brendan
+	return
+
+
+
+Common_Name_Brendan:
+	.string "Brendan$"
+
+Common_Name_May:
+	.string "May$"

@@ -55,7 +55,7 @@ voicegroup191::
 	voice_directsound 60, 0, DirectSoundWaveData_classical_choir_voice_ahhs, 128, 165, 128, 188
 	voice_directsound 60, 0, DirectSoundWaveData_classical_choir_voice_ahhs, 255, 0, 255, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+    voice_directsound_no_resample 64, 80, DirectSoundWaveData_sc88pro_orchestra_snare, 255, 0, 255, 242
 	voice_keysplit voicegroup007, KeySplitTable3
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0

@@ -7,8 +7,8 @@
 .equ LOCALID_BOAT_R109, 1
 .equ LOCALID_BRINEY_R109, 2
 
-.equ LOCALID_BOAT_R104, 11
-.equ LOCALID_BRINEY_R104, 12
+.equ LOCALID_BOAT_R104, 8
+.equ LOCALID_BRINEY_R104, 9
 
 .set LOCALID_RIVAL, 15
 .set LOCALID_MAGNEZONE, 27
@@ -223,6 +223,7 @@ DewfordTown_Movement_StartMoving:
 DewfordTown_EventScript_Briney::
 	lock
 	faceplayer
+	speakername Common_Name_Briney
 	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_ReturnToPetalburgPrompt
 	message DewfordTown_Text_WhereAreWeBound
 	waitmessage
@@ -1000,50 +1001,49 @@ DewfordTown_Text_HallSign:
 	.string "“Everyone's information exchange!”$"
 
 Route104_Text_LandedInDewfordDeliverLetter:
-	.string "MR. BRINEY: Ahoy!\n"
-	.string "We've hit land in DEWFORD.\p"
+	.string "Ahoy!\n"
+	.string "We've hit land in Dewford.\p"
 	.string "Well, if ye need me, I'll be\n"
 	.string "waiting here!$"
 
 DewfordTown_Text_SetSailBackToPetalburg:
-	.string "MR. BRINEY: Have you delivered your\n"
-	.string "LETTER?\p"
-	.string "Or were you meaning to sail back to\n"
-	.string "PETALBURG?$"
+	.string "Have ye done what you needed?$"
+	.string "Or were ye meaning to sail back to\n"
+	.string "Petalburg?$"
 
 DewfordTown_Text_PetalburgWereSettingSail2:
-	.string "MR. BRINEY: PETALBURG it is, then!\p"
+	.string "Petalburg it is, then!\p"
 	.string "Anchors aweigh!\n"
-	.string "PEEKO, we're setting sail, my darling!$"
+	.string "Peeko, we're setting sail, me darling!$"
 
 DewfordTown_Text_GoDeliverIllBeWaiting:
-	.string "MR. BRINEY: Then you go on and deliver\n"
-	.string "the LETTER. I'll be waiting.$"
+	.string "Then ye go on.\n"
+	.string "I'll be waiting.$"
 
 DewfordTown_Text_BrineyLandedInDewford:
-	.string "MR. BRINEY: Ahoy!\n"
-	.string "We've hit land in DEWFORD!\p"
+	.string "Ahoy!\n"
+	.string "We've hit land in Dewford!\p"
 	.string "You just go on and tell me whenever\n"
-	.string "you want to set sail again!$"
+	.string "ye want to set sail again!$"
 
 DewfordTown_Text_WhereAreWeBound:
-	.string "MR. BRINEY: Ahoy!\n"
-	.string "For you, I'll go out to sea anytime!\p"
+	.string "Ahoy!\n"
+	.string "For ye, I'll go out to sea anytime!\p"
 	.string "Now, my friend, where are we bound?$"
 
 DewfordTown_Text_PetalburgWereSettingSail:
-	.string "MR. BRINEY: PETALBURG, is it?\p"
+	.string "Petalburg, is it?\p"
 	.string "Anchors aweigh!\n"
-	.string "PEEKO, we're setting sail, my darling!$"
+	.string "Peeko, we're setting sail, me darling!$"
 
 DewfordTown_Text_SlateportWereSettingSail:
-	.string "MR. BRINEY: SLATEPORT, is it?\p"
+	.string "Slateport is it?\p"
 	.string "Anchors aweigh!\n"
-	.string "PEEKO, we're setting sail, my darling!$"
+	.string "Peeko, we're setting sail, me darling!$"
 
 DewfordTown_Text_JustTellMeWhenYouNeedToSetSail:
-	.string "MR. BRINEY: You just tell me whenever\n"
-	.string "you need to set sail again!$"
+	.string "Ye just tell me whenever ye need\n"
+	.string "to set sail again!$"
 
 DewfordTown_Text_GettingItchToFish:
 	.string "I found this while fishing the other\n"
@@ -1066,6 +1066,22 @@ DewfordTown_Text_ThrowInFishingAdvice:
 	.string "immediately, but with bigger catches,\l"
 	.string "you need to time the pulls on your ROD\l"
 	.string "to haul them in.$"
+
+Route104_Text_WantToThankYe:
+	.string "…Actually, hold on a moment.\p"
+	.string "I just wanted to say… Thank ye.\p"
+	.string "It's been a long time since I\n"
+	.string "sailed the seven seas.\p"
+	.string "I even thought of hanging up the\n"
+	.string "old sails.\p"
+	.string "But ye… The way ye selflessly\n"
+	.string "saved me darling Peeko…\p"
+	.string "Ye motivated me, ye have.\p"
+	.string "…Sniff.\p"
+	.string "Oh, pay me no mind, pay me no mind.\n"
+	.string "i'm just happy, is all.$"
+
+
 
 DewfordTown_Text_ThatsTooBadThen:
 	.string "Oh, is that so?\n"
@@ -1220,12 +1236,15 @@ Route104_EventScript_RivalEncounter::
 	end
 
 Route104_EventScript_MayEncounter::
+call Common_Set_Name_Rival
 	msgbox Route104_Text_MayHowsYourPokedex, MSGBOX_DEFAULT
 	closemessage
 	waitmovement 0
 	copyobjectxytoperm LOCALID_RIVAL
+call Common_Set_Name_Rival
 	msgbox Route104_Text_MayMinesDecentLetsBattle, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route104_EventScript_BattleMay
+call Common_Set_Name_Rival
 	msgbox Route104_Text_MayHaventRaisedPokemon, MSGBOX_DEFAULT
 	goto Route104_EventScript_BattleMay
 	call Route104_EventScript_RestoreMusic
@@ -1247,8 +1266,10 @@ Route104_Movement_PlayerFaceRival:
 	step_end
 
 Route104_EventScript_MayAskToBattle::
+call Common_Set_Name_Rival
 	msgbox Route104_Text_MayLetsBattle, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route104_EventScript_BattleMay
+call Common_Set_Name_Rival
 	msgbox Route104_Text_MayHaventRaisedPokemon, MSGBOX_DEFAULT
 	releaseall
 	end
@@ -1261,6 +1282,7 @@ Route104_EventScript_BattleMay::
 	end
 
 Route104_EventScript_MayDefeated::
+call Common_Set_Name_Rival
 	msgbox Route104_Text_MayPostBattle, MSGBOX_DEFAULT
 	applymovement LOCALID_RIVAL, Route104_Movement_RivalGoesAway
 	waitmovement 0
@@ -1295,12 +1317,15 @@ Route104_EventScript_BattleMayMudkip::
 	end
 
 Route104_EventScript_BrendanEncounter::
+call Common_Set_Name_Rival
 	msgbox Route104_Text_BrendanHowsYourPokedex, MSGBOX_DEFAULT
 	closemessage
 	waitmovement 0
 	copyobjectxytoperm LOCALID_RIVAL
+call Common_Set_Name_Rival
 	msgbox Route104_Text_MayMinesDecentLetsBattle, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route104_EventScript_BattleBrendan
+call Common_Set_Name_Rival
 	msgbox Route104_Text_MayHaventRaisedPokemon, MSGBOX_DEFAULT
 	goto Route104_EventScript_BattleBrendan
 	call Route104_EventScript_RestoreMusic
@@ -1308,8 +1333,11 @@ Route104_EventScript_BrendanEncounter::
 	end
 
 Route104_EventScript_BrendanAskToBattle::
+call Common_Set_Name_Rival
 	msgbox Route104_Text_BrendanLetsBattle, MSGBOX_YESNO
+call Common_Set_Name_Rival
 	goto_if_eq VAR_RESULT, YES, Route104_EventScript_BattleBrendan
+call Common_Set_Name_Rival
 	msgbox Route104_Text_BrendanNoConfidence, MSGBOX_DEFAULT
 	releaseall
 	end
@@ -1322,6 +1350,7 @@ Route104_EventScript_BattleBrendan::
 	end
 
 Route104_EventScript_BrendanDefeated::
+call Common_Set_Name_Rival
 	msgbox Route104_Text_BrendanPostBattle, MSGBOX_DEFAULT
 	call_if_eq VAR_0x8008, 0, Route104_EventScript_RestoreMusic
 		setvar VAR_ROUTE104_STATE, 2
@@ -1364,10 +1393,10 @@ Route104_Text_RegisteredMay:
 	.string "in the POKéNAV.$"
 
 Route104_Text_MayHowsYourPokedex:
-	.string "MAY: Oh, hey, {PLAYER}{KUN}.\n"
+	.string "Oh, hey, {PLAYER}{KUN}.\n"
 	.string "Fancy meeting you here.\p"
-	.string "The old sailor MR. BRINEY started\n"
-	.string "offering free trips to DEWFORD.\p"
+	.string "The old sailor Mr. Briney started\n"
+	.string "offering free trips to Dewford.\p"
 	.string "And there's no chance I'll say no to\n"
 	.string "anything free, so here I am.\p"
 	.string "Guessing you're here for that too, huh?$"
@@ -1401,13 +1430,13 @@ Route104_Text_MayPostBattle:
 	.string "You're more interesting than I\n"
 	.string "expected.\p"
 	.string "You know, most people living in\n"
-	.string "LITTLEROOT and RUSTBORO are really\l"
+	.string "Littleroot and Petalburg are really\l"
 	.string "boring.\p"
 	.string "So when you moved here, I thought you\n"
 	.string "were going to be really boring, too.\p"
 	.string "But the way you fight…\n"
 	.string "It's unlike anything I've seen.\p"
-	.string "Maybe it's that JOHTOAN spark, huh?\p"
+	.string "Maybe it's that Johtoan spark, huh?\p"
 	.string "Well, either way, this was just a fluke.\p"
 	.string "There's no chance I'm gonna let you\n"
 	.string "win next time.\p"
@@ -1429,10 +1458,10 @@ Route104_Text_RegisteredBrendan:
 	.string "in the POKéNAV.$"
 
 Route104_Text_BrendanHowsYourPokedex:
-	.string "BRENDAN: Oh, hey, {PLAYER}{KUN}.\n"
+	.string "Oh, hey, {PLAYER}{KUN}.\n"
 	.string "Fancy meeting you here.\p"
-	.string "The old sailor MR. BRINEY started\n"
-	.string "offering free trips to DEWFORD\p"
+	.string "The old sailor Mr. Briney started\n"
+	.string "offering free trips to Dewford\p"
 	.string "And there's no chance I'll say no to\n"
 	.string "anything free, so here I am.\p"
 	.string "Guessing you're here for that too, huh?$"

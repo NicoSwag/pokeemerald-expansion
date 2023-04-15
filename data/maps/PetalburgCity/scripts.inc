@@ -641,9 +641,11 @@ PetalburgCity_EventScript_Scott::
 	applymovement LOCALID_LOOKER, Common_Movement_FaceLeft
 	waitmovement 0
 	msgbox PetalburgCity_Text_LookerDialogue1, MSGBOX_DEFAULT
+	speakername Common_Name_Looker
 	msgbox PetalburgCity_Text_LookerDialogue2, MSGBOX_DEFAULT
 	msgbox PetalburgCity_Text_LookerDialogue3, MSGBOX_DEFAULT
 	giveitem ITEM_TOWN_MAP
+	speakername Common_Name_Looker
 	msgbox PetalburgCity_Text_Looker2, MSGBOX_DEFAULT
 	setvar VAR_SCOTT_PETALBURG_ENCOUNTER, 1
 	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_LookerExit0
@@ -961,3 +963,6 @@ PetalburgCity_Text_WallySick:
 	.string "Well, that's when WALLY started being\n"
 	.string "sick.\p"
 	.string "We moved here to get some fresh air.$"
+
+Common_Name_Looker:
+	.string "Looker$"

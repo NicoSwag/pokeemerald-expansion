@@ -570,7 +570,9 @@
 #define MUS_BLACK_CITY 635
 #define MUS_PYRITE_TOWN 636
 #define MUS_WATERFALL_COLOSSEUM 637
-#define END_MUS                     638
+#define MUS_DARK_FOREST 638
+#define MUS_TOURNAMENT 639
+#define END_MUS                     639
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
 #define MUS_NONE                    0xFFFF

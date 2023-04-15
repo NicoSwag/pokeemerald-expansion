@@ -21,10 +21,12 @@ Route101_EventScript_HideMapNamePopup::
 
 Route101_EventScript_StartBirchRescue::
 	playbgm MUS_HELP, TRUE
+	speakername Common_Name_Birch
 	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_EnterScene
 	waitmovement 0
+	speakername Common_Name_Birch
 	msgbox Route101_Text_PleaseHelp, MSGBOX_DEFAULT
 	closemessage
 	setobjectmovementtype LOCALID_BIRCH, MOVEMENT_TYPE_JOG_IN_PLACE_RIGHT
@@ -33,6 +35,7 @@ Route101_EventScript_StartBirchRescue::
 	end
 
 Route101_EventScript_PreventExitSouth::
+speakername Common_Name_Birch
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitSouth
@@ -40,6 +43,7 @@ Route101_EventScript_PreventExitSouth::
 	end
 
 Route101_EventScript_PreventExitWest::
+speakername Common_Name_Birch
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitWest
@@ -47,6 +51,7 @@ Route101_EventScript_PreventExitWest::
 	end
 
 Route101_EventScript_PreventExitNorth::
+speakername Common_Name_Birch
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitNorth
@@ -229,6 +234,7 @@ Route101_EventScript_BirchsBag::
 	waitstate
 	applymovement LOCALID_BIRCH, Route101_Movement_BirchApproachPlayer
 	waitmovement 0
+	speakername Common_Name_Birch
 	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
 	special HealPlayerParty
 	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
@@ -271,7 +277,7 @@ Route101_Text_DontLeaveMe:
 	.string "Don't leave me like this!$"
 
 Route101_Text_YouSavedMe:
-	.string "PROF. BIRCH: Whew…\p"
+	.string "Whew…\p"
 	.string "I was in the tall grass studying wild\n"
 	.string "POKéMON when I was jumped.\p"
 	.string "You saved me.\n"

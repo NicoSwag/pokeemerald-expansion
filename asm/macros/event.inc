@@ -301,12 +301,6 @@
 	.endm
 
 
-	@ Sets flag to FALSE.
-	.macro clearTMflag flag:req
-	.byte 0xe4
-	.2byte \flag
-	.endm
-
 
 	@ Compares flag to TRUE and stores the result in comparisonResult to be used by goto_if, etc
 	@ See additional _if_unset and _if_set macros
@@ -1895,9 +1889,15 @@
 	.2byte \item
 	.2byte \quantity
 	.endm
+	
+	@ Sets the text of the name box in the next-shown message box.
+	.macro speakername text:req
+	.byte 0xe3
+	.4byte \text
+	.endm
 
 	.macro showdescription
-	.byte 0xe3
+	.byte 0xe9
 	.endm
 
 	.macro checkpartycanlearn move:req
@@ -1916,11 +1916,10 @@
 	.endm
 
 	.macro hideitemdesc
-	.byte 0xe4
+	.byte 0xea
 	.endm
 
 	.macro _dynmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req argv:vararg
-	.byte 0xe3
 	.2byte \left
 	.2byte \top
 	.byte \ignoreBPress
@@ -1942,7 +1941,7 @@
 	.endm
 
 	.macro dynmultipush name:req, id:req
-	.byte 0xe4
+	.byte 0xe6
 	.4byte \name
 	.2byte \id
 	.endm

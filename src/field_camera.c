@@ -97,6 +97,8 @@ void DrawWholeMapView(void)
     sFieldCameraOffset.copyBGToVRAM = TRUE;
 }
 
+
+
 static void DrawWholeMapViewInternal(int x, int y, const struct MapLayout *mapLayout)
 {
     u8 i;
