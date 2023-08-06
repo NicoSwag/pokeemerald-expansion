@@ -103,7 +103,7 @@ LittlerootTown_EventScript_SetMomInFrontOfDoorMale::
 	return
 
 LittlerootTown_EventScript_SetMomInFrontOfDoorFemale::
-	setobjectxyperm LOCALID_MOM, 16, 10
+	setobjectxyperm LOCALID_MOM, 15, 9
 	return
 
 LittlerootTown_OnFrame:
@@ -114,8 +114,8 @@ LittlerootTown_OnFrame:
 
 LittlerootTown_EventScript_StepOffTruckMale::
 	lockall
-	setvar VAR_0x8004, 5
-	setvar VAR_0x8005, 7
+	setvar VAR_0x8004, 3
+	setvar VAR_0x8005, 9
 	call LittlerootTown_EventScript_GoInsideWithMom
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK
 	warpsilent MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F, 8, 8
@@ -125,8 +125,8 @@ LittlerootTown_EventScript_StepOffTruckMale::
 
 LittlerootTown_EventScript_StepOffTruckFemale::
 	lockall
-	setvar VAR_0x8004, 16
-	setvar VAR_0x8005, 9
+	setvar VAR_0x8004, 13
+	setvar VAR_0x8005, 10
 	call LittlerootTown_EventScript_GoInsideWithMom
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK
 	warpsilent MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F, 2, 8
@@ -968,7 +968,8 @@ LittlerootTown_Text_BirchSpendsDaysInLab:
 	.string "PROF. BIRCH spends days in his LAB\n"
 	.string "studying, then he'll suddenly go out in\l"
 	.string "the wild to do more research…\p"
-	.string "No wonder his wife left him.$"
+	.string "No wonder he always fights with his\n"
+	.string "wife.$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "Um, um, um!\p"
@@ -1019,4 +1020,3 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I gave you?\p"
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
-

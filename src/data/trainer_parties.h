@@ -14,6 +14,22 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout1[] = {
     }
 };
 
+static const struct TrainerMonNoItemDefaultMoves sParty_Route103Magmam[] = {
+    {
+    .iv = 15,
+    .lvl = 5,
+    .species = SPECIES_POOCHYENA,
+    }
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Route103Magmaf[] = {
+    {
+    .iv = 15,
+    .lvl = 5,
+    .species = SPECIES_POOCHYENA,
+    }
+};
+
 static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout2[] = {
     {
     .iv = 0,

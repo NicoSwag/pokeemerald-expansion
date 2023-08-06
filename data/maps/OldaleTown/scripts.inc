@@ -20,12 +20,12 @@ OldaleTown_EventScript_SetOldaleState::
 	return
 
 OldaleTown_EventScript_BlockWestEntrance::
-	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 1, 11
+	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 0, 11
 	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_FACE_LEFT
 	return
 
 OldaleTown_EventScript_MoveMartEmployee::
-	setobjectxyperm LOCALID_MART_EMPLOYEE, 13, 14
+	setobjectxyperm LOCALID_MART_EMPLOYEE, 6, 17
 	setobjectmovementtype LOCALID_MART_EMPLOYEE, MOVEMENT_TYPE_FACE_DOWN
 	return
 
@@ -41,15 +41,7 @@ OldaleTown_EventScript_MartEmployee::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_ExplainPotion
-	goto_if_set FLAG_TEMP_1, OldaleTown_EventScript_ExplainPotion
-	setflag FLAG_TEMP_1
-	playbgm MUS_FOLLOW_ME, FALSE
-	msgbox OldaleTown_Text_IWorkAtPokemonMart, MSGBOX_DEFAULT
-	closemessage
-	switch VAR_FACING
-	case DIR_SOUTH, OldaleTown_EventScript_GoToMartSouth
-	case DIR_NORTH, OldaleTown_EventScript_GoToMartNorth
-	case DIR_EAST, OldaleTown_EventScript_GoToMartEast
+	goto OldaleTown_EventScript_ExplainPokemonMart
 	end
 
 OldaleTown_EventScript_GoToMartSouth::
@@ -203,15 +195,8 @@ OldaleTown_EventScript_FootprintsMan::
 	end
 
 OldaleTown_EventScript_BlockedPath::
-	lockall
-	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerStepBack
-	applymovement LOCALID_FOOTPRINTS_MAN, OldaleTown_Movement_BackUp
-	waitmovement 0
 	msgbox OldaleTown_Text_WaitDontComeInHere, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_FOOTPRINTS_MAN, OldaleTown_Movement_ReturnToOriginalPosition
-	waitmovement 0
-	releaseall
 	end
 
 OldaleTown_EventScript_NotBlockingPath::
@@ -349,12 +334,11 @@ OldaleTown_Text_SavingMyProgress:
 
 OldaleTown_Text_IWorkAtPokemonMart:
 	.string "Hi!\n"
-	.string "I work at a POKéMON MART.\p"
-	.string "Can I get you to come with me?$"
+	.string "I work at a POKéMON MART.$"
 
 OldaleTown_Text_ThisIsAPokemonMart:
-	.string "This is a POKéMON MART.\n"
-	.string "Just look for our blue roof.\p"
+	.string "This is a POKéMON CENTER.\n"
+	.string "The POKéMON MART is inside it!.\p"
 	.string "We sell a variety of goods including\n"
 	.string "POKé BALLS for catching POKéMON.\p"
 	.string "Here, I'd like you to have this as\n"
@@ -366,7 +350,7 @@ OldaleTown_Text_PotionExplanation:
 	.string "in certain situations.$"
 
 OldaleTown_Text_WaitDontComeInHere:
-	.string "Aaaaah! Wait!\n"
+	.string "Oh, hello!\n"
 	.string "Please don't come in here.\p"
 	.string "I just discovered the footprints of\n"
 	.string "a rare POKéMON!\p"

@@ -71,6 +71,7 @@
 #define MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F        (2 | (1 << 8))
 #define MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F        (3 | (1 << 8))
 #define MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB (4 | (1 << 8))
+#define MAP_LITTLEROOT_TOWN_NEIGHBORS_HOUSR      (5 | (1 << 8))
 
 // gMapGroup_IndoorOldale
 #define MAP_OLDALE_TOWN_HOUSE1            (0 | (2 << 8))
@@ -78,6 +79,7 @@
 #define MAP_OLDALE_TOWN_POKEMON_CENTER_1F (2 | (2 << 8))
 #define MAP_OLDALE_TOWN_POKEMON_CENTER_2F (3 | (2 << 8))
 #define MAP_OLDALE_TOWN_MART              (4 | (2 << 8))
+#define MAP_OLDALE_TOWN_HOUSE3            (5 | (2 << 8))
 
 // gMapGroup_IndoorDewford
 #define MAP_DEWFORD_TOWN_HOUSE1            (0 | (3 << 8))
