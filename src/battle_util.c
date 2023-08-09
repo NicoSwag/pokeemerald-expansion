@@ -348,16 +348,18 @@ void HandleAction_UseMove(void)
     else if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
            && gSideTimers[side].followmeTimer == 0
            && (gBattleMoves[gCurrentMove].power != 0 || (moveTarget != MOVE_TARGET_USER && moveTarget != MOVE_TARGET_ALL_BATTLERS))
-           && ((GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_LIGHTNING_ROD && moveType == TYPE_ELECTRIC)
-            || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_STORM_DRAIN && moveType == TYPE_WATER)))
+           && (((GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_LIGHTNING_ROD && moveType == TYPE_ELECTRIC)
+            || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_STORM_DRAIN && moveType == TYPE_WATER))
+            || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_STEAM_BARRIER && moveType == TYPE_WATER)))
     {
         side = GetBattlerSide(gBattlerAttacker);
         for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++)
         {
             if (side != GetBattlerSide(gActiveBattler)
                 && *(gBattleStruct->moveTarget + gBattlerAttacker) != gActiveBattler
-                && ((GetBattlerAbility(gActiveBattler) == ABILITY_LIGHTNING_ROD && moveType == TYPE_ELECTRIC)
-                 || (GetBattlerAbility(gActiveBattler) == ABILITY_STORM_DRAIN && moveType == TYPE_WATER))
+                && (((GetBattlerAbility(gActiveBattler) == ABILITY_LIGHTNING_ROD && moveType == TYPE_ELECTRIC)
+                 || (GetBattlerAbility(gActiveBattler) == ABILITY_STORM_DRAIN && moveType == TYPE_WATER)
+                 || (GetBattlerAbility(gActiveBattler) == ABILITY_STEAM_BARRIER && moveType == TYPE_WATER)))
                 && GetBattlerTurnOrderNum(gActiveBattler) < var
                 && gBattleMoves[gCurrentMove].effect != EFFECT_SNIPE_SHOT
                 && (GetBattlerAbility(gBattlerAttacker) != ABILITY_PROPELLER_TAIL
@@ -426,6 +428,8 @@ void HandleAction_UseMove(void)
                 gSpecialStatuses[gActiveBattler].lightningRodRedirected = TRUE;
             else if (battlerAbility == ABILITY_STORM_DRAIN)
                 gSpecialStatuses[gActiveBattler].stormDrainRedirected = TRUE;
+            else if (battlerAbility == ABILITY_STEAM_BARRIER)
+                gSpecialStatuses[gActiveBattler].steamBarrierRedirected = TRUE;
             gBattlerTarget = gActiveBattler;
         }
     }
@@ -960,6 +964,7 @@ static const u8 sAbilitiesAffectedByMoldBreaker[] =
     [ABILITY_SOUNDPROOF] = 1,
     [ABILITY_STICKY_HOLD] = 1,
     [ABILITY_STORM_DRAIN] = 1,
+    [ABILITY_STEAM_BARRIER] = 1,
     [ABILITY_STURDY] = 1,
     [ABILITY_SUCTION_CUPS] = 1,
     [ABILITY_TANGLED_FEET] = 1,
@@ -5050,6 +5055,10 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 if (moveType == TYPE_WATER)
                     effect = 2, statId = STAT_SPATK;
                 break;
+            case ABILITY_STEAM_BARRIER:
+                if (moveType == TYPE_WATER)
+                    effect = 2, statId = STAT_DEF;
+                break;
             case ABILITY_SAP_SIPPER:
                 if (moveType == TYPE_GRASS)
                     effect = 2, statId = STAT_ATK;
@@ -8065,6 +8074,14 @@ u32 GetMoveTarget(u16 move, u8 setTarget)
                 targetBattler ^= BIT_FLANK;
                 RecordAbilityBattle(targetBattler, gBattleMons[targetBattler].ability);
                 gSpecialStatuses[targetBattler].stormDrainRedirected = TRUE;
+            }
+            else if (gBattleMoves[move].type == TYPE_WATER
+                && IsAbilityOnOpposingSide(gBattlerAttacker, ABILITY_STEAM_BARRIER)
+                && GetBattlerAbility(targetBattler) != ABILITY_STEAM_BARRIER)
+            {
+                targetBattler ^= BIT_FLANK;
+                RecordAbilityBattle(targetBattler, gBattleMons[targetBattler].ability);
+                gSpecialStatuses[targetBattler].steamBarrierRedirected = TRUE;
             }
         }
         break;
