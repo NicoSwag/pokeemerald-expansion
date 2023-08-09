@@ -859,6 +859,7 @@ gBattleAnims_Moves::
 	.4byte Move_BLUFF
 	.4byte Move_HYDRO_STEAM
 	.4byte Move_GARGLE
+	.4byte Move_BOULDER_TOSS
 
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
@@ -952,6 +953,7 @@ gBattleAnims_General::
 	.4byte General_ZMoveActivate            @ B_ANIM_ZMOVE_ACTIVATE
 	.4byte General_AffectionHangedOn        @ B_ANIM_AFFECTION_HANGED_ON
 	.4byte General_Snow                     @ B_ANIM_SNOW_CONTINUES
+	.4byte General_Gravity					@ B_ANIM_GRAVITY
 
 	.align 2
 gBattleAnims_Special::
@@ -24101,6 +24103,8 @@ Move_BLUFF:
 Move_GARGLE:
 	goto Move_WATER_PULSE
 
+Move_BOULDER_TOSS:
+	goto Move_ANCIENT_POWER
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT
@@ -24775,6 +24779,7 @@ General_Rain:
 General_Sun:
 	goto Move_SUNNY_DAY
 
+
 General_Sandstorm:
 	goto Move_SANDSTORM
 
@@ -24783,6 +24788,9 @@ General_Hail:
 
 General_Snow:
 	goto Move_SNOWSCAPE
+
+General_Gravity:
+	goto Move_GRAVITY
 
 General_LeechSeedDrain:
 	createvisualtask AnimTask_GetBattlersFromArg, 5

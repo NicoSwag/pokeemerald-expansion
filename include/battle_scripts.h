@@ -159,6 +159,7 @@ extern const u8 BattleScript_ShedSkinActivates[];
 extern const u8 BattleScript_IntimidateActivates[];
 extern const u8 BattleScript_MesmerizeActivates[];
 extern const u8 BattleScript_DroughtActivates[];
+extern const u8 BattleScript_BlackHoleActivates[];
 extern const u8 BattleScript_TookAttack[];
 extern const u8 BattleScript_SturdyPreventsOHKO[];
 extern const u8 BattleScript_DampStopsExplosion[];

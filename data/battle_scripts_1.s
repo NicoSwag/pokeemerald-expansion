@@ -3099,6 +3099,7 @@ BattleScript_EffectMircleEye:
 	setmiracleeye BattleScript_ButItFailed
 	goto BattleScript_IdentifiedFoe
 
+
 BattleScript_EffectGravity:
 	attackcanceler
 	attackstring
@@ -3121,6 +3122,26 @@ BattleScript_GravityLoopEnd:
 	moveendto MOVEEND_NEXT_TARGET
 	jumpifnexttargetvalid BattleScript_GravityLoop
 	end
+
+BattleScript_BlackHoleLoop:
+	jumpifstatus3 BS_TARGET, STATUS3_ON_AIR | STATUS3_MAGNET_RISE | STATUS3_TELEKINESIS, BattleScript_BlackHoleLoopDrop
+	goto BattleScript_BlackHoleLoopIncrement
+BattleScript_BlackHoleLoopDrop:
+	bringdownairbornebattler BS_TARGET
+	printstring STRINGID_GRAVITYGROUNDING
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_BlackHoleLoopIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_BlackHoleLoop
+BattleScript_BlackHoleLoopEnd:
+	copybyte sBATTLER, gBattlerAttacker
+	destroyabilitypopup
+	pause B_WAIT_TIME_MED
+	end3
+BattleScript_GravityFail:
+	printstring STRINGID_BUTITFAILED
+	goto BattleScript_BlackHoleLoopEnd
+	
 
 BattleScript_EffectRoost:
 	attackcanceler
@@ -8837,8 +8858,15 @@ BattleScript_MesmerizeInReverse:
 	call BattleScript_TryAdrenalineOrb
 	goto BattleScript_MesmerizeLoopIncrement
 
-
-
+BattleScript_BlackHoleActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	setgravity BattleScript_GravityFail
+	playanimation BS_BATTLER_0, B_ANIM_GRAVITY
+	printstring STRINGID_GRAVITYINTENSIFIED
+	waitmessage B_WAIT_TIME_SHORT
+	setbyte gBattlerTarget, 0
+	goto BattleScript_BlackHoleLoop
 
 BattleScript_DroughtActivates::
 	pause B_WAIT_TIME_SHORT
@@ -8848,6 +8876,7 @@ BattleScript_DroughtActivates::
 	playanimation BS_BATTLER_0, B_ANIM_SUN_CONTINUES
 	call BattleScript_ActivateWeatherAbilities
 	end3
+
 
 BattleScript_DesolateLandActivates::
 	pause B_WAIT_TIME_SHORT
