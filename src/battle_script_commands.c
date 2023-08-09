@@ -935,6 +935,7 @@ static const struct WindowTemplate sUnusedWinTemplate =
     .baseBlock = 0x3F
 };
 
+
 static const u16 sLevelUpBanner_Pal[] = INCBIN_U16("graphics/battle_interface/level_up_banner.gbapal");
 static const u32 sLevelUpBanner_Gfx[] = INCBIN_U32("graphics/battle_interface/level_up_banner.4bpp.lz");
 
@@ -15026,6 +15027,7 @@ static void Cmd_unused2(void)
 static void Cmd_switchoutabilities(void)
 {
     CMD_ARGS(u8 battler);
+    
 
     gActiveBattler = GetBattlerForBattleScript(cmd->battler);
     if (gBattleMons[gActiveBattler].ability == ABILITY_NEUTRALIZING_GAS)
@@ -15038,6 +15040,41 @@ static void Cmd_switchoutabilities(void)
     {
         switch (GetBattlerAbility(gActiveBattler))
         {
+        case ABILITY_DROUGHT:
+            for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++){
+            if(B_WEATHER_SUN && gBattleMons[gActiveBattler].ability != ABILITY_DROUGHT){
+                
+                gBattleWeather &= ~B_WEATHER_SUN;
+            }}
+        break;
+        case ABILITY_DRIZZLE:
+            for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++){
+            if(B_WEATHER_RAIN && gBattleMons[gActiveBattler].ability != ABILITY_DRIZZLE){
+                
+                gBattleWeather &= ~B_WEATHER_RAIN;
+            }}
+        break;
+        case ABILITY_BLACK_HOLE:
+            for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++){
+            if(STATUS_FIELD_GRAVITY && gBattleMons[gActiveBattler].ability != ABILITY_BLACK_HOLE){
+                
+                gFieldStatuses &= ~STATUS_FIELD_GRAVITY;
+            }}
+        break;
+        case ABILITY_SAND_STREAM:
+            for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++){
+            if(B_WEATHER_SANDSTORM && gBattleMons[gActiveBattler].ability != ABILITY_SAND_STREAM){
+                
+                gBattleWeather &= ~B_WEATHER_SANDSTORM;
+            }}
+        break;
+        case ABILITY_SNOW_WARNING:
+            for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++){
+            if(B_WEATHER_SNOW && gBattleMons[gActiveBattler].ability != ABILITY_SNOW_WARNING){
+                
+                gBattleWeather &= ~B_WEATHER_SNOW;
+            }}
+        break;
         case ABILITY_NATURAL_CURE:
             gBattleMons[gActiveBattler].status1 = 0;
             BtlController_EmitSetMonData(BUFFER_A, REQUEST_STATUS_BATTLE,

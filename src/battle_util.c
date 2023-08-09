@@ -4568,6 +4568,16 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 effect++;
             }
             break;
+        case ABILITY_BLACK_HOLE:
+            if (!gSpecialStatuses[battler].switchInAbilityDone)
+            {
+                gBattlerAttacker = battler;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                BattleScriptPushCursorAndCallback(BattleScript_BlackHoleActivates);
+                effect++;
+            }
+            break;
+
         case ABILITY_SNOW_WARNING:
             #if B_SNOW_WARNING >= GEN_9
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_SNOW, TRUE))

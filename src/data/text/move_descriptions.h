@@ -2818,8 +2818,12 @@ static const u8 sAppleAcidDescription[] = _(
     "to lower the foe's Sp. Def.");
 
 static const u8 sGravAppleDescription[] = _(
-    "Drops an apple from above.\n"
-    "Lowers the foe's Defense.");
+    "Lowers the foe's Defense.\n"
+    "Stronger under gravity.");
+
+static const u8 sBoulderTossDescription[] = _(
+    "Lowers the foe's Defense.\n"
+    "Stronger under gravity.");
 
 static const u8 sSpiritBreakDescription[] = _(
     "Attacks with spirit-breaking\n"
@@ -4001,6 +4005,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_OVERDRIVE - 1] = sOverdriveDescription,
     [MOVE_APPLE_ACID - 1] = sAppleAcidDescription,
     [MOVE_GRAV_APPLE - 1] = sGravAppleDescription,
+    [MOVE_BOULDER_TOSS - 1] = sBoulderTossDescription,
     [MOVE_SPIRIT_BREAK - 1] = sSpiritBreakDescription,
     [MOVE_STRANGE_STEAM - 1] = sStrangeSteamDescription,
     [MOVE_LIFE_DEW - 1] = sLifeDewDescription,
