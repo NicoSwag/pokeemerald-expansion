@@ -757,7 +757,6 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
             case ABILITY_WATER_ABSORB:
             case ABILITY_DRY_SKIN:
             case ABILITY_STORM_DRAIN:
-            case ABILITY_STEAM_BARRIER:
                 if (moveType == TYPE_WATER)
                     RETURN_SCORE_MINUS(20);
                 break;
