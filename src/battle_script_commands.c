@@ -15033,7 +15033,7 @@ static void Cmd_switchoutabilities(void)
         case ABILITY_DROUGHT:
             if(B_WEATHER_SUN && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
                 
-                gBattleWeather = B_WEATHER_NONE;
+                gBattleWeather &= ~B_WEATHER_SUN;
             }
         break;
         case ABILITY_DRIZZLE:

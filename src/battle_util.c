@@ -2366,9 +2366,6 @@ u8 DoFieldEndTurnEffects(void)
                  && --gWishFutureKnock.weatherDuration == 0)
                 {
                     gBattleWeather &= ~B_WEATHER_SUN_TEMPORARY;
-                    for (i = 0; i < gBattlersCount; i++){
-                        
-                        }
                     gBattlescriptCurrInstr = BattleScript_SunlightFaded;
                 }
                 else
@@ -2387,8 +2384,6 @@ u8 DoFieldEndTurnEffects(void)
                 if (!(gBattleWeather & B_WEATHER_HAIL_PERMANENT) && --gWishFutureKnock.weatherDuration == 0)
                 {
                     gBattleWeather &= ~B_WEATHER_HAIL_TEMPORARY;
-                    for (i = 0; i < gBattlersCount; i++){
-                        }
                     gBattlescriptCurrInstr = BattleScript_SandStormHailSnowEnds;
                 }
                 else
@@ -2409,8 +2404,6 @@ u8 DoFieldEndTurnEffects(void)
                 if (!(gBattleWeather & B_WEATHER_SNOW_PERMANENT) && --gWishFutureKnock.weatherDuration == 0)
                 {
                     gBattleWeather &= ~B_WEATHER_SNOW_TEMPORARY;
-                    for (i = 0; i < gBattlersCount; i++){
-                        }
                     gBattlescriptCurrInstr = BattleScript_SandStormHailSnowEnds;
                 }
                 else
@@ -2491,11 +2484,8 @@ u8 DoFieldEndTurnEffects(void)
             gBattleStruct->turnCountersTracker++;
             break;
         case ENDTURN_GRAVITY:
-            if (gFieldStatuses & STATUS_FIELD_GRAVITY)
+            if (gFieldStatuses & STATUS_FIELD_GRAVITY && --gFieldTimers.gravityTimer == 0)
             {
-                for (i = 0; i < gBattlersCount; i++){
-                            gBattleMons[i].canGravityChange = FALSE;
-                        }
                 gFieldStatuses &= ~STATUS_FIELD_GRAVITY;
                 BattleScriptExecute(BattleScript_GravityEnds);
                 effect++;
@@ -4303,8 +4293,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             {
                 gBattleCommunication[MULTISTRING_CHOOSER] = GetCurrentWeather();
                 BattleScriptPushCursorAndCallback(BattleScript_OverworldWeatherStarts);
-                
-                
             }
             break;
         case ABILITY_IMPOSTER:
@@ -4571,14 +4559,11 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             
             break;
         case ABILITY_DROUGHT:
-            
-            if (TryChangeBattleWeather(battler, ENUM_WEATHER_SUN, TRUE)&&!gSpecialStatuses[battler].switchInAbilityDone)
+            if (TryChangeBattleWeather(battler, ENUM_WEATHER_SUN, TRUE))
             {
-                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-                gBattleMons[battler].canWeatherChange = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_DroughtActivates);
                 effect++;
-                
+                gBattleMons[battler].canWeatherChange = TRUE;
             }
             else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT && !gSpecialStatuses[battler].switchInAbilityDone)
             {
@@ -4586,11 +4571,11 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
                 effect++;
             }
-            else
+            else 
             gBattleMons[battler].canWeatherChange = FALSE;
             break;
         case ABILITY_BLACK_HOLE:
-            if (STATUS_FIELD_GRAVITY==FALSE)
+            if (TryChangeBattleTerrain(battler, STATUS_FIELD_GRAVITY)==TRUE)
             {
                 gBattleMons[battler].canGravityChange = TRUE;
                 gBattlerAttacker = battler;
@@ -6324,6 +6309,9 @@ bool32 IsMyceliumMightOnField(void)
 u32 GetBattlerAbility(u8 battlerId)
 {
     if (gStatuses3[battlerId] & STATUS3_GASTRO_ACID)
+        return ABILITY_NONE;
+
+    if(gBattleWeather == B_WEATHER_SUN && gBattleMons[battlerId].ability == ABILITY_DROUGHT)
         return ABILITY_NONE;
 
     if (IsNeutralizingGasOnField() && !IsNeutralizingGasBannedAbility(gBattleMons[battlerId].ability))
