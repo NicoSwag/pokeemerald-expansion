@@ -4110,6 +4110,8 @@ static void Cmd_cleareffectsonfaint(void)
             MarkBattlerForControllerExec(gActiveBattler);
         }
 
+        if(gBattleMons[gActiveBattler].ability==ABILITY_DROUGHT && gBattleMons[gActiveBattler].canWeatherChange == TRUE && B_WEATHER_SUN)
+            gBattleWeather = B_WEATHER_NONE;
         FaintClearSetData(); // Effects like attractions, trapping, etc.
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
