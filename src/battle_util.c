@@ -4574,6 +4574,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_SUN, TRUE)&&!gSpecialStatuses[battler].switchInAbilityDone)
             {
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 gBattleMons[battler].canWeatherChange = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_DroughtActivates);
                 effect++;
@@ -4586,7 +4587,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 effect++;
             }
             else
-            gBattleMons[battler].canWeatherChange = TRUE;
+            gBattleMons[battler].canWeatherChange = FALSE;
             break;
         case ABILITY_BLACK_HOLE:
             if (STATUS_FIELD_GRAVITY==FALSE)
