@@ -4559,23 +4559,26 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             
             break;
         case ABILITY_DROUGHT:
+            if(B_WEATHER_SUN && !gSpecialStatuses[battler].switchInAbilityDone){
+            gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+            gBattleMons[battler].canWeatherChange = FALSE;
+            }
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_SUN, TRUE))
             {
+                gBattleMons[battler].canWeatherChange = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_DroughtActivates);
                 effect++;
-                gBattleMons[battler].canWeatherChange = TRUE;
+                
             }
             else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT && !gSpecialStatuses[battler].switchInAbilityDone)
             {
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
                 effect++;
-            }
-            else 
-            gBattleMons[battler].canWeatherChange = FALSE;
+            } 
             break;
         case ABILITY_BLACK_HOLE:
-            if (TryChangeBattleTerrain(battler, STATUS_FIELD_GRAVITY)==TRUE)
+            if (TRUE)
             {
                 gBattleMons[battler].canGravityChange = TRUE;
                 gBattlerAttacker = battler;
