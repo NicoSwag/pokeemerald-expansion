@@ -61,6 +61,7 @@
 #include "constants/trainers.h"
 #include "battle_util.h"
 #include "constants/pokemon.h"
+#include "config/battle.h"
 
 // Helper for accessing command arguments and advancing gBattlescriptCurrInstr.
 //
@@ -78,7 +79,6 @@
 //
 // The arguments can be accessed as cmd->failInstr and cmd->move.
 // gBattlescriptCurrInstr = cmd->nextInstr; advances to the next instruction.
-
 #define CMD_ARGS(...) const struct __attribute__((packed)) { u8 opcode; MEMBERS(__VA_ARGS__) const u8 nextInstr[0]; } *const cmd  = (const void *)gBattlescriptCurrInstr
 #define VARIOUS_ARGS(...) CMD_ARGS(u8 battler, u8 id, ##__VA_ARGS__)
 #define NATIVE_ARGS(...) CMD_ARGS(void (*func)(void), ##__VA_ARGS__)
@@ -97,6 +97,7 @@
 extern struct Evolution gEvolutionTable[][EVOS_PER_MON];
 
 extern const u8 *const gBattleScriptsForMoveEffects[];
+
 // table to avoid ugly powing on gba (courtesy of doesnt)
 // this returns (i^2.5)/4
 // the quarters cancel so no need to re-quadruple them in actual calculation
@@ -326,7 +327,6 @@ static const u16 sBadgeFlags[8] = {
 };
 
 static const u16 sWhiteOutBadgeMoney[9] = { 8, 16, 24, 36, 48, 64, 80, 100, 120 };
-
 
 #define STAT_CHANGE_WORKED      0
 #define STAT_CHANGE_DIDNT_WORK  1
@@ -611,7 +611,6 @@ static void Cmd_jumpifoppositegenders(void);
 static void Cmd_unused(void);
 static void Cmd_tryworryseed(void);
 static void Cmd_callnative(void);
-
 
 void (* const gBattleScriptingCommandsTable[])(void) =
 {
@@ -1365,9 +1364,6 @@ static const u8 sTerrainToType[BATTLE_TERRAIN_COUNT] =
     [BATTLE_TERRAIN_PLAIN]            = TYPE_NORMAL,
 #endif
 };
-
-
-
 
 // In Battle Palace, moves are chosen based on the pokemons nature rather than by the player
 // Moves are grouped into "Attack", "Defense", or "Support" (see PALACE_MOVE_GROUP_*)
@@ -7178,9 +7174,7 @@ static void Cmd_switchineffects(void)
 
     s32 i;
 
-    
     gActiveBattler = GetBattlerForBattleScript(cmd->battler);
-    
     UpdateSentPokesToOpponentValue(gActiveBattler);
 
     gHitMarker &= ~HITMARKER_FAINTED(gActiveBattler);
@@ -7188,8 +7182,7 @@ static void Cmd_switchineffects(void)
 
     if (!BattlerHasAi(gActiveBattler))
         gBattleStruct->appearedInBattle |= gBitTable[gBattlerPartyIndexes[gActiveBattler]];
-    
-    
+
     // Neutralizing Gas announces itself before hazards
     if (gBattleMons[gActiveBattler].ability == ABILITY_NEUTRALIZING_GAS && gSpecialStatuses[gActiveBattler].announceNeutralizingGas == 0)
     {
@@ -7199,7 +7192,6 @@ static void Cmd_switchineffects(void)
         BattleScriptPushCursor();
         gBattlescriptCurrInstr = BattleScript_SwitchInAbilityMsgRet;
     }
-    
     // Healing Wish activates before hazards.
     // Starting from Gen8 - it heals only pokemon which can be healed. In gens 5,6,7 the effect activates anyways.
     else if (((gBattleStruct->storedHealingWish & gBitTable[gActiveBattler]) || (gBattleStruct->storedLunarDance & gBitTable[gActiveBattler]))
@@ -7309,8 +7301,6 @@ static void Cmd_switchineffects(void)
             gDisableStructs[gActiveBattler].truantCounter = 1;
 
         gDisableStructs[gActiveBattler].truantSwitchInHack = 0;
-
-
 
         // Don't activate switch-in abilities if the opposing field is empty.
         // This could happen when a mon uses explosion and causes everyone to faint.
@@ -15027,38 +15017,44 @@ static void Cmd_switchoutabilities(void)
         BattleScriptPush(gBattlescriptCurrInstr);
         gBattlescriptCurrInstr = BattleScript_NeutralizingGasExits;
     }
+    else
     {
         switch (GetBattlerAbility(gActiveBattler))
         {
         case ABILITY_DROUGHT:
-            if(B_WEATHER_SUN && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
+            for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++){
+            if(B_WEATHER_SUN && gBattleMons[gActiveBattler].ability != ABILITY_DROUGHT){
                 
                 gBattleWeather &= ~B_WEATHER_SUN;
-            }
+            }}
         break;
         case ABILITY_DRIZZLE:
-            if(B_WEATHER_RAIN && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
+            for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++){
+            if(B_WEATHER_RAIN && gBattleMons[gActiveBattler].ability != ABILITY_DRIZZLE){
                 
                 gBattleWeather &= ~B_WEATHER_RAIN;
-            }
+            }}
         break;
         case ABILITY_BLACK_HOLE:
-            if(STATUS_FIELD_GRAVITY && gBattleMons[gActiveBattler].canGravityChange == TRUE){
+            for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++){
+            if(STATUS_FIELD_GRAVITY && gBattleMons[gActiveBattler].ability != ABILITY_BLACK_HOLE){
                 
                 gFieldStatuses &= ~STATUS_FIELD_GRAVITY;
-            }
+            }}
         break;
         case ABILITY_SAND_STREAM:
-            if(B_WEATHER_SANDSTORM && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
+            for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++){
+            if(B_WEATHER_SANDSTORM && gBattleMons[gActiveBattler].ability != ABILITY_SAND_STREAM){
                 
                 gBattleWeather &= ~B_WEATHER_SANDSTORM;
-            }
+            }}
         break;
         case ABILITY_SNOW_WARNING:
-            if(B_WEATHER_SNOW && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
+            for (gActiveBattler = 0; gActiveBattler < gBattlersCount; gActiveBattler++){
+            if(B_WEATHER_SNOW && gBattleMons[gActiveBattler].ability != ABILITY_SNOW_WARNING){
                 
                 gBattleWeather &= ~B_WEATHER_SNOW;
-            }
+            }}
         break;
         case ABILITY_NATURAL_CURE:
             gBattleMons[gActiveBattler].status1 = 0;
