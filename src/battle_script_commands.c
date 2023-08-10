@@ -15031,7 +15031,7 @@ static void Cmd_switchoutabilities(void)
         switch (GetBattlerAbility(gActiveBattler))
         {
         case ABILITY_DROUGHT:
-            if(gBattleMons[gActiveBattler].canWeatherChange == TRUE){
+            if(B_WEATHER_SUN && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
                 
                 gBattleWeather = B_WEATHER_NONE;
             }
