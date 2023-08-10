@@ -2365,6 +2365,9 @@ u8 DoFieldEndTurnEffects(void)
                  && !(gBattleWeather & B_WEATHER_SUN_PRIMAL)
                  && --gWishFutureKnock.weatherDuration == 0)
                 {
+                    for (i = 0; i < gBattlersCount; i++){
+                        gBattleMons[i].canWeatherChange = FALSE;
+                    }
                     gBattleWeather &= ~B_WEATHER_SUN_TEMPORARY;
                     gBattlescriptCurrInstr = BattleScript_SunlightFaded;
                 }
