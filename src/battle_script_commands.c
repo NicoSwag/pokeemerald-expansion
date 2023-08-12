@@ -4111,7 +4111,13 @@ static void Cmd_cleareffectsonfaint(void)
         }
 
         if(gBattleMons[gActiveBattler].ability==ABILITY_DROUGHT && gBattleMons[gActiveBattler].canWeatherChange == TRUE && B_WEATHER_SUN)
-            gBattleWeather = B_WEATHER_NONE;
+            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
+        if(gBattleMons[gActiveBattler].ability==ABILITY_DRIZZLE && gBattleMons[gActiveBattler].canWeatherChange == TRUE && B_WEATHER_RAIN)
+            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
+        if(gBattleMons[gActiveBattler].ability==ABILITY_SAND_STREAM && gBattleMons[gActiveBattler].canWeatherChange == TRUE && B_WEATHER_SANDSTORM)
+            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
+        if(gBattleMons[gActiveBattler].ability==ABILITY_SNOW_WARNING && gBattleMons[gActiveBattler].canWeatherChange == TRUE && B_WEATHER_SNOW)
+            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
         FaintClearSetData(); // Effects like attractions, trapping, etc.
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
@@ -15035,17 +15041,17 @@ static void Cmd_switchoutabilities(void)
         case ABILITY_DROUGHT:
             if(B_WEATHER_SUN && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
                 
-                gBattleWeather = B_WEATHER_NONE;
+                gBattleWeather = gBattleStruct->weatherStore;
             }
         break;
         case ABILITY_DRIZZLE:
             if(B_WEATHER_RAIN && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
                 
-                gBattleWeather &= ~B_WEATHER_RAIN;
+                gBattleWeather = gBattleStruct->weatherStore;
             }
         break;
         case ABILITY_BLACK_HOLE:
-            if(STATUS_FIELD_GRAVITY && gBattleMons[gActiveBattler].canGravityChange == TRUE){
+            if(gFieldStatuses & STATUS_FIELD_GRAVITY && gBattleMons[gActiveBattler].canGravityChange == TRUE){
                 
                 gFieldStatuses &= ~STATUS_FIELD_GRAVITY;
             }
@@ -15053,13 +15059,13 @@ static void Cmd_switchoutabilities(void)
         case ABILITY_SAND_STREAM:
             if(B_WEATHER_SANDSTORM && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
                 
-                gBattleWeather &= ~B_WEATHER_SANDSTORM;
+                gBattleWeather = gBattleStruct->weatherStore;
             }
         break;
         case ABILITY_SNOW_WARNING:
             if(B_WEATHER_SNOW && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
                 
-                gBattleWeather &= ~B_WEATHER_SNOW;
+                gBattleWeather = gBattleStruct->weatherStore;
             }
         break;
         case ABILITY_NATURAL_CURE:

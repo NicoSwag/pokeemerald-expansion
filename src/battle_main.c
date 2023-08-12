@@ -3787,6 +3787,7 @@ static void TryDoEventsBeforeFirstTurn(void)
 {
     s32 i, j;
 
+    
     if (gBattleControllerExecFlags)
         return;
 
@@ -3831,6 +3832,7 @@ static void TryDoEventsBeforeFirstTurn(void)
         && AbilityBattleEffects(0, 0, 0, ABILITYEFFECT_SWITCH_IN_WEATHER, 0) != 0)
     {
         gBattleStruct->overworldWeatherDone = TRUE;
+        gBattleStruct->weatherStore = gBattleWeather;
         return;
     }
 
@@ -3839,7 +3841,7 @@ static void TryDoEventsBeforeFirstTurn(void)
         gBattleStruct->terrainDone = TRUE;
         return;
     }
-
+    
     // Totem boosts
     for (i = 0; i < gBattlersCount; i++)
     {

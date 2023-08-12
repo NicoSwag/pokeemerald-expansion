@@ -301,7 +301,7 @@ struct BattlePokemon
     /*0x55*/ u32 otId;
     /*0x59*/ u8 metLevel;
              u8 canWeatherChange:TRUE;
-             u8 canGravityChange;
+             u8 canGravityChange:TRUE;
 };
 
 struct SpeciesInfo /*0x24*/
