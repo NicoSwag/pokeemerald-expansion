@@ -3458,9 +3458,16 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                     {
                         if (gChosenMove != MOVE_SNORE && gChosenMove != MOVE_SLEEP_TALK)
                         {
-                            gBattlescriptCurrInstr = BattleScript_MoveUsedIsAsleep;
-                            gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
-                            effect = 2;
+                        gBattlescriptCurrInstr = BattleScript_MoveUsedIsAsleep;
+                        gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
+                        effect = 2;
+                        gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
+                        if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                        gBattleMoveDamage *= -1;
+                        if (!BATTLER_MAX_HP(gBattlerAttacker) && !(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK)){
+                        BattleScriptExecute(BattleScript_SleepHeal);
+                        effect++;}
                         }
                     }
                     else

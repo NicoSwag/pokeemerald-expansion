@@ -5651,6 +5651,19 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_DEFROST: // defrosting check
+           if (gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP
+                && gBattleMons[gBattlerTarget].hp != 0
+                && gBattlerAttacker != gBattlerTarget
+                && gBattleMoves[gCurrentMove].power != 0
+                && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)){
+                gBattleMons[gBattlerTarget].status1 &= ~STATUS1_SLEEP;
+                gActiveBattler = gBattlerTarget;
+                BtlController_EmitSetMonData(BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].status1), &gBattleMons[gBattlerTarget].status1);
+                MarkBattlerForControllerExec(gActiveBattler);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_TargetWokeUp;
+                effect = TRUE;
+                }
             if (gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE
                 && gBattleMons[gBattlerTarget].hp != 0
                 && gBattlerAttacker != gBattlerTarget
