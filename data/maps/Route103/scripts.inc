@@ -136,6 +136,7 @@ Route103_Movement_Magmam::
 Route103_Movement_Magmaf::
 	walk_up
 	walk_up
+	walk_up
 	step_end
 
 Route103_Movement_Down::
@@ -311,6 +312,8 @@ Route103_EventScript_RivalExitFacingSouth::
 
 Route103_EventScript_RivalEnd::
 	removeobject LOCALID_RIVAL
+	removeobject LOCALID_MAGMAF
+	removeobject LOCALID_MAGMAM
 	setvar VAR_BIRCH_LAB_STATE, 4
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
 	setflag FLAG_DEFEATED_RIVAL_ROUTE103
@@ -318,25 +321,15 @@ Route103_EventScript_RivalEnd::
 	clearflag FLAG_HIDE_OLDALE_TOWN_RIVAL
 	savebgm MUS_DUMMY
 	fadedefaultbgm
-	removeobject LOCALID_MAGMAF
-	removeobject LOCALID_MAGMAM
 	releaseall
 	end
 
 Route103_EventScript_MagmaM::
-	msgbox Route103_Text_MagmaM, MSGBOX_DEFAULT
+	msgbox Route103_Text_Volcanic_Rocks, MSGBOX_NPC
 end
 
 Route103_EventScript_MagmaF::
-	msgbox Route103_Text_MagmaF, MSGBOX_DEFAULT
-end
-
-Route103_Text_MagmaM::
-.string "Test.$"
-end
-
-Route103_Text_MagmaF::
-.string "Test.$"
+	msgbox Route103_Text_Complaining, MSGBOX_NPC
 end
 
 Route103_Movement_RivalExitFacingNorth1:
@@ -562,3 +555,12 @@ Route103_Text_RouteSign:
 	.string "ROUTE 103\n"
 	.string "{DOWN_ARROW} OLDALE TOWN$"
 
+Route103_Text_Volcanic_Rocks:
+	.string "Hmm, no doubt about it…\n"
+	.string "This rock dates back to the awakening\l"
+	.string "of GROUDON.\p"
+	.string "Better get some samples.$"
+
+Route103_Text_Complaining:
+	.string "Why do we always have to do\n"
+	.string "the dirty work?$"

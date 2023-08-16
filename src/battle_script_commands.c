@@ -4118,6 +4118,25 @@ static void Cmd_cleareffectsonfaint(void)
             gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[gActiveBattler].ability==ABILITY_SNOW_WARNING && gBattleMons[gActiveBattler].canWeatherChange == TRUE && B_WEATHER_SNOW)
             gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
+        if(gBattleMons[gActiveBattler].ability==ABILITY_GRASSY_SURGE && gBattleMons[gActiveBattler].canTerrainChange == TRUE && STATUS_FIELD_GRASSY_TERRAIN){
+            DrawMainBattleBackground();
+            gFieldStatuses &= ~STATUS_FIELD_GRASSY_TERRAIN;
+        }
+        if(gBattleMons[gActiveBattler].ability==ABILITY_PSYCHIC_SURGE && gBattleMons[gActiveBattler].canTerrainChange == TRUE && STATUS_FIELD_PSYCHIC_TERRAIN){
+            DrawMainBattleBackground();
+            gFieldStatuses &= ~STATUS_FIELD_PSYCHIC_TERRAIN;
+        }
+        if(gBattleMons[gActiveBattler].ability==ABILITY_ELECTRIC_SURGE && gBattleMons[gActiveBattler].canTerrainChange == TRUE && STATUS_FIELD_ELECTRIC_TERRAIN){
+            DrawMainBattleBackground();
+            gFieldStatuses &= ~STATUS_FIELD_ELECTRIC_TERRAIN;
+        }
+        if(gBattleMons[gActiveBattler].ability==ABILITY_MISTY_SURGE && gBattleMons[gActiveBattler].canTerrainChange == TRUE && STATUS_FIELD_MISTY_TERRAIN){
+            DrawMainBattleBackground();
+            gFieldStatuses &= ~STATUS_FIELD_MISTY_TERRAIN;
+        }
+        if(gBattleMons[gActiveBattler].ability==ABILITY_BLACK_HOLE && gBattleMons[gActiveBattler].canGravityChange == TRUE && STATUS_FIELD_GRAVITY){
+            gFieldStatuses &= ~STATUS_FIELD_GRAVITY;
+        }
         FaintClearSetData(); // Effects like attractions, trapping, etc.
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
@@ -15079,6 +15098,36 @@ static void Cmd_switchoutabilities(void)
             if(B_WEATHER_SNOW && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
                 
                 gBattleWeather = gBattleStruct->weatherStore;
+            }
+        break;
+            case ABILITY_GRASSY_SURGE:
+            if(gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && gBattleMons[gActiveBattler].canTerrainChange == TRUE){
+            DrawMainBattleBackground();
+            RemoveAllTerrains();
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_TerrainEnds_Ret;
+            }
+
+            case ABILITY_PSYCHIC_SURGE:
+            if(gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN && gBattleMons[gActiveBattler].canTerrainChange == TRUE){
+            DrawMainBattleBackground();
+            RemoveAllTerrains();
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_TerrainEnds_Ret;
+            }
+            case ABILITY_ELECTRIC_SURGE:
+            if(gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && gBattleMons[gActiveBattler].canTerrainChange == TRUE){
+            DrawMainBattleBackground();
+            RemoveAllTerrains();
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_TerrainEnds_Ret;
+            }
+            case ABILITY_MISTY_SURGE:
+            if(gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN && gBattleMons[gActiveBattler].canTerrainChange == TRUE){
+            DrawMainBattleBackground();
+            RemoveAllTerrains();
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_TerrainEnds_Ret;
             }
         break;
         case ABILITY_NATURAL_CURE:

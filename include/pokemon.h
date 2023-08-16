@@ -302,6 +302,7 @@ struct BattlePokemon
     /*0x59*/ u8 metLevel;
              u8 canWeatherChange:TRUE;
              u8 canGravityChange:TRUE;
+             u8 canTerrainChange:TRUE;
 };
 
 struct SpeciesInfo /*0x24*/

@@ -9,7 +9,7 @@ OldaleTown_MapScripts::
 OldaleTown_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_OLDALE_TOWN
-	call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
+	call_if_unset FLAG_RECEIVED_EEVEE, OldaleTown_EventScript_BlockWestEntrance
 	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
 	end
@@ -18,6 +18,7 @@ OldaleTown_OnTransition:
 OldaleTown_EventScript_SetOldaleState::
 	setvar VAR_OLDALE_TOWN_STATE, 1
 	return
+
 
 OldaleTown_EventScript_BlockWestEntrance::
 	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 0, 11
@@ -186,7 +187,7 @@ OldaleTown_Movement_Unknown2:
 OldaleTown_EventScript_FootprintsMan::
 	lock
 	faceplayer
-	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_NotBlockingPath
+	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_Eevee_Check
 	msgbox OldaleTown_Text_DiscoveredFootprints, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_FOOTPRINTS_MAN, Common_Movement_FaceOriginalDirection
@@ -204,6 +205,72 @@ OldaleTown_EventScript_NotBlockingPath::
 	release
 	end
 
+OldaleTown_EventScript_Eevee_Check::
+	goto_if_unset FLAG_RECEIVED_EEVEE, OldaleTown_EventScript_Eevee_Get
+	msgbox OldaleTown_Text_FinishedSketchingFootprints, MSGBOX_DEFAULT
+	release
+	end
+
+
+
+
+
+OldaleTown_EventScript_Eevee_Get::
+	msgbox OldaleTown_Text_GiveEevee, MSGBOX_DEFAULT
+	setvar VAR_TEMP_1, SPECIES_EEVEE
+	givemon SPECIES_EEVEE, 5
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, OldaleTown_EventScript_SendEeveeParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, OldaleTown_EventScript_SendEeveePC
+	goto Common_EventScript_NoMoreRoomForPokemon
+	release
+	end
+
+OldaleTown_EventScript_SendEeveeParty::
+	call OldaleTown_EventScript_ReceivedEeveeFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, OldaleTown_EventScript_ReceivedEevee
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	goto OldaleTown_EventScript_ReceivedEevee
+	end
+
+OldaleTown_EventScript_SendEeveePC::
+	call OldaleTown_EventScript_ReceivedEeveeFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, OldaleTown_EventScript_EeveeTransferredToPC
+	call Common_EventScript_NameReceivedBoxMon
+	goto OldaleTown_EventScript_EeveeTransferredToPC
+	end
+
+OldaleTown_EventScript_EeveeTransferredToPC::
+	call Common_EventScript_TransferredToPC
+	goto OldaleTown_EventScript_ReceivedEevee
+	end
+
+OldaleTown_EventScript_ReceivedEeveeFanfare::
+	bufferspeciesname STR_VAR_2, SPECIES_EEVEE
+	playfanfare MUS_OBTAIN_ITEM
+	message OldaleTown_Text_ObtainedEevee
+	waitmessage
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_EEVEE
+	return
+
+OldaleTown_EventScript_ReceivedEevee::
+	setflag FLAG_RECEIVED_EEVEE
+	msgbox OldaleTown_Text_FinishedSketchingFootprints, MSGBOX_DEFAULT
+	waitmessage
+	switch VAR_FACING
+	case DIR_NORTH, OldaleTown_EventScript_FootprintsManRight
+	case DIR_WEST, OldaleTown_EventScript_FootprintsManDown
+	case DIR_SOUTH, OldaleTown_EventScript_FootprintsManDown
+	releaseall
+	end
+
+
+OldaleTown_Text_ObtainedEevee:
+	.string "{PLAYER} obtained Eevee.$"
+
 OldaleTown_EventScript_Rival::
 	lockall
 	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
@@ -214,7 +281,7 @@ OldaleTown_EventScript_Rival::
 
 OldaleTown_EventScript_RivalTrigger1::
 	lockall
-	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer1
+	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
@@ -224,17 +291,7 @@ OldaleTown_EventScript_RivalTrigger1::
 
 OldaleTown_EventScript_RivalTrigger2::
 	lockall
-	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer2
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	setvar VAR_0x8009, 1
-	goto OldaleTown_EventScript_ShowRivalMessage
-	end
-
-OldaleTown_EventScript_RivalTrigger3::
-	lockall
-	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer3
+	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
@@ -271,7 +328,7 @@ OldaleTown_EventScript_RivalFinish::
 	end
 
 OldaleTown_EventScript_DoExitMovement1::
-	goto_if_ne VAR_FACING, DIR_SOUTH, OldaleTown_EventScript_DoExitMovement2
+	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_WatchRivalExit
 	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalExit
 	waitmovement 0
 	return
@@ -283,20 +340,17 @@ OldaleTown_EventScript_DoExitMovement2::
 	return
 
 OldaleTown_Movement_RivalApproachPlayer1:
-	walk_left
-	walk_left
-	step_end
+	walk_in_place_faster_left
+	end
 
 OldaleTown_Movement_RivalApproachPlayer2:
-	walk_left
-	step_end
+	walk_in_place_faster_left
+	end
 
-OldaleTown_Movement_RivalApproachPlayer3:
-	face_left
-	step_end
 
 OldaleTown_Movement_RivalExit:
 	walk_down
+	walk_left
 	walk_down
 	walk_down
 	walk_down
@@ -322,6 +376,47 @@ OldaleTown_Movement_BackUp:
 	walk_right
 	unlock_facing_direction
 	step_end
+
+OldaleTown_EventScript_FootprintsManRight::
+	applymovement LOCALID_FOOTPRINTS_MAN OldaleTown_Movement_FootprintsRight
+	waitmovement 0
+	removeobject LOCALID_FOOTPRINTS_MAN
+	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 7, 10
+	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
+	releaseall
+	end
+
+OldaleTown_EventScript_FootprintsManDown::
+	applymovement LOCALID_FOOTPRINTS_MAN OldaleTown_Movement_FootprintsDown
+	waitmovement 0
+	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 7, 10
+	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
+	releaseall
+	end
+
+OldaleTown_Movement_FootprintsRight::
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+OldaleTown_Movement_FootprintsDown::
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
 
 OldaleTown_Movement_ReturnToOriginalPosition:
 	walk_down
@@ -364,20 +459,30 @@ OldaleTown_Text_DiscoveredFootprints:
 	.string "them, okay?$"
 
 OldaleTown_Text_FinishedSketchingFootprints:
-	.string "I finished sketching the footprints of\n"
-	.string "a rare POKéMON.\p"
-	.string "But it turns out they were only my\n"
-	.string "own footprints…$"
+	.string "Thank you for taking care of Eevee!\p"
+	.string "I'm sure it'll be very happy in your\n"
+	.string "care.$"
+
+OldaleTown_Text_GiveEevee:
+	.string "I was sketching the footprints of\n"
+	.string "a rare POKéMON, but…\p"
+	.string "You can imagine my surprise when\n"
+	.string "said POKéMON jumped out of the\l"
+	.string "grass and approached me!\p"
+	.string "Now the little fellow won't leave\n"
+	.string "me alone, but I'm hardly a trainer…\p"
+	.string "But you, you look the part!\p"
+	.string "Please, do me a favor and accept it!$"
 
 OldaleTown_Text_MayLetsGoBack:
-	.string "MAY: {PLAYER}{KUN}!\n"
-	.string "Over here!\l"
-	.string "Let's hurry home!$"
+	.string "MAY: I'm heading back to my dad's\n"
+	.string "LAB now.\l"
+	.string "{PLAYER}, hurry up!$"
 
 OldaleTown_Text_BrendanLetsGoBack:
 	.string "BRENDAN: I'm heading back to my dad's\n"
 	.string "LAB now.\l"
-	.string "{PLAYER}, you should hustle back, too.$"
+	.string "{PLAYER}, hurry up!$"
 
 OldaleTown_Text_TownSign:
 	.string "OLDALE TOWN\n"
