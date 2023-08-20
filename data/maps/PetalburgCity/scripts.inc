@@ -1,8 +1,8 @@
 .set LOCALID_WALLY, 2
 .set LOCALID_BOY, 3
 .set LOCALID_WALLYS_DAD, 5
-.set LOCALID_GYM_BOY, 8
-.set LOCALID_SCOTT, 9
+.set LOCALID_GYM_BOY, 6
+.set LOCALID_SCOTT, 7
 
 PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_OnTransition
@@ -498,7 +498,7 @@ PetalburgCity_EventScript_Scott0::
 	lockall
 	addobject LOCALID_SCOTT
 	setvar VAR_0x8008, 0
-	setobjectxy LOCALID_SCOTT, 13, 10
+	setobjectxy LOCALID_SCOTT, 9, 11
 	goto PetalburgCity_EventScript_Scott
 	end
 
@@ -506,7 +506,7 @@ PetalburgCity_EventScript_Scott1::
 	lockall
 	addobject LOCALID_SCOTT
 	setvar VAR_0x8008, 1
-	setobjectxy LOCALID_SCOTT, 13, 11
+	setobjectxy LOCALID_SCOTT, 9, 12
 	goto PetalburgCity_EventScript_Scott
 	end
 
@@ -514,7 +514,7 @@ PetalburgCity_EventScript_Scott2::
 	lockall
 	addobject LOCALID_SCOTT
 	setvar VAR_0x8008, 2
-	setobjectxy LOCALID_SCOTT, 13, 12
+	setobjectxy LOCALID_SCOTT, 9, 13
 	goto PetalburgCity_EventScript_Scott
 	end
 
@@ -553,7 +553,7 @@ PetalburgCity_EventScript_Scott::
 	closemessage
 	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_ScottExit0
 	call_if_eq VAR_0x8008, 1, PetalburgCity_EventScript_ScottExit1
-	call_if_eq VAR_0x8008, 2, PetalburgCity_EventScript_ScottExit2
+	call_if_eq VAR_0x8008, 2, PetalburgCity_EventScript_ScottExit3
 	call_if_eq VAR_0x8008, 3, PetalburgCity_EventScript_ScottExit3
 	setvar VAR_SCOTT_PETALBURG_ENCOUNTER, 1
 	removeobject LOCALID_SCOTT

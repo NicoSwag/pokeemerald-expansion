@@ -177,7 +177,7 @@
       "width": 54,
       "height": 20,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Rustboro",
+      "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route102/border.bin",
       "blockdata_filepath": "data/layouts/Route102/map.bin"
     },
@@ -4440,6 +4440,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/OldaleTown_House3/border.bin",
       "blockdata_filepath": "data/layouts/OldaleTown_House3/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE104LOWER",
+      "name": "Route104Lower_Layout",
+      "width": 50,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Route104Lower/border.bin",
+      "blockdata_filepath": "data/layouts/Route104Lower/map.bin"
     }
   ]
 }

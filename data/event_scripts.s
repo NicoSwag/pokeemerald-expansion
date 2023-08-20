@@ -1065,3 +1065,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/LittlerootTown_NeighborsHousr/scripts.inc"
 
 	.include "data/maps/OldaleTown_House3/scripts.inc"
+
+	.include "data/maps/Route104Lower/scripts.inc"
