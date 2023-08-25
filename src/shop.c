@@ -555,7 +555,6 @@ static void BuyMenuFreeMemory(void)
 static void BuyMenuBuildListMenuTemplate(void)
 {
     u16 i;
-
     sListMenuItems = Alloc((sMartInfo.itemCount + 1) * sizeof(*sListMenuItems));
     sItemNames = Alloc((sMartInfo.itemCount + 1) * sizeof(*sItemNames));
     for (i = 0; i < sMartInfo.itemCount; i++)

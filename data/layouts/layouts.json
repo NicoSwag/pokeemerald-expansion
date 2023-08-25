@@ -4450,6 +4450,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route104Lower/border.bin",
       "blockdata_filepath": "data/layouts/Route104Lower/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE104UPPER",
+      "name": "Route104Upper_Layout",
+      "width": 40,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Route104Upper/border.bin",
+      "blockdata_filepath": "data/layouts/Route104Upper/map.bin"
     }
   ]
 }
