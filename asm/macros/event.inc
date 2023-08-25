@@ -300,6 +300,19 @@
 	.2byte \flag
 	.endm
 
+	@ Sets flag to TRUE.
+	.macro setTMflag flag:req
+	.byte 0xe3
+	.2byte \flag
+	.endm
+
+	@ Sets flag to FALSE.
+	.macro clearTMflag flag:req
+	.byte 0xe4
+	.2byte \flag
+	.endm
+
+
 	@ Compares flag to TRUE and stores the result in comparisonResult to be used by goto_if, etc
 	@ See additional _if_unset and _if_set macros
 	.macro checkflag flag:req
