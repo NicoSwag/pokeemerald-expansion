@@ -334,7 +334,6 @@ Route104_EventScript_Boy2::
 	giveitem ITEM_TM09
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM09
-	setTMflag 9
 	release
 	end
 
