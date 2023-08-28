@@ -18,6 +18,29 @@ OldaleTown_PokemonCenter_1F_EventScript_Nurse::
 	release
 	end
 
+OldaleTown_PokemonCenter_1F_EventScript_Mart::
+	lock
+	faceplayer
+	message gText_HowMayIServeYou
+	waitmessage
+	pokemart OldaleTown_Mart_Pokemart
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+		.align 2
+
+OldaleTown_Mart_Pokemart:
+	.2byte ITEM_POKE_BALL
+	.2byte ITEM_POTION
+	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_AWAKENING
+	.2byte ITEM_NONE
+	release
+	end
+
+
 OldaleTown_PokemonCenter_1F_EventScript_Gentleman::
 	msgbox OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC, MSGBOX_NPC
 	end
@@ -61,4 +84,3 @@ OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
 	.string "The POKéMON WIRELESS CLUB on\n"
 	.string "the second floor was built recently.\p"
 	.string "I traded POKéMON right away.$"
-

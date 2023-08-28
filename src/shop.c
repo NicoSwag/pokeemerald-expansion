@@ -38,11 +38,16 @@
 #include "constants/metatile_behaviors.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "event_data.h"
+#include "constants/flags.h"
 
 #define TAG_SCROLL_ARROW   2100
 #define TAG_ITEM_ICON_BASE 2110
 
 #define MAX_ITEMS_SHOWN 8
+
+bool8 TM09 = FALSE;
+
 
 enum {
     WIN_BUY_SELL_QUIT,
@@ -103,6 +108,7 @@ struct ShopData
     u8 itemSpriteIds[2];
     s16 viewportObjects[OBJECT_EVENTS_COUNT][5];
 };
+
 
 static EWRAM_DATA struct MartInfo sMartInfo = {0};
 static EWRAM_DATA struct ShopData *sShopData = NULL;
@@ -552,22 +558,33 @@ static void BuyMenuFreeMemory(void)
     FreeAllWindowBuffers();
 }
 
+
 static void BuyMenuBuildListMenuTemplate(void)
 {
     u16 i;
-
-    sListMenuItems = Alloc((sMartInfo.itemCount + 1) * sizeof(*sListMenuItems));
-    sItemNames = Alloc((sMartInfo.itemCount + 1) * sizeof(*sItemNames));
-    for (i = 0; i < sMartInfo.itemCount; i++)
+    u16 added_TMs;
+    i=0;
+    
+    sListMenuItems = Alloc((sMartInfo.itemCount + 100) * sizeof(*sListMenuItems));
+    sItemNames = Alloc((sMartInfo.itemCount + 100) * sizeof(*sItemNames));
+    for (i; i < sMartInfo.itemCount; i++)
         BuyMenuSetListEntry(&sListMenuItems[i], sMartInfo.itemList[i], sItemNames[i]);
 
+    if(FlagGet(FLAG_RECEIVED_TM09) == TRUE){
+    StringCopy(sItemNames[i], gText_TM09);
+    sListMenuItems[i].name = sItemNames[i];
+    sListMenuItems[i].id = ITEM_TM09;
+    i++;
+    added_TMs++;
+    }
+    
     StringCopy(sItemNames[i], gText_Cancel2);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = LIST_CANCEL;
 
     gMultiuseListMenuTemplate = sShopBuyMenuListTemplate;
     gMultiuseListMenuTemplate.items = sListMenuItems;
-    gMultiuseListMenuTemplate.totalItems = sMartInfo.itemCount + 1;
+    gMultiuseListMenuTemplate.totalItems = sMartInfo.itemCount + 1 + added_TMs;
     if (gMultiuseListMenuTemplate.totalItems > MAX_ITEMS_SHOWN)
         gMultiuseListMenuTemplate.maxShowed = MAX_ITEMS_SHOWN;
     else

@@ -252,3 +252,45 @@ bool8 FlagGet(u16 id)
 
     return TRUE;
 }
+
+u8 *GetTMFlagPointer(u16 id)
+{
+    return &gSaveBlock1Ptr->acquiredTMs[id / 8];
+}
+
+u8 TMFlagSet(u16 id)
+{
+    u8 *ptr = GetTMFlagPointer(id);
+    if (ptr)
+        *ptr |= 1 << (id & 7);
+    return 0;
+}
+
+u8 TMFlagToggle(u16 id)
+{
+    u8 *ptr = GetTMFlagPointer(id);
+    if (ptr)
+        *ptr ^= 1 << (id & 7);
+    return 0;
+}
+
+u8 TMFlagClear(u16 id)
+{
+    u8 *ptr = GetTMFlagPointer(id);
+    if (ptr)
+        *ptr &= ~(1 << (id & 7));
+    return 0;
+}
+
+bool8 TMFlagGet(u16 id)
+{
+    u8 *ptr = GetTMFlagPointer(id);
+
+    if (!ptr)
+        return FALSE;
+
+    if (!(((*ptr) >> (id & 7)) & 1))
+        return FALSE;
+
+    return TRUE;
+}

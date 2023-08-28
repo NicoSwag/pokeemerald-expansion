@@ -22,6 +22,8 @@ OldaleTown_Mart_Pokemart_Basic:
 	release
 	end
 
+
+
 OldaleTown_Mart_ExpandedItems::
 	pokemart OldaleTown_Mart_Pokemart_Expanded
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
@@ -29,6 +31,7 @@ OldaleTown_Mart_ExpandedItems::
 	end
 
 	.align 2
+
 OldaleTown_Mart_Pokemart_Expanded:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_POTION
@@ -38,6 +41,7 @@ OldaleTown_Mart_Pokemart_Expanded:
 	.2byte ITEM_NONE
 	release
 	end
+
 
 OldaleTown_Mart_EventScript_Woman::
 	lock
@@ -69,4 +73,3 @@ OldaleTown_Mart_Text_RestoreHPWithPotion:
 	.string "and faints, it won't be able to battle.\p"
 	.string "To prevent your POKéMON from fainting,\n"
 	.string "restore its HP with a POTION.$"
-

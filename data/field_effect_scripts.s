@@ -142,7 +142,7 @@ gFieldEffectScript_JumpSmallSplash::
 	field_eff_end
 
 gFieldEffectScript_LongGrass::
-	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_LongGrass
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect2, FldEff_LongGrass
 	field_eff_end
 
 gFieldEffectScript_JumpLongGrass::

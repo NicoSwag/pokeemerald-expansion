@@ -1,8 +1,8 @@
 .set LOCALID_WALLY, 2
 .set LOCALID_BOY, 3
 .set LOCALID_WALLYS_DAD, 5
-.set LOCALID_GYM_BOY, 8
-.set LOCALID_SCOTT, 9
+.set LOCALID_GYM_BOY, 6
+.set LOCALID_SCOTT, 7
 
 PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_OnTransition
@@ -18,7 +18,7 @@ PetalburgCity_OnTransition:
 	end
 
 PetalburgCity_EventScript_MoveGymBoyToWestEntrance::
-	setobjectxyperm LOCALID_GYM_BOY, 5, 11
+	setobjectxyperm LOCALID_GYM_BOY, 10, 3
 	return
 
 PetalburgCity_EventScript_DisableMapNameAndMusic::
@@ -267,33 +267,25 @@ PetalburgCity_EventScript_ShowGymToPlayer3::
 PetalburgCity_EventScript_ShowGymToPlayer::
 	applymovement LOCALID_GYM_BOY, Common_Movement_FacePlayer
 	waitmovement 0
-	playbgm MUS_FOLLOW_ME, FALSE
-	playse SE_PIN
 	applymovement LOCALID_GYM_BOY, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_GYM_BOY, Common_Movement_Delay48
-	waitmovement 0
-	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_BoyApproachPlayer0
-	call_if_eq VAR_0x8008, 1, PetalburgCity_EventScript_BoyApproachPlayer1
-	call_if_eq VAR_0x8008, 2, PetalburgCity_EventScript_BoyApproachPlayer2
-	call_if_eq VAR_0x8008, 3, PetalburgCity_EventScript_BoyApproachPlayer3
 	msgbox PetalburgCity_Text_AreYouRookieTrainer, MSGBOX_DEFAULT
-	closemessage
-	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_LeadPlayerToGym0
-	call_if_eq VAR_0x8008, 1, PetalburgCity_EventScript_LeadPlayerToGym1
-	call_if_eq VAR_0x8008, 2, PetalburgCity_EventScript_LeadPlayerToGym2
-	call_if_eq VAR_0x8008, 3, PetalburgCity_EventScript_LeadPlayerToGym3
-	msgbox PetalburgCity_Text_ThisIsPetalburgGym, MSGBOX_DEFAULT
-	applymovement LOCALID_GYM_BOY, Common_Movement_WalkInPlaceFasterRight
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmessage
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_Right
 	waitmovement 0
-	msgbox PetalburgCity_Text_ThisIsGymSign, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_GYM_BOY, PetalburgCity_Movement_BoyWalkAway
+	applymovement LOCALID_GYM_BOY, PetalburgCity_Movement_BoyDown
 	waitmovement 0
 	fadedefaultbgm
 	releaseall
 	end
+
+PetalburgCity_Movement_Right::
+walk_right
+step_end
+
+PetalburgCity_Movement_BoyDown::
+face_down
+step_end
 
 PetalburgCity_EventScript_BoyApproachPlayer0::
 	applymovement LOCALID_GYM_BOY, PetalburgCity_Movement_BoyApproachPlayer0
@@ -506,7 +498,7 @@ PetalburgCity_EventScript_Scott0::
 	lockall
 	addobject LOCALID_SCOTT
 	setvar VAR_0x8008, 0
-	setobjectxy LOCALID_SCOTT, 13, 10
+	setobjectxy LOCALID_SCOTT, 9, 11
 	goto PetalburgCity_EventScript_Scott
 	end
 
@@ -514,7 +506,7 @@ PetalburgCity_EventScript_Scott1::
 	lockall
 	addobject LOCALID_SCOTT
 	setvar VAR_0x8008, 1
-	setobjectxy LOCALID_SCOTT, 13, 11
+	setobjectxy LOCALID_SCOTT, 9, 12
 	goto PetalburgCity_EventScript_Scott
 	end
 
@@ -522,7 +514,7 @@ PetalburgCity_EventScript_Scott2::
 	lockall
 	addobject LOCALID_SCOTT
 	setvar VAR_0x8008, 2
-	setobjectxy LOCALID_SCOTT, 13, 12
+	setobjectxy LOCALID_SCOTT, 9, 13
 	goto PetalburgCity_EventScript_Scott
 	end
 
@@ -561,7 +553,7 @@ PetalburgCity_EventScript_Scott::
 	closemessage
 	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_ScottExit0
 	call_if_eq VAR_0x8008, 1, PetalburgCity_EventScript_ScottExit1
-	call_if_eq VAR_0x8008, 2, PetalburgCity_EventScript_ScottExit2
+	call_if_eq VAR_0x8008, 2, PetalburgCity_EventScript_ScottExit3
 	call_if_eq VAR_0x8008, 3, PetalburgCity_EventScript_ScottExit3
 	setvar VAR_SCOTT_PETALBURG_ENCOUNTER, 1
 	removeobject LOCALID_SCOTT

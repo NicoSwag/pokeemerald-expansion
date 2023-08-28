@@ -102,6 +102,8 @@ struct DisableStruct
     u8 tarShot:1;
     u8 octolock:1;
     u8 cudChew:1;
+   
+
 };
 
 struct ProtectStruct
@@ -673,6 +675,7 @@ struct BattleStruct
     bool8 trainerSlideMegaEvolutionMsgDone;
     bool8 trainerSlideZMoveMsgDone;
     bool8 trainerSlideBeforeFirstTurnMsgDone;
+    u16 weatherStore;
 };
 
 #define F_DYNAMIC_TYPE_1 (1 << 6)

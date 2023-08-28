@@ -3603,7 +3603,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
 
     if (gSpeciesInfo[species].abilities[2])
     {
-        if ((Random() % 5) <= 1) // 10% chance to have roughly a ~50% chance to get Hidden Ability.
+        if ((Random() % 2) == 0) // 50% chance to have roughly a ~50% chance to get Hidden Ability.
         {
             value = personality & 2;
             SetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, &value);

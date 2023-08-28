@@ -1,0 +1,2 @@
+Route104Lower_MapScripts::
+	.byte 0

@@ -181,7 +181,7 @@
 #define MAPSEC_ICEFALL_CAVE                 0xB1
 #define MAPSEC_ROCKET_WAREHOUSE             0xB2
 #define MAPSEC_TRAINER_TOWER_2              0xB3
-#define MAPSEC_DOTTED_HOLE                  0xB4
+#define MAPSEC_ROUTE_104_LOWER              0xB4
 #define MAPSEC_LOST_CAVE                    0xB5
 #define MAPSEC_PATTERN_BUSH                 0xB6
 #define MAPSEC_ALTERING_CAVE_FRLG           0xB7

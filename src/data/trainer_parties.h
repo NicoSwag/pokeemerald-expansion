@@ -8767,6 +8767,20 @@ static const struct TrainerMonNoItemDefaultMoves sParty_WallyMauville[] = {
     }
 };
 
+
+static const struct TrainerMonNoItemDefaultMoves sParty_Wally1[] = {
+    {
+    .iv = 15,
+    .lvl = 8,
+    .species = SPECIES_RALTS,
+    },
+    {
+    .iv = 15,
+    .lvl = 8,
+    .species = SPECIES_BUDEW,
+    }
+};
+
 static const struct TrainerMonNoItemCustomMoves sParty_WallyVR2[] = {
     {
     .iv = 150,

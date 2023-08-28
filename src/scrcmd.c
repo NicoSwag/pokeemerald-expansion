@@ -597,6 +597,24 @@ bool8 ScrCmd_checkflag(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_setTMflag(struct ScriptContext *ctx)
+{
+    FlagSet(ScriptReadHalfword(ctx));
+    return FALSE;
+}
+
+bool8 ScrCmd_clearTMflag(struct ScriptContext *ctx)
+{
+    FlagClear(ScriptReadHalfword(ctx));
+    return FALSE;
+}
+
+bool8 ScrCmd_checkTMflag(struct ScriptContext *ctx)
+{
+    ctx->comparisonResult = FlagGet(ScriptReadHalfword(ctx));
+    return FALSE;
+}
+
 bool8 ScrCmd_incrementgamestat(struct ScriptContext *ctx)
 {
     IncrementGameStat(ScriptReadByte(ctx));
