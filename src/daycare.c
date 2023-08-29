@@ -451,7 +451,7 @@ static void ClearAllDaycareData(struct DayCare *daycare)
 // Determines what the species of an Egg would be based on the given species.
 // It determines this by working backwards through the evolution chain of the
 // given species.
-static u16 GetEggSpecies(u16 species)
+u16 GetEggSpecies(u16 species)
 {
     int i, j, k;
     bool8 found;
@@ -745,16 +745,14 @@ static void InheritAbility(struct Pokemon *egg, struct BoxPokemon *father, struc
 
 // Counts the number of egg moves a pokemon learns and stores the moves in
 // the given array.
-static u8 GetEggMoves(struct Pokemon *pokemon, u16 *eggMoves)
+u8 GetEggMoves(u16 species, u16 *eggMoves)
 {
     u16 eggMoveIdx;
     u16 numEggMoves;
-    u16 species;
     u16 i;
 
     numEggMoves = 0;
     eggMoveIdx = 0;
-    species = GetMonData(pokemon, MON_DATA_SPECIES);
     for (i = 0; i < ARRAY_COUNT(gEggMoves) - 1; i++)
     {
         if (gEggMoves[i] == species + EGG_MOVES_SPECIES_OFFSET)
@@ -801,7 +799,7 @@ static void BuildEggMoveset(struct Pokemon *egg, struct BoxPokemon *father, stru
         sHatchedEggMotherMoves[i] = GetBoxMonData(mother, MON_DATA_MOVE1 + i);
     }
 
-    numEggMoves = GetEggMoves(egg, sHatchedEggEggMoves);
+    numEggMoves = GetEggMoves(GetMonData(egg, MON_DATA_SPECIES), sHatchedEggEggMoves);
 
 #if P_MOTHER_EGG_MOVE_INHERITANCE >= GEN_6
     for (i = 0; i < MAX_MON_MOVES; i++)
