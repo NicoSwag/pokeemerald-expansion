@@ -87,7 +87,6 @@ struct WirelessLink_Group
     u8 leaderId;
     u8 unused;
     u8 listenTaskId;
-    bool8 isWonderNews;
     bool8 showListMenu; // Never set
     u8 refreshTimer;
     u8 delayBeforePrint;

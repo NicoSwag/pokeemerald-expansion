@@ -81,35 +81,7 @@ static bool8 CheckLanguageMatch(void)
 
 void CB2_InitMysteryEventMenu(void)
 {
-    ResetSpriteData();
-    FreeAllSpritePalettes();
-    ResetTasks();
-    SetVBlankCallback(VBlankCB);
-    ResetBgsAndClearDma3BusyFlags(0);
-    InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
-    if (InitWindows(sWindowTemplates))
-    {
-        s32 i;
-
-        DeactivateAllTextPrinters();
-        for (i = 0; i < (int)ARRAY_COUNT(sWindowTemplates) - 1; i++)
-            FillWindowPixelBuffer(i, PIXEL_FILL(0));
-
-        FillBgTilemapBufferRect_Palette0(0, 0, 0, 0, DISPLAY_TILE_WIDTH, DISPLAY_TILE_HEIGHT);
-        LoadUserWindowBorderGfx(0, 1, BG_PLTT_ID(13));
-        Menu_LoadStdPalAt(BG_PLTT_ID(14));
-        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_BG0_ON);
-        SetGpuReg(REG_OFFSET_BLDCNT, 0);
-        CreateTask(Task_DestroySelf, 0);
-        StopMapMusic();
-        RunTasks();
-        AnimateSprites();
-        BuildOamBuffer();
-        RunTextPrinters();
-        UpdatePaletteFade();
-        SetBackdropFromColor(RGB_BLACK);
-        SetMainCallback2(CB2_MysteryEventMenu);
-    }
+    
 }
 
 static bool8 GetEventLoadMessage(u8 *dest, u32 status)

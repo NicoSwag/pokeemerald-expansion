@@ -1432,6 +1432,7 @@ static const u16 sClefableTeachableLearnset[] = {
     MOVE_SWAGGER,
     MOVE_THUNDER_PUNCH,
     MOVE_THUNDER_WAVE,
+    MOVE_GRAVITY,
     MOVE_UNAVAILABLE,
 };
 

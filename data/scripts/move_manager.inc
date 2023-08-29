@@ -1,10 +1,12 @@
 Common_EventScript_MoveManager::
+	setvar VAR_MOVE_MANAGER, MOVE_TUTOR_EGG_MOVES
 	lockall
 	faceplayer
 	goto_if_unset FLAG_TEMP_1, Common_EventScript_MoveManager_2
 Common_EventScript_MoveManager_1:
 	switch VAR_MOVE_MANAGER
 	case MOVE_DELETER, Common_EventScript_MoveManager_6
+	msgbox MoveManager_Introduction_Text_2
 	msgbox Common_EventScript_MoveManager_Text_1, MSGBOX_YESNO
 Common_EventScript_MoveManager_4:
 	compare VAR_RESULT, NO
@@ -79,7 +81,7 @@ MoveManager_CheckItem_3:
 
 MoveManager_CheckItem_4:
 	msgbox MoveManager_CheckItem_Text_1
-	checkitem ITEM_TINY_MUSHROOM, 1
+	checkitem ITEM_HEART_SCALE, 1
 	compare VAR_RESULT, 0
 	goto_if_eq MoveManager_CheckItem_7
 	goto MoveManager_CheckItem_1
@@ -237,7 +239,7 @@ MoveManager_Introduction_Text_1:
 	.string "I'm the Move Tutor.\pI know all the moves that Pokémon\nlearn, and I can teach yours, too.$"
 
 MoveManager_Introduction_Text_2:
-	.string "I'm the Egg Move Tutor.\pI specialise in teaching moves\nPokémon learn from their parents.$"
+	.string "I'm the Special Move Tutor.\pI specialise in teaching moves\nPokémon might find very useful.$"
 
 MoveManager_Introduction_Text_3:
 	.string "Uh…\nOh, yes, I'm the Move Deleter.\pI can make Pokémon forget their moves.$"
@@ -249,7 +251,7 @@ MoveManager_CheckItem_Text_0:
 	.string "In that case, I would like\na Heart Scale.$"
 
 MoveManager_CheckItem_Text_1:
-	.string "In that case, I would like\na Tiny Mushroom.$"
+	.string "In that case, I would like\na Heart Scale.$"
 
 MoveManager_ChooseMon_Text_0:
 	.string "Eggs don't know moves yet.$"
@@ -279,7 +281,7 @@ MoveManager_SpendItem_Text_0:
 	.string "{PLAYER} handed over one Heart Scale\nin exchange.$"
 
 MoveManager_SpendItem_Text_1:
-	.string "{PLAYER} handed over a single\nTiny Mushroom$"
+	.string "{PLAYER} handed over one Heart Scale\nin exchange.$"
 
 MoveManager_ComeBack::
 	.string "Come back soon.$"
