@@ -2599,7 +2599,9 @@ enum
     ENDTURN_SLOW_START,
     ENDTURN_PLASMA_FISTS,
     ENDTURN_CUD_CHEW,
-    ENDTURN_BATTLER_COUNT
+    ENDTURN_SNAP_TRAP,
+    ENDTURN_BATTLER_COUNT,
+
 };
 
 // Ingrain, Leech Seed, Strength Sap and Aqua Ring
@@ -3163,6 +3165,23 @@ u8 DoBattlerEndTurnEffects(void)
                 gDisableStructs[gActiveBattler].cudChew = TRUE;
             gBattleStruct->turnEffectsTracker++;
             break;
+        case ENDTURN_SNAP_TRAP:
+            if(gStatuses4[gActiveBattler] & STATUS4_SNAP_TRAPPED){
+                MAGIC_GUARD_CHECK;
+                if((gBattleMons[gActiveBattler].type1 == TYPE_BUG) || (gBattleMons[gActiveBattler].type1 == TYPE_FAIRY) ||(gBattleMons[gActiveBattler].type2 == TYPE_BUG) || (gBattleMons[gActiveBattler].type2 == TYPE_FAIRY))
+                    gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 4;
+                else
+                    gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
+                
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                    BattleScriptExecute(BattleScript_SnapTrapTurnDmg);
+                    effect++;
+                }
+            
+            gBattleStruct->turnEffectsTracker++;
+            break;
+            
         case ENDTURN_BATTLER_COUNT:  // done
             gBattleStruct->turnEffectsTracker = 0;
             gBattleStruct->turnEffectsBattlerId++;
@@ -4987,6 +5006,15 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 {
                     BattleScriptPushCursorAndCallback(BattleScript_HealerActivates);
                     effect++;
+                }
+                break;
+
+            case ABILITY_HYPNOTIC_PATTERN:
+                if((Random()%3)==0){
+                    gBattlerTarget = (Random()%3)+1;
+                    if((gBattleMons[gBattlerTarget].hp != 0)){
+                    BattleScriptPushCursorAndCallback(BattleScript_HypnoticPatternActivates);
+                    effect++;}
                 }
                 break;
             case ABILITY_SCHOOLING:
@@ -8932,6 +8960,11 @@ static u16 CalcMoveBasePower(u16 move, u8 battlerAtk, u8 battlerDef)
         if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_ELECTRIC_TERRAIN))
             MulModifier(&basePower, UQ_4_12(1.5));
         break;
+    case EFFECT_AURA_SPHERE:
+        if (gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 2))
+            MulModifier(&basePower, UQ_4_12(1.5));
+        break;
+           
     }
 
     // Move-specific base power changes

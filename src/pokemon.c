@@ -7486,7 +7486,7 @@ u8 GetMoveTutorMoves(struct Pokemon *mon, u16 *moves)
         }
         break;
     case MOVE_TUTOR_EGG_MOVES:
-        eggSpecies = GetEggSpecies(species);
+        eggSpecies = species;
         numEggMoves = GetEggMoves(eggSpecies, eggMoves);
 
 // i is the number of egg moves we've iterated through
@@ -7509,7 +7509,7 @@ u8 GetMoveTutorMoves(struct Pokemon *mon, u16 *moves)
         break;
     }
 
-    return (numMoves-1);
+    return (numMoves);
 }
 
 u8 GetLevelUpMovesBySpecies(u16 species, u16 *moves)
@@ -7520,7 +7520,7 @@ u8 GetLevelUpMovesBySpecies(u16 species, u16 *moves)
     for (i = 0; i < MAX_LEVEL_UP_MOVES && gLevelUpLearnsets[species][i].move != LEVEL_UP_END; i++)
          moves[numMoves++] = gLevelUpLearnsets[species][i].move;
 
-     return (numMoves-1);
+     return (numMoves);
 }
 
 u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)

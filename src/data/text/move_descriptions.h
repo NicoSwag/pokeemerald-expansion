@@ -1612,9 +1612,14 @@ static const u8 sForcePalmDescription[] = _(
     "A shock wave attack that\n"
     "may paralyze the foe.");
 
-static const u8 sAuraSphereDescription[] = _(
-    "Attacks with an aura blast\n"
+static const u8 sChiBlastDescription[] = _(
+    "Attacks with a chi blast\n"
     "that cannot be evaded.");
+
+
+static const u8 sAuraSphereDescription[] = _(
+    "Attacks with a blast that\n"
+    "gets stronger at low health.");
 
 static const u8 sRockPolishDescription[] = _(
     "Polishes the body to\n"
@@ -2782,8 +2787,8 @@ static const u8 sDrumBeatingDescription[] = _(
     "The foe's Speed is lowered.");
 
 static const u8 sSnapTrapDescription[] = _(
-    "Snares the target in a snap\n"
-    "trap for four to five turns.");
+    "Deals damage over time, espe-\n"
+    "cially to bugs and fairies.");
 
 static const u8 sPyroBallDescription[] = _(
     "Launches a fiery ball at the\n"
@@ -3682,7 +3687,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_MAGNET_RISE - 1] = sMagnetRiseDescription,
     [MOVE_FLARE_BLITZ - 1] = sFlareBlitzDescription,
     [MOVE_FORCE_PALM - 1] = sForcePalmDescription,
-    [MOVE_AURA_SPHERE - 1] = sAuraSphereDescription,
+    [MOVE_CHI_BLAST - 1] = sChiBlastDescription,
     [MOVE_ROCK_POLISH - 1] = sRockPolishDescription,
     [MOVE_POISON_JAB - 1] = sPoisonJabDescription,
     [MOVE_DARK_PULSE - 1] = sDarkPulseDescription,
@@ -4006,6 +4011,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_APPLE_ACID - 1] = sAppleAcidDescription,
     [MOVE_GRAV_APPLE - 1] = sGravAppleDescription,
     [MOVE_BOULDER_TOSS - 1] = sBoulderTossDescription,
+    [MOVE_AURA_SPHERE - 1] = sAuraSphereDescription,
     [MOVE_SPIRIT_BREAK - 1] = sSpiritBreakDescription,
     [MOVE_STRANGE_STEAM - 1] = sStrangeSteamDescription,
     [MOVE_LIFE_DEW - 1] = sLifeDewDescription,

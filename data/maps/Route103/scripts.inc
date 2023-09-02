@@ -29,14 +29,12 @@ Route103_EventScript_Rival::
 	end
 
 Route103_EventScript_RivalMay::
-	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
+	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_ENCOUNTER_MAY, TRUE
 	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_RIVAL, Common_Movement_Delay48
 	waitmovement 0
 	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	closemessage
@@ -46,9 +44,6 @@ Route103_EventScript_RivalMay::
 	closemessage
 	applymovement LOCALID_MAGMAM Common_Movement_ExclamationMark
 	applymovement LOCALID_MAGMAM Common_Movement_ExclamationMark
-	waitmovement 0
-	msgbox Route_103_Text_SayWhat, MSGBOX_DEFAULT
-	closemessage
 	waitmovement 0
 	goto Route103_EventScript_MagmaStart
 	end

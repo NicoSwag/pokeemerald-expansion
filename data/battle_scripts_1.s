@@ -432,6 +432,8 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectSnow                    @ EFFECT_SNOWSCAPE
 	.4byte BattleScript_EffectFlashFreeze             @ EFFECT_FLASH_FREEZE
 	.4byte BattleScript_EffectCometPunch			  @ EFFECT_COMET_PUNCH
+	.4byte BattleScript_EffectHit					  @EFFECT_AURA_SPHERE
+		.4byte BattleScript_EffectSnapTrap            @ EFFECT_SNAP_TRAP
 
 BattleScript_EffectRevivalBlessing::
 	attackcanceler
@@ -583,7 +585,6 @@ BattleScript_AffectionBasedStatusHeal::
 	jumpifstatus BS_ATTACKER, STATUS1_SLEEP, BattleScript_AffectionBasedStatus_HealSleepString
 	jumpifstatus BS_ATTACKER, STATUS1_PARALYSIS, BattleScript_AffectionBasedStatus_HealParalysisString
 	jumpifstatus BS_ATTACKER, STATUS1_BURN, BattleScript_AffectionBasedStatus_HealBurnString
-	jumpifstatus BS_ATTACKER, STATUS1_FREEZE, BattleScript_AffectionBasedStatus_HealFreezeString
 	jumpifstatus BS_ATTACKER, STATUS1_FROSTBITE, BattleScript_AffectionBasedStatus_HealFrostbiteString
 	end2
 BattleScript_AffectionBasedStatus_HealPoisonString:
@@ -2059,6 +2060,11 @@ BattleScript_EffectSmackDown:
 
 BattleScript_MoveEffectSmackDown::
 	printstring STRINGID_FELLSTRAIGHTDOWN
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_MoveEffectSnapTrap::
+	printstring STRINGID_PKMNINSNAPTRAP
 	waitmessage B_WAIT_TIME_LONG
 	return
 
@@ -8341,6 +8347,14 @@ BattleScript_WrapTurnDmg::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_DoTurnDmg
 
+BattleScript_SnapTrapTurnDmg::
+	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_DoTurnDmgEnd
+	playanimation BS_ATTACKER, B_ANIM_TURN_TRAP, sB_ANIM_ARG1
+	printstring STRINGID_SNAPTRAPHURT
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_DoTurnDmg
+
+
 BattleScript_WrapEnds::
 	printstring STRINGID_PKMNFREEDFROM
 	waitmessage B_WAIT_TIME_LONG
@@ -8485,6 +8499,7 @@ BattleScript_MoveEffectWrap::
 	printfromtable gWrappedStringIds
 	waitmessage B_WAIT_TIME_LONG
 	return
+
 
 BattleScript_MoveEffectConfusion::
 	chosenstatus2animation BS_EFFECT_BATTLER, STATUS2_CONFUSION
@@ -8679,6 +8694,23 @@ BattleScript_HealerActivates::
 	curestatus BS_SCRIPTING
 	updatestatusicon BS_SCRIPTING
 	printstring STRINGID_HEALERCURE
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
+BattleScript_HypnoticPatternActivates::
+	call BattleScript_AbilityPopUp
+	jumpifability BS_TARGET, ABILITY_VITAL_SPIRIT, BattleScript_PrintBattlerAbilityMadeIneffective
+	jumpifability BS_TARGET, ABILITY_INSOMNIA, BattleScript_PrintBattlerAbilityMadeIneffective
+	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_PrintBattlerAbilityMadeIneffective
+	jumpifability BS_TARGET, ABILITY_PURIFYING_SALT, BattleScript_AbilityProtectsDoesntAffect
+	jumpifflowerveil BattleScript_FlowerVeilProtects
+	jumpifleafguardprotected BS_TARGET, BattleScript_AbilityProtectsDoesntAffect
+	jumpifshieldsdown BS_TARGET, BattleScript_AbilityProtectsDoesntAffect
+	jumpifsubstituteblocks BattleScript_ButItFailed
+	jumpifsafeguard BattleScript_SafeguardProtected
+	jumpifuproarwakes BattleScript_ButItFailed
+	setyawn BattleScript_ButItFailed
+	printstring STRINGID_PKMNWASMADEDROWSY
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
@@ -10673,4 +10705,8 @@ BattleScript_HasFistBarrage::
 BattleScript_EffectCometPunchLastHit::	
 setmoveeffect MOVE_EFFECT_ATK_PLUS_1 | MOVE_EFFECT_AFFECTS_USER
 goto BattleScript_EffectHit
+
+BattleScript_EffectSnapTrap::
+	setmoveeffect MOVE_EFFECT_SNAP_TRAP
+	goto BattleScript_EffectHit
 	

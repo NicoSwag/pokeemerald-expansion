@@ -417,7 +417,7 @@ gBattleAnims_Moves::
 	.4byte Move_MAGNET_RISE
 	.4byte Move_FLARE_BLITZ
 	.4byte Move_FORCE_PALM
-	.4byte Move_AURA_SPHERE
+	.4byte Move_CHI_BLAST
 	.4byte Move_ROCK_POLISH
 	.4byte Move_POISON_JAB
 	.4byte Move_DARK_PULSE
@@ -860,6 +860,7 @@ gBattleAnims_Moves::
 	.4byte Move_HYDRO_STEAM
 	.4byte Move_GARGLE
 	.4byte Move_BOULDER_TOSS
+	.4byte Move_AURA_SPHERE
 
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
@@ -2014,7 +2015,7 @@ Move_FORCE_PALM:
 	blendoff
 	end
 
-Move_AURA_SPHERE:
+Move_CHI_BLAST:
 	loadspritegfx ANIM_TAG_METEOR
 	loadspritegfx ANIM_TAG_CIRCLE_OF_LIGHT
 	monbg ANIM_ATK_PARTNER
@@ -2036,7 +2037,7 @@ Move_AURA_SPHERE:
 	end
 
 SetAuraSphereBG:
-	fadetobg BG_AURA_SPHERE
+	fadetobg BG_CHI_BLAST
 	goto SetHighSpeedBgFade
 
 Move_ROCK_POLISH:
@@ -24105,6 +24106,9 @@ Move_GARGLE:
 
 Move_BOULDER_TOSS:
 	goto Move_ANCIENT_POWER
+
+Move_AURA_SPHERE:
+	goto Move_FOCUS_BLAST
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT

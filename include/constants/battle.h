@@ -126,7 +126,7 @@
 #define STATUS2_FLINCHED              (1 << 3)
 #define STATUS2_UPROAR                (1 << 4 | 1 << 5 | 1 << 6)
 #define STATUS2_UPROAR_TURN(num)      ((num) << 4)
-#define STATUS2_UNUSED                (1 << 7)
+#define STATUS2_UNUSED         (1 << 7)
 #define STATUS2_BIDE                  (1 << 8 | 1 << 9)
 #define STATUS2_BIDE_TURN(num)        (((num) << 8) & STATUS2_BIDE)
 #define STATUS2_LOCK_CONFUSE          (1 << 10 | 1 << 11) // e.g. Thrash
@@ -148,6 +148,7 @@
 #define STATUS2_FORESIGHT             (1 << 29)
 #define STATUS2_DEFENSE_CURL          (1 << 30)
 #define STATUS2_TORMENT               (1 << 31)
+
 
 #define STATUS3_LEECHSEED_BATTLER       (1 << 0 | 1 << 1) // The battler to receive HP from Leech Seed
 #define STATUS3_LEECHSEED               (1 << 2)
@@ -188,6 +189,8 @@
 #define STATUS4_MUD_SPORT               (1 << 2)    // Only used if B_SPORT_TURNS < GEN_6
 #define STATUS4_WATER_SPORT             (1 << 3)    // Only used if B_SPORT_TURNS < GEN_6
 #define STATUS4_INFINITE_CONFUSION      (1 << 4)    // Used for Berserk Gene
+#define STATUS4_SNAP_TRAPPED            (1 << 5)
+
 
 #define HITMARKER_WAKE_UP_CLEAR         (1 << 4) // Cleared when waking up. Never set or checked.
 #define HITMARKER_SKIP_DMG_TRACK        (1 << 5)
@@ -385,8 +388,9 @@
 #define MOVE_EFFECT_DIRE_CLAW           75
 #define MOVE_EFFECT_STEALTH_ROCK        76
 #define MOVE_EFFECT_SPIKES              77
+#define MOVE_EFFECT_SNAP_TRAP           78
 
-#define NUM_MOVE_EFFECTS                78
+#define NUM_MOVE_EFFECTS                79
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

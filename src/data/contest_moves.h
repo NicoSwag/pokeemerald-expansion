@@ -3157,7 +3157,7 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
         .comboMoves = {0}
     },
 
-    [MOVE_AURA_SPHERE] =
+    [MOVE_CHI_BLAST] =
     {
         .effect = CONTEST_EFFECT_BETTER_IF_FIRST,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,

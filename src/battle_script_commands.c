@@ -910,6 +910,7 @@ static const u32 sStatusFlagsForMoveEffects[NUM_MOVE_EFFECTS] =
     [MOVE_EFFECT_THRASH]         = STATUS2_LOCK_CONFUSE,
 };
 
+
 static const u8 *const sMoveEffectBS_Ptrs[] =
 {
     [MOVE_EFFECT_SLEEP]            = BattleScript_MoveEffectSleep,
@@ -923,7 +924,9 @@ static const u8 *const sMoveEffectBS_Ptrs[] =
     [MOVE_EFFECT_PAYDAY]           = BattleScript_MoveEffectPayDay,
     [MOVE_EFFECT_WRAP]             = BattleScript_MoveEffectWrap,
     [MOVE_EFFECT_FROSTBITE]        = BattleScript_MoveEffectFrostbite,
+
 };
+
 
 static const struct WindowTemplate sUnusedWinTemplate =
 {
@@ -3013,6 +3016,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
     {
     case MOVE_EFFECT_KNOCK_OFF:
     case MOVE_EFFECT_SMACK_DOWN:
+    case MOVE_EFFECT_SNAP_TRAP:
     case MOVE_EFFECT_REMOVE_STATUS:
     case MOVE_EFFECT_STOCKPILE_WORE_OFF:
         gBattleStruct->moveEffect2 = gBattleScripting.moveEffect;
@@ -3476,6 +3480,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     }
                 }
                 break;
+
+
             case MOVE_EFFECT_ATK_PLUS_1:
             case MOVE_EFFECT_DEF_PLUS_1:
             case MOVE_EFFECT_SPD_PLUS_1:
@@ -5845,6 +5851,13 @@ static void Cmd_moveend(void)
                     gBattlescriptCurrInstr = BattleScript_MoveEffectSmackDown;
                 }
                 break;
+            case MOVE_EFFECT_SNAP_TRAP:
+                if(IsBattlerAlive(gBattlerTarget)){
+                    gStatuses4[gBattlerTarget] |= STATUS4_SNAP_TRAPPED;
+                    effect = TRUE;
+                    BattleScriptPush(gBattlescriptCurrInstr);
+                    gBattlescriptCurrInstr = BattleScript_MoveEffectSnapTrap;
+                }
             case MOVE_EFFECT_REMOVE_STATUS: // Smelling salts, Wake-Up Slap, Sparkling Aria
                 if ((gBattleMons[gBattlerTarget].status1 & gBattleMoves[gCurrentMove].argument) && IsBattlerAlive(gBattlerTarget))
                 {

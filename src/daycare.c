@@ -913,6 +913,7 @@ static const struct {
     { SPECIES_SUDOWOODO,    ITEM_ROCK_INCENSE, SPECIES_BONSLY },
     { SPECIES_ROSELIA,      ITEM_ROSE_INCENSE, SPECIES_BUDEW },
     { SPECIES_MANTINE,      ITEM_WAVE_INCENSE, SPECIES_MANTYKE },
+    { SPECIES_IVYSAUR,      ITEM_WAVE_INCENSE, SPECIES_BULBASAUR },
 };
 
 static void AlterEggSpeciesWithIncenseItem(u16 *species, struct DayCare *daycare)
