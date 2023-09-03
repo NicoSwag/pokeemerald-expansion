@@ -10612,7 +10612,12 @@ BattleScript_NeutralizingGasExitsLoop:
 
 BattleScript_MagicianActivates::
 	call BattleScript_AbilityPopUp
-	call BattleScript_ItemSteal
+	jumpifsubstituteblocks BattleScript_ButItFailed
+	tryswapitems BattleScript_ButItFailed
+	printstring STRINGID_PKMNSWITCHEDITEMS
+	waitmessage B_WAIT_TIME_LONG
+	printfromtable gItemSwapStringIds
+	waitmessage B_WAIT_TIME_LONG
 	return
 
 BattleScript_SymbiosisActivates::

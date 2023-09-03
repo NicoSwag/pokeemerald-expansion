@@ -47,7 +47,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Route103Magmam),
+        .party = ITEM_CUSTOM_MOVES(sParty_Route103Magmam),
     },
 
     [TRAINER_ROUTE_103_MAGMAF] =
@@ -59,7 +59,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Route103Magmaf),
+        .party = ITEM_CUSTOM_MOVES(sParty_Route103Magmaf),
     },
 
     [TRAINER_GRUNT_AQUA_HIDEOUT_2] =

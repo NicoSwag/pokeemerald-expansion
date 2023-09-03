@@ -384,6 +384,7 @@ struct FormChange
     u16 param3;
 };
 
+
 #define NUM_UNOWN_FORMS 28
 
 #define GET_UNOWN_LETTER(personality) ((   \
