@@ -5867,6 +5867,18 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 effect++;
             }
             break;
+        case ABILITY_CORROSION:
+            if(!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && gBattleMons[gBattlerTarget].hp != 0
+             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+             && (gBattleMons[gBattlerTarget].type1 == TYPE_STEEL || gBattleMons[gBattlerTarget].type2 == TYPE_STEEL)
+             && gBattleMoves[move].type == TYPE_POISON){
+                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_CorrodeSteelType;
+                effect++;
+             }
+        break;
         case ABILITY_TOXIC_SECRETIONS:
         if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
              && gBattleMons[gBattlerTarget].hp != 0
@@ -10018,6 +10030,12 @@ static void MulByTypeEffectiveness(u16 *modifier, u16 move, u8 moveType, u8 batt
         mod = UQ_4_12(1.0);
         if (recordAbilities)
             RecordAbilityBattle(battlerAtk, ABILITY_SCRAPPY);
+    }
+    else if ((moveType == TYPE_POISON) && defType == TYPE_STEEL && GetBattlerAbility(battlerAtk) == ABILITY_CORROSION && mod == UQ_4_12(0.0))
+    {
+            mod = UQ_4_12(1.0);
+            if (recordAbilities)
+            RecordAbilityBattle(battlerAtk, ABILITY_CORROSION);
     }
 
     if (moveType == TYPE_PSYCHIC && defType == TYPE_DARK && gStatuses3[battlerDef] & STATUS3_MIRACLE_EYED && mod == UQ_4_12(0.0))

@@ -9721,6 +9721,13 @@ BattleScript_IgnoresAndHitsItself::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_DoSelfConfusionDmg
 
+BattleScript_CorrodeSteelType::
+	call BattleScript_AbilityPopUp
+	losetype BS_TARGET, TYPE_STEEL
+	printstring STRINGID_DEFENDERLOSTSTEELTYPE
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_SubstituteFade::
 	playanimation BS_TARGET, B_ANIM_SUBSTITUTE_FADE
 	printstring STRINGID_PKMNSUBSTITUTEFADED
