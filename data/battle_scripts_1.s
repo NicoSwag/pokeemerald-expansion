@@ -433,7 +433,8 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectFlashFreeze             @ EFFECT_FLASH_FREEZE
 	.4byte BattleScript_EffectCometPunch			  @ EFFECT_COMET_PUNCH
 	.4byte BattleScript_EffectHit					  @EFFECT_AURA_SPHERE
-		.4byte BattleScript_EffectSnapTrap            @ EFFECT_SNAP_TRAP
+	.4byte BattleScript_EffectSnapTrap                @ EFFECT_SNAP_TRAP
+	.4byte BattleScript_EffectNumbingKiss			  @ EFFECT_NUMBING_KISS
 
 BattleScript_EffectRevivalBlessing::
 	attackcanceler
@@ -2067,6 +2068,43 @@ BattleScript_MoveEffectSnapTrap::
 	printstring STRINGID_PKMNINSNAPTRAP
 	waitmessage B_WAIT_TIME_LONG
 	return
+
+BattleScript_EffectNumbingKiss::
+	setmoveeffect MOVE_EFFECT_PARALYSIS
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_AbsorbHealBlock
+	setdrainedhp
+	manipulatedamage DMG_BIG_ROOT
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
+	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_AbsorbLiquidOoze
+	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB
+	healthbarupdate BS_ATTACKER
+	seteffectwithchance
+	datahpupdate BS_ATTACKER
+	jumpifmovehadnoeffect BattleScript_AbsorbTryFainting
+	printfromtable gAbsorbDrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
+
 
 BattleScript_EffectHitEnemyHealAlly:
 	jumpiftargetally BattleScript_EffectHealPulse

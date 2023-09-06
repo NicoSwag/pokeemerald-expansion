@@ -9714,6 +9714,23 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     },
 
+    [MOVE_NUMBING_KISS] =
+    {
+        .effect = EFFECT_NUMBING_KISS,
+        .power = 50,
+        .type = TYPE_FAIRY,
+        .accuracy = 90,
+        .pp = 10,
+        .secondaryEffectChance = 100,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .flags = FLAG_MAKES_CONTACT | FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED | FLAG_KINGS_ROCK_AFFECTED,
+        .split = SPLIT_SPECIAL,
+        .argument = 75, // restores 75% HP instead of 50% HP
+        .zMoveEffect = Z_EFFECT_NONE,
+
+    },
+
     [MOVE_CRAFTY_SHIELD] =
     {
         .effect = EFFECT_PROTECT,

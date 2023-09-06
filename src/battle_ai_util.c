@@ -59,6 +59,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_CUTE_CHARM] = 2,
     [ABILITY_DAMP] = 2,
     [ABILITY_DANCER] = 5,
+    [ABILITY_SINGER] = 5,
     [ABILITY_DARK_AURA] = 6,
     [ABILITY_DAZZLING] = 5,
     [ABILITY_DEFEATIST] = -1,
@@ -69,6 +70,8 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_DOWNLOAD] = 7,
     [ABILITY_DRIZZLE] = 9,
     [ABILITY_DROUGHT] = 9,
+    [ABILITY_BLACK_HOLE] = 9,
+    [ABILITY_SUN_WITHIN] = 8,
     [ABILITY_DRY_SKIN] = 6,
     [ABILITY_EARLY_BIRD] = 4,
     [ABILITY_EFFECT_SPORE] = 4,
@@ -95,6 +98,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_GRASS_PELT] = 2,
     [ABILITY_GRASSY_SURGE] = 8,
     [ABILITY_GUTS] = 6,
+    [ABILITY_TENACITY] = 6,
     [ABILITY_HARVEST] = 5,
     [ABILITY_HEALER] = 0,
     [ABILITY_HEATPROOF] = 5,
@@ -114,6 +118,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_INNER_FOCUS] = 2,
     [ABILITY_INSOMNIA] = 4,
     [ABILITY_INTIMIDATE] = 7,
+    [ABILITY_MESMERIZE] = 7,
     [ABILITY_IRON_BARBS] = 6,
     [ABILITY_IRON_FIST] = 6,
     [ABILITY_JUSTIFIED] = 4,
@@ -135,6 +140,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_MARVEL_SCALE] = 5,
     [ABILITY_MEGA_LAUNCHER] = 7,
     [ABILITY_MERCILESS] = 4,
+    [ABILITY_CRUELTY] = 4,
     [ABILITY_MINUS] = 0,
     [ABILITY_MISTY_SURGE] = 8,
     [ABILITY_MOLD_BREAKER] = 7,
@@ -147,12 +153,14 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_NATURAL_CURE] = 7,
     [ABILITY_NEUROFORCE] = 6,
     [ABILITY_NO_GUARD] = 8,
+    [ABILITY_FIXED_GAZE] = 9,
     [ABILITY_NORMALIZE] = -1,
     [ABILITY_OBLIVIOUS] = 2,
     [ABILITY_OVERCOAT] = 5,
     [ABILITY_OVERGROW] = 5,
     [ABILITY_OWN_TEMPO] = 3,
     [ABILITY_PARENTAL_BOND] = 10,
+    [ABILITY_FIST_BARRAGE] = 10,
     [ABILITY_PICKUP] = 1,
     [ABILITY_PICKPOCKET] = 3,
     [ABILITY_PIXILATE] = 8,
@@ -160,6 +168,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_POISON_HEAL] = 8,
     [ABILITY_POISON_POINT] = 4,
     [ABILITY_POISON_TOUCH] = 4,
+    [ABILITY_TOXIC_SECRETIONS] = 4,
     [ABILITY_POWER_CONSTRUCT] = 10,
     [ABILITY_POWER_OF_ALCHEMY] = 0,
     [ABILITY_PRANKSTER] = 8,
@@ -194,6 +203,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_SHADOW_TAG] = 10,
     [ABILITY_SHED_SKIN] = 7,
     [ABILITY_SHEER_FORCE] = 8,
+    [ABILITY_PAROTOID_GLANDS] = 6,
     [ABILITY_SHELL_ARMOR] = 2,
     [ABILITY_SHIELD_DUST] = 5,
     [ABILITY_SHIELDS_DOWN] = 6,
@@ -219,6 +229,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_STENCH] = 1,
     [ABILITY_STICKY_HOLD] = 3,
     [ABILITY_STORM_DRAIN] = 7,
+    [ABILITY_STEAM_BARRIER] = 7,
     [ABILITY_STRONG_JAW] = 6,
     [ABILITY_STURDY] = 6,
     [ABILITY_SUCTION_CUPS] = 2,
@@ -266,11 +277,13 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_MIRROR_ARMOR] = 6,
     [ABILITY_GULP_MISSILE] = 3,
     [ABILITY_STALWART] = 2,
-    [ABILITY_PROPELLER_TAIL] = 2,
+    [ABILITY_HYPNOTIC_PATTERN] = 3,
+    [ABILITY_PROPELLER_TAIL] = 6,
     [ABILITY_STEAM_ENGINE] = 3,
     [ABILITY_PUNK_ROCK] = 2,
     [ABILITY_SAND_SPIT] = 5,
     [ABILITY_ICE_SCALES] = 7,
+    [ABILITY_MAGIC_SCALES] = 7,
     [ABILITY_RIPEN] = 4,
     [ABILITY_ICE_FACE] = 4,
     [ABILITY_POWER_SPOT] = 2,
@@ -280,6 +293,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_HUNGER_SWITCH] = 2,
     [ABILITY_PASTEL_VEIL] = 4,
     [ABILITY_STEELY_SPIRIT] = 2,
+    [ABILITY_POLAR_HERITAGE] = 2,
     [ABILITY_PERISH_BODY] = -1,
     [ABILITY_WANDERING_SPIRIT] = 2,
     [ABILITY_GORILLA_TACTICS] = 4,
@@ -1472,7 +1486,8 @@ bool32 IsMoveRedirectionPrevented(u16 move, u16 atkAbility)
     if (move == MOVE_SKY_DROP
       || move == MOVE_SNIPE_SHOT
       || atkAbility == ABILITY_PROPELLER_TAIL
-      || atkAbility == ABILITY_STALWART)
+      || atkAbility == ABILITY_STALWART
+      || atkAbility == ABILITY_FIXED_GAZE)
         return TRUE;
     return FALSE;
 }
@@ -1509,6 +1524,8 @@ bool32 IsMoveEncouragedToHit(u8 battlerAtk, u8 battlerDef, u16 move)
         return TRUE;
 
     if (AI_DATA->abilities[battlerDef] == ABILITY_NO_GUARD || AI_DATA->abilities[battlerAtk] == ABILITY_NO_GUARD)
+        return TRUE;
+    if (AI_DATA->abilities[battlerDef] == ABILITY_FIXED_GAZE || AI_DATA->abilities[battlerAtk] == ABILITY_FIXED_GAZE)
         return TRUE;
 
 #if B_TOXIC_NEVER_MISS >= GEN_6
@@ -1553,7 +1570,8 @@ bool32 ShouldTryOHKO(u8 battlerAtk, u8 battlerDef, u16 atkAbility, u16 defAbilit
 
     if ((((gStatuses3[battlerDef] & STATUS3_ALWAYS_HITS)
         && gDisableStructs[battlerDef].battlerWithSureHit == battlerAtk)
-        || atkAbility == ABILITY_NO_GUARD || defAbility == ABILITY_NO_GUARD)
+        || atkAbility == ABILITY_NO_GUARD || defAbility == ABILITY_NO_GUARD
+        || atkAbility == ABILITY_FIXED_GAZE || defAbility == ABILITY_FIXED_GAZE)
         && gBattleMons[battlerAtk].level >= gBattleMons[battlerDef].level)
     {
         return TRUE;
@@ -2856,6 +2874,7 @@ bool32 ShouldPoisonSelf(u8 battler, u16 ability)
       || ability == ABILITY_MAGIC_GUARD
       || (ability == ABILITY_TOXIC_BOOST && HasMoveWithSplit(battler, SPLIT_PHYSICAL))
       || (ability == ABILITY_GUTS && HasMoveWithSplit(battler, SPLIT_PHYSICAL))
+      || (ability == ABILITY_TENACITY && HasMoveWithSplit(battler, SPLIT_SPECIAL))
       || HasMoveEffect(battler, EFFECT_FACADE)
       || HasMoveEffect(battler, EFFECT_PSYCHO_SHIFT)))
         return TRUE;    // battler can be poisoned and has move/ability that synergizes with being poisoned
@@ -2955,6 +2974,7 @@ bool32 ShouldBurnSelf(u8 battler, u16 ability)
       || ability == ABILITY_MAGIC_GUARD
       || (ability == ABILITY_FLARE_BOOST && HasMoveWithSplit(battler, SPLIT_SPECIAL))
       || (ability == ABILITY_GUTS && HasMoveWithSplit(battler, SPLIT_PHYSICAL))
+      || (ability == ABILITY_TENACITY && HasMoveWithSplit(battler, SPLIT_SPECIAL))
       || HasMoveEffect(battler, EFFECT_FACADE)
       || HasMoveEffect(battler, EFFECT_PSYCHO_SHIFT)))
         return TRUE;
@@ -3740,7 +3760,8 @@ void IncreaseParalyzeScore(u8 battlerAtk, u8 battlerDef, u16 move, s16 *score)
           || HasMoveEffect(battlerAtk, EFFECT_HEX)
           || HasMoveEffect(battlerAtk, EFFECT_FLINCH_HIT)
           || gBattleMons[battlerDef].status2 & STATUS2_INFATUATION
-          || gBattleMons[battlerDef].status2 & STATUS2_CONFUSION)
+          || gBattleMons[battlerDef].status2 & STATUS2_CONFUSION
+          || AI_DATA->abilities[battlerAtk] == ABILITY_CRUELTY)
             *score += 4;
         else
             *score += 2;

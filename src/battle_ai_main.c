@@ -868,6 +868,10 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                     if (moveType == TYPE_WATER && !IsMoveRedirectionPrevented(move, AI_DATA->abilities[battlerAtk]))
                         RETURN_SCORE_MINUS(20);
                     break;
+                case ABILITY_STEAM_BARRIER:
+                    if (moveType == TYPE_WATER && !IsMoveRedirectionPrevented(move, AI_DATA->abilities[battlerAtk]))
+                        RETURN_SCORE_MINUS(20);
+                    break;
                 case ABILITY_MAGIC_BOUNCE:
                     if (TestMoveFlags(move, FLAG_MAGIC_COAT_AFFECTED) && moveTarget & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_OPPONENTS_FIELD))
                         RETURN_SCORE_MINUS(20);
@@ -1927,6 +1931,8 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
             if (gStatuses3[battlerDef] & STATUS3_ALWAYS_HITS
               || AI_DATA->abilities[battlerAtk] == ABILITY_NO_GUARD
               || AI_DATA->abilities[battlerDef] == ABILITY_NO_GUARD
+              || AI_DATA->abilities[battlerAtk] == ABILITY_FIXED_GAZE
+              || AI_DATA->abilities[battlerDef] == ABILITY_FIXED_GAZE
               || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, AI_DATA->partnerMove))
                 score -= 10;
             break;
@@ -2825,6 +2831,12 @@ static s16 AI_DoubleBattle(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
             // partner ability checks
             if (!partnerProtecting && moveTarget != MOVE_TARGET_BOTH && !DoesBattlerIgnoreAbilityChecks(AI_DATA->abilities[battlerAtk], move))
             {
+                if((gBattleMons[battlerAtkPartner].status1 & STATUS1_SLEEP)
+                && ((GetMovePriority(battlerAtkPartner, move) > 0) || (gBattleMons[battlerAtk].speed > (gBattleMons[battlerAtkPartner].speed && gBattleMons[battlerDef].speed)))
+                && GetMoveDamageResult(move) == MOVE_POWER_WEAK
+                && gBattleMons[battlerAtkPartner].hp > gBattleMons[battlerAtkPartner].maxHP/2)
+
+                RETURN_SCORE_PLUS(1);
                 switch (atkPartnerAbility)
                 {
                 case ABILITY_VOLT_ABSORB:
@@ -2855,6 +2867,14 @@ static s16 AI_DoubleBattle(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                     }
                     break;  // handled in AI_HPAware
                 case ABILITY_STORM_DRAIN:
+                    if (moveType == TYPE_WATER
+                      && HasMoveWithSplit(battlerAtkPartner, SPLIT_SPECIAL)
+                      && BattlerStatCanRise(battlerAtkPartner, atkPartnerAbility, STAT_SPATK))
+                    {
+                        RETURN_SCORE_PLUS(1);
+                    }
+                    break;
+                case ABILITY_STEAM_BARRIER:
                     if (moveType == TYPE_WATER
                       && HasMoveWithSplit(battlerAtkPartner, SPLIT_SPECIAL)
                       && BattlerStatCanRise(battlerAtkPartner, atkPartnerAbility, STAT_SPATK))
@@ -3183,6 +3203,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         switch (AI_DATA->abilities[battlerAtk])
         {
         case ABILITY_GUTS:
+        case ABILITY_TENACITY:
             break;
         case ABILITY_NATURAL_CURE:
             if (AI_THINKING_STRUCT->aiFlags & AI_FLAG_SMART_SWITCHING
@@ -3202,7 +3223,9 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         switch (AI_DATA->abilities[battlerAtk])
         {
         case ABILITY_GUTS:
+        case ABILITY_TENACITY:
             break;
+            
         case ABILITY_NATURAL_CURE:
             if (AI_THINKING_STRUCT->aiFlags & AI_FLAG_SMART_SWITCHING
              && HasOnlyMovesWithSplit(battlerAtk, SPLIT_SPECIAL, TRUE))
@@ -3455,6 +3478,9 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         if (gBattleMons[battlerAtk].statStages[STAT_ACC] < DEFAULT_STAT_STAGE)
             score++;
         if (gBattleMons[battlerDef].statStages[STAT_EVASION] < 7 || AI_DATA->abilities[battlerAtk] == ABILITY_NO_GUARD)
+            score -= 2;
+        break;
+        if (gBattleMons[battlerDef].statStages[STAT_EVASION] < 7 || AI_DATA->abilities[battlerAtk] == ABILITY_FIXED_GAZE)
             score -= 2;
         break;
 	case EFFECT_BIDE:

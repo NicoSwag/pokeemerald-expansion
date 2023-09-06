@@ -47,7 +47,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = ITEM_CUSTOM_MOVES(sParty_Route103Magmam),
+        .party = EVERYTHING_CUSTOMIZED(sParty_Route103Magmam),
     },
 
     [TRAINER_ROUTE_103_MAGMAF] =

@@ -14,13 +14,18 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout1[] = {
     }
 };
 
-static const struct TrainerMonItemCustomMoves sParty_Route103Magmam[] = {
+static const struct TrainerMonCustomized sParty_Route103Magmam[] = {
     {
-    .iv = 15,
-    .lvl = 5,
     .species = SPECIES_POOCHYENA,
     .heldItem = ITEM_TOXIC_ORB,
-    .moves = {MOVE_TACKLE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    .moves = {MOVE_TACKLE, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 5,
+    .ball = ITEM_MASTER_BALL,
+    .ability = ABILITY_DROUGHT,
+    .gender = TRAINER_MON_FEMALE,
+    .nickname = COMPOUND_STRING("Jefferson"),
+    .isShiny = TRUE,
     }
 };
 

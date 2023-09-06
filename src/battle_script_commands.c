@@ -2160,6 +2160,7 @@ s32 CalcCritChanceStage(u8 battlerAtk, u8 battlerDef, u32 move, bool32 recordAbi
     else if (gStatuses3[battlerAtk] & STATUS3_LASER_FOCUS
              || gBattleMoves[move].effect == EFFECT_ALWAYS_CRIT
              || (abilityAtk == ABILITY_MERCILESS && gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
+             || (abilityAtk == ABILITY_CRUELTY && gBattleMons[battlerDef].status1 & STATUS1_PARALYSIS)
              || move == MOVE_SURGING_STRIKES)
     {
         critChance = -2;
@@ -9704,7 +9705,6 @@ static void Cmd_various(void)
             { // Can't copy these abilities.
             case ABILITY_POWER_OF_ALCHEMY:  case ABILITY_RECEIVER:
             case ABILITY_FORECAST:          case ABILITY_MULTITYPE:
-            case ABILITY_FLOWER_GIFT:       case ABILITY_ILLUSION:
             case ABILITY_WONDER_GUARD:      case ABILITY_ZEN_MODE:
             case ABILITY_STANCE_CHANGE:     case ABILITY_IMPOSTER:
             case ABILITY_POWER_CONSTRUCT:   case ABILITY_BATTLE_BOND:

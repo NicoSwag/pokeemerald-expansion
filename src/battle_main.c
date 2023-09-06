@@ -4735,11 +4735,17 @@ s8 GetMovePriority(u32 battlerId, u16 move)
     priority = gBattleMoves[move].priority;
     if (ability == ABILITY_GALE_WINGS
     #if B_GALE_WINGS >= GEN_7
-        && BATTLER_MAX_HP(battlerId)
+        && gBattleMons[battlerId].hp < gBattleMons[battlerId].maxHP * 0.75
     #endif
         && gBattleMoves[move].type == TYPE_FLYING)
     {
         priority++;
+    }
+    else if (ability == ABILITY_PROPELLER_TAIL
+    && gBattleMons[battlerId].hp < gBattleMons[battlerId].maxHP * 0.75
+    && gBattleMoves[move].type == TYPE_WATER
+    ){
+    priority++;
     }
     else if (ability == ABILITY_PRANKSTER && IS_MOVE_STATUS(move))
     {

@@ -2273,6 +2273,12 @@ static const u8 sDrainingKissDescription[] = _(
     "An attack that absorbs over\n"
     "half the damage inflicted.");
 
+
+static const u8 sNumbingKissDescription[] = _(
+    "Absorb above half damage\n"
+    "and paralyze the opponent.");
+
+
 static const u8 sCraftyShieldDescription[] = _(
     "Evades status moves for\n"
     "one turn.");
@@ -3869,6 +3875,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_PARTING_SHOT - 1] = sPartingShotDescription,
     [MOVE_TOPSY_TURVY - 1] = sTopsyTurvyDescription,
     [MOVE_DRAINING_KISS - 1] = sDrainingKissDescription,
+    [MOVE_NUMBING_KISS - 1] = sNumbingKissDescription,
     [MOVE_CRAFTY_SHIELD - 1] = sCraftyShieldDescription,
     [MOVE_FLOWER_SHIELD - 1] = sFlowerShieldDescription,
     [MOVE_GRASSY_TERRAIN - 1] = sGrassyTerrainDescription,

@@ -257,7 +257,7 @@ static bool8 ShouldSwitchIfGameStatePrompt(void)
         //Yawn
         if (gStatuses3[gActiveBattler] & STATUS3_YAWN
             && AI_CanSleep(gActiveBattler, monAbility)
-            && gBattleMons[gActiveBattler].hp > gBattleMons[gActiveBattler].maxHP / 3)
+            && gBattleMons[gActiveBattler].hp > gBattleMons[gActiveBattler].maxHP / 2)
         {
             switchMon = TRUE;
 
@@ -269,7 +269,7 @@ static bool8 ShouldSwitchIfGameStatePrompt(void)
                     && (GetAIChosenMove(BATTLE_PARTNER(gActiveBattler)) == MOVE_UPROAR)
                     )
                     switchMon = FALSE;
-
+                
                 if (IsBattlerAlive(BATTLE_PARTNER(gActiveBattler))
                     && (gBattleMoves[AI_DATA->partnerMove].effect == EFFECT_MISTY_TERRAIN
                         || gBattleMoves[AI_DATA->partnerMove].effect == EFFECT_ELECTRIC_TERRAIN)

@@ -411,6 +411,7 @@
 #define EFFECT_COMET_PUNCH                  405
 #define EFFECT_AURA_SPHERE                  406
 #define EFFECT_SNAP_TRAP                    407
-#define NUM_BATTLE_MOVE_EFFECTS             408
+#define EFFECT_NUMBING_KISS                 408
+#define NUM_BATTLE_MOVE_EFFECTS             409
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

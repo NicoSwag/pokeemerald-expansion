@@ -861,6 +861,7 @@ gBattleAnims_Moves::
 	.4byte Move_GARGLE
 	.4byte Move_BOULDER_TOSS
 	.4byte Move_AURA_SPHERE
+	.4byte Move_NUMBING_KISS
 
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
@@ -24109,6 +24110,9 @@ Move_BOULDER_TOSS:
 
 Move_AURA_SPHERE:
 	goto Move_FOCUS_BLAST
+
+Move_NUMBING_KISS:
+	goto Move_DRAINING_KISS
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT
