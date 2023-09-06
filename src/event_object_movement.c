@@ -453,6 +453,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
 #define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
 #define OBJ_EVENT_PAL_TAG_HOOTHOOT                0X1124
+#define OBJ_EVENT_PAL_TAG_SUNFLORA                0X1125
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 
@@ -482,6 +483,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Truck,                 OBJ_EVENT_PAL_TAG_TRUCK},
     {gObjectEventPal_Vigoroth,              OBJ_EVENT_PAL_TAG_VIGOROTH},
     {gObjectEventPal_Hoothoot,              OBJ_EVENT_PAL_TAG_HOOTHOOT},
+    {gObjectEventPal_Sunflora,              OBJ_EVENT_PAL_TAG_SUNFLORA},
     {gObjectEventPal_EnemyZigzagoon,        OBJ_EVENT_PAL_TAG_ZIGZAGOON},
     {gObjectEventPal_May,                   OBJ_EVENT_PAL_TAG_MAY},
     {gObjectEventPal_MayReflection,         OBJ_EVENT_PAL_TAG_MAY_REFLECTION},

@@ -466,10 +466,15 @@ $(OBJEVENTGFXDIR)/pokemon/wingull.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
 $(OBJEVENTGFXDIR)/pokemon/zigzagoon.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -mwidth 2 -mheight 
+	$(GFX) $< $@ -mwidth 2 -mheight 2
 	
 $(OBJEVENTGFXDIR)/pokemon/hoothoot.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
+
+$(OBJEVENTGFXDIR)/pokemon/sunflora.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+
 
 
 

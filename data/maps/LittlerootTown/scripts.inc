@@ -56,6 +56,7 @@ LittlerootTown_OnTransition:
 LittlerootTown_EventScript_LeftLabAfterDexUpgrade::
 	setvar VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3
 	return
+	
 
 LittlerootTown_EventScript_HideMapNamePopup::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
@@ -261,6 +262,13 @@ LittlerootTown_EventScript_Twin::
 	goto_if_set FLAG_RESCUED_BIRCH, LittlerootTown_EventScript_YouSavedBirch
 	goto_if_ne VAR_LITTLEROOT_TOWN_STATE, 0, LittlerootTown_EventScript_GoSaveBirch
 	msgbox LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut, MSGBOX_DEFAULT
+	release
+	end
+
+LittlerootTown_EventScript_Sunflora::
+	lock
+	faceplayer
+	msgbox LittlerootTown_Text_Sunflora, MSGBOX_DEFAULT
 	release
 	end
 
@@ -992,6 +1000,11 @@ LittlerootTown_Text_CanYouGoSeeWhatsHappening:
 LittlerootTown_Text_YouSavedBirch:
 	.string "You saved PROF. BIRCH!\n"
 	.string "I'm so glad!$"
+
+LittlerootTown_Text_Sunflora:
+	.string "A perfectly normal flower.\n"
+	.string "Nothing to see here.$"
+
 
 LittlerootTown_Text_GoodLuckCatchingPokemon:
 	.string "Are you going to catch POKéMON?\n"

@@ -1839,6 +1839,18 @@ static const struct SpriteFrameImage sPicTable_Hoothoot[] = {
     overworld_frame(gObjectEventPic_Hoothoot, 2, 2, 2),
 };
 
+static const struct SpriteFrameImage sPicTable_Sunflora[] = {
+    overworld_frame(gObjectEventPic_Sunflora, 2, 2, 0),
+    overworld_frame(gObjectEventPic_Sunflora, 2, 2, 1),
+    overworld_frame(gObjectEventPic_Sunflora, 2, 2, 2),
+    overworld_frame(gObjectEventPic_Sunflora, 2, 2, 0),
+    overworld_frame(gObjectEventPic_Sunflora, 2, 2, 0),
+    overworld_frame(gObjectEventPic_Sunflora, 2, 2, 1),
+    overworld_frame(gObjectEventPic_Sunflora, 2, 2, 1),
+    overworld_frame(gObjectEventPic_Sunflora, 2, 2, 2),
+    overworld_frame(gObjectEventPic_Sunflora, 2, 2, 2),
+};
+
 static const struct SpriteFrameImage sPicTable_Pikachu[] = {
     overworld_frame(gObjectEventPic_Pikachu, 2, 2, 0),
     overworld_frame(gObjectEventPic_Pikachu, 2, 2, 1),
