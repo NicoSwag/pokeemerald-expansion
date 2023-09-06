@@ -5001,7 +5001,7 @@ static void HideStartSelectButtons(void)
 
 static void TryAddInterviewObjectEvents(void)
 {
-    int graphicsId;
+    u16 graphicsId;
     u8 spriteId;
 
     switch (GetDisplayedPersonType())
