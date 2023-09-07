@@ -597,24 +597,6 @@ bool8 ScrCmd_checkflag(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_setTMflag(struct ScriptContext *ctx)
-{
-    FlagSet(ScriptReadHalfword(ctx));
-    return FALSE;
-}
-
-bool8 ScrCmd_clearTMflag(struct ScriptContext *ctx)
-{
-    FlagClear(ScriptReadHalfword(ctx));
-    return FALSE;
-}
-
-bool8 ScrCmd_checkTMflag(struct ScriptContext *ctx)
-{
-    ctx->comparisonResult = FlagGet(ScriptReadHalfword(ctx));
-    return FALSE;
-}
-
 bool8 ScrCmd_incrementgamestat(struct ScriptContext *ctx)
 {
     IncrementGameStat(ScriptReadByte(ctx));
@@ -1195,7 +1177,7 @@ bool8 ScrCmd_setobjectmovementtype(struct ScriptContext *ctx)
 
 bool8 ScrCmd_createvobject(struct ScriptContext *ctx)
 {
-    u16 graphicsId = ScriptReadHalfword(ctx);
+    u8 graphicsId = ScriptReadByte(ctx);
     u8 virtualObjId = ScriptReadByte(ctx);
     u16 x = VarGet(ScriptReadHalfword(ctx));
     u32 y = VarGet(ScriptReadHalfword(ctx));

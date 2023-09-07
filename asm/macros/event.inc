@@ -300,11 +300,6 @@
 	.2byte \flag
 	.endm
 
-	@ Sets flag to TRUE.
-	.macro setTMflag flag:req
-	.byte 0xe3
-	.2byte \flag
-	.endm
 
 	@ Sets flag to FALSE.
 	.macro clearTMflag flag:req

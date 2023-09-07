@@ -703,9 +703,6 @@ u8 BattleSetup_GetTerrainId(void)
     }
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE113) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE113))
         return BATTLE_TERRAIN_SAND;
-    if (GetSavedWeather() == WEATHER_SANDSTORM)
-        return BATTLE_TERRAIN_SAND;
-
     return BATTLE_TERRAIN_PLAIN;
 }
 
