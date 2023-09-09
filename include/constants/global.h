@@ -166,4 +166,6 @@
 #define CONNECTION_DIVE     5
 #define CONNECTION_EMERGE   6
 
+#define DYNAMIC_OW_PALS         FALSE
+
 #endif // GUARD_CONSTANTS_GLOBAL_H
