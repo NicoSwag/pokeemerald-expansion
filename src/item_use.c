@@ -70,6 +70,7 @@ static void UseTMHM(u8);
 static void Task_StartUseRepel(u8);
 static void Task_StartUseLure(u8 taskId);
 static void Task_UseRepel(u8);
+void Cycle_Through_Repels(void);
 static void Task_UseLure(u8 taskId);
 static void Task_CloseCantUseKeyItemMessage(u8);
 static void SetDistanceOfClosestHiddenItem(u8, s16, s16);
@@ -877,6 +878,7 @@ static void Task_UseRepel(u8 taskId)
     if (!IsSEPlaying())
     {
         VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_ItemId));
+        VarSet(VAR_REPEL_LAST_USED, gSpecialVar_ItemId);
     #if VAR_LAST_REPEL_LURE_USED != 0
         VarSet(VAR_LAST_REPEL_LURE_USED, gSpecialVar_ItemId);
     #endif
@@ -887,6 +889,25 @@ static void Task_UseRepel(u8 taskId)
             DisplayItemMessageInBattlePyramid(taskId, gStringVar4, Task_CloseBattlePyramidBagMessage);
     }
 }
+
+ void Cycle_Through_Repels(void){
+
+     u16 RepelCycle[] = {ITEM_REPEL, ITEM_SUPER_REPEL, ITEM_MAX_REPEL};    
+     u8 i = 0;
+
+    while (gSpecialVar_Result == FALSE){
+         gSpecialVar_Result = CheckBagHasItem(RepelCycle[i],1);
+         if (gSpecialVar_Result == TRUE)
+             VarSet(VAR_REPEL_LAST_USED, RepelCycle[i]);
+            i++;
+         if (i > 2)
+             return;
+     }
+
+     return;
+ }
+
+
 void HandleUseExpiredRepel(void)
 {
 #if VAR_LAST_REPEL_LURE_USED != 0
