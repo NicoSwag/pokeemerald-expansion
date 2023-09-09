@@ -256,6 +256,10 @@ static const u8 sBlizzardDescription[] = _(
     "storm that may freeze it.");
 #endif
 
+static const u8 sNaturesMaliceDescription[] = _(
+    "Hits the foe with the grudge\n"
+    "of nature.");
+
 static const u8 sPsybeamDescription[] = _(
     "Fires a peculiar ray that\n"
     "may confuse the foe.");
@@ -979,6 +983,10 @@ static const u8 sTwisterDescription[] = _(
 static const u8 sRainDanceDescription[] = _(
     "Boosts the power of Water-\n"
     "type moves for 5 turns.");
+
+static const u8 sAcidRainDescription[] = _(
+    "Summons pollution for 5\n"
+    "turns.");
 
 static const u8 sSunnyDayDescription[] = _(
     "Boosts the power of Fire-\n"
@@ -3355,6 +3363,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_SURF - 1] = sSurfDescription,
     [MOVE_ICE_BEAM - 1] = sIceBeamDescription,
     [MOVE_BLIZZARD - 1] = sBlizzardDescription,
+    [MOVE_NATURES_MALICE - 1] = sNaturesMaliceDescription,
     [MOVE_PSYBEAM - 1] = sPsybeamDescription,
     [MOVE_BUBBLE_BEAM - 1] = sBubbleBeamDescription,
     [MOVE_AURORA_BEAM - 1] = sAuroraBeamDescription,
@@ -3536,6 +3545,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_CROSS_CHOP - 1] = sCrossChopDescription,
     [MOVE_TWISTER - 1] = sTwisterDescription,
     [MOVE_RAIN_DANCE - 1] = sRainDanceDescription,
+    [MOVE_ACID_RAIN - 1] = sAcidRainDescription,
     [MOVE_SUNNY_DAY - 1] = sSunnyDayDescription,
     [MOVE_CRUNCH - 1] = sCrunchDescription,
     [MOVE_MIRROR_COAT - 1] = sMirrorCoatDescription,

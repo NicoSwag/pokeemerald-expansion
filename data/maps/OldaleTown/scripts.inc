@@ -1,6 +1,7 @@
 .set LOCALID_MART_EMPLOYEE, 2
 .set LOCALID_FOOTPRINTS_MAN, 3
 .set LOCALID_RIVAL, 4
+.set LOCALID_LEDYBA, 7
 
 OldaleTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, OldaleTown_OnTransition
@@ -12,6 +13,7 @@ OldaleTown_OnTransition:
 	call_if_unset FLAG_RECEIVED_EEVEE, OldaleTown_EventScript_BlockWestEntrance
 	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
+	call_if_set FLAG_HELPED_LEDYBA, OldaleTown_EventScript_LedybaFlip
 	end
 
 @ This script seems pointless because nothing uses VAR_OLDALE_TOWN_STATE
@@ -19,6 +21,44 @@ OldaleTown_EventScript_SetOldaleState::
 	setvar VAR_OLDALE_TOWN_STATE, 1
 	return
 
+OldaleTown_EventScript_LedybaFlip::
+	setobjectmovementtype LOCALID_LEDYBA, MOVEMENT_TYPE_FACE_DOWN
+	return
+
+OldaleTown_EventScript_Ledyba::
+ call_if_set FLAG_HELPED_LEDYBA, OldaleTown_EventScript_LedybaGrateful
+ call OldaleTown_EventScript_HelpingLedyba
+ end
+
+OldaleTown_EventScript_HelpingLedyba::
+	lock
+	msgbox OldaleTown_Text_WantToHelpLedyba, MSGBOX_DEFAULT
+	waitmessage
+	msgbox OldaleTown_Text_YesOrNoLedyba, MSGBOX_YESNO
+	waitmessage
+	goto_if_eq VAR_RESULT, YES, OldaleTown_EventScript_LedybaGetUp
+	release
+	end
+
+
+OldaleTown_EventScript_LedybaGetUp::	
+	applymovement LOCALID_LEDYBA, OldaleTown_Movement_Ledyba
+	waitmovement 0
+	applymovement LOCALID_LEDYBA, Common_Movement_ExclamationMark
+	waitmovement 0
+	msgbox OldaleTown_Text_LedybaPresent, MSGBOX_NPC
+	waitmessage
+	giveitem ITEM_HEART_SCALE
+	call_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_BagIsFull
+	setflag FLAG_HELPED_LEDYBA
+	release
+	end
+	
+OldaleTown_EventScript_LedybaGrateful::
+	lockall
+	msgbox OldaleTown_Text_LedybaHello, MSGBOX_NPC
+	release
+	end
 
 OldaleTown_EventScript_BlockWestEntrance::
 	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 0, 11
@@ -423,6 +463,18 @@ OldaleTown_Movement_ReturnToOriginalPosition:
 	walk_left
 	step_end
 
+OldaleTown_Movement_Ledyba:
+	face_down
+	delay_16
+	face_left
+	delay_16
+	face_right
+	delay_16
+	face_down
+	delay_16
+	step_end
+	
+
 OldaleTown_Text_SavingMyProgress:
 	.string "I want to take a rest, so I'm saving my\n"
 	.string "progress.$"
@@ -487,3 +539,20 @@ OldaleTown_Text_BrendanLetsGoBack:
 OldaleTown_Text_TownSign:
 	.string "OLDALE TOWN\n"
 	.string "“Where things start off scarce.”$"
+
+OldaleTown_Text_WantToHelpLedyba:
+	.string "An upside down LEDYBA is lying on\n"
+	.string "the grass…$"
+
+OldaleTown_Text_YesOrNoLedyba:
+	.string "Do you want to help it get back up?$"
+
+OldaleTown_Text_LedybaPresent:
+	.string "LEDYBA looks grateful.\p"
+	.string "Oh, but what's this?\n"
+	.string "It seems like LEDYBA is offering you\l"
+	.string "a gift!$"
+
+OldaleTown_Text_LedybaHello:
+	.string "LEDYBA is waving to you with all six\n"
+	.string "of its hands.$"

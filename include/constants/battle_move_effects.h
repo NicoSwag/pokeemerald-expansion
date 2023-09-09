@@ -412,6 +412,7 @@
 #define EFFECT_AURA_SPHERE                  406
 #define EFFECT_SNAP_TRAP                    407
 #define EFFECT_NUMBING_KISS                 408
-#define NUM_BATTLE_MOVE_EFFECTS             409
+#define EFFECT_ACID_RAIN                   409
+#define NUM_BATTLE_MOVE_EFFECTS             410
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

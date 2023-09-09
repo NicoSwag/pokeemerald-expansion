@@ -435,6 +435,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectHit					  @EFFECT_AURA_SPHERE
 	.4byte BattleScript_EffectSnapTrap                @ EFFECT_SNAP_TRAP
 	.4byte BattleScript_EffectNumbingKiss			  @ EFFECT_NUMBING_KISS
+	.4byte BattleScript_EffectAcidRain			  	@ EFFECT_ACID_RAIN
 
 BattleScript_EffectRevivalBlessing::
 	attackcanceler
@@ -2104,6 +2105,17 @@ BattleScript_EffectNumbingKiss::
 	tryfaintmon BS_ATTACKER
 	tryfaintmon BS_TARGET
 	goto BattleScript_MoveEnd
+
+BattleScript_EffectAcidRain::
+	attackcanceler
+	attackstring
+	ppreduce
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN_PRIMAL, BattleScript_ExtremelyHarshSunlightWasNotLessened
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_NoReliefFromHeavyRain
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
+	setpollution
+	goto BattleScript_MoveWeatherChange
+
 
 
 BattleScript_EffectHitEnemyHealAlly:
@@ -4227,6 +4239,7 @@ BattleScript_EffectConfuse:
 	attackstring
 	ppreduce
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_OwnTempoPrevents
+	jumpiftype BS_TARGET, TYPE_BUG, BattleScript_ButItFailed
 	jumpifsubstituteblocks BattleScript_ButItFailed
 	jumpifstatus2 BS_TARGET, STATUS2_CONFUSION, BattleScript_AlreadyConfused
 	jumpifterrainaffected BS_TARGET, STATUS_FIELD_MISTY_TERRAIN, BattleScript_MistyTerrainPrevents
@@ -5088,6 +5101,7 @@ BattleScript_EffectSwagger::
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_SwaggerTryConfuse:
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_OwnTempoPrevents
+	jumpiftype BS_TARGET, TYPE_BUG, BattleScript_ButItFailed
 	jumpifsafeguard BattleScript_SafeguardProtected
 	setmoveeffect MOVE_EFFECT_CONFUSION
 	seteffectprimary
@@ -5809,6 +5823,7 @@ BattleScript_EffectFlatter::
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_FlatterTryConfuse::
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_OwnTempoPrevents
+	jumpiftype BS_TARGET, TYPE_BUG, BattleScript_ButItFailed
 	jumpifsafeguard BattleScript_SafeguardProtected
 	setmoveeffect MOVE_EFFECT_CONFUSION
 	seteffectprimary
@@ -6249,6 +6264,7 @@ BattleScript_TeeterDanceLoop::
 	setmoveeffect MOVE_EFFECT_CONFUSION
 	jumpifbyteequal gBattlerAttacker, gBattlerTarget, BattleScript_TeeterDanceLoopIncrement
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_TeeterDanceOwnTempoPrevents
+	jumpiftype BS_TARGET, TYPE_BUG, BattleScript_ButItFailed
 	jumpifsubstituteblocks BattleScript_TeeterDanceSubstitutePrevents
 	jumpifstatus2 BS_TARGET, STATUS2_CONFUSION, BattleScript_TeeterDanceAlreadyConfused
 	jumpifhasnohp BS_TARGET, BattleScript_TeeterDanceLoopIncrement
@@ -6918,6 +6934,21 @@ BattleScript_RainContinuesOrEnds::
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_RAIN_STOPPED, BattleScript_RainContinuesOrEndsEnd
 	playanimation BS_ATTACKER, B_ANIM_RAIN_CONTINUES
 BattleScript_RainContinuesOrEndsEnd::
+	call BattleScript_ActivateWeatherAbilities
+	end2
+
+
+BattleScript_PollutionContinues::
+	printstring STRINGID_POLLUTIONSEEPS
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_ATTACKER, B_ANIM_POLLUTION_CONTINUES
+	call BattleScript_ActivateWeatherAbilities
+	goto BattleScript_DamagingWeatherLoop
+	end2
+
+BattleScript_PollutionEnds::
+	printstring STRINGID_POLLUTIONSTOPPED
+	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_ActivateWeatherAbilities
 	end2
 
@@ -8758,6 +8789,15 @@ BattleScript_SandstreamActivates::
 	printstring STRINGID_PKMNSXWHIPPEDUPSANDSTORM
 	waitstate
 	playanimation BS_BATTLER_0, B_ANIM_SANDSTORM_CONTINUES
+	call BattleScript_ActivateWeatherAbilities
+	end3
+
+BattleScript_PollutionActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_POLLUTEDTHEAIR
+	waitstate
+	playanimation BS_BATTLER_0, B_ANIM_POLLUTION_CONTINUES
 	call BattleScript_ActivateWeatherAbilities
 	end3
 
@@ -10696,6 +10736,7 @@ BattleScript_BerserkGeneRet_Anim:
 	call BattleScript_StatUp
 BattleScript_BerserkGeneRet_TryConfuse:
 	jumpifability BS_SCRIPTING, ABILITY_OWN_TEMPO, BattleScript_BerserkGeneRet_OwnTempoPrevents
+	jumpiftype BS_TARGET, TYPE_BUG, BattleScript_ButItFailed
 	jumpifsafeguard BattleScript_BerserkGeneRet_SafeguardProtected
 	setmoveeffect MOVE_EFFECT_CONFUSION
 	seteffectprimary

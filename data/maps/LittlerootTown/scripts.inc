@@ -998,8 +998,9 @@ LittlerootTown_Text_CanYouGoSeeWhatsHappening:
 	.string "for me?$"
 
 LittlerootTown_Text_YouSavedBirch:
-	.string "You saved PROF. BIRCH!\n"
-	.string "I'm so glad!$"
+	.string "POKéMON that live in towns are\n"
+	.string "peaceful, but you have to be\l"
+	.string "careful when venturing out!$"
 
 LittlerootTown_Text_Sunflora:
 	.string "A perfectly normal flower.\n"

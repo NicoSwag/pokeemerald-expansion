@@ -207,6 +207,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GroudonAsle
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rayquaza;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Zigzagoon;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hoothoot;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ledyba;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunflora;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pikachu;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Azumarill;
@@ -226,6 +227,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MysteryEven
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Statue;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kirlia;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Dusclops;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Slugma;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnionRoomAttendant;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sudowoodo;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mew;
@@ -457,6 +459,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RAYQUAZA] =                 &gObjectEventGraphicsInfo_Rayquaza,
     [OBJ_EVENT_GFX_ZIGZAGOON_2] =              &gObjectEventGraphicsInfo_Zigzagoon,
     [OBJ_EVENT_GFX_HOOTHOOT] =                 &gObjectEventGraphicsInfo_Hoothoot,
+    [OBJ_EVENT_GFX_LEDYBA] =                 &gObjectEventGraphicsInfo_Ledyba,
     [OBJ_EVENT_GFX_SUNFLORA] =                 &gObjectEventGraphicsInfo_Sunflora,
     [OBJ_EVENT_GFX_PIKACHU] =                  &gObjectEventGraphicsInfo_Pikachu,
     [OBJ_EVENT_GFX_AZUMARILL] =                &gObjectEventGraphicsInfo_Azumarill,
@@ -476,6 +479,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_TRICK_HOUSE_STATUE] =       &gObjectEventGraphicsInfo_Statue,
     [OBJ_EVENT_GFX_KIRLIA] =                   &gObjectEventGraphicsInfo_Kirlia,
     [OBJ_EVENT_GFX_DUSCLOPS] =                 &gObjectEventGraphicsInfo_Dusclops,
+    [OBJ_EVENT_GFX_SLUGMA] =                   &gObjectEventGraphicsInfo_Slugma,
     [OBJ_EVENT_GFX_UNION_ROOM_NURSE] =         &gObjectEventGraphicsInfo_UnionRoomAttendant,
     [OBJ_EVENT_GFX_SUDOWOODO] =                &gObjectEventGraphicsInfo_Sudowoodo,
     [OBJ_EVENT_GFX_MEW] =                      &gObjectEventGraphicsInfo_Mew,

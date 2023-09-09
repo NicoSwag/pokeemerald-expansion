@@ -99,6 +99,7 @@ static const struct WeatherCallbacks sWeatherFuncs[] =
     [WEATHER_DROUGHT]            = {Drought_InitVars,       Drought_Main,       Drought_InitAll,       Drought_Finish},
     [WEATHER_DOWNPOUR]           = {Downpour_InitVars,      Thunderstorm_Main,  Downpour_InitAll,      Thunderstorm_Finish},
     [WEATHER_UNDERWATER_BUBBLES] = {Bubbles_InitVars,       Bubbles_Main,       Bubbles_InitAll,       Bubbles_Finish},
+    [WEATHER_POLLUTION]     = {FogHorizontal_InitVars, FogHorizontal_Main, FogHorizontal_InitAll, FogHorizontal_Finish},
 };
 
 void (*const gWeatherPalStateFuncs[])(void) =
@@ -397,6 +398,7 @@ static void FadeInScreenWithWeather(void)
             gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
         }
         break;
+    case WEATHER_POLLUTION:
     case WEATHER_FOG_HORIZONTAL:
         if (FadeInScreen_FogHorizontal() == FALSE)
         {
@@ -1033,6 +1035,9 @@ static void SetFieldWeather(u8 weather)
         break;
     case COORD_EVENT_WEATHER_SHADE:
         SetWeather(WEATHER_SHADE);
+        break;
+    case COORD_EVENT_WEATHER_POLLUTION:
+        SetWeather(WEATHER_POLLUTION);
         break;
     }
 }

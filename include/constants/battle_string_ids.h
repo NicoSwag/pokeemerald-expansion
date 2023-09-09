@@ -669,8 +669,16 @@
 #define STRINGID_SLEEPHEALHPUP                        667
 #define STRINGID_SNAPTRAPHURT                         668
 #define STRINGID_DEFENDERLOSTSTEELTYPE                669
+#define STRINGID_POLLUTIONSTOPPED                     670
+#define STRINGID_POLLUTIONCONTINUES                   671
+#define STRINGID_POLLUTIONSEEPS                       672
+#define STRINGID_SUMMONEDPOLLUTION                    673
+#define STRINGID_POLLUTEDTHEAIR                       674
+#define STRINGID_PKMNDAMAGEDPOLLUTION                 675
 
-#define BATTLESTRINGS_COUNT                           670
+
+
+#define BATTLESTRINGS_COUNT                           676
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -737,6 +745,7 @@
 #define B_MSG_STARTED_SUNLIGHT  4
 #define B_MSG_STARTED_HAIL      5
 #define B_MSG_STARTED_SNOW      6
+#define B_MSG_STARTED_POLLUTION 7
 
 // gRainContinuesStringIds
 #define B_MSG_RAIN_CONTINUES     0
@@ -747,6 +756,9 @@
 #define B_MSG_SANDSTORM  0
 #define B_MSG_HAIL       1
 #define B_MSG_SNOW       2
+#define B_MSG_POLLUTION  3
+
+
 
 // gReflectLightScreenSafeguardStringIds
 #define B_MSG_SIDE_STATUS_FAILED     0

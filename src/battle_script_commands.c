@@ -1855,6 +1855,11 @@ static bool32 AccuracyCalcHelper(u16 move)
 
     if (WEATHER_HAS_EFFECT)
     {
+        if((IsBattlerWeatherAffected(gBattlerTarget, B_WEATHER_POLLUTION)) && (move == MOVE_NATURES_MALICE)){
+            JumpIfMoveFailed(7, move);
+            return TRUE;
+        }
+        
         if ((IsBattlerWeatherAffected(gBattlerTarget, B_WEATHER_RAIN) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE)))
         {
             // thunder/hurricane ignore acc checks in rain unless target is holding utility umbrella
@@ -3359,6 +3364,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                         BattleScriptPush(gBattlescriptCurrInstr + 1);
                         gBattlescriptCurrInstr = sMoveEffectBS_Ptrs[gBattleScripting.moveEffect];
                     }
+                    
                 }
                 break;
             case MOVE_EFFECT_FLINCH:
@@ -3371,6 +3377,12 @@ void SetMoveEffect(bool32 primary, u32 certain)
                         RecordAbilityBattle(gEffectBattler, ABILITY_INNER_FOCUS);
                         gBattlescriptCurrInstr = BattleScript_FlinchPrevention;
                     }
+                    else if (gBattleMons[gEffectBattler].type1 == TYPE_PSYCHIC
+                            || gBattleMons[gEffectBattler].type2 == TYPE_PSYCHIC)
+                    {
+                        gBattlescriptCurrInstr = BattleScript_MoveEnd;
+                    }
+                    
                     else
                     {
                         gBattlescriptCurrInstr++;
@@ -4120,6 +4132,8 @@ static void Cmd_cleareffectsonfaint(void)
         if(gBattleMons[gActiveBattler].ability==ABILITY_DROUGHT && gBattleMons[gActiveBattler].canWeatherChange == TRUE && B_WEATHER_SUN)
             gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[gActiveBattler].ability==ABILITY_DRIZZLE && gBattleMons[gActiveBattler].canWeatherChange == TRUE && B_WEATHER_RAIN)
+            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
+        if(gBattleMons[gActiveBattler].ability==ABILITY_NOXIOUS_FUMES && gBattleMons[gActiveBattler].canWeatherChange == TRUE && B_WEATHER_POLLUTION)
             gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[gActiveBattler].ability==ABILITY_SAND_STREAM && gBattleMons[gActiveBattler].canWeatherChange == TRUE && B_WEATHER_SANDSTORM)
             gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
@@ -5277,6 +5291,7 @@ static void Cmd_playanimation(void)
     else if (animId == B_ANIM_RAIN_CONTINUES
           || animId == B_ANIM_SUN_CONTINUES
           || animId == B_ANIM_SANDSTORM_CONTINUES
+          || animId == B_ANIM_POLLUTION_CONTINUES
           || animId == B_ANIM_HAIL_CONTINUES
           || animId == B_ANIM_SNOW_CONTINUES)
     {
@@ -5327,6 +5342,7 @@ static void Cmd_playanimation_var(void)
     else if (*animIdPtr == B_ANIM_RAIN_CONTINUES
           || *animIdPtr == B_ANIM_SUN_CONTINUES
           || *animIdPtr == B_ANIM_SANDSTORM_CONTINUES
+          || *animIdPtr == B_ANIM_POLLUTION_CONTINUES
           || *animIdPtr == B_ANIM_HAIL_CONTINUES
           || *animIdPtr == B_ANIM_SNOW_CONTINUES)
     {
@@ -12883,6 +12899,20 @@ static void Cmd_weatherdamage(void)
                     gBattleMoveDamage = 1;
             }
         }
+        if (gBattleWeather & B_WEATHER_POLLUTION)
+        {
+            if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_POISON)
+                && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST)
+                && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_DARK)
+                && ability != ABILITY_OVERCOAT
+                && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
+                && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
+            {
+                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+            }
+        }
         if (gBattleWeather & B_WEATHER_HAIL)
         {
             if (ability == ABILITY_ICE_BODY
@@ -15095,6 +15125,12 @@ static void Cmd_switchoutabilities(void)
                 gBattleWeather = gBattleStruct->weatherStore;
             }
         break;
+        case ABILITY_NOXIOUS_FUMES:
+            if(B_WEATHER_POLLUTION && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
+                
+                gBattleWeather = gBattleStruct->weatherStore;
+            }
+        break;
         case ABILITY_BLACK_HOLE:
             if(gFieldStatuses & STATUS_FIELD_GRAVITY && gBattleMons[gActiveBattler].canGravityChange == TRUE){
                 
@@ -16848,6 +16884,23 @@ void BS_SetSnow(void)
     else
     {
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_SNOW;
+    }
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_SetPollution(void)
+{
+    NATIVE_ARGS();
+
+    if (!TryChangeBattleWeather(gBattlerAttacker, ENUM_WEATHER_POLLUTION, FALSE))
+    {
+        gMoveResultFlags |= MOVE_RESULT_MISSED;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_FAILED;
+
+    }
+    else
+    {
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_POLLUTION;
     }
     gBattlescriptCurrInstr = cmd->nextInstr;
 }

@@ -70,6 +70,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_DOWNLOAD] = 7,
     [ABILITY_DRIZZLE] = 9,
     [ABILITY_DROUGHT] = 9,
+    [ABILITY_NOXIOUS_FUMES] = 9,
     [ABILITY_BLACK_HOLE] = 9,
     [ABILITY_SUN_WITHIN] = 8,
     [ABILITY_DRY_SKIN] = 6,
@@ -211,6 +212,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_SKILL_LINK] = 7,
     [ABILITY_SLOW_START] = -2,
     [ABILITY_SLUSH_RUSH] = 5,
+    [ABILITY_FOUL_RUSH] = 5,
     [ABILITY_SNIPER] = 3,
     [ABILITY_SNOW_CLOAK] = 3,
     [ABILITY_SNOW_WARNING] = 8,
@@ -336,6 +338,7 @@ static const u16 sEncouragedEncoreEffects[] =
     EFFECT_ATTRACT,
     EFFECT_SAFEGUARD,
     EFFECT_RAIN_DANCE,
+    EFFECT_ACID_RAIN,
     EFFECT_SUNNY_DAY,
     EFFECT_BELLY_DRUM,
     EFFECT_PSYCH_UP,
@@ -1540,9 +1543,10 @@ bool32 IsMoveEncouragedToHit(u8 battlerAtk, u8 battlerDef, u16 move)
 
     // increased accuracy but don't always hit
     if ((AI_WeatherHasEffect() &&
-            (((gBattleWeather & B_WEATHER_RAIN) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))
-            || (((gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)) && move == MOVE_BLIZZARD))))
-        || (gBattleMoves[move].effect == EFFECT_VITAL_THROW)
+            (((gBattleWeather & B_WEATHER_POLLUTION) && (move == MOVE_NATURES_MALICE))
+            ||  ((gBattleWeather & B_WEATHER_RAIN) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))
+            || ((gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)) && move == MOVE_BLIZZARD)))
+            || (gBattleMoves[move].effect == EFFECT_VITAL_THROW)
     #if B_MINIMIZE_DMG_ACC >= GEN_6
         || ((gStatuses3[battlerDef] & STATUS3_MINIMIZED) && (gBattleMoves[move].flags & FLAG_DMG_MINIMIZE))
     #endif
@@ -1701,6 +1705,28 @@ bool32 ShouldSetSnow(u8 battler, u16 ability, u16 holdEffect)
       || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
       || HasMove(battler, MOVE_BLIZZARD)
       || HasMoveEffect(battler, EFFECT_AURORA_VEIL)
+      || HasMoveEffect(battler, EFFECT_WEATHER_BALL))
+    {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool32 ShouldSetPollution(u8 battler, u16 ability, u16 holdEffect)
+{
+    if (!AI_WeatherHasEffect())
+        return FALSE;
+    else if (gBattleWeather & (B_WEATHER_POLLUTION))
+        return FALSE;
+
+    if (ability == ABILITY_FOUL_RUSH
+      || ability == ABILITY_POISON_HEAL
+      || IS_BATTLER_OF_TYPE(battler, TYPE_POISON)
+      || IS_BATTLER_OF_TYPE(battler, TYPE_GHOST)
+      || IS_BATTLER_OF_TYPE(battler, TYPE_DARK)
+      || HasMove(battler, MOVE_NATURES_MALICE)
+      || HasMove(battler, MOVE_VENOSHOCK)
+      || HasMove(battler, MOVE_HEX)
       || HasMoveEffect(battler, EFFECT_WEATHER_BALL))
     {
         return TRUE;
@@ -2922,7 +2948,9 @@ bool32 AI_CanBeConfused(u8 battler, u16 ability)
 {
     if ((gBattleMons[battler].status2 & STATUS2_CONFUSION)
       || (ability == ABILITY_OWN_TEMPO)
-      || (IsBattlerGrounded(battler) && (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)))
+      || (IsBattlerGrounded(battler) && (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN))
+      || gBattleMons[battler].type1 == TYPE_BUG
+      || gBattleMons[battler].type2 == TYPE_BUG)
         return FALSE;
     return TRUE;
 }
@@ -3020,7 +3048,9 @@ u32 ShouldTryToFlinch(u8 battlerAtk, u8 battlerDef, u16 atkAbility, u16 defAbili
 {
     if (defAbility == ABILITY_INNER_FOCUS
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
-      || AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER) // Opponent goes first
+      || AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER
+        || gBattleMons[battlerDef].type1 == TYPE_PSYCHIC
+        || gBattleMons[battlerDef].type2 == TYPE_PSYCHIC) // Opponent goes first
     {
         return 0;   // don't try to flinch
     }

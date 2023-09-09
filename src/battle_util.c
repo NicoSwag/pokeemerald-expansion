@@ -2035,6 +2035,7 @@ enum
     ENDTURN_SUN,
     ENDTURN_HAIL,
     ENDTURN_SNOW,
+    ENDTURN_POLLUTION,
     ENDTURN_GRAVITY,
     ENDTURN_WATER_SPORT,
     ENDTURN_MUD_SPORT,
@@ -2335,7 +2336,7 @@ u8 DoFieldEndTurnEffects(void)
                 effect++;
             }
             gBattleStruct->turnCountersTracker++;
-            break;
+            break;     
         case ENDTURN_SANDSTORM:
             if (gBattleWeather & B_WEATHER_SANDSTORM)
             {
@@ -2425,6 +2426,43 @@ u8 DoFieldEndTurnEffects(void)
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SNOW;
                 BattleScriptExecute(gBattlescriptCurrInstr);
                 effect++;
+            }
+            gBattleStruct->turnCountersTracker++;
+            break;
+        case ENDTURN_POLLUTION:
+            if (gBattleWeather & B_WEATHER_POLLUTION)
+            {
+                if (!(gBattleWeather & B_WEATHER_POLLUTION_PERMANENT) && --gWishFutureKnock.weatherDuration == 0)
+                {
+                    for (i = 0; i < gBattlersCount; i++){
+                        gBattleMons[i].canWeatherChange = FALSE;
+                    }
+                    gBattleWeather = gBattleStruct->weatherStore;
+                    gBattlescriptCurrInstr = BattleScript_PollutionEnds;
+                }
+                else
+                {
+                    gBattlescriptCurrInstr = BattleScript_PollutionContinues;
+                    if ((GetBattlerAbility(gActiveBattler) == ABILITY_POISON_HEAL)
+                    && (gBattleMons[gActiveBattler].status1 != (STATUS1_POISON && STATUS1_TOXIC_POISON)))
+                    {
+                        if (!BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK))
+                            {
+                                gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
+                                if (gBattleMoveDamage == 0)
+                                    gBattleMoveDamage = 1;
+                             gBattleMoveDamage *= -1;
+                                BattleScriptExecute(BattleScript_PoisonHealActivates);
+                                effect++;
+                            }
+                    }
+                }
+                gBattleScripting.animArg1 = B_ANIM_POLLUTION_CONTINUES;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_POLLUTION;
+                BattleScriptExecute(gBattlescriptCurrInstr);
+                effect++;
+
+                
             }
             gBattleStruct->turnCountersTracker++;
             break;
@@ -4057,6 +4095,7 @@ static const u16 sWeatherFlagsInfo[][3] =
     [ENUM_WEATHER_HAIL] = {B_WEATHER_HAIL_TEMPORARY, B_WEATHER_HAIL_PERMANENT, HOLD_EFFECT_ICY_ROCK},
     [ENUM_WEATHER_STRONG_WINDS] = {B_WEATHER_STRONG_WINDS, B_WEATHER_STRONG_WINDS, HOLD_EFFECT_NONE},
     [ENUM_WEATHER_SNOW] = {B_WEATHER_SNOW_TEMPORARY, B_WEATHER_SNOW_PERMANENT, HOLD_EFFECT_ICY_ROCK},
+    [ENUM_WEATHER_POLLUTION] = {B_WEATHER_POLLUTION_TEMPORARY, B_WEATHER_POLLUTION_PERMANENT, HOLD_EFFECT_IRON_BALL},
 };
 
 static void ShouldChangeFormInWeather(u8 battler)
@@ -4312,6 +4351,14 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                     {
                         gBattleWeather = B_WEATHER_SANDSTORM;
                         gBattleScripting.animArg1 = B_ANIM_SANDSTORM_CONTINUES;
+                        effect++;
+                    }
+                    break;
+                    case WEATHER_POLLUTION:
+                    if (!(gBattleWeather & B_WEATHER_POLLUTION))
+                    {
+                        gBattleWeather = B_WEATHER_POLLUTION;
+                        gBattleScripting.animArg1 = B_ANIM_POLLUTION_CONTINUES;
                         effect++;
                     }
                     break;
@@ -4594,6 +4641,23 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
                 effect++;
             }
+            break;
+            case ABILITY_NOXIOUS_FUMES:
+                if(B_WEATHER_POLLUTION && !gSpecialStatuses[battler].switchInAbilityDone){
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                gBattleMons[battler].canWeatherChange = FALSE;}
+                    if (TryChangeBattleWeather(battler, ENUM_WEATHER_POLLUTION, TRUE))
+                    {
+                        BattleScriptPushCursorAndCallback(BattleScript_PollutionActivates);
+                        effect++;
+                        gBattleMons[battler].canWeatherChange = TRUE;
+                    }
+                    else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT && !gSpecialStatuses[battler].switchInAbilityDone)
+                    {
+                        gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                        BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
+                        effect++;
+                    }
             break;
         case ABILITY_DROUGHT:
             if(B_WEATHER_SUN && !gSpecialStatuses[battler].switchInAbilityDone){
@@ -6630,7 +6694,9 @@ bool32 CanBeConfused(u8 battlerId)
 {
     if (GetBattlerAbility(battlerId) == ABILITY_OWN_TEMPO
       || gBattleMons[battlerId].status2 & STATUS2_CONFUSION
-      || IsBattlerTerrainAffected(battlerId, STATUS_FIELD_MISTY_TERRAIN))
+      || IsBattlerTerrainAffected(battlerId, STATUS_FIELD_MISTY_TERRAIN
+      || gBattleMons[battlerId].type1 == TYPE_BUG
+      || gBattleMons[battlerId].type2 == TYPE_BUG))
         return FALSE;
     return TRUE;
 }
@@ -8814,7 +8880,7 @@ static u16 CalcMoveBasePower(u16 move, u8 battlerAtk, u8 battlerDef)
         basePower = 120 * gBattleMons[battlerDef].hp / gBattleMons[battlerDef].maxHP;
         break;
     case EFFECT_HEX:
-        if (gBattleMons[battlerDef].status1 & STATUS1_ANY || GetBattlerAbility(battlerDef) == ABILITY_COMATOSE)
+        if (gBattleMons[battlerDef].status1 & STATUS1_ANY || GetBattlerAbility(battlerDef) == ABILITY_COMATOSE || IsBattlerWeatherAffected(battlerDef, B_WEATHER_POLLUTION))
             basePower *= 2;
         break;
     case EFFECT_ASSURANCE:
@@ -9320,7 +9386,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         break;
     case EFFECT_BARB_BARRAGE:
     case EFFECT_VENOSHOCK:
-        if (gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
+        if ((gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY) || IsBattlerWeatherAffected(battlerDef, B_WEATHER_POLLUTION))
             MulModifier(&modifier, UQ_4_12(2.0));
         break;
     case EFFECT_RETALIATE:
@@ -9328,7 +9394,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
             MulModifier(&modifier, UQ_4_12(2.0));
         break;
     case EFFECT_SOLAR_BEAM:
-        if (IsBattlerWeatherAffected(battlerAtk, (B_WEATHER_HAIL | B_WEATHER_SANDSTORM | B_WEATHER_RAIN | B_WEATHER_SNOW)))
+        if (IsBattlerWeatherAffected(battlerAtk, (B_WEATHER_HAIL | B_WEATHER_SANDSTORM | B_WEATHER_RAIN | B_WEATHER_SNOW | B_WEATHER_POLLUTION)))
             MulModifier(&modifier, UQ_4_12(0.5));
         break;
     case EFFECT_STOMPING_TANTRUM:
@@ -9697,7 +9763,7 @@ static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, 
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_SNOW_CLOAK:
-        if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SNOW) && usesDefStat)
+        if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SNOW) && !usesDefStat)
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_PUNK_ROCK:
@@ -9720,7 +9786,7 @@ static u32 CalcDefenseStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, 
                 MulModifier(&modifier, UQ_4_12(1.5));
             break;
         case ABILITY_SNOW_CLOAK:
-            if (IsBattlerWeatherAffected(BATTLE_PARTNER(battlerDef), B_WEATHER_SUN) && usesDefStat)
+            if (IsBattlerWeatherAffected(BATTLE_PARTNER(battlerDef), B_WEATHER_SUN) && !usesDefStat)
                 MulModifier(&modifier, UQ_4_12(1.5));
             break;
         }
@@ -9839,7 +9905,14 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
             dmg = ApplyModifier(UQ_4_12(1.5), dmg);
         else if (moveType == TYPE_WATER)
             dmg = ApplyModifier(UQ_4_12(0.5), dmg);
+    
     }
+    else if (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_POLLUTION))
+    {
+        if (moveType == TYPE_FAIRY)
+            dmg = ApplyModifier(UQ_4_12(0.5), dmg);
+    }
+
 
     // check stab
     if (IS_BATTLER_OF_TYPE(battlerAtk, moveType) && move != MOVE_STRUGGLE && move != MOVE_NONE)
@@ -10054,6 +10127,8 @@ static void MulByTypeEffectiveness(u16 *modifier, u16 move, u8 moveType, u8 batt
     if (moveType == TYPE_PSYCHIC && defType == TYPE_DARK && gStatuses3[battlerDef] & STATUS3_MIRACLE_EYED && mod == UQ_4_12(0.0))
         mod = UQ_4_12(1.0);
     if (gBattleMoves[move].effect == EFFECT_FREEZE_DRY && defType == TYPE_WATER)
+        mod = UQ_4_12(2.0);
+    if (move == MOVE_EXTRASENSORY && defType == TYPE_STEEL)
         mod = UQ_4_12(2.0);
     if (moveType == TYPE_GROUND && defType == TYPE_FLYING && IsBattlerGrounded(battlerDef) && mod == UQ_4_12(0.0))
         mod = UQ_4_12(1.0);

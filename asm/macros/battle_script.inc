@@ -1353,6 +1353,10 @@
 	.macro setsnow
 	callnative BS_SetSnow
 	.endm
+
+	.macro setpollution
+	callnative BS_SetPollution
+	.endm
 	
 	.macro setzeffect
 	callnative BS_SetZEffect

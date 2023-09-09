@@ -1027,6 +1027,21 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
     },
 
+    [MOVE_NATURES_MALICE] =
+    {
+        .power = 110,
+        .effect = EFFECT_SPECIAL_ATTACK_DOWN_HIT,
+        .type = TYPE_DARK,
+        .accuracy = 70,
+        .pp = 5,
+        .secondaryEffectChance = 10,
+        .target = MOVE_TARGET_BOTH,
+        .priority = 0,
+        .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
+        .split = SPLIT_SPECIAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+    },
+
     [MOVE_PSYBEAM] =
     {
         .effect = EFFECT_CONFUSE_HIT,
@@ -4082,6 +4097,21 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_RAIN_DANCE,
         .power = 0,
         .type = TYPE_WATER,
+        .accuracy = 0,
+        .pp = 5,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_ALL_BATTLERS,
+        .priority = 0,
+        .flags = 0,
+        .split = SPLIT_STATUS,
+        .zMoveEffect = Z_EFFECT_SPD_UP_1,
+    },
+
+    [MOVE_ACID_RAIN] =
+    {
+        .effect = EFFECT_ACID_RAIN,
+        .power = 0,
+        .type = TYPE_POISON,
         .accuracy = 0,
         .pp = 5,
         .secondaryEffectChance = 0,

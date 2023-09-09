@@ -942,6 +942,7 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                 case MOVE_RAIN_DANCE:
                 case MOVE_HAIL:
                 case MOVE_SANDSTORM:
+                case MOVE_ACID_RAIN:
                     RETURN_SCORE_MINUS(30);
             }
         }
@@ -1578,6 +1579,11 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
              || PartnerMoveEffectIsWeather(BATTLE_PARTNER(battlerAtk), AI_DATA->partnerMove))
                 score -= 8;
             break;
+        case EFFECT_ACID_RAIN:
+            if (gBattleWeather & (B_WEATHER_POLLUTION | B_WEATHER_PRIMAL_ANY)
+             || PartnerMoveEffectIsWeather(BATTLE_PARTNER(battlerAtk), AI_DATA->partnerMove))
+                score -= 8;
+            break;
         case EFFECT_HAIL:
             if (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_PRIMAL_ANY)
              || PartnerMoveEffectIsWeather(BATTLE_PARTNER(battlerAtk), AI_DATA->partnerMove))
@@ -1820,7 +1826,7 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         case EFFECT_MORNING_SUN:
         case EFFECT_SYNTHESIS:
         case EFFECT_MOONLIGHT:
-            if (AI_WeatherHasEffect() && (gBattleWeather & (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_HAIL)))
+            if (AI_WeatherHasEffect() && (gBattleWeather & (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_HAIL | B_WEATHER_POLLUTION)))
                 score -= 3;
             else if (AtMaxHp(battlerAtk))
                 score -= 10;
@@ -2816,6 +2822,12 @@ static s16 AI_DoubleBattle(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
     case EFFECT_SNOWSCAPE:
         if (IsBattlerAlive(battlerAtkPartner)
          && ShouldSetSnow(battlerAtkPartner, atkPartnerAbility, atkPartnerHoldEffect))
+        {
+            RETURN_SCORE_PLUS(2);   // our partner benefits from snow
+        }
+    case EFFECT_ACID_RAIN:
+        if (IsBattlerAlive(battlerAtkPartner)
+         && ShouldSetPollution(battlerAtkPartner, atkPartnerAbility, atkPartnerHoldEffect))
         {
             RETURN_SCORE_PLUS(2);   // our partner benefits from snow
         }
@@ -4065,6 +4077,20 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                 score++;
         }
         break;
+        case EFFECT_ACID_RAIN:
+        if (ShouldSetSun(battlerAtk, AI_DATA->abilities[battlerAtk], AI_DATA->holdEffects[battlerAtk]))
+        {
+            score++;
+            if (HasMoveWithType(battlerDef, TYPE_POISON) || HasMoveWithType(BATTLE_PARTNER(battlerDef), TYPE_POISON))
+                score++;
+            if (HasMoveEffect(battlerDef, EFFECT_VENOSHOCK) || HasMoveEffect(BATTLE_PARTNER(battlerDef), EFFECT_VENOSHOCK))
+                score++;
+            if (HasMoveEffect(battlerDef, EFFECT_HEX) || HasMoveEffect(BATTLE_PARTNER(battlerDef), EFFECT_HEX))
+                score++;
+            if (HasMoveEffect(battlerDef, EFFECT_SUCKER_PUNCH) || HasMoveEffect(BATTLE_PARTNER(battlerDef), EFFECT_SUCKER_PUNCH))
+                score++;
+        }
+        break;
     case EFFECT_ATTACK_UP_HIT:
         if (sereneGraceBoost)
             IncreaseStatUpScore(battlerAtk, battlerDef, STAT_ATK, &score);
@@ -5021,6 +5047,7 @@ static s16 AI_SetupFirstTurn(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
     case EFFECT_DRAGON_DANCE:
     case EFFECT_STICKY_WEB:
     case EFFECT_RAIN_DANCE:
+    case EFFECT_ACID_RAIN:
     case EFFECT_SUNNY_DAY:
     case EFFECT_SANDSTORM:
     case EFFECT_HAIL:

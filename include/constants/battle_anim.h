@@ -546,6 +546,7 @@
 #define B_ANIM_AFFECTION_HANGED_ON      36
 #define B_ANIM_SNOW_CONTINUES           37
 #define B_ANIM_GRAVITY                  38
+#define B_ANIM_POLLUTION_CONTINUES      39
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0
@@ -594,6 +595,7 @@
 #define ANIM_WEATHER_SANDSTORM 3
 #define ANIM_WEATHER_HAIL 4
 #define ANIM_WEATHER_SNOW 5
+#define ANIM_WEATHER_POLLUTION 6
 
 // horseshoe/fist frames
 #define ANIM_RIGHT_FIST  0

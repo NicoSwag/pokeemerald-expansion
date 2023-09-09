@@ -862,6 +862,8 @@ gBattleAnims_Moves::
 	.4byte Move_BOULDER_TOSS
 	.4byte Move_AURA_SPHERE
 	.4byte Move_NUMBING_KISS
+	.4byte Move_ACID_RAIN
+	.4byte Move_NATURES_MALICE
 
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
@@ -956,6 +958,7 @@ gBattleAnims_General::
 	.4byte General_AffectionHangedOn        @ B_ANIM_AFFECTION_HANGED_ON
 	.4byte General_Snow                     @ B_ANIM_SNOW_CONTINUES
 	.4byte General_Gravity					@ B_ANIM_GRAVITY
+	.4byte General_Pollution                @ B_ANIM_POLLUTION_CONTINUES
 
 	.align 2
 gBattleAnims_Special::
@@ -23981,6 +23984,7 @@ Move_WEATHER_BALL:
 	jumpreteq ANIM_WEATHER_SANDSTORM, WeatherBallSandstorm
 	jumpreteq ANIM_WEATHER_HAIL, WeatherBallIce
 	jumpreteq ANIM_WEATHER_SNOW, WeatherBallIce
+	jumpreteq ANIM_WEATHER_POLLUTION, WeatherBallPoison
 WeatherBallNormal:
 	loadspritegfx ANIM_TAG_IMPACT
 	createsprite gWeatherBallNormalDownSpriteTemplate, ANIM_TARGET, 2, -30, -100, 25, 1, 0, 0
@@ -24057,6 +24061,9 @@ WeatherBallIce:
 	waitforvisualfinish
 	end
 
+WeatherBallPoison:
+	goto Move_SLUDGE_BOMB
+
 Move_FLASH_FREEZE:
 	loadspritegfx ANIM_TAG_ICE_CHUNK
 	loadspritegfx ANIM_TAG_SMALL_EMBER
@@ -24113,6 +24120,12 @@ Move_AURA_SPHERE:
 
 Move_NUMBING_KISS:
 	goto Move_DRAINING_KISS
+
+Move_ACID_RAIN:
+	goto Move_RAIN_DANCE
+
+Move_NATURES_MALICE:
+	goto Move_DARK_VOID
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT
@@ -24799,6 +24812,9 @@ General_Snow:
 
 General_Gravity:
 	goto Move_GRAVITY
+
+General_Pollution:
+	goto Move_HAZE
 
 General_LeechSeedDrain:
 	createvisualtask AnimTask_GetBattlersFromArg, 5
