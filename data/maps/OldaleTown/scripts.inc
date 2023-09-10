@@ -554,5 +554,5 @@ OldaleTown_Text_LedybaPresent:
 	.string "a gift!$"
 
 OldaleTown_Text_LedybaHello:
-	.string "LEDYBA is waving to you with all six\n"
-	.string "of its hands.$"
+	.string "LEDYBA is waving to you with all of\n"
+	.string "its hands.$"

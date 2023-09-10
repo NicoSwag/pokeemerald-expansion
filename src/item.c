@@ -1016,6 +1016,7 @@ u32 GetItemStatus2Mask(u16 itemId)
         return STATUS2_CONFUSION;
     else
         return 0;
+}
 // Item Description Header
 bool8 GetSetItemObtained(u16 item, u8 caseId)
 {
