@@ -19,6 +19,8 @@
     return score;                   \
 }
 
+
+
 u8 ComputeBattleAiScores(u8 battler);
 void BattleAI_SetupItems(void);
 void BattleAI_SetupFlags(void);
