@@ -10189,7 +10189,7 @@ static void UpdateMoveResultFlags(u16 modifier)
     }
 }
 
-static u16 CalcTypeEffectivenessMultiplierInternal(u16 move, u8 moveType, u8 battlerAtk, u8 battlerDef, bool32 recordAbilities, u16 modifier)
+u16 CalcTypeEffectivenessMultiplierInternal(u16 move, u8 moveType, u8 battlerAtk, u8 battlerDef, bool32 recordAbilities, u16 modifier)
 {
     u32 illusionSpecies;
     u16 defAbility = GetBattlerAbility(battlerDef);

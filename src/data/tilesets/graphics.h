@@ -1672,3 +1672,4 @@ const u16 gTilesetPalettes_Tileset_Wet[][16] =
 };
 
 const u32 gTilesetTiles_Tileset_Wet[] = INCBIN_U32("data/tilesets/primary/tileset_wet/tiles.4bpp.lz");
+

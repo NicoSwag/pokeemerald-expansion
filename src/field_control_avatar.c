@@ -108,6 +108,8 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
                 input->pressedBButton = TRUE;
             if (newKeys & R_BUTTON)
                 input->pressedRButton = TRUE;
+            if (newKeys & L_BUTTON)
+                input->pressedLButton = TRUE;
         }
 
         if (heldKeys & (DPAD_UP | DPAD_DOWN | DPAD_LEFT | DPAD_RIGHT))
@@ -200,7 +202,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
         return TRUE;
     
-    if (input->pressedRButton && EnableAutoRun())
+    if (input->pressedLButton && EnableAutoRun())
         return TRUE;
 
 #if DEBUG_OVERWORLD_MENU == TRUE && DEBUG_OVERWORLD_IN_MENU == FALSE
@@ -1045,12 +1047,12 @@ static bool8 EnableAutoRun(void)
     if (gSaveBlock2Ptr->autoRun)
     {
         gSaveBlock2Ptr->autoRun = FALSE;
-        ScriptContext1_SetupScript(EventScript_DisableAutoRun);
+        ScriptContext_SetupScript(EventScript_DisableAutoRun);
     }
     else
     {
         gSaveBlock2Ptr->autoRun = TRUE;
-        ScriptContext1_SetupScript(EventScript_EnableAutoRun);
+        ScriptContext_SetupScript(EventScript_EnableAutoRun);
     }
     
     return TRUE;

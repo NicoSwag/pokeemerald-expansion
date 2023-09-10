@@ -740,8 +740,6 @@ static bool8 LightenSpritePaletteInFog(u8 paletteIndex)
             return TRUE;
     }
     
-    if (IsObjectEventPaletteIndex(paletteIndex))
-        return TRUE;
 
     return FALSE;
 }
