@@ -11,12 +11,11 @@ OldaleTown_House3_EventScript_Mom::
 
 OldaleTown_House3_Text_Volcano:
 	.string "Did you see the big rock outside?\p"
-	.string "My mom told me that, thousands of years\n"
+	.string "My mom told me that, thousands of years\l"
 	.string "ago, the legendary POKéMON awakened.\p"
 	.string "And when that happened, BLAMM!\n"
-	.string "Big rocks from Mt. Chimney rained on the\l"
-	.string "town.\p"
-	.string "That's why you can find Slugma here!$"
+	.string "Big rocks from Mt. Chimney rained here\p"
+	.string "That's why it's full of SLUGMA!$"
 
 OldaleTown_House3_Text_Mom:
 	.string "My son is very interested in history.\n"

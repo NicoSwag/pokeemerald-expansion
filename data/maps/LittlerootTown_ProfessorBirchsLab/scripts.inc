@@ -635,6 +635,15 @@ LittlerootTown_ProfessorBirchsLab_EventScript_RivalTakeBreakFromFieldwork::
 	release
 	end
 
+LittlerootTown_ProfessorBirchsLab_EventScript_Pikachu::
+	lock
+	faceplayer
+	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_Pikachu, MSGBOX_DEFAULT
+	release
+	end
+
+
 LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayTakeBreakFromFieldwork, MSGBOX_DEFAULT
 	return
@@ -665,16 +674,13 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork:
 	.string "Hunh? PROF. BIRCH?\p"
-	.string "The PROF's away on fieldwork.\n"
-	.string "Ergo, he isn't here.\p"
-	.string "Oh, let me explain what fieldwork is.\p"
-	.string "It is to study things in the natural\n"
-	.string "environment, like fields and mountains,\l"
-	.string "instead of a laboratory.\p"
-	.string "The PROF isn't one for doing desk work.\n"
-	.string "He's the type of person who would\l"
-	.string "rather go outside and experience\l"
-	.string "things than read about them here.$"
+	.string "Well, yes, I could be asking the same\n"
+	.string "question.\p"
+	.string "He was supposed to fill out a research\n"
+	.string "report, but it seems he sneaked out again.\p"
+	.string "Without his assistant, no less!\p"
+	.string "I hate to ask, but…\n"
+	.string "Could you maybe check up on him?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
 	.string "The PROF isn't one for doing desk work.\n"
@@ -682,11 +688,18 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
 	.string "rather go outside and experience\l"
 	.string "things than read about them here.$"
 
+
 LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
-	.string "PROF. BIRCH is studying the habitats\n"
-	.string "and distribution of POKéMON.\p"
+	.string "PROF. BIRCH is studying the effects\n"
+	.string "that the strange weather has on POKéMON.\p"
 	.string "The PROF enjoys {RIVAL}'s help, too.\n"
-	.string "There's a lot of love there.$"
+	.string "Oh, and let's not forget PIKACHU's\l"
+	.string "invaluable contributions!\p"
+	.string "Well, I'm not sure what she does, but\n"
+	.string "it looks to be very important.$"
+
+Text_LittlerootTown_ProfessorBirchsLab_Pikachu:
+	.string "PIKACHU gives you a knowing nod.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
 	.string "PROF. BIRCH: So, {PLAYER}{KUN}.\p"
@@ -766,16 +779,18 @@ LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
 	.string "and do fieldwork again!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese:
-	.string "MAY: Oh, wow, {PLAYER}{KUN}!\n"
-	.string "You got a POKéDEX, too!\p"
-	.string "That's great! Just like me!\n"
-	.string "I've got something for you, too!$"
-
-LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls:
 	.string "MAY: Huh…\n"
 	.string "So you got a POKéDEX, too.\p"
 	.string "Well then, here.\n"
 	.string "I guess you're gonna need these.$"
+
+LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls:
+	.string "MAY: You know, it's more fun to\n"
+	.string "have a whole bunch of POKéMON.\p"
+	.string "I'm going to explore all over the place\n"
+	.string "to find different POKéMON.\p"
+	.string "If I find any cool POKéMON, you bet\n"
+	.string "I'll try to get them with POKé BALLS.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_OhYourBagsFull:
 	.string "Oh? Your BAG's full.$"
@@ -791,7 +806,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese:
 	.string "I guess you're gonna need these.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls:
-	.string "BRENDAN: You know it's more fun to\n"
+	.string "BRENDAN: You know, it's more fun to\n"
 	.string "have a whole bunch of POKéMON.\p"
 	.string "I'm going to explore all over the place\n"
 	.string "to find different POKéMON.\p"

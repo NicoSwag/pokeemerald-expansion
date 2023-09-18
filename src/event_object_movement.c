@@ -455,6 +455,9 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_SUNFLORA                0x1125
 #define OBJ_EVENT_PAL_TAG_SLUGMA                  0x1126
 #define OBJ_EVENT_PAL_TAG_LEDYBA                  0x1127
+#define OBJ_EVENT_PAL_TAG_LOTAD                   0x1128
+#define OBJ_EVENT_PAL_TAG_TAILLOW                 0x1129
+#define OBJ_EVENT_PAL_TAG_SMARTCHU                0x1130
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -500,7 +503,10 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_HoOh,                  OBJ_EVENT_PAL_TAG_HO_OH},
     {gObjectEventPal_Lugia,                 OBJ_EVENT_PAL_TAG_LUGIA},
     {gObjectEventPal_Hoothoot,              OBJ_EVENT_PAL_TAG_HOOTHOOT},
+    {gObjectEventPal_Smartchu,              OBJ_EVENT_PAL_TAG_SMARTCHU},
     {gObjectEventPal_Sunflora,              OBJ_EVENT_PAL_TAG_SUNFLORA},
+    {gObjectEventPal_Lotad,                 OBJ_EVENT_PAL_TAG_LOTAD},
+    {gObjectEventPal_Taillow,                 OBJ_EVENT_PAL_TAG_TAILLOW},
     {gObjectEventPal_Slugma,              OBJ_EVENT_PAL_TAG_SLUGMA},
     {gObjectEventPal_Ledyba,              OBJ_EVENT_PAL_TAG_LEDYBA},
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},

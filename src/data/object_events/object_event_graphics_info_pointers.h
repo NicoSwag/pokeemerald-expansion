@@ -207,8 +207,11 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GroudonAsle
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rayquaza;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Zigzagoon;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hoothoot;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Smartchu;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ledyba;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunflora;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lotad;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Taillow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pikachu;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Azumarill;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wingull;
@@ -415,6 +418,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SWABLU_DOLL] =              &gObjectEventGraphicsInfo_SwabluDoll,
     [OBJ_EVENT_GFX_GULPIN_DOLL] =              &gObjectEventGraphicsInfo_GulpinDoll,
     [OBJ_EVENT_GFX_LOTAD_DOLL] =               &gObjectEventGraphicsInfo_LotadDoll,
+    [OBJ_EVENT_GFX_LOTAD] =               &gObjectEventGraphicsInfo_Lotad,
+    [OBJ_EVENT_GFX_TAILLOW] =               &gObjectEventGraphicsInfo_Taillow,
     [OBJ_EVENT_GFX_SEEDOT_DOLL] =              &gObjectEventGraphicsInfo_SeedotDoll,
     [OBJ_EVENT_GFX_PIKA_CUSHION] =             &gObjectEventGraphicsInfo_PikaCushion,
     [OBJ_EVENT_GFX_ROUND_CUSHION] =            &gObjectEventGraphicsInfo_RoundCushion,
@@ -459,6 +464,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RAYQUAZA] =                 &gObjectEventGraphicsInfo_Rayquaza,
     [OBJ_EVENT_GFX_ZIGZAGOON_2] =              &gObjectEventGraphicsInfo_Zigzagoon,
     [OBJ_EVENT_GFX_HOOTHOOT] =                 &gObjectEventGraphicsInfo_Hoothoot,
+    [OBJ_EVENT_GFX_SMARTCHU] =                 &gObjectEventGraphicsInfo_Smartchu,
     [OBJ_EVENT_GFX_LEDYBA] =                 &gObjectEventGraphicsInfo_Ledyba,
     [OBJ_EVENT_GFX_SUNFLORA] =                 &gObjectEventGraphicsInfo_Sunflora,
     [OBJ_EVENT_GFX_PIKACHU] =                  &gObjectEventGraphicsInfo_Pikachu,

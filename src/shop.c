@@ -570,10 +570,11 @@ static void BuyMenuBuildListMenuTemplate(void)
     for (i; i < sMartInfo.itemCount; i++)
         BuyMenuSetListEntry(&sListMenuItems[i], sMartInfo.itemList[i], sItemNames[i]);
 
-    if(FlagGet(FLAG_RECEIVED_TM09) == TRUE){
-    StringCopy(sItemNames[i], gText_TM09);
+    
+    if(FlagGet(FLAG_HELPED_LEDYBA) == TRUE){
+    StringCopy(sItemNames[i], gText_TM01);
     sListMenuItems[i].name = sItemNames[i];
-    sListMenuItems[i].id = ITEM_TM09;
+    sListMenuItems[i].id = ITEM_TM01;
     i++;
     added_TMs++;
     }

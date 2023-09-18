@@ -216,7 +216,7 @@ MoveManager_SpendItem_3:
 
 MoveManager_SpendItem_4:
 	msgbox MoveManager_SpendItem_Text_1
-	removeitem ITEM_TINY_MUSHROOM
+	removeitem ITEM_HEART_SCALE
 	goto MoveManager_SpendItem_1
 
 

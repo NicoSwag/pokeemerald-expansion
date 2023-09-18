@@ -325,7 +325,7 @@ static const u16 sBadgeFlags[8] = {
     FLAG_BADGE05_GET, FLAG_BADGE06_GET, FLAG_BADGE07_GET, FLAG_BADGE08_GET,
 };
 
-static const u16 sWhiteOutBadgeMoney[9] = { 8, 16, 24, 36, 48, 64, 80, 100, 120 };
+static const u16 sWhiteOutBadgeMoney[9] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 
 #define STAT_CHANGE_WORKED      0
@@ -618,7 +618,7 @@ const u16 sLevelCapFlags[NUM_SOFT_CAPS] =
 };
 
 const u16 sLevelCaps[NUM_SOFT_CAPS] = { 15, 20, 30, 40, 50, 60, 70, 80 };
-const double sLevelCapReduction[7] = { .5, .33, .25, .20, .15, .10, .05 };
+const double sLevelCapReduction[7] = { .33, .20, .10, .05, .01, .01, .01 };
 const double sRelativePartyScaling[27] =
 {
     3.00, 2.75, 2.50, 2.33, 2.25,
@@ -1342,7 +1342,6 @@ static const u16 sRarePickupItems[] =
     ITEM_WHITE_HERB,
     ITEM_TM44_REST,
     ITEM_ELIXIR,
-    ITEM_TM01_FOCUS_PUNCH,
     ITEM_LEFTOVERS,
     ITEM_TM26_EARTHQUAKE,
 };

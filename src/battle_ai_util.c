@@ -193,6 +193,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_ROUGH_SKIN] = 6,
     [ABILITY_RUN_AWAY] = 0,
     [ABILITY_SAND_FORCE] = 4,
+    [ABILITY_MIASMA_FORCE] = 5,
     [ABILITY_SAND_RUSH] = 6,
     [ABILITY_SAND_STREAM] = 9,
     [ABILITY_SAND_VEIL] = 3,
@@ -234,10 +235,12 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_STEAM_BARRIER] = 7,
     [ABILITY_STRONG_JAW] = 6,
     [ABILITY_STURDY] = 6,
+    [ABILITY_VAMPIRIC] = 7,
     [ABILITY_SUCTION_CUPS] = 2,
     [ABILITY_SUPER_LUCK] = 3,
     [ABILITY_SURGE_SURFER] = 4,
     [ABILITY_SWARM] = 5,
+    [ABILITY_PLAGUE_SPREADER] = 6,
     [ABILITY_SWEET_VEIL] = 4,
     [ABILITY_SWIFT_SWIM] = 6,
     [ABILITY_SYMBIOSIS] = 0,
@@ -1727,6 +1730,7 @@ bool32 ShouldSetPollution(u8 battler, u16 ability, u16 holdEffect)
       || HasMove(battler, MOVE_NATURES_MALICE)
       || HasMove(battler, MOVE_VENOSHOCK)
       || HasMove(battler, MOVE_HEX)
+      || ability == ABILITY_MIASMA_FORCE
       || HasMoveEffect(battler, EFFECT_WEATHER_BALL))
     {
         return TRUE;
@@ -2464,6 +2468,19 @@ static bool32 BattlerAffectedBySandstorm(u8 battlerId, u16 ability)
       && ability != ABILITY_OVERCOAT)
         return TRUE;
     return FALSE;
+}
+
+static bool32 BattlerAffectedByPollution(u8 battlerId, u16 ability)
+{
+    if (!IS_BATTLER_OF_TYPE(battlerId, TYPE_POISON)
+    && !IS_BATTLER_OF_TYPE(battlerId, TYPE_DARK)
+    && !IS_BATTLER_OF_TYPE(battlerId, TYPE_GHOST)
+    && ability != ABILITY_OVERCOAT
+    && ability != ABILITY_MIASMA_FORCE
+    && ability != ABILITY_FOUL_RUSH)
+        return TRUE;
+    return FALSE;
+
 }
 
 static bool32 BattlerAffectedByHail(u8 battlerId, u16 ability)

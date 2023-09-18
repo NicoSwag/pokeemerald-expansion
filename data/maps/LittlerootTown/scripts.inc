@@ -251,6 +251,22 @@ LittlerootTown_EventScript_FatMan::
 	msgbox LittlerootTown_Text_CanUsePCToStoreItems, MSGBOX_NPC
 	end
 
+LittlerootTown_EventScript_Zigzagoon::
+	faceplayer
+	goto_if_set FLAG_ZIGZAGOON_EVENT, LittlerootTown_EventScript_ZigzagoonNoises
+	msgbox LittlerootTown_Text_Zigzagoon, MSGBOX_NPC
+	waitmessage
+	giveitem ITEM_HEART_SCALE
+	call_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_ZIGZAGOON_EVENT
+	release
+	end
+
+
+LittlerootTown_EventScript_ZigzagoonNoises::
+	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
+	msgbox LittlerootTown_Text_ZigzagoonNoises
+	end
 LittlerootTown_EventScript_Boy::
 	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC
 	end
@@ -973,11 +989,14 @@ LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "Right?$"
 
 LittlerootTown_Text_BirchSpendsDaysInLab:
-	.string "PROF. BIRCH spends days in his LAB\n"
-	.string "studying, then he'll suddenly go out in\l"
-	.string "the wild to do more research…\p"
-	.string "No wonder he always fights with his\n"
-	.string "wife.$"
+	.string "The POKEMON League has branches in\n"
+	.string "many regions of the world, but it's\l"
+	.string "particularly unique in HOENN.\p"
+	.string "Here, trainers prefer to battle it out\n"
+	.string "with two-on-two fights instead of the\l"
+	.string "usual one-on-one.\p"
+	.string "Why exactly? No idea! I'm not much of a\n"
+	.string "trainer myself…$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "Um, um, um!\p"
@@ -1034,3 +1053,10 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I gave you?\p"
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
+
+LittlerootTown_Text_Zigzagoon:
+	.string "ZIGZAGOON is holding something in\n"
+	.string "its mouth.$"
+
+LittlerootTown_Text_ZigzagoonNoises:
+	.string "ZIGZAGOON: Zigza!$"

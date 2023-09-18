@@ -293,8 +293,7 @@ PlayersHouse_1F_Text_IsntItNiceInHere:
 
 PlayersHouse_1F_Text_MoversPokemonGoSetClock:
 	.string "The mover's POKéMON do all the work\n"
-	.string "of moving us in and cleaning up after.\l"
-	.string "Totally not morally questionable!\p"
+	.string "of moving us in and cleaning up after.\p"
 	.string "{PLAYER}, your room is upstairs.\n"
 	.string "Go check it out, dear!\p"
 	.string "DAD bought you a new clock to mark\n"
@@ -375,7 +374,7 @@ PlayersHouse_1F_Text_ReportFromPetalburgGym:
 	.string "to the allegations of X-Item abuse\l"
 	.string "taking place in your GYM?\p"
 	.string "DAD: Oops! I just remembered!\p"
-	.string "I have a very important league meeting!\l"
+	.string "I have a very important League meeting!\l"
 	.string "Sorry, gotta go!$"
 
 PlayersHouse_1F_Text_TheresAMovieOnTV:

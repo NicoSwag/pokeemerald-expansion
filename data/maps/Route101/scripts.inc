@@ -29,7 +29,6 @@ Route101_EventScript_StartBirchRescue::
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_EnterScene
 	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonFaceBirch
 	applymovement LOCALID_BIRCH, Route101_Movement_BirchFaceZigzagoon
-	waitmovement 0
 	msgbox Route101_Text_PleaseHelp, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_ROUTE101_STATE, 2
@@ -199,7 +198,18 @@ Route101_Movement_Unused2:
 	step_end
 
 Route101_EventScript_Youngster::
+	lock
+	goto_if_set FLAG_101_RECEIVED_HEART_SCALE, Route101_EventScript_Youngster_Received
 	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_NPC
+	waitmessage
+	giveitem ITEM_HEART_SCALE
+	call_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_101_RECEIVED_HEART_SCALE
+	release
+	end
+
+Route101_EventScript_Youngster_Received::
+	msgbox Route101_Text_Healthcare, MSGBOX_NPC
 	end
 
 Route101_EventScript_Boy::
@@ -278,9 +288,10 @@ Route101_Text_YouSavedMe:
 
 Route101_Text_TakeTiredPokemonToPokeCenter:
 	.string "If POKéMON get tired, take them to\n"
-	.string "a POKéMON CENTER.\p"
-	.string "There's a POKéMON CENTER in OLDALE\n"
-	.string "TOWN right close by.$"
+	.string "the first floor of a POKéMON CENTER.\p"
+	.string "On the second floor, you can exchange\n"
+	.string "HEART SCALES for powerful moves.\p"
+	.string "Here, try it!$"
 
 Route101_Text_WildPokemonInTallGrass:
 	.string "Wild POKéMON will jump out at you in\n"
@@ -291,3 +302,7 @@ Route101_Text_WildPokemonInTallGrass:
 Route101_Text_RouteSign:
 	.string "ROUTE 101\n"
 	.string "{UP_ARROW} OLDALE TOWN$"
+
+Route101_Text_Healthcare:
+	.string "POKéMON CENTRES really are an amazing\n"
+	.string "place!$"

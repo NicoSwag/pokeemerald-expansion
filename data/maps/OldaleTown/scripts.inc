@@ -48,7 +48,7 @@ OldaleTown_EventScript_LedybaGetUp::
 	waitmovement 0
 	msgbox OldaleTown_Text_LedybaPresent, MSGBOX_NPC
 	waitmessage
-	giveitem ITEM_HEART_SCALE
+	giveitem ITEM_TM01
 	call_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_BagIsFull
 	setflag FLAG_HELPED_LEDYBA
 	release
@@ -476,8 +476,12 @@ OldaleTown_Movement_Ledyba:
 	
 
 OldaleTown_Text_SavingMyProgress:
-	.string "I want to take a rest, so I'm saving my\n"
-	.string "progress.$"
+	.string "I've heard that the best way\n"
+	.string "of making a POKEMON stronger is\l"
+	.string "to feed it VITAMINS.\p"
+	.string "Supposedly, they're distributed by\n"
+	.string "the POKEMON LEAGUE to particularly\l"
+	.string "strong trainers.$"
 
 OldaleTown_Text_IWorkAtPokemonMart:
 	.string "Hi!\n"
@@ -511,7 +515,7 @@ OldaleTown_Text_DiscoveredFootprints:
 	.string "them, okay?$"
 
 OldaleTown_Text_FinishedSketchingFootprints:
-	.string "Thank you for taking care of Eevee!\p"
+	.string "Thank you for taking care of EEVEE!\p"
 	.string "I'm sure it'll be very happy in your\n"
 	.string "care.$"
 

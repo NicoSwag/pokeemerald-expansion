@@ -10,6 +10,7 @@ Route103_EventScript_ItemPPUp::
 	finditem ITEM_PP_UP
 	end
 
+
 Route104_EventScript_ItemPPUp::
 	finditem ITEM_PP_UP
 	end

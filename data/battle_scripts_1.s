@@ -9932,6 +9932,15 @@ BattleScript_ItemHealHP_Ret::
 	datahpupdate BS_ATTACKER
 	return
 
+BattleScript_ItemHealHP_Move::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNENERGYDRAINED
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	return
+
 BattleScript_SelectingNotAllowedMoveChoiceItem::
 	printselectionstring STRINGID_ITEMALLOWSONLYYMOVE
 	endselectionscript
