@@ -571,6 +571,15 @@ static void BuyMenuBuildListMenuTemplate(void)
         BuyMenuSetListEntry(&sListMenuItems[i], sMartInfo.itemList[i], sItemNames[i]);
 
     
+    if(FlagGet(FLAG_CANDY_IN_SHOPS) == TRUE){
+    StringCopy(sItemNames[i], gText_RareCandy);
+    sListMenuItems[i].name = sItemNames[i];
+    sListMenuItems[i].id = ITEM_RARE_CANDY;
+    i++;
+    added_TMs++;
+    }
+    
+    
     if(FlagGet(FLAG_HELPED_LEDYBA) == TRUE){
     StringCopy(sItemNames[i], gText_TM01);
     sListMenuItems[i].name = sItemNames[i];
@@ -592,6 +601,8 @@ static void BuyMenuBuildListMenuTemplate(void)
         gMultiuseListMenuTemplate.maxShowed = gMultiuseListMenuTemplate.totalItems;
 
     sShopData->itemsShowed = gMultiuseListMenuTemplate.maxShowed;
+
+    
 }
 
 static void BuyMenuSetListEntry(struct ListMenuItem *menuItem, u16 item, u8 *name)

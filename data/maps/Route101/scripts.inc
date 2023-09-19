@@ -290,7 +290,7 @@ Route101_Text_TakeTiredPokemonToPokeCenter:
 	.string "If POKéMON get tired, take them to\n"
 	.string "the first floor of a POKéMON CENTER.\p"
 	.string "On the second floor, you can exchange\n"
-	.string "HEART SCALES for powerful moves.\p"
+	.string "SKY FRAGMENTS for powerful moves.\p"
 	.string "Here, try it!$"
 
 Route101_Text_WildPokemonInTallGrass:

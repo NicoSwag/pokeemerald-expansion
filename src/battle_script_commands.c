@@ -618,7 +618,7 @@ const u16 sLevelCapFlags[NUM_SOFT_CAPS] =
 };
 
 const u16 sLevelCaps[NUM_SOFT_CAPS] = { 15, 20, 30, 40, 50, 60, 70, 80 };
-const double sLevelCapReduction[7] = { .33, .20, .10, .05, .01, .01, .01 };
+const double sLevelCapReduction[7] = { .01, .01, .01, .01, .01, .01, .01};
 const double sRelativePartyScaling[27] =
 {
     3.00, 2.75, 2.50, 2.33, 2.25,
@@ -4420,15 +4420,18 @@ double GetPkmnExpMultiplier(u8 level)
     s8 avgDiff;
 
     // multiply the usual exp yield by the soft cap multiplier
-    for (i = 0; i < NUM_SOFT_CAPS; i++)
-    {
-        if (!FlagGet(sLevelCapFlags[i]) && level >= sLevelCaps[i])
+    
+    if(FlagGet(FLAG_LEVEL_CAPS) == TRUE){
+        for (i = 0; i < NUM_SOFT_CAPS; i++)
         {
-            levelDiff = level - sLevelCaps[i];
-            if (levelDiff > 6)
+            if (!FlagGet(sLevelCapFlags[i]) && level >= sLevelCaps[i])
+            {
+                levelDiff = level - sLevelCaps[i];
+                if (levelDiff > 6)
                 levelDiff = 6;
-            lvlCapMultiplier = sLevelCapReduction[levelDiff];
-            break;
+                lvlCapMultiplier = sLevelCapReduction[levelDiff];
+                 break;
+            }
         }
     }
 
@@ -4442,7 +4445,7 @@ double GetPkmnExpMultiplier(u8 level)
 
     avgDiff += 14;
 
-    return lvlCapMultiplier * sRelativePartyScaling[avgDiff];
+    return lvlCapMultiplier;
 }
 
 static void Cmd_getexp(void)

@@ -5321,8 +5321,22 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
     u16 *itemPtr = &gSpecialVar_ItemId;
     bool8 cannotUseEffect;
     u8 holdEffectParam = ItemId_GetHoldEffectParam(*itemPtr);
-
+    
     sInitialLevel = GetMonData(mon, MON_DATA_LEVEL);
+    
+    if(FlagGet(FLAG_LEVEL_CAPS) == TRUE)
+    {
+        u8 i = 0;
+        for (i; i < NUM_SOFT_CAPS; i++)
+        {
+            if (!FlagGet(sLevelCapFlags[i]) && sInitialLevel >= sLevelCaps[i])
+            {
+                 cannotUseEffect = TRUE;
+                 goto NO_EFFECT;
+            }
+        }
+    }
+    else{
     if (sInitialLevel != MAX_LEVEL)
     {
         BufferMonStatsToTaskData(mon, arrayPtr);
@@ -5355,6 +5369,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
         }
         else
         {
+            NO_EFFECT:
             gPartyMenuUseExitCallback = FALSE;
             DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
             ScheduleBgCopyTilemapToVram(2);
@@ -5398,6 +5413,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
             gTasks[taskId].func = task;
         }
     }
+}
 }
 
 static void UpdateMonDisplayInfoAfterRareCandy(u8 slot, struct Pokemon *mon)

@@ -796,8 +796,8 @@ void ItemUseOutOfBattle_PPUp(u8 taskId)
 void ItemUseOutOfBattle_RareCandy(u8 taskId)
 {
     gItemUseCB = ItemUseCB_RareCandy;
-    SetUpItemUseCallback(taskId);
-}
+    SetUpItemUseCallback(taskId);}
+
 
 void ItemUseOutOfBattle_TMHM(u8 taskId)
 {
@@ -1260,6 +1260,7 @@ void ItemUseInBattle_BagMenu(u8 taskId)
 
 void ItemUseOutOfBattle_EnigmaBerry(u8 taskId)
 {
+    u8 i;
     switch (GetItemEffectType(gSpecialVar_ItemId))
     {
     case ITEM_EFFECT_HEAL_HP:

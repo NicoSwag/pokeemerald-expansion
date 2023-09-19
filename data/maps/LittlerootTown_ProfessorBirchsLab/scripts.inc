@@ -4,6 +4,7 @@
 .set LOCALID_BALL_CYNDAQUIL, 4
 .set LOCALID_BALL_TOTODILE, 5
 .set LOCALID_BALL_CHIKORITA, 6
+.set LOCALID_PIKACHU, 7
 
 LittlerootTown_ProfessorBirchsLab_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_ProfessorBirchsLab_OnTransition
@@ -640,6 +641,138 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Pikachu::
 	faceplayer
 	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
 	msgbox Text_LittlerootTown_ProfessorBirchsLab_Pikachu, MSGBOX_DEFAULT
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_Options::
+	multichoice 12, 0, SPECIAL_OPTIONS_MENU, FALSE
+	switch VAR_RESULT
+	case 0, LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle
+	case 1, LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops
+	case 2, LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps
+	case 3, LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
+	end
+	
+	
+LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle::
+	goto_if_set FLAG_HEAL_AFTER_BATTLE, LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle_True
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle_False
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle_True::
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffHealing, MSGBOX_YESNO
+	SWITCH VAR_RESULT
+	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	clearflag FLAG_HEAL_AFTER_BATTLE
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOffHealing, MSGBOX_NPC
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffHealing:
+	.string "Healing automatically after battles\n"
+	.string "is currently turned ON.\l"
+	.string "Do you want to turn it OFF?$"
+
+Text_LittlerootTown_ProfessorBirchsLab_TurnedOffHealing:
+	.string "You will no longer heal after battles.$"
+
+LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle_False::
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnHealing, MSGBOX_YESNO
+	SWITCH VAR_RESULT
+	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	setflag FLAG_HEAL_AFTER_BATTLE
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOnHealing, MSGBOX_NPC
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnHealing:
+	.string "Healing automatically after battles\n"
+	.string "is currently turned OFF.\l"
+	.string "Do you want to turn it ON?$"
+
+Text_LittlerootTown_ProfessorBirchsLab_TurnedOnHealing:
+	.string "You will now heal after battles.$"
+
+
+LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops::
+	goto_if_set FLAG_CANDY_IN_SHOPS, LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops_True
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops_False
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops_True::
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffCandies, MSGBOX_YESNO
+	SWITCH VAR_RESULT
+	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	clearflag FLAG_CANDY_IN_SHOPS
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOffCandies, MSGBOX_NPC
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffCandies:
+	.string "Rare candies in POKé MARTS\n"
+	.string "are currently turned ON.\l"
+	.string "Do you want to turn them OFF?$"
+
+Text_LittlerootTown_ProfessorBirchsLab_TurnedOffCandies:
+	.string "Rare candies won't be sold anymore.$"
+
+LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops_False::
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCandies, MSGBOX_YESNO
+	SWITCH VAR_RESULT
+	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	setflag FLAG_CANDY_IN_SHOPS
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCandies, MSGBOX_NPC
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCandies:
+	.string "Rare candies in POKé MARTS\n"
+	.string "are currently turned OFF.\l"
+	.string "Do you want to turn them ON?$"
+
+Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCandies:
+	.string "Rare candies are now sold in shops.$"
+
+
+LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps::
+	goto_if_set FLAG_LEVEL_CAPS, LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps_True
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps_False
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps_True::
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffCaps, MSGBOX_YESNO
+	SWITCH VAR_RESULT
+	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	clearflag FLAG_LEVEL_CAPS
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOffCaps, MSGBOX_NPC
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffCaps:
+	.string "Level caps are currently turned ON.\n"
+	.string "Do you want to turn them OFF?$"
+
+Text_LittlerootTown_ProfessorBirchsLab_TurnedOffCaps:
+	.string "Level caps are no longer in effect.$"
+
+LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps_False::
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCaps, MSGBOX_YESNO
+	SWITCH VAR_RESULT
+	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	setflag FLAG_LEVEL_CAPS
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCaps, MSGBOX_NPC
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCaps:
+	.string "Level caps are currently turned OFF.\n"
+	.string "Do you want to turn them ON?$"
+
+Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCaps:
+	.string "Level caps are now in effect.$"
+
+LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu::
+	applymovement LOCALID_PIKACHU, Common_Movement_FaceOriginalDirection
 	release
 	end
 
@@ -691,7 +824,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
 	.string "PROF. BIRCH is studying the effects\n"
-	.string "that the strange weather has on POKéMON.\p"
+	.string "the strange weather has on POKéMON.\p"
 	.string "The PROF enjoys {RIVAL}'s help, too.\n"
 	.string "Oh, and let's not forget PIKACHU's\l"
 	.string "invaluable contributions!\p"
@@ -699,7 +832,15 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
 	.string "it looks to be very important.$"
 
 Text_LittlerootTown_ProfessorBirchsLab_Pikachu:
-	.string "PIKACHU gives you a knowing nod.$"
+	.string "It seems like the PIKACHU wants\n"
+	.string "to tell you something.\p"
+	.string "You can't hear it, but if you could\n"
+	.string "you bet it'd go like this:\p"
+	.string "PIKACHU: Hello, trainer! I am PROF.\n"
+	.string "BIRCH's assistant. I handle the game\l"
+	.string "options!\p"
+	.string "Is there anything that you want to\n"
+	.string "change?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
 	.string "PROF. BIRCH: So, {PLAYER}{KUN}.\p"

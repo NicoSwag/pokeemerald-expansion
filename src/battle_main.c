@@ -17,12 +17,14 @@
 #include "bg.h"
 #include "data.h"
 #include "decompress.h"
+#include "constants/flags.h"
 #include "dma3.h"
 #include "event_data.h"
 #include "evolution_scene.h"
 #include "graphics.h"
 #include "gpu_regs.h"
 #include "international_string_util.h"
+#include "script_pokemon_util.h"
 #include "item.h"
 #include "link.h"
 #include "link_rfu.h"
@@ -5392,6 +5394,7 @@ static void HandleEndTurn_MonFled(void)
 static void HandleEndTurn_FinishBattle(void)
 {
     u32 i;
+    u8 j;
 
     if (gCurrentActionFuncId == B_ACTION_TRY_FINISH || gCurrentActionFuncId == B_ACTION_FINISHED)
     {
@@ -5467,9 +5470,11 @@ static void HandleEndTurn_FinishBattle(void)
         // Clear battle mon species to avoid a bug on the next battle that causes
         // healthboxes loading incorrectly due to it trying to create a Mega Indicator
         // if the previous battler would've had it.
+        
         for (i = 0; i < MAX_BATTLERS_COUNT; i++)
         {
             gBattleMons[i].species = SPECIES_NONE;
+
         }
         gBattleMainFunc = FreeResetData_ReturnToOvOrDoEvolutions;
         gCB2_AfterEvolution = BattleMainCB2;
@@ -5576,7 +5581,8 @@ static void WaitForEvoSceneToFinish(void)
 }
 
 static void ReturnFromBattleToOverworld(void)
-{
+{   if(FlagGet(FLAG_HEAL_AFTER_BATTLE) == TRUE)
+            HealPlayerParty();
     if (!(gBattleTypeFlags & BATTLE_TYPE_LINK))
     {
         RandomlyGivePartyPokerus(gPlayerParty);
