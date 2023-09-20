@@ -4533,6 +4533,7 @@ static void Cmd_getexp(void)
                 gExpShareExp = calculatedExp / 2;
                 if (gExpShareExp == 0)
                     gExpShareExp = 1;
+                
             #endif
 
             gBattleScripting.getexpState++;
@@ -4552,7 +4553,7 @@ static void Cmd_getexp(void)
                 holdEffect = ItemId_GetHoldEffect(item);
 
             if ((holdEffect != HOLD_EFFECT_EXP_SHARE && !(gBattleStruct->sentInPokes & 1) && !FlagGet(FLAG_SYS_EXP_SHARE))
-             || GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPECIES2) == SPECIES_EGG)
+             || GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
             {
                 *(&gBattleStruct->sentInPokes) >>= 1;
                 gBattleScripting.getexpState = 5;
@@ -4585,6 +4586,15 @@ static void Cmd_getexp(void)
                 {
                     if (gBattleStruct->sentInPokes & 1)
                         gBattleMoveDamage = *exp * expMultiplier;
+                        if(FlagGet(FLAG_LEVEL_CAPS) == TRUE){
+                        for (i = 0; i < NUM_SOFT_CAPS; i++)
+                {
+                    if (!FlagGet(sLevelCapFlags[i]) && gPlayerParty[gBattleStruct->expGetterMonId].level >= sLevelCaps[i])
+                    {
+                        gBattleMoveDamage = 0;
+                    }
+                }
+            }
                     else
                         gBattleMoveDamage = 0;
 
@@ -4594,7 +4604,16 @@ static void Cmd_getexp(void)
                         gBattleMoveDamage += gExpShareExp;
                 #else
                     if ((holdEffect == HOLD_EFFECT_EXP_SHARE || FlagGet(FLAG_SYS_EXP_SHARE)) && gBattleMoveDamage == 0)
-                        gBattleMoveDamage += gExpShareExp;
+                        if(FlagGet(FLAG_LEVEL_CAPS) == TRUE){
+                        for (i = 0; i < NUM_SOFT_CAPS; i++)
+                {
+                    if (!FlagGet(sLevelCapFlags[i]) && gPlayerParty[gBattleStruct->expGetterMonId].level >= sLevelCaps[i])
+                    {
+                        gExpShareExp = 0;
+                    }
+                }
+            }
+                            gBattleMoveDamage += gExpShareExp;
                 #endif
                     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
                         gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
@@ -4666,6 +4685,7 @@ static void Cmd_getexp(void)
             }
         }
         break;
+        
     case 3: // Set stats and give exp
         if (gBattleControllerExecFlags == 0)
         {

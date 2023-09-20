@@ -623,12 +623,7 @@ BattleScript_ShellTrapSetUp::
 	end3
 
 BattleScript_EffectShellTrap::
-	attackcanceler
-	jumpifshelltrap BS_ATTACKER, BattleScript_HitFromAccCheck
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_MoveEnd
-	ppreduce
-	printstring STRINGID_SHELLTRAPDIDNTWORK
-	waitmessage B_WAIT_TIME_LONG
+
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSteelBeam::

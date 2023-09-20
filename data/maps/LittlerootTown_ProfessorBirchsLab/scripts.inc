@@ -651,6 +651,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Options::
 	case 1, LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops
 	case 2, LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps
 	case 3, LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
 	end
 	
 	

@@ -5336,7 +5336,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
             }
         }
     }
-    else{
+    
     if (sInitialLevel != MAX_LEVEL)
     {
         BufferMonStatsToTaskData(mon, arrayPtr);
@@ -5413,7 +5413,6 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
             gTasks[taskId].func = task;
         }
     }
-}
 }
 
 static void UpdateMonDisplayInfoAfterRareCandy(u8 slot, struct Pokemon *mon)
