@@ -650,7 +650,9 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Options::
 	case 0, LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle
 	case 1, LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops
 	case 2, LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps
-	case 3, LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
+	case 3, LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint
+	case 4, LittlerootTown_ProfessorBirchsLab_EventScript_Catch
+	case 5, LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
 	end
 	
@@ -772,8 +774,88 @@ Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCaps:
 Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCaps:
 	.string "Level caps are now in effect.$"
 
+LittlerootTown_ProfessorBirchsLab_EventScript_Catch::
+	goto_if_set FLAG_DEAD_WHEN_FAINT, LittlerootTown_ProfessorBirchsLab_EventScript_Catch_True
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Catch_False
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_Catch_True::
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffCatch, MSGBOX_YESNO
+	SWITCH VAR_RESULT
+	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	clearflag FLAG_CATCH_ONE
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOffCatch, MSGBOX_NPC
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffCatch:
+	.string "Catching one POKéMON per route is\n"
+	.string "currently turned ON.\l"
+	.string "Do you want to turn it OFF?$"
+
+Text_LittlerootTown_ProfessorBirchsLab_TurnedOffCatch:
+	.string "You can now catch multiple POKéMON.$"
+
+LittlerootTown_ProfessorBirchsLab_EventScript_Catch_False::
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCatch, MSGBOX_YESNO
+	SWITCH VAR_RESULT
+	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	setflag FLAG_CATCH_ONE
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCatch, MSGBOX_NPC
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCatch:
+	.string "Catching one POKéMON per route is\n"
+	.string "currently turned OFF.\l"
+	.string "Do you want to turn it ON?$"
+
+Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCatch:
+	.string "You can now only catch the first POKéMON.$"
+
+LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint::
+	goto_if_set FLAG_DEAD_WHEN_FAINT, LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint_True
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint_False
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint_True::
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffFainting, MSGBOX_YESNO
+	SWITCH VAR_RESULT
+	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	clearflag FLAG_DEAD_WHEN_FAINT
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOffFaint, MSGBOX_NPC
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffFainting:
+	.string "Permanent fainting is currently\n"
+	.string "turned ON.\l"
+	.string "Do you want to turn it OFF?$"
+
+Text_LittlerootTown_ProfessorBirchsLab_TurnedOffFaint:
+	.string "Fainted POKéMON can now be healed.$"
+
+LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint_False::
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnFainting, MSGBOX_YESNO
+	SWITCH VAR_RESULT
+	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	setflag FLAG_DEAD_WHEN_FAINT
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOnFainting, MSGBOX_NPC
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnFainting:
+	.string "Permanent fainting is currently\n"
+	.string "turned OFF.\l"
+	.string "Do you want to turn it ON?$"
+
+Text_LittlerootTown_ProfessorBirchsLab_TurnedOnFainting:
+	.string "Fainted POKéMON now can't be healed.$"
+
+
+
 LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu::
-	applymovement LOCALID_PIKACHU, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_PIKACHU, Common_Movement_FaceLeft
 	release
 	end
 

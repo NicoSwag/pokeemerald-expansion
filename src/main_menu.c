@@ -1254,6 +1254,8 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     FlagSet(FLAG_HEAL_AFTER_BATTLE);
     FlagClear(FLAG_CANDY_IN_SHOPS);
     FlagSet(FLAG_LEVEL_CAPS);
+    FlagClear(FLAG_DEAD_WHEN_FAINT);
+    FlagClear(FLAG_CATCH_ONE);
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
     InitBgFromTemplate(&sBirchBgTemplate);

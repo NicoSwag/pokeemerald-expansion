@@ -45,8 +45,8 @@
 #define FLAG_HEAL_AFTER_BATTLE    0x21 // Unused Flag
 #define FLAG_CANDY_IN_SHOPS    0x22 // Unused Flag
 #define FLAG_LEVEL_CAPS    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
+#define FLAG_DEAD_WHEN_FAINT    0x24 // Unused Flag
+#define FLAG_CATCH_ONE    0x25 // Unused Flag
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
