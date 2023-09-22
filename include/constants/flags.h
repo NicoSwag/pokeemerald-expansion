@@ -655,7 +655,7 @@
 #define FLAG_HELPED_LEDYBA 0x265 // Unused Flag
 #define FLAG_ZIGZAGOON_EVENT  0x266 // Unused Flag
 #define FLAG_ITEM_ROUTE_103_IRON_BALL 0x267 // Unused Flag
-#define FLAG_UNUSED_0x268  0x268 // Unused Flag
+#define FLAG_SYS_MOVE_INFO 0x268 // Move info
 #define FLAG_UNUSED_0x269  0x269 // Unused Flag
 #define FLAG_UNUSED_0x26A  0x26A // Unused Flag
 #define FLAG_UNUSED_0x26B  0x26B // Unused Flag
