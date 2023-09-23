@@ -32,6 +32,7 @@
 #include "party_menu.h"
 #include "pokeblock.h"
 #include "pokemon.h"
+#include "region_map.h"
 #include "script.h"
 #include "sound.h"
 #include "strings.h"
@@ -1318,9 +1319,29 @@ void ItemUseOutOfBattle_Honey(u8 taskId)
     Task_FadeAndCloseBagMenu(taskId);
 }
 
+void ItemUseOutOfBattle_TownMap(u8 taskId)
+{
+    if (MenuHelpers_IsLinkActive() == TRUE)
+    {
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+    } 
+    else if (!gTasks[taskId].tUsingRegisteredKeyItem) 
+    {
+        gBagMenu->newScreenCallback = CB2_OpenTownMap;
+        Task_FadeAndCloseBagMenu(taskId);
+    } 
+    else if (gTasks[taskId].tUsingRegisteredKeyItem) 
+    {
+        gBagMenu->newScreenCallback = CB2_OpenTownMap;
+        Task_FadeAndCloseBagMenu(taskId);
+    }
+}
+
 void ItemUseOutOfBattle_CannotUse(u8 taskId)
 {
     DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
 }
+
+
 
 #undef tUsingRegisteredKeyItem
