@@ -6,6 +6,7 @@
 #include "main.h"
 #include "malloc.h"
 #include "menu.h"
+#include "overworld.h"
 #include "palette.h"
 #include "region_map.h"
 #include "strings.h"
@@ -193,7 +194,8 @@ static void FieldUpdateRegionMap(void)
             {
                 FreeRegionMapIconResources();
                 //SetMainCallback2(sFieldRegionMapHandler->callback);
-                SetMainCallback2(CB2_BagMenuFromStartMenu);
+                //SetMainCallback2(CB2_BagMenuFromStartMenu);
+                SetMainCallback2(CB2_ReturnToField);
                 TRY_FREE_AND_SET_NULL(sFieldRegionMapHandler);
                 FreeAllWindowBuffers();
             }
