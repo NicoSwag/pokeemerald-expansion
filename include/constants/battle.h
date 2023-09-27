@@ -394,8 +394,9 @@
 #define MOVE_EFFECT_SPIKES              77
 #define MOVE_EFFECT_SNAP_TRAP           78
 #define MOVE_EFFECT_CORROSION           79
+#define MOVE_EFFECT_GANGSTER            80
 
-#define NUM_MOVE_EFFECTS                80
+#define NUM_MOVE_EFFECTS                81
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

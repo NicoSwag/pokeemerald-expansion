@@ -775,7 +775,7 @@ Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCaps:
 	.string "Level caps are now in effect.$"
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Catch::
-	goto_if_set FLAG_DEAD_WHEN_FAINT, LittlerootTown_ProfessorBirchsLab_EventScript_Catch_True
+	goto_if_set FLAG_CATCH_ONE, LittlerootTown_ProfessorBirchsLab_EventScript_Catch_True
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_Catch_False
 	end
 
@@ -893,7 +893,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork:
 	.string "Well, yes, I could be asking the same\n"
 	.string "question.\p"
 	.string "He was supposed to fill out a research\n"
-	.string "report, but it seems he sneaked out again.\p"
+	.string "report, but it seems he sneaked out.\p"
 	.string "Without his assistant, no less!\p"
 	.string "I hate to ask, but…\n"
 	.string "Could you maybe check up on him?$"

@@ -330,7 +330,7 @@ RivalsHouse_1F_Text_OhYoureTheNewNeighbor:
 	.string "age as you.\p"
 	.string "Our {STR_VAR_1} is a bit shy when\n"
 	.string "meeting new people.\p"
-	.string "{RIVAL} is upstairs, I think.$"
+	.string "They're upstairs, I think.$"
 
 RivalsHouse_1F_Text_LikeChildLikeFather:
 	.string "Like child, like father.\p"

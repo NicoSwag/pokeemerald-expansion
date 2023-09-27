@@ -3530,10 +3530,10 @@ static void MoveSelectionDisplaySplitIcon(void){
 }
 static void ChangeMoveDisplayMode()
 {
-    static const u8 gPowerText[] =  _("Power: {STR_VAR_1}");
-    static const u8 gAccuracyText[] =  _("Acc: {STR_VAR_1}");
-    static const u8 gContactText[] =  _("Contact");
-    static const u8 gNoContactText[] =  _("No Contact");
+    static const u8 gPowerText[] =  _("POWER: {STR_VAR_1}");
+    static const u8 gAccuracyText[] =  _("ACC: {STR_VAR_1}");
+    static const u8 gContactText[] =  _("CONTACT");
+    static const u8 gNoContactText[] =  _("NO CONTACT");
     u8 *txtPtr;
     u8 power = 0;
     u8 accuracy = 0;

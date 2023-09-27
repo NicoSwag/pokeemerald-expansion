@@ -305,6 +305,7 @@ struct BattlePokemon
              u8 canWeatherChange:TRUE;
              u8 canGravityChange:TRUE;
              u8 canTerrainChange:TRUE;
+             u8 gangstered: 1;
 };
 
 struct SpeciesInfo /*0x24*/

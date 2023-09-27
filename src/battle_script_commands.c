@@ -353,6 +353,7 @@ static bool32 CriticalCapture(u32 odds);
 static void BestowItem(u32 battlerAtk, u32 battlerDef);
 static bool8 IsFinalStrikeEffect(u16 move);
 static void TryUpdateRoundTurnOrder(void);
+static void TryUpdateGangsterOrder(void);
 static bool32 ChangeOrderTargetAfterAttacker(void);
 
 static void Cmd_attackcanceler(void);
@@ -2098,6 +2099,8 @@ else if (gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_2
             if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_BLUNDER_POLICY)
                 gBattleStruct->blunderPolicy = TRUE;    // Only activates from missing through acc/evasion checks
 
+            if(gBattleMons[gBattlerAttacker].ability == ABILITY_SCATTERBRAIN)
+                gStatuses3[gBattlerTarget] |= STATUS3_ALWAYS_HITS_TURN(2);
             if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE &&
                 (moveTarget == MOVE_TARGET_BOTH || moveTarget == MOVE_TARGET_FOES_AND_ALLY))
                 gBattleCommunication[MISS_TYPE] = B_MSG_AVOIDED_ATK;
@@ -3000,6 +3003,7 @@ static void Cmd_printselectionstringfromtable(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
         gBattleCommunication[MSG_DISPLAY] = 1;
     }
+    
 }
 
 u8 GetBattlerTurnOrderNum(u8 battlerId)
@@ -3070,6 +3074,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
     u16 battlerAbility;
     bool8 activateAfterFaint = FALSE;
 
+    
     if ((gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT || gSpecialStatuses[gBattlerAttacker].fistBarrageState == FIST_BARRAGE_1ST_HIT)
         && gBattleMons[gBattlerTarget].hp != 0
         && IsFinalStrikeEffect(gCurrentMove))
@@ -6044,6 +6049,21 @@ static void Cmd_moveend(void)
                 }
                 break; // MOVE_EFFECT_REMOVE_STATUS
             }
+            if(gBattleMons[BATTLE_PARTNER(gBattlerAttacker)].ability == ABILITY_GANGSTER
+            && gBattleStruct->moveTarget[BATTLE_PARTNER(gBattlerAttacker)] == gBattlerTarget
+            && gBattleMoves[gCurrentMove].split != SPLIT_STATUS
+            && gBattleMoves[gChosenMoveByBattler[BATTLE_PARTNER(gBattlerAttacker)]].split != SPLIT_STATUS
+            && gBattleMons[gBattlerAttacker].speed > gBattleMons[BATTLE_PARTNER(gBattlerAttacker)].speed
+            && gBattleMons[gBattlerTarget].hp
+            && gBattleMoves[gCurrentMove].target != (MOVE_TARGET_ALL_BATTLERS || MOVE_TARGET_ALLY || MOVE_TARGET_BOTH || MOVE_TARGET_FOES_AND_ALLY || MOVE_TARGET_OPPONENTS_FIELD || MOVE_TARGET_RANDOM)
+            && gBattleMoves[gChosenMoveByBattler[BATTLE_PARTNER(gBattlerAttacker)]].target != (MOVE_TARGET_ALL_BATTLERS || MOVE_TARGET_ALLY || MOVE_TARGET_BOTH || MOVE_TARGET_FOES_AND_ALLY || MOVE_TARGET_OPPONENTS_FIELD || MOVE_TARGET_RANDOM)
+            ){
+                    gBattlerTarget = BATTLE_PARTNER(gBattlerAttacker);
+                    gBattlerAbility = gBattleMons[BATTLE_PARTNER(gBattlerAttacker)].ability;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_GangsterActivates;
+                    effect = TRUE;
+                }
             gBattleStruct->moveEffect2 = 0;
             gBattleScripting.moveendState++;
             break; // MOVEEND_MOVE_EFFECTS2
@@ -6633,10 +6653,14 @@ static void Cmd_moveend(void)
                     gBattlescriptCurrInstr = BattleScript_SymbiosisActivates;
                     effect = TRUE;
                 }
+                
             }
+            
             gBattleScripting.moveendState++;
             break;
-        case MOVEEND_CLEAR_BITS: // Clear/Set bits for things like using a move for all targets and all hits.
+        case MOVEEND_CLEAR_BITS: // Clear/Set bits for things like using a move for all targets and all hits
+            
+        
             if (gSpecialStatuses[gBattlerAttacker].instructedChosenTarget)
                 *(gBattleStruct->moveTarget + gBattlerAttacker) = gSpecialStatuses[gBattlerAttacker].instructedChosenTarget & 0x3;
             if (gSpecialStatuses[gBattlerAttacker].dancerOriginalTarget)
@@ -7877,7 +7901,7 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
 
     if (trainerId == TRAINER_SECRET_BASE)
     {
-        moneyReward = 20 * gBattleResources->secretBase->party.levels[0] * gBattleStruct->moneyMultiplier;
+        moneyReward = 100 * gBattleStruct->moneyMultiplier;
     }
     else
     {
@@ -7922,11 +7946,11 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
         }
 
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
+            moneyReward = gTrainerMoneyTable[i].value * 100;
         else if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * 2 * gTrainerMoneyTable[i].value;
+            moneyReward = gTrainerMoneyTable[i].value * 100;
         else
-            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
+            moneyReward = gTrainerMoneyTable[i].value * 100;
     }
 
     return moneyReward;
@@ -10476,7 +10500,7 @@ static void Cmd_various(void)
     case VARIOUS_AFTER_YOU:
     {
         VARIOUS_ARGS(const u8 *failInstr);
-        if (ChangeOrderTargetAfterAttacker())
+        if (ChangeOrderTargetAfterAttacker() || IsAbilityOnField(ABILITY_GANGSTER))
         {
             gSpecialStatuses[gBattlerTarget].afterYou = 1;
             gBattlescriptCurrInstr = cmd->nextInstr;
@@ -16769,6 +16793,53 @@ static void TryUpdateRoundTurnOrder(void)
         for (i = currRounder; i < gBattlersCount; i++)
         {
             if (gChosenMoveByBattler[gBattlerByTurnOrder[i]] == MOVE_ROUND)
+                roundUsers[j++] = gBattlerByTurnOrder[i];
+            else
+                nonRoundUsers[k++] = gBattlerByTurnOrder[i];
+        }
+
+        // update turn order for round users
+        for (i = 0; roundUsers[i] != 0xFF && i < 3; i++)
+        {
+            gBattlerByTurnOrder[currRounder] = roundUsers[i];
+            gActionsByTurnOrder[currRounder] = gActionsByTurnOrder[roundUsers[i]];
+            gProtectStructs[roundUsers[i]].quash = TRUE; // Make it so their turn order can't be changed again
+            currRounder++;
+        }
+
+        // Update turn order for non-round users
+        for (i = 0; nonRoundUsers[i] != 0xFF && i < 3; i++)
+        {
+            gBattlerByTurnOrder[currRounder] = nonRoundUsers[i];
+            gActionsByTurnOrder[currRounder] = gActionsByTurnOrder[nonRoundUsers[i]];
+            currRounder++;
+        }
+    }
+}
+
+static void TryUpdateGangsterOrder(void)
+{
+    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+    {
+        u32 i;
+        u32 j = 0;
+        u32 k = 0;
+        u32 currRounder;
+        u8 roundUsers[3] = {0xFF, 0xFF, 0xFF};
+        u8 nonRoundUsers[3] = {0xFF, 0xFF, 0xFF};
+        for (i = 0; i < gBattlersCount; i++)
+        {
+            if (gBattlerByTurnOrder[i] == gBattlerAttacker)
+            {
+                currRounder = i + 1; // Current battler going after attacker
+                break;
+            }
+        }
+
+        // Get battlers after us using round
+        for (i = currRounder; i < gBattlersCount; i++)
+        {
+            if (gBattleMons[gBattlerByTurnOrder[i]].ability == ABILITY_GANGSTER)
                 roundUsers[j++] = gBattlerByTurnOrder[i];
             else
                 nonRoundUsers[k++] = gBattlerByTurnOrder[i];

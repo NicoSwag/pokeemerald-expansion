@@ -198,8 +198,8 @@ Route101_Movement_Unused2:
 	step_end
 
 Route101_EventScript_Youngster::
-	lock
-	goto_if_set FLAG_101_RECEIVED_HEART_SCALE, Route101_EventScript_Youngster_Received
+	lockall
+	call_if_set FLAG_101_RECEIVED_HEART_SCALE, Route101_EventScript_Youngster_Received
 	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_NPC
 	waitmessage
 	giveitem ITEM_HEART_SCALE
@@ -210,6 +210,7 @@ Route101_EventScript_Youngster::
 
 Route101_EventScript_Youngster_Received::
 	msgbox Route101_Text_Healthcare, MSGBOX_NPC
+	release
 	end
 
 Route101_EventScript_Boy::
@@ -259,7 +260,7 @@ Route101_EventScript_HideBrendanInBedroom::
 	return
 
 Route101_Movement_BirchApproachPlayer:
-	walk_right
+	walk_in_place_fast_right
 	step_end
 
 Route101_Text_HelpMe:

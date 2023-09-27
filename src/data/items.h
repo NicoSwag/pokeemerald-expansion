@@ -1760,9 +1760,9 @@ const struct Item gItems[] =
 
     [ITEM_NUGGET] =
     {
-        .name = _("Nugget"),
+        .name = _("NUGGET"),
         .itemId = ITEM_NUGGET,
-        .price = 10000,
+        .price = 3000,
         .description = sNuggetDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -5743,7 +5743,7 @@ const struct Item gItems[] =
 
     [ITEM_SILVER_POWDER] =
     {
-        .name = _("Silver Powder"),
+        .name = _("SILVER POWDER"),
         .itemId = ITEM_SILVER_POWDER,
         .price = 1000,
         .holdEffect = HOLD_EFFECT_BUG_POWER,

@@ -1051,6 +1051,7 @@ static const u8 sHoldEffectToType[][2] =
     {HOLD_EFFECT_FIRE_POWER, TYPE_FIRE},
     {HOLD_EFFECT_DRAGON_POWER, TYPE_DRAGON},
     {HOLD_EFFECT_NORMAL_POWER, TYPE_NORMAL},
+    {HOLD_EFFECT_NORMAL_POWER, TYPE_MYSTERY},
     {HOLD_EFFECT_FAIRY_POWER, TYPE_FAIRY},
 };
 
@@ -9159,6 +9160,12 @@ u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDef, u8 m
         if (moveType == TYPE_ELECTRIC && gBattleStruct->ateBoost[battlerAtk])
             MulModifier(&modifier, UQ_4_12(1.2));
         break;
+    case ABILITY_SCATTERBRAIN:
+        if(gStatuses3[gBattlerAttacker] & STATUS3_ALWAYS_HITS_TURN(1))
+        {
+            MulModifier(&modifier, UQ_4_12(2.0));
+        }
+        break;
     case ABILITY_REFRIGERATE:
         if (moveType == TYPE_ICE && gBattleStruct->ateBoost[battlerAtk])
             MulModifier(&modifier, UQ_4_12(1.2));
@@ -9168,8 +9175,8 @@ u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDef, u8 m
             MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_NORMALIZE:
-        if (moveType == TYPE_NORMAL && gBattleStruct->ateBoost[battlerAtk])
-            MulModifier(&modifier, UQ_4_12(1.2));
+        if (moveType == TYPE_MYSTERY && gBattleStruct->ateBoost[battlerAtk])
+            MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_PUNK_ROCK:
         if (gBattleMoves[move].flags & FLAG_SOUND)
@@ -9269,6 +9276,7 @@ u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDef, u8 m
         case ABILITY_STEELY_SPIRIT:
             if (moveType == TYPE_STEEL)
                 MulModifier(&modifier, UQ_4_12(1.5));
+            break;
             break;
         case ABILITY_POLAR_HERITAGE:
             if (moveType == TYPE_ICE)

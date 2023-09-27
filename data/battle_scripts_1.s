@@ -9157,6 +9157,7 @@ BattleScript_MoveStatDrain_Cont:
 	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
+
 BattleScript_MonMadeMoveUseless_PPLoss::
 	ppreduce
 BattleScript_MonMadeMoveUseless::
@@ -9594,6 +9595,7 @@ BattleScript_AbilityStatusEffect::
 	call BattleScript_AbilityPopUp
 	seteffectsecondary
 	return
+
 
 BattleScript_BattleBondActivatesOnMoveEndAttacker::
 	pause 5
@@ -10609,6 +10611,11 @@ BattleScript_SymbiosisActivates::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_SYMBIOSISITEMPASS
 	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_GangsterActivates::
+	tryafteryou BattleScript_ButItFailed
+	call BattleScript_AbilityPopUpTarget
 	return
 
 BattleScript_TargetAbilityStatRaiseRet::

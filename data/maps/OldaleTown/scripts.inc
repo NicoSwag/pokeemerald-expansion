@@ -309,7 +309,7 @@ OldaleTown_EventScript_ReceivedEevee::
 
 
 OldaleTown_Text_ObtainedEevee:
-	.string "{PLAYER} obtained Eevee.$"
+	.string "{PLAYER} obtained EEVEE.$"
 
 OldaleTown_EventScript_Rival::
 	lockall

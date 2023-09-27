@@ -2,7 +2,19 @@ Route102_MapScripts::
 	.byte 0
 
 Route102_EventScript_LittleBoy::
+	lockall
+	goto_if_unset FLAG_RECEIVED_SILVER_POWDER, Route102_EventScript_LittleBoyPowder
 	msgbox Route102_Text_ImNotVeryTall, MSGBOX_NPC
+	release
+	end
+
+
+Route102_EventScript_LittleBoyPowder::
+	msgbox Route102_Text_GivePowder, MSGBOX_NPC
+	giveitem ITEM_SILVER_POWDER
+	msgbox Route102_Text_Feelbetternow, MSGBOX_NPC
+	setflag FLAG_RECEIVED_SILVER_POWDER
+	release
 	end
 
 Route102_EventScript_RouteSignOldale::
@@ -93,8 +105,19 @@ Route102_Text_ImNotVeryTall:
 	.string "I'm…not very tall, so I sink right\n"
 	.string "into tall grass.\p"
 	.string "The grass goes up my nose and…\n"
+	.string "Well, you've seen how it goes.$"
+
+Route102_Text_GivePowder:
+	.string "I'm…not very tall, so I sink right\n"
+	.string "into tall grass.\p"
+	.string "The grass goes up my nose and…\n"
 	.string "Fwafwafwafwafwa…\p"
 	.string "Fwatchoo!$"
+
+Route102_Text_Feelbetternow:
+	.string "Oh, I'm sorry!\n"
+	.string "I think that came out of my nose…\p"
+	.string "But it looks like my sneeze is gone!$"
 
 Route102_Text_CatchWholeBunchOfPokemon:
 	.string "I'm going to catch a whole bunch of\n"
