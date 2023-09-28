@@ -3,6 +3,7 @@
 .set LOCALID_WALLYS_DAD, 5
 .set LOCALID_GYM_BOY, 6
 .set LOCALID_SCOTT, 7
+.set LOCALID_LOOKER, 19
 
 PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_OnTransition
@@ -553,48 +554,91 @@ PetalburgCity_EventScript_Scott::
 	setvar VAR_SCOTT_STATE, 1
 	msgbox PetalburgCity_Text_AreYouATrainer, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_SCOTT, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	delay 30
 	msgbox PetalburgCity_Text_WellMaybeNot, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_SCOTT, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	delay 30
 	msgbox PetalburgCity_Text_ImLookingForTalentedTrainers, MSGBOX_DEFAULT
 	closemessage
+	applymovement LOCALID_SCOTT, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_SCOTT, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_SCOTT, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_SCOTT, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement LOCALID_SCOTT, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_SCOTT, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_SCOTT, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_SCOTT, Common_Movement_FaceLeft
+	waitmovement 0
+	removeobject LOCALID_SCOTT
+	addobject LOCALID_LOOKER
 	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_ScottExit0
 	call_if_eq VAR_0x8008, 1, PetalburgCity_EventScript_ScottExit1
-	call_if_eq VAR_0x8008, 2, PetalburgCity_EventScript_ScottExit3
-	call_if_eq VAR_0x8008, 3, PetalburgCity_EventScript_ScottExit3
+	call_if_eq VAR_0x8008, 2, PetalburgCity_EventScript_ScottExit2
+	call_if_eq VAR_0x8008, 3, PetalburgCity_EventScript_ScottExit2
+	special DrawWholeMapView
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceLeft
+	waitmovement 0
+	msgbox PetalburgCity_Text_Looker, MSGBOX_DEFAULT
+	giveitem ITEM_TOWN_MAP
+	msgbox PetalburgCity_Text_Looker2, MSGBOX_DEFAULT
 	setvar VAR_SCOTT_PETALBURG_ENCOUNTER, 1
-	removeobject LOCALID_SCOTT
+	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_LookerExit0
+	call_if_eq VAR_0x8008, 1, PetalburgCity_EventScript_LookerExit1
+	call_if_eq VAR_0x8008, 2, PetalburgCity_EventScript_LookerExit2
+	call_if_eq VAR_0x8008, 3, PetalburgCity_EventScript_LookerExit2
+	removeobject LOCALID_LOOKER
 	releaseall
 	end
 
 PetalburgCity_EventScript_ScottExit0::
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWatchScottExit0
-	applymovement LOCALID_SCOTT, PetalburgCity_Movement_ScottExit0
-	waitmovement 0
+	setobjectxy LOCALID_LOOKER, 1, 11
 	return
 
 PetalburgCity_EventScript_ScottExit1::
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWatchScottExit1
-	applymovement LOCALID_SCOTT, PetalburgCity_Movement_ScottExit1
-	waitmovement 0
+	setobjectxy LOCALID_LOOKER, 1, 12
 	return
 
 PetalburgCity_EventScript_ScottExit2::
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWatchScottExit2
-	applymovement LOCALID_SCOTT, PetalburgCity_Movement_ScottExit2
+	setobjectxy LOCALID_LOOKER, 1, 13
+	return
+
+PetalburgCity_EventScript_LookerExit0::
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWatchScottExit0
+	applymovement LOCALID_LOOKER, PetalburgCity_Movement_ScottExit0
 	waitmovement 0
 	return
 
-PetalburgCity_EventScript_ScottExit3::
-	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWatchScottExit3
-	applymovement LOCALID_SCOTT, PetalburgCity_Movement_ScottExit3
+PetalburgCity_EventScript_LookerExit1::
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWatchScottExit1
+	applymovement LOCALID_LOOKER, PetalburgCity_Movement_ScottExit1
 	waitmovement 0
 	return
+
+PetalburgCity_EventScript_LookerExit2::
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgCity_Movement_PlayerWatchScottExit2
+	applymovement LOCALID_LOOKER, PetalburgCity_Movement_ScottExit2
+	waitmovement 0
+	return
+
 
 PetalburgCity_Movement_ScottStartWalkLeft:
 	walk_left
@@ -784,6 +828,65 @@ PetalburgCity_Text_WellMaybeNot:
 	.string "or maybe you're just an ordinary kid.$"
 
 PetalburgCity_Text_ImLookingForTalentedTrainers:
-	.string "I'm roaming the land in search of\n"
-	.string "talented TRAINERS.\p"
-	.string "I'm sorry to have taken your time.$"
+	.string "…\p"
+	.string "But, that look…\p"
+	.string "Yes, of course! You see right\n"
+	.string "through the ruse, do you not?$"
+
+PetalburgCity_Text_Looker:
+	.string "A clever one, are you?\n"
+	.string "Yes, I could see it from your eyes…\p"
+	.string "No trickery evades your fine\n"
+	.string "mind!\p"
+	.string "Why, yes, someone with a strong\n"
+	.string "power of observation such as you\l"
+	.string "might prove to be of use to the\l"
+	.string "current matters.\p"
+	.string "Very good, then! Allow me to\n"
+	.string "introduce myself.\p"
+	.string "My name…\n"
+	.string "Ah, no! That is, of course,\l"
+	.string "classified.\p"
+	.string "But my code name, it is LOOKER.\n"
+	.string "It is what they all call me.\p"
+	.string "Yes, I am a globe-trotting\n"
+	.string "elite of the INTERNATIONAL POLICE.\p"
+	.string "I was summoned in this region, you\n"
+	.string "see, by a certain individual, to\l"
+	.string "investigate some very shady things.\p"
+	.string "Some ill-mannered youngsters wearing\n"
+	.string "colorful uniforms seem to be causing\l"
+	.string "quite the ruckus!\p"
+	.string "The thing is, I seem to have judged\n"
+	.string "the situation wrongly.\p"
+	.string "You see, a master investigator, I am\n"
+	.string "that.\p"
+	.string "But Trainer, unfortunately, I am not.\p"
+	.string "Therefore, I have been looking for a\n"
+	.string "trustworthy aide to help me.\p"
+	.string "Say, your name is…?\p"
+	.string "… …\p"
+	.string "It is {PLAYER}, then?\n"
+	.string "Magnificent!\p"
+	.string "My friend, I would be very grateful\n"
+	.string "if you could meet me in the near\l"
+	.string "PETALBURG FOREST.\p"
+	.string "I have been informed that a shady deal\n"
+	.string "is to take place on those premises, and\l"
+	.string "your assistance would be appreciated.\p"
+	.string "Incidentally…\p"
+	.string "Do you not possess a TOWN MAP?\n"
+	.string "Is it not an invaluable item for every\l"
+	.string "trainer that calls themselves such?\p"
+	.string "Ah, but fret not, my friend!\n"
+	.string "Feel free to take this, as compensation\l"
+	.string "in advance for your invaluable help!$"
+
+
+PetalburgCity_Text_Looker2:
+	.string "Now, my dear assistant, is the time\n"
+	.string "to take my leave.\p"
+	.string "I shall be awaiting for you in the\n"
+	.string "PETALBURG FOREST.\p"
+	.string "And remember, if anyone asks of me,\n"
+	.string "I am like a ghost: invisible!$"

@@ -3,6 +3,11 @@
 #define egg_moves(species, moves...) (SPECIES_##species + EGG_MOVES_SPECIES_OFFSET), moves
 
 const u16 gEggMoves[] = {
+    egg_moves(FENNEKIN,
+        MOVE_INCINERATE,
+        MOVE_MAGIC_ROOM,
+        MOVE_CHARM),
+    
     egg_moves(SILCOON,
         MOVE_CHARM),
         
@@ -3262,20 +3267,8 @@ const u16 gEggMoves[] = {
         MOVE_MAGNET_RISE),
 #endif
 
-#if P_GEN_6_POKEMON == TRUE
-    egg_moves(CHESPIN,
-        MOVE_SYNTHESIS,
-        MOVE_BELLY_DRUM,
-        MOVE_CURSE,
-        MOVE_QUICK_GUARD,
-        MOVE_SPIKES,
-        MOVE_DEFENSE_CURL,
-        MOVE_ROLLOUT,
-        MOVE_POWER_UP_PUNCH),
 
-    egg_moves(FENNEKIN,
-        MOVE_INCINERATE,
-        MOVE_MAGIC_ROOM),
+    
 
     egg_moves(FROAKIE,
         MOVE_BESTOW,
@@ -3462,7 +3455,6 @@ const u16 gEggMoves[] = {
         MOVE_SNATCH,
         MOVE_OUTRAGE,
         MOVE_TAILWIND),
-#endif
 
 #if P_GEN_7_POKEMON == TRUE
     egg_moves(ROWLET,

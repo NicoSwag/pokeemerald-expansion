@@ -753,7 +753,7 @@ u8 GetEggMoves(u16 species, u16 *eggMoves)
 
     numEggMoves = 0;
     eggMoveIdx = 0;
-    for (i = 0; i < ARRAY_COUNT(gEggMoves) - 1; i++)
+    for (i = 0; i < ARRAY_COUNT(gEggMoves); i++)
     {
         if (gEggMoves[i] == species + EGG_MOVES_SPECIES_OFFSET)
         {
@@ -770,7 +770,7 @@ u8 GetEggMoves(u16 species, u16 *eggMoves)
         eggMoves[i] = gEggMoves[eggMoveIdx + i];
         numEggMoves++;
     }
-
+    numEggMoves++;
     return numEggMoves;
 }
 
