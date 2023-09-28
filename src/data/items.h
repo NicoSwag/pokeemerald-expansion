@@ -7736,7 +7736,7 @@ const struct Item gItems[] =
     {
         .name = _("TM01"),
         .itemId = ITEM_TM01_HELPING_HAND,
-        .price = 3000,
+        .price = 1000,
         .description = sTM01Desc,
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
@@ -7744,10 +7744,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM02_DRAGON_CLAW] =
+    [ITEM_TM02_CHILLING_WATER] =
     {
         .name = _("TM02"),
-        .itemId = ITEM_TM02_DRAGON_CLAW,
+        .itemId = ITEM_TM02_CHILLING_WATER,
         .price = 3000,
         .description = sTM02Desc,
         .importance = I_REUSABLE_TMS,

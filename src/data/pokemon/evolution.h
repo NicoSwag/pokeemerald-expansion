@@ -265,7 +265,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
     [SPECIES_RALTS]                 = {{EVO_LEVEL, 20, SPECIES_KIRLIA}},
     [SPECIES_KIRLIA]                = {{EVO_LEVEL, 30, SPECIES_GARDEVOIR},
                                     #if P_GEN_4_POKEMON == TRUE
-                                       {EVO_ITEM_MALE, ITEM_DAWN_STONE, SPECIES_GALLADE}
+                                       {EVO_ITEM, ITEM_DAWN_STONE, SPECIES_GALLADE}
                                     #endif
                                        },
     [SPECIES_BAGON]                 = {{EVO_LEVEL, 30, SPECIES_SHELGON}},
@@ -286,7 +286,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
     [SPECIES_KRICKETOT]             = {{EVO_LEVEL, 10, SPECIES_KRICKETUNE}},
     [SPECIES_SHINX]                 = {{EVO_LEVEL, 15, SPECIES_LUXIO}},
     [SPECIES_LUXIO]                 = {{EVO_LEVEL, 30, SPECIES_LUXRAY}},
-    [SPECIES_BUDEW]                 = {{EVO_FRIENDSHIP_DAY, 0, SPECIES_ROSELIA}},
+    [SPECIES_BUDEW]                 = {{EVO_LEVEL, 12, SPECIES_ROSELIA}},
     [SPECIES_CRANIDOS]              = {{EVO_LEVEL, 30, SPECIES_RAMPARDOS}},
     [SPECIES_SHIELDON]              = {{EVO_LEVEL, 30, SPECIES_BASTIODON}},
     [SPECIES_BURMY]                 = {{EVO_LEVEL_FEMALE, 20, SPECIES_WORMADAM},

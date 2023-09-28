@@ -7918,8 +7918,8 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("WALLY"),
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-        .party = NO_ITEM_DEFAULT_MOVES(sParty_Wally1),
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE | AI_FLAG_HELP_PARTNER,
+        .party = EVERYTHING_CUSTOMIZED(sParty_Wally1),
     },
 
     [TRAINER_WALLY_VR_2] =

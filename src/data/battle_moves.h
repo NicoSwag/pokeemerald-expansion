@@ -7601,7 +7601,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_CAPTIVATE] =
     {
-        .effect = EFFECT_CAPTIVATE,
+        .effect = EFFECT_SPECIAL_ATTACK_DOWN,
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 100,

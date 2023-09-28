@@ -1,6 +1,11 @@
 Route102_EventScript_ItemPotion::
 	finditem ITEM_POTION
 	end
+	
+Route102_EventScript_ItemMuscleBand::
+	finditem ITEM_MUSCLE_BAND
+	end
+
 
 Route103_EventScript_ItemGuardSpec::
 	finditem ITEM_GUARD_SPEC

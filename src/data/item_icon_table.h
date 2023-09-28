@@ -623,7 +623,7 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_ENIGMA_BERRY_E_READER] = {gItemIcon_EnigmaBerry, gItemIconPalette_EnigmaBerry},
     // TMs/HMs
     [ITEM_TM01] = {gItemIcon_TM, gItemIconPalette_NormalTMHM},
-    [ITEM_TM02] = {gItemIcon_TM, gItemIconPalette_DragonTMHM},
+    [ITEM_TM02] = {gItemIcon_TM, gItemIconPalette_WaterTMHM},
     [ITEM_TM03] = {gItemIcon_TM, gItemIconPalette_WaterTMHM},
     [ITEM_TM04] = {gItemIcon_TM, gItemIconPalette_PsychicTMHM},
     [ITEM_TM05] = {gItemIcon_TM, gItemIconPalette_NormalTMHM},

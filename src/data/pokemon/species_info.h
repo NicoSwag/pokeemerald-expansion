@@ -7267,7 +7267,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_RALTS] =
     {
-        .baseHP        = 28,
+        .baseHP        = 30,
         .baseAttack    = 25,
         .baseDefense   = 25,
         .baseSpeed     = 40,
@@ -7280,7 +7280,6 @@ const struct SpeciesInfo gSpeciesInfo[] =
         #endif
         .catchRate = 235,
         .expYield = 40,
-        .evYield_SpAttack  = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = 35,
@@ -8111,7 +8110,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_ROSELIA] =
     {
-        .baseHP        = 50,
+        .baseHP        = 60,
         .baseAttack    = 60,
         .baseDefense   = 45,
         .baseSpeed     = 65,
@@ -8120,14 +8119,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .types = { TYPE_GRASS, TYPE_POISON},
         .catchRate = 150,
         .expYield = 140,
-        .evYield_SpAttack  = 2,
-        .itemRare = ITEM_POISON_BARB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_GRASS},
-        .abilities = {ABILITY_NATURAL_CURE, ABILITY_POISON_POINT, ABILITY_LEAF_GUARD},
+        .abilities = {ABILITY_TECHNICIAN, ABILITY_FLOWER_VEIL, ABILITY_LEAF_GUARD},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
     },
@@ -10207,21 +10204,19 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .types = { TYPE_GRASS, TYPE_POISON},
         .catchRate = 255,
         .expYield = 56,
-        .evYield_SpAttack  = 1,
-        .itemRare = ITEM_POISON_BARB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_UNDISCOVERED, EGG_GROUP_UNDISCOVERED},
-        .abilities = {ABILITY_NATURAL_CURE, ABILITY_POISON_POINT, ABILITY_LEAF_GUARD},
+        .abilities = {ABILITY_TECHNICIAN, ABILITY_FLOWER_VEIL, ABILITY_LEAF_GUARD},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
     },
 
     [SPECIES_ROSERADE] =
     {
-        .baseHP        = 60,
+        .baseHP        = 70,
         .baseAttack    = 70,
         .baseSpeed     = 90,
         .baseSpAttack  = 125,
@@ -10234,14 +10229,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .types = { TYPE_GRASS, TYPE_POISON},
         .catchRate = 75,
         .expYield = 232,
-        .evYield_SpAttack  = 3,
-        .itemRare = ITEM_POISON_BARB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_GRASS},
-        .abilities = {ABILITY_NATURAL_CURE, ABILITY_POISON_POINT, ABILITY_TECHNICIAN},
+        .abilities = {ABILITY_TECHNICIAN, ABILITY_FLOWER_VEIL, ABILITY_LEAF_GUARD},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
     },

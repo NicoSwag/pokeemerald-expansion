@@ -3,6 +3,7 @@ Route102_MapScripts::
 
 Route102_EventScript_LittleBoy::
 	lockall
+	faceplayer
 	goto_if_unset FLAG_RECEIVED_SILVER_POWDER, Route102_EventScript_LittleBoyPowder
 	msgbox Route102_Text_ImNotVeryTall, MSGBOX_NPC
 	release
@@ -26,6 +27,8 @@ Route102_EventScript_RouteSignPetalburg::
 	end
 
 Route102_EventScript_Boy::
+	lock
+	faceplayer
 	msgbox Route102_Text_CatchWholeBunchOfPokemon, MSGBOX_NPC
 	end
 

@@ -3031,9 +3031,9 @@ static const u8 sTM01Desc[] = _(
     "moves.");
 
 static const u8 sTM02Desc[] = _(
-    "Hooks and slashes\n"
-    "the foe with long,\n"
-    "sharp claws.");
+    "A shower with cold\n"
+    "water that lowers\n"
+    "the Attack.");
 
 static const u8 sTM03Desc[] = _(
     "Generates an\n"

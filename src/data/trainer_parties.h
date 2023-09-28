@@ -8829,16 +8829,47 @@ static const struct TrainerMonNoItemDefaultMoves sParty_WallyMauville[] = {
 };
 
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Wally1[] = {
+static const struct TrainerMonCustomized sParty_Wally1[] = {
     {
-    .iv = 15,
+    .species = SPECIES_BUDEW,
+    .heldItem = ITEM_CHESTO_BERRY,
+    .moves = {MOVE_BULLET_SEED, MOVE_GROWTH, MOVE_STUN_SPORE, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 8,
-    .species = SPECIES_RALTS,
+    .ability = ABILITY_TECHNICIAN,
+    .isShiny = FALSE,
+    .nature = NATURE_TIMID,
     },
     {
-    .iv = 15,
+    .species = SPECIES_ZIGZAGOON_GALARIAN,
+    .heldItem = ITEM_ORAN_BERRY,
+    .moves = {MOVE_BABY_DOLL_EYES, MOVE_SNARL, MOVE_TACKLE, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 8,
-    .species = SPECIES_BUDEW,
+    .ability = ABILITY_GLUTTONY,
+    .isShiny = FALSE,
+    .nature = NATURE_ADAMANT,
+    },
+    {
+    .species = SPECIES_SKITTY,
+    .heldItem = ITEM_SILK_SCARF,
+    .moves = {MOVE_CAPTIVATE, MOVE_WISH, MOVE_FURY_SWIPES, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 8,
+    .ability = ABILITY_PRANKSTER,
+    .isShiny = FALSE,
+    .nature = NATURE_HASTY,
+    },
+    {
+    .species = SPECIES_RALTS,
+    .heldItem = ITEM_ORAN_BERRY,
+    .moves = {MOVE_DRAINING_KISS, MOVE_MAGICAL_LEAF, MOVE_CONFUSION, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 9,
+    .ability = ABILITY_TRACE,
+    .isShiny = TRUE,
+    .ball = ITEM_PREMIER_BALL,
+    .nature = NATURE_MODEST,
     }
 };
 

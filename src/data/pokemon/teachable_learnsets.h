@@ -7598,6 +7598,7 @@ static const u16 sAipomTeachableLearnset[] = {
 
 static const u16 sSunkernTeachableLearnset[] = {
     MOVE_TRAILBLAZE,
+    MOVE_FIRE_SPIN,
     MOVE_UNAVAILABLE,
 };
 
@@ -8663,6 +8664,7 @@ static const u16 sUrsaringTeachableLearnset[] = {
 
 static const u16 sSlugmaTeachableLearnset[] = {
     MOVE_ENDURE,
+    MOVE_FIRE_SPIN,
     MOVE_UNAVAILABLE
 };
 
@@ -10647,6 +10649,7 @@ static const u16 sLotadTeachableLearnset[] = {
     MOVE_ENDURE,
     MOVE_TRAILBLAZE,
     MOVE_QUASH,
+    MOVE_CHILLING_WATER,
     MOVE_UNAVAILABLE,
 };
 
@@ -10985,50 +10988,9 @@ static const u16 sPelipperTeachableLearnset[] = {
 };
 
 static const u16 sRaltsTeachableLearnset[] = {
-    MOVE_ATTRACT,
-    MOVE_CALM_MIND,
-    MOVE_DOUBLE_TEAM,
-    MOVE_FACADE,
-    MOVE_FLASH,
-    MOVE_FRUSTRATION,
-    MOVE_HIDDEN_POWER,
-    MOVE_LIGHT_SCREEN,
-    MOVE_PROTECT,
-    MOVE_PSYCHIC,
-    MOVE_RAIN_DANCE,
-    MOVE_REFLECT,
-    MOVE_REST,
-    MOVE_RETURN,
-    MOVE_SAFEGUARD,
-    MOVE_SECRET_POWER,
-    MOVE_SHADOW_BALL,
-    MOVE_SHOCK_WAVE,
-    MOVE_SKILL_SWAP,
-    MOVE_SNATCH,
-    MOVE_SUNNY_DAY,
-    MOVE_TAUNT,
-    MOVE_THIEF,
-    MOVE_THUNDERBOLT,
-    MOVE_TORMENT,
-    MOVE_TOXIC,
-    MOVE_BODY_SLAM,
-    MOVE_DEFENSE_CURL,
-    MOVE_DOUBLE_EDGE,
-    MOVE_DREAM_EATER,
     MOVE_ENDURE,
-    MOVE_FIRE_PUNCH,
-    MOVE_ICE_PUNCH,
-    MOVE_ICY_WIND,
-    MOVE_MIMIC,
-    MOVE_MUD_SLAP,
-    MOVE_PSYCH_UP,
-    MOVE_SLEEP_TALK,
-    MOVE_SNORE,
-    MOVE_SUBSTITUTE,
-    MOVE_SWAGGER,
-    MOVE_SWIFT,
-    MOVE_THUNDER_PUNCH,
-    MOVE_THUNDER_WAVE,
+    MOVE_HELPING_HAND,
+    MOVE_QUASH,
     MOVE_UNAVAILABLE,
 };
 
@@ -11133,6 +11095,7 @@ static const u16 sSurskitTeachableLearnset[] = {
     MOVE_HELPING_HAND,
     MOVE_ENDURE,
     MOVE_QUASH,
+    MOVE_CHILLING_WATER,
     MOVE_UNAVAILABLE,
 };
 
@@ -14610,6 +14573,7 @@ static const u16 sWalreinTeachableLearnset[] = {
 
 static const u16 sClamperlTeachableLearnset[] = {
     MOVE_ENDURE,
+    MOVE_CHILLING_WATER,
     MOVE_UNAVAILABLE,
 };
 
@@ -15767,8 +15731,8 @@ static const u16 sInfernapeTeachableLearnset[] = {
 };
 
 static const u16 sPiplupTeachableLearnset[] = {
-    MOVE_HELPING_HAND,
     MOVE_QUASH,
+    MOVE_CHILLING_WATER,
     MOVE_UNAVAILABLE,
 };
 
@@ -24791,8 +24755,8 @@ static const u16 sChesnaughtTeachableLearnset[] = {
 };
 
 static const u16 sFennekinTeachableLearnset[] = {
-    MOVE_HELPING_HAND,
     MOVE_ENDURE,
+    MOVE_FIRE_SPIN,
     MOVE_UNAVAILABLE,
 };
 

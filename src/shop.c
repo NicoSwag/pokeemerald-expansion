@@ -587,6 +587,14 @@ static void BuyMenuBuildListMenuTemplate(void)
     i++;
     added_TMs++;
     }
+
+    if(FlagGet(FLAG_RECEIVED_TM02) == TRUE){
+    StringCopy(sItemNames[i], gText_TM02);
+    sListMenuItems[i].name = sItemNames[i];
+    sListMenuItems[i].id = ITEM_TM02;
+    i++;
+    added_TMs++;
+    }
     
     StringCopy(sItemNames[i], gText_Cancel2);
     sListMenuItems[i].name = sItemNames[i];

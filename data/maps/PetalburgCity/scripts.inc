@@ -18,7 +18,7 @@ PetalburgCity_OnTransition:
 	end
 
 PetalburgCity_EventScript_MoveGymBoyToWestEntrance::
-	setobjectxyperm LOCALID_GYM_BOY, 10, 3
+	setobjectxyperm LOCALID_GYM_BOY, 5, 10
 	return
 
 PetalburgCity_EventScript_DisableMapNameAndMusic::
@@ -89,7 +89,19 @@ PetalburgCity_EventScript_WalkToWallyHouse::
 PetalburgCity_EventScript_Boy::
 	lock
 	faceplayer
+	goto_if_unset FLAG_RECEIVED_TM02, PetalburgCity_EventScript_Boy_TM
 	msgbox PetalburgCity_Text_WaterReflection, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_BOY, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+PetalburgCity_EventScript_Boy_TM::
+	msgbox PetalburgCity_Text_WaterTM, MSGBOX_DEFAULT
+	giveitem ITEM_TM02
+	msgbox PetalburgCity_Text_WaterTMExplain MSGBOX_NPC
+	setflag FLAG_RECEIVED_TM02
 	closemessage
 	applymovement LOCALID_BOY, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -722,6 +734,24 @@ PetalburgCity_Text_WaterReflection:
 	.string "Or it could be a look of somber silence\n"
 	.string "struggling with fear…\p"
 	.string "What do you see reflected in your face?$"
+
+PetalburgCity_Text_WaterTM:
+	.string "My face is reflected in the water.\p"
+	.string "It's a shining grin full of hope…\p"
+	.string "Or it could be a look of somber silence\n"
+	.string "struggling with fear…\p"
+	.string "The questions that come to mind when\n"
+	.string "looking in the water are very chilling…\p"
+	.string "Which is why I want you to have this.$"
+
+PetalburgCity_Text_WaterTMExplain:
+	.string "CHILLING WATER is a move that\n"
+	.string "targets the opponent's inner fears\l"
+	.string "lowering their ATTACK.\p"
+	.string "Or perhaps it is the cold water that\n"
+	.string "does that…\p"
+	.string "We may never know.$"
+
 
 PetalburgCity_Text_FullPartyExplanation:
 	.string "Let's say you have six POKéMON.\n"
