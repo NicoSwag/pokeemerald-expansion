@@ -1476,7 +1476,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Valerie5[] = {
     }
 };
 
-static const struct TrainerMonItemDefaultMoves sParty_Cindy1[] = {
+static const struct TrainerMonCustom sParty_Cindy1[] = {
     {
     .iv = 0,
     .lvl = 7,
