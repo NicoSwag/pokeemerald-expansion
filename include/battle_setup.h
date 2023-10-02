@@ -71,4 +71,7 @@ u16 CountBattledRematchTeams(u16 trainerId);
 u8 HasWildPokmnOnThisRouteBeenSeen(u8 currLocation, bool8 setVarForThisEnc);
 u8 currLocConvertForNuzlocke(u8 currLocation);
 
+void DoStandardWildBattle_Debug(void);
+void BattleSetup_StartTrainerBattle_Debug(void);
+
 #endif // GUARD_BATTLE_SETUP_H

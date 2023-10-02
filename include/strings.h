@@ -3040,4 +3040,8 @@ extern const u8 gText_TM02[];
 extern const u8 gText_ExpShareOn[];
 extern const u8 gText_ExpShareOff[];
 
+// Exp. Share
+extern const u8 gText_ExpShareOn[];
+extern const u8 gText_ExpShareOff[];
+
 #endif // GUARD_STRINGS_H
