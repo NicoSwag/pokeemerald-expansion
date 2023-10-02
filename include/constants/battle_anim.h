@@ -550,9 +550,8 @@
 #define B_ANIM_SNOW_CONTINUES           36
 #define B_ANIM_ULTRA_BURST              37
 #define B_ANIM_SALT_CURE_DAMAGE         38
-#define B_ANIM_SNOW_CONTINUES           39
-#define B_ANIM_GRAVITY                  40
-#define B_ANIM_POLLUTION_CONTINUES      41
+#define B_ANIM_GRAVITY                  39
+#define B_ANIM_POLLUTION_CONTINUES      40
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

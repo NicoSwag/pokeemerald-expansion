@@ -1531,7 +1531,7 @@ bool32 IsMoveEncouragedToHit(u32 battlerAtk, u32 battlerDef, u32 move)
         return FALSE;
 
     // increased accuracy but don't always hit
-    if ((AI_WeatherHasEffect() &&
+    if ((AI_WeatherHasEffect(AI_DATA) &&
             (((gBattleWeather & B_WEATHER_POLLUTION) && (move == MOVE_NATURES_MALICE))
             ||  ((gBattleWeather & B_WEATHER_RAIN) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))
             || ((gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)) && move == MOVE_BLIZZARD)))
@@ -1696,9 +1696,9 @@ bool32 ShouldSetSnow(u32 battler, u32 ability, u32 holdEffect)
     return FALSE;
 }
 
-bool32 ShouldSetPollution(u8 battler, u16 ability, u16 holdEffect)
+bool32 ShouldSetPollution(u32 battler, u32 ability, u32 holdEffect)
 {
-    if (!AI_WeatherHasEffect())
+    if (!AI_WeatherHasEffect(AI_DATA))
         return FALSE;
     else if (gBattleWeather & (B_WEATHER_POLLUTION))
         return FALSE;
@@ -3035,7 +3035,7 @@ u32 ShouldTryToFlinch(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbi
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER
         || gBattleMons[battlerDef].type1 == TYPE_PSYCHIC
-        || gBattleMons[battlerDef].type2 == TYPE_PSYCHIC) // Opponent goes first
+        || gBattleMons[battlerDef].type2 == TYPE_PSYCHIC)) // Opponent goes first
     {
         return 0;
     }

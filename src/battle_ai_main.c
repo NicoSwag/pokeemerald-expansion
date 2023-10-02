@@ -2865,7 +2865,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             {
                 if((gBattleMons[battlerAtkPartner].status1 & STATUS1_SLEEP)
                 && ((GetMovePriority(battlerAtkPartner, move) > 0) || (gBattleMons[battlerAtk].speed > (gBattleMons[battlerAtkPartner].speed && gBattleMons[battlerDef].speed)))
-                && GetMoveDamageResult(move) == MOVE_POWER_WEAK
+                && GetMoveDamageResult(battlerAtk, battlerDef, AI_THINKING_STRUCT->movesetIndex) == MOVE_POWER_WEAK
                 && gBattleMons[battlerAtkPartner].hp > gBattleMons[battlerAtkPartner].maxHP/2)
 
                 RETURN_SCORE_PLUS(1);

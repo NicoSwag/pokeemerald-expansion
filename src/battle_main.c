@@ -4703,7 +4703,7 @@ s8 GetMovePriority(u32 battler, u16 move)
         priority++;
     }
     else if (ability == ABILITY_PROPELLER_TAIL
-    && gBattleMons[battlerId].hp < gBattleMons[battlerId].maxHP * 0.75
+    && gBattleMons[battler].hp < gBattleMons[battler].maxHP * 0.75
     && gBattleMoves[move].type == TYPE_WATER
     ){
     priority++;

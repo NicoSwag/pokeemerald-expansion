@@ -1352,7 +1352,7 @@ static void Cmd_attackcanceler(void)
     
     if (gSpecialStatuses[gBattlerAttacker].fistBarrageState == FIST_BARRAGE_OFF
     && GetBattlerAbility(gBattlerAttacker) == ABILITY_FIST_BARRAGE
-    && (gBattleMoves[gCurrentMove].flags & FLAG_IRON_FIST_BOOST)
+    && (gBattleMoves[gCurrentMove].punchingMove)
     && !(gAbsentBattlerFlags & gBitTable[gBattlerTarget])
     && gBattleStruct->zmove.toBeUsed[gBattlerAttacker] == MOVE_NONE)
     {
@@ -3898,7 +3898,7 @@ static void Cmd_tryfaintmon(void)
             {
                 if (FlagGet(FLAG_DEAD_WHEN_FAINT) && FlagGet(FLAG_SYS_POKEDEX_GET)){
                      bool8 dead = TRUE;
-                     SetMonData(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], MON_DATA_DEAD, &dead);
+                     SetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_DEAD, &dead);
                  }
                 gHitMarker |= HITMARKER_PLAYER_FAINTED;
                 if (gBattleResults.playerFaintCounter < 255)
@@ -4001,7 +4001,7 @@ static void Cmd_cleareffectsonfaint(void)
         if(gBattleMons[battler].ability==ABILITY_BLACK_HOLE && gBattleMons[battler].canGravityChange == TRUE && STATUS_FIELD_GRAVITY){
             gFieldStatuses &= ~STATUS_FIELD_GRAVITY;
         }
-        FaintClearSetData(); // Effects like attractions, trapping, etc.
+        FaintClearSetData(battler); // Effects like attractions, trapping, etc.
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }
@@ -4224,7 +4224,6 @@ double GetPkmnExpMultiplier(u8 level)
     avgDiff += 14;
 
     return lvlCapMultiplier;
-FEATURE_FLAG_ASSERT(I_EXP_SHARE_FLAG, YouNeedToSetTheExpShareFlagToAnUnusedFlag);
 }
 
 static u32 GetMonHoldEffect(struct Pokemon *mon)
@@ -4244,9 +4243,11 @@ static void Cmd_getexp(void)
 {
     CMD_ARGS(u8 battler);
 
+    u8 gExpShareExp;
     u32 holdEffect;
     s32 i; // also used as stringId
     u8 *expMonId = &gBattleStruct->expGetterMonId;
+    u16 item;
 
     gBattlerFainted = GetBattlerForBattleScript(cmd->battler);
 
@@ -4350,25 +4351,33 @@ static void Cmd_getexp(void)
             gBattleStruct->expSentInMons = sentInBits;
         }
         // fall through
-    case 2: // set exp value to the poke in expgetter_id and print message
+     case 2: // set exp value to the poke in expgetter_id and print message
+        
         if (gBattleControllerExecFlags == 0)
         {
-            bool32 wasSentOut = ((gBattleStruct->expSentInMons & gBitTable[*expMonId]) != 0);
-            holdEffect = GetMonHoldEffect(&gPlayerParty[*expMonId]);
+            double expMultiplier = GetPkmnExpMultiplier(gPlayerParty[gBattleStruct->expGetterMonId].level);
+            item = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HELD_ITEM);
 
-            if ((holdEffect != HOLD_EFFECT_EXP_SHARE && !wasSentOut && !IsGen6ExpShareEnabled())
-             || GetMonData(&gPlayerParty[*expMonId], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+            if (item == ITEM_ENIGMA_BERRY_E_READER)
+                holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
+            else
+                holdEffect = ItemId_GetHoldEffect(item);
+
+            if ((holdEffect != HOLD_EFFECT_EXP_SHARE && !(gBattleStruct->expSentInMons & 1) && !FlagGet(FLAG_SYS_EXP_SHARE))
+             || GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
             {
+                *(&gBattleStruct->expSentInMons) >>= 1;
                 gBattleScripting.getexpState = 5;
                 gBattleMoveDamage = 0; // used for exp
             }
-            else if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && *expMonId >= 3)
-                  || GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) == MAX_LEVEL)
+            else if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gBattleStruct->expGetterMonId >= 3)
+                  || GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) == MAX_LEVEL)
             {
+                *(&gBattleStruct->expSentInMons) >>= 1;
                 gBattleScripting.getexpState = 5;
                 gBattleMoveDamage = 0; // used for exp
             #if B_MAX_LEVEL_EV_GAINS >= GEN_5
-                MonGainEVs(&gPlayerParty[*expMonId], gBattleMons[gBattlerFainted].species);
+                MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
             #endif
             }
             else
@@ -4386,8 +4395,8 @@ static void Cmd_getexp(void)
                 }
                 if (IsValidForBattle(&gPlayerParty[gBattleStruct->expGetterMonId]))
                 {
-                    if (gBattleStruct->sentInPokes & 1)
-                        gBattleMoveDamage = *exp * expMultiplier;
+                    if (gBattleStruct->expSentInMons & 1)
+                        gBattleMoveDamage = *expMonId * expMultiplier;
                         if(FlagGet(FLAG_LEVEL_CAPS) == TRUE){
                         for (i = 0; i < NUM_SOFT_CAPS; i++)
                 {
@@ -4403,7 +4412,6 @@ static void Cmd_getexp(void)
                     // only give exp share bonus in later gens if the mon wasn't sent out
                 #if B_SPLIT_EXP < GEN_6
                     if (holdEffect == HOLD_EFFECT_EXP_SHARE)
-                        gBattleMoveDamage += gExpShareExp;
                 #else
                     if ((holdEffect == HOLD_EFFECT_EXP_SHARE || FlagGet(FLAG_SYS_EXP_SHARE)) && gBattleMoveDamage == 0)
                         if(FlagGet(FLAG_LEVEL_CAPS) == TRUE){
@@ -4425,28 +4433,41 @@ static void Cmd_getexp(void)
                 #endif
                 #if (B_SCALED_EXP >= GEN_5) && (B_SCALED_EXP != GEN_6)
                     {
-                        gBattleMoveDamage += gBattleStruct->expShareExpValue;
+                        // Note: There is an edge case where if a pokemon receives a large amount of exp, it wouldn't be properly calculated
+                        //       because of multiplying by scaling factor(the value would simply be larger than an u32 can hold). Hence u64 is needed.
+                        u64 value = gBattleMoveDamage;
+                        value *= sExperienceScalingFactors[(gBattleMons[gBattlerFainted].level * 2) + 10];
+                        value /= sExperienceScalingFactors[gBattleMons[gBattlerFainted].level + GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) + 10];
+                        gBattleMoveDamage = value + 1;
                     }
+                #endif
+                #if B_AFFECTION_MECHANICS == TRUE
+                    if (GetBattlerFriendshipScore(gBattleStruct->expGetterMonId) >= FRIENDSHIP_50_TO_99)
+                        gBattleMoveDamage = (gBattleMoveDamage * 120) / 100;
+                #endif
 
-                    ApplyExperienceMultipliers(&gBattleMoveDamage, *expMonId, gBattlerFainted);
-
-                    if (IsTradedMon(&gPlayerParty[*expMonId]))
+                    if (IsTradedMon(&gPlayerParty[gBattleStruct->expGetterMonId]))
                     {
                         // check if the pokemon doesn't belong to the player
-                        if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && *expMonId >= 3)
+                        if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gBattleStruct->expGetterMonId >= 3)
+                        {
                             i = STRINGID_EMPTYSTRING4;
+                        }
                         else
+                        {
+                            gBattleMoveDamage = (gBattleMoveDamage * 150) / 100;
                             i = STRINGID_ABOOSTED;
+                        }
                     }
                     else
                     {
                         i = STRINGID_EMPTYSTRING4;
                     }
 
-                    // get exp getter battler
+                    // get exp getter battlerId
                     if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
                     {
-                        if (gBattlerPartyIndexes[2] == *expMonId && !(gAbsentBattlerFlags & gBitTable[2]))
+                        if (gBattlerPartyIndexes[2] == gBattleStruct->expGetterMonId && !(gAbsentBattlerFlags & gBitTable[2]))
                             gBattleStruct->expGetterBattlerId = 2;
                         else
                         {
@@ -4461,24 +4482,15 @@ static void Cmd_getexp(void)
                         gBattleStruct->expGetterBattlerId = 0;
                     }
 
-                    PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, gBattleStruct->expGetterBattlerId, *expMonId);
+                    PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, gBattleStruct->expGetterBattlerId, gBattleStruct->expGetterMonId);
                     // buffer 'gained' or 'gained a boosted'
                     PREPARE_STRING_BUFFER(gBattleTextBuff2, i);
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleMoveDamage);
 
-                    if (wasSentOut || holdEffect == HOLD_EFFECT_EXP_SHARE)
-                    {
-                        PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
-                    }
-                    else if (IsGen6ExpShareEnabled() && !gBattleStruct->teamGotExpMsgPrinted) // Print 'the rest of your team got exp' message once, when all of the sent-in mons were given experience
-                    {
-                        gLastUsedItem = ITEM_EXP_SHARE;
-                        PrepareStringBattle(STRINGID_TEAMGAINEDEXP, gBattleStruct->expGetterBattlerId);
-                        gBattleStruct->teamGotExpMsgPrinted = TRUE;
-                    }
-
-                    MonGainEVs(&gPlayerParty[*expMonId], gBattleMons[gBattlerFainted].species);
+                    PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
+                    MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
                 }
+                gBattleStruct->expSentInMons >>= 1;
                 gBattleScripting.getexpState++;
             }
         }
@@ -5596,9 +5608,8 @@ static void Cmd_moveend(void)
                 && gBattleMoves[gCurrentMove].power != 0
                 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)){
                 gBattleMons[gBattlerTarget].status1 &= ~STATUS1_SLEEP;
-                gActiveBattler = gBattlerTarget;
-                BtlController_EmitSetMonData(BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].status1), &gBattleMons[gBattlerTarget].status1);
-                MarkBattlerForControllerExec(gActiveBattler);
+                BtlController_EmitSetMonData(gBattlerTarget, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].status1), &gBattleMons[gBattlerTarget].status1);
+                MarkBattlerForControllerExec(gBattlerTarget);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_TargetWokeUp;
                 effect = TRUE;
@@ -6320,7 +6331,7 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_SINGER: // Special case because it's so annoying
-            if (gBattleMoves[gCurrentMove].flags & FLAG_SOUND)
+            if (gBattleMoves[gCurrentMove].soundMove )
             {
                 u8 battler, nextSinger = 0;
 
@@ -14789,43 +14800,43 @@ static void Cmd_switchoutabilities(void)
         switch (GetBattlerAbility(battler))
         {
         case ABILITY_DROUGHT:
-            if(B_WEATHER_SUN && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
+            if(B_WEATHER_SUN && gBattleMons[battler].canWeatherChange == TRUE){
                 
                 gBattleWeather = gBattleStruct->weatherStore;
             }
         break;
         case ABILITY_DRIZZLE:
-            if(B_WEATHER_RAIN && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
+            if(B_WEATHER_RAIN && gBattleMons[battler].canWeatherChange == TRUE){
                 
                 gBattleWeather = gBattleStruct->weatherStore;
             }
         break;
         case ABILITY_NOXIOUS_FUMES:
-            if(B_WEATHER_POLLUTION && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
+            if(B_WEATHER_POLLUTION && gBattleMons[battler].canWeatherChange == TRUE){
                 
                 gBattleWeather = gBattleStruct->weatherStore;
             }
         break;
         case ABILITY_BLACK_HOLE:
-            if(gFieldStatuses & STATUS_FIELD_GRAVITY && gBattleMons[gActiveBattler].canGravityChange == TRUE){
+            if(gFieldStatuses & STATUS_FIELD_GRAVITY && gBattleMons[battler].canGravityChange == TRUE){
                 
                 gFieldStatuses &= ~STATUS_FIELD_GRAVITY;
             }
         break;
         case ABILITY_SAND_STREAM:
-            if(B_WEATHER_SANDSTORM && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
+            if(B_WEATHER_SANDSTORM && gBattleMons[battler].canWeatherChange == TRUE){
                 
                 gBattleWeather = gBattleStruct->weatherStore;
             }
         break;
         case ABILITY_SNOW_WARNING:
-            if(B_WEATHER_SNOW && gBattleMons[gActiveBattler].canWeatherChange == TRUE){
+            if(B_WEATHER_SNOW && gBattleMons[battler].canWeatherChange == TRUE){
                 
                 gBattleWeather = gBattleStruct->weatherStore;
             }
         break;
             case ABILITY_GRASSY_SURGE:
-            if(gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && gBattleMons[gActiveBattler].canTerrainChange == TRUE){
+            if(gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && gBattleMons[battler].canTerrainChange == TRUE){
             DrawMainBattleBackground();
             RemoveAllTerrains();
             BattleScriptPushCursor();
@@ -14833,21 +14844,21 @@ static void Cmd_switchoutabilities(void)
             }
 
             case ABILITY_PSYCHIC_SURGE:
-            if(gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN && gBattleMons[gActiveBattler].canTerrainChange == TRUE){
+            if(gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN && gBattleMons[battler].canTerrainChange == TRUE){
             DrawMainBattleBackground();
             RemoveAllTerrains();
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_TerrainEnds_Ret;
             }
             case ABILITY_ELECTRIC_SURGE:
-            if(gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && gBattleMons[gActiveBattler].canTerrainChange == TRUE){
+            if(gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && gBattleMons[battler].canTerrainChange == TRUE){
             DrawMainBattleBackground();
             RemoveAllTerrains();
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_TerrainEnds_Ret;
             }
             case ABILITY_MISTY_SURGE:
-            if(gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN && gBattleMons[gActiveBattler].canTerrainChange == TRUE){
+            if(gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN && gBattleMons[battler].canTerrainChange == TRUE){
             DrawMainBattleBackground();
             RemoveAllTerrains();
             BattleScriptPushCursor();
@@ -16276,6 +16287,9 @@ void BS_CheckFistBarrageCounter(void)
     // Some effects should only happen on the first or second strike of Parental Bond,
     // so a way to check this in battle scripts is useful
     if (gSpecialStatuses[gBattlerAttacker].fistBarrageState == cmd->counter && gBattleMons[gBattlerTarget].hp != 0)
+            gBattlescriptCurrInstr = cmd->jumpInstr;
+    else
+        gBattlescriptCurrInstr = cmd->nextInstr;
 }
 void BS_JumpIfCantLoseItem(void)
 {
@@ -16413,7 +16427,7 @@ static void TryUpdateGangsterOrder(void)
     }
 }
 
-u8 GetFirstFaintedPartyIndex(u8 battlerId)
+u8 GetFirstFaintedPartyIndex(u32 battler)
 {
     u32 i;
     u32 start = 0;

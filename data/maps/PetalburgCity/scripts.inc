@@ -117,7 +117,7 @@ PetalburgCity_EventScript_Boy::
 
 PetalburgCity_EventScript_Boy_TM::
 	msgbox PetalburgCity_Text_WaterTM, MSGBOX_DEFAULT
-	giveitem ITEM_TM02
+	giveitem ITEM_TM_CHILLING_WATER
 	msgbox PetalburgCity_Text_WaterTMExplain MSGBOX_NPC
 	setflag FLAG_RECEIVED_TM02
 	closemessage

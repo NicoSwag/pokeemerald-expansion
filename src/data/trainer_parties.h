@@ -40,7 +40,7 @@ static const struct TrainerMon sParty_Route103Magmaf[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout2[] = {
+static const struct TrainerMon sParty_GruntAquaHideout2[] = {
     {
     .lvl = 31,
     .species = SPECIES_ZUBAT,
@@ -8417,7 +8417,7 @@ static const struct TrainerMon sParty_Wally1[] = {
     }
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_WallyVR2[] = {
+static const struct TrainerMon sParty_WallyVR2[] = {
     {
     .iv = TRAINER_PARTY_IVS(18, 18, 18, 18, 18, 18),
     .lvl = 47,

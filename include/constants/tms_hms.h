@@ -2,8 +2,8 @@
 #define GUARD_CONSTANTS_TMS_HMS_H
 
 #define FOREACH_TM(F) \
-    F(FOCUS_PUNCH) \
-    F(DRAGON_CLAW) \
+    F(HELPING_HAND) \
+    F(CHILLING_WATER) \
     F(WATER_PULSE) \
     F(CALM_MIND) \
     F(ROAR) \

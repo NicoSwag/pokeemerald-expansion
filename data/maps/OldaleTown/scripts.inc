@@ -48,7 +48,7 @@ OldaleTown_EventScript_LedybaGetUp::
 	waitmovement 0
 	msgbox OldaleTown_Text_LedybaPresent, MSGBOX_NPC
 	waitmessage
-	giveitem ITEM_TM01
+	giveitem ITEM_TM_HELPING_HAND
 	call_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_BagIsFull
 	setflag FLAG_HELPED_LEDYBA
 	release

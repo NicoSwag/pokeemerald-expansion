@@ -114,7 +114,6 @@ Route115_EventScript_ItemSuperPotion::
 	end
 
 Route115_EventScript_ItemTMFocusPunch::
-	finditem ITEM_TM_FOCUS_PUNCH
 	end
 
 Route115_EventScript_ItemIron::
@@ -402,7 +401,6 @@ MeteorFalls_1F_1R_EventScript_ItemPPUP::
 	end
 
 MeteorFalls_B1F_2R_EventScript_ItemTMDragonClaw::
-	finditem ITEM_TM_DRAGON_CLAW
 	end
 
 NewMauville_Inside_EventScript_ItemUltraBall::

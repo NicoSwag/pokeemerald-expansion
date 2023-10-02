@@ -46,7 +46,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = EVERYTHING_CUSTOMIZED(sParty_Route103Magmam),
+        .party = TRAINER_PARTY(sParty_Route103Magmam),
     },
 
     [TRAINER_ROUTE_103_MAGMAF] =
@@ -58,7 +58,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = EVERYTHING_CUSTOMIZED(sParty_Route103Magmaf),
+        .party = TRAINER_PARTY(sParty_Route103Magmaf),
     },
 
     [TRAINER_GRUNT_AQUA_HIDEOUT_2] =
@@ -7917,7 +7917,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = TRUE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE | AI_FLAG_HELP_PARTNER,
-        .party = EVERYTHING_CUSTOMIZED(sParty_Wally1),
+        .party = TRAINER_PARTY(sParty_Wally1),
     },
 
     [TRAINER_WALLY_VR_2] =
