@@ -20,9 +20,10 @@ Route104_EventScript_ItemPPUp::
 	finditem ITEM_PP_UP
 	end
 
-Route104_EventScript_ItemPokeBall::
-	finditem ITEM_POKE_BALL
+Route104_EventScript_ItemSkyFragment::
+	finditem ITEM_HEART_SCALE
 	end
+
 
 Route104_EventScript_ItemXAccuracy::
 	finditem ITEM_X_ACCURACY

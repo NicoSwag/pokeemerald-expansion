@@ -4251,16 +4251,23 @@ static const struct TrainerMonCustomized sParty_Calvin1[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Billy[] = {
+static const struct TrainerMonCustomized sParty_Billy[] = {
     {
-    .iv = 0,
-    .lvl = 5,
-    .species = SPECIES_ZIGZAGOON,
+    .species = SPECIES_SNEASEL,
+    .moves = {MOVE_ICE_SHARD, MOVE_FEINT_ATTACK, MOVE_ICY_WIND, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 9,
+    .ability = ABILITY_DEFIANT,
+    .nature = NATURE_GENTLE,
     },
+
     {
-    .iv = 0,
-    .lvl = 7,
-    .species = SPECIES_SEEDOT,
+    .species = SPECIES_PANCHAM,
+    .moves = {MOVE_KARATE_CHOP, MOVE_COMET_PUNCH, MOVE_LEER, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 9,
+    .ability = ABILITY_IRON_FIST,
+    .nature = NATURE_QUIET,
     }
 };
 
@@ -9555,12 +9562,34 @@ static const struct TrainerMonItemDefaultMoves sParty_Sarah[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Darian[] = {
+static const struct TrainerMonCustomized sParty_Darian[] = {
     {
-    .iv = 0,
+    .species = SPECIES_CARVANHA,
+    .moves = {MOVE_AQUA_JET, MOVE_PSYCHIC_FANGS, MOVE_BITE, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 9,
-    .species = SPECIES_MAGIKARP,
-    }
+    .ability = ABILITY_STRONG_JAW,
+    .nature = NATURE_QUIRKY,
+    .ball = ITEM_NET_BALL
+    },
+    {
+    .species = SPECIES_CLAMPERL,
+    .moves = {MOVE_WHIRLPOOL, MOVE_ICY_WIND, MOVE_IRON_DEFENSE, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 9,
+    .ability = ABILITY_BATTLE_ARMOR,
+    .nature = NATURE_NAIVE,
+    .ball = ITEM_DIVE_BALL
+    },
+
+    {.species = SPECIES_MAGIKARP,
+    .moves = {MOVE_TACKLE, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 9,
+    .ability = ABILITY_RATTLED,
+    .nature = NATURE_ADAMANT,
+    .ball = ITEM_NET_BALL
+    },
 };
 
 static const struct TrainerMonNoItemDefaultMoves sParty_Hailey[] = {

@@ -9319,7 +9319,7 @@ const struct Item gItems[] =
 
     [ITEM_TOWN_MAP] =
     {
-        .name = _("Town Map"),
+        .name = _("TOWN MAP"),
         .itemId = ITEM_TOWN_MAP,
         .price = 0,
         .description = sTownMapDesc,

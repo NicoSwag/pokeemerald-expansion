@@ -264,7 +264,7 @@ LittlerootTown_EventScript_Zigzagoon::
 
 
 LittlerootTown_EventScript_ZigzagoonNoises::
-	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
+	playmoncry SPECIES_ZIGZAGOON_GALARIAN, CRY_MODE_NORMAL
 	msgbox LittlerootTown_Text_ZigzagoonNoises
 	end
 LittlerootTown_EventScript_Boy::

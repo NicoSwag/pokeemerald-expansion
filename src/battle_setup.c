@@ -2243,9 +2243,6 @@ u8 HasWildPokmnOnThisRouteBeenSeen(u8 currLocation, bool8 setVarForThisEnc){
         varToCheck = 4;
         bitToCheck = 10;
        break;
-   case MAPSEC_ROUTE_104_LOWER:
-        varToCheck = 4;
-        bitToCheck = 11;
     default:
        return 0;
     }

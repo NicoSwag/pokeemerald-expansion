@@ -1688,6 +1688,7 @@ static const u16 sVileplumeTeachableLearnset[] = {
 static const u16 sParasTeachableLearnset[] = {
     MOVE_ENDURE,
     MOVE_TRAILBLAZE,
+    MOVE_TRICK,
     MOVE_UNAVAILABLE,
 };
 
@@ -6522,6 +6523,7 @@ static const u16 sFurretTeachableLearnset[] = {
 };
 
 static const u16 sHoothootTeachableLearnset[] = {
+    MOVE_TRICK,
     MOVE_UNAVAILABLE,
 };
 
@@ -8501,55 +8503,8 @@ static const u16 sHeracrossTeachableLearnset[] = {
 };
 
 static const u16 sSneaselTeachableLearnset[] = {
-    MOVE_AERIAL_ACE,
-    MOVE_ATTRACT,
-    MOVE_BLIZZARD,
-    MOVE_BRICK_BREAK,
-    MOVE_CALM_MIND,
-    MOVE_CUT,
-    MOVE_DIG,
-    MOVE_DOUBLE_TEAM,
-    MOVE_FACADE,
-    MOVE_FOCUS_PUNCH,
-    MOVE_FRUSTRATION,
-    MOVE_HAIL,
-    MOVE_HIDDEN_POWER,
-    MOVE_ICE_BEAM,
-    MOVE_IRON_TAIL,
-    MOVE_PROTECT,
-    MOVE_RAIN_DANCE,
-    MOVE_REFLECT,
-    MOVE_REST,
-    MOVE_RETURN,
-    MOVE_ROCK_SMASH,
-    MOVE_SECRET_POWER,
-    MOVE_SHADOW_BALL,
-    MOVE_SNATCH,
-    MOVE_STRENGTH,
-    MOVE_SUNNY_DAY,
-    MOVE_SURF,
-    MOVE_TAUNT,
-    MOVE_THIEF,
-    MOVE_TORMENT,
-    MOVE_TOXIC,
-    MOVE_COUNTER,
-    MOVE_DEFENSE_CURL,
-    MOVE_DOUBLE_EDGE,
-    MOVE_DREAM_EATER,
-    MOVE_DYNAMIC_PUNCH,
     MOVE_ENDURE,
-    MOVE_FURY_CUTTER,
-    MOVE_ICE_PUNCH,
-    MOVE_ICY_WIND,
-    MOVE_MIMIC,
-    MOVE_MUD_SLAP,
-    MOVE_PSYCH_UP,
-    MOVE_SLEEP_TALK,
-    MOVE_SNORE,
-    MOVE_SUBSTITUTE,
-    MOVE_SWAGGER,
-    MOVE_SWIFT,
-    MOVE_SWORDS_DANCE,
+    MOVE_HELPING_HAND,
     MOVE_UNAVAILABLE,
 };
 
@@ -10991,6 +10946,7 @@ static const u16 sRaltsTeachableLearnset[] = {
     MOVE_ENDURE,
     MOVE_HELPING_HAND,
     MOVE_QUASH,
+    MOVE_TRICK,
     MOVE_UNAVAILABLE,
 };
 
@@ -11790,47 +11746,9 @@ static const u16 sNosepassTeachableLearnset[] = {
 };
 
 static const u16 sSkittyTeachableLearnset[] = {
-    MOVE_ATTRACT,
-    MOVE_BLIZZARD,
-    MOVE_CALM_MIND,
-    MOVE_DIG,
-    MOVE_DOUBLE_TEAM,
-    MOVE_FACADE,
-    MOVE_FLASH,
-    MOVE_FRUSTRATION,
-    MOVE_HIDDEN_POWER,
-    MOVE_ICE_BEAM,
-    MOVE_IRON_TAIL,
-    MOVE_PROTECT,
-    MOVE_RAIN_DANCE,
-    MOVE_REST,
-    MOVE_RETURN,
-    MOVE_SAFEGUARD,
-    MOVE_SECRET_POWER,
-    MOVE_SHADOW_BALL,
-    MOVE_SHOCK_WAVE,
-    MOVE_SOLAR_BEAM,
-    MOVE_SUNNY_DAY,
-    MOVE_THUNDER,
-    MOVE_THUNDERBOLT,
-    MOVE_TOXIC,
-    MOVE_WATER_PULSE,
-    MOVE_BODY_SLAM,
-    MOVE_DEFENSE_CURL,
-    MOVE_DOUBLE_EDGE,
-    MOVE_DREAM_EATER,
-    MOVE_ENDURE,
-    MOVE_ICY_WIND,
-    MOVE_MIMIC,
-    MOVE_MUD_SLAP,
-    MOVE_PSYCH_UP,
-    MOVE_ROLLOUT,
-    MOVE_SLEEP_TALK,
-    MOVE_SNORE,
-    MOVE_SUBSTITUTE,
-    MOVE_SWAGGER,
-    MOVE_SWIFT,
-    MOVE_THUNDER_WAVE,
+    MOVE_HELPING_HAND,
+    MOVE_TRAILBLAZE,
+    MOVE_TRICK,
     MOVE_UNAVAILABLE,
 };
 
@@ -12619,38 +12537,7 @@ static const u16 sSwalotTeachableLearnset[] = {
 };
 
 static const u16 sCarvanhaTeachableLearnset[] = {
-    MOVE_ATTRACT,
-    MOVE_BLIZZARD,
-    MOVE_DIVE,
-    MOVE_DOUBLE_TEAM,
-    MOVE_FACADE,
-    MOVE_FRUSTRATION,
-    MOVE_HAIL,
-    MOVE_HIDDEN_POWER,
-    MOVE_ICE_BEAM,
-    MOVE_PROTECT,
-    MOVE_RAIN_DANCE,
-    MOVE_REST,
-    MOVE_RETURN,
-    MOVE_SECRET_POWER,
-    MOVE_SURF,
-    MOVE_TAUNT,
-    MOVE_THIEF,
-    MOVE_TORMENT,
-    MOVE_TOXIC,
-    MOVE_WATERFALL,
-    MOVE_WATER_PULSE,
-    MOVE_DOUBLE_EDGE,
     MOVE_ENDURE,
-    MOVE_FURY_CUTTER,
-    MOVE_ICY_WIND,
-    MOVE_MIMIC,
-    MOVE_MUD_SLAP,
-    MOVE_SLEEP_TALK,
-    MOVE_SNORE,
-    MOVE_SUBSTITUTE,
-    MOVE_SWAGGER,
-    MOVE_SWIFT,
     MOVE_UNAVAILABLE,
 };
 
@@ -24757,6 +24644,7 @@ static const u16 sChesnaughtTeachableLearnset[] = {
 static const u16 sFennekinTeachableLearnset[] = {
     MOVE_ENDURE,
     MOVE_FIRE_SPIN,
+    MOVE_TRICK,
     MOVE_UNAVAILABLE,
 };
 
@@ -25369,42 +25257,9 @@ static const u16 sGogoatTeachableLearnset[] = {
 };
 
 static const u16 sPanchamTeachableLearnset[] = {
-    MOVE_AERIAL_ACE,
-    MOVE_ATTRACT,
-    MOVE_BRICK_BREAK,
-    MOVE_BULK_UP,
-    MOVE_CUT,
-    MOVE_DIG,
-    MOVE_DOUBLE_TEAM,
-    MOVE_FACADE,
-    MOVE_FOCUS_PUNCH,
-    MOVE_FRUSTRATION,
-    MOVE_HIDDEN_POWER,
-    MOVE_PROTECT,
-    MOVE_RAIN_DANCE,
-    MOVE_REST,
-    MOVE_RETURN,
-    MOVE_ROAR,
-    MOVE_ROCK_SMASH,
-    MOVE_ROCK_TOMB,
-    MOVE_SECRET_POWER,
-    MOVE_SLUDGE_BOMB,
-    MOVE_SNATCH,
-    MOVE_STRENGTH,
-    MOVE_SUNNY_DAY,
-    MOVE_SURF,
-    MOVE_TORMENT,
-    MOVE_TOXIC,
-    MOVE_BODY_SLAM,
-    MOVE_FIRE_PUNCH,
-    MOVE_ICE_PUNCH,
-    MOVE_ROCK_SLIDE,
-    MOVE_SLEEP_TALK,
-    MOVE_SNORE,
-    MOVE_SUBSTITUTE,
-    MOVE_SWAGGER,
-    MOVE_SWORDS_DANCE,
-    MOVE_THUNDER_PUNCH,
+    MOVE_ENDURE,
+    MOVE_HELPING_HAND,
+    MOVE_QUASH,
     MOVE_UNAVAILABLE,
 };
 
@@ -25770,6 +25625,7 @@ static const u16 sSlurpuffTeachableLearnset[] = {
 
 static const u16 sInkayTeachableLearnset[] = {
     MOVE_QUASH,
+    MOVE_TRICK,
     MOVE_UNAVAILABLE,
 };
 

@@ -22,6 +22,23 @@ PetalburgCity_EventScript_MoveGymBoyToWestEntrance::
 	setobjectxyperm LOCALID_GYM_BOY, 5, 10
 	return
 
+PetalburgCity_EventScript_Lotad::
+	msgbox PetalburgCity_Text_Lotad, MSGBOX_DEFAULT
+	return
+
+PetalburgCity_EventScript_Zigzagoon::
+	faceplayer
+	playmoncry SPECIES_ZIGZAGOON_GALARIAN, CRY_MODE_NORMAL
+	msgbox PetalburgCity_Text_ZigzagoonNoises, MSGBOX_DEFAULT
+	return
+
+PetalburgCity_Text_ZigzagoonNoises:
+	.string "ZIGZAGOON: Zigza!"
+
+
+PetalburgCity_Text_Lotad:
+	.string "LOTAD is sleeping."
+
 PetalburgCity_EventScript_DisableMapNameAndMusic::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	savebgm MUS_FOLLOW_ME
@@ -836,12 +853,10 @@ PetalburgCity_Text_ImLookingForTalentedTrainers:
 PetalburgCity_Text_Looker:
 	.string "A clever one, are you?\n"
 	.string "Yes, I could see it from your eyes…\p"
-	.string "No trickery evades your fine\n"
-	.string "mind!\p"
-	.string "Why, yes, someone with a strong\n"
-	.string "power of observation such as you\l"
-	.string "might prove to be of use to the\l"
-	.string "current matters.\p"
+	.string "No trickery evades your fine mind!\p"
+	.string "Why, yes, someone with such a\n"
+	.string "strong power of observation might\l"
+	.string "prove to be of use to this case…\p"
 	.string "Very good, then! Allow me to\n"
 	.string "introduce myself.\p"
 	.string "My name…\n"
@@ -852,32 +867,35 @@ PetalburgCity_Text_Looker:
 	.string "Yes, I am a globe-trotting\n"
 	.string "elite of the INTERNATIONAL POLICE.\p"
 	.string "I was summoned in this region, you\n"
-	.string "see, by a certain individual, to\l"
-	.string "investigate some very shady things.\p"
-	.string "Some ill-mannered youngsters wearing\n"
-	.string "colorful uniforms seem to be causing\l"
-	.string "quite the ruckus!\p"
+	.string "see, by a certain individual.\p"
+	.string "My task, it is to investigate some certain\n"
+	.string "happenings that are  taking place in this\l"
+	.string "region.\p"
+	.string "It would appear that some shady characters\n"
+	.string "wearing colorful suits are out and about\l"
+	.string "causing panic amongst the populace…\p"
 	.string "The thing is, I seem to have judged\n"
 	.string "the situation wrongly.\p"
 	.string "You see, a master investigator, I am\n"
 	.string "that.\p"
-	.string "But Trainer, unfortunately, I am not.\p"
+	.string "But a TRAINER, unfortunately, I am not.\p"
 	.string "Therefore, I have been looking for a\n"
 	.string "trustworthy aide to help me.\p"
 	.string "Say, your name is…?\p"
 	.string "… …\p"
 	.string "It is {PLAYER}, then?\n"
 	.string "Magnificent!\p"
-	.string "My friend, I would be very grateful\n"
-	.string "if you could meet me in the near\l"
+	.string "My friend, I would be grateful\n"
+	.string "if you could meet me in the\l"
 	.string "PETALBURG FOREST.\p"
-	.string "I have been informed that a shady deal\n"
-	.string "is to take place on those premises, and\l"
-	.string "your assistance would be appreciated.\p"
+	.string "According to my sources, an illicit\n"
+	.string "deal is to occur on those very premises.\p"
+	.string "Your assistance, of course, would be\n"
+	.string "very much appreciated.\p"
 	.string "Incidentally…\p"
 	.string "Do you not possess a TOWN MAP?\n"
 	.string "Is it not an invaluable item for every\l"
-	.string "trainer that calls themselves such?\p"
+	.string "TRAINER that calls themselves such?\p"
 	.string "Ah, but fret not, my friend!\n"
 	.string "Feel free to take this, as compensation\l"
 	.string "in advance for your invaluable help!$"

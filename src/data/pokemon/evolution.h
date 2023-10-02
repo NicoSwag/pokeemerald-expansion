@@ -170,7 +170,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
 #endif
     [SPECIES_SNUBBULL]              = {{EVO_LEVEL, 23, SPECIES_GRANBULL}},
 #if P_GEN_4_POKEMON == TRUE
-    [SPECIES_SNEASEL]               = {{EVO_ITEM_HOLD_NIGHT, ITEM_RAZOR_CLAW, SPECIES_WEAVILE},
+    [SPECIES_SNEASEL]               = {{EVO_ITEM, ITEM_RAZOR_CLAW, SPECIES_WEAVILE},
                                        {EVO_ITEM_NIGHT, ITEM_RAZOR_CLAW, SPECIES_WEAVILE}},
 #endif
     [SPECIES_TEDDIURSA]             = {{EVO_LEVEL, 30, SPECIES_URSARING}},
