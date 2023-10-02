@@ -3102,7 +3102,7 @@ static void FillPartnerParty(u16 trainerId)
             }
             case F_TRAINER_PARTY_EVERYTHING_CUSTOMIZED:
             {
-                const struct TrainerMonCustomized *partyData = gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].party.EverythingCustomized;
+                const struct TrainerMon *partyData = gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].party.EverythingCustomized;
                 u32 otIdType = OT_ID_RANDOM_NO_SHINY;
 
                 if (partyData[i].gender == TRAINER_MON_MALE)

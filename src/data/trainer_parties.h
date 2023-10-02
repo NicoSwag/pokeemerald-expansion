@@ -14,7 +14,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_GruntAquaHideout1[] = {
     }
 };
 
-static const struct TrainerMonCustomized sParty_Route103Magmam[] = {
+static const struct TrainerMon sParty_Route103Magmam[] = {
     {
     .species = SPECIES_POOCHYENA,
     .heldItem = ITEM_NONE,
@@ -28,7 +28,7 @@ static const struct TrainerMonCustomized sParty_Route103Magmam[] = {
     }
 };
 
-static const struct TrainerMonCustomized sParty_Route103Magmaf[] = {
+static const struct TrainerMon sParty_Route103Magmaf[] = {
     {
     .species = SPECIES_POOCHYENA,
     .heldItem = ITEM_NONE,
@@ -4231,7 +4231,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Shelby5[] = {
     }
 };
 
-static const struct TrainerMonCustomized sParty_Calvin1[] = {
+static const struct TrainerMon sParty_Calvin1[] = {
     {
     .species = SPECIES_NIDORAN_M,
     .moves = {MOVE_PECK, MOVE_POISON_STING, MOVE_NONE, MOVE_NONE},
@@ -4251,7 +4251,7 @@ static const struct TrainerMonCustomized sParty_Calvin1[] = {
     }
 };
 
-static const struct TrainerMonCustomized sParty_Billy[] = {
+static const struct TrainerMon sParty_Billy[] = {
     {
     .species = SPECIES_SNEASEL,
     .moves = {MOVE_ICE_SHARD, MOVE_FEINT_ATTACK, MOVE_ICY_WIND, MOVE_NONE},
@@ -4432,7 +4432,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Eddie[] = {
     }
 };
 
-static const struct TrainerMonCustomized sParty_Allen[] = {
+static const struct TrainerMon sParty_Allen[] = {
     {
     .species = SPECIES_SCRAGGY,
     .moves = {MOVE_LEER, MOVE_ASSURANCE, MOVE_LOW_KICK, MOVE_NONE},
@@ -6844,7 +6844,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_WallyVR1[] = {
     }
 };
 
-static const struct TrainerMonCustomized sParty_BrendanRoute103Mudkip[] = {
+static const struct TrainerMon sParty_BrendanRoute103Mudkip[] = {
     {
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 5,
@@ -6889,7 +6889,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute119Mudkip[] 
     }
 };
 
-static const struct TrainerMonCustomized sParty_BrendanRoute103Treecko[] = {
+static const struct TrainerMon sParty_BrendanRoute103Treecko[] = {
     {
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 5,
@@ -6934,7 +6934,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute119Treecko[]
     }
 };
 
-static const struct TrainerMonCustomized sParty_BrendanRoute103Torchic[] = {
+static const struct TrainerMon sParty_BrendanRoute103Torchic[] = {
     {
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 5,
@@ -8057,7 +8057,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MaxieMtChimney[] = {
     }
 };
 
-static const struct TrainerMonCustomized sParty_Tiana[] = {
+static const struct TrainerMon sParty_Tiana[] = {
     {
     .species = SPECIES_SKITTY,
     .moves = {MOVE_FAKE_OUT, MOVE_ROLLOUT, MOVE_NONE, MOVE_NONE},
@@ -8222,7 +8222,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Crissy[] = {
     }
 };
 
-static const struct TrainerMonCustomized sParty_Rick[] = {
+static const struct TrainerMon sParty_Rick[] = {
     {
     .species = SPECIES_LEDYBA,
     .moves = {MOVE_BUG_BITE, MOVE_FOCUS_PUNCH, MOVE_NONE, MOVE_NONE},
@@ -8836,7 +8836,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_WallyMauville[] = {
 };
 
 
-static const struct TrainerMonCustomized sParty_Wally1[] = {
+static const struct TrainerMon sParty_Wally1[] = {
     {
     .species = SPECIES_BUDEW,
     .heldItem = ITEM_CHESTO_BERRY,
@@ -9562,7 +9562,7 @@ static const struct TrainerMonItemDefaultMoves sParty_Sarah[] = {
     }
 };
 
-static const struct TrainerMonCustomized sParty_Darian[] = {
+static const struct TrainerMon sParty_Darian[] = {
     {
     .species = SPECIES_CARVANHA,
     .moves = {MOVE_AQUA_JET, MOVE_PSYCHIC_FANGS, MOVE_BITE, MOVE_NONE},

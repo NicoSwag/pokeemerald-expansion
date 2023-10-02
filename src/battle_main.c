@@ -1937,7 +1937,7 @@ u32 GeneratePersonalityForGender(u32 gender, u32 species)
         return speciesInfo->genderRatio / 2;
 }
 
-void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMonCustomized *partyEntry)
+void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon *partyEntry)
 {
     bool32 noMoveSet = TRUE;
     u32 j;
@@ -2045,7 +2045,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             }
             case F_TRAINER_PARTY_EVERYTHING_CUSTOMIZED:
             {
-                const struct TrainerMonCustomized *partyData = trainer->party.EverythingCustomized;
+                const struct TrainerMon *partyData = trainer->party.EverythingCustomized;
                 u32 otIdType = OT_ID_RANDOM_NO_SHINY;
                 u32 fixedOtId = 0;
                 if (partyData[i].gender == TRAINER_MON_MALE)

@@ -7933,7 +7933,7 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
             break;
         case F_TRAINER_PARTY_EVERYTHING_CUSTOMIZED:
             {
-                const struct TrainerMonCustomized *party = gTrainers[trainerId].party.EverythingCustomized;
+                const struct TrainerMon *party = gTrainers[trainerId].party.EverythingCustomized;
                 lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
             }
             break;

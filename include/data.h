@@ -35,7 +35,7 @@ struct MonCoords
 #define TRAINER_PARTY_EVS(hp, atk, def, speed, spatk, spdef) ((const u8[6]){hp,atk,def,spatk,spdef,speed})
 #define TRAINER_PARTY_NATURE(nature) (nature+1)
 
-struct TrainerMonCustomized
+struct TrainerMon
 {
     const u8 *nickname;
     const u8 *ev;
@@ -96,7 +96,7 @@ union TrainerMonPtr
     const struct TrainerMonNoItemCustomMoves *NoItemCustomMoves;
     const struct TrainerMonItemDefaultMoves *ItemDefaultMoves;
     const struct TrainerMonItemCustomMoves *ItemCustomMoves;
-    const struct TrainerMonCustomized *EverythingCustomized;
+    const struct TrainerMon *EverythingCustomized;
 };
 
 struct Trainer
