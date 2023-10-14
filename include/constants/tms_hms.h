@@ -4,7 +4,7 @@
 #define FOREACH_TM(F) \
     F(HELPING_HAND) \
     F(CHILLING_WATER) \
-    F(WATER_PULSE) \
+    F(QUASH) \
     F(CALM_MIND) \
     F(ROAR) \
     F(TOXIC) \

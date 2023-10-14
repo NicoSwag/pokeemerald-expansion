@@ -28,7 +28,34 @@
 
   ],
   "warp_events": [
-
+    {
+      "x": 10,
+      "y": 28,
+      "elevation": 0,
+      "dest_map": "MAP_PETALBURG_WOODS",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 11,
+      "y": 28,
+      "elevation": 0,
+      "dest_map": "MAP_PETALBURG_WOODS",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 7,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE104_PRETTY_PETAL_FLOWER_SHOP",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 8,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE104_PRETTY_PETAL_FLOWER_SHOP",
+      "dest_warp_id": "1"
+    }
   ],
   "coord_events": [
 

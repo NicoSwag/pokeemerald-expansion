@@ -341,11 +341,11 @@ PetalburgWoods_EventScript_ItemGreatBall::
 	end
 
 PetalburgWoods_EventScript_ItemEther::
-	finditem ITEM_ETHER
+	finditem ITEM_HEART_SCALE
 	end
 
-PetalburgWoods_EventScript_ItemParalyzeHeal::
-	finditem ITEM_PARALYZE_HEAL
+PetalburgWoods_EventScript_ItemQuash::
+	finditem ITEM_TM_QUASH
 	end
 
 RusturfTunnel_EventScript_ItemPokeBall::

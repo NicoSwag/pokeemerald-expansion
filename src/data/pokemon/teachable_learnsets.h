@@ -13439,46 +13439,8 @@ static const u16 sWhiscashTeachableLearnset[] = {
 };
 
 static const u16 sCorphishTeachableLearnset[] = {
-    MOVE_AERIAL_ACE,
-    MOVE_ATTRACT,
-    MOVE_BLIZZARD,
-    MOVE_BRICK_BREAK,
-    MOVE_CUT,
-    MOVE_DIG,
-    MOVE_DOUBLE_TEAM,
-    MOVE_FACADE,
-    MOVE_FRUSTRATION,
-    MOVE_HAIL,
-    MOVE_HIDDEN_POWER,
-    MOVE_ICE_BEAM,
-    MOVE_PROTECT,
-    MOVE_RAIN_DANCE,
-    MOVE_REST,
-    MOVE_RETURN,
-    MOVE_ROCK_SMASH,
-    MOVE_ROCK_TOMB,
-    MOVE_SECRET_POWER,
-    MOVE_SLUDGE_BOMB,
-    MOVE_STRENGTH,
-    MOVE_SURF,
-    MOVE_TAUNT,
-    MOVE_TOXIC,
-    MOVE_WATERFALL,
-    MOVE_WATER_PULSE,
-    MOVE_BODY_SLAM,
-    MOVE_COUNTER,
-    MOVE_DOUBLE_EDGE,
-    MOVE_ENDURE,
-    MOVE_FURY_CUTTER,
-    MOVE_ICY_WIND,
-    MOVE_MIMIC,
-    MOVE_MUD_SLAP,
-    MOVE_ROCK_SLIDE,
-    MOVE_SLEEP_TALK,
-    MOVE_SNORE,
-    MOVE_SUBSTITUTE,
-    MOVE_SWAGGER,
-    MOVE_SWORDS_DANCE,
+    MOVE_ENCORE,
+    MOVE_CHILLING_WATER,
     MOVE_UNAVAILABLE,
 };
 
@@ -22717,30 +22679,7 @@ static const u16 sAlomomolaTeachableLearnset[] = {
 };
 
 static const u16 sJoltikTeachableLearnset[] = {
-    MOVE_ATTRACT,
-    MOVE_CUT,
-    MOVE_DOUBLE_TEAM,
-    MOVE_FACADE,
-    MOVE_FLASH,
-    MOVE_FRUSTRATION,
-    MOVE_GIGA_DRAIN,
-    MOVE_HIDDEN_POWER,
-    MOVE_LIGHT_SCREEN,
-    MOVE_PROTECT,
-    MOVE_RAIN_DANCE,
-    MOVE_REST,
-    MOVE_RETURN,
-    MOVE_SECRET_POWER,
-    MOVE_SHOCK_WAVE,
-    MOVE_THIEF,
-    MOVE_THUNDERBOLT,
-    MOVE_TOXIC,
-    MOVE_FURY_CUTTER,
-    MOVE_SLEEP_TALK,
-    MOVE_SNORE,
-    MOVE_SUBSTITUTE,
-    MOVE_SWAGGER,
-    MOVE_THUNDER_WAVE,
+    MOVE_ENDURE,
     MOVE_UNAVAILABLE,
 };
 
@@ -25753,32 +25692,8 @@ static const u16 sBarbaracleTeachableLearnset[] = {
 };
 
 static const u16 sSkrelpTeachableLearnset[] = {
-    MOVE_ATTRACT,
-    MOVE_DIVE,
-    MOVE_DOUBLE_TEAM,
-    MOVE_FACADE,
-    MOVE_FRUSTRATION,
-    MOVE_HAIL,
-    MOVE_HIDDEN_POWER,
-    MOVE_IRON_TAIL,
-    MOVE_PROTECT,
-    MOVE_RAIN_DANCE,
-    MOVE_REST,
-    MOVE_RETURN,
-    MOVE_SECRET_POWER,
-    MOVE_SHADOW_BALL,
-    MOVE_SHOCK_WAVE,
-    MOVE_SLUDGE_BOMB,
-    MOVE_SURF,
-    MOVE_THUNDERBOLT,
-    MOVE_TOXIC,
-    MOVE_WATERFALL,
-    MOVE_WATER_PULSE,
-    MOVE_ICY_WIND,
-    MOVE_SLEEP_TALK,
-    MOVE_SNORE,
-    MOVE_SUBSTITUTE,
-    MOVE_SWAGGER,
+    MOVE_ENDURE,
+    MOVE_CHILLING_WATER,
     MOVE_UNAVAILABLE,
 };
 
@@ -29578,6 +29493,25 @@ static const u16 sCorviknightTeachableLearnset[] = {
     MOVE_SUBSTITUTE,
     MOVE_SWAGGER,
     MOVE_SWIFT,
+    MOVE_UNAVAILABLE,
+};
+
+static const u16 sTinkatinkTeachableLearnset[] = {
+    MOVE_HELPING_HAND,
+    MOVE_ENDURE,
+    MOVE_QUASH,
+    MOVE_UNAVAILABLE,
+};
+
+static const u16 sTinkatuffTeachableLearnset[] = {
+    MOVE_HELPING_HAND,
+    MOVE_ENDURE,
+    MOVE_UNAVAILABLE,
+};
+
+static const u16 sTinkatonTeachableLearnset[] = {
+    MOVE_HELPING_HAND,
+    MOVE_ENDURE,
     MOVE_UNAVAILABLE,
 };
 

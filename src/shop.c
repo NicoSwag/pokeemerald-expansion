@@ -49,6 +49,7 @@
 bool8 TM09 = FALSE;
 
 
+
 enum {
     WIN_BUY_SELL_QUIT,
     WIN_BUY_QUIT,
@@ -160,6 +161,7 @@ static void Task_HandleShopMenuBuy(u8 taskId);
 static void Task_HandleShopMenuSell(u8 taskId);
 static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, struct ListMenu *list);
 static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y);
+
 
 static const struct YesNoFuncTable sShopPurchaseYesNoFuncs =
 {
@@ -571,7 +573,7 @@ static void BuyMenuBuildListMenuTemplate(void)
         BuyMenuSetListEntry(&sListMenuItems[i], sMartInfo.itemList[i], sItemNames[i]);
 
     
-    if(FlagGet(FLAG_CANDY_IN_SHOPS) == TRUE){
+    if((FlagGet(FLAG_CANDY_IN_SHOPS) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
     StringCopy(sItemNames[i], gText_RareCandy);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_RARE_CANDY;
@@ -580,7 +582,7 @@ static void BuyMenuBuildListMenuTemplate(void)
     }
     
     
-    if(FlagGet(FLAG_HELPED_LEDYBA) == TRUE){
+    if((FlagGet(FLAG_HELPED_LEDYBA) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
     StringCopy(sItemNames[i], gText_TM01);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM01;
@@ -588,10 +590,18 @@ static void BuyMenuBuildListMenuTemplate(void)
     added_TMs++;
     }
 
-    if(FlagGet(FLAG_RECEIVED_TM02) == TRUE){
+    if((FlagGet(FLAG_RECEIVED_TM02) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
     StringCopy(sItemNames[i], gText_TM02);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM02;
+    i++;
+    added_TMs++;
+    }
+
+    if((FlagGet(FLAG_ITEM_PETALBURG_WOODS_QUASH) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    StringCopy(sItemNames[i], gText_TM03);
+    sListMenuItems[i].name = sItemNames[i];
+    sListMenuItems[i].id = ITEM_TM03;
     i++;
     added_TMs++;
     }
@@ -609,6 +619,7 @@ static void BuyMenuBuildListMenuTemplate(void)
         gMultiuseListMenuTemplate.maxShowed = gMultiuseListMenuTemplate.totalItems;
 
     sShopData->itemsShowed = gMultiuseListMenuTemplate.maxShowed;
+    
 
     
 }
@@ -656,6 +667,8 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
 static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y)
 {
     u8 x;
+    u8 totalberries;
+    totalberries = (CheckBagHasItem(itemId, 1) + CheckPCHasItem(itemId, 1));
 
     if (itemId != LIST_CANCEL)
     {
@@ -676,7 +689,11 @@ static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y)
                 5);
         }
 
-        if (ItemId_GetImportance(itemId) && (CheckBagHasItem(itemId, 1) || CheckPCHasItem(itemId, 1)))
+        
+        
+        if( (ItemId_GetImportance(itemId) == 2) && (totalberries == 2 || CheckBagHasItem(itemId, 2) || CheckPCHasItem(itemId, 2)))
+            StringCopy(gStringVar4, gText_SoldOut);
+        else if ((ItemId_GetImportance(itemId) == 1) && (CheckBagHasItem(itemId, 1) || CheckPCHasItem(itemId, 1)))
             StringCopy(gStringVar4, gText_SoldOut);
         else
             StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);

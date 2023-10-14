@@ -265,7 +265,7 @@ LittlerootTown_EventScript_Zigzagoon::
 
 LittlerootTown_EventScript_ZigzagoonNoises::
 	playmoncry SPECIES_ZIGZAGOON_GALARIAN, CRY_MODE_NORMAL
-	msgbox LittlerootTown_Text_ZigzagoonNoises
+	msgbox LittlerootTown_Text_ZigzagoonNoises, MSGBOX_NPC
 	end
 LittlerootTown_EventScript_Boy::
 	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC

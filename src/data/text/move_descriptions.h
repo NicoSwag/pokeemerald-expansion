@@ -1797,6 +1797,10 @@ static const u8 sStoneEdgeDescription[] = _(
     "Stabs the foe with stones.\n"
     "High critical-hit ratio.");
 
+static const u8 sSpikyArrowDescription[] = _(
+    "Shoots spiky arrows. Sets\n"
+    "spikes if it misses.");
+
 static const u8 sCaptivateDescription[] = _(
     "Makes the opposite gender\n"
     "sharply reduce its Sp. Atk.");
@@ -2023,6 +2027,10 @@ static const u8 sAllySwitchDescription[] = _(
 
 static const u8 sScaldDescription[] = _(
     "Shoots boiling water at the\n"
+    "foe. May inflict a burn.");
+
+static const u8 sHotCoalsDescription[] = _(
+    "Hurls burning coals at the\n"
     "foe. May inflict a burn.");
 
 static const u8 sShellSmashDescription[] = _(
@@ -2792,6 +2800,10 @@ static const u8 sBodyPressDescription[] = _(
     "Does more damage the\n"
     "higher the user's Def.");
 
+static const u8 sMissileDiveDescription[] = _(
+    "Does more damage the\n"
+    "higher the user's Speed.");
+
 static const u8 sDecorateDescription[] = _(
     "The user sharply raises\n"
     "the target's Atk and Sp.Atk");
@@ -3015,6 +3027,10 @@ static const u8 sPowerShiftDescription[] = _(
 static const u8 sStoneAxeDescription[] = _(
     "High critical hit ratio. Sets\n"
     "Splinters that hurt the foe.");
+
+static const u8 sGravelRockDescription[] = _(
+    "Sets stealth rocks that hurt\n"
+    "the foe.");
 
 static const u8 sSpringtideStormDescription[] = _(
     "Wraps a foe in fierce winds.\n"
@@ -3752,6 +3768,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_IRON_HEAD - 1] = sIronHeadDescription,
     [MOVE_MAGNET_BOMB - 1] = sMagnetBombDescription,
     [MOVE_STONE_EDGE - 1] = sStoneEdgeDescription,
+    [MOVE_SPIKY_ARROW - 1] = sSpikyArrowDescription,
     [MOVE_CAPTIVATE - 1] = sCaptivateDescription,
     [MOVE_STEALTH_ROCK - 1] = sStealthRockDescription,
     [MOVE_GRASS_KNOT - 1] = sGrassKnotDescription,
@@ -3811,6 +3828,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_QUICK_GUARD - 1] = sQuickGuardDescription,
     [MOVE_ALLY_SWITCH - 1] = sAllySwitchDescription,
     [MOVE_SCALD - 1] = sScaldDescription,
+    [MOVE_HOT_COALS - 1] = sHotCoalsDescription,
     [MOVE_SHELL_SMASH - 1] = sShellSmashDescription,
     [MOVE_HEAL_PULSE - 1] = sHealPulseDescription,
     [MOVE_HEX - 1] = sHexDescription,
@@ -4015,6 +4033,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_COURT_CHANGE - 1] = sCourtChangeDescription,
     [MOVE_CLANGOROUS_SOUL - 1] = sClangorousSoulDescription,
     [MOVE_BODY_PRESS - 1] = sBodyPressDescription,
+  [MOVE_MISSILE_DIVE - 1] = sMissileDiveDescription,
     [MOVE_DECORATE - 1] = sDecorateDescription,
     [MOVE_DRUM_BEATING - 1] = sDrumBeatingDescription,
     [MOVE_SNAP_TRAP - 1] = sSnapTrapDescription,
@@ -4071,6 +4090,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_PSYSHIELD_BASH - 1] = sPsyshieldBashDescription,
     [MOVE_POWER_SHIFT - 1] = sPowerShiftDescription,
     [MOVE_STONE_AXE - 1] = sStoneAxeDescription,
+    [MOVE_GRAVEL_ROCK - 1] = sGravelRockDescription,
     [MOVE_SPRINGTIDE_STORM - 1] = sSpringtideStormDescription,
     [MOVE_MYSTICAL_POWER - 1] = sMysticalPowerDescription,
     [MOVE_RAGING_FURY - 1] = sRagingFuryDescription,

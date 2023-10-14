@@ -443,6 +443,8 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectMortalSpin              @ EFFECT_MORTAL_SPIN
 	.4byte BattleScript_EffectHit                     @ EFFECT_GIGATON_HAMMER
 	.4byte BattleScript_EffectSaltCure                @ EFFECT_SALT_CURE
+	.4byte BattleScript_EffectHit					  @ EFFECT_MISSILE_DIVE
+	.4byte BattleScript_EffectSpikesIfMiss		      @ EFFECT_SPIKES_IF_MISS
 
 BattleScript_EffectSaltCure:
 	call BattleScript_EffectHit_Ret
@@ -489,7 +491,7 @@ BattleScript_EffectCorrosiveGas:
 	jumpifability BS_TARGET, ABILITY_STICKY_HOLD, BattleScript_StickyHoldActivates
 	setlastuseditem BS_TARGET
 	removeitem BS_TARGET
-	printstring STRINGID_PKMNITEMMELTED
+	printstring STRINGID_ATTACKERITEMMELTED
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -9530,6 +9532,17 @@ BattleScript_AbilityStatusEffect::
 	seteffectsecondary
 	return
 
+BattleScript_CausticBodyActivates::
+	jumpifsubstituteblocks BattleScript_MoveEnd
+	jumpifcantloseitem BS_TARGET, BattleScript_MoveEnd
+	call BattleScript_AbilityPopUpTarget
+	jumpifability BS_TARGET, ABILITY_STICKY_HOLD, BattleScript_StickyHoldActivates
+	setlastuseditem BS_ATTACKER
+	removeitem BS_ATTACKER
+	printstring STRINGID_PKMNITEMMELTED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+	
 
 BattleScript_BattleBondActivatesOnMoveEndAttacker::
 	pause 5
@@ -10682,3 +10695,19 @@ BattleScript_EffectSnapTrap::
 	setmoveeffect MOVE_EFFECT_SNAP_TRAP
 	goto BattleScript_EffectHit
 	
+BattleScript_EffectSpikesIfMiss::
+	attackcanceler
+	accuracycheck BattleScript_MoveMissedDoSpikes, ACC_CURR_MOVE
+	goto BattleScript_HitFromAtkString
+BattleScript_MoveMissedDoSpikes::
+	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_PrintMoveMissed
+	attackstring
+	ppreduce
+	pause B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	jumpifhalfword CMP_COMMON_BITS, gMoveResultFlags, MOVE_RESULT_DOESNT_AFFECT_FOE, BattleScript_MoveEnd
+	trysetspikes BattleScript_FailedFromAtkString
+	printstring STRINGID_SPIKESSCATTERED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd

@@ -278,10 +278,10 @@ MoveManager_ChooseMon_Text_7:
 	.string "Which move should I teach?$"
 
 MoveManager_SpendItem_Text_0:
-	.string "{PLAYER} handed over one SKY\n FRAGMENTin exchange.$"
+	.string "{PLAYER} handed over one SKY\nFRAGMENTin exchange.$"
 
 MoveManager_SpendItem_Text_1:
-	.string "{PLAYER} handed over one SKY\n FRAGMENTin exchange.$"
+	.string "{PLAYER} handed over one SKY\nFRAGMENTin exchange.$"
 
 MoveManager_ComeBack::
 	.string "Come back soon.$"

@@ -2770,7 +2770,7 @@ u8 DoBattlerEndTurnEffects(void)
             {
                 MAGIC_GUARD_CHECK;
             #if B_BURN_DAMAGE >= GEN_7
-                gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
+                gBattleMoveDamage = gBattleMons[battler].maxHP / 12;
             #else
                 gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
             #endif
@@ -2793,7 +2793,7 @@ u8 DoBattlerEndTurnEffects(void)
             {
                 MAGIC_GUARD_CHECK;
             #if B_BURN_DAMAGE >= GEN_7
-                gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
+                gBattleMoveDamage = gBattleMons[battler].maxHP / 12;
             #else
                 gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
             #endif
@@ -5695,6 +5695,18 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
+            break;
+        case ABILITY_CAUSTIC_BODY:
+                if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && gBattleMons[gBattlerAttacker].hp != 0
+             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+             && TARGET_TURN_DAMAGED
+             && IsMoveMakingContact(move, gBattlerAttacker))
+                {
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_CausticBodyActivates;
+                effect++;
+                }
             break;
         case ABILITY_FLAME_BODY:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
@@ -9424,6 +9436,24 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
                 RecordAbilityBattle(battlerDef, defAbility);
         }
         break;
+    case ABILITY_SHELL_ARMOR:
+        if (gBattleMoves[move].ballisticMove){
+            modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
+        }
+    break;
+        case ABILITY_BATTLE_ARMOR:
+        if (gBattleMoves[move].slicingMove){
+            modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
+        }
+    break;
+    case ABILITY_WATER_COMPACTION:  
+            if (moveType == TYPE_WATER)
+        {
+            modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, defAbility);
+        }
+        break;
     case ABILITY_DRY_SKIN:
         if (moveType == TYPE_FIRE)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
@@ -9549,6 +9579,11 @@ u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 moveType, bool3
     {
         atkStat = gBattleMons[battlerAtk].defense;
         atkStage = gBattleMons[battlerAtk].statStages[STAT_DEF];
+    }
+    else if (gBattleMoves[move].effect == EFFECT_MISSILE_DIVE)
+    {
+        atkStat = gBattleMons[battlerAtk].speed;
+        atkStage = gBattleMons[battlerAtk].statStages[STAT_SPEED];
     }
     else
     {
@@ -10317,6 +10352,12 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
         mod = UQ_4_12(1.0);
         if (recordAbilities)
             RecordAbilityBattle(battlerAtk, ABILITY_SCRAPPY);
+    }
+     else if ((moveType == TYPE_STEEL) && defType == TYPE_FAIRY && GetBattlerAbility(battlerAtk) == ABILITY_DECOMMISSIONER && mod < UQ_4_12(2.0))
+    {
+        mod = UQ_4_12(2.0);
+        if (recordAbilities)
+            RecordAbilityBattle(battlerAtk, ABILITY_DECOMMISSIONER);
     }
     else if ((moveType == TYPE_POISON) && defType == TYPE_STEEL && GetBattlerAbility(battlerAtk) == ABILITY_CORROSION && mod == UQ_4_12(0.0))
     {
@@ -11244,7 +11285,7 @@ void TryRestoreHeldItems(void)
     #endif
         {
             lostItem = gBattleStruct->itemLost[i].originalItem;
-            if (lostItem != ITEM_NONE && ItemId_GetPocket(lostItem) != POCKET_BERRIES)
+            if (lostItem != ITEM_NONE)
                 SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &lostItem);  // Restore stolen non-berry items
         }
     }

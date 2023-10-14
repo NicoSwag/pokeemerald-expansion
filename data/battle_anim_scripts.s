@@ -864,6 +864,10 @@ gBattleAnims_Moves::
 	.4byte Move_NUMBING_KISS
 	.4byte Move_ACID_RAIN
 	.4byte Move_NATURES_MALICE
+	.4byte Move_MISSILE_DIVE
+	.4byte Move_GRAVEL_ROCK
+	.4byte Move_SPIKY_ARROW
+	.4byte Move_HOT_COALS
 
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
@@ -16533,13 +16537,10 @@ Move_SHED_TAIL::
 Move_CHILLY_RECEPTION::
 Move_TIDY_UP::
 Move_POUNCE::
-Move_TRAILBLAZE::
-Move_CHILLING_WATER::
 Move_HYPER_DRILL::
 Move_TWIN_BEAM::
 Move_RAGE_FIST::
 Move_ARMOR_CANNON::
-Move_GIGATON_HAMMER::
 Move_COMEUPPANCE::
 Move_AQUA_CUTTER::
 Move_BLAZING_TORQUE::
@@ -16565,6 +16566,15 @@ Move_POUND:
 	clearmonbg ANIM_TARGET
 	blendoff
 	end
+
+Move_CHILLING_WATER::
+	goto Move_WATER_GUN
+
+Move_TRAILBLAZE::
+	goto Move_GRASSY_GLIDE
+
+Move_GIGATON_HAMMER::
+	goto Move_METEOR_MASH
 
 Move_DOUBLE_SLAP:
 	loadspritegfx ANIM_TAG_IMPACT
@@ -26157,6 +26167,18 @@ Move_ACID_RAIN:
 
 Move_NATURES_MALICE:
 	goto Move_DARK_VOID
+
+Move_MISSILE_DIVE:
+	goto Move_BRAVE_BIRD
+
+Move_GRAVEL_ROCK:
+	goto Move_ANCIENT_POWER
+
+Move_SPIKY_ARROW:
+	goto Move_SPIKE_CANNON
+
+Move_HOT_COALS:
+	goto Move_PYRO_BALL
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT

@@ -1164,10 +1164,10 @@
     {
       "id": "LAYOUT_ROUTE104_PRETTY_PETAL_FLOWER_SHOP",
       "name": "Route104_PrettyPetalFlowerShop_Layout",
-      "width": 15,
+      "width": 14,
       "height": 9,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
+      "secondary_tileset": "gTileset_Shop",
       "border_filepath": "data/layouts/Route104_PrettyPetalFlowerShop/border.bin",
       "blockdata_filepath": "data/layouts/Route104_PrettyPetalFlowerShop/map.bin"
     },

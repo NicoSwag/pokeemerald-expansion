@@ -337,7 +337,6 @@
 #define MOVE_TUTOR_EGG_MOVES          2 // Move Tutor returns egg moves
 #define MOVE_DELETER                  255
 
-#define MAX_RELEARNER_MOVES (MAX_LEVEL_UP_MOVES > 25 ? MAX_LEVEL_UP_MOVES : 25)
 
 
 #endif // GUARD_CONSTANTS_POKEMON_H

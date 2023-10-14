@@ -4939,6 +4939,24 @@ const u8 gCorviknightPokedexText[] = _(
     "its steel body could drive terror into\n"
     "the heart of any foe.");
 
+const u8 gTinkatinkPokedexText[] = _(
+    "This Pokémon pounds iron scraps\n"
+    "together to make a hammer. It will\n"
+    "remake the hammer again and again until\n"
+    "it's satisfied with the result.");
+
+const u8 gTinkatuffPokedexText[] = _(
+    "These Pokémon make their homes in\n"
+    "piles of scrap metal. They test the\n"
+    "strength of each other's hammers by\n"
+    "smashing them together.");
+
+const u8 gTinkatonPokedexText[] = _(
+    "The hammer tops 220 pounds, yet it\n"
+    "gets swung around easily by\n"
+    "Tinkaton as it steals whatever it pleases\n"
+    "and carries its plunder back home.");
+
 const u8 gBlipbugPokedexText[] = _(
     "A constant collector of information,\n"
     "this Pokémon is very smart. Very strong\n"

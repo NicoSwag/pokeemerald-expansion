@@ -190,6 +190,7 @@ const u8 gText_Cancel2[] = _("CANCEL");
 const u8 gText_RareCandy[] = _("RARE CANDY");
 const u8 gText_TM01[] = _("HELPING HAND");
 const u8 gText_TM02[] = _("CHILLING WATER");
+const u8 gText_TM03[] = _("QUASH");
 const u8 gMenuText_Show[] = _("SHOW");
 const u8 gText_EmptyString2[] = _("");
 const u8 gText_Cancel7[] = _("CANCEL"); // Unused

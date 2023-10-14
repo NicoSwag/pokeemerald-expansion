@@ -3035,6 +3035,7 @@ extern const u8 gText_TellHimTheWords[];
 extern const u8 gText_RareCandy[];
 extern const u8 gText_TM01[];
 extern const u8 gText_TM02[];
+extern const u8 gText_TM03[];
 
 // Exp. Share
 extern const u8 gText_ExpShareOn[];

@@ -3038,13 +3038,13 @@ static const u8 sTM01Desc[] = _(
 
 static const u8 sTM02Desc[] = _(
     "A shower with cold\n"
-    "water that lowers\n"
-    "the Attack.");
+    "water that may\n"
+    "freeze the foe.");
 
 static const u8 sTM03Desc[] = _(
-    "Generates an\n"
-    "ultrasonic wave\n"
-    "that may confuse.");
+    "Suppresses the foe,\n"
+    "making it move last\n"
+    "in a turn.");
 
 static const u8 sTM04Desc[] = _(
     "Raises Sp. Atk and\n"

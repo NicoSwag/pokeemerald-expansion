@@ -29,7 +29,7 @@ PetalburgCity_EventScript_Lotad::
 PetalburgCity_EventScript_Zigzagoon::
 	faceplayer
 	playmoncry SPECIES_ZIGZAGOON_GALARIAN, CRY_MODE_NORMAL
-	msgbox PetalburgCity_Text_ZigzagoonNoises, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Text_ZigzagoonNoises, MSGBOX_NPC
 	return
 
 PetalburgCity_Text_ZigzagoonNoises:
@@ -808,7 +808,7 @@ PetalburgCity_Text_WaterTM:
 PetalburgCity_Text_WaterTMExplain:
 	.string "CHILLING WATER is a move that\n"
 	.string "targets the opponent's inner fears\l"
-	.string "lowering their ATTACK.\p"
+	.string "potentially freezing them.\p"
 	.string "Or perhaps it is the cold water that\n"
 	.string "does that…\p"
 	.string "We may never know.$"
@@ -868,11 +868,11 @@ PetalburgCity_Text_Looker:
 	.string "elite of the INTERNATIONAL POLICE.\p"
 	.string "I was summoned in this region, you\n"
 	.string "see, by a certain individual.\p"
-	.string "My task, it is to investigate some certain\n"
-	.string "happenings that are  taking place in this\l"
-	.string "region.\p"
-	.string "It would appear that some shady characters\n"
-	.string "wearing colorful suits are out and about\l"
+	.string "My task, it is to investigate some\n"
+	.string "happenings that are taking place in\l"
+	.string "this region.\p"
+	.string "It would appear that some shady goons\n"
+	.string "wearing colorful suits are currently\l"
 	.string "causing panic amongst the populace…\p"
 	.string "The thing is, I seem to have judged\n"
 	.string "the situation wrongly.\p"
@@ -887,7 +887,7 @@ PetalburgCity_Text_Looker:
 	.string "Magnificent!\p"
 	.string "My friend, I would be grateful\n"
 	.string "if you could meet me in the\l"
-	.string "PETALBURG FOREST.\p"
+	.string "PETALBURG WOODS.\p"
 	.string "According to my sources, an illicit\n"
 	.string "deal is to occur on those very premises.\p"
 	.string "Your assistance, of course, would be\n"

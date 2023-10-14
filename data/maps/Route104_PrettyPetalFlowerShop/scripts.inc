@@ -6,14 +6,71 @@ Route104_PrettyPetalFlowerShop_MapScripts::
 
 Route104_PrettyPetalFlowerShop_OnTransition:
 	setflag FLAG_LANDMARK_FLOWER_SHOP
-	goto_if_unset FLAG_MET_PRETTY_PETAL_SHOP_OWNER, Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner
-	goto_if_unset FLAG_BADGE03_GET, Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner
 	setflag FLAG_TEMP_1
 	end
 
-Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner::
-	setobjectxyperm LOCALID_OWNER, 4, 6
+
+AquaShop_EventScript_AquaClerk::
+	lock
+	faceplayer
+	msgbox AquaShop_Text_WaterShop, MSGBOX_NPC
+	waitmessage
+	pokemart AquaShop_Pokemart
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
 	end
+
+	.align 2
+AquaShop_Pokemart:
+	.2byte ITEM_DIVE_BALL
+	.2byte ITEM_NET_BALL
+	.2byte ITEM_FRESH_WATER
+	.2byte ITEM_PASSHO_BERRY
+	.2byte ITEM_MYSTIC_WATER
+	.2byte ITEM_NONE
+	release
+	end
+
+AquaShop_EventScript_AquaFishingRod::
+	lock
+	goto_if_set FLAG_RECEIVED_SUPER_ROD, AquaShop_EventScript_PostRod
+	showmoneybox 0, 0
+	msgbox AquaShop_Text_WannaBuyARod, MSGBOX_YESNO
+	msgbox AquaShop_Text_JustJoking, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, AquaShop_EventScript_CheckMoney
+	msgbox AquaShop_Text_YourLoss, MSGBOX_NPC
+	release
+	end
+
+AquaShop_EventScript_PostRod::
+	msgbox AquaShop_Text_ThankYouKindly
+	release
+	end
+
+AquaShop_EventScript_CheckMoney::
+	checkmoney 5000
+	goto_if_eq VAR_RESULT, FALSE, AquaShop_EventScript_NoMoney
+	goto_if_eq VAR_RESULT, TRUE, AquaShop_EventScript_Money
+	release
+	end
+	
+	
+	
+AquaShop_EventScript_Money::
+	removemoney 5000
+	hidemoneybox
+	giveitem ITEM_SUPER_ROD
+	msgbox AquaShop_Text_ThankYouKindly, MSGBOX_NPC
+	setflag FLAG_RECEIVED_SUPER_ROD
+	release
+	end
+
+AquaShop_EventScript_NoMoney:
+	msgbox AquaShop_Text_NoMoney, MSGBOX_NPC
+	hidemoneybox
+	release
+	end
+
 
 Route104_PrettyPetalFlowerShop_EventScript_ShopOwner::
 	lock
@@ -25,6 +82,27 @@ Route104_PrettyPetalFlowerShop_EventScript_ShopOwner::
 	msgbox Route104_PrettyPetalFlowerShop_Text_IntroLearnAboutBerries, MSGBOX_YESNO
 	call_if_eq VAR_RESULT, YES, Route104_PrettyPetalFlowerShop_EventScript_ExplainBerries
 	call_if_eq VAR_RESULT, NO, Route104_PrettyPetalFlowerShop_EventScript_DontExplainBerries
+	release
+	end
+
+
+AquaShop_EventScript_Note::
+	lock
+	msgbox AquaShop_Text_LookaNote, MSGBOX_YESNO
+	call_if_eq VAR_RESULT, YES, AquaShop_EventScript_ReadNote
+	msgbox AquaShop_Text_Nevermind
+	release
+	end
+
+AquaShop_EventScript_ShadyAquaGuy::
+	lock
+	faceplayer
+	msgbox AquaShop_Text_NotAqua, MSGBOX_NPC
+	release
+	end
+
+AquaShop_EventScript_ReadNote::
+	msgbox AquaShop_Text_ReadNote, MSGBOX_NPC
 	release
 	end
 
@@ -98,3 +176,75 @@ Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedBerry::
 	msgbox Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries, MSGBOX_DEFAULT
 	release
 	end
+
+AquaShop_Text_LookaNote:
+	.string "Looks like someone tried to hide a note\n"
+	.string "behind a labyrinth of potted plants.\p"
+	.string "Read the note?$"
+ 
+ AquaShop_Text_Nevermind:
+	.string "Perhaps some things are better left\n"
+	.string "forgotten, for now.$"
+
+AquaShop_Text_ReadNote:
+	.string "Dear TEAM AQUA'S MATT DIVISION,\n"
+	.string "what in the seven seas are you guys\l"
+	.string "doing?\p"
+	.string "You know perfectly well how important\n"
+	.string "it is to raise money to provide for our\l"
+	.string "crew…\p"
+	.string "And yet, while the SHELLY DIVISION is\n"
+	.string "ammassing income, you do nothing but\l"
+	.string "twiddle your thumbs!\p"
+	.string "You better start earning some money,\n"
+	.string "and fast!\l"
+	.string "-ARCHIE\p"
+	.string "PS: MATT'S motion to cut back on the\n"
+	.string "expenses by buying less model ships\l"
+	.string "is overruled.$"
+
+AquaShop_Text_NotAqua:
+	.string "TEAM AQUA? What's that?\p"
+	.string "This is the world-famous FEEBAS\n"
+	.string "PRO SHOP PRISM!\p"
+	.string "Any resemblance to unaffiliated\n"
+	.string "organizations are purely coincidental.$"
+
+AquaShop_Text_WannaBuyARod:
+	.string "Hey, kid!\n"
+	.string "Welcome to the world-famous FEEBAS\l"
+	.string "PRO SHOP PRISM!\p"
+	.string "We sell aaall kind of fishing gear here!\p"
+	.string "Oh, I can tell! You wanna buy a rod!\p"
+	.string "Well, the price is gonna be about\n"
+	.string "9,999,999,999,999¥.\p"
+	.string "How about it?$"
+
+AquaShop_Text_JustJoking:
+	.string "Sheesh kid, I was only joking!\n"
+	.string "You're not very bright, are you?\p"
+	.string "I'll tell you what: 5,000¥ and it's\n"
+	.string "yours.\p"
+	.string "Convenient, right?$"
+
+
+AquaShop_Text_ThankYouKindly:
+	.string "Thank you for your patronage!\n"
+	.string "Kekekekekekekeke!$"
+
+
+AquaShop_Text_NoMoney:
+	.string "What the… Hey!\n"
+	.string "You don't have any money!\p"
+	.string "How about you come back when\n"
+	.string "you're a little richer, huh?$"
+
+AquaShop_Text_WaterShop:
+	.string "Welcome, welcome!\n"
+	.string "Here's our selection of items\l"
+	.string "for all water-related necessities!\p"
+	.string "Now with a permanent 99% discount!$"
+
+AquaShop_Text_YourLoss:
+	.string "Whaat? You don't want it?\n"
+	.string "That's… So evil…$"

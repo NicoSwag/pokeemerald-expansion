@@ -131,8 +131,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LOTAD",
-      "x": 9,
-      "y": 26,
+      "x": 18,
+      "y": 25,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -314,7 +314,7 @@
     {
       "type": "trigger",
       "x": 4,
-      "y": 10,
+      "y": 11,
       "elevation": 3,
       "var": "VAR_PETALBURG_CITY_STATE",
       "var_value": "0",
