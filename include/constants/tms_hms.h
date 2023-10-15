@@ -5,7 +5,7 @@
     F(HELPING_HAND) \
     F(CHILLING_WATER) \
     F(QUASH) \
-    F(CALM_MIND) \
+    F(TRAILBLAZE) \
     F(ROAR) \
     F(TOXIC) \
     F(HAIL) \

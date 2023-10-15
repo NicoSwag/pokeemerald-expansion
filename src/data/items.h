@@ -1645,7 +1645,7 @@ const struct Item gItems[] =
     [ITEM_BIG_NUGGET] =
     {
         .name = _("Big Nugget"),
-        .price = 40000,
+        .price = 12000,
         .description = sBigNuggetDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -6765,7 +6765,7 @@ const struct Item gItems[] =
         .name = _("Passho Berry"),
         .price = 1000,
         .holdEffect = HOLD_EFFECT_RESIST_BERRY,
-        .importance = 2,
+        .importance = 3,
         .holdEffectParam = TYPE_WATER,
         .description = sPasshoBerryDesc,
         .pocket = POCKET_BERRIES,
@@ -7196,7 +7196,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_QUASH,
     },
 
-    [ITEM_TM_CALM_MIND] =
+    [ITEM_TM_TRAILBLAZE] =
     {
         .name = _("TM04"),
         .price = 3000,
@@ -7205,7 +7205,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_CALM_MIND,
+        .secondaryId = MOVE_TRAILBLAZE,
     },
 
     [ITEM_TM_ROAR] =
