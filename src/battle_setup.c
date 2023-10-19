@@ -50,6 +50,7 @@
 #include "constants/region_map_sections.h"
 #include "battle_anim.h"
 #include "pokedex.h"
+#include "field_player_avatar.h"
 
 enum {
     TRANSITION_TYPE_NORMAL,
@@ -714,16 +715,7 @@ u8 BattleSetup_GetTerrainId(void)
     u16 tileBehavior;
     s16 x, y;
 
-    PlayerGetDestCoords(&x, &y);
-    tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
-
-    if (MetatileBehavior_IsTallGrass(tileBehavior))
-        return BATTLE_TERRAIN_GRASS;
-    if (MetatileBehavior_IsLongGrass(tileBehavior))
-        return BATTLE_TERRAIN_LONG_GRASS;
-    if (MetatileBehavior_IsSandOrDeepSand(tileBehavior))
-        return BATTLE_TERRAIN_SAND;
-
+    
     switch (gMapHeader.mapType)
     {
     case MAP_TYPE_TOWN:
@@ -741,11 +733,34 @@ u8 BattleSetup_GetTerrainId(void)
         return BATTLE_TERRAIN_BUILDING;
     case MAP_TYPE_UNDERWATER:
         return BATTLE_TERRAIN_UNDERWATER;
+    case MAP_TYPE_OVERCAST:
+        if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
+            return BATTLE_TERRAIN_WATER;
+            if (MetatileBehavior_IsLongGrass(tileBehavior))
+        return BATTLE_TERRAIN_LONG_GRASS;
+        return BATTLE_TERRAIN_OVERCAST;
+    case MAP_TYPE_FOREST:
+        if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
+            return BATTLE_TERRAIN_WATER;
+            if (MetatileBehavior_IsLongGrass(tileBehavior))
+        return BATTLE_TERRAIN_LONG_GRASS;
+        return BATTLE_TERRAIN_FOREST;
     case MAP_TYPE_OCEAN_ROUTE:
         if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
             return BATTLE_TERRAIN_WATER;
         return BATTLE_TERRAIN_PLAIN;
     }
+    
+    PlayerGetDestCoords(&x, &y);
+    tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
+
+    if (MetatileBehavior_IsTallGrass(tileBehavior))
+        return BATTLE_TERRAIN_GRASS;
+    if (MetatileBehavior_IsLongGrass(tileBehavior))
+        return BATTLE_TERRAIN_LONG_GRASS;
+    if (MetatileBehavior_IsSandOrDeepSand(tileBehavior))
+        return BATTLE_TERRAIN_SAND;
+
     if (MetatileBehavior_IsDeepOrOceanWater(tileBehavior))
         return BATTLE_TERRAIN_WATER;
     if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))

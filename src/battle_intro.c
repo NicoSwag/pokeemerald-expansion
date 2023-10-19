@@ -25,6 +25,8 @@ static void BattleIntroSlidePartner(u8);
 static const TaskFunc sBattleIntroSlideFuncs[] =
 {
     [BATTLE_TERRAIN_GRASS]      = BattleIntroSlide1,
+    [BATTLE_TERRAIN_OVERCAST]      = BattleIntroSlide1,
+    [BATTLE_TERRAIN_FOREST]      = BattleIntroSlide1,
     [BATTLE_TERRAIN_LONG_GRASS] = BattleIntroSlide1,
     [BATTLE_TERRAIN_SAND]       = BattleIntroSlide2,
     [BATTLE_TERRAIN_UNDERWATER] = BattleIntroSlide2,

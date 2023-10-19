@@ -11315,7 +11315,7 @@ void TryRestoreHeldItems(void)
     #endif
         {
             lostItem = gBattleStruct->itemLost[i].originalItem;
-            if (lostItem != ITEM_NONE)
+            if (lostItem != ITEM_NONE && ItemId_GetPocket(lostItem) != POCKET_BERRIES)
                 SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &lostItem);  // Restore stolen non-berry items
         }
     }

@@ -7,6 +7,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NinjaBoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Twin;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Looker;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Engineer;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl2;
@@ -93,6 +94,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayAcroBike
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MaySurfing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayFieldMove;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Truck;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bulldozer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Crane;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VigorothCarryingBox;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VigorothFacingAway;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BirchsBag;
@@ -207,6 +210,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KyogreAslee
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GroudonAsleep;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rayquaza;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Zigzagoon;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Diglett;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delibird;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hoothoot;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Smartchu;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ledyba;
@@ -227,6 +232,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scott;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Poochyena;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KyogreSide;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GroudonSide;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rhydon;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MysteryEventDeliveryman;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Statue;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kirlia;
@@ -263,6 +269,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_TWIN] =                     &gObjectEventGraphicsInfo_Twin,
     [OBJ_EVENT_GFX_BOY_1] =                    &gObjectEventGraphicsInfo_Boy1,
     [OBJ_EVENT_GFX_LOOKER] =                    &gObjectEventGraphicsInfo_Looker,
+    [OBJ_EVENT_GFX_ENGINEER] =                    &gObjectEventGraphicsInfo_Engineer,
     [OBJ_EVENT_GFX_GIRL_1] =                   &gObjectEventGraphicsInfo_Girl1,
     [OBJ_EVENT_GFX_BOY_2] =                    &gObjectEventGraphicsInfo_Boy2,
     [OBJ_EVENT_GFX_GIRL_2] =                   &gObjectEventGraphicsInfo_Girl2,
@@ -349,10 +356,14 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MAY_SURFING] =              &gObjectEventGraphicsInfo_MaySurfing,
     [OBJ_EVENT_GFX_MAY_FIELD_MOVE] =           &gObjectEventGraphicsInfo_MayFieldMove,
     [OBJ_EVENT_GFX_TRUCK] =                    &gObjectEventGraphicsInfo_Truck,
+    [OBJ_EVENT_GFX_BULLDOZER] =                    &gObjectEventGraphicsInfo_Bulldozer,
+    [OBJ_EVENT_GFX_CRANE] =                    &gObjectEventGraphicsInfo_Crane,
     [OBJ_EVENT_GFX_VIGOROTH_CARRYING_BOX] =    &gObjectEventGraphicsInfo_VigorothCarryingBox,
     [OBJ_EVENT_GFX_VIGOROTH_FACING_AWAY] =     &gObjectEventGraphicsInfo_VigorothFacingAway,
     [OBJ_EVENT_GFX_BIRCHS_BAG] =               &gObjectEventGraphicsInfo_BirchsBag,
     [OBJ_EVENT_GFX_ZIGZAGOON_1] =              &gObjectEventGraphicsInfo_EnemyZigzagoon,
+    [OBJ_EVENT_GFX_DIGLETT] =              &gObjectEventGraphicsInfo_Diglett,
+    [OBJ_EVENT_GFX_DELIBIRD] =              &gObjectEventGraphicsInfo_Delibird,
     [OBJ_EVENT_GFX_ARTIST] =                   &gObjectEventGraphicsInfo_Artist,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL] =     &gObjectEventGraphicsInfo_RivalBrendanNormal,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE] =  &gObjectEventGraphicsInfo_RivalBrendanMachBike,
@@ -483,6 +494,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_POOCHYENA] =                &gObjectEventGraphicsInfo_Poochyena,
     [OBJ_EVENT_GFX_KYOGRE_SIDE] =              &gObjectEventGraphicsInfo_KyogreSide,
     [OBJ_EVENT_GFX_GROUDON_SIDE] =             &gObjectEventGraphicsInfo_GroudonSide,
+    [OBJ_EVENT_GFX_RHYDON] =             &gObjectEventGraphicsInfo_Rhydon,
     [OBJ_EVENT_GFX_MYSTERY_GIFT_MAN] =         &gObjectEventGraphicsInfo_MysteryEventDeliveryman,
     [OBJ_EVENT_GFX_TRICK_HOUSE_STATUE] =       &gObjectEventGraphicsInfo_Statue,
     [OBJ_EVENT_GFX_KIRLIA] =                   &gObjectEventGraphicsInfo_Kirlia,

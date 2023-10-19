@@ -2760,16 +2760,8 @@ const u16 gEggMoves[] = {
         MOVE_ENCORE),
 
     egg_moves(BASCULIN,
-        MOVE_SWIFT,
-        MOVE_BUBBLE_BEAM,
-        MOVE_MUD_SHOT,
-        MOVE_MUDDY_WATER,
-        MOVE_AGILITY,
-        MOVE_WHIRLPOOL,
-        MOVE_RAGE,
-        MOVE_BRINE,
-        MOVE_REVENGE,
-        MOVE_HEAD_SMASH),
+        MOVE_FLIP_TURN,
+        MOVE_SCALE_SHOT),
 
     egg_moves(SANDILE,
         MOVE_DOUBLE_EDGE,

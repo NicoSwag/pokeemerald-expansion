@@ -7609,10 +7609,20 @@ extern const u32 gMultiBattleIntroBg_Player_Tilemap[];
 
 // battle terrains
 extern const u32 gBattleTerrainTiles_TallGrass[];
+extern const u32 gBattleTerrainTiles_TallGrassOvercast[];
+extern const u32 gBattleTerrainTiles_Forest[];
 extern const u32 gBattleTerrainTilemap_TallGrass[];
+extern const u32 gBattleTerrainTilemap_TallGrassOvercast[];
+extern const u32 gBattleTerrainTilemap_Forest[];
 extern const u32 gBattleTerrainAnimTiles_TallGrass[];
+extern const u32 gBattleTerrainAnimTiles_TallGrassOvercast[];
+extern const u32 gBattleTerrainAnimTiles_Forest[];
 extern const u32 gBattleTerrainAnimTilemap_TallGrass[];
+extern const u32 gBattleTerrainAnimTilemap_TallGrassOvercast[];
+extern const u32 gBattleTerrainAnimTilemap_Forest[];
 extern const u32 gBattleTerrainPalette_TallGrass[];
+extern const u32 gBattleTerrainPalette_TallGrassOvercast[];
+extern const u32 gBattleTerrainPalette_Forest[];
 extern const u32 gBattleTerrainTiles_LongGrass[];
 extern const u32 gBattleTerrainTilemap_LongGrass[];
 extern const u32 gBattleTerrainAnimTiles_LongGrass[];

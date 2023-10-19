@@ -4428,16 +4428,31 @@ static const struct TrainerMon sParty_Andrew[] = {
 
 static const struct TrainerMon sParty_Ivan[] = {
     {
-    .lvl = 5,
-    .species = SPECIES_MAGIKARP,
+    .species = SPECIES_TYNAMO,
+    .moves = {MOVE_CHARGE_BEAM, MOVE_PARABOLIC_CHARGE, MOVE_SLUDGE, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 13,
+    .ball = ITEM_NET_BALL,
+    .ability = ABILITY_LEVITATE,
+    .nature = NATURE_CALM,
     },
     {
-    .lvl = 6,
-    .species = SPECIES_MAGIKARP,
+    .species = SPECIES_INKAY,
+    .moves = {MOVE_PSYBEAM, MOVE_PLUCK, MOVE_PAYBACK, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 13,
+    .ball = ITEM_NET_BALL,
+    .ability = ABILITY_CONTRARY,
+    .nature = NATURE_RELAXED,
     },
-    {
-    .lvl = 7,
-    .species = SPECIES_MAGIKARP,
+     {
+    .species = SPECIES_BASCULIN_WHITE_STRIPED,
+    .moves = {MOVE_HEADBUTT, MOVE_AQUA_JET, MOVE_FLAIL, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 13,
+    .ball = ITEM_NET_BALL,
+    .ability = ABILITY_ADAPTABILITY,
+    .nature = NATURE_QUIET,
     }
 };
 
@@ -7757,12 +7772,31 @@ static const struct TrainerMon sParty_Tiana[] = {
 
 static const struct TrainerMon sParty_Haley1[] = {
     {
-    .lvl = 6,
-    .species = SPECIES_LOTAD,
+    .species = SPECIES_SHROOMISH,
+    .moves = {MOVE_LEECH_SEED, MOVE_BULLET_SEED, MOVE_ENDURE, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 11,
+    .ability = ABILITY_POISON_HEAL,
+    .nature = NATURE_BASHFUL,
+    .ball = ITEM_POKE_BALL
     },
     {
-    .lvl = 6,
-    .species = SPECIES_SHROOMISH,
+    .species = SPECIES_TYMPOLE,
+    .moves = {MOVE_RAIN_DANCE, MOVE_BUBBLE_BEAM, MOVE_MUD_SHOT, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 12,
+    .ability = ABILITY_SWIFT_SWIM,
+    .nature = NATURE_TIMID,
+    .ball = ITEM_POKE_BALL
+    },
+       {
+    .species = SPECIES_LOMBRE,
+    .moves = {MOVE_KNOCK_OFF, MOVE_MEGA_DRAIN, MOVE_INSTRUCT, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 14,
+    .ability = ABILITY_RAIN_DISH,
+    .nature = NATURE_QUIRKY,
+    .ball = ITEM_GREAT_BALL
     }
 };
 

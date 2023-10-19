@@ -9682,6 +9682,7 @@ BattleScript_BerryCurePsnRet::
 	removeitem BS_SCRIPTING
 	return
 
+
 BattleScript_BerryCureBrnEnd2::
 	call BattleScript_BerryCureBrnRet
 	end2

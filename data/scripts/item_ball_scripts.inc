@@ -347,6 +347,10 @@ PetalburgWoods_EventScript_ItemEther::
 PetalburgWoods_EventScript_ItemQuash::
 	finditem ITEM_TM_QUASH
 	end
+	
+Route104Upper_EventScript_HeartScale2::
+	finditem ITEM_HEART_SCALE
+	end
 
 RusturfTunnel_EventScript_ItemPokeBall::
 	finditem ITEM_POKE_BALL

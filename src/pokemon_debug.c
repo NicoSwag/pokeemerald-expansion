@@ -36,8 +36,11 @@
 #include "task.h"
 #include "text_window.h"
 #include "trainer_pokemon_sprites.h"
-
+#include "constants/map_types.h"
+#include "field_player_avatar.h"
 #include "constants/items.h"
+#include "fieldmap.h"
+#include "metatile_behavior.h"
 
 #if DEBUG_POKEMON_MENU == TRUE
 extern const struct BattleBackground sBattleTerrainTable[];
@@ -355,6 +358,8 @@ const u8 gBattleBackgroundNames[][30] =
 const u8 gBattleBackgroundTerrainNames[][26] =
 {
     [BATTLE_TERRAIN_GRASS]      = _("NORMAL - GRASS           "),
+    [BATTLE_TERRAIN_OVERCAST]      = _("NORMAL - GRASS           "),
+    [BATTLE_TERRAIN_FOREST]      = _("NORMAL - GRASS           "),
     [BATTLE_TERRAIN_LONG_GRASS] = _("NORMAL - LONG GRASS      "),
     [BATTLE_TERRAIN_SAND]       = _("NORMAL - SAND            "),
     [BATTLE_TERRAIN_UNDERWATER] = _("NORMAL - UNDERWATER      "),
@@ -842,8 +847,8 @@ static void LoadBattleBg(u8 battleBgType, u8 battleTerrain)
     default:
     case MAP_BATTLE_SCENE_NORMAL:
         LZDecompressVram(sBattleTerrainTable[battleTerrain].tileset, (void*)(BG_CHAR_ADDR(2)));
-        LZDecompressVram(sBattleTerrainTable[battleTerrain].tilemap, (void*)(BG_SCREEN_ADDR(26)));
-        LoadCompressedPalette(sBattleTerrainTable[battleTerrain].palette, 0x20, 0x60);
+                LZDecompressVram(sBattleTerrainTable[battleTerrain].tilemap, (void*)(BG_SCREEN_ADDR(26)));
+                LoadCompressedPalette(sBattleTerrainTable[battleTerrain].palette, 0x20, 0x60);
         break;
     case MAP_BATTLE_SCENE_GYM:
         LZDecompressVram(gBattleTerrainTiles_Building, (void*)(BG_CHAR_ADDR(2)));

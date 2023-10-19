@@ -6,7 +6,7 @@
   "region_map_section": "MAPSEC_ROUTE_103",
   "requires_flash": false,
   "weather": "WEATHER_SHADE",
-  "map_type": "MAP_TYPE_ROUTE",
+  "map_type": "MAP_TYPE_OVERCAST",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
@@ -22,6 +22,11 @@
       "map": "MAP_ROUTE110",
       "offset": -60,
       "direction": "right"
+    },
+    {
+      "map": "MAP_FOOT_OF_MT_KIRIKIRI",
+      "offset": -22,
+      "direction": "up"
     }
   ],
   "object_events": [

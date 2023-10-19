@@ -1220,7 +1220,7 @@
 
 #define FLAG_HIDE_ROUTE_103_MAGMA                                      0x493 // Unused Flag
 #define FLAG_ITEM_ROUTE104_SKY_FRAGMENT                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
+#define FLAG_ITEM_ROUTE104_SKY_FRAGMENT_2                                           0x495 // Unused Flag
 #define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
 #define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
 #define FLAG_UNUSED_0x498                                           0x498 // Unused Flag

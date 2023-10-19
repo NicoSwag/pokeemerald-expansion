@@ -1256,3 +1256,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/Route104Lower/scripts.inc"
 
 	.include "data/maps/Route104Upper/scripts.inc"
+
+	.include "data/maps/FootOfMtKirikiri/scripts.inc"

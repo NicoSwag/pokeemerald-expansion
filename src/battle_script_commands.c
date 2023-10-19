@@ -1015,6 +1015,8 @@ static const u16 sNaturePowerMoves[BATTLE_TERRAIN_COUNT] =
 {
 #if B_NATURE_POWER_MOVES >= GEN_7
     [BATTLE_TERRAIN_GRASS]      = MOVE_ENERGY_BALL,
+    [BATTLE_TERRAIN_OVERCAST]      = MOVE_ENERGY_BALL,
+    [BATTLE_TERRAIN_FOREST]      = MOVE_ENERGY_BALL,
     [BATTLE_TERRAIN_LONG_GRASS] = MOVE_ENERGY_BALL,
     [BATTLE_TERRAIN_SAND]       = MOVE_EARTH_POWER,
     [BATTLE_TERRAIN_WATER]      = MOVE_HYDRO_PUMP,
@@ -1127,6 +1129,8 @@ static const u8 sPickupProbabilities[] =
 static const u8 sTerrainToType[BATTLE_TERRAIN_COUNT] =
 {
     [BATTLE_TERRAIN_GRASS]            = TYPE_GRASS,
+    [BATTLE_TERRAIN_OVERCAST]            = TYPE_GRASS,
+    [BATTLE_TERRAIN_FOREST]            = TYPE_GRASS,
     [BATTLE_TERRAIN_LONG_GRASS]       = TYPE_GRASS,
     [BATTLE_TERRAIN_SAND]             = TYPE_GROUND,
     [BATTLE_TERRAIN_UNDERWATER]       = TYPE_WATER,
@@ -14906,6 +14910,8 @@ u16 GetSecretPowerMoveEffect(void)
         {
     #if B_SECRET_POWER_EFFECT >= GEN_6
         case BATTLE_TERRAIN_GRASS:      moveEffect = MOVE_EFFECT_SLEEP; break;
+            case BATTLE_TERRAIN_OVERCAST:      moveEffect = MOVE_EFFECT_SLEEP; break;
+                case BATTLE_TERRAIN_FOREST:      moveEffect = MOVE_EFFECT_SLEEP; break;
         case BATTLE_TERRAIN_UNDERWATER: moveEffect = MOVE_EFFECT_ATK_MINUS_1; break;
         case BATTLE_TERRAIN_POND:       moveEffect = MOVE_EFFECT_ATK_MINUS_1; break;
         case BATTLE_TERRAIN_MOUNTAIN:   moveEffect = MOVE_EFFECT_ACC_MINUS_1; break;

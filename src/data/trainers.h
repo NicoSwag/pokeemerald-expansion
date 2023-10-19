@@ -4074,8 +4074,8 @@ const struct Trainer gTrainers[] = {
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .trainerName = _("IVAN"),
         .items = {},
-        .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
+        .doubleBattle = TRUE,
+        .aiFlags =  AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_HP_AWARE | AI_FLAG_HELP_PARTNER | AI_FLAG_SMART_SWITCHING | AI_FLAG_DOUBLE_BATTLE,
         .party = TRAINER_PARTY(sParty_Ivan),
     },
 
@@ -7267,7 +7267,7 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("TIANA"),
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE | AI_FLAG_HELP_PARTNER | AI_FLAG_SMART_SWITCHING | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE | AI_FLAG_HELP_PARTNER | AI_FLAG_SMART_SWITCHING | AI_FLAG_DOUBLE_BATTLE,
         .party = TRAINER_PARTY(sParty_Tiana),
     },
 
@@ -7278,8 +7278,8 @@ const struct Trainer gTrainers[] = {
         .trainerPic = TRAINER_PIC_LASS,
         .trainerName = _("HALEY"),
         .items = {},
-        .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
+        .doubleBattle = TRUE,
+        .aiFlags =  AI_FLAG_SETUP_FIRST_TURN | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE | AI_FLAG_HELP_PARTNER | AI_FLAG_SMART_SWITCHING | AI_FLAG_DOUBLE_BATTLE,
         .party = TRAINER_PARTY(sParty_Haley1),
     },
 
@@ -7291,7 +7291,7 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("JANICE"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
+        .aiFlags = AI_FLAG_SETUP_FIRST_TURN | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE | AI_FLAG_HELP_PARTNER | AI_FLAG_SMART_SWITCHING | AI_FLAG_DOUBLE_BATTLE,
         .party = TRAINER_PARTY(sParty_Janice),
     },
 

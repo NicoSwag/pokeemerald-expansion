@@ -459,6 +459,12 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_TAILLOW                 0x1129
 #define OBJ_EVENT_PAL_TAG_SMARTCHU                0x112A
 #define OBJ_EVENT_PAL_TAG_LOOKER                  0X112B
+#define OBJ_EVENT_PAL_TAG_BULLDOZER               0x112C
+#define OBJ_EVENT_PAL_TAG_CRANE                   0x112D
+#define OBJ_EVENT_PAL_TAG_ENGINEER                0x112E
+#define OBJ_EVENT_PAL_TAG_DIGLETT                 0x112F
+#define OBJ_EVENT_PAL_TAG_RHYDON                  0x1130
+#define OBJ_EVENT_PAL_TAG_DELIBIRD                0x1131
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -485,8 +491,12 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_QuintyPlump,           OBJ_EVENT_PAL_TAG_QUINTY_PLUMP},
     {gObjectEventPal_QuintyPlumpReflection, OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION},
     {gObjectEventPal_Truck,                 OBJ_EVENT_PAL_TAG_TRUCK},
+    {gObjectEventPal_Bulldozer,                 OBJ_EVENT_PAL_TAG_BULLDOZER},
+    {gObjectEventPal_Crane,                 OBJ_EVENT_PAL_TAG_CRANE},
     {gObjectEventPal_Vigoroth,              OBJ_EVENT_PAL_TAG_VIGOROTH},
     {gObjectEventPal_EnemyZigzagoon,        OBJ_EVENT_PAL_TAG_ZIGZAGOON},
+    {gObjectEventPal_Diglett,        OBJ_EVENT_PAL_TAG_DIGLETT},
+    {gObjectEventPal_Delibird,        OBJ_EVENT_PAL_TAG_DELIBIRD},
     {gObjectEventPal_May,                   OBJ_EVENT_PAL_TAG_MAY},
     {gObjectEventPal_MayReflection,         OBJ_EVENT_PAL_TAG_MAY_REFLECTION},
     {gObjectEventPal_MovingBox,             OBJ_EVENT_PAL_TAG_MOVING_BOX},
@@ -495,6 +505,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Kyogre,                OBJ_EVENT_PAL_TAG_KYOGRE},
     {gObjectEventPal_KyogreReflection,      OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION},
     {gObjectEventPal_Groudon,               OBJ_EVENT_PAL_TAG_GROUDON},
+    {gObjectEventPal_Rhydon,               OBJ_EVENT_PAL_TAG_RHYDON},
     {gObjectEventPal_GroudonReflection,     OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION},
     {gObjectEventPal_SubmarineShadow,       OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW},
     {gObjectEventPal_Poochyena,             OBJ_EVENT_PAL_TAG_POOCHYENA},
@@ -506,6 +517,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Hoothoot,              OBJ_EVENT_PAL_TAG_HOOTHOOT},
     {gObjectEventPal_Smartchu,              OBJ_EVENT_PAL_TAG_SMARTCHU},
     {gObjectEventPal_Looker,              OBJ_EVENT_PAL_TAG_LOOKER},
+    {gObjectEventPal_Engineer,              OBJ_EVENT_PAL_TAG_ENGINEER},
     {gObjectEventPal_Sunflora,              OBJ_EVENT_PAL_TAG_SUNFLORA},
     {gObjectEventPal_Lotad,                 OBJ_EVENT_PAL_TAG_LOTAD},
     {gObjectEventPal_Taillow,                 OBJ_EVENT_PAL_TAG_TAILLOW},
@@ -563,6 +575,20 @@ static const u16 sReflectionPaletteTags_Truck[] = {
     OBJ_EVENT_PAL_TAG_TRUCK,
 };
 
+static const u16 sReflectionPaletteTags_Bulldozer[] = {
+    OBJ_EVENT_PAL_TAG_BULLDOZER,
+    OBJ_EVENT_PAL_TAG_BULLDOZER,
+    OBJ_EVENT_PAL_TAG_BULLDOZER,
+    OBJ_EVENT_PAL_TAG_BULLDOZER,
+};
+
+static const u16 sReflectionPaletteTags_Crane[] = {
+    OBJ_EVENT_PAL_TAG_CRANE,
+    OBJ_EVENT_PAL_TAG_CRANE,
+    OBJ_EVENT_PAL_TAG_CRANE,
+    OBJ_EVENT_PAL_TAG_CRANE,
+};
+
 static const u16 sReflectionPaletteTags_VigorothMover[] = {
     OBJ_EVENT_PAL_TAG_VIGOROTH,
     OBJ_EVENT_PAL_TAG_VIGOROTH,
@@ -612,6 +638,14 @@ static const u16 sReflectionPaletteTags_Groudon[] = {
     OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION,
 };
 
+
+static const u16 sReflectionPaletteTags_Rhydon[] = {
+    OBJ_EVENT_PAL_TAG_RHYDON,
+    OBJ_EVENT_PAL_TAG_RHYDON,
+    OBJ_EVENT_PAL_TAG_RHYDON,
+    OBJ_EVENT_PAL_TAG_RHYDON,
+};
+
 static const u16 sReflectionPaletteTags_Npc3[] = { // Only used by the Route 120 bridge Kecleon
     OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
     OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
@@ -631,12 +665,15 @@ static const struct PairedPalettes sSpecialObjectReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_MAY,              sReflectionPaletteTags_May},
     {OBJ_EVENT_PAL_TAG_QUINTY_PLUMP,     sReflectionPaletteTags_QuintyPlump},
     {OBJ_EVENT_PAL_TAG_TRUCK,            sReflectionPaletteTags_Truck},
+    {OBJ_EVENT_PAL_TAG_BULLDOZER,            sReflectionPaletteTags_Bulldozer},
+    {OBJ_EVENT_PAL_TAG_CRANE,            sReflectionPaletteTags_Crane},
     {OBJ_EVENT_PAL_TAG_VIGOROTH,         sReflectionPaletteTags_VigorothMover},
     {OBJ_EVENT_PAL_TAG_MOVING_BOX,       sReflectionPaletteTags_MovingBox},
     {OBJ_EVENT_PAL_TAG_CABLE_CAR,        sReflectionPaletteTags_CableCar},
     {OBJ_EVENT_PAL_TAG_SSTIDAL,          sReflectionPaletteTags_SSTidal},
     {OBJ_EVENT_PAL_TAG_KYOGRE,           sReflectionPaletteTags_Kyogre},
     {OBJ_EVENT_PAL_TAG_GROUDON,          sReflectionPaletteTags_Groudon},
+    {OBJ_EVENT_PAL_TAG_RHYDON,          sReflectionPaletteTags_Rhydon},
     {OBJ_EVENT_PAL_TAG_NPC_3,            sReflectionPaletteTags_Npc3},
     {OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW, sReflectionPaletteTags_SubmarineShadow},
     {OBJ_EVENT_PAL_TAG_RED_LEAF,         sReflectionPaletteTags_RedLeaf},

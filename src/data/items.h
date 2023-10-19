@@ -6531,7 +6531,7 @@ const struct Item gItems[] =
         .price = 20,
         .description = sBlukBerryDesc,
         .pocket = POCKET_BERRIES,
-        .type = ITEM_USE_BAG_MENU,
+        .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 10,
     },

@@ -4460,6 +4460,16 @@
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/Route104Upper/border.bin",
       "blockdata_filepath": "data/layouts/Route104Upper/map.bin"
+    },
+    {
+      "id": "LAYOUT_FOOT_OF_MT_KIRIKIRI",
+      "name": "FootOfMtKirikiri_Layout",
+      "width": 55,
+      "height": 44,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/FootOfMtKirikiri/border.bin",
+      "blockdata_filepath": "data/layouts/FootOfMtKirikiri/map.bin"
     }
   ]
 }

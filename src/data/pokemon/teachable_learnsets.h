@@ -21161,31 +21161,8 @@ static const u16 sLilligantTeachableLearnset[] = {
 };
 
 static const u16 sBasculinTeachableLearnset[] = {
-    MOVE_ATTRACT,
-    MOVE_CUT,
-    MOVE_DIVE,
-    MOVE_DOUBLE_TEAM,
-    MOVE_FACADE,
-    MOVE_FRUSTRATION,
-    MOVE_HAIL,
-    MOVE_HIDDEN_POWER,
-    MOVE_ICE_BEAM,
-    MOVE_PROTECT,
-    MOVE_RAIN_DANCE,
-    MOVE_REST,
-    MOVE_RETURN,
-    MOVE_SECRET_POWER,
-    MOVE_SURF,
-    MOVE_TAUNT,
-    MOVE_TOXIC,
-    MOVE_WATERFALL,
-    MOVE_DOUBLE_EDGE,
-    MOVE_ICY_WIND,
-    MOVE_SLEEP_TALK,
-    MOVE_SNORE,
-    MOVE_SUBSTITUTE,
-    MOVE_SWAGGER,
-    MOVE_SWIFT,
+    MOVE_ENDURE,
+    MOVE_CHILLING_WATER,
     MOVE_UNAVAILABLE,
 };
 
