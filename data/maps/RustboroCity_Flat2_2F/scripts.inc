@@ -10,7 +10,7 @@ RustboroCity_Flat2_2F_EventScript_NinjaBoy::
 	faceplayer
 	goto_if_set FLAG_RECEIVED_PREMIER_BALL_RUSTBORO, RustboroCity_Flat2_2F_EventScript_GavePremierBall
 	msgbox RustboroCity_Flat2_2F_Text_MyDaddyMadeThisYouCanHaveIt, MSGBOX_DEFAULT
-	giveitem ITEM_PREMIER_BALL
+	giveitem ITEM_EJECT_BUTTON
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_PREMIER_BALL_RUSTBORO
 	release
@@ -22,8 +22,11 @@ RustboroCity_Flat2_2F_EventScript_GavePremierBall::
 	end
 
 RustboroCity_Flat2_2F_Text_DevonWasTinyInOldDays:
-	.string "Way back in the old days, DEVON was just\n"
-	.string "a teeny, tiny company.$"
+	.string "It is said that DEVON existed even\n"
+	.string "way back when people started to\l"
+	.string "settle HOENN.\p"
+	.string "Of course, I wasn't even born back\n"
+	.string "then. Haha!$"
 
 RustboroCity_Flat2_2F_Text_MyDaddyMadeThisYouCanHaveIt:
 	.string "My daddy's working at the CORPORATION.\p"

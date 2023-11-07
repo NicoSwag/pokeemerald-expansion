@@ -714,8 +714,10 @@ u8 BattleSetup_GetTerrainId(void)
 {
     u16 tileBehavior;
     s16 x, y;
-
-    
+    PlayerGetDestCoords(&x, &y);
+    tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
+    if (MetatileBehavior_IsMountain(tileBehavior))
+    return BATTLE_TERRAIN_MOUNTAIN;
     switch (gMapHeader.mapType)
     {
     case MAP_TYPE_TOWN:
@@ -736,14 +738,10 @@ u8 BattleSetup_GetTerrainId(void)
     case MAP_TYPE_OVERCAST:
         if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
             return BATTLE_TERRAIN_WATER;
-            if (MetatileBehavior_IsLongGrass(tileBehavior))
-        return BATTLE_TERRAIN_LONG_GRASS;
         return BATTLE_TERRAIN_OVERCAST;
     case MAP_TYPE_FOREST:
         if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
             return BATTLE_TERRAIN_WATER;
-            if (MetatileBehavior_IsLongGrass(tileBehavior))
-        return BATTLE_TERRAIN_LONG_GRASS;
         return BATTLE_TERRAIN_FOREST;
     case MAP_TYPE_OCEAN_ROUTE:
         if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
@@ -751,8 +749,7 @@ u8 BattleSetup_GetTerrainId(void)
         return BATTLE_TERRAIN_PLAIN;
     }
     
-    PlayerGetDestCoords(&x, &y);
-    tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
+    
 
     if (MetatileBehavior_IsTallGrass(tileBehavior))
         return BATTLE_TERRAIN_GRASS;
@@ -765,8 +762,7 @@ u8 BattleSetup_GetTerrainId(void)
         return BATTLE_TERRAIN_WATER;
     if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
         return BATTLE_TERRAIN_POND;
-    if (MetatileBehavior_IsMountain(tileBehavior))
-        return BATTLE_TERRAIN_MOUNTAIN;
+
     if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
     {
         // Is BRIDGE_TYPE_POND_*?
@@ -2285,6 +2281,10 @@ u8 HasWildPokmnOnThisRouteBeenSeen(u8 currLocation, bool8 setVarForThisEnc){
     case MAPSEC_ALTERING_CAVE:
         varToCheck = 4;
         bitToCheck = 10;
+       break;
+    case MAPSEC_OLDALE_RUINS:
+        varToCheck = 4;
+        bitToCheck = 11;
        break;
     default:
        return 0;

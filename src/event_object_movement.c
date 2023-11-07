@@ -465,6 +465,21 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_DIGLETT                 0x112F
 #define OBJ_EVENT_PAL_TAG_RHYDON                  0x1130
 #define OBJ_EVENT_PAL_TAG_DELIBIRD                0x1131
+#define OBJ_EVENT_PAL_TAG_CHANNELER               0x1132
+#define OBJ_EVENT_PAL_TAG_KADABRA               0x1133
+#define OBJ_EVENT_PAL_TAG_SCIZOR               0x1134
+#define OBJ_EVENT_PAL_TAG_MAXIE               0x1135
+#define OBJ_EVENT_PAL_TAG_ARCHIE               0x1136
+#define OBJ_EVENT_PAL_TAG_SHELLY               0x1137   
+#define OBJ_EVENT_PAL_TAG_MATT               0x1138
+#define OBJ_EVENT_PAL_TAG_COURTNEY               0x1139
+#define OBJ_EVENT_PAL_TAG_TABITHA               0x113A
+#define OBJ_EVENT_PAL_TAG_AQUA               0x113B
+#define OBJ_EVENT_PAL_TAG_DARK_SKIN               0x113C
+#define OBJ_EVENT_PAL_TAG_DARK_SKIN_2               0x113D
+#define OBJ_EVENT_PAL_TAG_DARK_SKIN_3               0x113E
+#define OBJ_EVENT_PAL_TAG_DARK_SKIN_4               0x113F        
+#define OBJ_EVENT_PAL_TAG_HIKER               0x1140     
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -497,6 +512,9 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_EnemyZigzagoon,        OBJ_EVENT_PAL_TAG_ZIGZAGOON},
     {gObjectEventPal_Diglett,        OBJ_EVENT_PAL_TAG_DIGLETT},
     {gObjectEventPal_Delibird,        OBJ_EVENT_PAL_TAG_DELIBIRD},
+    {gObjectEventPal_Kadabra,        OBJ_EVENT_PAL_TAG_KADABRA},
+    {gObjectEventPal_Scizor,        OBJ_EVENT_PAL_TAG_SCIZOR},
+    {gObjectEventPal_Channeler,        OBJ_EVENT_PAL_TAG_CHANNELER},
     {gObjectEventPal_May,                   OBJ_EVENT_PAL_TAG_MAY},
     {gObjectEventPal_MayReflection,         OBJ_EVENT_PAL_TAG_MAY_REFLECTION},
     {gObjectEventPal_MovingBox,             OBJ_EVENT_PAL_TAG_MOVING_BOX},
@@ -517,6 +535,18 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Hoothoot,              OBJ_EVENT_PAL_TAG_HOOTHOOT},
     {gObjectEventPal_Smartchu,              OBJ_EVENT_PAL_TAG_SMARTCHU},
     {gObjectEventPal_Looker,              OBJ_EVENT_PAL_TAG_LOOKER},
+    {gObjectEventPal_Shelly,              OBJ_EVENT_PAL_TAG_SHELLY},
+    {gObjectEventPal_Hiker,              OBJ_EVENT_PAL_TAG_HIKER},
+    {gObjectEventPal_DarkSkin,              OBJ_EVENT_PAL_TAG_DARK_SKIN},
+   {gObjectEventPal_DarkSkin2,              OBJ_EVENT_PAL_TAG_DARK_SKIN_2},
+   {gObjectEventPal_DarkSkin3,              OBJ_EVENT_PAL_TAG_DARK_SKIN_3},
+   {gObjectEventPal_DarkSkin4,              OBJ_EVENT_PAL_TAG_DARK_SKIN_4},
+    {gObjectEventPal_Aqua,              OBJ_EVENT_PAL_TAG_AQUA},
+    {gObjectEventPal_Courtney,              OBJ_EVENT_PAL_TAG_COURTNEY},
+    {gObjectEventPal_Tabitha,              OBJ_EVENT_PAL_TAG_TABITHA},
+    {gObjectEventPal_Matt,              OBJ_EVENT_PAL_TAG_MATT},
+    {gObjectEventPal_Maxie,              OBJ_EVENT_PAL_TAG_MAXIE},
+    {gObjectEventPal_Archie,              OBJ_EVENT_PAL_TAG_ARCHIE},
     {gObjectEventPal_Engineer,              OBJ_EVENT_PAL_TAG_ENGINEER},
     {gObjectEventPal_Sunflora,              OBJ_EVENT_PAL_TAG_SUNFLORA},
     {gObjectEventPal_Lotad,                 OBJ_EVENT_PAL_TAG_LOTAD},

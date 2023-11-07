@@ -12977,6 +12977,13 @@ static void Cmd_trysetencore(void)
 
     s32 i;
 
+    if (gBattleMons[gBattlerAttacker].type1 == TYPE_PSYCHIC || gBattleMons[gBattlerAttacker].type2 == TYPE_PSYCHIC)
+        {
+            gBattlescriptCurrInstr = cmd->nextInstr;
+
+        }
+    else
+    {
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         if (gBattleMons[gBattlerTarget].moves[i] == gLastMoves[gBattlerTarget])
@@ -13005,6 +13012,7 @@ static void Cmd_trysetencore(void)
     else
     {
         gBattlescriptCurrInstr = cmd->failInstr;
+    }
     }
 }
 
@@ -14185,7 +14193,9 @@ static void Cmd_settorment(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
-    if (gBattleMons[gBattlerTarget].status2 & STATUS2_TORMENT)
+    if (gBattleMons[gBattlerTarget].status2 & STATUS2_TORMENT
+    || gBattleMons[gBattlerTarget].type1 == TYPE_PSYCHIC
+    || gBattleMons[gBattlerTarget].type2 == TYPE_PSYCHIC)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }
@@ -14210,7 +14220,6 @@ static void Cmd_settaunt(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
-#if B_OBLIVIOUS_TAUNT >= GEN_6
     if (GetBattlerAbility(gBattlerTarget) == ABILITY_OBLIVIOUS)
     {
         gBattlescriptCurrInstr = BattleScript_NotAffectedAbilityPopUp;
@@ -14218,7 +14227,11 @@ static void Cmd_settaunt(void)
         RecordAbilityBattle(gBattlerTarget, ABILITY_OBLIVIOUS);
     }
     else
-#endif
+    if (gBattleMons[gBattlerAttacker].type1 == TYPE_PSYCHIC || gBattleMons[gBattlerAttacker].type2 == TYPE_PSYCHIC )
+        {
+            gBattlescriptCurrInstr = BattleScript_NotAffected;
+        }
+    else
     if (gDisableStructs[gBattlerTarget].tauntTimer == 0)
     {
         #if B_TAUNT_TURNS >= GEN_5

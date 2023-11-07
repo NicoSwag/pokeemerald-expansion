@@ -11,6 +11,7 @@
 #include "field_screen_effect.h"
 
 extern const u8 gText_Peekaboo[];
+extern const u8 gText_TransRights[];
 
 static void CB2_HandleGivenWaldaPhrase(void);
 static u32 GetWaldaPhraseInputCase(u8 *);
@@ -95,20 +96,9 @@ static u32 GetWaldaPhraseInputCase(u8 *inputPtr)
 
 u16 TryGetWallpaperWithWaldaPhrase(void)
 {
-    u16 backgroundClr, foregroundClr;
-    u8 patternId, iconId;
-    u16 trainerId = GetTrainerId(gSaveBlock2Ptr->playerTrainerId);
-    gSpecialVar_Result = TryCalculateWallpaper(&backgroundClr, &foregroundClr, &iconId, &patternId, trainerId, GetWaldaPhrasePtr());
-
-    if (gSpecialVar_Result)
-    {
-        SetWaldaWallpaperPatternId(patternId);
-        SetWaldaWallpaperIconId(iconId);
-        SetWaldaWallpaperColors(backgroundClr, foregroundClr);
-    }
-
-    SetWaldaWallpaperLockedOrUnlocked(gSpecialVar_Result);
-    return (bool8)gSpecialVar_Result;
+    if (StringCompare(GetWaldaPhrasePtr(), gText_TransRights) == 0)
+        return TRUE;
+    return FALSE;
 }
 
 static u8 GetLetterTableId(u8 letter)
@@ -142,59 +132,6 @@ static u8 GetLetterTableId(u8 letter)
 #define TO_BIT_OFFSET(i)  (3 + (8 * (i))) // Convert a position in the phrase to a bit number into the wallpaper data array
 static bool32 TryCalculateWallpaper(u16 *backgroundClr, u16 *foregroundClr, u8 *iconId, u8 *patternId, u16 trainerId, u8 *phrase)
 {
-    s32 i;
-    ALIGNED(2) u8 data[NUM_WALLPAPER_DATA_BYTES];
-    u8 charsByTableId[WALDA_PHRASE_LENGTH];
-    u16 *ptr;
-
-    // Reject any phrase that does not use the full length
-    if (StringLength(phrase) != WALDA_PHRASE_LENGTH)
-        return FALSE;
-
-    // Reject any phrase that uses characters not in sWaldaLettersTable
-    for (i = 0; i < WALDA_PHRASE_LENGTH; i++)
-    {
-        charsByTableId[i] = GetLetterTableId(phrase[i]);
-        if (charsByTableId[i] == ARRAY_COUNT(sWaldaLettersTable))
-            return FALSE;
-    }
-
-    // Use the given phrase to populate the wallpaper data array
-    // The data array is 9 bytes (72 bits) long, and each letter contributes to 5 bits of the array
-    // Because the phrase is 15 letters long there are 75 bits from the phrase to distribute
-    // Therefore the last letter contributes to the last 2 bits of the array, and the remaining 3 bits wrap around
-    for (i = 0; i < WALDA_PHRASE_LENGTH - 1; i++)
-        SetWallpaperDataFromLetter(data, charsByTableId, BITS_PER_LETTER * i, TO_BIT_OFFSET(i), BITS_PER_LETTER);
-
-    // Do first 2 bits of the last letter
-    SetWallpaperDataFromLetter(data, charsByTableId, BITS_PER_LETTER * (WALDA_PHRASE_LENGTH - 1), TO_BIT_OFFSET(WALDA_PHRASE_LENGTH - 1), 2);
-
-    // Check the first 3 bits of the data array against the remaining 3 bits of the last letter
-    // Reject the phrase if they are not already the same
-    if (GetWallpaperDataBits(data, 0, 3) != GetWallpaperDataBits(charsByTableId, TO_BIT_OFFSET(WALDA_PHRASE_LENGTH - 1) + 2, 3))
-        return FALSE;
-
-    // Perform some relatively arbitrary changes to the wallpaper data using the last byte (KEY)
-    RotateWallpaperDataLeft(data, NUM_WALLPAPER_DATA_BYTES,     21);
-    RotateWallpaperDataLeft(data, NUM_WALLPAPER_DATA_BYTES - 1, KEY & 0xF);
-    MaskWallpaperData(data, NUM_WALLPAPER_DATA_BYTES - 1, KEY >> 4);
-
-    // Reject the results of any phrase that are 'incompatible' with the player's trainer id
-    if (TID_CHECK_HI != (BG_COLOR_LO ^ FG_COLOR_LO ^ ICON_ID ^ (trainerId >> 8)))
-        return FALSE;
-    if (TID_CHECK_LO != (BG_COLOR_HI ^ FG_COLOR_HI ^ PATTERN_ID ^ (trainerId & 0xFF)))
-        return FALSE;
-
-    // Successful phrase, save resulting wallpaper
-    ptr = (u16 *) &BG_COLOR_LO;
-    *backgroundClr = *ptr;
-
-    ptr = (u16 *) &FG_COLOR_LO;
-    *foregroundClr = *ptr;
-
-    *iconId = ICON_ID;
-    *patternId = PATTERN_ID;
-
     return TRUE;
 }
 

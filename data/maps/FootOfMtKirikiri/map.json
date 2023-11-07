@@ -3,9 +3,9 @@
   "name": "FootOfMtKirikiri",
   "layout": "LAYOUT_FOOT_OF_MT_KIRIKIRI",
   "music": "MUS_ROUTE101",
-  "region_map_section": "MAPSEC_ROUTE_103",
+  "region_map_section": "MAPSEC_OLDALE_RUINS",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
+  "weather": "WEATHER_SHADE",
   "map_type": "MAP_TYPE_OVERCAST",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -15,15 +15,79 @@
   "connections": [
     {
       "map": "MAP_ROUTE103",
-      "offset": 22,
+      "offset": 10,
       "direction": "down"
     }
   ],
   "object_events": [
-
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 15,
+      "y": 45,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 16,
+      "y": 44,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 29,
+      "y": 18,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 52,
+      "y": 28,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 40,
+      "movement_range_y": 40,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_OldaleRuins_Hiker",
+      "flag": "0"
+    }
   ],
   "warp_events": [
-
+    {
+      "x": 59,
+      "y": 24,
+      "elevation": 0,
+      "dest_map": "MAP_OLDALE_RUINS_ENTRANCE_1",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 45,
+      "y": 31,
+      "elevation": 0,
+      "dest_map": "MAP_OLDALE_RUINS_ENTRANCE_2",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 

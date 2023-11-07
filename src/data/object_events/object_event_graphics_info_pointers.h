@@ -7,6 +7,10 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NinjaBoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Twin;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Looker;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Shelly;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Courtney;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Tabitha;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Matt;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Engineer;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy2;
@@ -41,6 +45,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PsychicM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SchoolKidM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Maniac;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HexManiac;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Channeler;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RayquazaStill;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SwimmerM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SwimmerF;
@@ -212,6 +217,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rayquaza;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Zigzagoon;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Diglett;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delibird;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kadabra;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scizor;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hoothoot;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Smartchu;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ledyba;
@@ -269,6 +276,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_TWIN] =                     &gObjectEventGraphicsInfo_Twin,
     [OBJ_EVENT_GFX_BOY_1] =                    &gObjectEventGraphicsInfo_Boy1,
     [OBJ_EVENT_GFX_LOOKER] =                    &gObjectEventGraphicsInfo_Looker,
+    [OBJ_EVENT_GFX_SHELLY] =                    &gObjectEventGraphicsInfo_Shelly,
+        [OBJ_EVENT_GFX_COURTNEY] =                    &gObjectEventGraphicsInfo_Courtney,
+        [OBJ_EVENT_GFX_TABITHA] =                    &gObjectEventGraphicsInfo_Tabitha,
+    [OBJ_EVENT_GFX_MATT] =                    &gObjectEventGraphicsInfo_Matt,
     [OBJ_EVENT_GFX_ENGINEER] =                    &gObjectEventGraphicsInfo_Engineer,
     [OBJ_EVENT_GFX_GIRL_1] =                   &gObjectEventGraphicsInfo_Girl1,
     [OBJ_EVENT_GFX_BOY_2] =                    &gObjectEventGraphicsInfo_Boy2,
@@ -303,6 +314,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SCHOOL_KID_M] =             &gObjectEventGraphicsInfo_SchoolKidM,
     [OBJ_EVENT_GFX_MANIAC] =                   &gObjectEventGraphicsInfo_Maniac,
     [OBJ_EVENT_GFX_HEX_MANIAC] =               &gObjectEventGraphicsInfo_HexManiac,
+    [OBJ_EVENT_GFX_CHANNELER] =               &gObjectEventGraphicsInfo_Channeler,
     [OBJ_EVENT_GFX_RAYQUAZA_STILL] =           &gObjectEventGraphicsInfo_RayquazaStill,
     [OBJ_EVENT_GFX_SWIMMER_M] =                &gObjectEventGraphicsInfo_SwimmerM,
     [OBJ_EVENT_GFX_SWIMMER_F] =                &gObjectEventGraphicsInfo_SwimmerF,
@@ -364,6 +376,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_ZIGZAGOON_1] =              &gObjectEventGraphicsInfo_EnemyZigzagoon,
     [OBJ_EVENT_GFX_DIGLETT] =              &gObjectEventGraphicsInfo_Diglett,
     [OBJ_EVENT_GFX_DELIBIRD] =              &gObjectEventGraphicsInfo_Delibird,
+    [OBJ_EVENT_GFX_KADABRA] =              &gObjectEventGraphicsInfo_Kadabra,
+    [OBJ_EVENT_GFX_SCIZOR] =              &gObjectEventGraphicsInfo_Scizor,
     [OBJ_EVENT_GFX_ARTIST] =                   &gObjectEventGraphicsInfo_Artist,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL] =     &gObjectEventGraphicsInfo_RivalBrendanNormal,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE] =  &gObjectEventGraphicsInfo_RivalBrendanMachBike,

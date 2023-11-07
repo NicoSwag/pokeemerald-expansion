@@ -1,3 +1,4 @@
+.set LOCALID_WALDA, 2
 .set LOCALID_WALDAS_DAD, 6
 
 RustboroCity_Flat1_2F_MapScripts::
@@ -7,8 +8,14 @@ RustboroCity_Flat1_2F_EventScript_WaldasDad::
 	lock
 	faceplayer
 	specialvar VAR_RESULT, TryBufferWaldaPhrase
+	goto_if_set FLAG_WALDA_AWOKEN, RustboroCity_Flat1_2F_EventScript_WaldaAwoken
 	goto_if_eq VAR_RESULT, FALSE, RustboroCity_Flat1_2F_EventScript_WaldasDadFirstPhrase
 	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Flat1_2F_EventScript_WaldasDadNewPhrase
+
+RustboroCity_Flat1_2F_EventScript_WaldaAwoken::
+	msgbox RustboroCity_Flat1_2F_Text_WaldaAwoken, MSGBOX_DEFAULT
+	release
+	end
 
 RustboroCity_Flat1_2F_EventScript_GivePhrase::
 	special DoWaldaNamingScreen
@@ -51,11 +58,19 @@ RustboroCity_Flat1_2F_EventScript_CancelGiveFirstPhrase::
 
 RustboroCity_Flat1_2F_EventScript_WaldaLikesPhrase::
 	msgbox RustboroCity_Flat1_2F_Text_LetsGiveItATry2, MSGBOX_DEFAULT
-	call RustboroCity_Flat1_2F_EventScript_WaldasDadFaceWalda
 	msgbox RustboroCity_Flat1_2F_Text_OhShesLaughing, MSGBOX_DEFAULT
+	call RustboroCity_Flat1_2F_EventScript_WaldasDadFaceWalda
+	applymovement LOCALID_WALDA, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_WALDA, Common_Movement_FaceRight
+	waitmovement 0 
+	msgbox RustboroCity_Flat1_2F_Text_SoTrue, MSGBOX_DEFAULT
+	applymovement LOCALID_WALDAS_DAD, Common_Movement_ExclamationMark
 	applymovement LOCALID_WALDAS_DAD, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox RustboroCity_Flat1_2F_Text_ThankYouIllGiveYouWallpaper, MSGBOX_DEFAULT
+	giveitem ITEM_HEART_SCALE
+	setflag FLAG_WALDA_AWOKEN
 	release
 	end
 
@@ -90,20 +105,27 @@ RustboroCity_Flat1_2F_Text_ComingUpWithMealsIsHard:
 RustboroCity_Flat1_2F_Text_HelloDoYouKnowFunnyPhrase:
 	.string "Oh, hello!\n"
 	.string "Welcome to the PEPPER household.\p"
-	.string "I have a question for you.\n"
-	.string "Have you ever baby-sat?\p"
-	.string "You see, I'm a new father, so raising\n"
-	.string "a child is all new to me.\p"
-	.string "And I have a problem. My daughter\n"
-	.string "WALDA doesn't laugh enough.\p"
-	.string "I think she'd laugh for me if I told\n"
-	.string "her something funny.\p"
-	.string "Do you know of a funny word or\n"
-	.string "phrase you can tell me?$"
+	.string "I would love to greet you properly,\n"
+	.string "but…\p"
+	.string "I'm truly in quite a pickle!\p"
+	.string "You see my daughter, one day, went\n"
+	.string "to play a bit too close to the\l"
+	.string "FORBIDDEN FOREST north of here.\p"
+	.string "Misfortune would have it that she\n"
+	.string "was cursed by a rogue witch!\p"
+	.string "Now she's totally unresponsive, and\n"
+	.string "there is but one way to wake her up.\p"
+	.string "It is a spell, and a puzzle mixed in\n"
+	.string "one!\p"
+	.string "To wake her I must solve this riddle:\n"
+	.string "what is the truest thing in the world?\p"
+	.string "But ah! I can't figure it out.\p"
+	.string "If you have any ideas, please, let me\n"
+	.string "know.$"
 
 RustboroCity_Flat1_2F_Text_BeenSayingXDoYouKnowBetterPhrase:
 	.string "I've been saying “{STR_VAR_1}”\n"
-	.string "to amuse her lately.\p"
+	.string "but it isn't working.\p"
 	.string "Do you know of a better word or\n"
 	.string "a phrase that might work?$"
 
@@ -123,8 +145,6 @@ RustboroCity_Flat1_2F_Text_LetsGiveItATry2:
 RustboroCity_Flat1_2F_Text_OhShesLaughing:
 	.string "{STR_VAR_1}.\n"
 	.string "{STR_VAR_1}.\p"
-	.string "Oh, yes! She's laughing!\n"
-	.string "Oh, I am as delighted as she!$"
 
 RustboroCity_Flat1_2F_Text_LetsGiveItATry:
 	.string "Ah, I see.\n"
@@ -133,8 +153,7 @@ RustboroCity_Flat1_2F_Text_LetsGiveItATry:
 RustboroCity_Flat1_2F_Text_ShesNotSmilingAtAll:
 	.string "{STR_VAR_1}.\n"
 	.string "{STR_VAR_1}.\p"
-	.string "Hmmm… She's not smiling at all.\n"
-	.string "Maybe WALDA is one serious child…$"
+	.string "Hmmm… It's not working…$"
 
 RustboroCity_Flat1_2F_Text_ThinkOfMyOwnPhrase:
 	.string "Oh, so you don't know any good words.\n"
@@ -146,32 +165,29 @@ RustboroCity_Flat1_2F_Text_ThinkOfMyOwnPhrase:
 RustboroCity_Flat1_2F_Text_ShesNotSmilingAtAll2:
 	.string "{STR_VAR_1}.\n"
 	.string "{STR_VAR_1}.\p"
-	.string "Hmmm… She's not smiling at all.\n"
-	.string "Maybe WALDA is one serious child…$"
+	.string "Hmmm… It's not working…$"
 
 RustboroCity_Flat1_2F_Text_OhYouDontKnowAny:
 	.string "Oh, so you don't know any good words.\n"
-	.string "I guess I'll try to amuse her with\l"
-	.string "the saying I used before.\p"
+	.string "I guess I'll keep trying with the\l"
+	.string "previous suggestion.\p"
 	.string "Anyways, if you have a good suggestion,\n"
 	.string "don't hesitate in telling me, okay?$"
 
 RustboroCity_Flat1_2F_Text_ThankYouIllGiveYouWallpaper:
-	.string "Thank you!\p"
+	.string "It worked!\p"
 	.string "Thanks to you, my darling WALDA\n"
-	.string "laughed for me!\p"
-	.string "Actually, I may not look all that\n"
-	.string "special, but I'm one of DEVON\l"
-	.string "CORPORATION's top researchers.\p"
-	.string "So, how about I do something in return\n"
-	.string "for you?\p"
-	.string "I know, I'll add some new wallpaper\n"
-	.string "patterns for the BOXES in the PC\l"
-	.string "POKéMON Storage System.\p"
-	.string "In the wallpaper pattern menu,\n"
-	.string "select “FRIENDS.”\p"
-	.string "That will give you access to the new\n"
-	.string "wallpaper patterns.$"
+	.string "woke up!\p"
+	.string "Please, accept this token of my\n"
+	.string "gratitude.$"
 
 RustboroCity_Flat1_2F_Text_ItsAPokemonPlushDoll:
 	.string "It's a POKéMON plush DOLL!$"
+
+RustboroCity_Flat1_2F_Text_SoTrue:
+	.string "So true!$"
+
+RustboroCity_Flat1_2F_Text_WaldaAwoken:
+	.string "WALDA is sleeping right now.\p"
+	.string "Ah! Don't worry! She's just\n"
+	.string "taking a nap.$"

@@ -1463,7 +1463,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             #if B_MENTAL_HERB >= GEN_5
                 && aiData->holdEffects[battlerDef] != HOLD_EFFECT_MENTAL_HERB
             #endif
-                && !DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
+                && !DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove)
+                && (gBattleMons[battlerDef].type1 == TYPE_PSYCHIC || gBattleMons[battlerDef].type2 == TYPE_PSYCHIC))
             {
                 if (AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_FASTER) // Attacker should go first
                 {
@@ -1691,7 +1692,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_TORMENT:
             if (gBattleMons[battlerDef].status2 & STATUS2_TORMENT
-              || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
+              || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove)
+              || gBattleMons[battlerDef].type1 == TYPE_PSYCHIC || gBattleMons[battlerDef].type2 == TYPE_PSYCHIC)
             {
                 score -= 10;
                 break;
@@ -2140,7 +2142,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             return AI_CheckBadMove(battlerAtk, battlerDef, GetNaturePowerMove(), score);
         case EFFECT_TAUNT:
             if (gDisableStructs[battlerDef].tauntTimer > 0
-              || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
+              || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove)
+              || gBattleMons[battlerDef].type1 == TYPE_PSYCHIC || gBattleMons[battlerDef].type2 == TYPE_PSYCHIC)
                 score--;
             break;
         case EFFECT_BESTOW:

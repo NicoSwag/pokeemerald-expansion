@@ -3769,6 +3769,11 @@ static const u8 sBikeVoucherDesc[] = _(
     "obtaining a bicycle\n"
     "from the Bike Shop.");
 
+static const u8 sOddInscriptionDesc[] = _(
+    "A reproduction of\n"
+    "some carvings from\n"
+    "ages past.");
+
 static const u8 sGoldTeethDesc[] = _(
     "Gold dentures lost\n"
     "by the Safari\n"

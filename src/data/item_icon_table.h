@@ -794,6 +794,7 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_OAKS_PARCEL] = {gItemIcon_OaksParcel, gItemIconPalette_OaksParcel},
     [ITEM_SECRET_KEY] = {gItemIcon_SecretKey, gItemIconPalette_SecretKey},
     [ITEM_BIKE_VOUCHER] = {gItemIcon_BikeVoucher, gItemIconPalette_BikeVoucher},
+    [ITEM_ODD_INSCRIPTION] = {gItemIcon_OddInscription, gItemIconPalette_OddInscription},
     [ITEM_GOLD_TEETH] = {gItemIcon_GoldTeeth, gItemIconPalette_GoldTeeth},
     [ITEM_CARD_KEY] = {gItemIcon_CardKey, gItemIconPalette_CardKey},
     [ITEM_LIFT_KEY] = {gItemIcon_LiftKey, gItemIconPalette_Key},

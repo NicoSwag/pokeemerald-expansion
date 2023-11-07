@@ -989,7 +989,7 @@ LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "Right?$"
 
 LittlerootTown_Text_BirchSpendsDaysInLab:
-	.string "The POKEMON League has branches in\n"
+	.string "The POKEMON LEAGUE has branches in\n"
 	.string "many regions of the world, but it's\l"
 	.string "particularly unique in HOENN.\p"
 	.string "Here, trainers prefer to battle it out\n"

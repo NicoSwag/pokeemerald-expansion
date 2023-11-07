@@ -48,7 +48,7 @@ AquaShop_EventScript_PostRod::
 	end
 
 AquaShop_EventScript_CheckMoney::
-	checkmoney 5000
+	checkmoney 10000
 	goto_if_eq VAR_RESULT, FALSE, AquaShop_EventScript_NoMoney
 	goto_if_eq VAR_RESULT, TRUE, AquaShop_EventScript_Money
 	release
@@ -223,7 +223,7 @@ AquaShop_Text_WannaBuyARod:
 AquaShop_Text_JustJoking:
 	.string "Sheesh kid, I was only joking!\n"
 	.string "You're not very bright, are you?\p"
-	.string "I'll tell you what: 5,000¥ and it's\n"
+	.string "I'll tell you what: 10,000¥ and it's\n"
 	.string "yours.\p"
 	.string "Convenient, right?$"
 

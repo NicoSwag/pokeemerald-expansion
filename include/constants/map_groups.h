@@ -67,6 +67,7 @@
 #define MAP_ROUTE104LOWER       (58 | (0 << 8))
 #define MAP_ROUTE104UPPER       (59 | (0 << 8))
 #define MAP_FOOT_OF_MT_KIRIKIRI (60 | (0 << 8))
+#define MAP_LOWER_ROUTE115      (61 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))
@@ -83,6 +84,8 @@
 #define MAP_OLDALE_TOWN_POKEMON_CENTER_2F (3 | (2 << 8))
 #define MAP_OLDALE_TOWN_MART              (4 | (2 << 8))
 #define MAP_OLDALE_TOWN_HOUSE3            (5 | (2 << 8))
+#define MAP_OLDALE_RUINS_ENTRANCE_1       (6 | (2 << 8))
+#define MAP_OLDALE_RUINS_ENTRANCE_2       (7 | (2 << 8))
 
 // gMapGroup_IndoorDewford
 #define MAP_DEWFORD_TOWN_HOUSE1            (0 | (3 << 8))

@@ -3457,6 +3457,7 @@ BattleScript_EffectFreezeHit::
 	goto BattleScript_EffectHit
 
 BattleScript_EffectParalyzeHit::
+	jumpiftype BS_TARGET, TYPE_NORMAL, BattleScript_EffectHit
 	setmoveeffect MOVE_EFFECT_PARALYSIS
 	goto BattleScript_EffectHit
 
@@ -7726,6 +7727,12 @@ BattleScript_SelectingImprisonedMoveInPalace::
 	goto BattleScript_SelectingUnusableMoveInPalace
 
 BattleScript_GrudgeTakesPp::
+	printstring STRINGID_PKMNLOSTPPGRUDGE
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_AncientGrudgeTakesPp::
+	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNLOSTPPGRUDGE
 	waitmessage B_WAIT_TIME_LONG
 	return

@@ -4,6 +4,9 @@
 .set LOCALID_GRUNT, 10
 .set LOCALID_RIVAL, 14
 .set LOCALID_SCIENTIST, 15
+.set LOCALID_BOYPROTESTER, 18
+.set LOCALID_MAGMA_GRUNT, 22
+.set LOCALID_GIRLPROTESTER, 23
 
 RustboroCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_OnTransition
@@ -80,6 +83,10 @@ RustboroCity_EventScript_PleaseSelectPokenav::
 	delay 10
 	goto RustboroCity_EventScript_MatchCallTutorial
 
+RustboroCity_EventScript_OldMan::
+	msgbox Rustborocity_Text_OldMan, MSGBOX_NPC
+	end
+
 RustboroCity_EventScript_MatchCallTutorial::
 	setflag FLAG_ADDED_MATCH_CALL_TO_POKENAV
 	special ScriptMenu_CreateStartMenuForPokenavTutorial
@@ -139,7 +146,6 @@ RustboroCity_Movement_ScientistLeave:
 RustboroCity_EventScript_FatMan::
 	lock
 	faceplayer
-	goto_if_set FLAG_DEVON_GOODS_STOLEN, RustboroCity_EventScript_FatManSawGrunt
 	msgbox RustboroCity_Text_WeShortenItToDevon, MSGBOX_DEFAULT
 	release
 	end
@@ -156,6 +162,37 @@ RustboroCity_EventScript_DevonEmployee2::
 	release
 	end
 
+RustboroCity_EventScript_MagmaProtest::
+	msgbox RustboroCity_Text_MagmaProtest, MSGBOX_NPC
+	applymovement LOCALID_MAGMA_GRUNT, Common_Movement_FaceRight
+	end
+
+
+RustboroCity_EventScript_BoyProtest::
+	msgbox RustboroCity_Text_BoyProtest, MSGBOX_NPC
+	applymovement LOCALID_BOYPROTESTER, Common_Movement_FaceRight
+	end
+
+RustboroCity_EventScript_Engineer_3::
+	lock
+	msgbox RustboroCity_Text_Engineer_3, MSGBOX_NPC
+	release
+	end
+
+RustboroCity_EventScript_GirlProtest::
+	lock
+	applymovement LOCALID_GIRLPROTESTER, Common_Movement_FaceRight
+	msgbox RustboroCity_Text_GirlProtest, MSGBOX_DEFAULT
+	applymovement LOCALID_GIRLPROTESTER, Common_Movement_FaceRight
+	end
+
+RustboroCity_EventScript_Rhydon::
+	lock
+	playmoncry SPECIES_RHYDON, CRY_MODE_NORMAL
+	msgbox RustboroCity_Text_Rhydon, MSGBOX_NPC
+	release
+	end
+
 RustboroCity_EventScript_Woman::
 	msgbox RustboroCity_Text_GymLeaderIsntEasyWithFire, MSGBOX_NPC
 	end
@@ -168,8 +205,24 @@ RustboroCity_EventScript_Man1::
 	release
 	end
 
+RustboroCity_EventScript_Engineer_4::
+	msgbox RustboroCity_Text_CantPass, MSGBOX_DEFAULT
+	end
+
 RustboroCity_EventScript_Man1HaveBadge::
 	msgbox RustboroCity_Text_HeyThatsRustborosGymBadge, MSGBOX_DEFAULT
+	release
+	end
+
+RustboroCity_EventScript_Diglett::
+	playmoncry SPECIES_DIGLETT, CRY_MODE_NORMAL
+	msgbox RustboroCity_Text_Diglett, MSGBOX_DEFAULT
+	release
+	end
+
+RustboroCity_EventScript_Delibird::
+	playmoncry SPECIES_DELIBIRD, CRY_MODE_NORMAL
+	msgbox RustboroCity_Text_Delibird, MSGBOX_DEFAULT
 	release
 	end
 
@@ -190,8 +243,25 @@ RustboroCity_EventScript_Twin::
 	msgbox RustboroCity_Text_WowYouHavePokemon, MSGBOX_NPC
 	end
 
+RustboroCity_EventScript_Looker::
+	msgbox RustboroCity_Text_LookerDisguise, MSGBOX_NPC
+	end
+
 RustboroCity_EventScript_NinjaBoy::
 	msgbox RustboroCity_Text_CatchRarePokemonIfIGoToSchool, MSGBOX_SIGN
+	end
+
+RustboroCity_EventScript_Engineer_1::
+	lock
+	faceplayer
+	msgbox RustboroCity_Text_StaringAtMe, MSGBOX_SIGN
+	release
+	end
+
+RustboroCity_EventScript_Engineer_2::
+	lock
+	msgbox RustboroCity_Text_DumbBird, MSGBOX_SIGN
+	release
 	end
 
 RustboroCity_EventScript_TunnelSign::
@@ -205,6 +275,8 @@ RustboroCity_EventScript_DevonCorpSign::
 RustboroCity_EventScript_GymSign::
 	msgbox RustboroCity_Text_GymSign, MSGBOX_SIGN
 	end
+
+
 
 @ Unused
 RustboroCity_EventScript_DevonCorpBranchOfficeSign::
@@ -225,7 +297,6 @@ RustboroCity_EventScript_CuttersHouseSign::
 
 RustboroCity_EventScript_LittleBoy::
 	lock
-	faceplayer
 	msgbox RustboroCity_Text_PokemonCanChangeLookFromExp, MSGBOX_DEFAULT
 	applymovement LOCALID_LITTLE_BOY, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -234,11 +305,14 @@ RustboroCity_EventScript_LittleBoy::
 
 RustboroCity_EventScript_LittleGirl::
 	lock
-	faceplayer
 	msgbox RustboroCity_Text_PokemonChangeShape, MSGBOX_DEFAULT
 	applymovement LOCALID_LITTLE_GIRL, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
+	end
+
+RustboroCity_EventScript_Bodyguards::
+	msgbox RustboroCity_Text_Bodyguards, MSGBOX_DEFAULT
 	end
 
 RustboroCity_EventScript_Man2::
@@ -279,6 +353,7 @@ RustboroCity_EventScript_StolenGoodsTrigger3::
 	setvar VAR_0x8004, 3
 	goto RustboroCity_EventScript_StolenGoodsScene
 	end
+	
 
 RustboroCity_EventScript_StolenGoodsTrigger4::
 	lockall
@@ -1022,10 +1097,11 @@ RustboroCity_EventScript_Boy1::
 	end
 
 RustboroCity_Text_WeShortenItToDevon:
-	.string "The DEVON CORPORATION…\n"
-	.string "We all just shorten it to DEVON.\p"
-	.string "That company makes all sorts of\n"
-	.string "convenient products.$"
+	.string "DEVON wants to expand in the forest\n"
+	.string "up north, but it seems that a strange\l"
+	.string "group is giving them trouble.\p"
+	.string "I fear that the situation may turn\n"
+	.string "violent…$"
 
 RustboroCity_Text_SneakyLookingManWentAroundCorner:
 	.string "Hm? A sneaky-looking man?\p"
@@ -1033,11 +1109,13 @@ RustboroCity_Text_SneakyLookingManWentAroundCorner:
 	.string "looking guy went around the corner.$"
 
 RustboroCity_Text_HaveYouChallengedGym:
-	.string "Have you taken the POKéMON GYM\n"
-	.string "challenge?\p"
-	.string "When you get that shiny GYM BADGE\n"
-	.string "in hand, I guess TRAINERS begin to\l"
-	.string "realize what is required of them.$"
+	.string "ROXANNE, the GYM LEADER, is also\n"
+	.string "RUSTBORO CITY's very own mayor.\p"
+	.string "She's been doing all she can to\n"
+	.string "contain DEVON's political power.\p"
+	.string "Unfortunately, there's little that\n"
+	.string "money can't buy, and DEVON has plenty\l"
+	.string "of that.$"
 
 RustboroCity_Text_HeyThatsRustborosGymBadge:
 	.string "Hey, that's RUSTBORO's GYM BADGE!\p"
@@ -1051,17 +1129,25 @@ RustboroCity_Text_YoureNewAroundHere:
 	.string "POKéMON TRAINER'S SCHOOL?$"
 
 RustboroCity_Text_GymLeaderIsntEasyWithFire:
-	.string "I challenged the GYM LEADER, but…\p"
-	.string "It's not going to be easy winning with\n"
-	.string "my FIRE-type POKéMON…\p"
-	.string "FIRE-type POKéMON don't match up\n"
-	.string "well against ROCK-type POKéMON…$"
+	.string "RUSTBORO CITY wasn't always this\n"
+	.string "cramped.\p"
+	.string "But when DEVON's current president,\n"
+	.string "ALLAN STONE, inherited the company from\l"
+	.string "his father, well…\p"
+	.string "He started going on about expanding,\n"
+	.string "expanding, building, building…\p"
+	.string "Believe it or not, when I was a young\n"
+	.string "lass, this place was almost entirely\l"
+	.string "nature!\p"
+	.string "And now that there's no more space here,\n"
+	.string "he's campaining to get permits to build\l"
+	.string "elsewhere.\p"
+	.string "Unbelievable!$"
 
 RustboroCity_Text_MrBrineyWalksInTheTunnel:
-	.string "The old sailor MR. BRINEY lives in\n"
-	.string "a cottage by the sea.\p"
-	.string "He goes for walks in the tunnel every\n"
-	.string "so often.$"
+	.string "With all of the houses that DEVON\n"
+	.string "built, I have to wonder…\p"
+	.string "How come I'm still homeless?$"
 
 RustboroCity_Text_MrBrineyLovesPeeko:
 	.string "The old sailor MR. BRINEY lives in\n"
@@ -1073,28 +1159,29 @@ RustboroCity_Text_MrBrineyLovesPeeko:
 
 RustboroCity_Text_WowYouHavePokemon:
 	.string "Wow, you have POKéMON with you, too.\p"
-	.string "When I get bigger, I'm going to go\n"
-	.string "places with POKéMON, too.$"
+	.string "When I get bigger, I'm going to get\n"
+	.string "POKEMON too and leave this stinky\l"
+	.string "place.$"
 
 RustboroCity_Text_CatchRarePokemonIfIGoToSchool:
 	.string "POKéMON TRAINER'S SCHOOL!\p"
-	.string "If I go to this school, will I be able\n"
-	.string "to catch rare POKéMON easily?$"
+	.string "If I go to this school, I will\n"
+	.string "learn everything about POKEMON\l"
+	.string "battles!$"
 
 RustboroCity_Text_PokemonCanChangeLookFromExp:
-	.string "If a POKéMON gains experience in\n"
-	.string "battles, it can sometimes change in\l"
-	.string "the way it looks.$"
+	.string "Hey sis, what do you wanna be when\n"
+	.string "you're an adult?$"
 
 RustboroCity_Text_PokemonChangeShape:
-	.string "A POKéMON changes shape?\n"
-	.string "If one did that, I would be shocked!$"
+	.string "I wanna work at DEVON, just like\n"
+	.string "dad!$"
 
 RustboroCity_Text_TradePokemonGrowFast:
-	.string "A POKéMON you get in a trade from\n"
-	.string "someone grows fast.\p"
-	.string "But if you don't have certain GYM\n"
-	.string "BADGES, it may not obey you…$"
+	.string "Looks like there's construction\n"
+	.string "going on even in the ROUTES around\l"
+	.string "our city…\p"
+	.string "Where will our kids play?$"
 
 RustboroCity_Text_OutOfTheWay:
 	.string "Get out!\n"
@@ -1289,11 +1376,86 @@ RustboroCity_Text_IdBetterGetBackToWork:
 	.string "Please take care, {PLAYER}!$"
 
 RustboroCity_Text_YouCanHave2On2Battle:
-	.string "Did you know this?\p"
-	.string "You can have a 2-on-2 battle even\n"
-	.string "if you're not with another TRAINER.\p"
-	.string "If you catch the eyes of two TRAINERS\n"
-	.string "when you have two or more POKéMON,\l"
-	.string "they'll both challenge you.\p"
-	.string "Don't you think it'd be cool if you\n"
-	.string "could beat two TRAINERS by yourself?$"
+	.string "This city is home to the headquarters\n"
+	.string "of DEVON.\p"
+	.string "DEVON is a multinational corporation\n"
+	.string "that deals with, well, pretty much\l"
+	.string "everything.\p"
+	.string "Real estate, technology, POKEMON…\p"
+	.string "If you can name it, you can buy it\n"
+	.string "from DEVON.\p"
+	.string "Recently, they've been targeted\n"
+	.string "by many protests over so-called\l"
+	.string "environmental concerns…\p"
+	.string "Between you and me, I think those\n"
+	.string "people are just mad that they aren't\l"
+	.string "rich.$"
+
+RustboroCity_Text_StaringAtMe:
+	.string "That old man…\p"
+	.string "He keeps staring at me, and he never\n"
+	.string "seem to leave.\p"
+	.string "It's seriously starting to creep me\n"
+	.string "out.$"
+
+RustboroCity_Text_Diglett:
+	.string "DIGLETT is working away.$"
+
+RustboroCity_Text_DumbBird:
+	.string "Sigh…\p"
+	.string "DELIBIRD is supposed to help in\n"
+	.string "carrying construction material to\l"
+	.string "its proper place, but…\p"
+	.string "It doesn't look like he's quite got\n"
+	.string "what the assignement is.$"
+
+RustboroCity_Text_Delibird:
+	.string "DELIBIRD: Kwaaah!$"
+
+RustboroCity_Text_LookerDisguise:
+	.string "Psst! Hey!\n"
+	.string "It is me, LOOKER!$"
+	.string "LOOKER: Quite the disguise, is it not?\p"
+	.string "You see, I have reason to believe that\n"
+	.string "the suspicious man we encountered earlier\l"
+	.string "is, in fact, an employee of DEVON CORP.!\p"
+	.string "Therefore, I am snooping around here in an\n"
+	.string "attempt to find out where he has gone.\p"
+	.string "If I uncover any leads, I will let you know,\n"
+	.string "yes!$"
+
+RustboroCity_Text_Bodyguards:
+	.string "We! Are PRESIDENT STONE's private security!\n"
+	.string "And you! Are trespassing on private property!\p"
+	.string "Get outta here, kid!$"
+
+RustboroCity_Text_MagmaProtest:
+	.string "What are you staring at?\p"
+	.string "I'm protesting for a good cause!$"
+
+RustboroCity_Text_BoyProtest:
+	.string "DEVON wants to demolish this park to\n"
+	.string "build a new department store, since\l"
+	.string "the one in LILYCOVE was closed.\p"
+	.string "But we won't stand for it!$"
+
+RustboroCity_Text_GirlProtest:
+	.string "Stop the construction!\n"
+	.string "Stop the construction!$"
+
+RustboroCity_Text_Engineer_3:
+	.string "C'mon, kids…\p"
+	.string "I'm just doing what I've been paid for.$"
+
+RustboroCity_Text_Rhydon:
+	.string "RHYDON: Gwraaaaaaa!$"
+
+RustboroCity_Text_CantPass:
+	.string "Sorry, kid, but I can't let you through.\n"
+	.string "There's construction going on back here.\p"
+	.string "And we wouldn't wanna get injured now,\n"
+	.string "would we?$"
+	
+Rustborocity_Text_OldMan:
+	.string "Boy oh boy, do I love watching\n"
+	.string "construction!$"

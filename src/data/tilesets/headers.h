@@ -847,3 +847,14 @@ const struct Tileset gTileset_Tileset_Wet =
     .metatileAttributes = gMetatileAttributes_Tileset_Wet,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Petalburg_Ruins =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Petalburg_Ruins,
+    .palettes = gTilesetPalettes_Petalburg_Ruins,
+    .metatiles = gMetatiles_Petalburg_Ruins,
+    .metatileAttributes = gMetatileAttributes_Petalburg_Ruins,
+    .callback = NULL,
+};

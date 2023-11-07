@@ -213,3 +213,6 @@ const u16 gMetatileAttributes_PoryTilesetTest[] = INCBIN_U16("data/tilesets/prim
 
 const u16 gMetatiles_Tileset_Wet[] = INCBIN_U16("data/tilesets/primary/tileset_wet/metatiles.bin");
 const u16 gMetatileAttributes_Tileset_Wet[] = INCBIN_U16("data/tilesets/primary/tileset_wet/metatile_attributes.bin");
+
+const u16 gMetatiles_Petalburg_Ruins[] = INCBIN_U16("data/tilesets/secondary/petalburg_ruins/metatiles.bin");
+const u16 gMetatileAttributes_Petalburg_Ruins[] = INCBIN_U16("data/tilesets/secondary/petalburg_ruins/metatile_attributes.bin");

@@ -1280,15 +1280,9 @@ const u16 gEggMoves[] = {
         MOVE_PURSUIT,
         MOVE_FEINT),
 
-    egg_moves(SMOOCHUM,
-        MOVE_MEDITATE,
-        MOVE_FAKE_OUT,
-        MOVE_WISH,
-        MOVE_ICE_PUNCH,
-        MOVE_MIRACLE_EYE,
-        MOVE_NASTY_PLOT,
-        MOVE_WAKE_UP_SLAP,
-        MOVE_CAPTIVATE),
+    egg_moves(BALTOY,
+        MOVE_SIGNAL_BEAM,
+        MOVE_STEALTH_ROCK),
 
     egg_moves(ELEKID,
         MOVE_KARATE_CHOP,
@@ -2023,16 +2017,8 @@ const u16 gEggMoves[] = {
         MOVE_ENTRAINMENT),
 
     egg_moves(BAGON,
-        MOVE_HYDRO_PUMP,
-        MOVE_THRASH,
-        MOVE_DRAGON_RAGE,
-        MOVE_TWISTER,
-        MOVE_DRAGON_DANCE,
         MOVE_FIRE_FANG,
-        MOVE_DRAGON_RUSH,
-        MOVE_DRAGON_PULSE,
-        MOVE_ENDURE,
-        MOVE_DEFENSE_CURL),
+        MOVE_BOUNCE),
 
 #if P_GEN_4_POKEMON == TRUE
     egg_moves(TURTWIG,
@@ -3957,7 +3943,8 @@ const u16 gEggMoves[] = {
         MOVE_POWER_UP_PUNCH),
 
     egg_moves(YAMASK_GALARIAN,
-        MOVE_MEMENTO),
+        MOVE_ALLY_SWITCH,
+        MOVE_SHORE_UP),
 
     egg_moves(STUNFISK_GALARIAN,
         MOVE_BIND,

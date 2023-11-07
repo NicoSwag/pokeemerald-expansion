@@ -6,6 +6,10 @@ Route102_EventScript_ItemMuscleBand::
 	finditem ITEM_MUSCLE_BAND
 	end
 
+OldaleRuins_EventScript_ItemDragonFang::
+	finditem ITEM_DRAGON_FANG
+	end
+
 
 Route103_EventScript_ItemGuardSpec::
 	finditem ITEM_GUARD_SPEC

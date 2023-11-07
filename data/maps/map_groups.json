@@ -96,7 +96,8 @@
     "BirchsReserve",
     "Route104Lower",
     "Route104Upper",
-    "FootOfMtKirikiri"
+    "FootOfMtKirikiri",
+    "LowerRoute115"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -112,7 +113,9 @@
     "OldaleTown_PokemonCenter_1F",
     "OldaleTown_PokemonCenter_2F",
     "OldaleTown_Mart",
-    "OldaleTown_House3"
+    "OldaleTown_House3",
+    "OldaleRuinsEntrance_1",
+    "OldaleRuinsEntrance_2"
   ],
   "gMapGroup_IndoorDewford": [
     "DewfordTown_House1",

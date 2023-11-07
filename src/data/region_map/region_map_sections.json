@@ -17,6 +17,14 @@
       "height": 1
     },
     {
+      "map_section": "MAPSEC_OLDALE_RUINS",
+      "name": "OLDALE RUINS",
+      "x": 4,
+      "y": 8,
+      "width": 1,
+      "height": 1
+    },
+    {
       "map_section": "MAPSEC_DEWFORD_TOWN",
       "name": "DEWFORD TOWN",
       "x": 2,
@@ -147,9 +155,9 @@
     {
       "map_section": "MAPSEC_ROUTE_103",
       "name": "ROUTE 103",
-      "x": 4,
+      "x": 5,
       "y": 8,
-      "width": 4,
+      "width": 3,
       "height": 1
     },
     {

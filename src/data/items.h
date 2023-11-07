@@ -9103,11 +9103,12 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    [ITEM_BIKE_VOUCHER] =
+
+    [ITEM_ODD_INSCRIPTION] =
     {
-        .name = _("Bike Voucher"),
+        .name = _("ODD CARVING"),
         .price = 0,
-        .description = sBikeVoucherDesc,
+        .description = sOddInscriptionDesc,
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,

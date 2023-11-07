@@ -48,9 +48,9 @@
 #define FLAG_LEVEL_CAPS    0x23 // Unused Flag
 #define FLAG_DEAD_WHEN_FAINT    0x24 // Unused Flag
 #define FLAG_CATCH_ONE    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
+#define FLAG_FIRST_FRAGMENT    0x26 // Unused Flag
+#define FLAG_PSYCHIC_POWERS    0x27 // Unused Flag
+#define FLAG_WALDA_AWOKEN    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag
@@ -775,7 +775,7 @@
 #define FLAG_UNUSED_0x2D9                                           0x2D9 // Unused Flag
 
 #define FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER                     0x2DA
-#define FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT                          0x2DB
+#define FLAG_HIDE_RUSTBORO_CITY_LOOKER                          0x2DB
 #define FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1                    0x2DC
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_ASLEEP              0x2DD
 #define FLAG_HIDE_PLAYERS_HOUSE_DAD                                 0x2DE
@@ -1221,7 +1221,7 @@
 #define FLAG_HIDE_ROUTE_103_MAGMA                                      0x493 // Unused Flag
 #define FLAG_ITEM_ROUTE104_SKY_FRAGMENT                                           0x494 // Unused Flag
 #define FLAG_ITEM_ROUTE104_SKY_FRAGMENT_2                                           0x495 // Unused Flag
-#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
+#define FLAG_ITEM_DRAGON_FANG                                           0x496 // Unused Flag
 #define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
 #define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
