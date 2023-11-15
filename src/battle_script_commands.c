@@ -317,7 +317,7 @@ static const s32 sExperienceScalingFactors[] =
 
 static const u16 sTrappingMoves[NUM_TRAPPING_MOVES] =
 {
-    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_MAGMA_STORM, MOVE_INFESTATION, MOVE_SNAP_TRAP,
+    MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, MOVE_MAGMA_STORM, MOVE_INFESTATION, MOVE_SNAP_TRAP, MOVE_FORESTS_CURSE,
 };
 
 static const u16 sBadgeFlags[8] = {
@@ -551,6 +551,7 @@ static void Cmd_copyfoestats(void);
 static void Cmd_rapidspinfree(void);
 static void Cmd_setdefensecurlbit(void);
 static void Cmd_recoverbasedonsunlight(void);
+static void Cmd_recoverbasedonelectric(void);
 static void Cmd_setstickyweb(void);
 static void Cmd_selectfirstvalidtarget(void);
 static void Cmd_trysetfutureattack(void);
@@ -865,7 +866,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_jumpifhasnohp,                           //0xE3
     Cmd_getsecretpowereffect,                    //0xE4
     Cmd_pickup,                                  //0xE5
-    Cmd_unused3,                                 //0xE6
+    Cmd_recoverbasedonelectric,                                 //0xE6
     Cmd_unused4,                                 //0xE7
     Cmd_settypebasedhalvers,                     //0xE8
     Cmd_jumpifsubstituteblocks,                  //0xE9
@@ -1758,10 +1759,6 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     // Target's ability
     switch (defAbility)
     {
-    case ABILITY_SAND_VEIL:
-        if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_SANDSTORM)
-            calc = (calc * 80) / 100; // 1.2 sand veil loss
-        break;
     case ABILITY_SNOW_CLOAK:
         if (WEATHER_HAS_EFFECT && (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)))
             calc = (calc * 80) / 100; // 1.2 snow cloak loss
@@ -2027,6 +2024,8 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
             critChance = ARRAY_COUNT(sCriticalHitChance) - 1;
     }
 
+    
+
     return critChance;
 }
 
@@ -2055,6 +2054,13 @@ static void Cmd_critcalc(void)
     s32 critChance = CalcCritChanceStage(gBattlerAttacker, gBattlerTarget, gCurrentMove, TRUE);
     gPotentialItemEffectBattler = gBattlerAttacker;
 
+    if(gBattleMons[gBattlerAttacker].ability == ABILITY_BLAZING_FAST){
+        if(Random() % 100 < gBattleMons[gBattlerAttacker].speed * 100/512)
+            gIsCriticalHit = TRUE;
+        else
+            gIsCriticalHit = FALSE;
+    }
+    else
     if (gBattleTypeFlags & (BATTLE_TYPE_WALLY_TUTORIAL | BATTLE_TYPE_FIRST_BATTLE))
         gIsCriticalHit = FALSE;
     else if (critChance == -1)
@@ -2063,7 +2069,8 @@ static void Cmd_critcalc(void)
         gIsCriticalHit = TRUE;
     else
         gIsCriticalHit = RandomWeighted(RNG_CRITICAL_HIT, sCriticalHitChance[critChance] - 1, 1);
-
+    
+    
     // Counter for EVO_CRITICAL_HITS.
     partySlot = gBattlerPartyIndexes[gBattlerAttacker];
     if (gIsCriticalHit && GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER
@@ -3432,6 +3439,9 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 }
                 break;
             case MOVE_EFFECT_RECHARGE:
+            if(gCurrentMove == MOVE_METEOR_ASSAULT && gBattleMons[gBattlerTarget].hp == 0){
+                break;
+            }
                 gBattleMons[gEffectBattler].status2 |= STATUS2_RECHARGE;
                 gDisableStructs[gEffectBattler].rechargeTimer = 2;
                 gLockedMoves[gEffectBattler] = gCurrentMove;
@@ -13924,6 +13934,35 @@ static void Cmd_recoverbasedonsunlight(void)
         gBattlescriptCurrInstr = cmd->failInstr;
     }
 }
+
+
+static void Cmd_recoverbasedonelectric(void)
+{
+    CMD_ARGS(const u8 *failInstr);
+
+    gBattlerTarget = gBattlerAttacker;
+    if (gBattleMons[gBattlerAttacker].hp != gBattleMons[gBattlerAttacker].maxHP)
+    {
+        
+            if (!(gBattleTerrain & STATUS_FIELD_TERRAIN_ANY) || !AI_IsBattlerGrounded(gBattlerAttacker))
+                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 2;
+            else if (gBattleTerrain & STATUS_FIELD_ELECTRIC_TERRAIN)
+                gBattleMoveDamage = 20 * gBattleMons[gBattlerAttacker].maxHP / 30;
+            else // not sunny weather
+                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
+
+    if (gBattleMoveDamage == 0)
+            gBattleMoveDamage = 1;
+    gBattleMoveDamage *= -1;
+
+    gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+    else
+    {
+        gBattlescriptCurrInstr = cmd->failInstr;
+    }
+}
+
 
 static void Cmd_setstickyweb(void)
 {

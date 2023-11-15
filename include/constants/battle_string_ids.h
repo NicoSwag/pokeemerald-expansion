@@ -682,8 +682,10 @@
 #define STRINGID_PKMNDAMAGEDPOLLUTION                 680
 #define STRINGID_PKMNALREADYHASFROST                 681
 #define STRINGID_ATTACKERITEMMELTED                  682
+#define STRINGID_CLIMATECHANGEENTERS                  683
+#define STRINGID_FORESTCURSETRAPPED                   684
 
-#define BATTLESTRINGS_COUNT                           683
+#define BATTLESTRINGS_COUNT                           685
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -940,6 +942,7 @@
 #define B_MSG_SWITCHIN_CURIOUS_MEDICINE 14
 #define B_MSG_SWITCHIN_PASTEL_VEIL      15
 #define B_MSG_SWITCHIN_NEUTRALIZING_GAS 16
+#define B_MSG_SWITCHIN_CLIMATE_CHANGE 17
 
 // gMentalHerbCureStringIds
 #define B_MSG_MENTALHERBCURE_INFATUATION       0
@@ -976,7 +979,8 @@
 #define B_MSG_WRAPPED_INFESTATION  7
 #define B_MSG_WRAPPED_SNAP_TRAP    8
 #define B_MSG_WRAPPED_THUNDER_CAGE 9
-#define NUM_TRAPPING_MOVES         10
+#define B_MSG_WRAPPED_FOREST_CURSE   10
+#define NUM_TRAPPING_MOVES         11
 
 // z effects
 #define B_MSG_Z_RESET_STATS   0

@@ -261,18 +261,26 @@ Route_103_Magmaf_Exit::
 	step_end
 
 Route103_Text_Revenge::
-	.string "You… You don't know what you're\n"
-	.string "getting yourself into.\p"
-	.string "But no matter.\n"
-	.string "We have collected the samples, and \l"
-	.string "our mission is completed.\p"
-	.string "TEAM MAGMA won't forget this.$"
+	.string "COURTNEY: MAXIE will have our head on\n"
+	.string "a platter…\p"
+	.string "First we can't get to the ruins…\p"
+	.string "Then a couple of kids show up and\n"
+	.string "attack us!\p"
+	.string "Do you even know who we are?\p"
+	.string "We're TEAM MAGMA. An organization\n"
+	.string "dedicated to the betterement of the\n"
+	.string "world, at any cost.\p"
+	.string "You're either with us, or against us.\n"
+	.string "We won't let anyone stand in the way of\l"
+	.string "our goals.\p"
+	.string "So you better remember it!$"
 
 Enemy1DefeatText::
 	.string "U… Unbelievable…$"
 
 Enemy2DefeatText::
-	.string "I went easy on you!$"
+	.string "COURTNEY: No! This isn't how it was\n"
+	.string "supposed to go!$"
 
 Route103_EventScript_RivalExit::
 	closemessage
@@ -319,11 +327,11 @@ Route103_EventScript_RivalEnd::
 	releaseall
 	end
 
-Route103_EventScript_MagmaM::
+Route103_EventScript_MagmaF::
 	msgbox Route103_Text_Volcanic_Rocks, MSGBOX_NPC
 end
 
-Route103_EventScript_MagmaF::
+Route103_EventScript_MagmaM::
 	msgbox Route103_Text_Complaining, MSGBOX_NPC
 end
 
@@ -486,9 +494,16 @@ Route103_Text_MayLetsBattle:
 	.string "…Mhmm.\p"
 	.string "Do you see those two suspicious guys\n"
 	.string "back there?\p"
-	.string "Yeah, I say we beat their ass.\p"
-	.string "What, you scared?\n"
-	.string "This is what being a TRAINER is.$"
+	.string "Yeah, they're actually from TEAM\n"
+	.string "MAGMA.\p"
+	.string "I've seen them wander around here\n"
+	.string "before, acting all shady and yelling\l"
+	.string "at people…\p"
+	.string "What do you say, {PLAYER}{KUN}?\p"
+	.string "Let's team up and show them who's\n"
+	.string "really the boss around here.$"
+
+
 
 Route103_Text_MayDefeated:
 	.string "Wow! That's great!\n"
@@ -512,20 +527,31 @@ Route103_Text_BrendanLetsBattle:
 	.string "…Mhmm.\p"
 	.string "Do you see those two suspicious guys\n"
 	.string "back there?\p"
-	.string "Yeah, I say we beat their ass.\p"
-	.string "What, you scared?\n"
-	.string "This is what being a TRAINER is.$"
+	.string "Yeah, they're actually from TEAM\n"
+	.string "MAGMA.\p"
+	.string "I've seen them wander around here\n"
+	.string "before, acting all shady and yelling\l"
+	.string "at people…\p"
+	.string "What do you say, {PLAYER}{KUN}?\p"
+	.string "Let's team up and show them who's\n"
+	.string "really the boss around here.$"
 
 Route103_Text_Suckers:
 	.string "Yo, suckers!\p"
 	.string "Your uniforms are ridicolous!$"
 
 Route_103_Text_SayWhat:
-	.string "What did you say, kid?\p"
-	.string "Our mission was only to take samples\n"
-	.string "of the volcanic rocks, but…\p"
-	.string "If you're looking for a fight,\n"
-	.string "you're gonna get one!$"
+	.string "COURTNEY: What was that, kid?\p"
+	.string "I'll let you know, I'm already\n"
+	.string "in a bad mood!\p"
+	.string "We've been sent here to investigate\n"
+	.string "the ruins up north, but we can't get\l"
+	.string "past those stupid trees…\p"
+	.string "At least we can still get the volcanic\n"
+	.string "samples we need from here, but…\p"
+	.string "Gah! Why am I saying this to you?!\n"
+	.string "Now I'm even more upset!\p"
+	.string "Prepare to get steamed, kids!$"
 
 Route103_Text_BrendanDefeated:
 	.string "Huh, {PLAYER}, you're not too shabby.$"
@@ -538,8 +564,8 @@ Route103_Text_BrendanTimeToHeadBack:
 	.string "Don't trip over yourself.$"
 
 Route103_Text_ShouldHaveBroughtPotion:
-	.string "My POKéMON is staggeringly tired…\n"
-	.string "I should have brought a POTION…$"
+	.string "If only I had the CUT TM, I could get\n"
+	.string "into the ruins…$"
 
 Route103_Text_ShortcutToOldale:
 	.string "If you cross the sea from here,\n"
@@ -551,10 +577,9 @@ Route103_Text_RouteSign:
 	.string "{DOWN_ARROW} OLDALE TOWN$"
 
 Route103_Text_Volcanic_Rocks:
-	.string "Hmm, no doubt about it…\n"
-	.string "This rock dates back to the awakening\l"
-	.string "of GROUDON.\p"
-	.string "Better get some samples.$"
+	.string "COURTNEY: Hmm, no doubt about it…\n"
+	.string "These are volcanic formations.\p"
+	.string "Better take some samples.$"
 
 Route103_Text_Complaining:
 	.string "Why do we always have to do\n"

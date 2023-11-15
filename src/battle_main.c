@@ -4628,6 +4628,8 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
         speed = (speed * 150) / 100;
     else if (ability == ABILITY_SURGE_SURFER && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)
         speed *= 2;
+      else if (ability == ABILITY_OVERCHARGE && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)
+        speed *= 1.3;
     else if (ability == ABILITY_SLOW_START && gDisableStructs[battler].slowStartTimer != 0)
         speed /= 2;
     else if (ability == ABILITY_PROTOSYNTHESIS && gBattleWeather & B_WEATHER_SUN && highestStat == STAT_SPEED)
@@ -4726,6 +4728,7 @@ s8 GetMovePriority(u32 battler, u16 move)
         case EFFECT_MORNING_SUN:
         case EFFECT_MOONLIGHT:
         case EFFECT_SYNTHESIS:
+        case EFFECT_RECHARGE_HEALING:
         case EFFECT_HEAL_PULSE:
         case EFFECT_HEALING_WISH:
         case EFFECT_SWALLOW:

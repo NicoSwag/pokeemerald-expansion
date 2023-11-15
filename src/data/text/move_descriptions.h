@@ -964,6 +964,11 @@ static const u8 sSynthesisDescription[] = _(
     "Restores HP. The amount\n"
     "varies with the weather.");
 
+
+static const u8 sRechargeDescription[] = _(
+    "Restores HP. The amount\n"
+    "varies with the terrain.");
+
 static const u8 sMoonlightDescription[] = _(
     "Restores HP. The amount\n"
     "varies with the weather.");
@@ -1617,8 +1622,8 @@ static const u8 sFlareBlitzDescription[] = _(
     "foe. Also hurts the user.");
 
 static const u8 sForcePalmDescription[] = _(
-    "A shock wave attack that\n"
-    "may paralyze the foe.");
+    "Deals better of physical\n"
+    "and special damage.");
 
 static const u8 sChiBlastDescription[] = _(
     "Attacks with a chi blast\n"
@@ -1786,8 +1791,8 @@ static const u8 sGunkShotDescription[] = _(
     "the foe. May also poison.");
 
 static const u8 sIronHeadDescription[] = _(
-    "Slams the foe with a hard\n"
-    "head. May cause flinching.");
+    "Slams the foe with a bell,\n"
+    "causing rain to be summoned.");
 
 static const u8 sMagnetBombDescription[] = _(
     "Launches a magnet that\n"
@@ -2222,7 +2227,11 @@ static const u8 sFusionBoltDescription[] = _(
     "Works well with a fireball.");
 
 static const u8 sFlyingPressDescription[] = _(
-    "This attack does Fighting\n"
+    "This attack does Flying\n"
+    "and Water-type damage.");
+
+static const u8 sMonsoonDescription[] = _(
+    "This attack does Water\n"
     "and Flying-type damage.");
 
 static const u8 sMatBlockDescription[] = _(
@@ -2800,9 +2809,17 @@ static const u8 sBodyPressDescription[] = _(
     "Does more damage the\n"
     "higher the user's Def.");
 
+static const u8 sPolarityDescription[] = _(
+    "Does more damage the\n"
+    "higher the user's Sp. Def.");
+
+static const u8 sPowderBombDescription[] = _(
+    "Throws a colossal lump\n"
+    "of powder at the target.");
+
 static const u8 sMissileDiveDescription[] = _(
     "Does more damage the\n"
-    "higher the user's Speed.");
+    "higher the user's Speed");
 
 static const u8 sDecorateDescription[] = _(
     "The user sharply raises\n"
@@ -3556,6 +3573,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_VITAL_THROW - 1] = sVitalThrowDescription,
     [MOVE_MORNING_SUN - 1] = sMorningSunDescription,
     [MOVE_SYNTHESIS - 1] = sSynthesisDescription,
+    [MOVE_RECHARGE - 1] = sRechargeDescription,
     [MOVE_MOONLIGHT - 1] = sMoonlightDescription,
     [MOVE_HIDDEN_POWER - 1] = sHiddenPowerDescription,
     [MOVE_CROSS_CHOP - 1] = sCrossChopDescription,
@@ -3766,6 +3784,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_CROSS_POISON - 1] = sCrossPoisonDescription,
     [MOVE_GUNK_SHOT - 1] = sGunkShotDescription,
     [MOVE_IRON_HEAD - 1] = sIronHeadDescription,
+    [MOVE_DING_DOOM - 1] = sDingDoomDescription,
     [MOVE_MAGNET_BOMB - 1] = sMagnetBombDescription,
     [MOVE_STONE_EDGE - 1] = sStoneEdgeDescription,
     [MOVE_SPIKY_ARROW - 1] = sSpikyArrowDescription,
@@ -3886,6 +3905,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_FUSION_FLARE - 1] = sFusionFlareDescription,
     [MOVE_FUSION_BOLT - 1] = sFusionBoltDescription,
     [MOVE_FLYING_PRESS - 1] = sFlyingPressDescription,
+    [MOVE_MONSOON - 1] = sMonsoonDescription,
     [MOVE_MAT_BLOCK - 1] = sMatBlockDescription,
     [MOVE_BELCH - 1] = sBelchDescription,
     [MOVE_ROTOTILLER - 1] = sRototillerDescription,
@@ -4033,6 +4053,8 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_COURT_CHANGE - 1] = sCourtChangeDescription,
     [MOVE_CLANGOROUS_SOUL - 1] = sClangorousSoulDescription,
     [MOVE_BODY_PRESS - 1] = sBodyPressDescription,
+    [MOVE_POLARITY - 1] = sPolarityDescription,
+    [MOVE_POWDER_BOMB - 1] = sPowderBombDescription,
   [MOVE_MISSILE_DIVE - 1] = sMissileDiveDescription,
     [MOVE_DECORATE - 1] = sDecorateDescription,
     [MOVE_DRUM_BEATING - 1] = sDrumBeatingDescription,

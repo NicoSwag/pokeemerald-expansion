@@ -3998,7 +3998,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_DEFENSE_DOWN_HIT,
         .power = 100,
         .type = TYPE_STEEL,
-        .accuracy = 75,
+        .accuracy = 90,
         .pp = 15,
         .secondaryEffectChance = 30,
         .target = MOVE_TARGET_SELECTED,
@@ -4088,6 +4088,26 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_RESET_STATS,
         .snatchAffected = TRUE,
     },
+
+    [MOVE_RECHARGE] =
+    {
+        #if B_UPDATED_MOVE_TYPES >= GEN_6
+            .type = TYPE_ELECTRIC,
+        #else
+            .type = TYPE_NORMAL,
+        #endif
+        .effect = EFFECT_RECHARGE_HEALING,
+        .power = 0,
+        .accuracy = 0,
+        .pp = 5,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_USER,
+        .priority = 0,
+        .split = SPLIT_STATUS,
+        .zMoveEffect = Z_EFFECT_RESET_STATS,
+        .snatchAffected = TRUE,
+    },
+
 
     [MOVE_HIDDEN_POWER] =
     {
@@ -5643,7 +5663,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_SKY_UPPERCUT] =
     {
-        .effect = EFFECT_SKY_UPPERCUT,
+        .effect = EFFECT_SMACK_DOWN,
         .power = 85,
         .type = TYPE_FIGHTING,
         .accuracy = 90,
@@ -6769,18 +6789,16 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_FORCE_PALM] =
     {
-        .effect = EFFECT_PARALYZE_HIT,
-        .power = 60,
+        .effect = EFFECT_SHELL_SIDE_ARM,
+        .power = 80,
         .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 10,
-        .secondaryEffectChance = 30,
+        .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
-        .makesContact = TRUE,
-        .sheerForceBoost = TRUE,
     },
 
     [MOVE_CHI_BLAST] =
@@ -7554,6 +7572,23 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
+        .sheerForceBoost = TRUE,
+    },
+
+    [MOVE_DING_DOOM] =
+    {
+        .effect = EFFECT_RAIN_HIT,
+        .power = 80,
+        .type = TYPE_STEEL,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 30,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .soundMove = TRUE,
         .makesContact = TRUE,
         .sheerForceBoost = TRUE,
     },
@@ -8963,7 +8998,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_WILD_CHARGE] =
     {
         .effect = EFFECT_RECOIL_25,
-        .power = 90,
+        .power = 120,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,
         .pp = 15,
@@ -9503,6 +9538,28 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .gravityBanned = TRUE,
     },
 
+    [MOVE_MONSOON] =
+    {
+        #if B_UPDATED_MOVE_DATA >= GEN_7
+            .power = 100,
+        #else
+            .power = 80,
+        #endif
+        .effect = EFFECT_TWO_TYPED_MOVE,
+        .type = TYPE_FLYING,
+        .accuracy = 95,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_SPECIALL,
+        .argument = TYPE_WATER,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
+        .minimizeDoubleDamage = TRUE,
+        .gravityBanned = TRUE,
+    },
+
     [MOVE_MAT_BLOCK] =
     {
         .effect = EFFECT_MAT_BLOCK,
@@ -9675,15 +9732,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_FORESTS_CURSE] =
     {
-        .effect = EFFECT_THIRD_TYPE,
-        .power = 0,
+        .effect = EFFECT_TRAP,
+        .power = 80,
         .type = TYPE_GRASS,
-        .accuracy = 100,
+        .accuracy = 90,
         .pp = 20,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .split = SPLIT_STATUS,
+        .split = SPLIT_PHYSICAL,
         .argument = TYPE_GRASS,
         .zMoveEffect = Z_EFFECT_ALL_STATS_UP_1,
     },
@@ -11870,6 +11927,39 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .metronomeBanned = TRUE,
     },
 
+    [MOVE_POLARITY] =
+    {
+        .effect = EFFECT_POLARITY,
+        .power = 80,
+        .type = TYPE_ELECTRIC,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_SPECIAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = FALSE,
+        .metronomeBanned = TRUE,
+    },
+
+        [MOVE_POWDER_BOMB] =
+    {
+        .effect = EFFECT_HIT,
+        .power = 110,
+        .type = TYPE_BUG,
+        .accuracy = 90,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_SPECIAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = FALSE,
+        .powderMove = TRUE,
+        .ballisticMove = TRUE,
+    },
+
     [MOVE_MISSILE_DIVE] =
     {
         .effect = EFFECT_MISSILE_DIVE,
@@ -12917,12 +13007,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_MOUNTAIN_GALE] =
     {
-        .effect = EFFECT_FLINCH_HIT,
+        .effect = EFFECT_SNOWSCAPE_HIT,
         .power = 100,
         .type = TYPE_ICE,
-        .accuracy = 85,
+        .accuracy = 90,
         .pp = 5,
-        .secondaryEffectChance = 30,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
@@ -13751,7 +13841,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_TWIN_BEAM] =
     {
         .effect = EFFECT_HIT,
-        .power = 40,
+        .power = 50,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
         .pp = 10,

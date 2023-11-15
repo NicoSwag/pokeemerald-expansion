@@ -825,8 +825,7 @@ static void InitPartyMenuBoxes(u8 layout)
 
     if (layout == PARTY_LAYOUT_MULTI_SHOWCASE)
         sPartyMenuBoxes[3].infoRects = &sPartyBoxInfoRects[PARTY_BOX_LEFT_COLUMN];
-    else if (layout != PARTY_LAYOUT_SINGLE)
-        sPartyMenuBoxes[1].infoRects = &sPartyBoxInfoRects[PARTY_BOX_LEFT_COLUMN];
+    sPartyMenuBoxes[1].infoRects = &sPartyBoxInfoRects[PARTY_BOX_LEFT_COLUMN];
 }
 
 static void RenderPartyMenuBox(u8 slot)
@@ -1535,8 +1534,6 @@ static void UpdateCurrentPartySelection(s8 *slotPtr, s8 movementDir)
     u8 layout = gPartyMenu.layout;
 
     if (layout == PARTY_LAYOUT_SINGLE)
-        UpdatePartySelectionSingleLayout(slotPtr, movementDir);
-    else
         UpdatePartySelectionDoubleLayout(slotPtr, movementDir);
 
     if (*slotPtr != newSlotId)
@@ -2080,8 +2077,6 @@ static void InitPartyMenuWindows(u8 layout)
     switch (layout)
     {
     case PARTY_LAYOUT_SINGLE:
-        InitWindows(sSinglePartyMenuWindowTemplate);
-        break;
     case PARTY_LAYOUT_DOUBLE:
         InitWindows(sDoublePartyMenuWindowTemplate);
         break;

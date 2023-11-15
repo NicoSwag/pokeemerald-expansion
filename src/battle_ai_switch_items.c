@@ -197,6 +197,11 @@ static bool8 FindMonThatAbsorbsOpponentsMove(u32 battler)
         absorbingTypeAbilities[0] = ABILITY_SAP_SIPPER;
         numAbsorbingAbilities = 1;
     }
+        else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_DARK)
+    {
+        absorbingTypeAbilities[0] = ABILITY_JUSTIFIED;
+        numAbsorbingAbilities = 1;
+    }
     else
     {
         return FALSE;
@@ -315,7 +320,8 @@ static bool8 ShouldSwitchIfGameStatePrompt(u32 battler)
                                 && i != gBattlerPartyIndexes[BATTLE_PARTNER(battler)]
                                 && IsBattlerGrounded(battler)
                                 && (GetMonAbility(&party[i]) == ABILITY_MISTY_SURGE
-                                    || GetMonAbility(&party[i]) == ABILITY_ELECTRIC_SURGE)) //Ally has Misty or Electric Surge
+                                    || GetMonAbility(&party[i]) == ABILITY_ELECTRIC_SURGE
+                                    || GetMonAbility(&party[i]) == ABILITY_GEOMAGNETISM)) //Ally has Misty or Electric Surge
                                 {
                                     *(gBattleStruct->AI_monToSwitchIntoId + BATTLE_PARTNER(battler)) = i;
                                     BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
@@ -488,7 +494,12 @@ static bool8 HasSuperEffectiveMoveAgainstOpponents(u32 battler, bool8 noRng)
             if (move == MOVE_NONE)
                 continue;
 
-            if (AI_GetTypeEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
+            if (
+                ((!gBattleMons[opposingBattler].ability == ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0)))
+            || ((gBattleMons[opposingBattler].ability == ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) < UQ_4_12(2.0)))
+            
+            )
+
             {
                 if (noRng)
                     return TRUE;
@@ -510,7 +521,11 @@ static bool8 HasSuperEffectiveMoveAgainstOpponents(u32 battler, bool8 noRng)
             if (move == MOVE_NONE)
                 continue;
 
-            if (AI_GetTypeEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
+            if (
+                ((!gBattleMons[opposingBattler].ability == ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0)))
+            || ((gBattleMons[opposingBattler].ability == ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) < UQ_4_12(2.0)))
+            
+            )
             {
                 if (noRng)
                     return TRUE;

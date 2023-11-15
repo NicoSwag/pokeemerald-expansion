@@ -445,6 +445,10 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectSaltCure                @ EFFECT_SALT_CURE
 	.4byte BattleScript_EffectHit					  @ EFFECT_MISSILE_DIVE
 	.4byte BattleScript_EffectSpikesIfMiss		      @ EFFECT_SPIKES_IF_MISS
+	.4byte BattleScript_EffectHit                     @ EFFECT_POLARITY
+	.4byte BattleScript_EffectSnowHit                   @ EFFECT_SNOWSCAPE_HIT
+	.4byte BattleScript_Effect_RechargeHealing					@ EFFECT_RECHARGE_HEALING
+	.4byte BattleScript_EffectRainHit                   @ EFFECT_RAIN_HIT
 
 BattleScript_EffectSaltCure:
 	call BattleScript_EffectHit_Ret
@@ -8710,6 +8714,13 @@ BattleScript_IntimidateEnd:
 	pause B_WAIT_TIME_MED
 	end3
 
+BattleScript_IlluminateActivates::
+	call BattleScript_AbilityPopUp
+	setforcedtarget
+	printstring STRINGID_PKMNCENTERATTENTION
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
 
 BattleScript_IntimidateContrary:
 	call BattleScript_AbilityPopUpTarget
@@ -10718,4 +10729,73 @@ BattleScript_MoveMissedDoSpikes::
 	trysetspikes BattleScript_FailedFromAtkString
 	printstring STRINGID_SPIKESSCATTERED
 	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectSnowHit::
+	
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN_PRIMAL, BattleScript_ExtremelyHarshSunlightWasNotLessened
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_NoReliefFromHeavyRain
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
+	setsnow
+	printfromtable gMoveWeatherChangeStringIds
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_ActivateWeatherAbilities
+	goto BattleScript_MoveEnd
+
+BattleScript_Effect_RechargeHealing::
+	attackcanceler
+	attackstring
+	ppreduce
+	recoverbasedonsunlight BattleScript_AlreadyAtFullHp
+	goto BattleScript_PresentHealTarget
+	
+BattleScript_EffectRainHit::
+	BattleScript_EffectSnowHit::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN_PRIMAL, BattleScript_ExtremelyHarshSunlightWasNotLessened
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_NoReliefFromHeavyRain
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
+	setsrain
+	printfromtable gMoveWeatherChangeStringIds
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_ActivateWeatherAbilities
 	goto BattleScript_MoveEnd

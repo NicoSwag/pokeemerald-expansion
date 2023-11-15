@@ -489,7 +489,7 @@ OldaleTown_Text_IWorkAtPokemonMart:
 
 OldaleTown_Text_ThisIsAPokemonMart:
 	.string "This is a POKéMON CENTER.\n"
-	.string "The POKéMON MART is inside it!.\p"
+	.string "The POKéMON MART is inside it!\p"
 	.string "We sell a variety of goods including\n"
 	.string "POKé BALLS for catching POKéMON.\p"
 	.string "Here, I'd like you to have this as\n"

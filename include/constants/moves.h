@@ -872,9 +872,14 @@
 #define MOVE_GRAVEL_ROCK    838
 #define MOVE_SPIKY_ARROW    839
 #define MOVE_HOT_COALS      840
+#define MOVE_POLARITY       841
+#define MOVE_POWDER_BOMB    842
+#define MOVE_RECHARGE       843
+#define MOVE_DING_DOOM      844
+#define MOVE_MONSOON        845
 
 
-#define MOVES_COUNT_GEN9 841
+#define MOVES_COUNT_GEN9 846
 
 #define MOVES_COUNT         MOVES_COUNT_GEN9
 

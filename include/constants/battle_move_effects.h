@@ -422,7 +422,11 @@
 #define EFFECT_ACID_RAIN                     416
 #define EFFECT_MISSILE_DIVE                417
 #define EFFECT_SPIKES_IF_MISS              418
+#define EFFECT_POLARITY                    419
+#define EFFECT_SNOWSCAPE_HIT               420
+#define EFFECT_RECHARGE_HEALING            421
+#define EFFECT_RAIN_HIT                    423
 
-#define NUM_BATTLE_MOVE_EFFECTS             419
+#define NUM_BATTLE_MOVE_EFFECTS             422
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

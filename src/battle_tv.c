@@ -923,6 +923,7 @@ void BattleTv_SetDataBasedOnString(u16 stringId)
     case STRINGID_PKMNWRAPPEDBY:
     case STRINGID_PKMNCLAMPED:
     case STRINGID_PKMNTRAPPEDBYSANDTOMB:
+    case STRINGID_FORESTCURSETRAPPED:
         tvPtr->pos[defSide][defFlank].wrapMonId = gBattlerPartyIndexes[gBattlerAttacker] + 1;
         tvPtr->pos[defSide][defFlank].wrapMoveSlot = moveSlot;
         break;

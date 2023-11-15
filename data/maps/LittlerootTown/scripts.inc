@@ -77,17 +77,17 @@ LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent::
 	return
 
 LittlerootTown_EventScript_MoveMomToMaysDoor::
-	setobjectxyperm LOCALID_MOM, 16, 9
+	setobjectxyperm LOCALID_MOM, 19, 10
 	return
 
 LittlerootTown_EventScript_SetTwinPos::
 	goto_if_eq VAR_LITTLEROOT_TOWN_STATE, 0, LittlerootTown_EventScript_SetTwinGuardingRoutePos
-	setobjectxyperm LOCALID_TWIN, 10, 1
+	setobjectxyperm LOCALID_TWIN, 13, 1
 	setobjectmovementtype LOCALID_TWIN, MOVEMENT_TYPE_FACE_UP
 	return
 
 LittlerootTown_EventScript_SetTwinGuardingRoutePos::
-	setobjectxyperm LOCALID_TWIN, 7, 2
+	setobjectxyperm LOCALID_TWIN, 13, 1
 	setobjectmovementtype LOCALID_TWIN, MOVEMENT_TYPE_FACE_DOWN
 	return
 
@@ -104,7 +104,7 @@ LittlerootTown_EventScript_SetMomInFrontOfDoorMale::
 	return
 
 LittlerootTown_EventScript_SetMomInFrontOfDoorFemale::
-	setobjectxyperm LOCALID_MOM, 16, 9
+	setobjectxyperm LOCALID_MOM, 19, 11
 	return
 
 LittlerootTown_OnFrame:
@@ -126,8 +126,8 @@ LittlerootTown_EventScript_StepOffTruckMale::
 
 LittlerootTown_EventScript_StepOffTruckFemale::
 	lockall
-	setvar VAR_0x8004, 16
-	setvar VAR_0x8005, 9
+	setvar VAR_0x8004, 19
+	setvar VAR_0x8005, 10
 	call LittlerootTown_EventScript_GoInsideWithMom
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK
 	warpsilent MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F, 2, 8
@@ -267,8 +267,12 @@ LittlerootTown_EventScript_ZigzagoonNoises::
 	playmoncry SPECIES_ZIGZAGOON_GALARIAN, CRY_MODE_NORMAL
 	msgbox LittlerootTown_Text_ZigzagoonNoises, MSGBOX_NPC
 	end
-LittlerootTown_EventScript_Boy::
+LittlerootTown_EventScript_Girl::
 	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC
+	end
+
+LittlerootTown_EventScript_Boy::
+	msgbox LittlerootTown_Text_WalkingZigzagoon, MSGBOX_NPC
 	end
 
 LittlerootTown_EventScript_Twin::
@@ -983,7 +987,7 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens:
 
 LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "Did you know that with new technology\n"
-	.string "anybody can make their own hack?\p"
+	.string "anybody can make their own fan game?\p"
 	.string "I'm so glad that companies don't employ\n"
 	.string "unethical copyright practices.\p"
 	.string "Right?$"
@@ -1060,3 +1064,13 @@ LittlerootTown_Text_Zigzagoon:
 
 LittlerootTown_Text_ZigzagoonNoises:
 	.string "ZIGZAGOON: Zigza!$"
+
+LittlerootTown_Text_WalkingZigzagoon:
+	.string "See this tree?\p"
+	.string "It was planted by our ancestors\n"
+	.string "when they founded this town.\p"
+	.string "But did you know that there actually\n"
+	.string "were people living in HOENN even\l"
+	.string "before that?\p"
+	.string "I don't really know much about it,\n"
+	.string "though.$"

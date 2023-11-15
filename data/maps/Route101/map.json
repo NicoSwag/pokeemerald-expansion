@@ -25,7 +25,7 @@
     },
     {
       "map": "MAP_LITTLEROOT_TOWN",
-      "offset": 2,
+      "offset": 0,
       "direction": "down"
     }
   ],

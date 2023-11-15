@@ -789,8 +789,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     RETURN_SCORE_MINUS(20);
                 break;
             case ABILITY_JUSTIFIED:
-                if (moveType == TYPE_DARK && !IS_MOVE_STATUS(move))
-                    RETURN_SCORE_MINUS(10);
+                if (moveType == TYPE_DARK)
+                    RETURN_SCORE_MINUS(20);
                 break;
             case ABILITY_RATTLED:
                 if (!IS_MOVE_STATUS(move)
@@ -1836,6 +1836,14 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_SYNTHESIS:
         case EFFECT_MOONLIGHT:
             if ((AI_GetWeather(aiData) & (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_HAIL | B_WEATHER_POLLUTION)))
+                score -= 3;
+            else if (AtMaxHp(battlerAtk))
+                score -= 10;
+            else if (aiData->hpPercents[battlerAtk] >= 90)
+                score -= 9; //No point in healing, but should at least do it if nothing better
+            break;
+        case EFFECT_RECHARGE_HEALING:
+            if (AI_IsTerrainAffected(battlerAtk, (STATUS_FIELD_PSYCHIC_TERRAIN|| STATUS_FIELD_MISTY_TERRAIN || STATUS_FIELD_GRASSY_TERRAIN)))
                 score -= 3;
             else if (AtMaxHp(battlerAtk))
                 score -= 10;
@@ -3609,6 +3617,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_ROOST:
     case EFFECT_MORNING_SUN:
     case EFFECT_SYNTHESIS:
+    case EFFECT_RECHARGE_HEALING:
     case EFFECT_MOONLIGHT:
         if (ShouldRecover(battlerAtk, battlerDef, move, 50))
             score += 3;
@@ -5271,6 +5280,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_ENDURE:
             case EFFECT_MORNING_SUN:
             case EFFECT_SYNTHESIS:
+            case EFFECT_RECHARGE_HEALING:
             case EFFECT_MOONLIGHT:
             case EFFECT_SHORE_UP:
             case EFFECT_SOFTBOILED:

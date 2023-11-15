@@ -20,7 +20,6 @@ Route101_EventScript_HideMapNamePopup::
 	end
 
 Route101_EventScript_StartBirchRescue::
-	lockall
 	playbgm MUS_HELP, TRUE
 	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
 	closemessage
@@ -32,34 +31,27 @@ Route101_EventScript_StartBirchRescue::
 	msgbox Route101_Text_PleaseHelp, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_ROUTE101_STATE, 2
-	releaseall
 	end
 
 Route101_EventScript_PreventExitSouth::
-	lockall
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitSouth
 	waitmovement 0
-	releaseall
 	end
 
 Route101_EventScript_PreventExitWest::
-	lockall
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitWest
 	waitmovement 0
-	releaseall
 	end
 
 Route101_EventScript_PreventExitNorth::
-	lockall
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitNorth
 	waitmovement 0
-	releaseall
 	end
 
 Route101_Movement_PreventExitSouth:

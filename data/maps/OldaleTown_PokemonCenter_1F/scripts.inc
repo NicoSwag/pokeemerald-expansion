@@ -71,7 +71,7 @@ OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
 	.string "I spent too much money at the MART,\n"
 	.string "and now I'm completely broke.\p"
-	.string "I beg you, trainer, don't make the\n"
+	.string "I beg you, TRAINER, don't make the\n"
 	.string "same mistake as me!$"
 
 OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:

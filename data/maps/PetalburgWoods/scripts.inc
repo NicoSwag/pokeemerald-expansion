@@ -401,7 +401,7 @@ PetalburgWoods_EventScript_JamesRematch::
 
 PetalburgWoods_Text_NotAOneToBeFound:
 	.string "DEVON RESEARCHER: Hmmm…\n"
-	.string "T-they seem to be late…$"
+	.string "Sh-she's late…$"
 
 PetalburgWoods_Text_HaveYouSeenShroomish:
 	.string "Hello, have you seen any POKéMON\n"
@@ -435,9 +435,9 @@ PetalburgWoods_Text_HandOverThosePapers:
 
 PetalburgWoods_Text_YouHaveToHelpMe:
 	.string "SHELLY: Listen!\p"
-	.string "You only got off scot-free because\n"
+	.string "You only got off easy because\n"
 	.string "I wasn't expecting any fight!\p"
-	.string "Next time we meet, you're toast!\p"
+	.string "Next time we meet, you'll get it!\p"
 	.string "And you better forget about what you\n"
 	.string "you saw, or else!$"
 
@@ -455,7 +455,7 @@ PetalburgWoods_Text_LookerLate:
 	.string "package to a member of TEAM AQUA?\p"
 	.string "Hmm…\p"
 	.string "I must say, my friend, those are some\n"
-	.string "clues that you have unconvered!\p"
+	.string "big clues that you have unconvered!\p"
 	.string "We already knew of TEAM AQUA, as well as\n"
 	.string "TEAM MAGMA, of course, but a mysterious\l"
 	.string "third party?\p"

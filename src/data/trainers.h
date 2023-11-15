@@ -51,10 +51,10 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_ROUTE_103_MAGMAF] =
     {
-        .trainerClass = TRAINER_CLASS_TEAM_MAGMA,
+        .trainerClass = TRAINER_CLASS_MAGMA_ADMIN,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MAGMA,
-        .trainerPic = TRAINER_PIC_MAGMA_GRUNT_F,
-        .trainerName = _("GRUNT"),
+        .trainerPic = TRAINER_PIC_COURTNEY,
+        .trainerName = _("COURTNEY"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
@@ -149,7 +149,7 @@ const struct Trainer gTrainers[] = {
     {
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_AQUA,
-        .trainerPic = TRAINER_PIC_AQUA_ADMIN_F,
+        .trainerPic = TRAINER_PIC_SHELLY,
         .trainerName = _("SHELLY"),
         .items = {},
         .doubleBattle = TRUE,

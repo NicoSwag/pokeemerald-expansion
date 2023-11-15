@@ -53,6 +53,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_BATTLE_BOND] = 6,
     [ABILITY_BEAST_BOOST] = 7,
     [ABILITY_BERSERK] = 5,
+    [ABILITY_FRENZY] = 5,
     [ABILITY_BIG_PECKS] = 1,
     [ABILITY_BLAZE] = 5,
     [ABILITY_BULLETPROOF] = 7,
@@ -79,6 +80,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_DESOLATE_LAND] = 10,
     [ABILITY_DISGUISE] = 8,
     [ABILITY_DOWNLOAD] = 7,
+    [ABILITY_FOREST_BOUNTY] = 7,
     [ABILITY_DRIZZLE] = 9,
     [ABILITY_DROUGHT] = 9,
     [ABILITY_NOXIOUS_FUMES] = 9,
@@ -88,6 +90,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_EARLY_BIRD] = 4,
     [ABILITY_EFFECT_SPORE] = 4,
     [ABILITY_ELECTRIC_SURGE] = 8,
+    [ABILITY_GEOMAGNETISM] = 8,
     [ABILITY_EMERGENCY_EXIT] = 3,
     [ABILITY_FAIRY_AURA] = 6,
     [ABILITY_FILTER] = 6,
@@ -122,7 +125,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_HYDRATION] = 4,
     [ABILITY_HYPER_CUTTER] = 3,
     [ABILITY_ICE_BODY] = 3,
-    [ABILITY_ILLUMINATE] = 0,
+    [ABILITY_ILLUMINATE] = 8,
     [ABILITY_ILLUSION] = 8,
     [ABILITY_IMMUNITY] = 4,
     [ABILITY_IMPOSTER] = 9,
@@ -134,7 +137,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_MESMERIZE] = 7,
     [ABILITY_IRON_BARBS] = 6,
     [ABILITY_IRON_FIST] = 6,
-    [ABILITY_JUSTIFIED] = 4,
+    [ABILITY_JUSTIFIED] = 7,
     [ABILITY_KEEN_EYE] = 1,
     [ABILITY_KLUTZ] = -1,
     [ABILITY_LEAF_GUARD] = 2,
@@ -186,6 +189,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_POWER_OF_ALCHEMY] = 0,
     [ABILITY_PRANKSTER] = 8,
     [ABILITY_PRESSURE] = 5,
+    [ABILITY_CLIMATE_CHANGE] = 10,
     [ABILITY_PRIMORDIAL_SEA] = 10,
     [ABILITY_PRISM_ARMOR] = 6,
     [ABILITY_PROTEAN] = 8,
@@ -231,11 +235,13 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_SNOW_CLOAK] = 3,
     [ABILITY_SNOW_WARNING] = 8,
     [ABILITY_SOLAR_POWER] = 3,
+    [ABILITY_OVERCHARGE] = 3,
     [ABILITY_SOLID_ROCK] = 6,
     [ABILITY_PSYCHIC_SHIELD] = 6,
     [ABILITY_SOUL_HEART] = 7,
     [ABILITY_SOUNDPROOF] = 4,
     [ABILITY_SPEED_BOOST] = 9,
+    [ABILITY_BLAZING_FAST] = 10,
     [ABILITY_STAKEOUT] = 6,
     [ABILITY_STALL] = -1,
     [ABILITY_STAMINA] = 6,
@@ -1074,7 +1080,7 @@ u32 AI_GetMoveEffectiveness(u32 move, u32 battlerAtk, u32 battlerDef)
 }
 
 static u32 AI_GetEffectiveness(uq4_12_t multiplier)
-{
+{   
     switch (multiplier)
     {
     case UQ_4_12(0.0):
@@ -2096,6 +2102,7 @@ bool32 IsHealingMoveEffect(u32 effect)
     case EFFECT_RESTORE_HP:
     case EFFECT_MORNING_SUN:
     case EFFECT_SYNTHESIS:
+    case EFFECT_RECHARGE_HEALING:
     case EFFECT_MOONLIGHT:
     case EFFECT_SOFTBOILED:
     case EFFECT_ROOST:

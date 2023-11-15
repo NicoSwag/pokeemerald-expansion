@@ -305,7 +305,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl1 = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy2 = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_1,
+    .paletteTag = OBJ_EVENT_PAL_TAG_DARK_SKIN,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 256,
     .width = 16,
@@ -818,7 +818,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Youngster = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BugCatcher = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_1,
+    .paletteTag = OBJ_EVENT_PAL_TAG_DARK_SKIN,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 256,
     .width = 16,
@@ -1198,7 +1198,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TuberM = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hiker = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_DARK_SKIN,
+    .paletteTag = OBJ_EVENT_PAL_TAG_HIKER,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 256,
     .width = 16,
@@ -1255,7 +1255,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CyclingTriathleteF
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nurse = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_1,
+    .paletteTag = OBJ_EVENT_PAL_TAG_DARK_SKIN,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 256,
     .width = 16,

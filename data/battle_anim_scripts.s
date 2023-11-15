@@ -868,6 +868,11 @@ gBattleAnims_Moves::
 	.4byte Move_GRAVEL_ROCK
 	.4byte Move_SPIKY_ARROW
 	.4byte Move_HOT_COALS
+	.4byte Move_POLARITY
+	.4byte Move_POWDER_BOMB
+	.4byte Move_RECHARGE
+	.4byte Move_DING_DOOM
+	.4byte Move_MONSOON
 
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
@@ -13698,6 +13703,7 @@ Move_BODY_PRESS::
 	waitforvisualfinish
 	end
 
+
 Move_DECORATE::
 	goto Move_FLOWER_SHIELD
 
@@ -26182,6 +26188,21 @@ Move_SPIKY_ARROW:
 Move_HOT_COALS:
 	goto Move_PYRO_BALL
 
+Move_POLARITY::
+	goto Move_MAGNETIC_FLUX
+
+Move_POWDER_BOMB::
+	goto Move_POLLEN_PUFF
+
+Move_RECHARGE::
+	goto Move_CHARGE
+
+Move_DING_DOOM::
+	goto Move_IRON_HEAD
+
+Move_MONSOON:
+	goto Move_HURRICANE
+
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT
 	monbg ANIM_TARGET
@@ -26630,6 +26651,7 @@ General_TurnTrap:
 	jumpargeq 0, TRAP_ANIM_INFESTATION, Status_Infestation
 	jumpargeq 0, TRAP_ANIM_SNAP_TRAP, Status_Snap_Trap
 	jumpargeq 0, TRAP_ANIM_THUNDER_CAGE, Status_Thunder_Cage
+	jumpargeq 0, TRAP_ANIM_FOREST_CURSE, Status_Forest_Curse
 	goto Status_BindWrap
 Status_BindWrap:
 	loadspritegfx ANIM_TAG_TENDRILS
@@ -26719,6 +26741,10 @@ Status_Clamp:
 Status_Thunder_Cage:
 	@ TODO
 	goto Move_THUNDER_CAGE
+
+Status_Forest_Curse:
+	goto Move_FORESTS_CURSE
+
 
 Status_Snap_Trap: @ placeholder
 	goto Move_BITE
