@@ -873,6 +873,7 @@ gBattleAnims_Moves::
 	.4byte Move_RECHARGE
 	.4byte Move_DING_DOOM
 	.4byte Move_MONSOON
+	.4byte Move_HIT_AND_RUN
 
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
@@ -26202,6 +26203,9 @@ Move_DING_DOOM::
 
 Move_MONSOON:
 	goto Move_HURRICANE
+
+Move_HIT_AND_RUN:
+	goto Move_U_TURN
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT

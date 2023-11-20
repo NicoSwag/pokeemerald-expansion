@@ -6,7 +6,7 @@
     F(CHILLING_WATER) \
     F(QUASH) \
     F(TRAILBLAZE) \
-    F(ROAR) \
+    F(PROTECT) \
     F(TOXIC) \
     F(HAIL) \
     F(BULK_UP) \
@@ -18,7 +18,7 @@
     F(BLIZZARD) \
     F(HYPER_BEAM) \
     F(LIGHT_SCREEN) \
-    F(PROTECT) \
+    F(ROAR) \
     F(RAIN_DANCE) \
     F(GIGA_DRAIN) \
     F(SAFEGUARD) \

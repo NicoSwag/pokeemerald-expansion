@@ -425,8 +425,10 @@
 #define EFFECT_POLARITY                    419
 #define EFFECT_SNOWSCAPE_HIT               420
 #define EFFECT_RECHARGE_HEALING            421
-#define EFFECT_RAIN_HIT                    423
+#define EFFECT_RAIN_HIT                    422
+#define EFFECT_ESCAPE_HEAL                 423
+#define EFFECT_CHANGE_TYPE_HIDDEN          424
 
-#define NUM_BATTLE_MOVE_EFFECTS             422
+#define NUM_BATTLE_MOVE_EFFECTS             425
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

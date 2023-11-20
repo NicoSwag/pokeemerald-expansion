@@ -68,6 +68,7 @@
 #define MAP_ROUTE104UPPER       (59 | (0 << 8))
 #define MAP_FOOT_OF_MT_KIRIKIRI (60 | (0 << 8))
 #define MAP_LOWER_ROUTE115      (61 | (0 << 8))
+#define MAP_BRINE_CAVE          (62 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))
@@ -187,6 +188,7 @@
 #define MAP_RUSTBORO_CITY_FLAT2_2F          (14 | (11 << 8))
 #define MAP_RUSTBORO_CITY_FLAT2_3F          (15 | (11 << 8))
 #define MAP_RUSTBORO_CITY_HOUSE3            (16 | (11 << 8))
+#define MAP_RUSTBORO_CITY_GYM_ARENA         (17 | (11 << 8))
 
 // gMapGroup_IndoorFortree
 #define MAP_FORTREE_CITY_HOUSE1            (0 | (12 << 8))

@@ -701,7 +701,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     if (IS_TARGETING_PARTNER(battlerAtk, battlerDef))
         return score;
 
-    SetTypeBeforeUsingMove(move, battlerAtk);
+    SetTypeBeforeUsingMove(move, battlerAtk, battlerDef);
     GET_MOVE_TYPE(move, moveType);
 
     // check non-user target
@@ -841,6 +841,11 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                   && move != MOVE_PLAY_NICE && move != MOVE_NOBLE_ROAR && move != MOVE_TEARFUL_LOOK && move != MOVE_VENOM_DRENCH)
                     RETURN_SCORE_MINUS(10);
                 break;
+            case ABILITY_COLOR_CHANGE:
+                if(moveType == (TYPE_GHOST || TYPE_DRAGON))
+                    RETURN_SCORE_PLUS(8);
+                if(moveType == (TYPE_FIRE || TYPE_GRASS || TYPE_WATER || TYPE_POISON || TYPE_ELECTRIC || TYPE_ICE || TYPE_DARK || TYPE_STEEL || TYPE_PSYCHIC))
+                    RETURN_SCORE_MINUS(8);
             case ABILITY_KEEN_EYE:
                 if (moveEffect == EFFECT_ACCURACY_DOWN || moveEffect == EFFECT_ACCURACY_DOWN_2)
                     RETURN_SCORE_MINUS(10);
@@ -1641,6 +1646,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 6;
             break;
         case EFFECT_HIT_ESCAPE:
+        case EFFECT_ESCAPE_HEAL:
             break;
         case EFFECT_RAPID_SPIN:
             if ((gBattleMons[battlerAtk].status2 & STATUS2_WRAPPED) || (gStatuses3[battlerAtk] & STATUS3_LEECHSEED))
@@ -2770,7 +2776,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     bool32 partnerHasBadAbility = (GetAbilityRating(atkPartnerAbility) < 0);
     u32 predictedMove = aiData->predictedMoves[battlerDef];
 
-    SetTypeBeforeUsingMove(move, battlerAtk);
+    SetTypeBeforeUsingMove(move, battlerAtk, battlerDef);
     GET_MOVE_TYPE(move, moveType);
 
     // check what effect partner is using
@@ -3770,6 +3776,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             break;
         //fallthrough
     case EFFECT_HIT_ESCAPE:
+    case EFFECT_ESCAPE_HEAL:
     case EFFECT_PARTING_SHOT:
         if (!IsDoubleBattle())
         {
@@ -5244,7 +5251,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     u32 effect = gBattleMoves[move].effect;
     u32 moveType = gBattleMoves[move].type;
 
-    SetTypeBeforeUsingMove(move, battlerAtk);
+    SetTypeBeforeUsingMove(move, battlerAtk, battlerDef);
     GET_MOVE_TYPE(move, moveType);
 
     if (IS_TARGETING_PARTNER(battlerAtk, battlerDef))

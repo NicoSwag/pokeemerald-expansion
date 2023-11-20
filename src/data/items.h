@@ -7208,16 +7208,16 @@ const struct Item gItems[] =
         .secondaryId = MOVE_TRAILBLAZE,
     },
 
-    [ITEM_TM_ROAR] =
+    [ITEM_TM_PROTECT] =
     {
         .name = _("TM05"),
-        .price = 1000,
+        .price = 2000,
         .description = sTM05Desc,
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_ROAR,
+        .secondaryId = MOVE_PROTECT,
     },
 
     [ITEM_TM_TOXIC] =
@@ -7352,7 +7352,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_LIGHT_SCREEN,
     },
 
-    [ITEM_TM_PROTECT] =
+    [ITEM_TM_ROAR] =
     {
         .name = _("TM17"),
         .price = 3000,

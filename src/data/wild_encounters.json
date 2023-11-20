@@ -1786,7 +1786,7 @@
               {
                 "min_level": 8,
                 "max_level": 10,
-                "species": "SPECIES_TYMPOLE"
+                "species": "SPECIES_SHROOMISH"
               },
               {
                 "min_level": 8,
@@ -1801,12 +1801,12 @@
               {
                 "min_level": 8,
                 "max_level": 10,
-                "species": "SPECIES_PARAS"
+                "species": "SPECIES_SHROOMISH"
               },
               {
                 "min_level": 8,
                 "max_level": 10,
-                "species": "SPECIES_PARAS"
+                "species": "SPECIES_SHROOMISH"
               },
               {
                 "min_level": 8,
@@ -12107,6 +12107,130 @@
                 "min_level": 5,
                 "max_level": 5,
                 "species": "SPECIES_CARVANHA"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_BRINE_CAVE",
+          "base_label": "gBrineCave0",
+          "land_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_NOSEPASS"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_GLIMMET"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_ZUBAT"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_ZUBAT"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_NOSEPASS"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_BERGMITE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_GLIMMET"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_BERGMITE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_BERGMITE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_ZUBAT"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_BERGMITE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_ZUBAT"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 0,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_FINNEON"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_SHELLDER"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_FINNEON"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_SHELLDER"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_SHELLDER"
               }
             ]
           }

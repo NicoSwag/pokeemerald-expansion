@@ -1521,6 +1521,10 @@ static const u8 sUTurnDescription[] = _(
     "Does damage then switches\n"
     "out the user.");
 
+static const u8 sHitAndRunDescription[] = _(
+    "Does damage, switches out\n"
+    "and heals.");
+
 static const u8 sCloseCombatDescription[] = _(
     "A strong attack but lowers\n"
     "the defensive stats.");
@@ -1791,6 +1795,10 @@ static const u8 sGunkShotDescription[] = _(
     "the foe. May also poison.");
 
 static const u8 sIronHeadDescription[] = _(
+    "Slams the foe violently,\n"
+    "causing it to flinch.");
+
+static const u8 sDingDoomDescription[] = _(
     "Slams the foe with a bell,\n"
     "causing rain to be summoned.");
 
@@ -3711,6 +3719,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_ACUPRESSURE - 1] = sAcupressureDescription,
     [MOVE_METAL_BURST - 1] = sMetalBurstDescription,
     [MOVE_U_TURN - 1] = sUTurnDescription,
+    [MOVE_HIT_AND_RUN - 1] = sHitAndRunDescription,
     [MOVE_CLOSE_COMBAT - 1] = sCloseCombatDescription,
     [MOVE_PAYBACK - 1] = sPaybackDescription,
     [MOVE_ASSURANCE - 1] = sAssuranceDescription,

@@ -427,7 +427,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectSnow                    @ EFFECT_SNOWSCAPE
 	.4byte BattleScript_EffectFlashFreeze             @ EFFECT_FLASH_FREEZE
 	.4byte BattleScript_EffectCometPunch			  @ EFFECT_COMET_PUNCH
-	.4byte BattleScript_EffectHit					  @EFFECT_AURA_SPHERE
+	.4byte BattleScript_EffectHit					  @ EFFECT_AURA_SPHERE
 	.4byte BattleScript_EffectSnapTrap                @ EFFECT_SNAP_TRAP
 	.4byte BattleScript_EffectNumbingKiss			  @ EFFECT_NUMBING_KISS
 	.4byte BattleScript_EffectAcidRain			  	@ EFFECT_ACID_RAIN
@@ -449,6 +449,8 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectSnowHit                   @ EFFECT_SNOWSCAPE_HIT
 	.4byte BattleScript_Effect_RechargeHealing					@ EFFECT_RECHARGE_HEALING
 	.4byte BattleScript_EffectRainHit                   @ EFFECT_RAIN_HIT
+	.4byte BattleScript_EffectHitEscape               @ EFFECT_ESCAPE_HEAL
+	.4byte BattleScript_EffectHit                     @ EFFECT_CHANGE_TYPE_HIDDEN
 
 BattleScript_EffectSaltCure:
 	call BattleScript_EffectHit_Ret
@@ -8563,6 +8565,10 @@ BattleScript_RainDishActivates::
 	call BattleScript_AbilityHpHeal
 	end3
 
+BattleScript_ForestBountyActivates::
+	call BattleScript_AbilityHpHeal
+	end3
+
 BattleScript_CheekPouchActivates::
 	copybyte sSAVED_BATTLER, gBattlerAttacker
 	copybyte gBattlerAttacker, gBattlerAbility
@@ -9262,16 +9268,18 @@ BattleScript_StickyHoldActivates::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
-BattleScript_ColorChangeActivates::
-	call BattleScript_AbilityPopUp
-	printstring STRINGID_PKMNCHANGEDTYPEWITH
-	waitmessage B_WAIT_TIME_LONG
-	return
 
 BattleScript_ProteanActivates::
 	pause B_WAIT_TIME_SHORTEST
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNCHANGEDTYPE
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_ColorChangeActivates::
+	pause B_WAIT_TIME_SHORTEST
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNCHANGEDTYPEWITH
 	waitmessage B_WAIT_TIME_LONG
 	return
 
@@ -10770,7 +10778,6 @@ BattleScript_Effect_RechargeHealing::
 	goto BattleScript_PresentHealTarget
 	
 BattleScript_EffectRainHit::
-	BattleScript_EffectSnowHit::
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
@@ -10794,7 +10801,7 @@ BattleScript_EffectRainHit::
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN_PRIMAL, BattleScript_ExtremelyHarshSunlightWasNotLessened
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_NoReliefFromHeavyRain
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
-	setsrain
+	setrain
 	printfromtable gMoveWeatherChangeStringIds
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_ActivateWeatherAbilities

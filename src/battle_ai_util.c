@@ -61,7 +61,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_CHLOROPHYLL] = 6,
     [ABILITY_CLEAR_BODY] = 4,
     [ABILITY_CLOUD_NINE] = 5,
-    [ABILITY_COLOR_CHANGE] = 2,
+    [ABILITY_COLOR_CHANGE] = 9,
     [ABILITY_COMATOSE] = 6,
     [ABILITY_COMPETITIVE] = 5,
     [ABILITY_COMPOUND_EYES] = 7,
@@ -759,7 +759,7 @@ bool32 MovesWithSplitUnusable(u32 attacker, u32 target, u32 split)
             && GetBattleMoveSplit(moves[i]) == split
             && !(unusable & gBitTable[i]))
         {
-            SetTypeBeforeUsingMove(moves[i], attacker);
+            SetTypeBeforeUsingMove(moves[i], attacker, target);
             GET_MOVE_TYPE(moves[i], moveType);
             if (CalcTypeEffectivenessMultiplier(moves[i], moveType, attacker, target, AI_DATA->abilities[target], FALSE) != 0)
                 usable |= gBitTable[i];
@@ -798,7 +798,7 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
     if (move == MOVE_NATURE_POWER)
         move = GetNaturePowerMove();
 
-    SetTypeBeforeUsingMove(move, battlerAtk);
+    SetTypeBeforeUsingMove(move, battlerAtk, battlerDef);
     GET_MOVE_TYPE(move, moveType);
 
     effectivenessMultiplier = CalcTypeEffectivenessMultiplier(move, moveType, battlerAtk, battlerDef, aiData->abilities[battlerDef], FALSE);
@@ -807,6 +807,7 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
         s32 critChanceIndex, normalDmg, fixedBasePower, n;
 
         ProteanTryChangeType(battlerAtk, aiData->abilities[battlerAtk], move, moveType);
+        ColorChangeTryChangeType(battlerDef, aiData->abilities[battlerDef], move, moveType);
         // Certain moves like Rollout calculate damage based on values which change during the move execution, but before calling dmg calc.
         switch (gBattleMoves[move].effect)
         {
@@ -1063,7 +1064,7 @@ uq4_12_t AI_GetTypeEffectiveness(u32 move, u32 battlerAtk, u32 battlerDef)
     SetBattlerData(battlerDef);
 
     gBattleStruct->dynamicMoveType = 0;
-    SetTypeBeforeUsingMove(move, battlerAtk);
+    SetTypeBeforeUsingMove(move, battlerAtk, battlerDef);
     GET_MOVE_TYPE(move, moveType);
     typeEffectiveness = CalcTypeEffectivenessMultiplier(move, moveType, battlerAtk, battlerDef, AI_DATA->abilities[battlerDef], FALSE);
 

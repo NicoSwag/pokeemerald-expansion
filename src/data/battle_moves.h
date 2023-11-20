@@ -4111,12 +4111,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_HIDDEN_POWER] =
     {
-        #if B_HIDDEN_POWER_DMG >= GEN_6
-            .power = 60,
-        #else
-            .power = 1,
-        #endif
-        .effect = EFFECT_HIDDEN_POWER,
+        .power = 50,
+        .effect = EFFECT_CHANGE_TYPE_HIDDEN,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 15,
@@ -6382,6 +6378,21 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_HIT_ESCAPE,
         .power = 70,
         .type = TYPE_BUG,
+        .accuracy = 100,
+        .pp = 20,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
+    },
+
+    [MOVE_HIT_AND_RUN] =
+    {
+        .effect = EFFECT_ESCAPE_HEAL,
+        .power = 60,
+        .type = TYPE_FLYING,
         .accuracy = 100,
         .pp = 20,
         .secondaryEffectChance = 0,
@@ -9552,7 +9563,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .split = SPLIT_SPECIALL,
+        .split = SPLIT_SPECIAL,
         .argument = TYPE_WATER,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,

@@ -332,7 +332,7 @@ void HandleAction_UseMove(void)
     }
 
     // Set dynamic move type.
-    SetTypeBeforeUsingMove(gChosenMove, gBattlerAttacker);
+    SetTypeBeforeUsingMove(gChosenMove, gBattlerAttacker, gBattlerTarget);
     GET_MOVE_TYPE(gChosenMove, moveType);
 
     // choose target
@@ -3246,7 +3246,7 @@ bool32 HandleWishPerishSongOnTurnEnd(void)
                 gBattlerAttacker = gWishFutureKnock.futureSightAttacker[battler];
                 gSpecialStatuses[gBattlerTarget].dmg = 0xFFFF;
                 gCurrentMove = gWishFutureKnock.futureSightMove[battler];
-                SetTypeBeforeUsingMove(gCurrentMove, battler);
+                SetTypeBeforeUsingMove(gCurrentMove, battler, gBattlerTarget);
                 BattleScriptExecute(BattleScript_MonTookFutureAttack);
 
                 if (gWishFutureKnock.futureSightCounter[battler] == 0
@@ -4539,15 +4539,12 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             ally = BATTLE_PARTNER(battler);
             if(ally)
             {
-            gBattleMoveDamage = gBattleMons[ally].maxHP / 4;
-            gBattleMoveDamage += gBattleMons[ally].hp;
-            if (gBattleMoveDamage > gBattleMons[ally].maxHP)
-                gBattleMoveDamage = gBattleMons[ally].maxHP;
-            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HP_BATTLE,
-                                         gBitTable[*(gBattleStruct->battlerPartyIndexes + battler)],
-                                         sizeof(gBattleMoveDamage),
-                                         &gBattleMoveDamage);
-            MarkBattlerForControllerExec(ally);
+                BattleScriptPushCursorAndCallback(BattleScript_ForestBountyActivates);
+                    gBattleMoveDamage = gBattleMons[ally].maxHP / 4;
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                    gBattleMoveDamage *= -1;
+                    effect++;
             }
             }
         break;
@@ -5507,7 +5504,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
              && (CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_LESS_THAN) // Don't activate if speed cannot be raised
                || CompareStat(battler, STAT_DEF, MIN_STAT_STAGE, CMP_GREATER_THAN))) // Don't activate if defense cannot be lowered
             {
-                if (gBattleMoves[gCurrentMove].effect == EFFECT_HIT_ESCAPE && CanBattlerSwitch(gBattlerAttacker))
+                if ((gBattleMoves[gCurrentMove].effect == EFFECT_HIT_ESCAPE || gBattleMoves[gCurrentMove].effect == EFFECT_ESCAPE_HEAL) && CanBattlerSwitch(gBattlerAttacker))
                     gProtectStructs[battler].disableEjectPack = TRUE;  // Set flag for target
 
                 BattleScriptPushCursor();
@@ -5616,21 +5613,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 SET_STATCHANGER(STAT_ATK, MAX_STAT_STAGE - gBattleMons[battler].statStages[STAT_ATK], FALSE);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_TargetsStatWasMaxedOut;
-                effect++;
-            }
-            break;
-        case ABILITY_COLOR_CHANGE:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-             && move != MOVE_STRUGGLE
-             && gBattleMoves[move].power != 0
-             && TARGET_TURN_DAMAGED
-             && !IS_BATTLER_OF_TYPE(battler, moveType)
-             && gBattleMons[battler].hp != 0)
-            {
-                SET_BATTLER_TYPE(battler, moveType);
-                PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_ColorChangeActivates;
                 effect++;
             }
             break;
@@ -10285,6 +10267,7 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
             return UQ_4_12(0.5);
         }
         break;
+
     }
 
     return UQ_4_12(1.0);
@@ -10441,12 +10424,11 @@ static inline s32 DoMoveDamageCalc(u32 move, u32 battlerAtk, u32 battlerDef, u32
 
     if (typeEffectivenessModifier == UQ_4_12(0.0))
         return 0;
-
+    
     holdEffectAtk = GetBattlerHoldEffect(battlerAtk, TRUE);
     holdEffectDef = GetBattlerHoldEffect(battlerDef, TRUE);
     abilityAtk = GetBattlerAbility(battlerAtk);
     abilityDef = GetBattlerAbility(battlerDef);
-
     return DoMoveDamageCalcVars(move, battlerAtk, battlerDef, moveType, fixedBasePower, isCrit, randomFactor,
                             updateFlags, typeEffectivenessModifier, weather, holdEffectAtk, holdEffectDef, abilityAtk, abilityDef);
 }

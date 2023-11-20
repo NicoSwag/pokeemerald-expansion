@@ -147,7 +147,7 @@
       "x": 9,
       "y": 19,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NORMAL",
@@ -274,7 +274,13 @@
     }
   ],
   "warp_events": [
-
+    {
+      "x": 8,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_BRINE_CAVE",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 

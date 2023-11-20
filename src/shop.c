@@ -613,6 +613,14 @@ static void BuyMenuBuildListMenuTemplate(void)
     i++;
     added_TMs++;
     }
+
+    if((FlagGet(FLAG_RECEIVED_TM05) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    StringCopy(sItemNames[i], gText_TM05);
+    sListMenuItems[i].name = sItemNames[i];
+    sListMenuItems[i].id = ITEM_TM05;
+    i++;
+    added_TMs++;
+    }
     
     StringCopy(sItemNames[i], gText_Cancel2);
     sListMenuItems[i].name = sItemNames[i];

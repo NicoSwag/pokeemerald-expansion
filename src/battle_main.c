@@ -4071,7 +4071,6 @@ enum
 static void HandleTurnActionSelectionState(void)
 {
     s32 i, battler;
-
     gBattleCommunication[ACTIONS_CONFIRMED_COUNT] = 0;
     for (battler = 0; battler < gBattlersCount; battler++)
     {
@@ -4636,6 +4635,8 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
         speed = (speed * 150) / 100;
     else if (ability == ABILITY_QUARK_DRIVE && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && highestStat == STAT_SPEED)
         speed = (speed * 150) / 100;
+    else if (ability == ABILITY_DEFEATIST && gBattleMons[battler].hp<=(gBattleMons[battler].maxHP/2))
+        speed *=2;
 
     // stat stages
     speed *= gStatStageRatios[gBattleMons[battler].statStages[STAT_SPEED]][0];
@@ -5602,11 +5603,11 @@ void RunBattleScriptCommands(void)
         gBattleScriptingCommandsTable[gBattlescriptCurrInstr[0]]();
 }
 
-void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
+void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk, u32 battlerTarget)
 {
     u32 moveType, ateType, attackerAbility;
     u16 holdEffect = GetBattlerHoldEffect(battlerAtk, TRUE);
-
+    u32 target = gBattleStruct->moveTarget[battlerAtk];
     
     if (move == MOVE_STRUGGLE)
         return;
@@ -5633,26 +5634,15 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
                 gBattleStruct->dynamicMoveType = TYPE_NORMAL | F_DYNAMIC_TYPE_2;
         }
     }
-    else if (gBattleMoves[move].effect == EFFECT_HIDDEN_POWER)
-    {
-        u8 typeBits  = ((gBattleMons[battlerAtk].hpIV & 1) << 0)
-                     | ((gBattleMons[battlerAtk].attackIV & 1) << 1)
-                     | ((gBattleMons[battlerAtk].defenseIV & 1) << 2)
-                     | ((gBattleMons[battlerAtk].speedIV & 1) << 3)
-                     | ((gBattleMons[battlerAtk].spAttackIV & 1) << 4)
-                     | ((gBattleMons[battlerAtk].spDefenseIV & 1) << 5);
-
-        // Subtract 4 instead of 1 below because 3 types are excluded (TYPE_NORMAL and TYPE_MYSTERY and TYPE_FAIRY)
-        // The final + 1 skips past Normal, and the following conditional skips TYPE_MYSTERY
-        gBattleStruct->dynamicMoveType = ((NUMBER_OF_MON_TYPES - 4) * typeBits) / 63 + 1;
-        if (gBattleStruct->dynamicMoveType >= TYPE_MYSTERY)
-            gBattleStruct->dynamicMoveType++;
-        gBattleStruct->dynamicMoveType |= F_DYNAMIC_TYPE_1 | F_DYNAMIC_TYPE_2;
-    }
     else if (gBattleMoves[move].effect == EFFECT_CHANGE_TYPE_ON_ITEM)
     {
         if (holdEffect == gBattleMoves[move].argument)
             gBattleStruct->dynamicMoveType = ItemId_GetSecondaryId(gBattleMons[battlerAtk].item) | F_DYNAMIC_TYPE_2;
+    }
+    else if (gBattleMoves[move].effect == EFFECT_CHANGE_TYPE_HIDDEN)
+    {
+        u8 hiddenPowerType = GetHiddenPowerType(move, battlerAtk, target);
+            gBattleStruct->dynamicMoveType = hiddenPowerType | F_DYNAMIC_TYPE_2;
     }
     else if (gBattleMoves[move].effect == EFFECT_REVELATION_DANCE)
     {
@@ -5693,9 +5683,9 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
         gBattleStruct->dynamicMoveType = TYPE_ELECTRIC | F_DYNAMIC_TYPE_2;
     }
     else if (gBattleMoves[move].type == TYPE_NORMAL
-             && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
              && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
              && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
+             && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_HIDDEN
              && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT
              && ((attackerAbility == ABILITY_PIXILATE && (ateType = TYPE_FAIRY))
                  || (attackerAbility == ABILITY_REFRIGERATE && (ateType = TYPE_ICE))

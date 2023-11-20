@@ -6,10 +6,6 @@ Route102_EventScript_ItemMuscleBand::
 	finditem ITEM_MUSCLE_BAND
 	end
 
-OldaleRuins_EventScript_ItemDragonFang::
-	finditem ITEM_DRAGON_FANG
-	end
-
 
 Route103_EventScript_ItemGuardSpec::
 	finditem ITEM_GUARD_SPEC
@@ -28,6 +24,9 @@ Route104_EventScript_ItemSkyFragment::
 	finditem ITEM_HEART_SCALE
 	end
 
+BrineCave_EventScript_Protect::
+	finditem ITEM_TM_PROTECT
+	end
 
 Route104_EventScript_ItemXAccuracy::
 	finditem ITEM_X_ACCURACY

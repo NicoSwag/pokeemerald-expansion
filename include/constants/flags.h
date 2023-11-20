@@ -512,7 +512,7 @@
 #define FLAG_DEFEATED_HO_OH                  0x1DC
 #define FLAG_DEFEATED_LUGIA                  0x1DD
 
-#define FLAG_UNUSED_0x1DE                    0x1DE // Unused Flag
+#define FLAG_ROUTE102_TRADE_COMPLETE                   0x1DE // Unused Flag
 #define FLAG_UNUSED_0x1DF                    0x1DF // Unused Flag
 #define FLAG_UNUSED_0x1E0                    0x1E0 // Unused Flag
 #define FLAG_UNUSED_0x1E1                    0x1E1 // Unused Flag
@@ -661,7 +661,7 @@
 #define FLAG_RECEIVED_SILVER_POWDER  0x26A // Unused Flag
 #define FLAG_RECEIVED_TM02  0x26B // Unused Flag
 #define FLAG_RECEIVED_TM04  0x26C // Unused Flag
-#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
+#define FLAG_RECEIVED_TM05  0x26D // Unused Flag
 #define FLAG_UNUSED_0x26E  0x26E // Unused Flag
 #define FLAG_UNUSED_0x26F  0x26F // Unused Flag
 #define FLAG_UNUSED_0x270  0x270 // Unused Flag

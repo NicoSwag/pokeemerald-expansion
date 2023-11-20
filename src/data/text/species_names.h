@@ -1430,7 +1430,6 @@ const u8 gSpeciesNames[][POKEMON_NAME_LENGTH + 1] = {
     [SPECIES_DUDUNSPARCE_THREE_SEGMENT] = _("Dudunsparc"),
     // Gimmighoul
     [SPECIES_GIMMIGHOUL_ROAMING] = _("Gimmighoul"),
-#endif
     // Tauros-Paldea
     [SPECIES_TAUROS_PALDEAN_BLAZE_BREED] = _("Tauros"),
     [SPECIES_TAUROS_PALDEAN_AQUA_BREED] = _("Tauros"),

@@ -1264,3 +1264,7 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/OldaleRuinsEntrance_2/scripts.inc"
 
 	.include "data/maps/LowerRoute115/scripts.inc"
+
+	.include "data/maps/BrineCave/scripts.inc"
+
+	.include "data/maps/RustboroCity_Gym_Arena/scripts.inc"

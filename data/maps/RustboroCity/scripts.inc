@@ -184,6 +184,8 @@ RustboroCity_EventScript_GirlProtest::
 	applymovement LOCALID_GIRLPROTESTER, Common_Movement_FaceRight
 	msgbox RustboroCity_Text_GirlProtest, MSGBOX_DEFAULT
 	applymovement LOCALID_GIRLPROTESTER, Common_Movement_FaceRight
+	closemessage
+	release
 	end
 
 RustboroCity_EventScript_Rhydon::
@@ -1109,13 +1111,13 @@ RustboroCity_Text_SneakyLookingManWentAroundCorner:
 	.string "looking guy went around the corner.$"
 
 RustboroCity_Text_HaveYouChallengedGym:
-	.string "ROXANNE, the GYM LEADER, is also\n"
-	.string "RUSTBORO CITY's very own mayor.\p"
-	.string "She's been doing all she can to\n"
-	.string "contain DEVON's political power.\p"
-	.string "Unfortunately, there's little that\n"
-	.string "money can't buy, and DEVON has plenty\l"
-	.string "of that.$"
+	.string "ROXANNE is such a hard worker.\p"
+	.string "Not only she's our GYM LEADER,\n"
+	.string "but she's also the mayor and a\l"
+	.string "teacher on top of that.\p"
+	.string "I don't know how she does it!$"
+
+
 
 RustboroCity_Text_HeyThatsRustborosGymBadge:
 	.string "Hey, that's RUSTBORO's GYM BADGE!\p"
@@ -1342,7 +1344,7 @@ RustboroCity_Text_CitySign:
 	.string "nature and science.”$"
 
 RustboroCity_Text_TrainersSchoolSign:
-	.string "POKéMON TRAINER'S SCHOOL\p"
+	.string "TRAINER'S SCHOOL LECTURE HALL\p"
 	.string "“We'll teach you anything about\n"
 	.string "POKéMON!”$"
 

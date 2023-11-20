@@ -1535,6 +1535,8 @@ static void UpdateCurrentPartySelection(s8 *slotPtr, s8 movementDir)
 
     if (layout == PARTY_LAYOUT_SINGLE)
         UpdatePartySelectionDoubleLayout(slotPtr, movementDir);
+    else
+        UpdatePartySelectionDoubleLayout(slotPtr, movementDir);
 
     if (*slotPtr != newSlotId)
     {

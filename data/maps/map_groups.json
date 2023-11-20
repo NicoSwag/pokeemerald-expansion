@@ -97,7 +97,8 @@
     "Route104Lower",
     "Route104Upper",
     "FootOfMtKirikiri",
-    "LowerRoute115"
+    "LowerRoute115",
+    "BrineCave"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -216,7 +217,8 @@
     "RustboroCity_Flat2_1F",
     "RustboroCity_Flat2_2F",
     "RustboroCity_Flat2_3F",
-    "RustboroCity_House3"
+    "RustboroCity_House3",
+    "RustboroCity_Gym_Arena"
   ],
   "gMapGroup_IndoorFortree": [
     "FortreeCity_House1",

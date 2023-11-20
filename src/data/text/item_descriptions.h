@@ -3052,9 +3052,9 @@ static const u8 sTM04Desc[] = _(
     "its Speed.");
 
 static const u8 sTM05Desc[] = _(
-    "A savage roar that\n"
-    "makes the foe flee \n"
-    "to end the battle.");
+    "Evades attacks, but\n"
+    "may fail if used\n"
+    "in succession.");
 
 static const u8 sTM06Desc[] = _(
     "Poisons the foe\n"

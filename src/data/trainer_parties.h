@@ -6478,12 +6478,32 @@ static const struct TrainerMon sParty_Edwin1[] = {
 
 static const struct TrainerMon sParty_Hector[] = {
     {
-    .lvl = 18,
-    .species = SPECIES_ZANGOOSE,
+    .species = SPECIES_CHIKORITA,
+    .moves = {MOVE_ABSORB, MOVE_SYNTHESIS, MOVE_GROWL, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 12,
+    .ball = ITEM_PREMIER_BALL,
+    .ability = ABILITY_TRIAGE,
+    .nature = NATURE_QUIET,
     },
     {
-    .lvl = 18,
-    .species = SPECIES_SEVIPER,
+    .species = SPECIES_FENNEKIN,
+    .moves = {MOVE_EMBER, MOVE_PSYWAVE, MOVE_TAIL_WHIP, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 12,
+    .ball = ITEM_PREMIER_BALL,
+    .ability = ABILITY_MAGICIAN,
+    .heldItem = ITEM_BLACK_SLUDGE,
+    .nature = NATURE_JOLLY,
+    },
+    {
+    .species = SPECIES_PIPLUP,
+    .moves = {MOVE_ICY_WIND, MOVE_WATER_GUN, MOVE_PECK, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 12,
+    .ball = ITEM_PREMIER_BALL,
+    .ability = ABILITY_POLAR_HERITAGE,
+    .nature = NATURE_LONELY,
     }
 };
 

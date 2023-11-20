@@ -877,9 +877,10 @@
 #define MOVE_RECHARGE       843
 #define MOVE_DING_DOOM      844
 #define MOVE_MONSOON        845
+#define MOVE_HIT_AND_RUN    846
 
 
-#define MOVES_COUNT_GEN9 846
+#define MOVES_COUNT_GEN9 847
 
 #define MOVES_COUNT         MOVES_COUNT_GEN9
 

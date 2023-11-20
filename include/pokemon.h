@@ -303,10 +303,10 @@ struct BattlePokemon
     /*0x51*/ u32 status2;
     /*0x55*/ u32 otId;
     /*0x59*/ u8 metLevel;
-             u8 canWeatherChange:TRUE;
-             u8 canGravityChange:TRUE;
-             u8 canTerrainChange:TRUE;
-             u8 gangstered: 1;
+             u8 canWeatherChange:1;
+             u8 canGravityChange:1;
+             u8 canTerrainChange:1;
+             u8 gangstered:1;
 };
 
 struct SpeciesInfo /*0x24*/

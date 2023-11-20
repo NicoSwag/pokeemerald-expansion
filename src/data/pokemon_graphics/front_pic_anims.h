@@ -8875,22 +8875,6 @@ static const union AnimCmd sAnim_Solgaleo_1[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_Tinkatink_1[] =
-{
-    ANIMCMD_FRAME(0, 1),
-    ANIMCMD_END,
-};
-static const union AnimCmd sAnim_Tinkatuff_1[] =
-{
-    ANIMCMD_FRAME(0, 1),
-    ANIMCMD_END,
-};
-
-static const union AnimCmd sAnim_Tinkaton_1[] =
-{
-    ANIMCMD_FRAME(0, 1),
-    ANIMCMD_END,
-};
 
 static const union AnimCmd sAnim_Lunala_1[] =
 {
@@ -11504,9 +11488,6 @@ SINGLE_ANIMATION(JANGMO_O);
 SINGLE_ANIMATION(HAKAMO_O);
 SINGLE_ANIMATION(KOMMO_O);
 SINGLE_ANIMATION(TapuKoko);
-SINGLE_ANIMATION(Tinkatink);
-SINGLE_ANIMATION(Tinkatuff);
-SINGLE_ANIMATION(Tinkaton);
 SINGLE_ANIMATION(TapuLele);
 SINGLE_ANIMATION(TapuBulu);
 SINGLE_ANIMATION(TapuFini);
@@ -12743,9 +12724,6 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[NUM_SPECIES + 1] =
     [SPECIES_ROOKIDEE] = sAnims_Rookidee,
     [SPECIES_CORVISQUIRE] = sAnims_Corvisquire,
     [SPECIES_CORVIKNIGHT] = sAnims_Corviknight,
-    [SPECIES_TINKATINK]  = sAnims_Tinkatink,
-    [SPECIES_TINKATUFF]  = sAnims_Tinkatuff,
-    [SPECIES_TINKATON]  = sAnims_Tinkaton,
     [SPECIES_BLIPBUG] = sAnims_Blipbug,
     [SPECIES_DOTTLER] = sAnims_Dottler,
     [SPECIES_ORBEETLE] = sAnims_Orbeetle,

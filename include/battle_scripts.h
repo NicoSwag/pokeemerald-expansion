@@ -159,6 +159,7 @@ extern const u8 BattleScript_SpeedBoostActivates[];
 extern const u8 BattleScript_TraceActivates[];
 extern const u8 BattleScript_TraceActivatesEnd3[];
 extern const u8 BattleScript_RainDishActivates[];
+extern const u8 BattleScript_ForestBountyActivates[];
 extern const u8 BattleScript_SandstreamActivates[];
 extern const u8 BattleScript_PollutionActivates[];
 extern const u8 BattleScript_ShedSkinActivates[];
@@ -187,7 +188,6 @@ extern const u8 BattleScript_OwnTempoPrevents[];
 extern const u8 BattleScript_SoundproofProtected[];
 extern const u8 BattleScript_AbilityNoSpecificStatLoss[];
 extern const u8 BattleScript_StickyHoldActivates[];
-extern const u8 BattleScript_ColorChangeActivates[];
 extern const u8 BattleScript_RoughSkinActivates[];
 extern const u8 BattleScript_CuteCharmActivates[];
 extern const u8 BattleScript_AbilityStatusEffect[];
@@ -327,6 +327,7 @@ extern const u8 BattleScript_TrainerBSlideMsgRet[];
 extern const u8 BattleScript_TrainerBSlideMsgEnd2[];
 extern const u8 BattleScript_MoveEffectFeint[];
 extern const u8 BattleScript_ProteanActivates[];
+extern const u8 BattleScript_ColorChangeActivates[];
 extern const u8 BattleScript_DazzlingProtected[];
 extern const u8 BattleScript_MoveUsedPsychicTerrainPrevents[];
 extern const u8 BattleScript_MoveUsedPowder[];
@@ -504,5 +505,6 @@ extern const u8 BattleScript_RecoverHPZMove[];
 extern const u8 BattleScript_StatUpZMove[];
 extern const u8 BattleScript_HealReplacementZMove[];
 extern const u8 BattleScript_EffectExtremeEvoboost[];
+
 
 #endif // GUARD_BATTLE_SCRIPTS_H

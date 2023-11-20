@@ -920,9 +920,6 @@ const struct MonCoords gMonFrontPicCoords[NUM_SPECIES + 1] =
     [SPECIES_SNEASLER]                     = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_OVERQWIL]                     = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_ENAMORUS]                     = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
-    [SPECIES_TINKATINK]                         = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
-    [SPECIES_TINKATUFF]                         = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
-    [SPECIES_TINKATON]                          = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
 #endif
 #if P_GEN_9_POKEMON == TRUE
     [SPECIES_SPRIGATITO]                        = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  8 },

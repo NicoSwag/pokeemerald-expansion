@@ -1007,6 +1007,7 @@ static const u16 sFinalStrikeOnlyEffects[] =
     EFFECT_SMELLINGSALT,
     EFFECT_WAKE_UP_SLAP,
     EFFECT_HIT_ESCAPE,
+    EFFECT_ESCAPE_HEAL,
     EFFECT_RECOIL_HP_25,
     EFFECT_HIT_PREVENT_ESCAPE,
     EFFECT_HIT_SWITCH_TARGET,
@@ -1296,12 +1297,173 @@ bool32 ProteanTryChangeType(u32 battler, u32 ability, u32 move, u32 moveType)
     return FALSE;
 }
 
+u8 GetHiddenPowerType(u32 move, u32 attacker, u32 target)
+{
+    bool32 quadrupleEffectiveness;
+    bool32 doubleEffectiveness;
+    bool32 neutral;
+    u32 effectiveType[NUMBER_OF_MON_TYPES];
+    u8 numberOfTypes = 0;
+    u32 bestType;
+    u8 i;
+    quadrupleEffectiveness = FALSE;
+    doubleEffectiveness = FALSE;
+    neutral = FALSE;
+    // first loop checks for 4x effectiveness
+    for(i = 0; i < NUMBER_OF_MON_TYPES; i++)
+    {
+        if(CalcTypeEffectivenessMultiplier(move, i, attacker, target, AI_DATA->abilities[target], FALSE) >= UQ_4_12(4.0))
+        {
+            quadrupleEffectiveness = TRUE;
+            effectiveType[numberOfTypes] = i;
+            numberOfTypes++;
+        }
+    }
+    if(quadrupleEffectiveness)
+    {
+            bestType = effectiveType[Random() % numberOfTypes];
+            return bestType;
+    }
+    //second loop checks for 2x effectiveness
+    numberOfTypes = 0;
+    for(i = 0; i < NUMBER_OF_MON_TYPES; i++)
+    {
+        if(CalcTypeEffectivenessMultiplier(move, i, attacker, target, AI_DATA->abilities[target], FALSE) >= UQ_4_12(2.0))
+        {
+            doubleEffectiveness = TRUE;
+            effectiveType[numberOfTypes] = i;
+            numberOfTypes++;
+        }
+    }
+    if(doubleEffectiveness)
+    {
+            bestType = effectiveType[Random() % numberOfTypes];
+            return bestType;
+    }
+    //if all else fails, use neutral
+    numberOfTypes = 0;
+    for(i = 0; i < NUMBER_OF_MON_TYPES; i++)
+    {
+        if(CalcTypeEffectivenessMultiplier(move, i, attacker, target, AI_DATA->abilities[target], FALSE) >= UQ_4_12(1.0) && i != TYPE_MYSTERY)
+        {
+            neutral = TRUE;
+            effectiveType[numberOfTypes] = i;
+            numberOfTypes++;
+        }
+    }
+    if(neutral)
+    {
+        bestType = effectiveType[Random() % numberOfTypes];
+        return bestType;
+    }
+}
+
+
+u32 CalcBestType(u32 move, u32* type, u8 size, u32 target, u32 attacker)
+{
+    bool32 nullEffectiveness;
+    bool32 quadResistance;
+    bool32 doubleResistance;
+    u32 bestTypes[size];
+    u32 numberOfTypes = 0;
+    u8 random;
+    u8 i;
+    //check if the user is immune to any of the selected types
+    for (i = 0; i < size; i++)
+    {
+        if(CalcTypeEffectivenessMultiplier(move, type[i], attacker, target, AI_DATA->abilities[target], FALSE) == UQ_4_12(0.0))
+        {
+            nullEffectiveness = TRUE;
+            bestTypes[numberOfTypes] = type[i];
+            numberOfTypes++;
+        }
+    }
+    //now check if there's more than one: if yes, select a type at random
+    if(nullEffectiveness)
+    {
+        if(numberOfTypes > 1)
+        {
+            random = Random() % numberOfTypes;
+        }
+        else
+        {
+            random = 0;
+        }
+        return random;
+    }
+    // do the same with quadruple resistances
+     for (i = 0; i < size; i++)
+    {
+        if(CalcTypeEffectivenessMultiplier(move, type[i], attacker, target, AI_DATA->abilities[target], FALSE) == UQ_4_12(0.25))
+        {
+            quadResistance = TRUE;
+            bestTypes[numberOfTypes] = type[i];
+            numberOfTypes++;
+        }
+    }
+    if(quadResistance)
+    {
+        if(numberOfTypes > 1)
+        {
+            random = Random() % numberOfTypes;
+        }
+        else
+        {
+            random = 0;
+        }
+        return random;
+    }
+
+    //finally a douuble resistance
+     for (i = 0; i < size; i++)
+    {
+        if(CalcTypeEffectivenessMultiplier(move, type[i], attacker, target, AI_DATA->abilities[target], FALSE) == UQ_4_12(0.0))
+        {
+            doubleResistance = TRUE;
+            bestTypes[numberOfTypes] = type[i];
+            numberOfTypes++;
+        }
+    }
+    //now check if there's more than one: if yes, select a type at random
+    if(doubleResistance)
+    {
+        if(numberOfTypes > 1)
+        {
+            random = Random() % numberOfTypes;
+        }
+        else
+        {
+            random = 0;
+        }
+        return random;
+    }
+    //and if there's nothing else, returna random value
+    random = Random() % size;
+    return random;
+}
+
+
+bool32 ColorChangeTryChangeType(u32 defender, u32 ability, u32 move, u32 moveType)
+{
+      if ((ability == ABILITY_COLOR_CHANGE)
+         && (gBattleMons[defender].type1 != moveType || gBattleMons[defender].type2 != moveType
+             || (gBattleMons[defender].type3 != moveType && gBattleMons[defender].type3 != TYPE_MYSTERY))
+         && move != MOVE_STRUGGLE
+         && gBattleMoves[move].split != SPLIT_STATUS) 
+    {
+        SET_BATTLER_TYPE(gBattlerTarget, moveType);
+        return TRUE;
+    }
+    return FALSE;
+}
+
 static void Cmd_attackcanceler(void)
 {
     CMD_ARGS();
 
     s32 i, moveType;
     u16 attackerAbility = GetBattlerAbility(gBattlerAttacker);
+    u16 targetAbility = GetBattlerAbility(gBattlerTarget);
     GET_MOVE_TYPE(gCurrentMove, moveType);
 
     if (gBattleOutcome != 0)
@@ -1374,6 +1536,17 @@ static void Cmd_attackcanceler(void)
         PrepareStringBattle(STRINGID_EMPTYSTRING3, gBattlerAttacker);
         gBattleCommunication[MSG_DISPLAY] = 1;
         gBattlescriptCurrInstr = BattleScript_ProteanActivates;
+        return;
+    }
+
+    if (ColorChangeTryChangeType(gBattlerTarget, targetAbility, gCurrentMove, moveType))
+    {
+        PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
+        gBattlerAbility = gBattlerTarget;
+        BattleScriptPushCursor();
+        PrepareStringBattle(STRINGID_EMPTYSTRING3, gBattlerTarget);
+        gBattleCommunication[MSG_DISPLAY] = 1;
+        gBattlescriptCurrInstr = BattleScript_ColorChangeActivates;
         return;
     }
 
@@ -6173,6 +6346,8 @@ static void Cmd_moveend(void)
                         gLastUsedItem = gBattleMons[battler].item;
                         if (gBattleMoves[gCurrentMove].effect == EFFECT_HIT_ESCAPE)
                             gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
+                        if (gBattleMoves[gCurrentMove].effect == EFFECT_ESCAPE_HEAL)
+                            gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
                         BattleScriptPushCursor();
                         gBattlescriptCurrInstr = BattleScript_EjectButtonActivates;
                         effect = TRUE;
@@ -6208,6 +6383,8 @@ static void Cmd_moveend(void)
                         gBattleStruct->savedBattlerTarget = gBattleScripting.battler = battler;  // Battler with red card
                         gEffectBattler = gBattlerAttacker;
                         if (gBattleMoves[gCurrentMove].effect == EFFECT_HIT_ESCAPE)
+                            gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
+                         if (gBattleMoves[gCurrentMove].effect == EFFECT_ESCAPE_HEAL)
                             gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
                         BattleScriptPushCursor();
                         gBattlescriptCurrInstr = BattleScript_RedCardActivates;
@@ -14914,6 +15091,17 @@ static void Cmd_switchoutabilities(void)
             break;
         }
 
+        if(gBattleMoves[gCurrentMove].effect == EFFECT_ESCAPE_HEAL){
+             gBattleMoveDamage = gBattleMons[battler].maxHP / 3;
+            gBattleMoveDamage += gBattleMons[battler].hp;
+            if (gBattleMoveDamage > gBattleMons[battler].maxHP)
+                gBattleMoveDamage = gBattleMons[battler].maxHP;
+            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_HP_BATTLE,
+                                         gBitTable[*(gBattleStruct->battlerPartyIndexes + battler)],
+                                         sizeof(gBattleMoveDamage),
+                                         &gBattleMoveDamage);
+            MarkBattlerForControllerExec(battler);
+        }
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }

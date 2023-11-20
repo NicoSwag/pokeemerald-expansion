@@ -986,7 +986,7 @@ LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "Don't they know that HOENN has special\n"
 	.string "laws for the preservation of the\l"
 	.string "environment?\p"
-	.string "You need a license for that, good heavens!\p!
+	.string "You need a license for that, good heavens!\p"
 	.string "Er, anyway…\p"
 	.string "Even if it was a bit careless,\n"
 	.string "no one can deny you and {RIVAL}\l"
