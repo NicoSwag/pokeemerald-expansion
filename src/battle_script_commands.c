@@ -4187,6 +4187,9 @@ static void Cmd_cleareffectsonfaint(void)
         if(gBattleMons[battler].ability==ABILITY_BLACK_HOLE && gBattleMons[battler].canGravityChange == TRUE && STATUS_FIELD_GRAVITY){
             gFieldStatuses &= ~STATUS_FIELD_GRAVITY;
         }
+        if(gBattleMons[battler].ability==ABILITY_NEGATIVE_ZONE && gBattleMons[battler].canTrickRoomChange == TRUE && STATUS_FIELD_TRICK_ROOM){
+            gFieldStatuses &= ~STATUS_FIELD_TRICK_ROOM;
+        }
         FaintClearSetData(battler); // Effects like attractions, trapping, etc.
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
@@ -5382,8 +5385,7 @@ static void PlayAnimation(u32 battler, u8 animId, const u16 *argPtr, const u8 *n
      || animId == B_ANIM_ILLUSION_OFF
      || animId == B_ANIM_FORM_CHANGE
      || animId == B_ANIM_SUBSTITUTE_FADE
-     || animId == B_ANIM_PRIMAL_REVERSION
-     || animId == B_ANIM_ULTRA_BURST)
+     || animId == B_ANIM_PRIMAL_REVERSION)
     {
         BtlController_EmitBattleAnimation(battler, BUFFER_A, animId, *argPtr);
         MarkBattlerForControllerExec(battler);
@@ -14779,7 +14781,7 @@ static void Cmd_setroom(void)
         HandleRoomMove(STATUS_FIELD_MAGIC_ROOM, &gFieldTimers.magicRoomTimer, 4);
         break;
     default:
-        gBattleCommunication[MULTISTRING_CHOOSER] = 6;
+        HandleRoomMove(STATUS_FIELD_TRICK_ROOM, &gFieldTimers.trickRoomTimer, 0);
         break;
     }
     gBattlescriptCurrInstr = cmd->nextInstr;
@@ -15026,6 +15028,12 @@ static void Cmd_switchoutabilities(void)
             if(gFieldStatuses & STATUS_FIELD_GRAVITY && gBattleMons[battler].canGravityChange == TRUE){
                 
                 gFieldStatuses &= ~STATUS_FIELD_GRAVITY;
+            }
+        break;
+        case ABILITY_NEGATIVE_ZONE:
+            if(gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gBattleMons[battler].canTrickRoomChange == TRUE){
+                
+                gFieldStatuses &= ~STATUS_FIELD_TRICK_ROOM;
             }
         break;
         case ABILITY_SAND_STREAM:

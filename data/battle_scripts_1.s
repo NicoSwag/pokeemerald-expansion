@@ -462,7 +462,6 @@ BattleScript_EffectSaltCure_End:
 	goto BattleScript_MoveEnd
 
 BattleScript_SaltCureExtraDamage::
-	playanimation BS_TARGET, B_ANIM_SALT_CURE_DAMAGE, NULL
 	waitanimation
 	call BattleScript_HurtTarget_NoString
 	printstring STRINGID_TARGETISHURTBYSALTCURE
@@ -3099,6 +3098,22 @@ BattleScript_GravityFail:
 	printstring STRINGID_BUTITFAILED
 	goto BattleScript_BlackHoleLoopEnd
 	
+
+
+BattleScript_NegativeZoneLoop:
+	goto BattleScript_NegativeZoneLoopIncrement
+BattleScript_NegativeZoneLoopIncrement:
+	addbyte gBattlerTarget, 1
+BattleScript_NegativeZoneLoopEnd:
+	copybyte sBATTLER, gBattlerAttacker
+	destroyabilitypopup
+	pause B_WAIT_TIME_MED
+	end3
+BattleScript_TrickRoomFail:
+	printstring STRINGID_BUTITFAILED
+	goto BattleScript_NegativeZoneLoopEnd
+
+
 
 BattleScript_EffectRoost:
 	attackcanceler
@@ -7872,7 +7887,6 @@ BattleScript_UltraBurst::
 	waitmessage B_WAIT_TIME_LONG
 	setbyte gIsCriticalHit, 0
 	handleultraburst BS_ATTACKER, 0
-	playanimation BS_ATTACKER, B_ANIM_ULTRA_BURST
 	waitanimation
 	handleultraburst BS_ATTACKER, 1
 	printstring STRINGID_ULTRABURSTCOMPLETED
@@ -8831,6 +8845,16 @@ BattleScript_BlackHoleActivates::
 	waitmessage B_WAIT_TIME_SHORT
 	setbyte gBattlerTarget, 0
 	goto BattleScript_BlackHoleLoop
+	
+
+BattleScript_NegativeZoneActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	setroom
+	playanimation BS_BATTLER_0, B_ANIM_TRICK_ROOM
+	printfromtable gRoomsStringIds
+	waitmessage B_WAIT_TIME_LONG
+	end3
 
 BattleScript_DroughtActivates::
 	pause B_WAIT_TIME_SHORT

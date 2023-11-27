@@ -548,10 +548,9 @@
 #define B_ANIM_ZMOVE_ACTIVATE           34 // Using Z Moves
 #define B_ANIM_AFFECTION_HANGED_ON      35
 #define B_ANIM_SNOW_CONTINUES           36
-#define B_ANIM_ULTRA_BURST              37
-#define B_ANIM_SALT_CURE_DAMAGE         38
-#define B_ANIM_GRAVITY                  39
-#define B_ANIM_POLLUTION_CONTINUES      40
+#define B_ANIM_GRAVITY                  37
+#define B_ANIM_POLLUTION_CONTINUES      38
+#define B_ANIM_TRICK_ROOM               39
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

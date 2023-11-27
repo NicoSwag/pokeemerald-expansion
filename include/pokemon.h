@@ -305,6 +305,7 @@ struct BattlePokemon
     /*0x59*/ u8 metLevel;
              u8 canWeatherChange:1;
              u8 canGravityChange:1;
+             u8 canTrickRoomChange:1;
              u8 canTerrainChange:1;
              u8 gangstered:1;
 };

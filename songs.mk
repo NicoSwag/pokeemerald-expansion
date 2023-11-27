@@ -1263,3 +1263,37 @@ $(MID_SUBDIR)/se_m_leer.s: %.s: %.mid
 
 $(MID_SUBDIR)/se_dex_search.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -v100 -P5
+
+$(MID_SUBDIR)/mus_looker_theme.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G087 -v100 -P5
+
+$(MID_SUBDIR)/mus_vs_johto_leader.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G125 -v100 -P5
+
+$(MID_SUBDIR)/mus_vs_zinnia.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_eterna_forest.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_mt_coronet.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_mt_thunder.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_route216.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_unova_route10.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_azalea.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_pmd_dialga.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_vs_wally.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+

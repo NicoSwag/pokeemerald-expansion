@@ -737,7 +737,7 @@ const u16 gEggMoves[] = {
         MOVE_BABY_DOLL_EYES),
 
     egg_moves(HOOTHOOT,
-        MOVE_FEATHER_DANCE,
+        MOVE_HYPNOSIS,
         MOVE_TAILWIND),
 
     egg_moves(LEDYBA,
@@ -1819,18 +1819,10 @@ const u16 gEggMoves[] = {
         MOVE_COSMIC_POWER),
 
     egg_moves(KECLEON,
-        MOVE_DISABLE,
-        MOVE_MAGIC_COAT,
-        MOVE_TRICK,
-        MOVE_FAKE_OUT,
+        MOVE_HIDDEN_POWER,
         MOVE_NASTY_PLOT,
-        MOVE_DIZZY_PUNCH,
-        MOVE_RECOVER,
-        MOVE_SKILL_SWAP,
-        MOVE_SNATCH,
         MOVE_FOUL_PLAY,
-        MOVE_CAMOUFLAGE,
-        MOVE_POWER_UP_PUNCH),
+        MOVE_FAKE_OUT),
 
     egg_moves(SHUPPET,
         MOVE_DISABLE,

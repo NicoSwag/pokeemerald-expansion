@@ -4026,6 +4026,17 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(PH_NURSE_BLEND) \
     X(PH_NURSE_HELD) \
     X(PH_NURSE_SOLO) \
+    X(MUS_LOOKER_THEME) \
+    X(MUS_VS_JOHTO_LEADER) \
+    X(MUS_VS_ZINNIA) \
+    X(MUS_ETERNA_FOREST) \
+    X(MUS_MT_CORONET) \
+    X(MUS_MT_THUNDER) \
+    X(MUS_ROUTE216) \
+    X(MUS_UNOVA_ROUTE10) \
+    X(MUS_AZALEA) \
+    X(MUS_PMD_DIALGA) \
+    X(MUS_VS_WALLY) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \

@@ -611,6 +611,17 @@ gSongTable::
 	song ph_nurse_blend, 2, 2
 	song ph_nurse_held, 2, 2
 	song ph_nurse_solo, 2, 2
+	song mus_looker_theme, 0, 0
+	song mus_vs_johto_leader, 0, 0
+	song mus_vs_zinnia, 0, 0
+	song mus_eterna_forest, 0, 0
+	song mus_mt_coronet, 0, 0
+	song mus_mt_thunder, 0, 0
+	song mus_route216, 0, 0
+	song mus_unova_route10, 0, 0
+	song mus_azalea, 0, 0
+	song mus_pmd_dialga, 0, 0
+	song mus_vs_wally, 0, 0
 
 	.align 2
 dummy_song_header:

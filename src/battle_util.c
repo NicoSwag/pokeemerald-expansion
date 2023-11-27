@@ -4140,6 +4140,7 @@ static bool32 TryChangeBattleTerrain(u32 battler, u32 statusFlag, u8 *timer)
         gFieldStatuses &= ~(STATUS_FIELD_MISTY_TERRAIN | STATUS_FIELD_GRASSY_TERRAIN | STATUS_FIELD_ELECTRIC_TERRAIN | STATUS_FIELD_PSYCHIC_TERRAIN);
         gFieldStatuses |= statusFlag;
 
+        
         if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERRAIN_EXTENDER)
             *timer = 8;
         else
@@ -4754,7 +4755,20 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
-
+        case ABILITY_NEGATIVE_ZONE:
+            if(gFieldStatuses == STATUS_FIELD_TRICK_ROOM && !gSpecialStatuses[battler].switchInAbilityDone){
+            gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+            gBattleMons[battler].canTrickRoomChange = FALSE;}
+            if (gFieldStatuses == !STATUS_FIELD_TRICK_ROOM && gSpecialStatuses[battler].switchInAbilityDone == FALSE)
+            {
+                gBattleMons[battler].canTrickRoomChange = TRUE;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                BattleScriptPushCursorAndCallback(BattleScript_NegativeZoneActivates);
+                effect++;
+            }
+            break;
+        
+        
         case ABILITY_SNOW_WARNING:
             #if B_SNOW_WARNING >= GEN_9
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_SNOW, TRUE))

@@ -42,7 +42,7 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
-#define FLAG_UNUSED_0x20   0x20 // Unused Flag
+#define FLAG_UTILITY_UMBRELLA   0x20 // Unused Flag
 #define FLAG_HEAL_AFTER_BATTLE    0x21 // Unused Flag
 #define FLAG_CANDY_IN_SHOPS    0x22 // Unused Flag
 #define FLAG_LEVEL_CAPS    0x23 // Unused Flag

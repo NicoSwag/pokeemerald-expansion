@@ -4,33 +4,16 @@ RustboroCity_House1_MapScripts::
 RustboroCity_House1_EventScript_Trader::
 	lock
 	faceplayer
-	goto_if_set FLAG_RUSTBORO_NPC_TRADE_COMPLETED, RustboroCity_House1_EventScript_TradeCompleted
-	setvar VAR_0x8008, INGAME_TRADE_SEEDOT
-	copyvar VAR_0x8004, VAR_0x8008
-	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
-	copyvar VAR_0x8009, VAR_RESULT
-	msgbox RustboroCity_House1_Text_IllTradeIfYouWant, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, RustboroCity_House1_EventScript_DeclineTrade
-	special ChoosePartyMon
-	waitstate
-	copyvar VAR_0x800A, VAR_0x8004
-	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, RustboroCity_House1_EventScript_DeclineTrade
-	copyvar VAR_0x8005, VAR_0x800A
-	specialvar VAR_RESULT, GetTradeSpecies
-	copyvar VAR_0x800B, VAR_RESULT
-	goto_if_ne VAR_RESULT, VAR_0x8009, RustboroCity_House1_EventScript_NotRequestedMon
-	copyvar VAR_0x8004, VAR_0x8008
-	copyvar VAR_0x8005, VAR_0x800A
-	special CreateInGameTradePokemon
-	special DoInGameTradeScene
-	waitstate
-	msgbox RustboroCity_House1_Text_PleaseBeGoodToMyPokemon, MSGBOX_DEFAULT
-	setflag FLAG_RUSTBORO_NPC_TRADE_COMPLETED
+	goto_if_set FLAG_UTILITY_UMBRELLA, RustboroCity_House1_EventScript_DeclineTrade
+	msgbox RustboroCity_House1_Text_YouDontWantToThatsOkay, 
+	giveitem ITEM_UTILITY_UMBRELLA
+	setflag FLAG_UTILITY_UMBRELLA
+	msgbox RustboroCity_House1_Text_AnyPokemonCanBeCute, MSGBOX_DEFAULT
 	release
 	end
 
 RustboroCity_House1_EventScript_DeclineTrade::
-	msgbox RustboroCity_House1_Text_YouDontWantToThatsOkay, MSGBOX_DEFAULT
+	msgbox RustboroCity_House1_Text_AnyPokemonCanBeCute, MSGBOX_DEFAULT
 	release
 	end
 
@@ -66,12 +49,16 @@ RustboroCity_House1_Text_DoesntLookLikeMonToMe:
 	.string "a {STR_VAR_1} to me.$"
 
 RustboroCity_House1_Text_YouDontWantToThatsOkay:
-	.string "Oh, if you don't want to, that's okay.\n"
-	.string "But my POKéMON is cute, you know…$"
+	.string "At least this city isn't affected\n"
+	.string "by the strange weather…\p"
+	.string "But if you're traveling, make sure\n"
+	.string "to prepare for all conditions.$"
+	.string "Here, this can help you!$"
 
 RustboroCity_House1_Text_AnyPokemonCanBeCute:
-	.string "Any POKéMON can be cute if you raise\n"
-	.string "it with care and kindness.$"
+	.string "This special umbrella will protect\n"
+	.string "you from the rain and the sun!\p"
+	.string "Won't do much for a sandstorm, though.$"
 
 RustboroCity_House1_Text_AllSortsOfPlaces:
 	.string "In all sorts of places, there are all\n"

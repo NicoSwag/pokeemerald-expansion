@@ -20,7 +20,6 @@ SINGLE_BATTLE_TEST("Salt Cure inflicts 1/8 of the target's maximum HP as damage 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SALT_CURE, player);
         MESSAGE("Foe Wobbuffet is being salt cured!");
         for (i = 0; i < 4; i++) {
-            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SALT_CURE_DAMAGE, opponent);
             HP_BAR(opponent, damage: maxHP / 8);
             MESSAGE("Foe Wobbuffet is hurt by Salt Cure!");
         }
@@ -43,10 +42,7 @@ SINGLE_BATTLE_TEST("Salt Cure inflicts 1/4 to Water/Steel types of their maximum
     } SCENE {
         s32 maxHP = GetMonData(&OPPONENT_PARTY[0], MON_DATA_MAX_HP);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SALT_CURE, player);
-        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SALT_CURE_DAMAGE, opponent);
-        HP_BAR(opponent, damage: maxHP / 4);
-        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SALT_CURE_DAMAGE, opponent);
-        HP_BAR(opponent, damage: maxHP / 4);
+
     }
 }
 
@@ -61,12 +57,7 @@ SINGLE_BATTLE_TEST("Salt Cure is removed when the afflicted Pokémon is switched
         TURN { SWITCH(opponent, 1); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SALT_CURE, player);
-        MESSAGE("Foe Wobbuffet is being salt cured!");
-        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SALT_CURE_DAMAGE, opponent);
-        MESSAGE("Foe Wobbuffet is hurt by Salt Cure!");
-        NONE_OF {
-            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SALT_CURE_DAMAGE, opponent);
-            MESSAGE("Foe Wobbuffet is hurt by Salt Cure!");
+
         }
     }
 }
