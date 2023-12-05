@@ -13,7 +13,8 @@ gText_Birch_Pokemon::
 	.string "$"
 
 gText_Birch_MainSpeech::
-	.string "Braver than me, at least! Ahah!\p"
+	.string "Braver than me, at least!\n"
+	.string "Ahah!\p"
 	.string "Anyway…\p"
 	.string "The region of HOENN is home to\n"
 	.string "many strange weather phenomena.\p"
@@ -28,8 +29,8 @@ gText_Birch_MainSpeech::
 	.string "are still felt to this day…\l"
 	.string "Or so the story goes, at least.\p"
 	.string "Humans only settled on HOENN long\n"
-	.string "after these events, so their\n"
-	.string "veracity is disputed.\p"
+	.string "after these events, so no one knows\l"
+	.string "the full truth.\p"
 	.string "And to unravel these mysteries,\n"
 	.string "I've been undertaking research.\l"
 	.string "That's what I do.\p"

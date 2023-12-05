@@ -889,7 +889,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	end
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork:
-	.string "Hunh? PROF. BIRCH?\p"
+	.string "Huh? PROF. BIRCH?\p"
 	.string "Well, yes, I could be asking the same\n"
 	.string "question.\p"
 	.string "He was supposed to fill out a research\n"
@@ -1004,14 +1004,26 @@ LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "of any POKéMON you meet or catch.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
-	.string "PROF. BIRCH: Countless POKéMON\n"
-	.string "await you!\p"
-	.string "Argh, I'm getting the itch to get out\n"
-	.string "and do fieldwork again!$"
-
+	.string "PROF. BIRCH: So, {PLAYER}{KUN}!\p"
+	.string "Now that you have your own POKéMON,\n"
+	.string "what are you gonna do?\p"
+	.string "If I may suggest something…\p"
+	.string "I think you could aim to enter the\n"
+	.string "EVER GRANDE CONFERENCE!\p"
+	.string "It's a tournament organized every\n"
+	.string "year by the POKéMON LEAGUE, where\l"
+	.string "the best TRAINERS of the region\l"
+	.string "compete with each other.\p"
+	.string "Oh, but… I'm rambling again.\p"
+	.string "I won't keep you and {RIVAL}\n"
+	.string "any longer than this.\p"
+	.string "Now go!$"
 LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese:
-	.string "MAY: Huh…\n"
-	.string "So you got a POKéDEX, too.\p"
+	.string "MAY: EVER GRANDE CONFERENCE…\p"
+	.string "To participate, you're gonna need\n"
+	.string "to defeat the eight GYM LEADERS.\p"
+	.string "You're gonna need a strong team for\n"
+	.string "that!\p"
 	.string "Well then, here.\n"
 	.string "I guess you're gonna need these.$"
 
@@ -1031,10 +1043,14 @@ LittlerootTown_ProfessorBirchsLab_Text_MayWhereShouldIGoNext:
 	.string "for POKéMON next?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese:
-	.string "BRENDAN: Huh…\n"
-	.string "So you got a POKéDEX, too.\p"
+	.string "BRENDAN: EVER GRANDE CONFERENCE…\p"
+	.string "To participate, you're gonna need\n"
+	.string "to defeat the eight GYM LEADERS.\p"
+	.string "You're gonna need a strong team for\n"
+	.string "that!\p"
 	.string "Well then, here.\n"
 	.string "I guess you're gonna need these.$"
+
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls:
 	.string "BRENDAN: You know, it's more fun to\n"

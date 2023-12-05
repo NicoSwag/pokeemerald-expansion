@@ -681,6 +681,15 @@ const struct BattleBackground sBattleTerrainTable[] =
         .palette = gBattleTerrainPalette_TallGrassOvercast,
     },
 
+    [BATTLE_TERRAIN_GYM_ARENA] =
+    {
+        .tileset = gBattleTerrainTiles_GymArena,
+        .tilemap = gBattleTerrainTilemap_GymArena,
+        .entryTileset = gBattleTerrainAnimTiles_GymArena,
+        .entryTilemap = gBattleTerrainAnimTilemap_GymArena,
+        .palette = gBattleTerrainPalette_GymArena,
+    },
+
     [BATTLE_TERRAIN_FOREST] =
     {
         .tileset = gBattleTerrainTiles_Forest,
@@ -870,8 +879,8 @@ void DrawMainBattleBackground(void)
             u8 trainerClass = gTrainers[gTrainerBattleOpponent_A].trainerClass;
             if (trainerClass == TRAINER_CLASS_LEADER)
             {
-                LZDecompressVram(gBattleTerrainTiles_Building, (void *)(BG_CHAR_ADDR(2)));
-                LZDecompressVram(gBattleTerrainTilemap_Building, (void *)(BG_SCREEN_ADDR(26)));
+                LZDecompressVram(gBattleTerrainTiles_BuildingLeader, (void *)(BG_CHAR_ADDR(2)));
+                LZDecompressVram(gBattleTerrainTilemap_BuildingLeader, (void *)(BG_SCREEN_ADDR(26)));
                 LoadCompressedPalette(gBattleTerrainPalette_BuildingLeader, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
                 return;
             }
@@ -934,6 +943,11 @@ void DrawMainBattleBackground(void)
                         LZDecompressVram(gBattleTerrainTiles_TallGrassOvercast, (void *)(BG_CHAR_ADDR(2)));
                         LZDecompressVram(gBattleTerrainTiles_TallGrassOvercast, (void *)(BG_SCREEN_ADDR(26)));
                         LoadCompressedPalette(gBattleTerrainTiles_TallGrassOvercast, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+                        return;
+                        case MAP_TYPE_GYM_ARENA:
+                        LZDecompressVram(gBattleTerrainTiles_GymArena, (void *)(BG_CHAR_ADDR(2)));
+                        LZDecompressVram(gBattleTerrainTiles_GymArena, (void *)(BG_SCREEN_ADDR(26)));
+                        LoadCompressedPalette(gBattleTerrainTiles_GymArena, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
                         return;
                         case MAP_TYPE_FOREST:
                         LZDecompressVram(gBattleTerrainTiles_Forest, (void *)(BG_CHAR_ADDR(2)));
@@ -1383,6 +1397,10 @@ void DrawBattleEntryBackground(void)
                         LZDecompressVram(gBattleTerrainAnimTiles_TallGrassOvercast, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_TallGrassOvercast, (void *)(BG_SCREEN_ADDR(28)));
                         return;
+                        case MAP_TYPE_GYM_ARENA:
+                        LZDecompressVram(gBattleTerrainAnimTiles_GymArena, (void *)(BG_CHAR_ADDR(1)));
+                        LZDecompressVram(gBattleTerrainAnimTilemap_GymArena, (void *)(BG_SCREEN_ADDR(28)));
+                        return;
                         case MAP_TYPE_FOREST:
                         LZDecompressVram(gBattleTerrainAnimTiles_Forest, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_Forest, (void *)(BG_SCREEN_ADDR(28)));
@@ -1490,6 +1508,10 @@ bool8 LoadChosenBattleElement(u8 caseId)
                         case MAP_TYPE_OVERCAST:
                         LZDecompressVram(gBattleTerrainAnimTiles_TallGrassOvercast, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_TallGrassOvercast, (void *)(BG_SCREEN_ADDR(28)));
+                        return;                        
+                        case MAP_TYPE_GYM_ARENA:
+                        LZDecompressVram(gBattleTerrainAnimTiles_GymArena, (void *)(BG_CHAR_ADDR(1)));
+                        LZDecompressVram(gBattleTerrainAnimTilemap_GymArena, (void *)(BG_SCREEN_ADDR(28)));
                         return;
                         case MAP_TYPE_FOREST:
                         LZDecompressVram(gBattleTerrainAnimTiles_Forest, (void *)(BG_CHAR_ADDR(1)));
@@ -1600,6 +1622,9 @@ case MAP_BATTLE_SCENE_GYM:
                         case MAP_TYPE_OVERCAST:
                         LZDecompressVram(gBattleTerrainTilemap_TallGrassOvercast, (void *)(BG_SCREEN_ADDR(26)));
                         break;
+                        case MAP_TYPE_GYM_ARENA:
+                        LZDecompressVram(gBattleTerrainTilemap_GymArena, (void *)(BG_SCREEN_ADDR(26)));
+                        break;
                         case MAP_TYPE_FOREST:
                         LZDecompressVram(gBattleTerrainTilemap_Forest, (void *)(BG_SCREEN_ADDR(26)));
                         break;
@@ -1707,6 +1732,9 @@ case MAP_BATTLE_SCENE_GYM:
                         break;
                         case MAP_TYPE_OVERCAST:
                         LoadCompressedPalette(gBattleTerrainPalette_TallGrassOvercast, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+                        break;
+                        case MAP_TYPE_GYM_ARENA:
+                        LoadCompressedPalette(gBattleTerrainPalette_GymArena, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
                         break;
                         case MAP_TYPE_FOREST:
                         LoadCompressedPalette(gBattleTerrainPalette_Forest, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);

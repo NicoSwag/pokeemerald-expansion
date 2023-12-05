@@ -2075,6 +2075,21 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
     },
 
+
+    [MOVE_EMP] =
+    {
+        .effect = EFFECT_EMP,
+        .power = 100,
+        .type = TYPE_ELECTRIC,
+        .accuracy = 100,
+        .pp = 5,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_FOES_AND_ALLY,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+    },
+
     [MOVE_EGG_BOMB] =
     {
         .effect = EFFECT_HIT,
@@ -2663,6 +2678,20 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .target = MOVE_TARGET_FOES_AND_ALLY,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+    },
+
+    [MOVE_COMBUSTION] =
+    {
+        .effect = EFFECT_EXPLOSION,
+        .power = 250,
+        .type = TYPE_FIRE,
+        .accuracy = 100,
+        .pp = 5,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_FOES_AND_ALLY,
+        .priority = 0,
+        .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
     },
 
@@ -3332,7 +3361,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         #endif
         .effect = EFFECT_PARALYZE_HIT,
         .type = TYPE_ELECTRIC,
-        .accuracy = 50,
+        .accuracy = 70,
         .pp = 5,
         .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
@@ -4087,6 +4116,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_RESET_STATS,
         .snatchAffected = TRUE,
+        .lunarMove = TRUE,
     },
 
     [MOVE_RECHARGE] =
@@ -4125,7 +4155,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_CROSS_CHOP] =
     {
-        .effect = EFFECT_ALWAYS_CRIT,
+        .effect = EFFECT_HIT,
         .power = 100,
         .type = TYPE_FIGHTING,
         .accuracy = 80,
@@ -7607,7 +7637,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_MAGNET_BOMB] =
     {
         .effect = EFFECT_HIT,
-        .power = 60,
+        .power = 90,
         .type = TYPE_STEEL,
         .accuracy = 0,
         .pp = 20,
@@ -7620,7 +7650,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_STONE_EDGE] =
     {
-        .effect = EFFECT_ALWAYS_CRIT,
+        .effect = EFFECT_HIT,
         .power = 100,
         .type = TYPE_ROCK,
         .accuracy = 80,
@@ -7918,6 +7948,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .snatchAffected = B_UPDATED_MOVE_FLAGS >= GEN_5,
         .danceMove = TRUE,
+        .lunarMove = TRUE,
     },
 
     [MOVE_CRUSH_GRIP] =
@@ -9987,6 +10018,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .lunarMove = TRUE,
     },
 
     [MOVE_BOOMBURST] =
@@ -11301,6 +11333,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .ignoresTargetAbility = TRUE,
         .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_8,
+        .lunarMove = TRUE,
     },
 
     [MOVE_TEARFUL_LOOK] =
@@ -13271,6 +13304,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_NONE,
         .snatchAffected = TRUE,
+        .lunarMove = TRUE,
     },
 
     [MOVE_TAKE_HEART] =

@@ -308,6 +308,7 @@ struct BattlePokemon
              u8 canTrickRoomChange:1;
              u8 canTerrainChange:1;
              u8 gangstered:1;
+             u8 justWokeUp:1;
 };
 
 struct SpeciesInfo /*0x24*/
@@ -364,6 +365,7 @@ struct BattleMove
     u32 ignoresKingsRock:1;
     u32 highCritRatio:1;
     u32 punchingMove:1;
+    u32 lunarMove:1;
     u32 sheerForceBoost:1;
     u32 bitingMove:1;
     u32 pulseMove:1;

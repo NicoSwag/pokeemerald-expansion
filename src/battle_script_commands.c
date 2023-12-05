@@ -1026,6 +1026,7 @@ static const u16 sNaturePowerMoves[BATTLE_TERRAIN_COUNT] =
     [BATTLE_TERRAIN_MOUNTAIN]   = MOVE_EARTH_POWER,
     [BATTLE_TERRAIN_CAVE]       = MOVE_EARTH_POWER,
     [BATTLE_TERRAIN_BUILDING]   = MOVE_TRI_ATTACK,
+    [BATTLE_TERRAIN_GYM_ARENA]   = MOVE_TRI_ATTACK,
     [BATTLE_TERRAIN_PLAIN]      = MOVE_TRI_ATTACK,
     [BATTLE_TERRAIN_SNOW]       = MOVE_ICE_BEAM,
 #elif B_NATURE_POWER_MOVES == GEN_6
@@ -1129,6 +1130,7 @@ static const u8 sTerrainToType[BATTLE_TERRAIN_COUNT] =
 {
     [BATTLE_TERRAIN_GRASS]            = TYPE_GRASS,
     [BATTLE_TERRAIN_OVERCAST]            = TYPE_GRASS,
+    [BATTLE_TERRAIN_GYM_ARENA]            = TYPE_NORMAL,
     [BATTLE_TERRAIN_FOREST]            = TYPE_GRASS,
     [BATTLE_TERRAIN_LONG_GRASS]       = TYPE_GRASS,
     [BATTLE_TERRAIN_SAND]             = TYPE_GROUND,
@@ -5763,18 +5765,6 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_DEFROST: // defrosting check
-           if (gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP
-                && gBattleMons[gBattlerTarget].hp != 0
-                && gBattlerAttacker != gBattlerTarget
-                && gBattleMoves[gCurrentMove].power != 0
-                && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)){
-                gBattleMons[gBattlerTarget].status1 &= ~STATUS1_SLEEP;
-                BtlController_EmitSetMonData(gBattlerTarget, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].status1), &gBattleMons[gBattlerTarget].status1);
-                MarkBattlerForControllerExec(gBattlerTarget);
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_TargetWokeUp;
-                effect = TRUE;
-                }
             if (gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE
                 && gBattleMons[gBattlerTarget].hp != 0
                 && gBattlerAttacker != gBattlerTarget
@@ -16428,6 +16418,7 @@ static const u16 sParentalBondBannedEffects[] =
     EFFECT_BIDE, // Note: Bide should work with Parental Bond. This will be addressed in future.
     EFFECT_ENDEAVOR,
     EFFECT_EXPLOSION,
+    EFFECT_EMP,
     EFFECT_FINAL_GAMBIT,
     EFFECT_FLING,
     EFFECT_GEOMANCY,
@@ -17017,6 +17008,9 @@ void BS_SetRemoveTerrain(void)
     NATIVE_ARGS(const u8 *jumpInstr);
     u32 statusFlag = 0;
 
+    if(gBattleMoves[gCurrentMove].effect == EFFECT_EMP && (IsAbilityOnField(ABILITY_VOLT_ABSORB) || IsAbilityOnField(ABILITY_LIGHTNING_ROD) || IsAbilityOnField(ABILITY_MOTOR_DRIVE)))
+        return;
+    
     switch (gBattleMoves[gCurrentMove].effect)
     {
     case EFFECT_MISTY_TERRAIN:
@@ -17028,6 +17022,7 @@ void BS_SetRemoveTerrain(void)
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_GRASSY;
         break;
     case EFFECT_ELECTRIC_TERRAIN:
+    case EFFECT_EMP:
         statusFlag = STATUS_FIELD_ELECTRIC_TERRAIN;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_ELECTRIC;
         break;

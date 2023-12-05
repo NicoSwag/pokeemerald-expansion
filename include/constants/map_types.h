@@ -13,6 +13,7 @@
 #define MAP_TYPE_SECRET_BASE 9
 #define MAP_TYPE_OVERCAST    10
 #define MAP_TYPE_FOREST      11
+#define MAP_TYPE_GYM_ARENA   12
 
 #define MAP_BATTLE_SCENE_NORMAL       0
 #define MAP_BATTLE_SCENE_GYM          1

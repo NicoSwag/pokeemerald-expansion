@@ -451,6 +451,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectRainHit                   @ EFFECT_RAIN_HIT
 	.4byte BattleScript_EffectHitEscape               @ EFFECT_ESCAPE_HEAL
 	.4byte BattleScript_EffectHit                     @ EFFECT_CHANGE_TYPE_HIDDEN
+	.4byte BattleScript_EffectEmp           @ EFFECT_EMP
 
 BattleScript_EffectSaltCure:
 	call BattleScript_EffectHit_Ret
@@ -3412,6 +3413,15 @@ BattleScript_AlreadyAsleep::
 	setalreadystatusedmoveattempt BS_ATTACKER
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PKMNALREADYASLEEP
+	waitmessage B_WAIT_TIME_LONG
+	orhalfword gMoveResultFlags, MOVE_RESULT_FAILED
+	goto BattleScript_MoveEnd
+
+
+BattleScript_WellRested::
+	setalreadystatusedmoveattempt BS_ATTACKER
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_PKMNISRESTED
 	waitmessage B_WAIT_TIME_LONG
 	orhalfword gMoveResultFlags, MOVE_RESULT_FAILED
 	goto BattleScript_MoveEnd
@@ -8710,6 +8720,7 @@ BattleScript_IntimidateLoop:
 .if B_UPDATED_INTIMIDATE >= GEN_8
 	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_IntimidatePrevented
+	jumpifability BS_TARGET, ABILITY_MINDS_EYE, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_OBLIVIOUS, BattleScript_IntimidatePrevented
 .endif
@@ -8784,6 +8795,7 @@ BattleScript_MesmerizeLoop:
 	jumpifability BS_TARGET, ABILITY_HYPER_CUTTER, BattleScript_MesmerizePrevented
 	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_MesmerizePrevented
 	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_MesmerizePrevented
+	jumpifability BS_TARGET, ABILITY_MINDS_EYE, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_MesmerizePrevented
 	jumpifability BS_TARGET, ABILITY_OBLIVIOUS, BattleScript_MesmerizePrevented
 	jumpifability BS_TARGET, ABILITY_GUARD_DOG, BattleScript_MesmerizeInReverse
@@ -10830,3 +10842,22 @@ BattleScript_EffectRainHit::
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_ActivateWeatherAbilities
 	goto BattleScript_MoveEnd
+
+
+BattleScript_EffectEmp::
+	attackcanceler
+	attackstring
+	ppreduce
+	tryexplosion
+	waitstate
+	call BattleScript_EffectExplosion_AnimDmgRet
+	moveendall
+	setatkhptozero
+	tryfaintmon BS_ATTACKER
+	setremoveterrain BattleScript_ButItFailed
+	printfromtable gTerrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
+	call BattleScript_ActivateTerrainEffects
+	goto BattleScript_MoveEnd
+	end

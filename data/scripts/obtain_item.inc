@@ -53,10 +53,8 @@ EventScript_BufferBerriesPocket::
 EventScript_ObtainedItem::
 	message gText_ObtainedTheItem
 	delay 10
-	showitemdesc
 	waitfanfare
 	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
-	hideitemdesc
 	setvar VAR_RESULT, TRUE
 	return
 

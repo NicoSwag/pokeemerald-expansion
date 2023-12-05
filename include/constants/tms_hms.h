@@ -7,8 +7,8 @@
     F(QUASH) \
     F(TRAILBLAZE) \
     F(PROTECT) \
-    F(TOXIC) \
-    F(HAIL) \
+    F(SANDSTORM) \
+    F(FIRE_SPIN) \
     F(BULK_UP) \
     F(BULLET_SEED) \
     F(HIDDEN_POWER) \
@@ -38,7 +38,7 @@
     F(SHOCK_WAVE) \
     F(FLAMETHROWER) \
     F(SLUDGE_BOMB) \
-    F(SANDSTORM) \
+    F(TOXIC) \
     F(FIRE_BLAST) \
     F(ROCK_TOMB) \
     F(AERIAL_ACE) \

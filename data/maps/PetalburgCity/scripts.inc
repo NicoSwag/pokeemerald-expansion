@@ -592,6 +592,7 @@ PetalburgCity_EventScript_Scott::
 	waitmovement 0
 	removeobject LOCALID_SCOTT
 	addobject LOCALID_LOOKER
+	playbgm MUS_LOOKER_THEME, FALSE
 	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_ScottExit0
 	call_if_eq VAR_0x8008, 1, PetalburgCity_EventScript_ScottExit1
 	call_if_eq VAR_0x8008, 2, PetalburgCity_EventScript_ScottExit2
@@ -623,6 +624,7 @@ PetalburgCity_EventScript_Scott::
 	call_if_eq VAR_0x8008, 2, PetalburgCity_EventScript_LookerExit2
 	call_if_eq VAR_0x8008, 3, PetalburgCity_EventScript_LookerExit2
 	removeobject LOCALID_LOOKER
+	fadedefaultbgm
 	releaseall
 	end
 

@@ -338,7 +338,7 @@ static const u8 sMapHealLocations[][3] =
     [MAPSEC_ROUTE_132] = {MAP_GROUP(ROUTE132), MAP_NUM(ROUTE132), HEAL_LOCATION_NONE},
     [MAPSEC_ROUTE_133] = {MAP_GROUP(ROUTE133), MAP_NUM(ROUTE133), HEAL_LOCATION_NONE},
     [MAPSEC_ROUTE_134] = {MAP_GROUP(ROUTE134), MAP_NUM(ROUTE134), HEAL_LOCATION_NONE},
-    [MAPSEC_OLDALE_RUINS] = {MAP_GROUP(FOOT_OF_MT_KIRIKIRI), MAP_NUM(FOOT_OF_MT_KIRIKIRI), HEAL_LOCATION_NONE},
+    [MAPSEC_OLDALE_RUINS] = {MAP_GROUP(OLDALE_RUINS), MAP_NUM(OLDALE_RUINS), HEAL_LOCATION_NONE},
 };
 
 static const u8 *const sEverGrandeCityNames[] =
@@ -1037,6 +1037,7 @@ static void InitMapBasedOnPlayerLocation(void)
         y = gSaveBlock1Ptr->dynamicWarp.y;
         break;
     case MAP_TYPE_INDOOR:
+    case MAP_TYPE_GYM_ARENA:
         sRegionMap->mapSecId = gMapHeader.regionMapSectionId;
         if (sRegionMap->mapSecId != MAPSEC_DYNAMIC)
         {

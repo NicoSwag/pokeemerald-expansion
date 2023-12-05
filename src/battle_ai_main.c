@@ -992,6 +992,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             break;
         case EFFECT_EXPLOSION:
+        case EFFECT_EMP:
             if (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_WILL_SUICIDE))
                 score -= 2;
 
@@ -2885,12 +2886,6 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             // partner ability checks
             if (!partnerProtecting && moveTarget != MOVE_TARGET_BOTH && !DoesBattlerIgnoreAbilityChecks(aiData->abilities[battlerAtk], move))
             {
-                if((gBattleMons[battlerAtkPartner].status1 & STATUS1_SLEEP)
-                && ((GetMovePriority(battlerAtkPartner, move) > 0) || (gBattleMons[battlerAtk].speed > (gBattleMons[battlerAtkPartner].speed && gBattleMons[battlerDef].speed)))
-                && GetMoveDamageResult(battlerAtk, battlerDef, AI_THINKING_STRUCT->movesetIndex) == MOVE_POWER_WEAK
-                && gBattleMons[battlerAtkPartner].hp > gBattleMons[battlerAtkPartner].maxHP/2)
-
-                RETURN_SCORE_PLUS(1);
                 switch (atkPartnerAbility)
                 {
                 case ABILITY_VOLT_ABSORB:
@@ -3328,6 +3323,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score -= 3;
         break;
     case EFFECT_EXPLOSION:
+    case EFFECT_EMP:
     case EFFECT_MEMENTO:
         if (AI_THINKING_STRUCT->aiFlags & AI_FLAG_WILL_SUICIDE && gBattleMons[battlerDef].statStages[STAT_EVASION] < 7)
         {
@@ -4037,7 +4033,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         //TODO - track entire opponent party data to determine hazard effectiveness
         break;
     case EFFECT_FORESIGHT:
-        if (aiData->abilities[battlerAtk] == ABILITY_SCRAPPY)
+        if (aiData->abilities[battlerAtk] == (ABILITY_SCRAPPY || ABILITY_MINDS_EYE))
             break;
         else if (gBattleMons[battlerDef].statStages[STAT_EVASION] > DEFAULT_STAT_STAGE
          || (IS_BATTLER_OF_TYPE(battlerDef, TYPE_GHOST)
@@ -4201,6 +4197,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             if (AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_FASTER) // Attacker goes first
             {
                 if (gBattleMoves[predictedMove].effect == EFFECT_EXPLOSION
+                || gBattleMoves[predictedMove].effect == EFFECT_EMP
                   || gBattleMoves[predictedMove].effect == EFFECT_PROTECT)
                     score += 3;
             }
@@ -5109,10 +5106,7 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_QUIVER_DANCE:
     case EFFECT_ATTACK_SPATK_UP:
     case EFFECT_ATTACK_ACCURACY_UP:
-    case EFFECT_PSYCHIC_TERRAIN:
-    case EFFECT_GRASSY_TERRAIN:
-    case EFFECT_ELECTRIC_TERRAIN:
-    case EFFECT_MISTY_TERRAIN:
+    case EFFECT_EMP:
     case EFFECT_STEALTH_ROCK:
     case EFFECT_TOXIC_SPIKES:
     case EFFECT_TRICK_ROOM:
@@ -5121,16 +5115,22 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_TAILWIND:
     case EFFECT_DRAGON_DANCE:
     case EFFECT_STICKY_WEB:
+    case EFFECT_GEOMANCY:
+    case EFFECT_VICTORY_DANCE:
+    case EFFECT_HIT_SET_ENTRY_HAZARD:
+        score += 2;
+        break;
     case EFFECT_RAIN_DANCE:
     case EFFECT_ACID_RAIN:
     case EFFECT_SUNNY_DAY:
     case EFFECT_SANDSTORM:
     case EFFECT_HAIL:
     case EFFECT_SNOWSCAPE:
-    case EFFECT_GEOMANCY:
-    case EFFECT_VICTORY_DANCE:
-    case EFFECT_HIT_SET_ENTRY_HAZARD:
-        score += 2;
+    case EFFECT_PSYCHIC_TERRAIN:
+    case EFFECT_GRASSY_TERRAIN:
+    case EFFECT_ELECTRIC_TERRAIN:
+    case EFFECT_MISTY_TERRAIN:
+        score +=5;
         break;
     default:
         break;
@@ -5152,6 +5152,7 @@ static s32 AI_Risky(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     {
     case EFFECT_SLEEP:
     case EFFECT_EXPLOSION:
+    case EFFECT_EMP:
     case EFFECT_MIRROR_MOVE:
     case EFFECT_OHKO:
     case EFFECT_CONFUSE:
@@ -5280,6 +5281,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             switch (effect)
             {
             case EFFECT_EXPLOSION:
+            case EFFECT_EMP:
             case EFFECT_RESTORE_HP:
             case EFFECT_REST:
             case EFFECT_DESTINY_BOND:
@@ -5309,6 +5311,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             switch (effect)
             {
             case EFFECT_EXPLOSION:
+            case EFFECT_EMP:
             case EFFECT_BIDE:
             case EFFECT_CONVERSION:
             case EFFECT_LIGHT_SCREEN:

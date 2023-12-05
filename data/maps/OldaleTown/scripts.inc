@@ -21,9 +21,18 @@ OldaleTown_EventScript_SetOldaleState::
 	setvar VAR_OLDALE_TOWN_STATE, 1
 	return
 
+OldaleTown_EventScript_Slugma::
+	playmoncry SPECIES_SLUGMA, CRY_MODE_NORMAL
+	msgbox OldaleTown_Text_Slugma, MSGBOX_NPC
+	release
+	end
+
 OldaleTown_EventScript_LedybaFlip::
 	setobjectmovementtype LOCALID_LEDYBA, MOVEMENT_TYPE_FACE_DOWN
 	return
+
+OldaleTown_Text_Slugma:
+	.string "SLUGMA: Bwshsh!$"
 
 OldaleTown_EventScript_Ledyba::
  call_if_set FLAG_HELPED_LEDYBA, OldaleTown_EventScript_LedybaGrateful

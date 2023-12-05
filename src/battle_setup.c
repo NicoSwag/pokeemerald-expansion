@@ -724,6 +724,8 @@ u8 BattleSetup_GetTerrainId(void)
     case MAP_TYPE_CITY:
     case MAP_TYPE_ROUTE:
         break;
+    case MAP_TYPE_GYM_ARENA:
+        return BATTLE_TERRAIN_GYM_ARENA;
     case MAP_TYPE_UNDERGROUND:
         if (MetatileBehavior_IsIndoorEncounter(tileBehavior))
             return BATTLE_TERRAIN_BUILDING;

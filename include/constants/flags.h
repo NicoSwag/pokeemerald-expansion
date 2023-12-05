@@ -51,10 +51,10 @@
 #define FLAG_FIRST_FRAGMENT    0x26 // Unused Flag
 #define FLAG_PSYCHIC_POWERS    0x27 // Unused Flag
 #define FLAG_WALDA_AWOKEN    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
+#define FLAG_RUSTBORO_JOSH    0x29 // Unused Flag
+#define FLAG_RUSTBORO_TOMMY    0x2A // Unused Flag
+#define FLAG_RUSTBORO_MARC   0x2B // Unused Flag
+#define FLAG_SAW_ROXANNE_CUTSCENE    0x2C // Unused Flag
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
@@ -183,7 +183,7 @@
 #define FLAG_CUTE_PAINTING_MADE              0xA2
 #define FLAG_SMART_PAINTING_MADE             0xA3
 #define FLAG_TOUGH_PAINTING_MADE             0xA4
-#define FLAG_RECEIVED_TM_ROCK_TOMB           0xA5
+#define FLAG_RECEIVED_TM06          0xA5
 #define FLAG_RECEIVED_TM_BULK_UP             0xA6
 #define FLAG_RECEIVED_TM_SHOCK_WAVE          0xA7
 #define FLAG_RECEIVED_TM_OVERHEAT            0xA8

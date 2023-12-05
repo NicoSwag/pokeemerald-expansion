@@ -324,7 +324,7 @@ MauvilleCity_EventScript_ItemXSpeed::
 	end
 
 RustboroCity_EventScript_ItemXDefend::
-	finditem ITEM_X_DEFENSE
+	finditem ITEM_TM_FIRE_SPIN
 	end
 
 LilycoveCity_EventScript_ItemMaxRepel::
@@ -567,7 +567,6 @@ ShoalCave_LowTideStairsRoom_EventScript_ItemIceHeal::
 	end
 
 ShoalCave_LowTideIceRoom_EventScript_ItemTMHail::
-	finditem ITEM_TM_HAIL
 	end
 
 ShoalCave_LowTideIceRoom_EventScript_ItemNeverMeltIce::

@@ -362,7 +362,7 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_PSYCHIC, 6},
     {TRAINER_CLASS_GENTLEMAN, 20},
     {TRAINER_CLASS_ELITE_FOUR, 25},
-    {TRAINER_CLASS_LEADER, 25},
+    {TRAINER_CLASS_LEADER, 50},
     {TRAINER_CLASS_SCHOOL_KID, 5},
     {TRAINER_CLASS_SR_AND_JR, 4},
     {TRAINER_CLASS_POKEFAN, 20},
@@ -4697,16 +4697,19 @@ s8 GetMovePriority(u32 battler, u16 move)
     u16 ability = GetBattlerAbility(battler);
 
     priority = gBattleMoves[move].priority;
-    if (ability == ABILITY_GALE_WINGS
+    
+    if(ability == ABILITY_PALEBLOOD && gBattleMoves[move].lunarMove && (gBattleMons[battler].hp >= gBattleMons[battler].maxHP * 0.75))
+        priority++;
+    else if (ability == ABILITY_GALE_WINGS
     #if B_GALE_WINGS >= GEN_7
-        && BATTLER_MAX_HP(battler)
+        && (gBattleMons[battler].hp >= gBattleMons[battler].maxHP * 0.75)
     #endif
         && gBattleMoves[move].type == TYPE_FLYING)
     {
         priority++;
     }
     else if (ability == ABILITY_PROPELLER_TAIL
-    && gBattleMons[battler].hp < gBattleMons[battler].maxHP * 0.75
+    && gBattleMons[battler].hp >= gBattleMons[battler].maxHP * 0.75
     && gBattleMoves[move].type == TYPE_WATER
     ){
     priority++;

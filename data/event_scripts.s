@@ -1257,8 +1257,6 @@ Common_EventScript_LegendaryFlewAway::
 
 	.include "data/maps/Route104Upper/scripts.inc"
 
-	.include "data/maps/FootOfMtKirikiri/scripts.inc"
-
 	.include "data/maps/OldaleRuinsEntrance_1/scripts.inc"
 
 	.include "data/maps/OldaleRuinsEntrance_2/scripts.inc"
@@ -1268,3 +1266,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/BrineCave/scripts.inc"
 
 	.include "data/maps/RustboroCity_Gym_Arena/scripts.inc"
+
+	.include "data/maps/OldaleRuins/scripts.inc"

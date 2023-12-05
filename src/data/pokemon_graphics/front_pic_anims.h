@@ -6567,16 +6567,6 @@ static const union AnimCmd sAnim_Lilligant_1[] =
     ANIMCMD_END,
 };
 
-static const union AnimCmd sAnim_Basculin_1[] =
-{
-    ANIMCMD_FRAME(1, 8),
-    ANIMCMD_FRAME(0, 8),
-    ANIMCMD_FRAME(1, 8),
-    ANIMCMD_FRAME(0, 15),
-    ANIMCMD_FRAME(1, 20),
-    ANIMCMD_FRAME(0, 10),
-    ANIMCMD_END,
-};
 
 static const union AnimCmd sAnim_Sandile_1[] =
 {
@@ -10580,6 +10570,7 @@ PLACEHOLDER_ANIM_SINGLE_FRAME(Rabsca);
 PLACEHOLDER_ANIM_SINGLE_FRAME(Flittle);
 PLACEHOLDER_ANIM_SINGLE_FRAME(Espathra);
 PLACEHOLDER_ANIM_SINGLE_FRAME(Tinkatink);
+PLACEHOLDER_ANIM_SINGLE_FRAME(Basculin);
 PLACEHOLDER_ANIM_SINGLE_FRAME(Tinkatuff);
 PLACEHOLDER_ANIM_SINGLE_FRAME(Tinkaton);
 PLACEHOLDER_ANIM_SINGLE_FRAME(Wiglett);

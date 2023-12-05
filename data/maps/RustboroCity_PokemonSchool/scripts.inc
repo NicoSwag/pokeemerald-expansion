@@ -241,8 +241,6 @@ RustboroCity_PokemonSchool_Text_ExplainStatuses:
 	.string "Of particular note is that sleeping\n"
 	.string "POKéMON heal some of their HP for every\l"
 	.string "turn they're asleep.\p"
-	.string "They will also awake immediately when\n"
-	.string "directly hit.\p"
 	.string "In addition, POKéMON affected by\n"
 	.string "FROSTBITE will be able to act, albeit\l"
 	.string "losing some of their HP every turn and\l"
@@ -274,9 +272,13 @@ RustboroCity_PokemonSchool_Text_AlwaysWantedSeedot:
 	.string "I wish they got rid of them.$"
 
 RustboroCity_PokemonSchool_Text_PokemontCantUseManMadeItems:
-	.string "POKéMON can hold items, but they\n"
-	.string "don't know what to do with man-made\l"
-	.string "items like POTION and ANTIDOTE.$"
+	.string "This school mostly teaches POKEMON\n"
+	.string "battling.\p"
+	.string "Down in PACIFIDLOG TOWN, they have\n"
+	.string "an university where you can learn\l"
+	.string "science, or history, or whatever.\p"
+	.string "I don't see why you'd wanna do that\n"
+	.string "over being a TRAINER, though!$"
 
 RustboroCity_PokemonSchool_Text_ConfusedPokemonAttacksItself:
 	.string "This building is the lecture hall of\n"

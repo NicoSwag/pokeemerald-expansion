@@ -428,7 +428,8 @@
 #define EFFECT_RAIN_HIT                    422
 #define EFFECT_ESCAPE_HEAL                 423
 #define EFFECT_CHANGE_TYPE_HIDDEN          424
+#define EFFECT_EMP                         425
 
-#define NUM_BATTLE_MOVE_EFFECTS             425
+#define NUM_BATTLE_MOVE_EFFECTS             426
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

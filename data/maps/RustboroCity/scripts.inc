@@ -13,6 +13,17 @@ RustboroCity_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, RustboroCity_OnFrame
 	.byte 0
 
+RustboroCity_EventScript_ResetGymTrainers::
+	cleartrainerflag TRAINER_JOSH
+	clearflag FLAG_RUSTBORO_JOSH
+	cleartrainerflag TRAINER_TOMMY
+	clearflag FLAG_RUSTBORO_TOMMY
+	cleartrainerflag TRAINER_MARC
+	clearflag FLAG_RUSTBORO_MARC
+	releaseall
+	end
+
+
 RustboroCity_OnTransition:
 	setflag FLAG_VISITED_RUSTBORO_CITY
 	call Common_EventScript_SetupRivalGfxId
@@ -1113,8 +1124,7 @@ RustboroCity_Text_SneakyLookingManWentAroundCorner:
 RustboroCity_Text_HaveYouChallengedGym:
 	.string "ROXANNE is such a hard worker.\p"
 	.string "Not only she's our GYM LEADER,\n"
-	.string "but she's also the mayor and a\l"
-	.string "teacher on top of that.\p"
+	.string "but she's also a teacher!\p"
 	.string "I don't know how she does it!$"
 
 

@@ -957,6 +957,7 @@ static const u8 sAbilitiesAffectedByMoldBreaker[] =
     [ABILITY_DAZZLING] = 1,
     [ABILITY_DISGUISE] = 1,
     [ABILITY_FLUFFY] = 1,
+    [ABILITY_SUPERALLOY] = 1,
     [ABILITY_QUEENLY_MAJESTY] = 1,
     [ABILITY_WATER_BUBBLE] = 1,
     [ABILITY_MIRROR_ARMOR] = 1,
@@ -2628,8 +2629,8 @@ if (ability == ABILITY_MAGIC_GUARD) \
 u8 DoBattlerEndTurnEffects(void)
 {
     
+    
     u32 battler, ability, i, effect = 0;
-
     gHitMarker |= (HITMARKER_GRUDGE | HITMARKER_SKIP_DMG_TRACK);
     while (gBattleStruct->turnEffectsBattlerId < gBattlersCount && gBattleStruct->turnEffectsTracker <= ENDTURN_BATTLER_COUNT)
     {
@@ -2639,7 +2640,7 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsBattlerId++;
             continue;
         }
-
+        gBattleMons[battler].justWokeUp = FALSE;
         ability = GetBattlerAbility(battler);
         switch (gBattleStruct->turnEffectsTracker)
         {
@@ -6762,7 +6763,8 @@ bool32 CanSleep(u32 battler)
       || gBattleMons[battler].status1 & STATUS1_ANY
       || IsAbilityOnSide(battler, ABILITY_SWEET_VEIL)
       || IsAbilityStatusProtected(battler)
-      || IsBattlerTerrainAffected(battler, STATUS_FIELD_ELECTRIC_TERRAIN | STATUS_FIELD_MISTY_TERRAIN))
+      || IsBattlerTerrainAffected(battler, STATUS_FIELD_ELECTRIC_TERRAIN | STATUS_FIELD_MISTY_TERRAIN)
+      || gBattleMons[battler].justWokeUp == TRUE)
         return FALSE;
     return TRUE;
 }
@@ -9387,6 +9389,10 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (gBattleMoves[move].pulseMove)
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
+        case ABILITY_DEMOLITIONIST:
+        if (gBattleMoves[move].ballisticMove)
+           modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+        break;
     case ABILITY_WATER_BUBBLE:
         if (moveType == TYPE_WATER)
            modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
@@ -9938,7 +9944,8 @@ u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 moveType, bool
 
     #if B_EXPLOSION_DEFENSE <= GEN_4
     // Self-destruct / Explosion cut defense in half
-    if (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION)
+    if (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION
+    || gBattleMoves[gCurrentMove].effect == EFFECT_EMP)
         defStat /= 2;
     #endif
 
@@ -10261,6 +10268,10 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
         if (IsMoveMakingContact(move, battlerAtk) && moveType != TYPE_FIRE)
             return UQ_4_12(0.5);
         break;
+    case ABILITY_SUPERALLOY:
+        if(moveType == (TYPE_GRASS || TYPE_WATER || TYPE_FIGHTING || TYPE_GROUND || TYPE_STEEL))
+            return UQ_4_12(0.5);
+        break;
     case ABILITY_PUNK_ROCK:
         if (gBattleMoves[move].soundMove)
             return UQ_4_12(0.5);
@@ -10491,6 +10502,12 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
         mod = UQ_4_12(1.0);
         if (recordAbilities)
             RecordAbilityBattle(battlerAtk, ABILITY_SCRAPPY);
+    }
+    else if ((moveType == TYPE_FIGHTING || moveType == TYPE_NORMAL) && defType == TYPE_GHOST && GetBattlerAbility(battlerAtk) == ABILITY_MINDS_EYE && mod == UQ_4_12(0.0))
+    {
+        mod = UQ_4_12(1.0);
+        if (recordAbilities)
+            RecordAbilityBattle(battlerAtk, ABILITY_MINDS_EYE);
     }
      else if ((moveType == TYPE_STEEL) && defType == TYPE_FAIRY && GetBattlerAbility(battlerAtk) == ABILITY_DECOMMISSIONER && mod < UQ_4_12(2.0))
     {

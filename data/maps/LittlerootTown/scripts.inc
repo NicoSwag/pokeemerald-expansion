@@ -252,10 +252,10 @@ LittlerootTown_EventScript_FatMan::
 	end
 
 LittlerootTown_EventScript_Zigzagoon::
+	lock
 	faceplayer
 	goto_if_set FLAG_ZIGZAGOON_EVENT, LittlerootTown_EventScript_ZigzagoonNoises
-	msgbox LittlerootTown_Text_Zigzagoon, MSGBOX_NPC
-	waitmessage
+	msgbox LittlerootTown_Text_Zigzagoon, MSGBOX_DEFAULT
 	giveitem ITEM_HEART_SCALE
 	call_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	setflag FLAG_ZIGZAGOON_EVENT
@@ -334,15 +334,11 @@ LittlerootTown_EventScript_DangerousWithoutPokemon::
 	return
 
 LittlerootTown_Movement_TwinApproachPlayerLeft:
-	face_right
+	face_up
 	delay_8
 	disable_jump_landing_ground_effect
-	jump_in_place_right
+	jump_in_place_up
 	delay_8
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
 	walk_fast_up
 	walk_fast_up
 	walk_fast_left
@@ -356,12 +352,6 @@ LittlerootTown_Movement_TwinPushPlayerFromRoute:
 LittlerootTown_Movement_TwinReturnLeft:
 	walk_right
 	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
 	walk_in_place_faster_down
 	step_end
 

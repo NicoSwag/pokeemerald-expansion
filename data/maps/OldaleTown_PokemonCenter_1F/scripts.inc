@@ -21,6 +21,7 @@ OldaleTown_PokemonCenter_1F_EventScript_Nurse::
 OldaleTown_PokemonCenter_1F_EventScript_Mart::
 	lock
 	faceplayer
+	goto_if_unset FLAG_RECEIVED_POKEDEX_FROM_BIRCH, OldaleTown_PokemonCenter_1F_EventScript_StillStocking
 	message gText_HowMayIServeYou
 	waitmessage
 	pokemart OldaleTown_Mart_Pokemart
@@ -37,6 +38,13 @@ OldaleTown_Mart_Pokemart:
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_AWAKENING
 	.2byte ITEM_NONE
+	release
+	end
+
+
+
+OldaleTown_PokemonCenter_1F_EventScript_StillStocking:
+	msgbox OldaleTown_PokemonCenter_1F_Text_StillStocking, MSGBOX_NPC
 	release
 	end
 
@@ -87,3 +95,8 @@ OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
 	.string "You can make your PokéMON forget and\n"
 	.string "remember moves, or even learn brand\l"
 	.string "new ones!$"
+
+OldaleTown_PokemonCenter_1F_Text_StillStocking:
+	.string "I'm terribly sorry, but we're still\n"
+	.string "stocking our inventory.\p"
+	.string "Do come back in a little!$"

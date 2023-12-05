@@ -7220,19 +7220,19 @@ const struct Item gItems[] =
         .secondaryId = MOVE_PROTECT,
     },
 
-    [ITEM_TM_TOXIC] =
+    [ITEM_TM_SANDSTORM] =
     {
         .name = _("TM06"),
-        .price = 3000,
+        .price = 5000,
         .description = sTM06Desc,
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_TOXIC,
+        .secondaryId = MOVE_SANDSTORM,
     },
 
-    [ITEM_TM_HAIL] =
+    [ITEM_TM_FIRE_SPIN] =
     {
         .name = _("TM07"),
         .price = 3000,
@@ -7241,7 +7241,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_HAIL,
+        .secondaryId = MOVE_FIRE_SPIN,
     },
 
     [ITEM_TM_BULK_UP] =
@@ -7592,7 +7592,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_SLUDGE_BOMB,
     },
 
-    [ITEM_TM_SANDSTORM] =
+    [ITEM_TM_TOXIC] =
     {
         .name = _("TM37"),
         .price = 2000,

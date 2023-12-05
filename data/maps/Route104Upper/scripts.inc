@@ -25,6 +25,24 @@ Route104_EventScript_Winston::
 	release
 	end
 
+Route104_EventScript_Sign::
+	msgbox Route104_Text_Sign, MSGBOX_SIGN
+	release
+	end
+
+Route104_EventScript_Sign4::
+	msgbox Route104_Text_Sign, MSGBOX_SIGN
+	release
+	end
+
+Route104_EventScript_Sign2::
+	msgbox Route104_Text_Sign2, MSGBOX_SIGN
+	release
+	end
+
+Route104_EventScript_Sign3::
+	msgbox Route104_Text_Sign3, MSGBOX_SIGN
+	end
 
 Route104_EventScript_TryRegisterWinstonAfterBattle::
 	special PlayerFaceTrainerAfterBattle
@@ -178,3 +196,22 @@ Route104_Text_MiaNotEnoughMons:
 	.string "It's a big no-no if you don't have two\n"
 	.string "POKéMON with you.\l"
 	.string "We're too strong for you!$"
+
+Route104_Text_Sign:
+	.string "World-famous FEEBAS PRO SHOP PRISM\n"
+	.string "just one step to the left and six\l"
+	.string "forward!$"
+
+
+Route104_Text_Sign2:
+	.string "World-famous FEEBAS PRO SHOP PRISM\n"
+	.string "just one step forward!$"
+
+Route104_Text_Sign3:
+	.string "Leaving?\n"
+	.string "Make sure to check out the FEEBAS P-\p"
+	.string "The rest of the sign is vandalized.$"
+
+Route104_Text_Sign4:
+	.string "RUSTBORO CITY.\n"
+	.string "Home of DEVON CORP.$"

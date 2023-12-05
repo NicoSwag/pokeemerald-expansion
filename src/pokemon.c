@@ -6075,7 +6075,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                     case 0: // ITEM4_EV_HP
                     case 1: // ITEM4_EV_ATK
                         evCount = GetMonEVCount(mon);
-                        temp2 = itemEffect[itemEffectParam];
+                        temp2 = 63;
                         dataSigned = GetMonData(mon, sGetMonDataEVConstants[temp1], NULL);
                         evChange = temp2;
 

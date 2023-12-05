@@ -874,6 +874,7 @@ gBattleAnims_Moves::
 	.4byte Move_DING_DOOM
 	.4byte Move_MONSOON
 	.4byte Move_HIT_AND_RUN
+	.4byte Move_COMBUSTION
 
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
@@ -25805,6 +25806,7 @@ Move_SECRET_POWER:
 	jumpargeq 0, BATTLE_TERRAIN_OVERCAST,		Move_MIST_BALL
 	jumpargeq 0, BATTLE_TERRAIN_FOREST,		Move_MAGICAL_LEAF
 	jumpargeq 0, BATTLE_TERRAIN_BUILDING,       Move_STRENGTH
+	jumpargeq 0, BATTLE_TERRAIN_GYM_ARENA,       Move_STRENGTH
 	jumpargeq 0, BATTLE_TERRAIN_SOARING,        Move_GUST
 	jumpargeq 0, BATTLE_TERRAIN_SKY_PILLAR,     Move_GUST
 	jumpargeq 0, BATTLE_TERRAIN_BURIAL_GROUND,  Move_SHADOW_SNEAK
@@ -26205,6 +26207,9 @@ Move_MONSOON:
 
 Move_HIT_AND_RUN:
 	goto Move_U_TURN
+
+Move_COMBUSTION:
+	goto Move_OVERHEAT
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT

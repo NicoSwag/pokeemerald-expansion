@@ -1747,6 +1747,11 @@
 	.byte 0xe3
 	.endm
 
+	.macro checkpartycanlearn move:req
+	.byte 0xe4
+	.2byte \move
+	.endm
+
 	.macro showitemdesc
 	setvar VAR_0x8009, 0
 	showdescription

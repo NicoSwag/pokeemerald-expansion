@@ -23,13 +23,12 @@ Route101_EventScript_StartBirchRescue::
 	playbgm MUS_HELP, TRUE
 	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
 	closemessage
-	setobjectxy LOCALID_BIRCH, 11, 14
-	setobjectxy LOCALID_ZIGZAGOON, 12, 14
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_EnterScene
-	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonFaceBirch
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchFaceZigzagoon
+	waitmovement 0
 	msgbox Route101_Text_PleaseHelp, MSGBOX_DEFAULT
 	closemessage
+	setobjectmovementtype LOCALID_BIRCH, MOVEMENT_TYPE_JOG_IN_PLACE_RIGHT
+	setobjectmovementtype LOCALID_ZIGZAGOON, MOVEMENT_TYPE_JOG_IN_PLACE_LEFT
 	setvar VAR_ROUTE101_STATE, 2
 	end
 
@@ -123,7 +122,6 @@ Route101_Movement_EnterScene:
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
-	walk_in_place_faster_left
 	step_end
 
 Route101_Movement_BirchRunInCircles:
@@ -190,10 +188,10 @@ Route101_Movement_Unused2:
 	step_end
 
 Route101_EventScript_Youngster::
-	lockall
+	lock
 	call_if_set FLAG_101_RECEIVED_HEART_SCALE, Route101_EventScript_Youngster_Received
-	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_NPC
-	waitmessage
+	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_DEFAULT
+	closemessage
 	giveitem ITEM_HEART_SCALE
 	call_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	setflag FLAG_101_RECEIVED_HEART_SCALE

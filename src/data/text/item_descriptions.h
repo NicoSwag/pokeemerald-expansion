@@ -3057,14 +3057,14 @@ static const u8 sTM05Desc[] = _(
     "in succession.");
 
 static const u8 sTM06Desc[] = _(
-    "Poisons the foe\n"
-    "with a toxin that\n"
-    "gradually worsens.");
+    "Causes a sandstorm\n"
+    "that hits the foe\n"
+    "over several turns.");
 
 static const u8 sTM07Desc[] = _(
-    "Creates a hailstorm\n"
-    "that damages all\n"
-    "types except Ice.");
+    "Traps the foe in a \n"
+    "ring of fire for 5\n"
+    "turns.");
 
 static const u8 sTM08Desc[] = _(
     "Bulks up the body\n"

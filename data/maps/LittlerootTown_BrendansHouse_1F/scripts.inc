@@ -319,7 +319,7 @@ PlayersHouse_1F_Text_MaybeDadWillBeOn:
 
 PlayersHouse_1F_Text_ItsOverWeMissedHim:
 	.string "MOM: Oh… It's over.\p"
-	.string "DAD is such a hardworker, isn't it?$"
+	.string "DAD is such a hardworker, isn't he?$"
 
 PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor:
 	.string "Oh, yes.\n"
@@ -371,7 +371,7 @@ PlayersHouse_1F_Text_Vigoroth2:
 
 PlayersHouse_1F_Text_ReportFromPetalburgGym:
 	.string "INTERVIEWER: …And how do you respond\n"
-	.string "to the allegations of X-Item abuse\l"
+	.string "to the allegations of item abuse\l"
 	.string "taking place in your GYM?\p"
 	.string "DAD: Oops! I just remembered!\p"
 	.string "I have a very important League meeting!\l"

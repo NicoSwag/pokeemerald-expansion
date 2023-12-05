@@ -891,8 +891,8 @@ static void LoadBattleBg(u8 battleBgType, u8 battleTerrain)
         LoadCompressedPalette(gBattleTerrainPalette_Frontier, 0x20, 0x60);
         break;
     case MAP_BATTLE_SCENE_LEADER:
-        LZDecompressVram(gBattleTerrainTiles_Building, (void*)(BG_CHAR_ADDR(2)));
-        LZDecompressVram(gBattleTerrainTilemap_Building, (void*)(BG_SCREEN_ADDR(26)));
+        LZDecompressVram(gBattleTerrainTiles_BuildingLeader, (void*)(BG_CHAR_ADDR(2)));
+        LZDecompressVram(gBattleTerrainTilemap_BuildingLeader, (void*)(BG_SCREEN_ADDR(26)));
         LoadCompressedPalette(gBattleTerrainPalette_BuildingLeader, 0x20, 0x60);
         break;
     case MAP_BATTLE_SCENE_WALLACE:
