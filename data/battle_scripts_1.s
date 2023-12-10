@@ -3472,18 +3472,22 @@ BattleScript_AbsorbHealBlock::
 
 BattleScript_EffectInfernalParade::
 BattleScript_EffectBurnHit::
+	jumpiftype BS_TARGET, TYPE_NORMAL, BattleScript_EffectHit
 	setmoveeffect MOVE_EFFECT_BURN
 	goto BattleScript_EffectHit
 
 BattleScript_EffectFrostbiteHit::
+	jumpiftype BS_TARGET, TYPE_NORMAL, BattleScript_EffectHit
 	setmoveeffect MOVE_EFFECT_FROSTBITE
 	goto BattleScript_EffectHit
 
 BattleScript_EffectSleepHit::
+	jumpiftype BS_TARGET, TYPE_NORMAL, BattleScript_EffectHit
 	setmoveeffect MOVE_EFFECT_SLEEP
 	goto BattleScript_EffectHit
 
 BattleScript_EffectFreezeHit::
+	jumpiftype BS_TARGET, TYPE_NORMAL, BattleScript_EffectHit
 	setmoveeffect MOVE_EFFECT_FREEZE
 	goto BattleScript_EffectHit
 

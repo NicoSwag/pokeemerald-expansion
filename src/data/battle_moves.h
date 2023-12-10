@@ -1312,7 +1312,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_RAZOR_LEAF] =
     {
-        .effect = EFFECT_ALWAYS_CRIT,
+        .effect = EFFECT_HIT,
         .power = 50,
         .type = TYPE_GRASS,
         .accuracy = 95,

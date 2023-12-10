@@ -32,6 +32,7 @@ RustboroCity_OnTransition:
 	goto_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_PositionScientistForExit
 	end
 
+
 RustboroCity_EventScript_PositionScientistForExit::
 	goto_if_eq VAR_TEMP_0, 11, RustboroCity_EventScript_PositionScientistLeftExit
 	setobjectxyperm LOCALID_SCIENTIST, 12, 15
@@ -48,6 +49,11 @@ RustboroCity_EventScript_HideMapNamePopup::
 RustboroCity_OnFrame:
 	map_script_2 VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_ScientistAddMatchCall
 	.2byte 0
+
+
+RustboroCity_EventScript_Mr_Briney::
+	msgbox RustboroCity_Text_Mr_Briney, MSGBOX_NPC
+	end
 
 RustboroCity_EventScript_ScientistAddMatchCall::
 	lockall
@@ -1464,10 +1470,24 @@ RustboroCity_Text_Rhydon:
 
 RustboroCity_Text_CantPass:
 	.string "Sorry, kid, but I can't let you through.\n"
-	.string "There's construction going on back here.\p"
+	.string "There's dangerous work going on here.\p"
 	.string "And we wouldn't wanna get injured now,\n"
 	.string "would we?$"
 	
 Rustborocity_Text_OldMan:
 	.string "Boy oh boy, do I love watching\n"
 	.string "construction!$"
+
+RustboroCity_Text_Mr_Briney:
+	.string "MR BRINEY: Oh, the misery…\n"
+	.string "Oh, poor little old me!\p"
+	.string "Ye see, I was walking me PEEKO as usual,\n"
+	.string "when…\p"
+	.string "The rascal decided to fly over the\n"
+	.string "fence!$"
+	.string "Now he's on the other side, but…\n"
+	.string "This rapscallion of a man isn't letting me\l"
+	.string "go through to save me boy!\p"
+	.string "Oh, PEEKO, me love…\n"
+	.string "Oh, PEEKO, me son!\p"
+	.string "I can but pray for yer safety!$"

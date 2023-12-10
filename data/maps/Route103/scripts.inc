@@ -42,6 +42,7 @@ Route103_EventScript_RivalMay::
 	waitmovement 0
 	msgbox Route103_Text_Suckers, MSGBOX_DEFAULT
 	closemessage
+	playbgm MUS_ENCOUNTER_MAGMA, TRUE
 	applymovement LOCALID_MAGMAM Common_Movement_ExclamationMark
 	applymovement LOCALID_MAGMAM Common_Movement_ExclamationMark
 	waitmovement 0
@@ -62,6 +63,7 @@ Route103_EventScript_RivalBrendan::
 	waitmovement 0
 	msgbox Route103_Text_Suckers, MSGBOX_DEFAULT
 	closemessage
+	playbgm MUS_ENCOUNTER_MAGMA, TRUE
 	applymovement LOCALID_MAGMAM Common_Movement_ExclamationMark
 	applymovement LOCALID_MAGMAM Common_Movement_ExclamationMark
 	waitmovement 0
@@ -207,6 +209,7 @@ msgbox Route103_Text_Revenge, MSGBOX_DEFAULT
 	applymovement LOCALID_MAGMAM Route_103_Magmam_Exit
 	applymovement LOCALID_MAGMAF Route_103_Magmaf_Exit
 	waitmovement 0
+	playbgm MUS_ENCOUNTER_MAY, FALSE
 	msgbox Route103_Text_MayTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
@@ -220,6 +223,7 @@ Route103_EventScript_AfterBrendanBattle::
 	applymovement LOCALID_MAGMAM Route_103_Magmam_Exit
 	applymovement LOCALID_MAGMAF Route_103_Magmaf_Exit
 	waitmovement 0
+	playbgm MUS_ENCOUNTER_BRENDAN, FALSE
 	msgbox Route103_Text_BrendanTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
@@ -268,7 +272,7 @@ Route103_Text_Revenge::
 	.string "attack us!\p"
 	.string "Do you even know who we are?\p"
 	.string "We're TEAM MAGMA. An organization\n"
-	.string "dedicated to the betterement of the\n"
+	.string "dedicated to the betterement of the\l"
 	.string "world, at any cost.\p"
 	.string "You're either with us, or against us.\n"
 	.string "We won't let anyone stand in the way of\l"
@@ -318,6 +322,7 @@ Route103_EventScript_RivalEnd::
 	removeobject LOCALID_MAGMAF
 	removeobject LOCALID_MAGMAM
 	setvar VAR_BIRCH_LAB_STATE, 4
+	setvar VAR_LITTLEROOT_TOWN_STATE, 2
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
 	setflag FLAG_DEFEATED_RIVAL_ROUTE103
 	setvar VAR_OLDALE_RIVAL_STATE, 1
@@ -328,11 +333,13 @@ Route103_EventScript_RivalEnd::
 	end
 
 Route103_EventScript_MagmaF::
-	msgbox Route103_Text_Volcanic_Rocks, MSGBOX_NPC
+	msgbox Route103_Text_Volcanic_Rocks, MSGBOX_DEFAULT
+	closemessage
 end
 
 Route103_EventScript_MagmaM::
-	msgbox Route103_Text_Complaining, MSGBOX_NPC
+	msgbox Route103_Text_Complaining, MSGBOX_DEFAULT
+	closemessage
 end
 
 Route103_Movement_RivalExitFacingNorth1:
@@ -564,7 +571,7 @@ Route103_Text_BrendanTimeToHeadBack:
 	.string "Don't trip over yourself.$"
 
 Route103_Text_ShouldHaveBroughtPotion:
-	.string "If only I had the CUT TM, I could get\n"
+	.string "If only I had the CUT, I could get\n"
 	.string "into the ruins…$"
 
 Route103_Text_ShortcutToOldale:

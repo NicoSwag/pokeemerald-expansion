@@ -453,38 +453,14 @@ LittlerootTown_EventScript_PlayersHouseSignFemale::
 LittlerootTown_EventScript_GiveRunningShoesTrigger0::
 	lockall
 	setvar VAR_0x8008, 0
-	setobjectxy LOCALID_MOM, 10, 9
+	setobjectxy LOCALID_MOM, 12, 10
 	goto LittlerootTown_EventScript_GiveRunningShoesTrigger
 	end
 
 LittlerootTown_EventScript_GiveRunningShoesTrigger1::
 	lockall
 	setvar VAR_0x8008, 1
-	setobjectxy LOCALID_MOM, 11, 9
-	goto LittlerootTown_EventScript_GiveRunningShoesTrigger
-	end
-
-LittlerootTown_EventScript_GiveRunningShoesTrigger2::
-	lockall
-	setvar VAR_0x8008, 2
-	goto LittlerootTown_EventScript_GiveRunningShoesTrigger
-	end
-
-LittlerootTown_EventScript_GiveRunningShoesTrigger3::
-	lockall
-	setvar VAR_0x8008, 3
-	goto LittlerootTown_EventScript_GiveRunningShoesTrigger
-	end
-
-LittlerootTown_EventScript_GiveRunningShoesTrigger4::
-	lockall
-	setvar VAR_0x8008, 4
-	goto LittlerootTown_EventScript_GiveRunningShoesTrigger
-	end
-
-LittlerootTown_EventScript_GiveRunningShoesTrigger5::
-	lockall
-	setvar VAR_0x8008, 5
+	setobjectxy LOCALID_MOM, 13, 10
 	goto LittlerootTown_EventScript_GiveRunningShoesTrigger
 	end
 
@@ -746,9 +722,12 @@ LittlerootTown_Movement_MomApproachPlayer0:
 	walk_up
 	walk_up
 	walk_up
+	walk_up
+	walk_up
 	step_end
 
 LittlerootTown_Movement_MomApproachPlayer1:
+	walk_up
 	walk_up
 	walk_up
 	walk_up
@@ -815,9 +794,17 @@ LittlerootTown_Movement_MomReturnHome0:
 	walk_down
 	walk_down
 	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 LittlerootTown_Movement_MomReturnHome1:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	walk_down
 	walk_down
 	walk_down

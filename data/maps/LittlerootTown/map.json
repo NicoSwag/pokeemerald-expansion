@@ -114,7 +114,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
       "x": 19,
-      "y": 12,
+      "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 1,

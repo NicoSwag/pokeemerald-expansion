@@ -639,7 +639,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_RivalTakeBreakFromFieldwork::
 LittlerootTown_ProfessorBirchsLab_EventScript_Pikachu::
 	lock
 	faceplayer
-	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
+	playmoncry SPECIES_PIKACHU, CRY_MODE_NORMAL
+	goto_if_unset FLAG_RECEIVED_POKEDEX_FROM_BIRCH, LittlerootTown_ProfessorBirchsLab_EventScript_WaitABit
 	msgbox Text_LittlerootTown_ProfessorBirchsLab_Pikachu, MSGBOX_DEFAULT
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
 	end
@@ -986,7 +987,8 @@ LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "Don't they know that HOENN has special\n"
 	.string "laws for the preservation of the\l"
 	.string "environment?\p"
-	.string "You need a license for that, good heavens!\p"
+	.string "You need a license for that, good\n"
+	.string "heavens!\p"
 	.string "Er, anyway…\p"
 	.string "Even if it was a bit careless,\n"
 	.string "no one can deny you and {RIVAL}\l"
@@ -1000,11 +1002,12 @@ LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "PROF. BIRCH: The POKéDEX is a high-tech\n"
-	.string "tool that automatically makes a record\l"
-	.string "of any POKéMON you meet or catch.$"
-
-LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
-	.string "PROF. BIRCH: So, {PLAYER}{KUN}!\p"
+	.string "tool that lets you easily catalogue\l"
+	.string "information about POKEMON that you\n"
+	.string "encounter.$"
+	.string "Back in my days, we had to do this by\n"
+	.string "hand!\p"
+	.string "Anyway, {PLAYER}{KUN}.\p"
 	.string "Now that you have your own POKéMON,\n"
 	.string "what are you gonna do?\p"
 	.string "If I may suggest something…\p"
@@ -1014,12 +1017,15 @@ LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
 	.string "year by the POKéMON LEAGUE, where\l"
 	.string "the best TRAINERS of the region\l"
 	.string "compete with each other.\p"
-	.string "Oh, but… I'm rambling again.\p"
+	.string "Oh, but… I've been rambling for\n"
+	.string "far too long.\p"
 	.string "I won't keep you and {RIVAL}\n"
 	.string "any longer than this.\p"
 	.string "Now go!$"
+
+
 LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese:
-	.string "MAY: EVER GRANDE CONFERENCE…\p"
+	.string "MAY: The EVER GRANDE CONFERENCE…\p"
 	.string "To participate, you're gonna need\n"
 	.string "to defeat the eight GYM LEADERS.\p"
 	.string "You're gonna need a strong team for\n"
@@ -1258,3 +1264,24 @@ LittlerootTown_ProfessorBirchsLab_Text_ScottAboardSSTidalCall:
 	.string "we meet. I'll be waiting!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
+
+LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
+	.string "PROF. BIRCH: Go forth, now!\n"
+	.string "Countless POKéMON await!$"
+
+LittlerootTown_ProfessorBirchsLab_EventScript_WaitABit:
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_WaitABit, MSGBOX_NPC
+	release
+	end
+
+LittlerootTown_ProfessorBirchsLab_Text_WaitABit:
+	.string "It seems like the PIKACHU wants\n"
+	.string "to tell you something.\p"
+	.string "You can't hear it, but if you could\n"
+	.string "you bet it'd go like this:\p"
+	.string "PIKACHU: TRAINER!\p"
+	.string "I have some useful things to tell\n"
+	.string "you, but…\p"
+	.string "You must wait until you properly\n"
+	.string "start your adventure to receive my\l"
+	.string "knowledge.$"
