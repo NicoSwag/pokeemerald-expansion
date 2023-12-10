@@ -891,73 +891,57 @@ void DrawMainBattleBackground(void)
                 LoadCompressedPalette(gBattleTerrainPalette_StadiumWallace, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
                 return;
             }
-            else
-            {
-                {
-                    s16 x;
-                    s16 y;
-                    u8 tileBehavior;
-                    PlayerGetDestCoords(&x, &y);
-                    tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
-                    if (MetatileBehavior_IsSandOrDeepSand(tileBehavior))
-                    {
-                        LZDecompressVram(gBattleTerrainTiles_Sand, (void *)(BG_CHAR_ADDR(2)));
-                        LZDecompressVram(gBattleTerrainTilemap_Sand, (void *)(BG_SCREEN_ADDR(26)));
-                        LoadCompressedPalette(gBattleTerrainPalette_Sand, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-                        return;
-                    }
-                    else if (MetatileBehavior_IsDeepOrOceanWater(tileBehavior))
-                    {
-                        LZDecompressVram(gBattleTerrainTiles_Water, (void *)(BG_CHAR_ADDR(2)));
-                        LZDecompressVram(gBattleTerrainTilemap_Water, (void *)(BG_SCREEN_ADDR(26)));
-                        LoadCompressedPalette(gBattleTerrainPalette_Water, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-                        return;
-                    }
-                    else if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
-                    {
-                        LZDecompressVram(gBattleTerrainTiles_PondWater, (void *)(BG_CHAR_ADDR(2)));
-                        LZDecompressVram(gBattleTerrainTilemap_PondWater, (void *)(BG_SCREEN_ADDR(26)));
-                        LoadCompressedPalette(gBattleTerrainPalette_PondWater, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-                        return;
-                    }
-                    else if (MetatileBehavior_IsMountain(tileBehavior))
-                    {
-                        LZDecompressVram(gBattleTerrainTiles_Rock, (void *)(BG_CHAR_ADDR(2)));
-                        LZDecompressVram(gBattleTerrainTilemap_Rock, (void *)(BG_SCREEN_ADDR(26)));
-                        LoadCompressedPalette(gBattleTerrainPalette_Rock, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-                        return;
-                    }
-                    else switch (gMapHeader.mapType)
-                    {
-                        case MAP_TYPE_UNDERGROUND:
-                        LZDecompressVram(gBattleTerrainTiles_Cave, (void *)(BG_CHAR_ADDR(2)));
-                        LZDecompressVram(gBattleTerrainTilemap_Cave, (void *)(BG_SCREEN_ADDR(26)));
-                        LoadCompressedPalette(gBattleTerrainPalette_Cave, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-                        return;
-                        case MAP_TYPE_ROUTE:    
-                        LZDecompressVram(gBattleTerrainTiles_TallGrass, (void *)(BG_CHAR_ADDR(2)));
-                        LZDecompressVram(gBattleTerrainTilemap_TallGrass, (void *)(BG_SCREEN_ADDR(26)));
-                        LoadCompressedPalette(gBattleTerrainPalette_TallGrass, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-                        return;
-                        case MAP_TYPE_OVERCAST:
-                        LZDecompressVram(gBattleTerrainTiles_TallGrassOvercast, (void *)(BG_CHAR_ADDR(2)));
-                        LZDecompressVram(gBattleTerrainTiles_TallGrassOvercast, (void *)(BG_SCREEN_ADDR(26)));
-                        LoadCompressedPalette(gBattleTerrainTiles_TallGrassOvercast, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-                        return;
-                        case MAP_TYPE_GYM_ARENA:
-                        LZDecompressVram(gBattleTerrainTiles_GymArena, (void *)(BG_CHAR_ADDR(2)));
-                        LZDecompressVram(gBattleTerrainTiles_GymArena, (void *)(BG_SCREEN_ADDR(26)));
-                        LoadCompressedPalette(gBattleTerrainTiles_GymArena, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-                        return;
-                        case MAP_TYPE_FOREST:
-                        LZDecompressVram(gBattleTerrainTiles_Forest, (void *)(BG_CHAR_ADDR(2)));
-                        LZDecompressVram(gBattleTerrainTiles_Forest, (void *)(BG_SCREEN_ADDR(26)));
-                        LoadCompressedPalette(gBattleTerrainTiles_Forest, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-                        return;
-                    }
-                }
+             switch (GetCurrentMapBattleScene())
+        {
+        default:
+        case MAP_BATTLE_SCENE_NORMAL:
+            LZDecompressVram(sBattleTerrainTable[gBattleTerrain].tileset, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(sBattleTerrainTable[gBattleTerrain].tilemap, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(sBattleTerrainTable[gBattleTerrain].palette, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            break;
+        case MAP_BATTLE_SCENE_GYM:
+            LZDecompressVram(gBattleTerrainTiles_Building, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Building, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_BuildingGym, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            break;
+        case MAP_BATTLE_SCENE_MAGMA:
+            LZDecompressVram(gBattleTerrainTiles_Stadium, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Stadium, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_StadiumMagma, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            break;
+        case MAP_BATTLE_SCENE_AQUA:
+            LZDecompressVram(gBattleTerrainTiles_Stadium, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Stadium, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_StadiumAqua, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            break;
+        case MAP_BATTLE_SCENE_SIDNEY:
+            LZDecompressVram(gBattleTerrainTiles_Stadium, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Stadium, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_StadiumSidney, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            break;
+        case MAP_BATTLE_SCENE_PHOEBE:
+            LZDecompressVram(gBattleTerrainTiles_Stadium, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Stadium, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_StadiumPhoebe, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            break;
+        case MAP_BATTLE_SCENE_GLACIA:
+            LZDecompressVram(gBattleTerrainTiles_Stadium, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Stadium, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_StadiumGlacia, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            break;
+        case MAP_BATTLE_SCENE_DRAKE:
+            LZDecompressVram(gBattleTerrainTiles_Stadium, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Stadium, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_StadiumDrake, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            break;
+        case MAP_BATTLE_SCENE_FRONTIER:
+            LZDecompressVram(gBattleTerrainTiles_Building, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Building, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_Frontier, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            break;
         }
-        }
+    }
+}
 
         switch (GetCurrentMapBattleScene())
         {
@@ -1010,7 +994,7 @@ void DrawMainBattleBackground(void)
             break;
         }
     }
-}
+
 
 void LoadBattleTextboxAndBackground(void)
 {

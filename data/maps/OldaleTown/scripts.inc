@@ -308,7 +308,7 @@ OldaleTown_EventScript_ReceivedEeveeFanfare::
 OldaleTown_EventScript_ReceivedEevee::
 	setflag FLAG_RECEIVED_EEVEE
 	msgbox OldaleTown_Text_FinishedSketchingFootprints, MSGBOX_DEFAULT
-	waitmessage
+	closemessage
 	switch VAR_FACING
 	case DIR_NORTH, OldaleTown_EventScript_FootprintsManRight
 	case DIR_WEST, OldaleTown_EventScript_FootprintsManDown
@@ -453,9 +453,24 @@ OldaleTown_Movement_FootprintsRight::
 	walk_down
 	walk_down
 	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 OldaleTown_Movement_FootprintsDown::
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	walk_down
 	walk_down
 	walk_down

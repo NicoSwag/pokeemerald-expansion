@@ -7841,7 +7841,7 @@ u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)
         break;
     }
 
-    return (numMoves-1);
+    return (numMoves);
 }
 
 u16 SpeciesToPokedexNum(u16 species)
