@@ -3,7 +3,7 @@
 .set LOCALID_WALLYS_DAD, 5
 .set LOCALID_GYM_BOY, 6
 .set LOCALID_SCOTT, 7
-.set LOCALID_LOOKER, 19
+.set LOCALID_LOOKER, 18
 
 PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_OnTransition
@@ -24,20 +24,21 @@ PetalburgCity_EventScript_MoveGymBoyToWestEntrance::
 
 PetalburgCity_EventScript_Lotad::
 	msgbox PetalburgCity_Text_Lotad, MSGBOX_DEFAULT
-	return
+	closemessage
+	end
 
 PetalburgCity_EventScript_Zigzagoon::
 	faceplayer
 	playmoncry SPECIES_ZIGZAGOON_GALARIAN, CRY_MODE_NORMAL
 	msgbox PetalburgCity_Text_ZigzagoonNoises, MSGBOX_NPC
-	return
+	end
 
 PetalburgCity_Text_ZigzagoonNoises:
-	.string "ZIGZAGOON: Zigza!"
+	.string "ZIGZAGOON: Zigza!$"
 
 
 PetalburgCity_Text_Lotad:
-	.string "LOTAD is sleeping."
+	.string "LOTAD is sleeping.$"
 
 PetalburgCity_EventScript_DisableMapNameAndMusic::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
@@ -768,13 +769,17 @@ PetalburgCity_Movement_PlayerWatchScottExit3:
 	step_end
 
 PetalburgCity_EventScript_GymBoy::
-	msgbox PetalburgCity_Text_AreYouRookieTrainer, MSGBOX_NPC
+	msgbox PetalburgCity_Text_AreYouRookieTrainer, MSGBOX_DEFAULT
 	end
 
 PetalburgCity_Text_WhereIsWally:
-	.string "Where has our WALLY gone?\p"
-	.string "We have to leave for VERDANTURF TOWN\n"
-	.string "very soon…$"
+	.string "Our WALLY has always been a\n"
+	.string "sick boy.\p"
+	.string "We were thinking of having him\n"
+	.string "move to VERDANTURF with our relatives\l"
+	.string "for some fresh air…\p"
+	.string "But after the whole power plant\n"
+	.string "situation, I'm not so sure anymore.$"
 
 PetalburgCity_Text_AreYouRookieTrainer:
 	.string "Hiya! Are you maybe…\n"

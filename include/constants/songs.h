@@ -553,7 +553,13 @@
 #define MUS_AZALEA         618
 #define MUS_PMD_DIALGA       619
 #define MUS_VS_WALLY          620
-#define END_MUS                     MUS_VS_WALLY
+#define MUS_TEMPORAL_TOWER    621
+#define MUS_BRINE_CAVE    622
+#define MUS_WATERFALL_CAVE  623
+#define MUS_VS_GIRATINA  624
+#define MUS_VS_ULTRA_BEAST  625
+#define MUS_VS_DEVON  626
+#define END_MUS                     626
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
 #define MUS_NONE                    0xFFFF

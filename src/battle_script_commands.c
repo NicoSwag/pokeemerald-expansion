@@ -1520,8 +1520,7 @@ static void Cmd_attackcanceler(void)
     && GetBattlerAbility(gBattlerAttacker) == ABILITY_FIST_BARRAGE
     && (gBattleMoves[gCurrentMove].punchingMove)
     && !(gAbsentBattlerFlags & gBitTable[gBattlerTarget])
-    && gBattleStruct->zmove.toBeUsed[gBattlerAttacker] == MOVE_NONE
-    && !(gMoveResultFlags |= MOVE_RESULT_MISSED))
+    && gBattleStruct->zmove.toBeUsed[gBattlerAttacker] == MOVE_NONE)
     {
         gSpecialStatuses[gBattlerAttacker].fistBarrageState =   FIST_BARRAGE_1ST_HIT;
         gMultiHitCounter = 4;
@@ -7787,7 +7786,8 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
         else
             moneyReward = gTrainerMoneyTable[i].value * 100;
     }
-
+    if(GetCurrentMapBattleScene() == MAP_BATTLE_SCENE_GYM)
+        moneyReward = 0;
     return moneyReward;
 }
 

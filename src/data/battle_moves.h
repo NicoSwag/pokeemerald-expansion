@@ -13019,11 +13019,11 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         #else
             .accuracy = 75,
         #endif
-        .effect = EFFECT_FLASH_FREEZE,
+        .effect = MOVE_EFFECT_FROSTBITE,
         .power = 0,
         .type = TYPE_ICE,
         .pp = 15,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
     .magicCoatAffected = TRUE,

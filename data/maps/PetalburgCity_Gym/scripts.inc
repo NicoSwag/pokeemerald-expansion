@@ -1167,7 +1167,7 @@ PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon:
 	.string "I'll be looking forward to it!$"
 
 PetalburgCity_Gym_Text_WallyIdLikeAPokemon:
-	.string "Um… Hi Mr. NORMAN…\n"
+	.string "Um… Hi MR. NORMAN…\n"
 	.string "I caught some POKéMON like you said…$"
 
 PetalburgCity_Gym_Text_DadOhYoureWallyRight:
@@ -1176,10 +1176,10 @@ PetalburgCity_Gym_Text_DadOhYoureWallyRight:
 	.string "(I have no clue who this is…)$"
 
 PetalburgCity_Gym_Text_WallyIveNeverCaughtAPokemon:
-	.string "WALLY: I'm going to go stay with my\n"
-	.string "relatives in VERDANTURF TOWN.\p"
-	.string "I thought I would be lonely by myself,\n"
-	.string "so I wanted to take a POKéMON along.\p"
+	.string "WALLY: I was thinking of starting\n"
+	.string "a journey by myself.\p"
+	.string "I thought I would be lonely all on my,\n"
+	.string "own, so I wanted to take a POKéMON along.\p"
 	.string "But I've never caught a POKéMON before.\n"
 	.string "Until now…$"
 
@@ -1211,16 +1211,18 @@ PetalburgCity_Gym_Text_DadSoDidItWorkOut:
 	.string "And you too, WALTER.$"
 
 PetalburgCity_Gym_Text_WallyThankYouBye:
-	.string "WALLY: It's Wally…\p"
-	.string "Oh, you know what? Screw this.\n"
-	.string "I'm tired of being forgotten.\p"
-	.string "I'll become a great POKéMON trainer.\n"
-	.string "and I'll show you, Mr. NORMAN!\p"
+	.string "WALLY: It's WALLY…\p"
+	.string "You know what?\n"
+	.string "I'm tired of always being in the\l"
+	.string "background.\p"
+	.string "I'll become a great POKéMON trainer,\n"
+	.string "and I'll show you, MR. NORMAN!\p"
 	.string "And you too, {PLAYER}!\p"
-	.string "I'll show you all!$"
+	.string "I'll show you what I can do!$"
 
 PetalburgCity_Gym_Text_DadGoCollectBadges:
-	.string "DAD: That WALTER sure is feisty, huh?\p"
+	.string "DAD: That WALTER sure is quite the\n"
+	.string "character, huh?\p"
 	.string "Anyway…\p"
 	.string "{PLAYER}, if you want to become a\n"
 	.string "strong TRAINER, here's my advice.\p"

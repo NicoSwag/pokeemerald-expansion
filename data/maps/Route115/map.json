@@ -20,7 +20,7 @@
     },
     {
       "map": "MAP_LOWER_ROUTE115",
-      "offset": 1,
+      "offset": -1,
       "direction": "down"
     }
   ],

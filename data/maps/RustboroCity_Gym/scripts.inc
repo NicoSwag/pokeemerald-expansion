@@ -16,11 +16,20 @@ RustboroCity_Gym_EventScript_Roxanne::
 
 RustboroCity_Gym_OnTransition:
 	goto_if_set FLAG_BADGE01_GET, RustboroCity_Gym_MoveLass
+	goto_if_set FLAG_SAW_ROXANNE_CUTSCENE, RustboroCity_Gym_MoveLassRight
 	end
 
 
 RustboroCity_Gym_MoveLass:
 	setobjectxyperm LOCALID_LASS, 4, 6
+	removeobject LOCALID_ROXANNE
+	end
+
+RustboroCity_Gym_MoveLassRight:
+	removeobject LOCALID_LASS
+	removeobject LOCALID_ROXANNE
+	addobject LOCALID_LASS
+	setobjectxyperm LOCALID_LASS, 9, 9
 	end
 
 RustboroCity_Gym_EventScript_Lass::

@@ -18,9 +18,9 @@ OldaleTown_House3_Text_Volcano:
 	.string "But now it went to sleep, and the only\n"
 	.string "active volcano in the region is MT.\l"
 	.string "CHIMNEY.\p"
-	.string "It seems that a bunch of SLUGMAS decided\n"
-	.string "to keep living here, though, despite the\l"
-	.string "frequent rain!$"
+	.string "It seems that a bunch of SLUGMAS kept\n"
+	.string "living here, though, despite the frequent\l"
+	.string "rain!$"
 
 OldaleTown_House3_Text_Mom:
 	.string "My son is very interested in science.\n"

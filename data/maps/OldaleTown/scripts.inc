@@ -430,7 +430,7 @@ OldaleTown_EventScript_FootprintsManRight::
 	applymovement LOCALID_FOOTPRINTS_MAN OldaleTown_Movement_FootprintsRight
 	waitmovement 0
 	removeobject LOCALID_FOOTPRINTS_MAN
-	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 7, 10
+	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 10, 6
 	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	releaseall
 	end
@@ -438,7 +438,7 @@ OldaleTown_EventScript_FootprintsManRight::
 OldaleTown_EventScript_FootprintsManDown::
 	applymovement LOCALID_FOOTPRINTS_MAN OldaleTown_Movement_FootprintsDown
 	waitmovement 0
-	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 7, 10
+	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 10, 6
 	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
 	releaseall
 	end

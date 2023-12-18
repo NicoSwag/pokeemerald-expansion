@@ -188,13 +188,15 @@ Route101_Movement_Unused2:
 	step_end
 
 Route101_EventScript_Youngster::
-	lockall
+	lock
 	call_if_set FLAG_101_RECEIVED_HEART_SCALE, Route101_EventScript_Youngster_Received
 	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_NPC
 	closemessage
 	giveitem ITEM_HEART_SCALE
+	faceplayer
 	call_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	setflag FLAG_101_RECEIVED_HEART_SCALE
+	waitmessage
 	release
 	end
 

@@ -113,12 +113,15 @@ void LoadSpecialReflectionPalette(struct Sprite *sprite)
 	for (i = 0; i < 16; ++i)
 	{
 		color = pal[i];
-		R = GET_R(color) + 8;
-		G = GET_G(color) + 8;
-		B = GET_B(color) + 16;
+		R = GET_R(color);
+		G = GET_G(color) + 10;
+		B = GET_B(color) + 18;
 		if (R > 31) R = 31;
 		if (G > 31) G = 31;
 		if (B > 31) B = 31;
+        if (R < 0) R = 4;
+		if (G < 0) G = 0;
+		if (B <0) B = 0;
 		pal[i] = RGB(R, G, B);
 	}
 	reflectionPalette.data = gReflectionPaletteBuffer;

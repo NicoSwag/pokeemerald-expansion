@@ -3047,9 +3047,9 @@ static const u8 sTM03Desc[] = _(
     "in a turn.");
 
 static const u8 sTM04Desc[] = _(
-    "The user attacks in\n"
-    "a sudden way, raising\n"
-    "its Speed.");
+    "The user attacks\n"
+    "in a sudden way,\n"
+    "raising its Speed.");
 
 static const u8 sTM05Desc[] = _(
     "Evades attacks, but\n"

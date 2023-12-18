@@ -2,7 +2,7 @@ Route102_MapScripts::
 	.byte 0
 
 Route102_EventScript_LittleBoy::
-	lockall
+	lock
 	faceplayer
 	goto_if_unset FLAG_RECEIVED_SILVER_POWDER, Route102_EventScript_LittleBoyPowder
 	msgbox Route102_Text_ImNotVeryTall, MSGBOX_NPC
@@ -13,6 +13,8 @@ Route102_EventScript_LittleBoy::
 Route102_EventScript_LittleBoyPowder::
 	msgbox Route102_Text_GivePowder, MSGBOX_NPC
 	giveitem ITEM_SILVER_POWDER
+	faceplayer
+	waitmessage
 	msgbox Route102_Text_Feelbetternow, MSGBOX_NPC
 	setflag FLAG_RECEIVED_SILVER_POWDER
 	release

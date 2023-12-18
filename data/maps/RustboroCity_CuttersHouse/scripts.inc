@@ -60,9 +60,7 @@ RustboroCity_CuttersHouse_Text_ExplainCut:
 RustboroCity_CuttersHouse_Text_DadHelpedClearLandOfTrees:
 	.string "My dad used to be known as the CUTTER.\p"
 	.string "But he was a bit shaken by the whole\n"
-	.string "ordeal, as you can see, and now\l"
-	.string "protects the last piece of nature left\l"
-	.string "in the city centre.\p"
+	.string "ordeal, as you can see.\p"
 	.string "If you wanted to talk to him, I'd try\n"
 	.string "consulting with ROXANNE.\p"
 	.string "She's one of the only people he trusts.$"

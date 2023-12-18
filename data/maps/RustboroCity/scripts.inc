@@ -225,7 +225,7 @@ RustboroCity_EventScript_Man1::
 	end
 
 RustboroCity_EventScript_Engineer_4::
-	msgbox RustboroCity_Text_CantPass, MSGBOX_DEFAULT
+	msgbox RustboroCity_Text_CantPass, MSGBOX_NPC
 	end
 
 RustboroCity_EventScript_Man1HaveBadge::
@@ -273,13 +273,13 @@ RustboroCity_EventScript_NinjaBoy::
 RustboroCity_EventScript_Engineer_1::
 	lock
 	faceplayer
-	msgbox RustboroCity_Text_StaringAtMe, MSGBOX_SIGN
+	msgbox RustboroCity_Text_StaringAtMe, MSGBOX_NPC
 	release
 	end
 
 RustboroCity_EventScript_Engineer_2::
 	lock
-	msgbox RustboroCity_Text_DumbBird, MSGBOX_SIGN
+	msgbox RustboroCity_Text_DumbBird, MSGBOX_NPC
 	release
 	end
 
@@ -1432,7 +1432,7 @@ RustboroCity_Text_Delibird:
 
 RustboroCity_Text_LookerDisguise:
 	.string "Psst! Hey!\n"
-	.string "It is me, LOOKER!$"
+	.string "It is me, LOOKER!\p"
 	.string "LOOKER: Quite the disguise, is it not?\p"
 	.string "You see, I have reason to believe that\n"
 	.string "the suspicious man we encountered earlier\l"
@@ -1484,7 +1484,7 @@ RustboroCity_Text_Mr_Briney:
 	.string "Ye see, I was walking me PEEKO as usual,\n"
 	.string "when…\p"
 	.string "The rascal decided to fly over the\n"
-	.string "fence!$"
+	.string "fence!\p"
 	.string "Now he's on the other side, but…\n"
 	.string "This rapscallion of a man isn't letting me\l"
 	.string "go through to save me boy!\p"

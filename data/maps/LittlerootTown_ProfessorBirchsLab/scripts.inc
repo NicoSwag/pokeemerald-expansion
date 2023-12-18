@@ -1003,8 +1003,8 @@ LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "PROF. BIRCH: The POKéDEX is a high-tech\n"
 	.string "tool that lets you easily catalogue\l"
-	.string "information about POKEMON that you\n"
-	.string "encounter.$"
+	.string "information about POKEMON that you\l"
+	.string "encounter.\p"
 	.string "Back in my days, we had to do this by\n"
 	.string "hand!\p"
 	.string "Anyway, {PLAYER}{KUN}.\p"

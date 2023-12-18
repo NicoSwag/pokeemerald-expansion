@@ -39,25 +39,28 @@ AquaShop_EventScript_AquaFishingRod::
 	msgbox AquaShop_Text_JustJoking, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, AquaShop_EventScript_CheckMoney
 	msgbox AquaShop_Text_YourLoss, MSGBOX_NPC
+	hidemoneybox
 	release
 	end
 
 AquaShop_EventScript_PostRod::
 	msgbox AquaShop_Text_ThankYouKindly
 	release
+	hidemoneybox
 	end
 
 AquaShop_EventScript_CheckMoney::
 	checkmoney 10000
 	goto_if_eq VAR_RESULT, FALSE, AquaShop_EventScript_NoMoney
 	goto_if_eq VAR_RESULT, TRUE, AquaShop_EventScript_Money
+	hidemoneybox
 	release
 	end
 	
 	
 	
 AquaShop_EventScript_Money::
-	removemoney 5000
+	removemoney 10000
 	hidemoneybox
 	giveitem ITEM_SUPER_ROD
 	msgbox AquaShop_Text_ThankYouKindly, MSGBOX_NPC

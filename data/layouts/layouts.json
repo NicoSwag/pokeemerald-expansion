@@ -4445,7 +4445,7 @@
       "id": "LAYOUT_ROUTE104LOWER",
       "name": "Route104Lower_Layout",
       "width": 50,
-      "height": 60,
+      "height": 64,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route104Lower/border.bin",
@@ -4484,7 +4484,7 @@
     {
       "id": "LAYOUT_LOWER_ROUTE115",
       "name": "LowerRoute115_Layout",
-      "width": 45,
+      "width": 47,
       "height": 40,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",

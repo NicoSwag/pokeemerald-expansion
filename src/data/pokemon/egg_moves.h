@@ -5,12 +5,15 @@
 const u16 gEggMoves[] = {
     egg_moves(FENNEKIN,
         MOVE_INCINERATE,
-        MOVE_MAGIC_ROOM,
-        MOVE_CHARM),
+        MOVE_MAGIC_ROOM),
 
     egg_moves(GLIMMET,
         MOVE_MAGNITUDE,
         MOVE_TOXIC),
+
+    egg_moves(EEVEE,
+        MOVE_YAWN,
+        MOVE_WISH),
     
     egg_moves(SILCOON,
         MOVE_CHARM),
@@ -602,9 +605,6 @@ const u16 gEggMoves[] = {
         MOVE_FUTURE_SIGHT,
         MOVE_FREEZE_DRY),
 
-    egg_moves(EEVEE,
-        MOVE_YAWN,
-        MOVE_WISH),
 
     egg_moves(OMANYTE,
         MOVE_BUBBLE_BEAM,

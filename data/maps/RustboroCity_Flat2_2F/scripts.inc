@@ -24,7 +24,7 @@ RustboroCity_Flat2_2F_EventScript_GavePremierBall::
 RustboroCity_Flat2_2F_Text_DevonWasTinyInOldDays:
 	.string "It is said that DEVON existed even\n"
 	.string "way back when people started to\l"
-	.string "settle HOENN.\p"
+	.string "settle in HOENN.\p"
 	.string "Of course, I wasn't even born back\n"
 	.string "then. Haha!$"
 

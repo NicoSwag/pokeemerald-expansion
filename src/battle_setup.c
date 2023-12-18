@@ -722,8 +722,9 @@ u8 BattleSetup_GetTerrainId(void)
     {
     case MAP_TYPE_TOWN:
     case MAP_TYPE_CITY:
-    case MAP_TYPE_ROUTE:
         break;
+    case MAP_TYPE_ROUTE:
+        return BATTLE_TERRAIN_GRASS;
     case MAP_TYPE_GYM_ARENA:
         return BATTLE_TERRAIN_GYM_ARENA;
     case MAP_TYPE_UNDERGROUND:
@@ -2291,6 +2292,10 @@ u8 HasWildPokmnOnThisRouteBeenSeen(u8 currLocation, bool8 setVarForThisEnc){
     case MAPSEC_ROUTE_104_LOWER:
         varToCheck = 4;
         bitToCheck = 12;
+       break;
+    case MAPSEC_BRINE_CAVE:
+        varToCheck = 4;
+        bitToCheck = 13;
        break;
     default:
        return 0;

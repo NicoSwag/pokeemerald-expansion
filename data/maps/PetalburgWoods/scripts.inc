@@ -19,7 +19,6 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	waitmovement 0
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonEscapes
 	waitmovement 0
-	removeobject LOCALID_DEVON_EMPLOYEE
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_GruntFacesPlayerLeft
 	msgbox PetalburgWoods_Text_HandOverThosePapers, MSGBOX_DEFAULT
 	closemessage
@@ -29,11 +28,13 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_GruntLeaves
 	waitmovement 0
 	removeobject LOCALID_GRUNT
+	removeobject LOCALID_DEVON_EMPLOYEE
 	addobject LOCALID_LOOKER
 	setobjectxy LOCALID_LOOKER, 25, 29
 	special DrawWholeMapView
 	waitmovement 0
 	applymovement LOCALID_LOOKER, PetalburgWoods_Movement_LookerGoesUp
+	playbgm MUS_LOOKER_THEME, FALSE
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	msgbox PetalburgWoods_Text_LookerLate, MSGBOX_DEFAULT
@@ -45,6 +46,7 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	closemessage
 	applymovement LOCALID_LOOKER, PetalburgWoods_Movement_LookerByeLeft
 	waitmovement 0
+	fadedefaultbgm
 	removeobject LOCALID_LOOKER
 	setvar VAR_PETALBURG_WOODS_STATE, 1
 	releaseall

@@ -4039,6 +4039,12 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_AZALEA) \
     X(MUS_PMD_DIALGA) \
     X(MUS_VS_WALLY) \
+    X(MUS_TEMPORAL_TOWER) \
+    X(MUS_BRINE_CAVE) \
+    X(MUS_WATERFALL_CAVE) \
+    X(MUS_VS_GIRATINA) \
+    X(MUS_VS_ULTRA_BEAST) \
+    X(MUS_VS_DEVON) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \

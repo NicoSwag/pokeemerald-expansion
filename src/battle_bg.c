@@ -874,6 +874,33 @@ void DrawMainBattleBackground(void)
     }
     else
     {
+        s16 x;
+        s16 y;
+        u8 tileBehavior;
+        PlayerGetDestCoords(&x, &y);
+        tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
+        
+        if (MetatileBehavior_IsSandOrDeepSand(tileBehavior) && gMapHeader.mapType == MAP_TYPE_OVERCAST)
+        {
+            LZDecompressVram(gBattleTerrainTiles_Sand, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Sand, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_SandOvercast, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            return;
+        }
+        if (MetatileBehavior_IsSandOrDeepSand(tileBehavior))
+        {
+            LZDecompressVram(gBattleTerrainTiles_Sand, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Sand, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_Sand, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            return;
+        }
+        if (MetatileBehavior_IsMountain(tileBehavior))
+        {
+            LZDecompressVram(gBattleTerrainTiles_Rock, (void *)(BG_CHAR_ADDR(2)));
+            LZDecompressVram(gBattleTerrainTilemap_Rock, (void *)(BG_SCREEN_ADDR(26)));
+            LoadCompressedPalette(gBattleTerrainPalette_Rock, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            return;
+        }
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
         {
             u8 trainerClass = gTrainers[gTrainerBattleOpponent_A].trainerClass;

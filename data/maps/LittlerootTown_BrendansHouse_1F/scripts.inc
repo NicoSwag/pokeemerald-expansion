@@ -373,8 +373,8 @@ PlayersHouse_1F_Text_ReportFromPetalburgGym:
 	.string "INTERVIEWER: …And how do you respond\n"
 	.string "to the allegations of item abuse\l"
 	.string "taking place in your GYM?\p"
-	.string "DAD: Oops! I just remembered!\p"
-	.string "I have a very important League meeting!\l"
+	.string "DAD: Oops! I just remembered!\n"
+	.string "I have a very important meeting!\p"
 	.string "Sorry, gotta go!$"
 
 PlayersHouse_1F_Text_TheresAMovieOnTV:

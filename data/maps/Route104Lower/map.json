@@ -218,14 +218,14 @@
     },
     {
       "x": 20,
-      "y": 20,
+      "y": 19,
       "elevation": 3,
       "dest_map": "MAP_PETALBURG_WOODS",
       "dest_warp_id": "0"
     },
     {
       "x": 21,
-      "y": 20,
+      "y": 19,
       "elevation": 3,
       "dest_map": "MAP_PETALBURG_WOODS",
       "dest_warp_id": "1"

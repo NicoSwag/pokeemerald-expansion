@@ -622,7 +622,12 @@ gSongTable::
 	song mus_azalea, 0, 0
 	song mus_pmd_dialga, 0, 0
 	song mus_vs_wally, 0, 0
-
+	song mus_temporal_tower, 0, 0
+	song mus_brine_cave, 0, 0
+	song mus_waterfall_cave, 0, 0
+	song mus_vs_giratina, 0, 0
+	song mus_vs_ultra_beast, 0, 0
+	song mus_vs_devon, 0, 0
 	.align 2
 dummy_song_header:
 	.byte 0, 0, 0, 0

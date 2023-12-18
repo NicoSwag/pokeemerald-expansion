@@ -8347,6 +8347,7 @@ extern const u32 gBattleTerrainTilemap_Sand[];
 extern const u32 gBattleTerrainAnimTiles_Sand[];
 extern const u32 gBattleTerrainAnimTilemap_Sand[];
 extern const u32 gBattleTerrainPalette_Sand[];
+extern const u32 gBattleTerrainPalette_SandOvercast[];
 extern const u32 gBattleTerrainTiles_Underwater[];
 extern const u32 gBattleTerrainTilemap_Underwater[];
 extern const u32 gBattleTerrainAnimTiles_Underwater[];

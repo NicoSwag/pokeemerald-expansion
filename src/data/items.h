@@ -102,7 +102,7 @@ const struct Item gItems[] =
 
     [ITEM_NET_BALL] =
     {
-        .name = _("Net Ball"),
+        .name = _("NET BALL"),
         .price = 500,
         .description = sNetBallDesc,
         .pocket = POCKET_POKE_BALLS,
@@ -113,7 +113,7 @@ const struct Item gItems[] =
 
     [ITEM_NEST_BALL] =
     {
-        .name = _("Nest Ball"),
+        .name = _("NEST BALL"),
         .price = 1000,
         .description = sNestBallDesc,
         .pocket = POCKET_POKE_BALLS,
@@ -124,7 +124,7 @@ const struct Item gItems[] =
 
     [ITEM_DIVE_BALL] =
     {
-        .name = _("Dive Ball"),
+        .name = _("DIVE BALL"),
         .price = 500,
         .description = sDiveBallDesc,
         .pocket = POCKET_POKE_BALLS,
@@ -424,7 +424,7 @@ const struct Item gItems[] =
 
     [ITEM_FRESH_WATER] =
     {
-        .name = _("Fresh Water"),
+        .name = _("FRESH WATER"),
         .price = 200,
         .holdEffectParam = 30,
         .description = sFreshWaterDesc,
@@ -1361,7 +1361,7 @@ const struct Item gItems[] =
 
     [ITEM_REPEL] =
     {
-        .name = _("Repel"),
+        .name = _("REPEL"),
         .price = 400,
         .holdEffectParam = 100,
         .description = sRepelDesc,
@@ -1457,7 +1457,7 @@ const struct Item gItems[] =
 
     [ITEM_X_ATTACK] =
     {
-        .name = _("X Attack"),
+        .name = _("X-ATTACK"),
         .price = 1000,
         .holdEffectParam = X_ITEM_STAGES,
         .description = sXAttackDesc,
@@ -1470,7 +1470,7 @@ const struct Item gItems[] =
 
     [ITEM_X_DEFENSE] =
     {
-        .name = _("X Defense"),
+        .name = _("X-DEFENSE"),
         .price = 2000,
         .holdEffectParam = X_ITEM_STAGES,
         .description = sXDefenseDesc,
@@ -1483,7 +1483,7 @@ const struct Item gItems[] =
 
     [ITEM_X_SP_ATK] =
     {
-        .name = _("X Sp. Atk"),
+        .name = _("X-SP.ATK"),
         .price = 1000,
         .holdEffectParam = X_ITEM_STAGES,
         .description = sXSpAtkDesc,
@@ -1496,7 +1496,7 @@ const struct Item gItems[] =
 
     [ITEM_X_SP_DEF] =
     {
-        .name = _("X Sp. Def"),
+        .name = _("X-SP.DEF"),
         .price = 2000,
         .holdEffectParam = X_ITEM_STAGES,
         .description = sXSpDefDesc,
@@ -1509,7 +1509,7 @@ const struct Item gItems[] =
 
     [ITEM_X_SPEED] =
     {
-        .name = _("X Speed"),
+        .name = _("X-SPEED"),
         .price = 1000,
         .holdEffectParam = X_ITEM_STAGES,
         .description = sXSpeedDesc,
@@ -1522,7 +1522,7 @@ const struct Item gItems[] =
 
     [ITEM_X_ACCURACY] =
     {
-        .name = _("X Accuracy"),
+        .name = _("X-ACCURACY"),
         .price = 1000,
         .holdEffectParam = X_ITEM_STAGES,
         .description = sXAccuracyDesc,
@@ -5197,14 +5197,13 @@ const struct Item gItems[] =
 
     [ITEM_MYSTIC_WATER] =
     {
-        .name = _("Mystic Water"),
+        .name = _("MYSTIC WATER"),
         .price = 3000,
         .holdEffect = HOLD_EFFECT_WATER_POWER,
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = sMysticWaterDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
-        .importance = 1,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 30,
     },
@@ -5354,7 +5353,7 @@ const struct Item gItems[] =
 
     [ITEM_DRAGON_FANG] =
     {
-        .name = _("Dragon Fang"),
+        .name = _("DRAGON FANG"),
         .price = 1000,
         .holdEffect = HOLD_EFFECT_DRAGON_POWER,
         .holdEffectParam = TYPE_BOOST_PARAM,
@@ -5642,8 +5641,8 @@ const struct Item gItems[] =
 
     [ITEM_EXP_SHARE] =
     {
-        .name = _("Exp. Share"),
-        .price = 3000,
+        .name = _("EXP. SHARE"),
+        .price = 0,
         .holdEffect = HOLD_EFFECT_EXP_SHARE,
         .description = sExpShareDesc,
         .pocket = I_EXP_SHARE_ITEM >= GEN_6 ? POCKET_KEY_ITEMS : POCKET_ITEMS,
@@ -5816,7 +5815,7 @@ const struct Item gItems[] =
 
     [ITEM_MUSCLE_BAND] =
     {
-        .name = _("Muscle Band"),
+        .name = _("MUSCLE BAND"),
         .price = 4000,
         .holdEffect = HOLD_EFFECT_MUSCLE_BAND,
         .holdEffectParam = 10,
@@ -5842,8 +5841,8 @@ const struct Item gItems[] =
 
     [ITEM_EXPERT_BELT] =
     {
-        .name = _("Expert Belt"),
-        .price = 4000,
+        .name = _("EXPERT BELT"),
+        .price = 3000,
         .holdEffect = HOLD_EFFECT_EXPERT_BELT,
         .holdEffectParam = 20,
         .description = sExpertBeltDesc,
@@ -6140,7 +6139,7 @@ const struct Item gItems[] =
 
     [ITEM_EJECT_BUTTON] =
     {
-        .name = _("Eject Button"),
+        .name = _("EJECT BUTTON"),
         .price = 4000,
         .holdEffect = HOLD_EFFECT_EJECT_BUTTON,
         .holdEffectParam = 0,
@@ -6287,7 +6286,7 @@ const struct Item gItems[] =
 
     [ITEM_UTILITY_UMBRELLA] =
     {
-        .name = _("UtltyUmbrlla"),
+        .name = _("UMBRELLA"),
         .price = 4000,
         .holdEffect = HOLD_EFFECT_UTILITY_UMBRELLA,
         .description = sUtilityUmbrellaDesc,
@@ -6760,10 +6759,9 @@ const struct Item gItems[] =
 
     [ITEM_PASSHO_BERRY] =
     {
-        .name = _("Passho Berry"),
+        .name = _("PASSHO BERRY"),
         .price = 1000,
         .holdEffect = HOLD_EFFECT_RESIST_BERRY,
-        .importance = 3,
         .holdEffectParam = TYPE_WATER,
         .description = sPasshoBerryDesc,
         .pocket = POCKET_BERRIES,
@@ -8692,7 +8690,7 @@ const struct Item gItems[] =
 
     [ITEM_SUPER_ROD] =
     {
-        .name = _("Super Rod"),
+        .name = _("FISHING ROD"),
         .price = 0,
         .description = sSuperRodDesc,
         .importance = 1,

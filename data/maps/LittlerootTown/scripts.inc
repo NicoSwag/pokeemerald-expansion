@@ -100,7 +100,7 @@ LittlerootTown_EventScript_SetMomStandingInFrontOfDoorPos::
 	return
 
 LittlerootTown_EventScript_SetMomInFrontOfDoorMale::
-	setobjectxyperm LOCALID_MOM, 5, 8
+	setobjectxyperm LOCALID_MOM, 5, 7
 	return
 
 LittlerootTown_EventScript_SetMomInFrontOfDoorFemale::
@@ -288,6 +288,7 @@ LittlerootTown_EventScript_Twin::
 LittlerootTown_EventScript_Sunflora::
 	lock
 	faceplayer
+	playmoncry SPECIES_SUNFLORA, CRY_MODE_NORMAL
 	msgbox LittlerootTown_Text_Sunflora, MSGBOX_DEFAULT
 	release
 	end
@@ -555,9 +556,11 @@ LittlerootTown_Movement_MomApproachPlayer0:
 	walk_up
 	walk_up
 	walk_up
+	walk_up
 	step_end
 
 LittlerootTown_Movement_MomApproachPlayer1:
+	walk_up
 	walk_up
 	walk_up
 	walk_up

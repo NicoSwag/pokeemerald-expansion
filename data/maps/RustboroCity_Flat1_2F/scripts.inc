@@ -62,11 +62,11 @@ RustboroCity_Flat1_2F_EventScript_WaldaLikesPhrase::
 	call RustboroCity_Flat1_2F_EventScript_WaldasDadFaceWalda
 	applymovement LOCALID_WALDA, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_WALDA, Common_Movement_FaceRight
+	applymovement LOCALID_WALDA, Common_Movement_FaceLeft
 	waitmovement 0 
 	msgbox RustboroCity_Flat1_2F_Text_SoTrue, MSGBOX_DEFAULT
 	applymovement LOCALID_WALDAS_DAD, Common_Movement_ExclamationMark
-	applymovement LOCALID_WALDAS_DAD, Common_Movement_FacePlayer
+	faceplayer
 	waitmovement 0
 	msgbox RustboroCity_Flat1_2F_Text_ThankYouIllGiveYouWallpaper, MSGBOX_DEFAULT
 	giveitem ITEM_HEART_SCALE
@@ -144,7 +144,7 @@ RustboroCity_Flat1_2F_Text_LetsGiveItATry2:
 
 RustboroCity_Flat1_2F_Text_OhShesLaughing:
 	.string "{STR_VAR_1}.\n"
-	.string "{STR_VAR_1}.\p"
+	.string "{STR_VAR_1}.$"
 
 RustboroCity_Flat1_2F_Text_LetsGiveItATry:
 	.string "Ah, I see.\n"

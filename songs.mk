@@ -1265,7 +1265,7 @@ $(MID_SUBDIR)/se_dex_search.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -v100 -P5
 
 $(MID_SUBDIR)/mus_looker_theme.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G087 -v100 -P5
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v130 -P5
 
 $(MID_SUBDIR)/mus_vs_johto_leader.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G125 -v100 -P5
@@ -1295,5 +1295,23 @@ $(MID_SUBDIR)/mus_pmd_dialga.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
 
 $(MID_SUBDIR)/mus_vs_wally.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_temporal_tower.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_brine_cave.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_waterfall_cave.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_vs_giratina.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_vs_ultra_beast.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_vs_devon.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
 

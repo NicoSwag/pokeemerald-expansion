@@ -25,6 +25,7 @@ Route115_EventScript_Engineer3::
 Route115_EventScript_Scizor::
 	playmoncry SPECIES_SCIZOR, CRY_MODE_NORMAL
 	msgbox Route115_Text_Scizor, MSGBOX_DEFAULT
+	closemessage
 	end
 
 Route115_Text_Barrier:

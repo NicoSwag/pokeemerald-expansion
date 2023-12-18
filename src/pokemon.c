@@ -7725,8 +7725,9 @@ u8 GetMoveTutorMoves(struct Pokemon *mon, u16 *moves)
         }
         break;
     }
-
-    return (numMoves-1);
+    if(species == SPECIES_EEVEE)
+        numMoves--;
+    return (numMoves);
 }
 
 u8 GetLevelUpMovesBySpecies(u16 species, u16 *moves)

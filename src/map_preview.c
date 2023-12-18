@@ -124,6 +124,17 @@ static const struct MapPreviewScreen sMapPreviewScreenData[MPS_COUNT] =
         .tilemapptr = sMtMoonMapPreviewTilemap,
         .palptr = sMtMoonMapPreviewPalette
     },
+    [MPS_BRINE_CAVE] = 
+    {
+        .mapsec = MAPSEC_BRINE_CAVE,
+        .type = MPS_TYPE_CAVE,
+        #if FLAG_BASED_MAP_PREVIEW_TIME
+        .flagId = FLAG_VISITED_METEOR_FALLS, //flag needs to be added to constants/flags.h
+        #endif
+        .tilesptr = sMtMoonMapPreviewTiles,
+        .tilemapptr = sMtMoonMapPreviewTilemap,
+        .palptr = sMtMoonMapPreviewPalette
+    },
     //etc...
     
     /* Firered map preview entries for reference
