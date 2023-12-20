@@ -2321,10 +2321,14 @@ u8 DoFieldEndTurnEffects(void)
                 {
                     for (i = 0; i < gBattlersCount; i++){
                         gBattleMons[i].canWeatherChange = FALSE;
-}
+                    }
                     gBattleWeather = gBattleStruct->weatherStore;
                     gBattlescriptCurrInstr = BattleScript_PollutionEnds;
-                     if ((GetBattlerAbility(i) == ABILITY_POISON_HEAL)
+                }
+                else
+                {
+                    gBattlescriptCurrInstr = BattleScript_PollutionContinues;
+                    if ((GetBattlerAbility(i) == ABILITY_POISON_HEAL)
                     && (gBattleMons[i].status1 != (STATUS1_POISON && STATUS1_TOXIC_POISON)))
                     {
                         if (!BATTLER_MAX_HP(i) && !(gStatuses3[i] & STATUS3_HEAL_BLOCK))
@@ -2338,20 +2342,15 @@ u8 DoFieldEndTurnEffects(void)
                             }
                     }
                 }
-                else
-                {
-                    gBattlescriptCurrInstr = BattleScript_PollutionContinues;
-                   
-                                    }
                 gBattleScripting.animArg1 = B_ANIM_POLLUTION_CONTINUES;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_POLLUTION;
                 BattleScriptExecute(gBattlescriptCurrInstr);
                 effect++;
 
-            
-        }
+                
+            }
             gBattleStruct->turnCountersTracker++;
-                    case ENDTURN_DAMAGE_NON_TYPES:
+        case ENDTURN_DAMAGE_NON_TYPES:
             while (gBattleStruct->turnSideTracker < 2)
             {
                 side = gBattleStruct->turnSideTracker;
@@ -5827,7 +5826,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
-                gHitMarker |= HITMARKER_STATUS_ABILITY_EFFECT;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
             break;
@@ -6109,7 +6108,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
-                gHitMarker |= HITMARKER_STATUS_ABILITY_EFFECT;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
             break;
@@ -6137,10 +6136,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 && gBattleMons[gBattlerAttacker].hp != 0 && !(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK))
             {
                 gBattleScripting.battler = gBattlerAttacker;
-                gBattleMoveDamage = (gSpecialStatuses[gBattlerTarget].shellBellDmg / 8) * -1;
+                gBattleMoveDamage = (gSpecialStatuses[gBattlerTarget].dmg / 8) * -1;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = -1;
-                gSpecialStatuses[gBattlerTarget].shellBellDmg = 0;
+                gSpecialStatuses[gBattlerTarget].dmg = 0;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ItemHealHP_Move;
             }
@@ -6170,7 +6169,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
-                gHitMarker |= HITMARKER_STATUS_ABILITY_EFFECT;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
             break;

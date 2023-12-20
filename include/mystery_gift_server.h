@@ -67,34 +67,6 @@ enum {
     SVR_MSG_CANT_SEND_GIFT_2,
 };
 
-struct MysteryGiftServerCmd
-{
-    u32 instr;
-    u32 parameter;
-    const void * ptr;
-};
 
-struct MysteryGiftServer
-{
-    u32 unused;
-    u32 param;
-    u32 funcId;
-    u32 cmdidx;
-    const struct MysteryGiftServerCmd * script;
-    void * recvBuffer;
-    struct WonderCard * card;
-    struct WonderNews * news;
-    struct MysteryGiftLinkGameData * linkGameData;
-    const void * ramScript;
-    u32 ramScriptSize;
-    const void * clientScript;
-    u32 clientScriptSize;
-    u32 stamp;
-    struct MysteryGiftLink link;
-};
-
-void MysterGiftServer_CreateForCard();
-void MysterGiftServer_CreateForNews();
-u32 MysterGiftServer_Run(u16 * endVal);
 
 #endif //GUARD_MYSTERY_GIFT_SERVER_H

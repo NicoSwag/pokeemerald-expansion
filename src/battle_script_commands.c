@@ -348,7 +348,7 @@ static bool32 CriticalCapture(u32 odds);
 static void BestowItem(u32 battlerAtk, u32 battlerDef);
 static bool8 IsFinalStrikeEffect(u16 move);
 static void TryUpdateRoundTurnOrder(void);
-static void UNUSED TryUpdateGangsterOrder(void);
+static void TryUpdateGangsterOrder(void);
 static bool32 ChangeOrderTargetAfterAttacker(void);
 void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBattler);
 static void RemoveAllTerrains(void);
@@ -585,6 +585,8 @@ static void Cmd_switchoutabilities(void);
 static void Cmd_jumpifhasnohp(void);
 static void Cmd_getsecretpowereffect(void);
 static void Cmd_pickup(void);
+static void Cmd_unused3(void);
+static void Cmd_unused4(void);
 static void Cmd_settypebasedhalvers(void);
 static void Cmd_jumpifsubstituteblocks(void);
 static void Cmd_tryrecycleitem(void);
@@ -860,7 +862,8 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_jumpifhasnohp,                           //0xE3
     Cmd_getsecretpowereffect,                    //0xE4
     Cmd_pickup,                                  //0xE5
-    Cmd_recoverbasedonelectric,                                 //0xE6                               //0xE7
+    Cmd_recoverbasedonelectric,                                 //0xE6
+    Cmd_unused4,                                 //0xE7
     Cmd_settypebasedhalvers,                     //0xE8
     Cmd_jumpifsubstituteblocks,                  //0xE9
     Cmd_tryrecycleitem,                          //0xEA
@@ -1292,7 +1295,7 @@ u8 GetHiddenPowerType(u32 move, u32 attacker, u32 target)
     bool32 neutral;
     u32 effectiveType[NUMBER_OF_MON_TYPES];
     u8 numberOfTypes = 0;
-    u32 bestType = 0;
+    u32 bestType;
     u8 i;
     quadrupleEffectiveness = FALSE;
     doubleEffectiveness = FALSE;
@@ -1344,7 +1347,6 @@ u8 GetHiddenPowerType(u32 move, u32 attacker, u32 target)
         bestType = effectiveType[Random() % numberOfTypes];
         return bestType;
     }
-    return bestType;
 }
 
 
@@ -1353,6 +1355,7 @@ u32 CalcBestType(u32 move, u32* type, u8 size, u32 target, u32 attacker)
     bool32 nullEffectiveness;
     bool32 quadResistance;
     bool32 doubleResistance;
+    u32 bestTypes[size];
     u32 numberOfTypes = 0;
     u8 random;
     u8 i;
@@ -1362,6 +1365,7 @@ u32 CalcBestType(u32 move, u32* type, u8 size, u32 target, u32 attacker)
         if(CalcTypeEffectivenessMultiplier(move, type[i], attacker, target, AI_DATA->abilities[target], FALSE) == UQ_4_12(0.0))
         {
             nullEffectiveness = TRUE;
+            bestTypes[numberOfTypes] = type[i];
             numberOfTypes++;
         }
     }
@@ -1384,6 +1388,7 @@ u32 CalcBestType(u32 move, u32* type, u8 size, u32 target, u32 attacker)
         if(CalcTypeEffectivenessMultiplier(move, type[i], attacker, target, AI_DATA->abilities[target], FALSE) == UQ_4_12(0.25))
         {
             quadResistance = TRUE;
+            bestTypes[numberOfTypes] = type[i];
             numberOfTypes++;
         }
     }
@@ -1406,6 +1411,7 @@ u32 CalcBestType(u32 move, u32* type, u8 size, u32 target, u32 attacker)
         if(CalcTypeEffectivenessMultiplier(move, type[i], attacker, target, AI_DATA->abilities[target], FALSE) == UQ_4_12(0.0))
         {
             doubleResistance = TRUE;
+            bestTypes[numberOfTypes] = type[i];
             numberOfTypes++;
         }
     }
@@ -1440,11 +1446,9 @@ bool32 ColorChangeTryChangeType(u32 defender, u32 ability, u32 move, u32 moveTyp
         return TRUE;
     }
     return FALSE;
-bool32 UNUSED IsMoveNotAllowedInSkyBattles(u32 move)
+bool32 IsMoveNotAllowedInSkyBattles(u32 move)
 {
     return ((gBattleStruct->isSkyBattle) && (gBattleMoves[gCurrentMove].skyBattleBanned));
-}
-
 }
 
 static void Cmd_attackcanceler(void)
@@ -1582,7 +1586,8 @@ static void Cmd_attackcanceler(void)
     gHitMarker |= HITMARKER_OBEYS;
     // Check if no available target present on the field or if Sky Battles ban the move
     if ((NoTargetPresent(gBattlerAttacker, gCurrentMove)
-        && (!gBattleMoves[gCurrentMove].twoTurnMove || (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS))))
+        && (!gBattleMoves[gCurrentMove].twoTurnMove || (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)))
+        || (IsMoveNotAllowedInSkyBattles(gCurrentMove)))
     {
         if (gBattleMoves[gCurrentMove].effect == EFFECT_FLING) // Edge case for removing a mon's item when there is no target available after using Fling.
             gBattlescriptCurrInstr = BattleScript_FlingFailConsumeItem;
@@ -4129,15 +4134,15 @@ static void Cmd_cleareffectsonfaint(void)
         }
 
         if(gBattleMons[battler].ability==ABILITY_DROUGHT && gBattleMons[battler].canWeatherChange == TRUE && B_WEATHER_SUN)
-        gBattleWeather = gBattleStruct->weatherStore;
+            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[battler].ability==ABILITY_DRIZZLE && gBattleMons[battler].canWeatherChange == TRUE && B_WEATHER_RAIN)
-            gBattleWeather = gBattleStruct->weatherStore;
+            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[battler].ability==ABILITY_NOXIOUS_FUMES && gBattleMons[battler].canWeatherChange == TRUE && B_WEATHER_POLLUTION)
-            gBattleWeather = gBattleStruct->weatherStore;
+            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[battler].ability==ABILITY_SAND_STREAM && gBattleMons[battler].canWeatherChange == TRUE && B_WEATHER_SANDSTORM)
-            gBattleWeather = gBattleStruct->weatherStore;
+            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[battler].ability==ABILITY_SNOW_WARNING && gBattleMons[battler].canWeatherChange == TRUE && B_WEATHER_SNOW)
-            gBattleWeather = gBattleStruct->weatherStore;
+            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[battler].ability==ABILITY_GRASSY_SURGE && gBattleMons[battler].canTerrainChange == TRUE && STATUS_FIELD_GRASSY_TERRAIN){
             DrawMainBattleBackground();
             gFieldStatuses &= ~STATUS_FIELD_GRASSY_TERRAIN;
@@ -6529,6 +6534,9 @@ static void Cmd_moveend(void)
                 *(gBattleStruct->moveTarget + gBattlerAttacker) = gSpecialStatuses[gBattlerAttacker].dancerOriginalTarget & 0x3;
             if (gSpecialStatuses[gBattlerAttacker].singerOriginalTarget)
                 *(gBattleStruct->moveTarget + gBattlerAttacker) = gSpecialStatuses[gBattlerAttacker].singerOriginalTarget & 0x3;
+        #if B_RAMPAGE_CANCELLING >= GEN_5
+            if (gBattleMoves[gCurrentMove].effect == EFFECT_RAMPAGE // If we're rampaging
+
             if (B_RAMPAGE_CANCELLING >= GEN_5
               && gBattleMoves[gCurrentMove].effect == EFFECT_RAMPAGE // If we're rampaging
               && (gMoveResultFlags & MOVE_RESULT_NO_EFFECT)         // And it is unusable
@@ -7760,6 +7768,7 @@ static void Cmd_hitanimation(void)
 static u32 GetTrainerMoneyToGive(u16 trainerId)
 {
     u32 i = 0;
+    u32 lastMonLevel = 0;
     u32 moneyReward;
 
     if (trainerId == TRAINER_SECRET_BASE)
@@ -7769,7 +7778,7 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
     else
     {
         const struct TrainerMon *party = gTrainers[trainerId].party;
-
+        lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
 
         for (; gTrainerMoneyTable[i].classId != 0xFF; i++)
         {
@@ -13039,30 +13048,44 @@ static void Cmd_trysetencore(void)
         }
     else
     {
-   for (i = 0; i < MAX_MON_MOVES; i++)
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    if (IsMaxMove(gLastMoves[gBattlerTarget]) && !IsDynamaxed(gBattlerTarget))
     {
-        if (gBattleMons[gBattlerTarget].moves[i] == gLastMoves[gBattlerTarget])
-            break;
+        for (i = 0; i < MAX_MON_MOVES; i++)
+        {
+            if (gBattleMons[gBattlerTarget].moves[i] == gBattleStruct->dynamax.baseMove[gBattlerTarget])
+                break;
+        }
     }
-    if (gDisableStructs[gBattlerTarget].disabledMove == MOVE_NONE
+    else
+    {
+        for (i = 0; i < MAX_MON_MOVES; i++)
+        {
+            if (gBattleMons[gBattlerTarget].moves[i] == gLastMoves[gBattlerTarget])
+                break;
+        }
+    }
+
+    if ((gBattleMoves[gLastMoves[gBattlerTarget]].encoreBanned)
+     || gLastMoves[gBattlerTarget] == MOVE_NONE
+     || gLastMoves[gBattlerTarget] == MOVE_UNAVAILABLE)
+    {
+        i = MAX_MON_MOVES;
+    }
+
+    if (gDisableStructs[gBattlerTarget].encoredMove == MOVE_NONE
         && i != MAX_MON_MOVES && gBattleMons[gBattlerTarget].pp[i] != 0)
     {
-        PREPARE_MOVE_BUFFER(gBattleTextBuff1, gBattleMons[gBattlerTarget].moves[i])
-
-        gDisableStructs[gBattlerTarget].disabledMove = gBattleMons[gBattlerTarget].moves[i];
-        if (B_DISABLE_TURNS >= GEN_5)
-            gDisableStructs[gBattlerTarget].disableTimer = 4;
-        else if (B_DISABLE_TURNS >= GEN_4)
-            gDisableStructs[gBattlerTarget].disableTimer = (Random() & 3) + 4; // 4-7 turns
-        else
-            gDisableStructs[gBattlerTarget].disableTimer = (Random() & 3) + 2; // 2-5 turns
+        gDisableStructs[gBattlerTarget].encoredMove = gBattleMons[gBattlerTarget].moves[i];
+        gDisableStructs[gBattlerTarget].encoredMovePos = i;
+        gDisableStructs[gBattlerTarget].encoreTimer = 3;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
     else
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }
-}
+    }
 }
 
 static void Cmd_painsplitdmgcalc(void)
@@ -14248,7 +14271,7 @@ static void Cmd_settorment(void)
 
     if (gBattleMons[gBattlerTarget].status2 & STATUS2_TORMENT
     || gBattleMons[gBattlerTarget].type1 == TYPE_PSYCHIC
-    || gBattleMons[gBattlerTarget].type2 == TYPE_PSYCHIC
+    || gBattleMons[gBattlerTarget].type2 == TYPE_PSYCHIC)
         || IsDynamaxed(gBattlerTarget))
     {
         gBattlescriptCurrInstr = cmd->failInstr;
@@ -15138,7 +15161,13 @@ static void Cmd_pickup(void)
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
+static void Cmd_unused3(void)
+{
+}
 
+static void Cmd_unused4(void)
+{
+}
 
 // Water and Mud Sport
 static void Cmd_settypebasedhalvers(void)
@@ -16405,14 +16434,14 @@ static void TryUpdateRoundTurnOrder(void)
     }
 }
 
-static void UNUSED TryUpdateGangsterOrder(void)
+static void TryUpdateGangsterOrder(void)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
     {
         u32 i;
         u32 j = 0;
         u32 k = 0;
-        u32 currRounder = 0;
+        u32 currRounder;
         u8 roundUsers[3] = {0xFF, 0xFF, 0xFF};
         u8 nonRoundUsers[3] = {0xFF, 0xFF, 0xFF};
         for (i = 0; i < gBattlersCount; i++)

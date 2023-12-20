@@ -189,7 +189,7 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .bg = 0,
         .tilemapLeft = 2,
         .tilemapTop = 55,
-        .width = 16,    //for z move names
+        .width = 8,
         .height = 2,
         .paletteNum = 5,
         .baseBlock = 0x0300,
@@ -201,16 +201,16 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .width = 8,
         .height = 2,
         .paletteNum = 5,
-        .baseBlock = 0x0318,
+        .baseBlock = 0x0310,
     },
     [B_WIN_MOVE_NAME_3] = {
         .bg = 0,
         .tilemapLeft = 2,
         .tilemapTop = 57,
-        .width = 16,    //for z effect descriptions
+        .width = 8,
         .height = 2,
         .paletteNum = 5,
-        .baseBlock = 0x0328,
+        .baseBlock = 0x0320,
     },
     [B_WIN_MOVE_NAME_4] = {
         .bg = 0,
@@ -219,13 +219,13 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .width = 8,
         .height = 2,
         .paletteNum = 5,
-        .baseBlock = 0x0340,
+        .baseBlock = 0x0330,
     },
     [B_WIN_PP] = {
         .bg = 0,
-        .tilemapLeft = 21,
+        .tilemapLeft = 23,
         .tilemapTop = 55,
-        .width = 4,
+        .width = 2,
         .height = 2,
         .paletteNum = 5,
         .baseBlock = 0x0290,
@@ -233,11 +233,11 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
     [B_WIN_DUMMY] = {
         .bg = 0,
         .tilemapLeft = 21,
-        .tilemapTop = 57,
-        .width = 0,
-        .height = 0,
-        .paletteNum = 5,
-        .baseBlock = 0x0298,
+        .tilemapTop = 55,
+        .width = 2,
+        .height = 2,
+        .paletteNum = 10,
+        .baseBlock = 0x0294,
     },
     [B_WIN_PP_REMAINING] = {
         .bg = 0,
@@ -374,9 +374,46 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .paletteNum = 0,
         .baseBlock = 0x00b0,
     },
+
+       [B_WIN_MOVE_DESCRIPTION] = {
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 47,
+       .width = 18,
+        .height = 6,
+       .paletteNum = 5,
+       .baseBlock = 0x0350,
+    },
+
+    [B_WIN_TYPE_SUPER_EFF] = { // super effective
+        .bg = 0,
+        .tilemapLeft = 21,
+        .tilemapTop = 57,
+       .width = 8,
+      .height = 2,
+        .paletteNum = 5,
+       .baseBlock = 0x02a0,
+          },
+    [B_WIN_TYPE_NOT_VERY_EFF] = {
+        .bg = 0,
+        .tilemapLeft = 21,
+       .tilemapTop = 57,
+        .width = 8,
+        .height = 2,
+        .paletteNum = 5,
+        .baseBlock = 0x02a0,
+    },
+    [B_WIN_TYPE_NO_EFF] = {
+        .bg = 0,
+        .tilemapLeft = 21,
+        .tilemapTop = 57,
+        .width = 8,
+       .height = 2,
+       .paletteNum = 5,
+       .baseBlock = 0x02a0,
+    },
     DUMMY_WIN_TEMPLATE
 };
-
 
 static const struct WindowTemplate sBattleArenaWindowTemplates[] =
 {
@@ -455,7 +492,7 @@ static const struct WindowTemplate sBattleArenaWindowTemplates[] =
     [B_WIN_DUMMY] = {
         .bg = 0,
         .tilemapLeft = 21,
-        .tilemapTop = 57,
+        .tilemapTop = 55,
         .width = 0,
         .height = 0,
         .paletteNum = 5,
@@ -586,6 +623,33 @@ static const struct WindowTemplate sBattleArenaWindowTemplates[] =
         .height = 4,
         .paletteNum = 7,
         .baseBlock = 0x0090,
+    },
+       [B_WIN_TYPE_SUPER_EFF] = { // super effective
+       .bg = 0,
+               .tilemapLeft = 21,
+       .tilemapTop = 57,
+       .width = 8,
+      .height = 2,
+      .paletteNum = 5,
+       .baseBlock = 0x02a0,
+    },
+    [B_WIN_TYPE_NOT_VERY_EFF] = { // not very effective
+        .bg = 0,
+       .tilemapLeft = 21,
+       .tilemapTop = 57,
+       .width = 8,
+       .height = 2,
+        .paletteNum = 5,
+        .baseBlock = 0x02a0,
+    },
+    [B_WIN_TYPE_NO_EFF] = {
+        .bg = 0,
+        .tilemapLeft = 21,
+       .tilemapTop = 57,
+       .width = 8,
+        .height = 2,
+        .paletteNum = 5,
+       .baseBlock = 0x02a0,
     },
     DUMMY_WIN_TEMPLATE
 };
@@ -1444,48 +1508,48 @@ bool8 LoadChosenBattleElement(u8 caseId)
                     {
                         LZDecompressVram(gBattleTerrainAnimTiles_Sand, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_Sand, (void *)(BG_SCREEN_ADDR(28)));
-                        break;
+                        return;
                     }
                     else if (MetatileBehavior_IsDeepOrOceanWater(tileBehavior))
                     {
                         LZDecompressVram(gBattleTerrainAnimTiles_Water, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_Water, (void *)(BG_SCREEN_ADDR(28)));
-                        break;
+                        return;
                     }
                     else if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
                     {
                         LZDecompressVram(gBattleTerrainAnimTiles_PondWater, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_PondWater, (void *)(BG_SCREEN_ADDR(28)));
-                        break;
+                        return;
                     }
                     else if (MetatileBehavior_IsMountain(tileBehavior))
                     {
                         LZDecompressVram(gBattleTerrainAnimTiles_Rock, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_Rock, (void *)(BG_SCREEN_ADDR(28)));
-                        break;
+                        return;
                     }
                     else switch (gBattleTerrain)
                     {
                         case MAP_TYPE_UNDERGROUND:
                         LZDecompressVram(gBattleTerrainAnimTiles_Cave, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_Cave, (void *)(BG_SCREEN_ADDR(28)));
-                        break;
+                        return;
                         case MAP_TYPE_ROUTE:    
                         LZDecompressVram(gBattleTerrainAnimTiles_TallGrass, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_TallGrass, (void *)(BG_SCREEN_ADDR(28)));
-                        break;
+                        return;
                         case MAP_TYPE_OVERCAST:
                         LZDecompressVram(gBattleTerrainAnimTiles_TallGrassOvercast, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_TallGrassOvercast, (void *)(BG_SCREEN_ADDR(28)));
-                        break;                        
+                        return;                        
                         case MAP_TYPE_GYM_ARENA:
                         LZDecompressVram(gBattleTerrainAnimTiles_GymArena, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_GymArena, (void *)(BG_SCREEN_ADDR(28)));
-                        break;
+                        return;
                         case MAP_TYPE_FOREST:
                         LZDecompressVram(gBattleTerrainAnimTiles_Forest, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_Forest, (void *)(BG_SCREEN_ADDR(28)));
-                        break;
+                        return;
                     }
                 }
                 

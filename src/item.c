@@ -1137,8 +1137,6 @@ void HideHeaderBox(void)
 static void ShowItemIconSprite(u16 item, bool8 firstTime, bool8 flash)
 {
     s16 x, y;
-    x = 0;
-    y = 0;
     u8 iconSpriteId;   
     u8 spriteId2 = MAX_SPRITES;
 

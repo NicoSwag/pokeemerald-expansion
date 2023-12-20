@@ -87,7 +87,6 @@ struct WirelessLink_Group
     u8 leaderId;
     u8 unused;
     u8 listenTaskId;
-    bool8 isWonderNews;
     bool8 showListMenu; // Never set
     u8 refreshTimer;
     u8 delayBeforePrint;
@@ -96,7 +95,7 @@ struct WirelessLink_Group
 struct UnionRoomObject
 {
     u8 state;
-    u8 gfxId;
+    u16 gfxId;
     s8 animState;
     u8 schedAnim;
 };

@@ -3800,7 +3800,7 @@ const u16 gEggMoves[] = {
 		MOVE_STOCKPILE,
 		MOVE_SWALLOW),
 
-	egg_moves(TAUROS_PALDEAN_COMBAT_BREED,
+	egg_moves(TAUROS_PALDEAN,
 		MOVE_CURSE,
 		MOVE_ENDEAVOR),
 

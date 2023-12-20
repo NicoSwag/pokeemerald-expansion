@@ -1078,6 +1078,10 @@
 #define SPECIES_AVALUGG_HISUIAN                         FORMS_START + 102
 #define SPECIES_DECIDUEYE_HISUIAN                       FORMS_START + 103
 
+//Paldean Forms
+#define SPECIES_WOOPER_PALDEAN               FORMS_START + 104
+#define SPECIES_TAUROS_PALDEAN               FORMS_START + 105
+
 // Misc Forms
 
 // Cosplay Pikachu

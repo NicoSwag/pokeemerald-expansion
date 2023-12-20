@@ -1,6 +1,6 @@
 #if B_EXPANDED_MOVE_NAMES == TRUE
 // 16 letters
-const u8 gMoveNames[MOVES_COUNT_DYNAMAX][MOVE_NAME_LENGTH + 1] =
+const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
 {
     [MOVE_NONE] = _("-"),
     [MOVE_POUND] = _("POUND"),
@@ -854,7 +854,7 @@ const u8 gMoveNames[MOVES_COUNT_DYNAMAX][MOVE_NAME_LENGTH + 1] =
 };
 #else
 // 12 letters
-const u8 gMoveNames[MOVES_COUNT_DYNAMAX][MOVE_NAME_LENGTH + 1] =
+const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
 {
     [MOVE_NONE] = _("-"),
     [MOVE_POUND] = _("Pound"),

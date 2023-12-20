@@ -150,33 +150,6 @@ static void Task_CallItemUseOnFieldCallback(u8 taskId)
     if (IsWeatherNotFadingIn() == 1)
         sItemUseOnFieldCB(taskId);
 }
-void ItemUseCB_ResetEVs(u8 taskId, TaskFunc task)
-{
-    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
-    u16 item = gSpecialVar_ItemId;
-    bool8 cannotUseEffect = ExecuteTableBasedItemEffect(mon, item, gPartyMenu.slotId, 0);
-
-    if (cannotUseEffect)
-    {
-        gPartyMenuUseExitCallback = FALSE;
-        PlaySE(SE_SELECT);
-        DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
-        ScheduleBgCopyTilemapToVram(2);
-        gTasks[taskId].func = task;
-    }
-    else
-    {
-        gPartyMenuUseExitCallback = TRUE;
-        PlaySE(SE_USE_ITEM);
-        RemoveBagItem(item, 1);
-        GetMonNickname(mon, gStringVar1);
-        StringExpandPlaceholders(gStringVar4, gText_BasePointsResetToZero);
-        DisplayPartyMenuMessage(gStringVar4, TRUE);
-        ScheduleBgCopyTilemapToVram(2);
-        gTasks[taskId].func = task;
-    }
-}
-
 
 static void DisplayCannotUseItemMessage(u8 taskId, bool8 isUsingRegisteredKeyItemOnField, const u8 *str)
 {
@@ -1377,7 +1350,7 @@ void ItemUseOutOfBattle_RotomCatalog(u8 taskId)
 {
     if (!gTasks[taskId].tUsingRegisteredKeyItem)
     {
-
+        gItemUseCB = ItemUseCB_RotomCatalog;
         gTasks[taskId].data[0] = TRUE;
         SetUpItemUseOnFieldCallback(taskId);
     }
@@ -1392,6 +1365,7 @@ void ItemUseOutOfBattle_ZygardeCube(u8 taskId)
 {
     if (!gTasks[taskId].tUsingRegisteredKeyItem)
     {
+        gItemUseCB = ItemUseCB_ZygardeCube;
         gTasks[taskId].data[0] = TRUE;
         SetUpItemUseOnFieldCallback(taskId);
     }
@@ -1404,6 +1378,7 @@ void ItemUseOutOfBattle_ZygardeCube(u8 taskId)
 
 void ItemUseOutOfBattle_Fusion(u8 taskId)
 {
+    gItemUseCB = ItemUseCB_Fusion;
     gTasks[taskId].data[0] = FALSE;
     SetUpItemUseCallback(taskId);
 }

@@ -60,33 +60,5 @@ enum {
     CLI_MSG_BUFFER_FAILURE,
 };
 
-#define CLIENT_MAX_MSG_SIZE 64
-
-struct MysteryGiftClientCmd
-{
-    u32 instr;
-    u32 parameter;
-};
-
-struct MysteryGiftClient
-{
-    u32 unused;
-    u32 param;
-    u32 funcId;
-    u32 funcState;
-    u32 cmdidx;
-    void * sendBuffer;
-    void * recvBuffer;
-    struct MysteryGiftClientCmd * script;
-    void * msg;
-    struct MysteryGiftLink link;
-    bool32 isWonderNews;
-};
-
-void MysteryGiftClient_Create(bool32 isWonderNews);
-u32 MysteryGiftClient_Run(u16 * endVal);
-void MysteryGiftClient_AdvanceState(void);
-void * MysteryGiftClient_GetMsg(void);
-void MysteryGiftClient_SetParam(u32 value);
 
 #endif //GUARD_MYSTERY_GIFT_CLIENT_H
