@@ -2755,7 +2755,7 @@ static void GetEasyChatConfirmDeletionText(const u8 **str1, const u8 **str2)
     *str2 = gText_BeDeletedThatOkay;
 }
 
-static void GetKeyboardCursorColAndRow(s8 *column, s8 *row)
+static void GetKeyboardCursorColAndRow(u8 *column, u8 *row)
 {
     *column = sEasyChatScreen->keyboardColumn;
     *row = sEasyChatScreen->keyboardRow;
@@ -2771,7 +2771,7 @@ static u8 GetKeyboardScrollOffset(void)
     return sEasyChatScreen->keyboardScrollOffset;
 }
 
-static void GetWordSelectColAndRow(s8 *column, s8 *row)
+static void GetWordSelectColAndRow(u8 *column, u8 *row)
 {
     *column = sEasyChatScreen->wordSelectColumn;
     *row = sEasyChatScreen->wordSelectRow;
@@ -2787,7 +2787,7 @@ static u8 GetWordSelectLastRow(void)
     return sEasyChatScreen->wordSelectLastRow;
 }
 
-static u8 UNUSED UnusedDummy(void)
+static u8 UnusedDummy(void)
 {
     return FALSE;
 }
@@ -5261,7 +5261,7 @@ u8 *ConvertEasyChatWordsToString(u8 *dest, const u16 *src, u16 columns, u16 rows
     return dest;
 }
 
-static u8 UNUSED *UnusedConvertEasyChatWordsToString(u8 *dest, const u16 *src, u16 columns, u16 rows)
+static u8 *UnusedConvertEasyChatWordsToString(u8 *dest, const u16 *src, u16 columns, u16 rows)
 {
     u16 i, j, k;
     u16 numColumns;
@@ -5500,7 +5500,8 @@ u16 UnlockRandomTrendySaying(void)
     return EC_EMPTY_WORD;
 }
 
-static u16 UNUSED GetRandomUnlockedTrendySaying(void)
+// Unused
+static u16 GetRandomUnlockedTrendySaying(void)
 {
     u16 i;
     u16 n = GetNumTrendySayingsUnlocked();
@@ -5646,7 +5647,8 @@ static u8 GetUnlockedEasyChatGroupId(u8 index)
         return sWordData->unlockedGroupIds[index];
 }
 
-static u8 UNUSED *BufferEasyChatWordGroupName(u8 *dest, u8 groupId, u16 totalChars)
+// Unused
+static u8 *BufferEasyChatWordGroupName(u8 *dest, u8 groupId, u16 totalChars)
 {
     u16 i;
     u8 *str = StringCopy(dest, sEasyChatGroupNamePointers[groupId]);

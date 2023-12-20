@@ -34,7 +34,5 @@ void ShowDaycareLevelMenu(void);
 void ChooseSendDaycareMon(void);
 u16 GetEggSpecies(u16 species);
 u8 GetEggMoves(u16 species, u16 *eggMoves);
-u8 GetEggMovesSpecies(u16 species, u16 *eggMoves);
-bool8 SpeciesCanLearnEggMove(u16 species, u16 move);
 
 #endif // GUARD_DAYCARE_H

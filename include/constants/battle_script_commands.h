@@ -325,10 +325,8 @@
 #define MOVEEND_SINGER                            32
 #define MOVEEND_EMERGENCY_EXIT                    33
 #define MOVEEND_SYMBIOSIS                         34
-#define MOVEEND_OPPORTUNIST                       35
-#define MOVEEND_NUM_HITS                          36
-#define MOVEEND_CLEAR_BITS                        37
-#define MOVEEND_COUNT                             38
+#define MOVEEND_CLEAR_BITS                        35
+#define MOVEEND_COUNT                             36
 
 // switch cases
 #define B_SWITCH_NORMAL     0

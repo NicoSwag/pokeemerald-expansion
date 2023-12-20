@@ -1129,8 +1129,8 @@ static void RegionMap_InitializeStateBasedOnSSTidalLocation(void)
 {
     u16 y;
     u16 x;
-    s8 mapGroup;
-    s8 mapNum;
+    u8 mapGroup;
+    u8 mapNum;
     u16 dimensionScale;
     s16 xOnMap;
     s16 yOnMap;
@@ -1439,12 +1439,14 @@ static void FreeRegionMapCursorSprite(void)
     }
 }
 
-static void UNUSED SetUnkCursorSpriteData(void)
+// Unused
+static void SetUnkCursorSpriteData(void)
 {
     sRegionMap->cursorSprite->data[3] = TRUE;
 }
 
-static void UNUSED ClearUnkCursorSpriteData(void)
+// Unused
+static void ClearUnkCursorSpriteData(void)
 {
     sRegionMap->cursorSprite->data[3] = FALSE;
 }
