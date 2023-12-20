@@ -17,7 +17,6 @@
 #include "link_rfu.h"
 #include "load_save.h"
 #include "main.h"
-#include "map_preview.h"
 #include "menu.h"
 #include "mirage_tower.h"
 #include "metatile_behavior.h"
@@ -102,13 +101,7 @@ void WarpFadeOutScreen(void)
 {
     const struct MapHeader *header = GetDestinationWarpMapHeader();
     
-    if (header->regionMapSectionId != gMapHeader.regionMapSectionId && MapHasPreviewScreen(header->regionMapSectionId, MPS_TYPE_CAVE))
-    {
-        FadeScreen(FADE_TO_BLACK, 0);
-    }
-    else
-    {
-        switch (GetMapPairFadeToType(GetCurrentMapType(), header->mapType))
+ switch (GetMapPairFadeToType(GetCurrentMapType(), header->mapType))
         {
         case 0:
             FadeScreen(FADE_TO_BLACK, 0);
@@ -116,7 +109,7 @@ void WarpFadeOutScreen(void)
         case 1:
             FadeScreen(FADE_TO_WHITE, 0);
         }
-    }
+    
 }
 
 static void SetPlayerVisibility(bool8 visible)
@@ -483,9 +476,6 @@ static bool32 PaletteFadeActive(void)
 
 bool32 WaitForWeatherFadeIn(void)
 {
-    if (IsWeatherNotFadingIn() == TRUE && ForestMapPreviewScreenIsRunning())
-        return TRUE;
-    else
         return FALSE;
 }
 

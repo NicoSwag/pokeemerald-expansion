@@ -2442,7 +2442,7 @@ static bool32 BattlerAffectedBySandstorm(u32 battlerId, u32 ability)
     return FALSE;
 }
 
-static bool32 BattlerAffectedByPollution(u8 battlerId, u16 ability)
+static bool32 UNUSED BattlerAffectedByPollution(u8 battlerId, u16 ability)
 {
     if (!IS_BATTLER_OF_TYPE(battlerId, TYPE_POISON)
     && !IS_BATTLER_OF_TYPE(battlerId, TYPE_DARK)

@@ -651,7 +651,7 @@ static bool8 HasSuperEffectiveMoveAgainstOpponents(u32 battler, bool8 noRng)
                 continue;
 
             if (
-                ((!gBattleMons[opposingBattler].ability == ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0)))
+                ((gBattleMons[opposingBattler].ability != ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0)))
             || ((gBattleMons[opposingBattler].ability == ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) < UQ_4_12(2.0)))   
             )
 
@@ -677,7 +677,7 @@ static bool8 HasSuperEffectiveMoveAgainstOpponents(u32 battler, bool8 noRng)
                 continue;
 
             if (
-                ((!gBattleMons[opposingBattler].ability == ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0)))
+                ((gBattleMons[opposingBattler].ability != ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0)))
             || ((gBattleMons[opposingBattler].ability == ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) < UQ_4_12(2.0)))
             
             )

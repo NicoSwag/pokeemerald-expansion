@@ -67,7 +67,7 @@ static const struct WindowTemplate sWindowTemplates[] =
 };
 
 // code
-static void VBlankCB(void)
+static void UNUSED VBlankCB(void)
 {
     LoadOam();
     ProcessSpriteCopyRequests();
@@ -103,7 +103,7 @@ static bool8 GetEventLoadMessage(u8 *dest, u32 status)
     return retVal;
 }
 
-static void CB2_MysteryEventMenu(void)
+static void UNUSED CB2_MysteryEventMenu(void)
 {
     switch (gMain.state)
     {

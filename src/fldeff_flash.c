@@ -6,7 +6,6 @@
 #include "fldeff.h"
 #include "gpu_regs.h"
 #include "main.h"
-#include "map_preview.h"
 #include "overworld.h"
 #include "palette.h"
 #include "party_menu.h"
@@ -161,11 +160,6 @@ static bool8 TryDoMapTransition(void)
     u8 fromType = GetLastUsedWarpMapType();
     u8 toType = GetCurrentMapType();
 
-    if (GetLastUsedWarpMapSectionId() != gMapHeader.regionMapSectionId && MapHasPreviewScreen(gMapHeader.regionMapSectionId, MPS_TYPE_CAVE) == TRUE)
-    {
-        RunMapPreviewScreen(gMapHeader.regionMapSectionId);
-        return TRUE;
-    }
 
     for (i = 0; sTransitionTypes[i].fromType; i++)
     {

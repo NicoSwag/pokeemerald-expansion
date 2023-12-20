@@ -15,11 +15,11 @@ extern const u8 gText_TransRights[];
 
 static void CB2_HandleGivenWaldaPhrase(void);
 static u32 GetWaldaPhraseInputCase(u8 *);
-static bool32 TryCalculateWallpaper(u16 *, u16 *, u8 *, u8 *, u16, u8 *);
-static void SetWallpaperDataFromLetter(u8 *, u8 *, u32, u32, u32);
-static u32 GetWallpaperDataBits(u8 *, u32, u32);
-static void RotateWallpaperDataLeft(u8 *, s32, s32);
-static void MaskWallpaperData(u8 *, u32, u8);
+static bool32 UNUSED TryCalculateWallpaper(u16 *, u16 *, u8 *, u8 *, u16, u8 *);
+static void UNUSED SetWallpaperDataFromLetter(u8 *, u8 *, u32, u32, u32);
+static u32 UNUSED GetWallpaperDataBits(u8 *, u32, u32);
+static void UNUSED RotateWallpaperDataLeft(u8 *, s32, s32);
+static void UNUSED MaskWallpaperData(u8 *, u32, u8);
 
 // There are 32 (2^5) unique letters allowed in a successful phrase for Walda.
 #define BITS_PER_LETTER 5
@@ -101,7 +101,7 @@ u16 TryGetWallpaperWithWaldaPhrase(void)
     return FALSE;
 }
 
-static u8 GetLetterTableId(u8 letter)
+static u8 UNUSED GetLetterTableId(u8 letter)
 {
     s32 i;
 
@@ -135,7 +135,7 @@ static bool32 TryCalculateWallpaper(u16 *backgroundClr, u16 *foregroundClr, u8 *
     return TRUE;
 }
 
-static void RotateWallpaperDataLeft(u8 *data, s32 size, s32 numShifts)
+static void UNUSED RotateWallpaperDataLeft(u8 *data, s32 size, s32 numShifts)
 {
     s32 i, j;
     u8 temp1, temp2;
@@ -154,7 +154,7 @@ static void RotateWallpaperDataLeft(u8 *data, s32 size, s32 numShifts)
     }
 }
 
-static void MaskWallpaperData(u8 *data, u32 size, u8 mask)
+static void UNUSED MaskWallpaperData(u8 *data, u32 size, u8 mask)
 {
     u32 i;
 
@@ -164,7 +164,7 @@ static void MaskWallpaperData(u8 *data, u32 size, u8 mask)
         data[i] ^= mask;
 }
 
-static bool8 GetWallpaperDataBit(u8 *data, u32 bitNum)
+static bool8 UNUSED GetWallpaperDataBit(u8 *data, u32 bitNum)
 {
     u32 i = bitNum / 8;
     u32 flag = (1 << 7) >> (bitNum % 8);
@@ -172,7 +172,7 @@ static bool8 GetWallpaperDataBit(u8 *data, u32 bitNum)
     return (data[i] & flag) != 0;
 }
 
-static void SetWallpaperDataBit(u8 *data, u32 bitNum)
+static void UNUSED SetWallpaperDataBit(u8 *data, u32 bitNum)
 {
     u32 i = bitNum / 8;
     u8 flag = (1 << 7) >> (bitNum % 8);
@@ -180,7 +180,7 @@ static void SetWallpaperDataBit(u8 *data, u32 bitNum)
     data[i] |= flag;
 }
 
-static void ClearWallpaperDataBit(u8 *data, u32 bitNum)
+static void UNUSED ClearWallpaperDataBit(u8 *data, u32 bitNum)
 {
     u32 i = bitNum / 8;
     u8 mask = ~((1 << 7) >> (bitNum % 8));
@@ -188,7 +188,7 @@ static void ClearWallpaperDataBit(u8 *data, u32 bitNum)
     data[i] &= mask;
 }
 
-static void SetWallpaperDataFromLetter(u8 *data, u8 *letterTableIds, u32 setOffset, u32 getOffset, u32 numBits)
+static void UNUSED SetWallpaperDataFromLetter(u8 *data, u8 *letterTableIds, u32 setOffset, u32 getOffset, u32 numBits)
 {
     u32 i;
 
@@ -201,7 +201,7 @@ static void SetWallpaperDataFromLetter(u8 *data, u8 *letterTableIds, u32 setOffs
     }
 }
 
-static u32 GetWallpaperDataBits(u8 *data, u32 offset, u32 numBits)
+static u32 UNUSED GetWallpaperDataBits(u8 *data, u32 offset, u32 numBits)
 {
     u32 bits, i;
 

@@ -62,9 +62,9 @@ static void None_Main(void);
 static u8 None_Finish(void);
 
 EWRAM_DATA struct Weather gWeather = {0};
-EWRAM_DATA static u8 sFieldEffectPaletteColorMapTypes[32] = {0};
+EWRAM_DATA static u8 ALIGNED(2) sFieldEffectPaletteColorMapTypes[32] = {0};
 
-static u8 *sPaletteColorMapTypes;
+static const u8 *sPaletteColorMapTypes;
 
 // The drought weather effect uses a precalculated color lookup table. Presumably this
 // is because the underlying color shift calculation is slow.
@@ -100,7 +100,6 @@ static const struct WeatherCallbacks sWeatherFuncs[] =
     [WEATHER_DROUGHT]            = {Drought_InitVars,       Drought_Main,       Drought_InitAll,       Drought_Finish},
     [WEATHER_DOWNPOUR]           = {Downpour_InitVars,      Thunderstorm_Main,  Downpour_InitAll,      Thunderstorm_Finish},
     [WEATHER_UNDERWATER_BUBBLES] = {Bubbles_InitVars,       Bubbles_Main,       Bubbles_InitAll,       Bubbles_Finish},
-    [WEATHER_POLLUTION]     = {FogHorizontal_InitVars, FogHorizontal_Main, FogHorizontal_InitAll, FogHorizontal_Finish},
 };
 
 void (*const gWeatherPalStateFuncs[])(void) =
@@ -113,7 +112,7 @@ void (*const gWeatherPalStateFuncs[])(void) =
 
 // This table specifies which of the color maps should be
 // applied to each of the background and sprite palettes.
-EWRAM_DATA u8 sBasePaletteColorMapTypes[32] =
+EWRAM_DATA u8 ALIGNED(2) sBasePaletteColorMapTypes[32] =
 {
     // background palettes
     COLOR_MAP_DARK_CONTRAST,
@@ -151,14 +150,14 @@ EWRAM_DATA u8 sBasePaletteColorMapTypes[32] =
     COLOR_MAP_DARK_CONTRAST,
 };
 
-const u16 gFogPalette[] = INCBIN_U16("graphics/weather/fog.gbapal");
+const u16 ALIGNED(4) gFogPalette[] = INCBIN_U16("graphics/weather/fog.gbapal");
 
 void StartWeather(void)
 {
     if (!FuncIsActiveTask(Task_WeatherMain))
     {
-        u8 index = 15;
-        CpuCopy32(gFogPalette, &gPlttBufferUnfaded[0x100 + index * 16], 32);
+        u8 index = AllocSpritePalette(PALTAG_WEATHER);
+        CpuCopy32(gFogPalette, &gPlttBufferUnfaded[OBJ_PLTT_ID(index)], PLTT_SIZE_4BPP);
         BuildColorMaps();
         gWeatherPtr->contrastColorMapSpritePalIndex = index;
         gWeatherPtr->weatherPicSpritePalIndex = AllocSpritePalette(PALTAG_WEATHER_2);
@@ -197,26 +196,6 @@ void SetNextWeather(u8 weather)
     gWeatherPtr->weatherChangeComplete = FALSE;
     gWeatherPtr->nextWeather = weather;
     gWeatherPtr->finishStep = 0;
-
-    if (gWeatherPtr->nextWeather != gWeatherPtr->currWeather)
-    {
-        #if DYNAMIC_OW_PALS
-            u32 fogPalettes = 0x7FFF0000;   // all but last sprite palette
-            u16 fogIdx = IndexOfSpritePaletteTag(PALTAG_WEATHER);
-            if (fogIdx < 15) {
-                fogPalettes &= ~(1 << fogIdx); // remove fog sprites from blend bits
-            }
-            if (gWeatherPtr->nextWeather == WEATHER_FOG_HORIZONTAL)
-                BlendPalettesGradually(fogPalettes, 12, 3, 8, RGB_WHITEALPHA, 0, 0);  //all but last sprite pal
-            else if (gWeatherPtr->currWeather == WEATHER_FOG_HORIZONTAL)
-                BlendPalettesGradually(fogPalettes, 12, 8, 0, RGB_WHITEALPHA, 0, 0);  //undo fog pal blend
-        #else
-            if (gWeatherPtr->nextWeather == WEATHER_FOG_HORIZONTAL)
-                BlendPalettesGradually(0x3FF0000, 12, 3, 8, RGB_WHITEALPHA, 0, 0);  //blend first 10 sprite palette slots
-            else if (gWeatherPtr->nextWeather != gWeatherPtr->currWeather && gWeatherPtr->currWeather == WEATHER_FOG_HORIZONTAL)
-                BlendPalettesGradually(0x3FF0000, 12, 8, 0, RGB_WHITEALPHA, 0, 0);  //undo fog pal blend
-        #endif
-    }
 }
 
 void SetCurrentAndNextWeather(u8 weather)
@@ -302,8 +281,6 @@ static void BuildColorMaps(void)
     u16 baseBrightness;
     u32 remainingBrightness;
     s16 diff;
-    for (i = 0; i <= 12; i++)
-        sBasePaletteColorMapTypes[i] = GAMMA_NORMAL;
 
     sPaletteColorMapTypes = sBasePaletteColorMapTypes;
     for (i = 0; i < 2; i++)
@@ -419,7 +396,6 @@ static void FadeInScreenWithWeather(void)
             gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
         }
         break;
-    case WEATHER_POLLUTION:
     case WEATHER_FOG_HORIZONTAL:
         if (FadeInScreen_FogHorizontal() == FALSE)
         {
@@ -739,7 +715,6 @@ static bool8 LightenSpritePaletteInFog(u8 paletteIndex)
         if (gWeatherPtr->lightenedFogSpritePals[i] == paletteIndex)
             return TRUE;
     }
-    
 
     return FALSE;
 }
@@ -891,8 +866,8 @@ static bool8 UNUSED IsFirstFrameOfWeatherFadeIn(void)
 
 void LoadCustomWeatherSpritePalette(const struct SpritePalette *palette)
 {
-    LoadSpritePalette(palette);
-    UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palette->tag));
+    LoadPalette(palette, OBJ_PLTT_ID(gWeatherPtr->weatherPicSpritePalIndex), PLTT_SIZE_4BPP);
+    UpdateSpritePaletteWithWeather(gWeatherPtr->weatherPicSpritePalIndex);
 }
 
 static void LoadDroughtWeatherPalette(u8 *palsIndex, u8 *palsOffset)
@@ -1057,9 +1032,6 @@ static void UNUSED SetFieldWeather(u8 weather)
     case COORD_EVENT_WEATHER_SHADE:
         SetWeather(WEATHER_SHADE);
         break;
-    case COORD_EVENT_WEATHER_POLLUTION:
-        SetWeather(WEATHER_POLLUTION);
-        break;
     }
 }
 
@@ -1141,5 +1113,5 @@ void ResetPreservedPalettesInWeather(void)
 void UpdatePaletteGammaType(u8 index, u8 gammaType)
 {
     if (index != 0xFF)
-        sPaletteColorMapTypes[index + 16] = gammaType;
+        sBasePaletteColorMapTypes[index + 16] = gammaType;
 }

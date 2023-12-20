@@ -1636,7 +1636,7 @@ void BufferLottoTicketNumber(void)
 
 u16 GetMysteryGiftCardStat(void)
 {
-
+return 0;
     
 }
 

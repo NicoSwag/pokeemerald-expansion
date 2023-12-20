@@ -1689,8 +1689,6 @@ static void UpdateGrassFieldEffectSubpriority(struct Sprite *sprite, u8 elevatio
 {
     u8 i;
     s16 var, xhi, lyhi, yhi, ylo;
-    const struct ObjectEventGraphicsInfo *graphicsInfo; // Unused Variable
-    struct Sprite *linkedSprite;
 
     SetObjectSubpriorityByElevation(elevation, sprite, subpriority);
     for (i = 0; i < OBJECT_EVENTS_COUNT; i ++)
@@ -1698,8 +1696,9 @@ static void UpdateGrassFieldEffectSubpriority(struct Sprite *sprite, u8 elevatio
         struct ObjectEvent *objectEvent = &gObjectEvents[i];
         if (objectEvent->active)
         {
-            graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
-            linkedSprite = &gSprites[objectEvent->spriteId];
+            const struct ObjectEventGraphicsInfo UNUSED *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+            struct Sprite *linkedSprite = &gSprites[objectEvent->spriteId];
+
             xhi = sprite->x + sprite->centerToCornerVecX;
             var = sprite->x - sprite->centerToCornerVecX;
             if (xhi < linkedSprite->x && var > linkedSprite->x)

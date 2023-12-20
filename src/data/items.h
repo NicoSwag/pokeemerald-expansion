@@ -155,6 +155,8 @@ const struct Item gItems[] =
         .secondaryId = ITEM_TIMER_BALL - FIRST_BALL,
     },
 
+
+
     [ITEM_QUICK_BALL] =
     {
         .name = _("Quick Ball"),

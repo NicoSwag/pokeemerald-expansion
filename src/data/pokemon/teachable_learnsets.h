@@ -1,3 +1,8 @@
+static const u16 sNoneTeachableLearnset[] = {
+    MOVE_UNAVAILABLE,
+};
+
+
 static const u16 sBulbasaurTeachableLearnset[] = {
     MOVE_ATTRACT,
     MOVE_BULLET_SEED,

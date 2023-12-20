@@ -570,7 +570,7 @@ static void BuyMenuBuildListMenuTemplate(void)
         added_TMs = FlagGet(FLAG_CANDY_IN_SHOPS) + FlagGet(FLAG_HELPED_LEDYBA) + FlagGet(FLAG_RECEIVED_TM02) + FlagGet(FLAG_ITEM_PETALBURG_WOODS_QUASH) + FlagGet(FLAG_RECEIVED_TM04) + FlagGet(FLAG_RECEIVED_TM05) + FlagGet(FLAG_RECEIVED_TM06);
     sListMenuItems = Alloc((sMartInfo.itemCount + 1 + added_TMs) * sizeof(*sListMenuItems));
     sItemNames = Alloc((sMartInfo.itemCount + 1 + added_TMs) * sizeof(*sItemNames));
-    for (i; i < sMartInfo.itemCount; i++)
+    for (; i < sMartInfo.itemCount; i++)
         BuyMenuSetListEntry(&sListMenuItems[i], sMartInfo.itemList[i], sItemNames[i]);
 
     
@@ -1036,8 +1036,6 @@ static void Task_BuyMenu(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     s32 itemId = ListMenu_ProcessInput(tListTaskId);
-    u8 totalberries;
-    totalberries = (CheckBagHasItem(itemId, 1) + CheckPCHasItem(itemId, 1));
 
     if (!gPaletteFade.active)
     {

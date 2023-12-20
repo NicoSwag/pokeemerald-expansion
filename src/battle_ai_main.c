@@ -1615,7 +1615,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_ACID_RAIN:
             if (gBattleWeather & (B_WEATHER_POLLUTION | B_WEATHER_PRIMAL_ANY)
-             || PartnerMoveEffectIsWeather(BATTLE_PARTNER(battlerAtk), AI_DATA->partnerMove))
+             || IsMoveEffectWeather(aiData->partnerMove))
                 score -= 8;
             break;
         case EFFECT_HAIL:
@@ -2849,9 +2849,6 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         {
             switch (atkPartnerAbility)
             {
-            case ABILITY_VOLT_ABSORB:
-                if (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_HP_AWARE))
-                {
                 case ABILITY_VOLT_ABSORB:
                     if (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_HP_AWARE))
                     {
@@ -2895,50 +2892,6 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                         RETURN_SCORE_PLUS(1);
                     }
                     break;
-                case ABILITY_WATER_COMPACTION:
-                    if (moveType == TYPE_WATER && GetMoveDamageResult(battlerAtk, battlerDef, AI_THINKING_STRUCT->movesetIndex) == MOVE_POWER_WEAK)
-                    {
-                        RETURN_SCORE_PLUS(1);   // only mon with this ability is weak to water so only make it okay if we do very little damage
-                    }
-                    RETURN_SCORE_MINUS(10);
-                }
-                break;  // handled in AI_HPAware
-            case ABILITY_MOTOR_DRIVE:
-                if (moveType == TYPE_ELECTRIC && BattlerStatCanRise(battlerAtkPartner, atkPartnerAbility, STAT_SPEED))
-                {
-                    RETURN_SCORE_PLUS(1);
-                }
-                break;
-            case ABILITY_LIGHTNING_ROD:
-                if (moveType == TYPE_ELECTRIC
-                    && HasMoveWithSplit(battlerAtkPartner, SPLIT_SPECIAL)
-                    && BattlerStatCanRise(battlerAtkPartner, atkPartnerAbility, STAT_SPATK))
-                {
-                    RETURN_SCORE_PLUS(1);
-                }
-                break;
-            case ABILITY_WATER_ABSORB:
-            case ABILITY_DRY_SKIN:
-                if (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_HP_AWARE))
-                {
-                    RETURN_SCORE_MINUS(10);
-                }
-                break;  // handled in AI_HPAware
-            case ABILITY_STORM_DRAIN:
-                if (moveType == TYPE_WATER
-                    && HasMoveWithSplit(battlerAtkPartner, SPLIT_SPECIAL)
-                    && BattlerStatCanRise(battlerAtkPartner, atkPartnerAbility, STAT_SPATK))
-                {
-                    RETURN_SCORE_PLUS(1);
-                }
-                break;
-            case ABILITY_WATER_COMPACTION:
-                if (moveType == TYPE_WATER && GetNoOfHitsToKOBattler(battlerAtk, battlerDef, AI_THINKING_STRUCT->movesetIndex) >= 4)
-                {
-                    RETURN_SCORE_PLUS(1);   // only mon with this ability is weak to water so only make it okay if we do very little damage
-                }
-                RETURN_SCORE_MINUS(10);
-                break;
             case ABILITY_FLASH_FIRE:
                 if (moveType == TYPE_FIRE
                     && HasMoveWithType(battlerAtkPartner, TYPE_FIRE)

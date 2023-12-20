@@ -8,5 +8,7 @@ enum {
     WONDER_NEWS_SENT,
 };
 
+void WonderNews_Reset(void);
+void WonderNews_SetReward(u32 newsType);
 
 #endif //GUARD_WONDER_NEWS_H

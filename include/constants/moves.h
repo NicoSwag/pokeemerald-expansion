@@ -906,7 +906,6 @@
 #define MOVE_HIT_AND_RUN    846
 #define MOVE_EMP            847
 #define MOVE_COMBUSTION     848
-#define MOVE_HYDRO_STEAM 849
 #define MOVE_BLOOD_MOON 850
 #define MOVE_MATCHA_GOTCHA 851
 #define MOVE_SYRUP_BOMB 852
