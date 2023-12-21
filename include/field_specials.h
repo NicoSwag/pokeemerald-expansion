@@ -31,6 +31,7 @@ bool8 UsedPokemonCenterWarp(void);
 void ResetFanClub(void);
 bool8 ShouldShowBoxWasFullMessage(void);
 void SetPCBoxToSendMon(u8 boxId);
+void PreparePartyForSkyBattle(void);
 
 void CB2_FieldShowRegionMap(void);
 
