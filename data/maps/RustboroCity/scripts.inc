@@ -1479,7 +1479,7 @@ Rustborocity_Text_OldMan:
 	.string "construction!$"
 
 RustboroCity_Text_Mr_Briney:
-	.string "MR BRINEY: Oh, the misery…\n"
+	.string "Oh, the misery…\n"
 	.string "Oh, poor little old me!\p"
 	.string "Ye see, I was walking me PEEKO as usual,\n"
 	.string "when…\p"

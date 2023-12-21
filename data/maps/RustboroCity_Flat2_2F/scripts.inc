@@ -12,6 +12,9 @@ RustboroCity_Flat2_2F_EventScript_NinjaBoy::
 	msgbox RustboroCity_Flat2_2F_Text_MyDaddyMadeThisYouCanHaveIt, MSGBOX_DEFAULT
 	giveitem ITEM_EJECT_BUTTON
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	msgbox RustboroCity_Flat2_2F_Text_OneMoreThing, MSGBOX_DEFAULT
+		giveitem ITEM_BOOSTER_ENERGY
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_PREMIER_BALL_RUSTBORO
 	release
 	end
@@ -37,3 +40,13 @@ RustboroCity_Flat2_2F_Text_GoingToWorkAtDevonToo:
 	.string "My daddy's working at the CORPORATION.\p"
 	.string "When I grow up, I'm going to work for\n"
 	.string "DEVON, too.$"
+
+RustboroCity_Flat2_2F_Text_OneMoreThing:
+	.string "…\n"
+	.string "Well, actually, I also have something\l"
+	.string "else.\p"
+	.string "I took it when dad wasn't looking.\p"
+	.string "I know! Stealing is wrong. But…\p"
+	.string "There's something a bit strange about\n"
+	.string "this.\p"
+	.string "Maybe it will be useful to you!$"

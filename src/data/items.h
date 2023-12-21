@@ -9283,7 +9283,7 @@ const struct Item gItems[] =
 
     [ITEM_BOOSTER_ENERGY] =
     {
-        .name = _("BoosterEnergy"),
+        .name = _("BOOSTERENERGY"),
         .price = 0,
         .holdEffect = HOLD_EFFECT_BOOSTER_ENERGY,
         .description = sBoosterEnergyDesc,
