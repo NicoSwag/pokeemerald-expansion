@@ -5825,7 +5825,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
-                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                gHitMarker |= HITMARKER_STATUS_ABILITY_EFFECT;
                 effect++;
             }
             break;
@@ -6107,7 +6107,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
-                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                gHitMarker |= HITMARKER_STATUS_ABILITY_EFFECT;
                 effect++;
             }
             break;
@@ -6135,10 +6135,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 && gBattleMons[gBattlerAttacker].hp != 0 && !(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK))
             {
                 gBattleScripting.battler = gBattlerAttacker;
-                gBattleMoveDamage = (gSpecialStatuses[gBattlerTarget].dmg / 8) * -1;
+                gBattleMoveDamage = (gSpecialStatuses[gBattlerTarget].shellBellDmg / 8) * -1;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = -1;
-                gSpecialStatuses[gBattlerTarget].dmg = 0;
+                gSpecialStatuses[gBattlerTarget].shellBellDmg = 0;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ItemHealHP_Move;
             }
@@ -6168,7 +6168,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
-                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                gHitMarker |= HITMARKER_STATUS_ABILITY_EFFECT;
                 effect++;
             }
             break;
@@ -11551,13 +11551,13 @@ void TryRestoreHeldItems(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        if (B_RESTORE_HELD_BATTLE_ITEMS == TRUE || gBattleStruct->itemLost[i].stolen)
+    #if B_RESTORE_HELD_BATTLE_ITEMS == FALSE
+        if (gBattleStruct->itemLost[i].stolen)
+    #endif
         {
             lostItem = gBattleStruct->itemLost[i].originalItem;
             if (lostItem != ITEM_NONE && ItemId_GetPocket(lostItem) != POCKET_BERRIES)
                 SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &lostItem);  // Restore stolen non-berry items
-            if(lostItem == ITEM_NONE)
-                SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, ITEM_NONE);
         }
     }
 }

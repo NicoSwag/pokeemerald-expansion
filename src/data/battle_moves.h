@@ -11706,6 +11706,22 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .skyBattleBanned = B_EXTRAPOLATED_MOVE_FLAGS,
     },
 
+    [MOVE_TEMPER_FLARE] =
+    {
+        .effect = EFFECT_STOMPING_TANTRUM,
+        .power = 75,
+        .type = TYPE_FIRE,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
+        .skyBattleBanned = B_EXTRAPOLATED_MOVE_FLAGS,
+    },
+
     [MOVE_SHADOW_BONE] =
     {
         .effect = EFFECT_DEFENSE_DOWN_HIT,

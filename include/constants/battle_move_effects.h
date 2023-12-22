@@ -429,7 +429,6 @@
 #define EFFECT_ESCAPE_HEAL                 423
 #define EFFECT_CHANGE_TYPE_HIDDEN          424
 #define EFFECT_EMP                         425
-#define EFFECT_SALT_CURE                    426
 #define EFFECT_CHILLY_RECEPTION             427
 #define EFFECT_MATCHA_GOTCHA                428
 #define EFFECT_SYRUP_BOMB                   429

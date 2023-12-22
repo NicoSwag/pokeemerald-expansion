@@ -15,7 +15,6 @@
 #include "menu_specialized.h"
 #include "overworld.h"
 #include "palette.h"
-#include "pokemon.h"
 #include "pokemon_summary_screen.h"
 #include "script.h"
 #include "sound.h"
@@ -174,7 +173,6 @@ static EWRAM_DATA struct
     u8 moveListScrollArrowTask;                          /*0x113*/
     u8 moveDisplayArrowTask;                             /*0x114*/
     u16 scrollOffset;                                    /*0x116*/
-    u8 moveTutorType;                                    /*set move tutor type to VAR_MOVE_MANAGER*/
 } *sMoveRelearnerStruct = {0};
 
 static EWRAM_DATA struct {
@@ -398,8 +396,6 @@ static void CB2_InitLearnMove(void)
     ClearScheduledBgCopiesToVram();
     sMoveRelearnerStruct = AllocZeroed(sizeof(*sMoveRelearnerStruct));
     sMoveRelearnerStruct->partyMon = gSpecialVar_0x8004;
-    sMoveRelearnerStruct->moveTutorType = VarGet(VAR_MOVE_MANAGER);
-
     SetVBlankCallback(VBlankCB_MoveRelearner);
 
     InitMoveRelearnerBackgroundLayers();
@@ -904,7 +900,7 @@ static void CreateLearnableMovesList(void)
     s32 i;
     u8 nickname[POKEMON_NAME_LENGTH + 1];
 
-    sMoveRelearnerStruct->numMenuChoices = GetMoveTutorMoves(&gPlayerParty[sMoveRelearnerStruct->partyMon], sMoveRelearnerStruct->movesToLearn);
+    sMoveRelearnerStruct->numMenuChoices = GetMoveRelearnerMoves(&gPlayerParty[sMoveRelearnerStruct->partyMon], sMoveRelearnerStruct->movesToLearn);
 
     for (i = 0; i < sMoveRelearnerStruct->numMenuChoices; i++)
     {

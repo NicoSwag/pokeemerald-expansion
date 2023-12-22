@@ -2653,6 +2653,10 @@ static const u8 sStompingTantrumDescription[] = _(
     "Stomps around angrily.\n"
     "Stronger after a failure.");
 
+static const u8 sTemperFlareDescription[] = _(
+    "Rushes the foe angrily.\n"
+    "Stronger after a failure.");
+
 static const u8 sShadowBoneDescription[] = _(
     "Strikes with a haunted\n"
     "bone. Might drop Defense.");
@@ -4051,6 +4055,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_FLEUR_CANNON - 1] = sFleurCannonDescription,
     [MOVE_PSYCHIC_FANGS - 1] = sPsychicFangsDescription,
     [MOVE_STOMPING_TANTRUM - 1] = sStompingTantrumDescription,
+    [MOVE_TEMPER_FLARE - 1] = sStompingTantrumDescription,
     [MOVE_SHADOW_BONE - 1] = sShadowBoneDescription,
     [MOVE_ACCELEROCK - 1] = sAccelerockDescription,
     [MOVE_LIQUIDATION - 1] = sLiquidationDescription,

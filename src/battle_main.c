@@ -5618,7 +5618,7 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk, u32 battlerTarget)
     else if (gBattleMoves[move].effect == EFFECT_CHANGE_TYPE_HIDDEN)
     {
         u8 hiddenPowerType = GetHiddenPowerType(move, battlerAtk, target);
-            gBattleStruct->dynamicMoveType = hiddenPowerType | F_DYNAMIC_TYPE_2;
+            gBattleStruct->dynamicMoveType = hiddenPowerType | F_DYNAMIC_TYPE_SET;
     }
     else if (gBattleMoves[move].effect == EFFECT_REVELATION_DANCE)
     {

@@ -304,38 +304,33 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 #if P_FAMILY_PIPLUP
     [SPECIES_PIPLUP] =
     {
-        .baseHP        = 53,
-        .baseAttack    = 51,
-        .baseDefense   = 53,
+        .baseHP        = 55,
+        .baseAttack    = 50,
+        .baseDefense   = 55,
         .baseSpeed     = 40,
-        .baseSpAttack  = 61,
-        .baseSpDefense = 56,
-        .types = { TYPE_WATER, TYPE_WATER },
+        .baseSpAttack  = 60,
+        .baseSpDefense = 55,
+        .types = { TYPE_WATER, TYPE_WATER},
         .catchRate = 45,
         .expYield = 63,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD },
-        #if P_UPDATED_ABILITIES >= GEN_9
-            .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_COMPETITIVE },
-        #else
-            .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_DEFIANT },
-        #endif
+        .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_POLAR_HERITAGE, ABILITY_COMPETITIVE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("Piplup"),
+        .speciesName = _("PIPLUP"),
         .cryId = CRY_PIPLUP,
         .natDexNum = NATIONAL_DEX_PIPLUP,
-        .categoryName = _("Penguin"),
+        .categoryName = _("PENGUIN"),
         .height = 4,
         .weight = 52,
         .description = COMPOUND_STRING(
-            "A poor walker, it often falls down. However,\n"
-            "its strong pride makes it puff up its chest\n"
-            "without a care. It's difficult to bond with\n"
-            "since it won't listen to its Trainer."),
+            "Cold both in disposition and in bodily\n"
+            "temperature, PIPLUP can be a hard POKéMON\n"
+            "to bond with. It likes to hide in its\n"
+            "TRAINER's refrigerators."),
         .pokemonScale = 491,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -356,38 +351,33 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 
     [SPECIES_PRINPLUP] =
     {
-        .baseHP        = 64,
-        .baseAttack    = 66,
-        .baseDefense   = 68,
+        .baseHP        = 65,
+        .baseAttack    = 65,
+        .baseDefense   = 70,
         .baseSpeed     = 50,
-        .baseSpAttack  = 81,
-        .baseSpDefense = 76,
-        .types = { TYPE_WATER, TYPE_WATER },
+        .baseSpAttack  = 80,
+        .baseSpDefense = 75,
+        .types = { TYPE_WATER, TYPE_WATER},
         .catchRate = 45,
         .expYield = 142,
-        .evYield_SpAttack = 2,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD },
-        #if P_UPDATED_ABILITIES >= GEN_9
-            .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_COMPETITIVE },
-        #else
-            .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_DEFIANT },
-        #endif
+        .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_POLAR_HERITAGE, ABILITY_COMPETITIVE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("Prinplup"),
+        .speciesName = _("PRINPLUP"),
         .cryId = CRY_PRINPLUP,
         .natDexNum = NATIONAL_DEX_PRINPLUP,
-        .categoryName = _("Penguin"),
+        .categoryName = _("PENGUIN"),
         .height = 8,
         .weight = 230,
         .description = COMPOUND_STRING(
-            "Because every Prinplup considers itself\n"
-            "to be the most important, they can never\n"
-            "form a group. It searches for prey in\n"
-            "icy seas."),
+            "PRINPLUP is a very proud POKéMON, and\n"
+            "rarely enjoys the company of others.\n"
+            "But nce it considers someone an equal,\n"
+            "it never leaves their side."),
         .pokemonScale = 366,
         .pokemonOffset = 10,
         .trainerScale = 257,
@@ -408,38 +398,33 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 
     [SPECIES_EMPOLEON] =
     {
-        .baseHP        = 84,
-        .baseAttack    = 86,
-        .baseDefense   = 88,
+        .baseHP        = 85,
+        .baseAttack    = 85,
+        .baseDefense   = 90,
         .baseSpeed     = 60,
-        .baseSpAttack  = 111,
-        .baseSpDefense = 101,
-        .types = { TYPE_WATER, TYPE_STEEL },
+        .baseSpAttack  = 110,
+        .baseSpDefense = 100,
+        .types = { TYPE_WATER, TYPE_STEEL},
         .catchRate = 45,
         .expYield = 239,
-        .evYield_SpAttack = 3,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD },
-        #if P_UPDATED_ABILITIES >= GEN_9
-            .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_COMPETITIVE },
-        #else
-            .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_DEFIANT },
-        #endif
+        .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_POLAR_HERITAGE, ABILITY_COMPETITIVE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("Empoleon"),
+        .speciesName = _("EMPOLEON"),
         .cryId = CRY_EMPOLEON,
         .natDexNum = NATIONAL_DEX_EMPOLEON,
-        .categoryName = _("Emperor"),
+        .categoryName = _("EMPEROR"),
         .height = 17,
         .weight = 845,
         .description = COMPOUND_STRING(
             "The three horns that extend from its beak\n"
             "attest to its power. It avoids unnecessary\n"
             "disputes, but it will decimate anything\n"
-            "that threatens its pride."),
+            "that threatens its allies."),
         .pokemonScale = 259,
         .pokemonOffset = 0,
         .trainerScale = 290,

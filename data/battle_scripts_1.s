@@ -8947,20 +8947,15 @@ BattleScript_MesmerizeLoop:
 	jumpiftargetally BattleScript_MesmerizeLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_MesmerizeLoopIncrement
 	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_MesmerizeLoopIncrement
-	jumpifability BS_TARGET, ABILITY_HYPER_CUTTER, BattleScript_MesmerizePrevented
-	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_MesmerizePrevented
-	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_MesmerizePrevented
-	jumpifability BS_TARGET, ABILITY_MINDS_EYE, BattleScript_IntimidatePrevented
-	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_MesmerizePrevented
-	jumpifability BS_TARGET, ABILITY_OBLIVIOUS, BattleScript_MesmerizePrevented
 	jumpifability BS_TARGET, ABILITY_GUARD_DOG, BattleScript_MesmerizeInReverse
 BattleScript_MesmerizeEffect:
 	copybyte sBATTLER, gBattlerAttacker
+	setstatchanger STAT_SPATK, 1, TRUE
 	statbuffchange STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_MesmerizeLoopIncrement
 	setgraphicalstatchangevalues
 	jumpifability BS_TARGET, ABILITY_CONTRARY, BattleScript_MesmerizeContrary
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	printstring STRINGID_PKMNCUTSSPATTACKWITH
+	printstring STRINGID_PKMNCUTSATTACKWITH
 BattleScript_MesmerizeEffect_WaitString:
 	waitmessage B_WAIT_TIME_LONG
 	copybyte sBATTLER, gBattlerTarget
@@ -8984,16 +8979,6 @@ BattleScript_MesmerizeContrary:
 BattleScript_MesmerizeContrary_WontIncrease:
 	printstring STRINGID_TARGETSTATWONTGOHIGHER
 	goto BattleScript_MesmerizeEffect_WaitString
-
-BattleScript_MesmerizePrevented:
-	call BattleScript_AbilityPopUp
-	pause B_WAIT_TIME_LONG
-	setbyte gBattleCommunication STAT_ATK
-	stattextbuffer BS_TARGET
-	printstring STRINGID_STATWASNOTLOWERED
-	waitmessage B_WAIT_TIME_LONG
-	call BattleScript_TryAdrenalineOrb
-	goto BattleScript_MesmerizeLoopIncrement
 
 BattleScript_MesmerizeInReverse:
 	copybyte sBATTLER, gBattlerTarget
@@ -10099,7 +10084,7 @@ BattleScript_ItemHealHP_Move::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNENERGYDRAINED
 	waitmessage B_WAIT_TIME_LONG
-	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE | HITMARKER_PASSIVE_DAMAGE
+	orword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
 	return

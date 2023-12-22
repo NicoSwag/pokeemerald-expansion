@@ -7,33 +7,33 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     [SPECIES_CHIKORITA] =
     {
         .baseHP        = 45,
-        .baseAttack    = 49,
+        .baseAttack    = 50,
         .baseDefense   = 65,
         .baseSpeed     = 45,
-        .baseSpAttack  = 49,
+        .baseSpAttack  = 50,
         .baseSpDefense = 65,
         .types = { TYPE_GRASS, TYPE_GRASS },
         .catchRate = 45,
         .expYield = 64,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .evYield_SpDefense = 0,
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_GRASS },
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_LEAF_GUARD },
+        .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_GRASS},
+        .abilities = {ABILITY_TRIAGE, ABILITY_THICK_FAT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("Chikorita"),
+        .speciesName = _("CHIKORITA"),
         .cryId = CRY_CHIKORITA,
         .natDexNum = NATIONAL_DEX_CHIKORITA,
-        .categoryName = _("Leaf"),
+        .categoryName = _("LEAF"),
         .height = 9,
         .weight = 64,
         .description = COMPOUND_STRING(
-            "It waves its leaf around to keep foes\n"
-            "at bay. However, a sweet fragrance also\n"
-            "wafts from the leaf, creating a friendly\n"
-            "atmosphere that becalms the battlers."),
+            "The leaf that grows on its head has healing\n"
+            "properties. It is frequently enjoyed in tea,\n"
+            "and has the ability to grow back once it's\n"
+            "been plucked off its stem."),
         .pokemonScale = 512,
         .pokemonOffset = 20,
         .trainerScale = 256,
@@ -55,34 +55,32 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     [SPECIES_BAYLEEF] =
     {
         .baseHP        = 60,
-        .baseAttack    = 62,
+        .baseAttack    = 60,
         .baseDefense   = 80,
         .baseSpeed     = 60,
-        .baseSpAttack  = 63,
+        .baseSpAttack  = 65,
         .baseSpDefense = 80,
         .types = { TYPE_GRASS, TYPE_GRASS },
         .catchRate = 45,
         .expYield = 142,
-        .evYield_Defense = 1,
-        .evYield_SpDefense = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_GRASS },
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_LEAF_GUARD },
+        .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_GRASS},
+        .abilities = {ABILITY_TRIAGE, ABILITY_THICK_FAT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("Bayleef"),
+        .speciesName = _("BAYLEEF"),
         .cryId = CRY_BAYLEEF,
         .natDexNum = NATIONAL_DEX_BAYLEEF,
-        .categoryName = _("Leaf"),
+        .categoryName = _("LEAF"),
         .height = 12,
         .weight = 158,
         .description = COMPOUND_STRING(
-            "A Bayleef's neck is ringed by curled-up\n"
-            "leaves. Inside each leaf is a small tree\n"
-            "shoot. The fragrance of this shoot\n"
-            "makes people peppy."),
+            "A BAYLEEF's neck is ringed by curled-up\n"
+            "leaves. It protects them fiercely, only\n"
+            "sharing their healing powers to those that\n"
+            "truly need it."),
         .pokemonScale = 296,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -104,34 +102,32 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     [SPECIES_MEGANIUM] =
     {
         .baseHP        = 80,
-        .baseAttack    = 82,
+        .baseAttack    = 80,
         .baseDefense   = 100,
         .baseSpeed     = 80,
-        .baseSpAttack  = 83,
+        .baseSpAttack  = 85,
         .baseSpDefense = 100,
         .types = { TYPE_GRASS, TYPE_GRASS },
         .catchRate = 45,
         .expYield = 236,
-        .evYield_Defense = 1,
-        .evYield_SpDefense = 2,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_GRASS },
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_LEAF_GUARD },
+        .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_GRASS},
+        .abilities = {ABILITY_TRIAGE, ABILITY_THICK_FAT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("Meganium"),
+        .speciesName = _("MEGANIUM"),
         .cryId = CRY_MEGANIUM,
         .natDexNum = NATIONAL_DEX_MEGANIUM,
-        .categoryName = _("Herb"),
+        .categoryName = _("FLOWER"),
         .height = 18,
         .weight = 1005,
         .description = COMPOUND_STRING(
-            "The fragrance of a Meganium's flower\n"
-            "soothes and calms emotions. In battle,\n"
-            "it gives off more of its becalming scent\n"
-            "to blunt the foe's fighting spirit."),
+            "Its leaves have now bloomed into a flower.\n"
+            "Its scent can cure the ailments of those\n"
+            "that smell it, but ironically many people\n"
+            "seem to be allergic to it."),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 277,
@@ -595,30 +591,30 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .baseAttack    = 30,
         .baseDefense   = 30,
         .baseSpeed     = 50,
-        .baseSpAttack  = 36,
-        .baseSpDefense = 56,
-        .types = { TYPE_NORMAL, TYPE_FLYING },
+        .baseSpAttack  = 50,
+        .baseSpDefense = 55,
+        .types = { TYPE_FLYING, TYPE_NORMAL },
         .catchRate = 255,
         .expYield = 52,
-        .evYield_HP = 1,
+        .evYield_HP        = 0,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_FLYING },
-        .abilities = { ABILITY_INSOMNIA, ABILITY_KEEN_EYE, ABILITY_TINTED_LENS },
+        .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_FLYING},
+        .abilities = {ABILITY_FIXED_GAZE, ABILITY_NONE, ABILITY_FOREWARN},
         .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("Hoothoot"),
+        .speciesName = _("HOOTHOOT"),
         .cryId = CRY_HOOTHOOT,
         .natDexNum = NATIONAL_DEX_HOOTHOOT,
-        .categoryName = _("Owl"),
+        .categoryName = _("WATCH"),
         .height = 7,
         .weight = 212,
         .description = COMPOUND_STRING(
-            "It has an internal organ that senses\n"
-            "the earth's rotation. Using this special\n"
-            "organ, a Hoothoot begins hooting at\n"
-            "precisely the same time every day."),
+            "By staying completely still, HOOTHOOT\n"
+            "is able to sense the rotation of the\n"
+            "Earth and, subsequently, the exact time\n"
+            "of the day."),
         .pokemonScale = 380,
         .pokemonOffset = -2,
         .trainerScale = 256,
@@ -641,32 +637,35 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     {
         .baseHP        = 100,
         .baseAttack    = 50,
-        .baseDefense   = 50,
+        .baseDefense   = 70,
         .baseSpeed     = 70,
-        .baseSpAttack  = P_UPDATED_STATS >= GEN_7 ? 86 : 76,
-        .baseSpDefense = 96,
-        .types = { TYPE_NORMAL, TYPE_FLYING },
+        .baseSpDefense = 100,
+        #if P_UPDATED_STATS >= GEN_7
+            .baseSpAttack  = 100,
+        #else
+            .baseSpAttack  = 76,
+        #endif
+        .types = { TYPE_FLYING, TYPE_PSYCHIC},
         .catchRate = 90,
         .expYield = 158,
-        .evYield_HP = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_FLYING },
-        .abilities = { ABILITY_INSOMNIA, ABILITY_KEEN_EYE, ABILITY_TINTED_LENS },
+        .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_FLYING},
+        .abilities = {ABILITY_FIXED_GAZE, ABILITY_NONE, ABILITY_PSYCHIC_SURGE},
         .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("Noctowl"),
+        .speciesName = _("NOCTOWL"),
         .cryId = CRY_NOCTOWL,
         .natDexNum = NATIONAL_DEX_NOCTOWL,
-        .categoryName = _("Owl"),
+        .categoryName = _("WATCH"),
         .height = 16,
         .weight = 408,
         .description = COMPOUND_STRING(
-            "It unfailingly catches prey in darkness.\n"
-            "Noctowl owe their success to superior\n"
-            "vision that allows them to see in minimal\n"
-            "light, and to their supple and silent wings."),
+            "Its head is able to hone in perfectly\n"
+            "on a target, and can rotate even up to\n"
+            "360 degrees. Its psychic energy can detect\n"
+            "any variation to its surroundings."),
         .pokemonScale = 278,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -690,32 +689,32 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     {
         .baseHP        = 40,
         .baseAttack    = 20,
-        .baseDefense   = 30,
+        .baseDefense   = 40,
         .baseSpeed     = 55,
         .baseSpAttack  = 40,
         .baseSpDefense = 80,
         .types = { TYPE_BUG, TYPE_FLYING },
         .catchRate = 255,
         .expYield = 53,
-        .evYield_SpDefense = 1,
+        .evYield_SpDefense = 0,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
-        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG },
-        .abilities = { ABILITY_SWARM, ABILITY_EARLY_BIRD, ABILITY_RATTLED },
+        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG},
+        .abilities = {ABILITY_FIST_BARRAGE, ABILITY_NONE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Ledyba"),
+        .speciesName = _("LEDYBA"),
         .cryId = CRY_LEDYBA,
         .natDexNum = NATIONAL_DEX_LEDYBA,
-        .categoryName = _("Five Star"),
+        .categoryName = _("FIVE STAR"),
         .height = 10,
         .weight = 108,
         .description = COMPOUND_STRING(
-            "Ledyba communicate using a fluid that\n"
-            "they secrete from where the legs join the\n"
-            "body. They are said to convey feelings to\n"
-            "others by altering the fluid's scent."),
+            "At night, LEDYBA can be found gazing at the\n"
+            "stars. According to folklore, its deepest\n"
+            "wish is to become bigger and stronger to help\n"
+            "those who aren't lucky."),
         .pokemonScale = 256,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -740,11 +739,11 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     {
         .baseHP        = 55,
         .baseAttack    = 35,
-        .baseDefense   = 50,
+        .baseDefense   = 70,
         .baseSpeed     = 85,
         .baseSpAttack  = 55,
         .baseSpDefense = 110,
-        .types = { TYPE_BUG, TYPE_FLYING },
+        .types = { TYPE_BUG, TYPE_FIGHTING },
         .catchRate = 90,
         .expYield = 137,
         .evYield_SpDefense = 2,
@@ -752,20 +751,20 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
-        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG },
-        .abilities = { ABILITY_SWARM, ABILITY_EARLY_BIRD, ABILITY_IRON_FIST },
+        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG},
+        .abilities = {ABILITY_FIST_BARRAGE},
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Ledian"),
+        .speciesName = _("LEDIAN"),
         .cryId = CRY_LEDIAN,
         .natDexNum = NATIONAL_DEX_LEDIAN,
-        .categoryName = _("Five Star"),
+        .categoryName = _("FIVE STAR"),
         .height = 14,
         .weight = 356,
         .description = COMPOUND_STRING(
-            "It is said that in lands with clean air,\n"
-            "where the stars fill the sky, there live\n"
-            "many Ledian. For good reason, they use\n"
-            "the light of the stars as energy."),
+            "After evolving, LEDYBA is now able to use\n"
+            "its newfound power to protect the unlucky and\n"
+            "the innocent. It's able to harness the power \n"
+            "of the stars for its attacks."),
         .pokemonScale = 256,
         .pokemonOffset = 2,
         .trainerScale = 256,
@@ -1939,34 +1938,34 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 #if P_FAMILY_SUNKERN
     [SPECIES_SUNKERN] =
     {
-        .baseHP        = 30,
-        .baseAttack    = 30,
-        .baseDefense   = 30,
-        .baseSpeed     = 30,
-        .baseSpAttack  = 30,
-        .baseSpDefense = 30,
+        .baseHP        = 40,
+        .baseAttack    = 40,
+        .baseDefense   = 40,
+        .baseSpeed     = 40,
+        .baseSpAttack  = 40,
+        .baseSpDefense = 40,
         .types = { TYPE_GRASS, TYPE_GRASS },
         .catchRate = 235,
         .expYield = 36,
-        .evYield_SpAttack = 1,
+        .evYield_SpAttack  = 0,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS },
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_SOLAR_POWER, ABILITY_EARLY_BIRD },
+        .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS},
+        .abilities = {ABILITY_FLASH_FIRE, ABILITY_SUN_WITHIN, ABILITY_SOLAR_POWER},
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("Sunkern"),
+        .speciesName = _("SUNKERN"),
         .cryId = CRY_SUNKERN,
         .natDexNum = NATIONAL_DEX_SUNKERN,
-        .categoryName = _("Seed"),
+        .categoryName = _("SEED"),
         .height = 3,
         .weight = 18,
         .description = COMPOUND_STRING(
-            "Sunkern try to minimize movement to\n"
-            "conserve the nutrients they have stored\n"
-            "in their bodies for evolution. They will\n"
-            "not eat, subsisting only on morning dew."),
+            "SUNKERN spends all day basking in the sun,\n"
+            "trying to gather all the energy possible.\n"
+            "It doesn not eat, subsisting only on sunlight\n"
+            "and morning dew."),
         .pokemonScale = 541,
         .pokemonOffset = 0,
         .trainerScale = 256,
@@ -1987,27 +1986,26 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 
     [SPECIES_SUNFLORA] =
     {
-        .baseHP        = 75,
+ .baseHP        = 85,
         .baseAttack    = 75,
-        .baseDefense   = 55,
+        .baseDefense   = 75,
         .baseSpeed     = 30,
         .baseSpAttack  = 105,
         .baseSpDefense = 85,
         .types = { TYPE_GRASS, TYPE_GRASS },
         .catchRate = 120,
         .expYield = 149,
-        .evYield_SpAttack = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS },
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_SOLAR_POWER, ABILITY_EARLY_BIRD },
+        .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS},
+        .abilities = {ABILITY_FLASH_FIRE, ABILITY_SUN_WITHIN, ABILITY_SOLAR_POWER},
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("Sunflora"),
+        .speciesName = _("SUNFLORA"),
         .cryId = CRY_SUNFLORA,
         .natDexNum = NATIONAL_DEX_SUNFLORA,
-        .categoryName = _("Sun"),
+        .categoryName = _("SUN"),
         .height = 8,
         .weight = 85,
         .description = COMPOUND_STRING(

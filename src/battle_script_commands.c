@@ -1446,6 +1446,7 @@ bool32 ColorChangeTryChangeType(u32 defender, u32 ability, u32 move, u32 moveTyp
         return TRUE;
     }
     return FALSE;
+}
 bool32 IsMoveNotAllowedInSkyBattles(u32 move)
 {
     return ((gBattleStruct->isSkyBattle) && (gBattleMoves[gCurrentMove].skyBattleBanned));
@@ -13042,16 +13043,6 @@ static void Cmd_trysetencore(void)
         }
     else
     {
-    for (i = 0; i < MAX_MON_MOVES; i++)
-    {
-        for (i = 0; i < MAX_MON_MOVES; i++)
-        {
-            if (gBattleMons[gBattlerTarget].moves[i] == gBattleStruct->dynamax.baseMove[gBattlerTarget])
-                break;
-        }
-    }
-    else
-    {
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
             if (gBattleMons[gBattlerTarget].moves[i] == gLastMoves[gBattlerTarget])
@@ -13079,7 +13070,7 @@ static void Cmd_trysetencore(void)
         gBattlescriptCurrInstr = cmd->failInstr;
     }
     }
-}
+
 
 static void Cmd_painsplitdmgcalc(void)
 {

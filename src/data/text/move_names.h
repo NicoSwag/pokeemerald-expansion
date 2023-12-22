@@ -1,6 +1,6 @@
 #if B_EXPANDED_MOVE_NAMES == TRUE
 // 16 letters
-const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
+const u8 gMoveNames[MOVES_COUNT_DYNAMAX][MOVE_NAME_LENGTH + 1] =
 {
     [MOVE_NONE] = _("-"),
     [MOVE_POUND] = _("POUND"),
@@ -590,8 +590,8 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_DISARMING_VOICE] = _("DISRMINGVOICE"),
     [MOVE_PARTING_SHOT] = _("PARTING SHOT"),
     [MOVE_TOPSY_TURVY] = _("TOPSY-TURVY"),
-    [MOVE_DRAINING_KISS] = _("DRAINING KISS"),
-    [MOVE_NUMBING_KISS] = _("NUMBING KISS"),
+    [MOVE_DRAINING_KISS] = _("DRAININGKISS"),
+    [MOVE_NUMBING_KISS] = _("NUMBINGKISS"),
     [MOVE_CRAFTY_SHIELD] = _("CRAFTY SHIELD"),
     [MOVE_FLOWER_SHIELD] = _("FLOWER SHIELD"),
     [MOVE_GRASSY_TERRAIN] = _("GRASSY TERRAIN"),
@@ -676,6 +676,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_FLEUR_CANNON] = _("FLEUR CANNON"),
     [MOVE_PSYCHIC_FANGS] = _("PSYCHIC FANGS"),
     [MOVE_STOMPING_TANTRUM] = _("STOMPING TANTRUM"),
+    [MOVE_TEMPER_FLARE] = _("TEMPER FLARE"),
     [MOVE_SHADOW_BONE] = _("SHADOW BONE"),
     [MOVE_ACCELEROCK] = _("ACCELEROCK"),
     [MOVE_LIQUIDATION] = _("LIQUIDATION"),
@@ -854,7 +855,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
 };
 #else
 // 12 letters
-const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
+const u8 gMoveNames[MOVES_COUNT_DYNAMAX][MOVE_NAME_LENGTH + 1] =
 {
     [MOVE_NONE] = _("-"),
     [MOVE_POUND] = _("Pound"),
@@ -1529,6 +1530,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_FLEUR_CANNON] = _("Fleur Cannon"),
     [MOVE_PSYCHIC_FANGS] = _("PsychicFangs"),
     [MOVE_STOMPING_TANTRUM] = _("StmpngTantrm"),
+    [MOVE_TEMPER_FLARE] = _("TEMPERFLARE"),
     [MOVE_SHADOW_BONE] = _("Shadow Bone"),
     [MOVE_ACCELEROCK] = _("Accelerock"),
     [MOVE_LIQUIDATION] = _("Liquidation"),

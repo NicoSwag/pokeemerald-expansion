@@ -5,7 +5,13 @@
 const u16 gEggMoves[] = {
     egg_moves(FENNEKIN,
         MOVE_INCINERATE,
-        MOVE_MAGIC_ROOM),
+        MOVE_ALLY_SWITCH),
+
+        egg_moves(BRAIXEN,
+        MOVE_INCINERATE,
+        MOVE_ALLY_SWITCH,
+        MOVE_NASTY_PLOT,
+        MOVE_CHARGE_BEAM),
 
     egg_moves(GLIMMET,
         MOVE_MAGNITUDE,
@@ -565,6 +571,11 @@ const u16 gEggMoves[] = {
     egg_moves(MAGIKARP,
         MOVE_DRAGON_RAGE),
 
+    egg_moves(GYARADOS,
+        MOVE_DRAGON_RAGE,
+        MOVE_FLYING_PRESS,
+        MOVE_TEMPER_FLARE)
+
     egg_moves(SCYTHER,
         MOVE_COUNTER,
         MOVE_BATON_PASS,
@@ -677,6 +688,12 @@ const u16 gEggMoves[] = {
 
     egg_moves(CHIKORITA,
         MOVE_SYNTHESIS, 
+        MOVE_LEECH_SEED,
+        MOVE_DRAINING_KISS,
+        MOVE_LIFE_DEW),
+
+    egg_moves(BAYLEEF,
+        MOVE_SYNTHESIS, 
         MOVE_LEECH_SEED),
 
     egg_moves(CYNDAQUIL,
@@ -734,6 +751,12 @@ const u16 gEggMoves[] = {
     egg_moves(LEDYBA,
         MOVE_MACH_PUNCH,
         MOVE_DRAIN_PUNCH),
+
+        egg_moves(LEDIAN,
+        MOVE_MACH_PUNCH,
+        MOVE_DRAIN_PUNCH,
+        MOVE_FOCUS_PUNCH,
+        MOVE_TAUNT),
 
     egg_moves(SPINARAK,
         MOVE_PSYBEAM,
@@ -1975,7 +1998,13 @@ const u16 gEggMoves[] = {
 
     egg_moves(PIPLUP,
         MOVE_ICY_WIND,
-        MOVE_CHILLING_WATER),
+        MOVE_FLASH_FREEZE),
+
+    egg_moves(PRINPLUP,
+        MOVE_ICY_WIND,
+        MOVE_FLASH_FREEZE,
+        MOVE_GLACIATE,
+        MOVE_ROOST),
 
     egg_moves(STARLY,
         MOVE_FEATHER_DANCE,
@@ -3800,7 +3829,7 @@ const u16 gEggMoves[] = {
 		MOVE_STOCKPILE,
 		MOVE_SWALLOW),
 
-	egg_moves(TAUROS_PALDEAN,
+	egg_moves(TAUROS_PALDEAN_COMBAT_BREED,
 		MOVE_CURSE,
 		MOVE_ENDEAVOR),
 

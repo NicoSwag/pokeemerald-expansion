@@ -2954,7 +2954,8 @@ static void ChangePokemonNicknamePartyScreen(void)
 }
  static void CursorCb_Nickname(u8 taskId)
  {
-     PlaySE(SE_SELECT);+     gSpecialVar_0x8004 = gPartyMenu.slotId;
+     PlaySE(SE_SELECT);
+          gSpecialVar_0x8004 = gPartyMenu.slotId;
     sPartyMenuInternal->exitCallback = ChangePokemonNicknamePartyScreen;
      Task_ClosePartyMenu(taskId);
  }

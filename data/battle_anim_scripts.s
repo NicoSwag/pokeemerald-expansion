@@ -858,6 +858,7 @@ gBattleAnims_Moves::
 	.4byte Move_FLASH_FREEZE
 	.4byte Move_BLUFF
 	.4byte Move_HYDRO_STEAM
+	.4byte Move_TEMPER_FLARE
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -16983,11 +16984,16 @@ Move_NOXIOUS_TORQUE::
 Move_COMBAT_TORQUE::
 Move_MAGICAL_TORQUE::
 Move_PSYBLADE::
-Move_HYDRO_STEAM::
 Move_BLOOD_MOON::
 Move_MATCHA_GOTCHA::
 Move_IVY_CUDGEL::
 	end @to do
+
+Move_HYDRO_STEAM::
+	goto Move_SCALD
+
+Move_TEMPER_FLARE:
+	goto Move_RAGING_FURY
 
 @@@@@@@@@@@@@@@@@@@@@@@ GEN 1-3 @@@@@@@@@@@@@@@@@@@@@@@
 Move_NONE:

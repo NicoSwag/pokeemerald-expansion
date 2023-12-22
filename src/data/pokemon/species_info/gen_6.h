@@ -155,30 +155,29 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .baseAttack    = 45,
         .baseDefense   = 40,
         .baseSpeed     = 60,
-        .baseSpAttack  = 62,
+        .baseSpAttack  = 65,
         .baseSpDefense = 60,
-        .types = { TYPE_FIRE, TYPE_FIRE },
+        .types = { TYPE_FIRE, TYPE_FIRE},
         .catchRate = 45,
         .expYield = 61,
-        .evYield_SpAttack = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_MAGICIAN },
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_MAGICIAN, ABILITY_MAGIC_GUARD, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Fennekin"),
+        .speciesName = _("FENNEKIN"),
         .cryId = CRY_FENNEKIN,
         .natDexNum = NATIONAL_DEX_FENNEKIN,
-        .categoryName = _("Fox"),
+        .categoryName = _("TRICKSTER"),
         .height = 4,
         .weight = 94,
         .description = COMPOUND_STRING(
-            "As it walks, it munches on a twig to fill\n"
-            "itself with energy in place of a snack.\n"
-            "It intimidates opponents by puffing hot\n"
-            "air out of its roomy ears."),
+            "FENNEKIN is very mischevious. it likes\n"
+            "to steal things stealthily thanks to its\n"
+            "latent magic powers, and hide them inside\n"
+            "its fluffy ears."),
         .pokemonScale = 491,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -199,34 +198,33 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
 
     [SPECIES_BRAIXEN] =
     {
-        .baseHP        = 59,
-        .baseAttack    = 59,
-        .baseDefense   = 58,
-        .baseSpeed     = 73,
+        .baseHP        = 60,
+        .baseAttack    = 60,
+        .baseDefense   = 60,
+        .baseSpeed     = 75,
         .baseSpAttack  = 90,
         .baseSpDefense = 70,
-        .types = { TYPE_FIRE, TYPE_FIRE },
+        .types = { TYPE_FIRE, TYPE_FIRE},
         .catchRate = 45,
         .expYield = 143,
-        .evYield_SpAttack = 2,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_MAGICIAN },
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_MAGICIAN, ABILITY_MAGIC_GUARD, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Braixen"),
+        .speciesName = _("BRAIXEN"),
         .cryId = CRY_BRAIXEN,
         .natDexNum = NATIONAL_DEX_BRAIXEN,
-        .categoryName = _("Fox"),
+        .categoryName = _("MAGICIAN"),
         .height = 10,
         .weight = 145,
         .description = COMPOUND_STRING(
-            "Braixen has a twig stuck in its tail.\n"
-            "When the twig is plucked from its tail,\n"
-            "friction sets the twig alight. The flame\n"
-            "is used to send signals to its allies."),
+            "Thanks to the twig stuck in its tail,\n"
+            "BRAIXEN can channel its magical energy\n"
+            "in order to conjure powerful elemental\n"
+            "spells."),
         .pokemonScale = 305,
         .pokemonOffset = 7,
         .trainerScale = 257,
@@ -248,33 +246,32 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
     [SPECIES_DELPHOX] =
     {
         .baseHP        = 75,
-        .baseAttack    = 69,
-        .baseDefense   = 72,
-        .baseSpeed     = 104,
-        .baseSpAttack  = 114,
+        .baseAttack    = 70,
+        .baseDefense   = 70,
+        .baseSpeed     = 105,
+        .baseSpAttack  = 115,
         .baseSpDefense = 100,
-        .types = { TYPE_FIRE, TYPE_PSYCHIC },
+        .types = { TYPE_FIRE, TYPE_PSYCHIC},
         .catchRate = 45,
         .expYield = 240,
-        .evYield_SpAttack = 3,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_MAGICIAN },
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_MAGICIAN, ABILITY_MAGIC_GUARD, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Delphox"),
+        .speciesName = _("DELPHOX"),
         .cryId = CRY_DELPHOX,
         .natDexNum = NATIONAL_DEX_DELPHOX,
-        .categoryName = _("Fox"),
+        .categoryName = _("WITCH"),
         .height = 15,
         .weight = 390,
         .description = COMPOUND_STRING(
-            "It gazes into the flame at the tip of its\n"
-            "branch to achieve a focused state, which\n"
-            "allows it to see into the future. It uses\n"
-            "psychic power to incinerate its foes."),
+            "After a lengthy training, DELPHOX has now\n"
+            "become a master of magical arts. It happily\n"
+            "shares its knowledge with all that want to\n"
+            "learn, as long as their intentions are pure."),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,

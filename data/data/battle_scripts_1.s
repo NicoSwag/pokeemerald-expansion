@@ -9581,7 +9581,7 @@ BattleScript_KingsShieldEffect::
 	return
 
 BattleScript_BanefulBunkerEffect::
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_SAFEGUARD | HITMARKER_PASSIVE_DAMAGE
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_STATUS_ABILITY_EFFECT | HITMARKER_PASSIVE_DAMAGE
 	bichalfword gMoveResultFlags, MOVE_RESULT_NO_EFFECT
 	seteffectsecondary
 	setmoveeffect 0

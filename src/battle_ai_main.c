@@ -1619,7 +1619,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_ACID_RAIN:
             if (gBattleWeather & (B_WEATHER_POLLUTION | B_WEATHER_PRIMAL_ANY)
-             || PartnerMoveEffectIsWeather(BATTLE_PARTNER(battlerAtk), AI_DATA->partnerMove))
+             || IsMoveEffectWeather(aiData->partnerMove))
                 score -= 8;
             break;
         case EFFECT_HAIL:

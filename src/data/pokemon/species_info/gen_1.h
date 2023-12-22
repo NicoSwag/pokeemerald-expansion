@@ -10293,7 +10293,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 #endif //P_FAMILY_TAUROS
 
 #if P_FAMILY_MAGIKARP
-    [SPECIES_MAGIKARP] =
+        [SPECIES_MAGIKARP] =
     {
         .baseHP        = 20,
         .baseAttack    = 10,
@@ -10304,25 +10304,24 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_WATER, TYPE_WATER },
         .catchRate = 255,
         .expYield = 40,
-        .evYield_Speed = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 5,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
-        .eggGroups = { EGG_GROUP_WATER_2, EGG_GROUP_DRAGON },
-        .abilities = { ABILITY_SWIFT_SWIM, ABILITY_NONE, ABILITY_RATTLED },
+        .eggGroups = { EGG_GROUP_WATER_2, EGG_GROUP_DRAGON},
+        .abilities = {ABILITY_SWIFT_SWIM, ABILITY_RATTLED},
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Magikarp"),
+        .speciesName = _("MAGIKARP"),
         .cryId = CRY_MAGIKARP,
         .natDexNum = NATIONAL_DEX_MAGIKARP,
-        .categoryName = _("Fish"),
+        .categoryName = _("SPLASHING"),
         .height = 9,
         .weight = 100,
         .description = COMPOUND_STRING(
-            "Its swimming muscles are weak, so it is\n"
-            "easily washed away by currents. In places\n"
-            "where water pools, you can see many\n"
-            "Magikarp deposited there by the flow."),
+            "Once upon a time, it is said that a MAGIKARP\n"
+            "jumped so high that it landed above a\n"
+            "mountain, and transformed into a fearsome\n"
+            "dragon."),
         .pokemonScale = 310,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -10340,7 +10339,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         ICON(Magikarp, 0),
         .footprint = gMonFootprint_Magikarp,
         LEARNSETS(Magikarp),
-        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_GYARADOS}),
     },
 
 #define GYARADOS_MISC_INFO                                  \
@@ -10352,9 +10350,9 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .growthRate = GROWTH_SLOW,                          \
         .eggGroups = { EGG_GROUP_WATER_2, EGG_GROUP_DRAGON },\
         .bodyColor = BODY_COLOR_BLUE,                       \
-        .speciesName = _("Gyarados"),                       \
+        .speciesName = _("GYARADOS"),                       \
         .natDexNum = NATIONAL_DEX_GYARADOS,                 \
-        .categoryName = _("Atrocious"),                     \
+        .categoryName = _("ATROCIOUS"),                     \
         .height = 65,                                       \
         .pokemonScale = 256,                                \
         .pokemonOffset = 6,                                 \
@@ -10374,16 +10372,16 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseSpeed     = 81,
         .baseSpAttack  = 60,
         .baseSpDefense = 100,
-        .types = { TYPE_WATER, TYPE_FLYING },
+        .types = { TYPE_WATER, TYPE_DRAGON},
         .expYield = 189,
-        .abilities = { ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_MOXIE },
+        .abilities = {ABILITY_INTIMIDATE, ABILITY_MOXIE},
         .cryId = CRY_GYARADOS,
         .weight = 2350,
         .description = COMPOUND_STRING(
             "It is an extremely vicious and violent\n"
-            "Pokémon. When humans begin to fight,\n"
-            "it will appear and burn everything to the\n"
-            "ground with intensely hot flames."),
+            "Pokémon, prone to tantrums. Despite its\n"
+            "massive size, it often resides in small\n"
+            "lakes, and is revered by the locals."),
         FRONT_PIC(Gyarados, 64, 64),
         FRONT_PIC_FEMALE(Gyarados, 64, 64),
         .frontPicYOffset = 2,

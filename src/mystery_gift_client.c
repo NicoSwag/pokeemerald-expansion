@@ -25,7 +25,6 @@ static void MysteryGiftClient_Init(struct MysteryGiftClient *, u32, u32);
 static u32 MysteryGiftClient_CallFunc(struct MysteryGiftClient *);
 static void MysteryGiftClient_Free(struct MysteryGiftClient *);
 
-extern const struct MysteryGiftClientCmd gMysteryGiftClientScript_Init[];
 
 
 u32 MysteryGiftClient_Run(u16 * endVal)
