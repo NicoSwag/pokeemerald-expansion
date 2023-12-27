@@ -101,6 +101,9 @@ static void Task_GiveExpWithExpBar(u8);
 static void Task_UpdateLvlInHealthbox(u8);
 static void PrintLinkStandbyMsg(void);
 
+static const u16 sSplitIcons_Pal[] = INCBIN_U16("graphics/battle_interface/split_icons_battle.gbapal");
+static const u8 sSplitIcons_Gfx[] = INCBIN_U8("graphics/battle_interface/split_icons_battle.4bpp");
+
 #define X UQ_4_12
 static const u16 sTypeEffectivenessTable[NUMBER_OF_MON_TYPES][NUMBER_OF_MON_TYPES] =
 {
@@ -1801,6 +1804,7 @@ static void MoveSelectionDisplayMoveType(u32 battler)
 
     StringCopy(txtPtr, gTypeNames[type]);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
+    MoveSelectionDisplaySplitIcon(battler);
 }
 
 void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
@@ -1811,6 +1815,18 @@ void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 9 * (cursorPosition & 1) + 1, 55 + (cursorPosition & 2), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
+}
+
+static void MoveSelectionDisplaySplitIcon(u32 battler){
+	struct ChooseMoveStruct *moveInfo;
+	u32 moveCategory;
+
+	moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[battler][MAX_BATTLERS_COUNT]);
+    moveCategory = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].split;
+	LoadPalette(sSplitIcons_Pal, 10 * 0x10, 0x20);
+	BlitBitmapToWindow(B_WIN_PSS_ICON, sSplitIcons_Gfx + 0x80 * moveCategory, 0, 0, 16, 16);
+	PutWindowTilemap(B_WIN_PSS_ICON);
+	CopyWindowToVram(B_WIN_PSS_ICON, 3);
 }
 
 void MoveSelectionDestroyCursorAt(u8 cursorPosition)
@@ -2362,18 +2378,4 @@ static void PlayerHandleBattleDebug(u32 battler)
     BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
     SetMainCallback2(CB2_BattleDebugMenu);
     gBattlerControllerFuncs[battler] = Controller_WaitForDebug;
-}
-
-static void MoveSelectionDisplaySplitIcon(u32 battler){
-	static const u16 sSplitIcons_Pal[] = INCBIN_U16("graphics/interface/split_icons.gbapal");
-	static const u8 sSplitIcons_Gfx[] = INCBIN_U8("graphics/interface/split_icons.4bpp");
-	struct ChooseMoveStruct *moveInfo;
-	int icon;
-
-	moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[battler][4]);
-	icon = GetBattleMoveSplit(moveInfo->moves[gMoveSelectionCursor[battler]]);
-	LoadPalette(sSplitIcons_Pal, 10 * 0x10, 0x20);
-	BlitBitmapToWindow(B_WIN_DUMMY, sSplitIcons_Gfx + 0x80 * icon, 0, 0, 16, 16);
-	PutWindowTilemap(B_WIN_DUMMY);
-	CopyWindowToVram(B_WIN_DUMMY, 3);
 }

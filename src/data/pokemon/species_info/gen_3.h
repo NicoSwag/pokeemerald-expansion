@@ -662,35 +662,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     },
 #endif //P_FAMILY_POOCHYENA
 
-#if P_FAMILY_ZIGZAGOON
-#define ZIGZAGOON_MISC_INFO                                                     \
-        .baseHP        = 38,                                                    \
-        .baseAttack    = 30,                                                    \
-        .baseDefense   = 41,                                                    \
-        .baseSpeed     = 60,                                                    \
-        .baseSpAttack  = 30,                                                    \
-        .baseSpDefense = 41,                                                    \
-        .catchRate = 255,                                                       \
-        .expYield = 56,                                                         \
-        .evYield_Speed = 1,                                                     \
-        .genderRatio = PERCENT_FEMALE(50),                                      \
-        .eggCycles = 15,                                                        \
-        .friendship = STANDARD_FRIENDSHIP,                                      \
-        .growthRate = GROWTH_MEDIUM_FAST,                                       \
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },                      \
-        .abilities = { ABILITY_PICKUP, ABILITY_GLUTTONY, ABILITY_QUICK_FEET },  \
-        .speciesName = _("Zigzagoon"),                                          \
-        .cryId = CRY_ZIGZAGOON,                                                 \
-        .natDexNum = NATIONAL_DEX_ZIGZAGOON,                                    \
-        .categoryName = _("Tiny Raccoon"),                                      \
-        .height = 4,                                                            \
-        .weight = 175,                                                          \
-        .pokemonScale = 560,                                                    \
-        .pokemonOffset = 22,                                                    \
-        .trainerScale = 256,                                                    \
-        .trainerOffset = 0,                                                     \
-        .footprint = gMonFootprint_Zigzagoon,                                   \
-        .formSpeciesIdTable = sZigzagoonFormSpeciesIdTable
+                                              
+
 
 #define LINOONE_MISC_INFO                                                       \
         .baseHP        = 78,                                                    \
@@ -724,7 +697,31 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
 
     [SPECIES_ZIGZAGOON] =
     {
-        ZIGZAGOON_MISC_INFO,
+        .baseHP        = 38,                                                    
+        .baseAttack    = 30,                                                    
+        .baseDefense   = 41,                                                    
+        .baseSpeed     = 60,                                                    
+        .baseSpAttack  = 30,                                                    
+        .baseSpDefense = 41,                                                    
+        .catchRate = 255,                                                       
+        .expYield = 56,                                                         
+        .evYield_Speed = 1,                                                     
+        .genderRatio = PERCENT_FEMALE(50),                                      
+        .eggCycles = 15,                                                       
+        .friendship = STANDARD_FRIENDSHIP,                                      
+        .growthRate = GROWTH_MEDIUM_FAST,                                       
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },                      
+        .abilities = { ABILITY_PICKUP, ABILITY_GLUTTONY, ABILITY_QUICK_FEET },  
+        .speciesName = _("Zigzagoon"),                                          
+        .cryId = CRY_ZIGZAGOON,                                                                           
+        .categoryName = _("Tiny Raccoon"),                                      
+        .height = 4,                                                            
+        .weight = 175,                                                          
+        .pokemonScale = 560,                                                   
+        .pokemonOffset = 22,                                                    
+        .trainerScale = 256,                                                    
+        .trainerOffset = 0,                                                     
+        .footprint = gMonFootprint_Zigzagoon,                                   
         .types = { TYPE_NORMAL, TYPE_NORMAL },
         .itemCommon = ITEM_POTION,
         .itemRare = ITEM_REVIVE,
@@ -741,10 +738,12 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         BACK_PIC(Zigzagoon, 56, 56),
         .backPicYOffset = 6,
         .backAnimId = BACK_ANIM_TRIANGLE_DOWN,
+        .natDexNum = NATIONAL_DEX_ZIGZAGOON, 
         PALETTES(Zigzagoon),
         ICON(Zigzagoon, 2),
         LEARNSETS(Zigzagoon),
         .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_LINOONE}),
+        .formSpeciesIdTable = sZigzagoonFormSpeciesIdTable,
     },
 
     [SPECIES_LINOONE] =
@@ -773,7 +772,31 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
 #if P_GALARIAN_FORMS
     [SPECIES_ZIGZAGOON_GALARIAN] =
     {
-        ZIGZAGOON_MISC_INFO,
+                .baseHP        = 38,                                                    
+        .baseAttack    = 30,                                                    
+        .baseDefense   = 41,                                                    
+        .baseSpeed     = 60,                                                    
+        .baseSpAttack  = 30,                                                    
+        .baseSpDefense = 41,                                                    
+        .catchRate = 255,                                                       
+        .expYield = 56,                                                         
+        .evYield_Speed = 1,                                                     
+        .genderRatio = PERCENT_FEMALE(50),                                      
+        .eggCycles = 15,                                                       
+        .friendship = STANDARD_FRIENDSHIP,                                      
+        .growthRate = GROWTH_MEDIUM_FAST,                                       
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },                      
+        .abilities = { ABILITY_PICKUP, ABILITY_GLUTTONY, ABILITY_QUICK_FEET },  
+        .speciesName = _("Zigzagoon"),                                          
+        .cryId = CRY_ZIGZAGOON,                                                                           
+        .categoryName = _("Tiny Raccoon"),                                      
+        .height = 4,                                                            
+        .weight = 175,                                                          
+        .pokemonScale = 560,                                                   
+        .pokemonOffset = 22,                                                    
+        .trainerScale = 256,                                                    
+        .trainerOffset = 0,                                                     
+        .footprint = gMonFootprint_Zigzagoon,                                   
         .types = { TYPE_DARK, TYPE_NORMAL },
         .bodyColor = BODY_COLOR_WHITE,
         .description = COMPOUND_STRING(
@@ -790,9 +813,11 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         //.backAnimId = BACK_ANIM_NONE,
         PALETTES(ZigzagoonGalarian),
         ICON(ZigzagoonGalarian, 0),
+        .natDexNum = NATIONAL_DEX_ZIGZAGOON_GALARIAN, 
         LEARNSETS(ZigzagoonGalarian),
         .isGalarianForm = TRUE,
         .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_LINOONE_GALARIAN}),
+        .formSpeciesIdTable = sZigzagoonGalarianFormSpeciesIdTable,
     },
 
     [SPECIES_LINOONE_GALARIAN] =
@@ -865,7 +890,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         LEARNSETS(Obstagoon),
     },
 #endif //P_GALARIAN_FORMS
-#endif //P_FAMILY_ZIGZAGOON
 
 #if P_FAMILY_WURMPLE
     [SPECIES_WURMPLE] =
@@ -5678,12 +5702,12 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_ERRATIC,
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_DRAGON},
-        .abilities = {ABILITY_SWIFT_SWIM, ABILITY_ADAPTABILITY},
+        .abilities = {ABILITY_ADAPTABILITY, ABILITY_NONE, ABILITY_SWIFT_SWIM},
         .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("FISH"),
+        .speciesName = _("FEEBAS"),
         .cryId = CRY_FEEBAS,
         .natDexNum = NATIONAL_DEX_FEEBAS,
-        .categoryName = _("Fish"),
+        .categoryName = _("FISH"),
         .height = 6,
         .weight = 74,
         .description = COMPOUND_STRING(
@@ -5727,7 +5751,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_ERRATIC,
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_DRAGON},
-        .abilities = {ABILITY_MARVEL_SCALE, ABILITY_COMPETITIVE},
+        .abilities = {ABILITY_MARVEL_SCALE, ABILITY_NONE, ABILITY_HYDRATION},
         .bodyColor = BODY_COLOR_PINK,
         .speciesName = _("MILOTIC"),
         .cryId = CRY_MILOTIC,

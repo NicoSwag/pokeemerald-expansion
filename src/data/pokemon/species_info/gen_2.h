@@ -30,10 +30,10 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .height = 9,
         .weight = 64,
         .description = COMPOUND_STRING(
-            "The leaf that grows on its head has healing\n"
-            "properties. It is frequently enjoyed in tea,\n"
-            "and has the ability to grow back once it's\n"
-            "been plucked off its stem."),
+            "The leaf that grows on its head has\n"
+            "healing properties. It is frequently\n"
+            "enjoyed in tea, and can grow back\n"
+            "if plucked off its stem."),
         .pokemonScale = 512,
         .pokemonOffset = 20,
         .trainerScale = 256,
@@ -77,10 +77,10 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .height = 12,
         .weight = 158,
         .description = COMPOUND_STRING(
-            "A BAYLEEF's neck is ringed by curled-up\n"
+            "BAYLEEF's neck is ringed by curled-up\n"
             "leaves. It protects them fiercely, only\n"
-            "sharing their healing powers to those that\n"
-            "truly need it."),
+            "sharing their healing powers to those\n"
+            "that truly need it."),
         .pokemonScale = 296,
         .pokemonOffset = 4,
         .trainerScale = 256,

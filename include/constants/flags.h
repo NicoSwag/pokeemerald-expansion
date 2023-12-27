@@ -56,7 +56,7 @@
 #define FLAG_RUSTBORO_MARC   0x2B // Unused Flag
 #define FLAG_SAW_ROXANNE_CUTSCENE    0x2C // Unused Flag
 #define FLAG_EXP_SHARE_GEN6    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
+#define FLAG_EVO_SCREEN    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
 #define FLAG_UNUSED_0x030    0x30 // Unused Flag
 #define FLAG_UNUSED_0x031    0x31 // Unused Flag

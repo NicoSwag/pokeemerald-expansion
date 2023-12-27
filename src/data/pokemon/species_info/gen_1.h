@@ -10582,12 +10582,12 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = STANDARD_FRIENDSHIP,                                              \
         .growthRate = GROWTH_MEDIUM_FAST,                                               \
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },                              \
-        .abilities = { ABILITY_RUN_AWAY, ABILITY_ADAPTABILITY, ABILITY_ANTICIPATION },  \
+        .abilities = {ABILITY_FRIEND_GUARD, ABILITY_ADAPTABILITY},  \
         .bodyColor = BODY_COLOR_BROWN,                                                  \
-        .speciesName = _("Eevee"),                                                      \
+        .speciesName = _("EEVEE"),                                                      \
         .cryId = CRY_EEVEE,                                                             \
         .natDexNum = NATIONAL_DEX_EEVEE,                                                \
-        .categoryName = _("Evolution"),                                                 \
+        .categoryName = _("EVOLUTION"),                                                 \
         .footprint = gMonFootprint_Eevee,                                               \
         LEARNSETS(Eevee),                                                               \
         .formSpeciesIdTable = sEeveeFormSpeciesIdTable,                                 \
@@ -10599,10 +10599,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 3,
         .weight = 65,
         .description = COMPOUND_STRING(
-            "An Eevee has an unstable genetic makeup\n"
+            "EEVEE has an unstable genetic makeup\n"
             "that suddenly mutates due to its\n"
             "environment. Radiation from various\n"
-            "Stones causes this Pokémon to evolve."),
+            "STONES causes this Pokémon to evolve."),
         .pokemonScale = 476,
         .pokemonOffset = 18,
         .trainerScale = 256,
@@ -10669,25 +10669,24 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_WATER, TYPE_WATER },
         .catchRate = 45,
         .expYield = 184,
-        .evYield_HP = 2,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 35,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_WATER_ABSORB, ABILITY_WATER_ABSORB, ABILITY_HYDRATION },
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_WATER_ABSORB, ABILITY_STAMINA},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("Vaporeon"),
+        .speciesName = _("VAPOREON"),
         .cryId = CRY_VAPOREON,
         .natDexNum = NATIONAL_DEX_VAPOREON,
-        .categoryName = _("Bubble Jet"),
+        .categoryName = _("BUBBLE JET"),
         .height = 10,
         .weight = 290,
         .description = COMPOUND_STRING(
-            "Vaporeon underwent a spontaneous\n"
-            "mutation and grew fins and gills that\n"
-            "allow them to live underwater. They have\n"
-            "the ability to freely control water."),
+            "In terms of companionship, VAPOREON\n"
+            "is among the most compatible for humans.\n"
+            "It can live comfortably in every climate\n"
+            "and requires very little maintenance."),
         .pokemonScale = 316,
         .pokemonOffset = 8,
         .trainerScale = 256,
@@ -10716,18 +10715,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_ELECTRIC, TYPE_ELECTRIC },
         .catchRate = 45,
         .expYield = 184,
-        .evYield_Speed = 2,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 35,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_VOLT_ABSORB, ABILITY_VOLT_ABSORB, ABILITY_QUICK_FEET },
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_LIGHTNING_ROD, ABILITY_TECHNICIAN},
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("Jolteon"),
+        .speciesName = _("JOLTEON"),
         .cryId = CRY_JOLTEON,
         .natDexNum = NATIONAL_DEX_JOLTEON,
-        .categoryName = _("Lightning"),
+        .categoryName = _("LIGHTNING"),
         .height = 8,
         .weight = 245,
         .description = COMPOUND_STRING(
@@ -10756,32 +10754,31 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     {
         .baseHP        = 65,
         .baseAttack    = 130,
-        .baseDefense   = 60,
-        .baseSpeed     = 65,
-        .baseSpAttack  = 95,
+        .baseDefense   = 65,
+        .baseSpeed     = 95,
+        .baseSpAttack  = 60,
         .baseSpDefense = 110,
         .types = { TYPE_FIRE, TYPE_FIRE },
         .catchRate = 45,
         .expYield = 184,
-        .evYield_Attack = 2,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 35,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_FLASH_FIRE, ABILITY_FLASH_FIRE, ABILITY_GUTS },
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_FLASH_FIRE, ABILITY_GUTS},
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Flareon"),
+        .speciesName = _("FLAREON"),
         .cryId = CRY_FLAREON,
         .natDexNum = NATIONAL_DEX_FLAREON,
-        .categoryName = _("Flame"),
+        .categoryName = _("FLAME"),
         .height = 9,
         .weight = 250,
         .description = COMPOUND_STRING(
-            "Flareon's fluffy fur releases heat into\n"
-            "the air so that its body does not get\n"
-            "excessively hot. Its body temperature can\n"
-            "rise to a maximum of 1,650 degrees F."),
+            "FLAREON's fluffy fur is able to regulate\n"
+            "its body temperature to an impressive\n"
+            "degree. To keep healthy, it has to drink\n"
+            "lots of water."),
         .pokemonScale = 306,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -10811,25 +10808,24 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_PSYCHIC, TYPE_PSYCHIC },
         .catchRate = 45,
         .expYield = 184,
-        .evYield_SpAttack = 2,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 35,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_SYNCHRONIZE, ABILITY_SYNCHRONIZE, ABILITY_MAGIC_BOUNCE },
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_SYNCHRONIZE, ABILITY_MAGIC_BOUNCE},
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("Espeon"),
+        .speciesName = _("ESPEON"),
         .cryId = CRY_ESPEON,
         .natDexNum = NATIONAL_DEX_ESPEON,
-        .categoryName = _("Sun"),
+        .categoryName = _("DAWN"),
         .height = 9,
         .weight = 265,
         .description = COMPOUND_STRING(
-            "An Espeon is extremely loyal to any\n"
-            "Trainer it considers to be worthy. It is\n"
-            "said to have developed precognitive\n"
-            "powers to protect its Trainer from harm."),
+            "ESPEON can detect its TRAINER's feelings,\n"
+            "only listening to those it deems worthy.\n"
+            "An ESPEON is tireless during the day, but\n"
+            "gets very grumpy at night."),
         .pokemonScale = 363,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -10858,25 +10854,24 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_DARK, TYPE_DARK },
         .catchRate = 45,
         .expYield = 184,
-        .evYield_SpDefense = 2,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 35,
         .friendship = 35,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_SYNCHRONIZE, ABILITY_SYNCHRONIZE, ABILITY_INNER_FOCUS },
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_SYNCHRONIZE, ABILITY_INNER_FOCUS},
         .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("Umbreon"),
+        .speciesName = _("UMBREON"),
         .cryId = CRY_UMBREON,
         .natDexNum = NATIONAL_DEX_UMBREON,
-        .categoryName = _("Moonlight"),
+        .categoryName = _("MOONLIGHT"),
         .height = 10,
         .weight = 270,
         .description = COMPOUND_STRING(
-            "Umbreon evolved from exposure to the\n"
-            "moon's energy pulses. It lurks in darkness\n"
-            "and waits for its foes to move. The rings\n"
-            "on its body glow when it leaps to attack."),
+            "UMBREON is primarily nocturnal, but can be\n"
+            "trained to be awake during the day, albeit\n"
+            "not easily. The rings on its body secrete\n"
+            "poison."),
         .pokemonScale = 317,
         .pokemonOffset = 11,
         .trainerScale = 256,

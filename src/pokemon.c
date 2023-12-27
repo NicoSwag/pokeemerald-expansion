@@ -111,6 +111,9 @@ static const struct CombinedMove sCombinedMoves[2] =
 // Assigns all Hoenn Dex Indexes to a National Dex Index
 static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
 {
+    HOENN_TO_NATIONAL(CHIKORITA),
+    HOENN_TO_NATIONAL(BAYLEEF),
+    HOENN_TO_NATIONAL(MEGANIUM),
     HOENN_TO_NATIONAL(TREECKO),
     HOENN_TO_NATIONAL(GROVYLE),
     HOENN_TO_NATIONAL(SCEPTILE),
@@ -122,7 +125,7 @@ static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(SWAMPERT),
     HOENN_TO_NATIONAL(POOCHYENA),
     HOENN_TO_NATIONAL(MIGHTYENA),
-    HOENN_TO_NATIONAL(ZIGZAGOON),
+    HOENN_TO_NATIONAL(ZIGZAGOON_GALARIAN),
     HOENN_TO_NATIONAL(LINOONE),
 #if P_NEW_EVOS_IN_REGIONAL_DEX && P_GALARIAN_FORMS
     HOENN_TO_NATIONAL(OBSTAGOON),
@@ -2867,7 +2870,7 @@ u16 GetAbilityBySpecies(u16 species, u8 abilityNum)
 
     for (i = 0; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++) // look for any non-empty ability
     {
-        gLastUsedAbility = gSpeciesInfo[species].abilities[i];
+        gLastUsedAbility = ABILITY_NONE;
     }
 
     return gLastUsedAbility;

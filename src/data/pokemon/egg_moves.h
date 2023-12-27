@@ -20,6 +20,26 @@ const u16 gEggMoves[] = {
     egg_moves(EEVEE,
         MOVE_YAWN,
         MOVE_WISH),
+
+    egg_moves(VAPOREON,
+        MOVE_YAWN,
+        MOVE_WISH,
+        MOVE_BOUNCY_BUBBLE),
+
+    egg_moves(JOLTEON,
+        MOVE_YAWN,
+        MOVE_WISH,
+        MOVE_BUZZY_BUZZ),
+
+    egg_moves(FLAREON,
+        MOVE_YAWN,
+        MOVE_WISH,
+        MOVE_SIZZLY_SLIDE),
+
+      egg_moves(ESPEON,
+        MOVE_YAWN,
+        MOVE_WISH,
+        MOVE_GLITZY_GLOW),
     
     egg_moves(SILCOON,
         MOVE_CHARM),
@@ -574,7 +594,7 @@ const u16 gEggMoves[] = {
     egg_moves(GYARADOS,
         MOVE_DRAGON_RAGE,
         MOVE_FLYING_PRESS,
-        MOVE_TEMPER_FLARE)
+        MOVE_TEMPER_FLARE),
 
     egg_moves(SCYTHER,
         MOVE_COUNTER,
@@ -617,36 +637,6 @@ const u16 gEggMoves[] = {
         MOVE_FREEZE_DRY),
 
 
-    egg_moves(OMANYTE,
-        MOVE_BUBBLE_BEAM,
-        MOVE_AURORA_BEAM,
-        MOVE_SLAM,
-        MOVE_SUPERSONIC,
-        MOVE_HAZE,
-        MOVE_SPIKES,
-        MOVE_KNOCK_OFF,
-        MOVE_WRING_OUT,
-        MOVE_TOXIC_SPIKES,
-        MOVE_MUDDY_WATER,
-        MOVE_BIDE,
-        MOVE_WATER_PULSE,
-        MOVE_WHIRLPOOL,
-        MOVE_REFLECT_TYPE),
-
-    egg_moves(KABUTO,
-        MOVE_BUBBLE_BEAM,
-        MOVE_AURORA_BEAM,
-        MOVE_RAPID_SPIN,
-        MOVE_FLAIL,
-        MOVE_KNOCK_OFF,
-        MOVE_CONFUSE_RAY,
-        MOVE_MUD_SHOT,
-        MOVE_ICY_WIND,
-        MOVE_SCREECH,
-        MOVE_GIGA_DRAIN,
-        MOVE_FORESIGHT,
-        MOVE_TAKE_DOWN),
-
     egg_moves(AERODACTYL,
         MOVE_WHIRLWIND,
         MOVE_PURSUIT,
@@ -688,13 +678,13 @@ const u16 gEggMoves[] = {
 
     egg_moves(CHIKORITA,
         MOVE_SYNTHESIS, 
-        MOVE_LEECH_SEED,
-        MOVE_DRAINING_KISS,
-        MOVE_LIFE_DEW),
+        MOVE_LEECH_SEED),
 
     egg_moves(BAYLEEF,
         MOVE_SYNTHESIS, 
-        MOVE_LEECH_SEED),
+        MOVE_LEECH_SEED,
+        MOVE_DRAINING_KISS,
+        MOVE_LIFE_DEW),
 
     egg_moves(CYNDAQUIL,
         MOVE_FURY_SWIPES,
@@ -923,8 +913,14 @@ const u16 gEggMoves[] = {
         MOVE_TAIL_SLAP),
 
     egg_moves(SUNKERN,
-        MOVE_FLAME_BURST,
+        MOVE_LEECH_SEED,
         MOVE_MORNING_SUN),
+
+    egg_moves(SUNFLORA,
+        MOVE_LEECH_SEED,
+        MOVE_MORNING_SUN,
+        MOVE_POLLEN_PUFF,
+        MOVE_FIERY_DANCE),
 
     egg_moves(YANMA,
         MOVE_WHIRLWIND,

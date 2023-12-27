@@ -217,12 +217,23 @@ static const struct FontInfo sFontInfos[] =
         .fgColor = 1,
         .bgColor = 2,
         .shadowColor = 15,
-    }
+    },
+    [FONT_TRANSPARENT] = {
+        .fontFunction = FontFunc_Small,
+        .maxLetterWidth = 5,
+        .maxLetterHeight = 12,
+        .letterSpacing = 0,
+        .lineSpacing = 0,
+        .fgColor = 2,
+        .bgColor = 0,
+        .shadowColor = 3,
+    },
 };
 
 static const u8 sMenuCursorDimensions[][2] =
 {
     [FONT_SMALL]        = { 8,  12 },
+    [FONT_TRANSPARENT]        = { 8,  12 },
     [FONT_NORMAL]       = { 8,  15 },
     [FONT_SHORT]        = { 8,  14 },
     [FONT_SHORT_COPY_1] = { 8,  14 },

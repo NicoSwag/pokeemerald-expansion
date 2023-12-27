@@ -12135,7 +12135,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_SAPPY_SEED] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_8
-            .power = 100,
+            .power = 90,
             .accuracy = 90,
             .pp = 10,
         #else
@@ -12158,7 +12158,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_FREEZY_FROST] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_8
-            .power = 100,
+            .power = 90,
             .accuracy = 90,
             .pp = 10,
         #else
@@ -12180,8 +12180,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_SPARKLY_SWIRL] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_8
-            .power = 120,
-            .accuracy = 85,
+            .power = 90,
+            .accuracy = 100,
             .pp = 5,
         #else
             .power = 90,

@@ -133,6 +133,7 @@ static const u8 sText_Stats_Buttons_Decapped[] = _("{A_BUTTON}Toggle   {DPAD_UPD
 static const u8 sText_Stats_HP[] = _("HP");
 static const u8 sText_Stats_Attack[] = _("ATK");
 static const u8 sText_Stats_Defense[] = _("DEF");
+static const u8 sText_Stats_Total[] = _("BST");
 static const u8 sText_Stats_Speed[] = _("SPE");
 static const u8 sText_Stats_SpAttack[] = _("SP.A");
 static const u8 sText_Stats_SpDefense[] = _("SP.D");
@@ -142,6 +143,7 @@ static const u8 sText_Stats_EV_Plus3[] = _("{UP_ARROW_2}{UP_ARROW_2}{UP_ARROW_2}
 static const u8 sText_Stats_EvStr1Str2[] = _("{STR_VAR_1}{STR_VAR_2}");
 static const u8 sText_Stats_MoveSelectedMax[] = _("{STR_VAR_1} / {STR_VAR_2}");
 static const u8 sText_Stats_MoveLevel[] = _("LVL");
+static const u8 sText_Stats_Evo[] = _("EVO");
 static const u8 sText_Stats_Gender_0[] = _("♂");
 static const u8 sText_Stats_Gender_12_5[] = _("♀ 1/7 ♂"); //_("♀ 12.5 / 87.5 ♂");
 static const u8 sText_Stats_Gender_25[] = _("♀ 1/3 ♂");     //_("♀ 25 / 75 ♂");
@@ -292,7 +294,7 @@ static const u32 sPokedexPlusHGSS_ScreenSearchNational_Tilemap[] = INCBIN_U32("g
 #define SCROLLING_MON_X 146
 #define HGSS_DECAPPED FALSE
 #define HGSS_DARK_MODE FALSE
-#define HGSS_HIDE_UNSEEN_EVOLUTION_NAMES TRUE
+#define HGSS_HIDE_UNSEEN_EVOLUTION_NAMES FALSE
 
 // For scrolling search parameter
 #define MAX_SEARCH_PARAM_ON_SCREEN   6
@@ -5393,22 +5395,26 @@ static void PrintStatsScreen_Moves_Top(u8 taskId)
     }
     else
     {
-        SetTypeIconPosAndPal(NUMBER_OF_MON_TYPES + gContestMoves[move].contestCategory, moves_x + 146, moves_y + 17, 1);
-        SetSpriteInvisibility(0, TRUE);
+        SetTypeIconPosAndPal(gBattleMoves[move].type, moves_x + 146, moves_y + 17, 0);
+        SetSpriteInvisibility(1, TRUE);
     }
 
     //Calculate and retrieve correct move from the arrays
     if (selected < numEggMoves)
     {
         PrintStatsScreenTextSmall(WIN_STATS_MOVES_TOP, gText_ThreeDashes, moves_x + 113, moves_y + 9);
-        item = ITEM_LUCKY_EGG;
+        item = ITEM_HEART_SCALE;
     }
     else if (selected < (numEggMoves + numLevelUpMoves))
     {
         level = GetSpeciesLevelUpLearnset(species)[(selected-numEggMoves)].level;
+
         ConvertIntToDecimalStringN(gStringVar1, level, STR_CONV_MODE_LEFT_ALIGN, 3); //Move learn lvl
         PrintStatsScreenTextSmall(WIN_STATS_MOVES_TOP, sText_Stats_MoveLevel, moves_x + 113, moves_y + 3); //Level text
+        if(level!=0)
         PrintStatsScreenTextSmall(WIN_STATS_MOVES_TOP, gStringVar1, moves_x + 113, moves_y + 14); //Print level
+        else
+        PrintStatsScreenTextSmall(WIN_STATS_MOVES_TOP, sText_Stats_Evo, moves_x + 113, moves_y + 14);
         item = ITEM_RARE_CANDY;
     }
     else if (selected < (numEggMoves + numLevelUpMoves + numTMHMMoves))
@@ -5454,7 +5460,7 @@ static void PrintStatsScreen_Moves_Description(u8 taskId)
     }
     else
     {
-        StringCopy(gStringVar4, gContestEffectDescriptionPointers[gContestMoves[move].effect]);
+        StringCopy(gStringVar4, gMoveDescriptionPointers[(move - 1)]);
         PrintStatsScreenTextSmall(WIN_STATS_MOVES_DESCRIPTION, gStringVar4, moves_x, moves_y);
     }
 }
@@ -5471,7 +5477,6 @@ static void PrintStatsScreen_Moves_BottomText(u8 taskId)
     else
     {
         PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, gText_Appeal,  moves_x, moves_y);
-        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, gText_Jam,  moves_x + 66, moves_y);
     }
 }
 
@@ -5512,23 +5517,7 @@ static void PrintStatsScreen_Moves_Bottom(u8 taskId)
     {
             DestroySplitIcon();
             gSprites[sPokedexView->splitIconSpriteId].invisible = TRUE;
-        //Appeal
-        contest_effectValue = gContestEffects[gContestMoves[move].effect].appeal;
-        if (contest_effectValue != 0xFF)
-            contest_appeal = contest_effectValue / 10;
-        ConvertIntToDecimalStringN(gStringVar1, contest_appeal, STR_CONV_MODE_RIGHT_ALIGN, 1);
-        StringCopy(gStringVar2, sText_PlusSymbol);
-        StringAppend(gStringVar2, gStringVar1);
-        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, gStringVar2, moves_x + 45, moves_y);
 
-        //Jam
-        contest_effectValue = gContestEffects[gContestMoves[move].effect].jam;
-        if (contest_effectValue != 0xFF)
-            contest_jam = contest_effectValue / 10;
-        ConvertIntToDecimalStringN(gStringVar1, contest_jam, STR_CONV_MODE_RIGHT_ALIGN, 1);
-        StringCopy(gStringVar2, sText_Stats_Minus);
-        StringAppend(gStringVar2, gStringVar1);
-        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, gStringVar2,  moves_x + 119, moves_y);
     }
 }
 
@@ -5634,6 +5623,7 @@ static void PrintStatsScreen_Left(u8 taskId)
     u8 strBase[14];
     u8 EVs[6] = {sPokedexView->sPokemonStats.evYield_HP, sPokedexView->sPokemonStats.evYield_Speed, sPokedexView->sPokemonStats.evYield_Attack, sPokedexView->sPokemonStats.evYield_SpAttack, sPokedexView->sPokemonStats.evYield_Defense, sPokedexView->sPokemonStats.evYield_SpDefense};
     u8 differentEVs = 0;
+    u16 total = sPokedexView->sPokemonStats.baseHP + sPokedexView->sPokemonStats.baseSpeed + sPokedexView->sPokemonStats.baseAttack + sPokedexView->sPokemonStats.baseDefense + sPokedexView->sPokemonStats.baseSpAttack + sPokedexView->sPokemonStats.baseSpDefense;
 
     //Base stats
     if (gTasks[taskId].data[5] == 0)
@@ -5663,6 +5653,11 @@ static void PrintStatsScreen_Left(u8 taskId)
         PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_SpDefense, base_x+base_x_second_row, base_y + base_y_offset*base_i);
         ConvertIntToDecimalStringN(strBase, sPokedexView->sPokemonStats.baseSpDefense, STR_CONV_MODE_RIGHT_ALIGN, 3);
         PrintStatsScreenTextSmall(WIN_STATS_LEFT, strBase, base_x+base_x_offset, base_y + base_y_offset*base_i);
+        base_i++;
+
+        PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_Total, base_x, base_y + base_y_offset*base_i);
+        ConvertIntToDecimalStringN(strBase, total, STR_CONV_MODE_RIGHT_ALIGN, 3);
+        PrintStatsScreenTextSmall(WIN_STATS_LEFT, strBase, base_x+base_x_first_row, base_y + base_y_offset*base_i);
         base_i++;
     }
     else //EV increases
