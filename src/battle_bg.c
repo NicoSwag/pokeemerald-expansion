@@ -21,6 +21,7 @@
 #include "text_window.h"
 #include "trig.h"
 #include "window.h"
+#include "config/battle.h"
 #include "constants/map_types.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -223,9 +224,14 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
     },
     [B_WIN_PP] = {
         .bg = 0,
-        .tilemapLeft = 23,
+        #if B_PSS_SPLIT_ICONS == TRUE 
+            .tilemapLeft = 23,
+            .width = 2,
+        #else
+            .tilemapLeft = 21,
+            .width = 4,
+        #endif
         .tilemapTop = 55,
-        .width = 2,
         .height = 2,
         .paletteNum = 5,
         .baseBlock = 0x0290,
@@ -233,11 +239,19 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
     [B_WIN_PSS_ICON] = {
         .bg = 0,
         .tilemapLeft = 21,
-        .tilemapTop = 55,
-        .width = 2,
-        .height = 2,
-        .paletteNum = 10,
-        .baseBlock = 0x0294,
+        #if B_PSS_SPLIT_ICONS == TRUE
+            .tilemapTop = 55,
+            .width = 2,
+            .height = 2,
+            .paletteNum = 10,
+            .baseBlock = 0x0294,
+        #else
+            .tilemapTop = 57,
+            .width = 0,
+            .height = 0,
+            .paletteNum = 5,
+            .baseBlock = 0x0298,
+        #endif
     },
     [B_WIN_PP_REMAINING] = {
         .bg = 0,
@@ -482,9 +496,14 @@ static const struct WindowTemplate sBattleArenaWindowTemplates[] =
     },
     [B_WIN_PP] = {
         .bg = 0,
-        .tilemapLeft = 21,
+        #if B_PSS_SPLIT_ICONS == TRUE 
+            .tilemapLeft = 23,
+            .width = 2,
+        #else
+            .tilemapLeft = 21,
+            .width = 4,
+        #endif
         .tilemapTop = 55,
-        .width = 4,
         .height = 2,
         .paletteNum = 5,
         .baseBlock = 0x0290,
@@ -492,11 +511,19 @@ static const struct WindowTemplate sBattleArenaWindowTemplates[] =
     [B_WIN_PSS_ICON] = {
         .bg = 0,
         .tilemapLeft = 21,
-        .tilemapTop = 55,
-        .width = 2,
-        .height = 2,
-        .paletteNum = 10,
-        .baseBlock = 0x0294,
+        #if B_PSS_SPLIT_ICONS == TRUE
+            .tilemapTop = 55,
+            .width = 2,
+            .height = 2,
+            .paletteNum = 10,
+            .baseBlock = 0x0294,
+        #else
+            .tilemapTop = 57,
+            .width = 0,
+            .height = 0,
+            .paletteNum = 5,
+            .baseBlock = 0x0298,
+        #endif
     },
     [B_WIN_PP_REMAINING] = {
         .bg = 0,

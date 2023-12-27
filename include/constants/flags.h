@@ -662,7 +662,7 @@
 #define FLAG_RECEIVED_TM02  0x26B // Unused Flag
 #define FLAG_RECEIVED_TM04  0x26C // Unused Flag
 #define FLAG_RECEIVED_TM05  0x26D // Unused Flag
-#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
+#define FLAG_SYS_MOVE_INFO 0x26E // Battle Move Info
 #define FLAG_UNUSED_0x26F  0x26F // Unused Flag
 #define FLAG_UNUSED_0x270  0x270 // Unused Flag
 #define FLAG_UNUSED_0x271  0x271 // Unused Flag
