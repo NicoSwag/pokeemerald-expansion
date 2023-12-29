@@ -2282,34 +2282,34 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
 #if P_FAMILY_INKAY
     [SPECIES_INKAY] =
     {
-        .baseHP        = 53,
-        .baseAttack    = 54,
-        .baseDefense   = 53,
+        .baseHP        = 55,
+        .baseAttack    = 55,
+        .baseDefense   = 55,
         .baseSpeed     = 45,
-        .baseSpAttack  = 37,
-        .baseSpDefense = 46,
-        .types = { TYPE_DARK, TYPE_PSYCHIC },
+        .baseSpAttack  = 40,
+        .baseSpDefense = 45,
+        .types = { TYPE_DARK, TYPE_PSYCHIC},
         .catchRate = 190,
         .expYield = 58,
-        .evYield_Attack = 1,
+        .evYield_Attack    = 0,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_WATER_2 },
-        .abilities = { ABILITY_CONTRARY, ABILITY_SUCTION_CUPS, ABILITY_INFILTRATOR },
+        .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_WATER_2},
+        .abilities = {ABILITY_CONTRARY, ABILITY_NONE, ABILITY_INFILTRATOR},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("Inkay"),
+        .speciesName = _("INKAY"),
         .cryId = CRY_INKAY,
         .natDexNum = NATIONAL_DEX_INKAY,
-        .categoryName = _("Revolving"),
+        .categoryName = _("REVOLVING"),
         .height = 4,
         .weight = 35,
         .description = COMPOUND_STRING(
-            "It flashes the light-emitting spots on its\n"
-            "body, which drains its opponent's will\n"
-            "to fight. It takes the opportunity to\n"
-            "scuttle away and hide."),
+            "INKAY are often seen trying to turn\n"
+            "their body upside down, without\n"
+            "much success. It is believed that\n"
+            "they're instinctively trying to evolve."),
         .pokemonScale = 491,
         .pokemonOffset = 12,
         .trainerScale = 256,
@@ -2326,39 +2326,37 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         ICON(Inkay, 0),
         .footprint = gMonFootprint_Inkay,
         LEARNSETS(Inkay),
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_MALAMAR}),
     },
 
     [SPECIES_MALAMAR] =
     {
-        .baseHP        = 86,
-        .baseAttack    = 92,
-        .baseDefense   = 88,
-        .baseSpeed     = 73,
-        .baseSpAttack  = 68,
+        .baseHP        = 95,
+        .baseAttack    = 100,
+        .baseDefense   = 90,
+        .baseSpeed     = 75,
+        .baseSpAttack  = 70,
         .baseSpDefense = 75,
-        .types = { TYPE_DARK, TYPE_PSYCHIC },
+        .types = { TYPE_DARK, TYPE_PSYCHIC},
         .catchRate = 80,
         .expYield = 169,
-        .evYield_Attack = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_WATER_2 },
-        .abilities = { ABILITY_CONTRARY, ABILITY_SUCTION_CUPS, ABILITY_INFILTRATOR },
+        .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_WATER_2},
+        .abilities = {ABILITY_CONTRARY, ABILITY_NONE, ABILITY_PSYCHIC_SURGE},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("Malamar"),
+        .speciesName = _("MALAMAR"),
         .cryId = CRY_MALAMAR,
         .natDexNum = NATIONAL_DEX_MALAMAR,
-        .categoryName = _("Overturning"),
+        .categoryName = _("OVERTURNING"),
         .height = 15,
         .weight = 470,
         .description = COMPOUND_STRING(
-            "It lures prey close with hypnotic motions,\n"
-            "then wraps its tentacles around it before\n"
-            "finishing it off with digestive fluids. It\n"
-            "forces others to do whatever it wants."),
+            "Its brain waves are actually the opposite.\n"
+            "of what they should be. Thanks to this,\n"
+            "MALAMAR is able to easily inflict psychic\n"
+            "damage to its foes."),
         .pokemonScale = 268,
         .pokemonOffset = 2,
         .trainerScale = 271,

@@ -2043,19 +2043,18 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .types = { TYPE_BUG, TYPE_FLYING },
         .catchRate = 75,
         .expYield = 78,
-        .evYield_Speed = 1,
-        .itemRare = ITEM_WIDE_LENS,
+        .evYield_Speed     = 0,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG },
-        .abilities = { ABILITY_SPEED_BOOST, ABILITY_COMPOUND_EYES, ABILITY_FRISK },
+        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG},
+        .abilities = {ABILITY_SPEED_BOOST, ABILITY_COMPOUND_EYES},
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Yanma"),
+        .speciesName = _("YANMA"),
         .cryId = CRY_YANMA,
         .natDexNum = NATIONAL_DEX_YANMA,
-        .categoryName = _("Clear Wing"),
+        .categoryName = _("CLEAR WING"),
         .height = 12,
         .weight = 380,
         .description = COMPOUND_STRING(
@@ -2085,35 +2084,33 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 #if P_GEN_4_CROSS_EVOS
     [SPECIES_YANMEGA] =
     {
-        .baseHP        = 86,
-        .baseAttack    = 76,
-        .baseDefense   = 86,
+        .baseHP        = 85,
+        .baseAttack    = 75,
+        .baseDefense   = 85,
         .baseSpeed     = 95,
-        .baseSpAttack  = 116,
-        .baseSpDefense = 56,
-        .types = { TYPE_BUG, TYPE_FLYING },
+        .baseSpAttack  = 120,
+        .baseSpDefense = 55,
+        .types = { TYPE_BUG, TYPE_DRAGON},
         .catchRate = 30,
         .expYield = 180,
-        .evYield_Attack = 2,
-        .itemRare = ITEM_WIDE_LENS,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG },
-        .abilities = { ABILITY_SPEED_BOOST, ABILITY_TINTED_LENS, ABILITY_FRISK },
+        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG},
+        .abilities = {ABILITY_SPEED_BOOST, ABILITY_COMPOUND_EYES},
         .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("Yanmega"),
+        .speciesName = _("YANMEGA"),
         .cryId = CRY_YANMEGA,
         .natDexNum = NATIONAL_DEX_YANMEGA,
         .categoryName = _("Ogre Darner"),
         .height = 19,
         .weight = 515,
         .description = COMPOUND_STRING(
-            "This six-legged Pokémon is easily capable\n"
-            "of transporting an adult in flight. It is\n"
-            "adept at biting apart foes while flying\n"
-            "by at high speed."),
+            "Upon evolving, YANMEGA tapped into its\n"
+            "primordial draconic energy. It's so strong\n"
+            "that it's able to carry adults on its back\n"
+            "and still fly at high speed."),
         .pokemonScale = 256,
         .pokemonOffset = 1,
         .trainerScale = 326,
@@ -3490,14 +3487,38 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 #if P_HISUIAN_FORMS
     [SPECIES_QWILFISH_HISUIAN] =
     {
-        QWILFISH_MISC_INFO,
+        .baseHP        = 65,
+        .baseAttack    = 95,
+        .baseDefense   = 85,
+        .baseSpeed     = 85,
+        .baseSpAttack  = 55,
+        .baseSpDefense = 55,                                                         
+        .catchRate = 45,                                                                
+        .expYield = 88,                                                                                                              
+        .genderRatio = PERCENT_FEMALE(50),                                              
+        .eggCycles = 20,                                                                
+        .friendship = STANDARD_FRIENDSHIP,                                              
+        .growthRate = GROWTH_MEDIUM_FAST,                                               
+        .eggGroups = { EGG_GROUP_WATER_2, EGG_GROUP_WATER_2 },                          
+        .abilities = {ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_SWIFT_SWIM},
+        .speciesName = _("QWILFISH"),                                                   
+        .cryId = CRY_QWILFISH,                                                          
+        .natDexNum = NATIONAL_DEX_QWILFISH,                                             
+        .categoryName = _("BALLOON"),                                                   
+        .height = 5,                                                                    
+        .weight = 39,                                                                   
+        .pokemonScale = 430,                                                            
+        .pokemonOffset = 0,                                                             
+        .trainerScale = 256,                                                            
+        .trainerOffset = 0,                                                             
+        .footprint = gMonFootprint_Qwilfish,                                            
         .types = { TYPE_DARK, TYPE_POISON },
         .bodyColor = BODY_COLOR_BLACK,
         .description = COMPOUND_STRING(
-            "A form of Qwilfish from the distant past.\n"
-            "Fishers detest this troublesome Pokémon\n"
+            "Fishers detest this troublesome POKéMON\n"
             "because it sprays poison from its spines,\n"
-            "getting it everywhere."),
+            "getting it everywhere. Fortunately, it's\n"
+            "only common in a few areas."),
         FRONT_PIC(QwilfishHisuian, 48, 40),
         .frontPicYOffset = 16,
         .frontAnimFrames = sAnims_QwilfishHisuian,
@@ -3521,28 +3542,27 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .baseSpeed     = 85,
         .baseSpAttack  = 65,
         .baseSpDefense = 65,
-        .types = { TYPE_DARK, TYPE_POISON },
-        .catchRate = 45,
-        .expYield = 179,
-        .evYield_Attack = 2,
+        .types = { TYPE_DARK, TYPE_POISON},
+        .catchRate = 135,
+        .expYield = 180,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_WATER_2, EGG_GROUP_WATER_2 },
-        .abilities = { ABILITY_POISON_POINT, ABILITY_SWIFT_SWIM, ABILITY_INTIMIDATE },
+        .eggGroups = { EGG_GROUP_WATER_2, EGG_GROUP_WATER_2},
+        .abilities = {ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_SWIFT_SWIM},
         .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("Overqwil"),
+        .speciesName = _("OVERQWIL"),
         .cryId = CRY_OVERQWIL,
         .natDexNum = NATIONAL_DEX_OVERQWIL,
-        .categoryName = _("Pin Cluster"),
+        .categoryName = _("PIN CLUSTER"),
         .height = 25,
         .weight = 605,
         .description = COMPOUND_STRING(
-            "Its lancelike spikes and savage\n"
-            "temperament have earned it the\n"
-            "nickname “Sea Fiend”.\n"
-            "It slurps up poison to nourish itself."),
+            "OVERQWIL can be found in the depths\n"
+            "of the ocean. Scuba divers are often\n"
+            "warned to not get too close, or they.\n"
+            "risk getting attacked."),
         .pokemonScale = 257,
         .pokemonOffset = 10,
         .trainerScale = 423,
@@ -4100,25 +4120,25 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .types = { TYPE_FIRE, TYPE_FIRE },
         .catchRate = 190,
         .expYield = 50,
-        .evYield_SpAttack = 1,
+        .evYield_SpAttack  = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS },
-        .abilities = { ABILITY_MAGMA_ARMOR, ABILITY_FLAME_BODY, ABILITY_WEAK_ARMOR },
+        .eggGroups = { EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS},
+        .abilities = {ABILITY_STEAM_BARRIER, ABILITY_NONE, ABILITY_FLAME_BODY},
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Slugma"),
+        .speciesName = _("SLUGMA"),
         .cryId = CRY_SLUGMA,
         .natDexNum = NATIONAL_DEX_SLUGMA,
-        .categoryName = _("Lava"),
+        .categoryName = _("LAVA"),
         .height = 7,
         .weight = 350,
         .description = COMPOUND_STRING(
-            "It is a species of Pokémon that lives in\n"
-            "volcanic areas. If its body cools, its skin\n"
-            "hardens and immobilizes it. To avoid that,\n"
-            "it sleeps near magma."),
+            "It is said that SLUGMA come to life when\n"
+            "lava flowing from a volcano is hit by\n"
+            "lightning. Their bodies are warm but,\n"
+            "surprisingly, harmless to the touch."),
         .pokemonScale = 329,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -4134,40 +4154,44 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         ICON(Slugma, 0),
         .footprint = gMonFootprint_Slugma,
         LEARNSETS(Slugma),
-        .evolutions = EVOLUTION({EVO_LEVEL, 38, SPECIES_MAGCARGO}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 25, SPECIES_MAGCARGO}),
     },
 
     [SPECIES_MAGCARGO] =
     {
-        .baseHP        = P_UPDATED_STATS >= GEN_7 ? 60 : 50,
+.baseSpDefense = 80,
         .baseAttack    = 50,
         .baseDefense   = 120,
         .baseSpeed     = 30,
-        .baseSpAttack  = P_UPDATED_STATS >= GEN_7 ? 90 : 80,
-        .baseSpDefense = 80,
-        .types = { TYPE_FIRE, TYPE_ROCK },
+        #if P_UPDATED_STATS >= GEN_7
+            .baseHP        = 70,
+            .baseSpAttack  = 90,
+        #else
+            .baseHP        = 50,
+            .baseSpAttack  = 80,
+        #endif
+        .types = { TYPE_FIRE, TYPE_ROCK},
         .catchRate = 75,
         .expYield = 151,
-        .evYield_Defense = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS },
-        .abilities = { ABILITY_MAGMA_ARMOR, ABILITY_FLAME_BODY, ABILITY_WEAK_ARMOR },
+        .eggGroups = { EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS},
+        .abilities = {ABILITY_STEAM_BARRIER, ABILITY_NONE, ABILITY_DROUGHT},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = TRUE,
-        .speciesName = _("Magcargo"),
+        .speciesName = _("MAGCARGO"),
         .cryId = CRY_MAGCARGO,
         .natDexNum = NATIONAL_DEX_MAGCARGO,
-        .categoryName = _("Lava"),
+        .categoryName = _("LAVA"),
         .height = 8,
         .weight = 550,
         .description = COMPOUND_STRING(
-            "The shell on its back is made of hardened\n"
-            "magma. Tens of thousands of years spent\n"
-            "living in volcanic craters have turned\n"
-            "Magcargo's bodies into magma."),
+            "MAGCARGO's shell houses an extremely\n"
+            "delicate organ. Through it, it's able to\n"
+            "control its body temperature by occasionally\n"
+            "emitting steam."),
         .pokemonScale = 332,
         .pokemonOffset = 15,
         .trainerScale = 256,

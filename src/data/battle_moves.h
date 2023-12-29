@@ -111,7 +111,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_FIRE_PUNCH] =
     {
         .effect = EFFECT_BURN_HIT,
-        .power = 75,
+        .power = 85,
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 15,
@@ -132,7 +132,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         #else
             .effect = EFFECT_FREEZE_HIT,
         #endif
-        .power = 75,
+        .power = 85,
         .type = TYPE_ICE,
         .accuracy = 100,
         .pp = 15,
@@ -149,7 +149,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_THUNDER_PUNCH] =
     {
         .effect = EFFECT_PARALYZE_HIT,
-        .power = 75,
+        .power = 85,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,
         .pp = 15,
@@ -3847,7 +3847,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .effect = EFFECT_DEFENSE_UP_HIT,
         .power = 70,
         .type = TYPE_STEEL,
-        .accuracy = 90,
+        .accuracy = 100,
         .pp = 25,
         .secondaryEffectChance = 10,
         .target = MOVE_TARGET_SELECTED,
@@ -5557,7 +5557,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
             .secondaryEffectChance = 30,
         #endif
         .effect = EFFECT_POISON_FANG,
-        .power = 50,
+        .power = 75,
         .type = TYPE_POISON,
         .accuracy = 100,
         .pp = 15,
@@ -7583,7 +7583,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_THUNDER_FANG] =
     {
         .effect = EFFECT_FLINCH_STATUS,
-        .power = 65,
+        .power = 75,
         .type = TYPE_ELECTRIC,
         .accuracy = 95,
         .pp = 15,
@@ -7606,7 +7606,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
             .argument = STATUS1_FREEZE,
         #endif
         .effect = EFFECT_FLINCH_STATUS,
-        .power = 65,
+        .power = 75,
         .type = TYPE_ICE,
         .accuracy = 95,
         .pp = 15,
@@ -7623,7 +7623,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_FIRE_FANG] =
     {
         .effect = EFFECT_FLINCH_STATUS,
-        .power = 65,
+        .power = 75,
         .type = TYPE_FIRE,
         .accuracy = 95,
         .pp = 15,

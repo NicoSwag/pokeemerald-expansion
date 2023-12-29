@@ -606,6 +606,12 @@ static const u16 sZigzagoonGalarianFormSpeciesIdTable[] = {
     FORM_SPECIES_END,
 };
 
+
+static const u16 sLinooneGalarianFormSpeciesIdTable[] = {
+    SPECIES_LINOONE_GALARIAN,
+    FORM_SPECIES_END,
+};
+
 static const u16 sLinooneFormSpeciesIdTable[] = {
     SPECIES_LINOONE,
     SPECIES_LINOONE_GALARIAN,
@@ -738,7 +744,6 @@ static const u16 sSalamenceFormSpeciesIdTable[] = {
 #if P_FAMILY_BELDUM
 static const u16 sMetagrossFormSpeciesIdTable[] = {
     SPECIES_METAGROSS,
-    SPECIES_METAGROSS_MEGA,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_BELDUM
