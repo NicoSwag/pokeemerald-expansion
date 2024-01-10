@@ -1952,12 +1952,12 @@ const struct Item gItems[] =
 
     [ITEM_STRANGE_SOUVENIR] =
     {
-        .name = _("StrngeSouvnr"),
+        .name = _("ODD SOUVENIR"),
         .price = 3000,
         .description = sStrangeSouvenirDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
         .flingPower = 30,
     },
 
@@ -4757,7 +4757,7 @@ const struct Item gItems[] =
 
     [ITEM_LEEK] =
     {
-        .name = _("Leek"),
+        .name = _("LEEK"),
         .price = 1000,
         .holdEffect = HOLD_EFFECT_LEEK,
         .description = sLeekDesc,

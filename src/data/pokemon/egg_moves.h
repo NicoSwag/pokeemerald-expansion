@@ -75,12 +75,14 @@ const u16 gEggMoves[] = {
     egg_moves(BEAUTIFLY,
         MOVE_CHARM,
         MOVE_BLUFF,
-        MOVE_NUMBING_KISS),
+        MOVE_NUMBING_KISS,
+        MOVE_MISTY_TERRAIN),
 
     egg_moves(DUSTOX,
         MOVE_CAPTIVATE,
         MOVE_SILK_TRAP,
-        MOVE_INFESTATION),
+        MOVE_INFESTATION,
+        MOVE_ACID_RAIN),
 
     egg_moves(TYNAMO,
         MOVE_PARABOLIC_CHARGE,
@@ -406,6 +408,12 @@ const u16 gEggMoves[] = {
     egg_moves(TINKATINK,
         MOVE_SMACK_DOWN,
         MOVE_FLING),
+
+    egg_moves(TINKATUFF,
+        MOVE_SMACK_DOWN,
+        MOVE_FLING,
+        MOVE_ICE_HAMMER,
+        MOVE_SKY_UPPERCUT),
 
     egg_moves(DODUO,
         MOVE_QUICK_ATTACK,
@@ -1507,7 +1515,7 @@ const u16 gEggMoves[] = {
         MOVE_ALLY_SWITCH,
         MOVE_MISTY_TERRAIN,
         MOVE_SKILL_SWAP,  
-        //MOVE_MAGICAL_WHIP,
+        MOVE_MAGICAL_WHIP,
         MOVE_SPACIAL_REND),
 
      egg_moves(GALLADE,
@@ -2618,6 +2626,22 @@ const u16 gEggMoves[] = {
         MOVE_WISH,
         MOVE_REVERSAL),
 
+    egg_moves(RAICHU,
+        MOVE_ENCORE,
+        MOVE_FAKE_OUT,
+        MOVE_WISH,
+        MOVE_REVERSAL,
+        MOVE_BULK_UP,
+        MOVE_BELLY_DRUM),
+
+    egg_moves(GOROCHU,
+        MOVE_ENCORE,
+        MOVE_FAKE_OUT,
+        MOVE_WISH,
+        MOVE_REVERSAL,
+        MOVE_POLARITY,
+        MOVE_BURNING_JEALOUSY),
+
     egg_moves(PANSEAR,
         MOVE_COVET,
         MOVE_LOW_KICK,
@@ -3242,7 +3266,7 @@ const u16 gEggMoves[] = {
 
     egg_moves(PANCHAM,
         MOVE_DRAIN_PUNCH,
-        MOVE_COMET_PUNCH),
+        MOVE_POWER_UP_PUNCH),
 
     egg_moves(FURFROU,
         MOVE_ROLE_PLAY,
@@ -3289,7 +3313,7 @@ const u16 gEggMoves[] = {
 
     egg_moves(SKRELP,
         MOVE_TOXIC_SPIKES,
-        MOVE_HAZE),
+        MOVE_FLIP_TURN),
 
     egg_moves(CLAUNCHER,
         MOVE_AQUA_JET,
@@ -3479,6 +3503,12 @@ const u16 gEggMoves[] = {
     egg_moves(MORELULL,
         MOVE_HEX,
         MOVE_INFESTATION),
+
+    egg_moves(SHIINOTIC,
+        MOVE_HEX,
+        MOVE_INFESTATION,
+        MOVE_PSYSHOCK,
+        MOVE_RAGE_POWDER),
 
     egg_moves(SALANDIT,
         MOVE_BELCH,
@@ -3905,7 +3935,13 @@ const u16 gEggMoves[] = {
 
     egg_moves(FARFETCHD_GALARIAN,
         MOVE_KNOCK_OFF,
-        MOVE_U_TURN),
+        MOVE_FOCUS_ENERGY),
+
+    egg_moves(LUXWAN,
+        MOVE_KNOCK_OFF,
+        MOVE_FOCUS_ENERGY,
+        MOVE_BODY_SLAM,
+        MOVE_SKY_ATTACK),
 
     egg_moves(MR_MIME_GALARIAN,
         MOVE_FAKE_OUT,

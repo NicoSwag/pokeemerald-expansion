@@ -1614,6 +1614,12 @@ static void Cmd_attackcanceler(void)
             gBattlerTarget = gBattlerAttacker;
             gBattlescriptCurrInstr = BattleScript_MagicCoatBouncePrankster;
         }
+        else if(BlocksTrickster(gCurrentMove, gBattlerTarget, gBattlerAttacker, TRUE))
+        {
+            // Opponent used a prankster'd magic coat -> reflected status move should fail against a dark-type attacker
+            gBattlerTarget = gBattlerAttacker;
+            gBattlescriptCurrInstr = BattleScript_MagicCoatBouncePrankster;
+        }
         else
         {
             BattleScriptPushCursor();
@@ -1799,6 +1805,12 @@ static bool32 AccuracyCalcHelper(u16 move)
     {
         if (!JumpIfMoveFailed(7, move))
             RecordAbilityBattle(gBattlerTarget, ABILITY_NO_GUARD);
+        return TRUE;
+    }
+       else if (GetBattlerAbility(gBattlerTarget) == ABILITY_FAE_FORCE && (move != MOVE_SKY_DROP || gBattleStruct->skyDropTargets[gBattlerTarget] == 0xFF) && IsBattlerTerrainAffected(gBattlerAttacker,STATUS_FIELD_MISTY_TERRAIN) && gBattleMoves[move].type == TYPE_FAIRY)
+    {
+        if (!JumpIfMoveFailed(7, move))
+            RecordAbilityBattle(gBattlerTarget, ABILITY_FAE_FORCE);
         return TRUE;
     }
     // If the target is under the effects of Telekinesis, and the move isn't a OH-KO move, move hits.
@@ -2141,7 +2153,7 @@ static void Cmd_ppreduce(void)
     static const u8 sCriticalHitChance[] = {16, 8, 4, 3, 2}; // Gens 2,3,4,5
 #endif // B_CRIT_CHANCE
 
-#define BENEFITS_FROM_LEEK(battler, holdEffect)((holdEffect == HOLD_EFFECT_LEEK) && (GET_BASE_SPECIES_ID(gBattleMons[battler].species) == SPECIES_FARFETCHD || gBattleMons[battler].species == SPECIES_SIRFETCHD))
+#define BENEFITS_FROM_LEEK(battler, holdEffect)((holdEffect == HOLD_EFFECT_LEEK) && (GET_BASE_SPECIES_ID(gBattleMons[battler].species) == SPECIES_FARFETCHD || gBattleMons[battler].species == SPECIES_SIRFETCHD || gBattleMons[battler].species == SPECIES_LUXWAN))
 s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 recordAbility, u32 abilityAtk, u32 abilityDef, u32 holdEffectAtk)
 {
     s32 critChance = 0;
@@ -2169,6 +2181,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
                     + 2 * BENEFITS_FROM_LEEK(battlerAtk, holdEffectAtk)
                     + 2 * (B_AFFECTION_MECHANICS == TRUE && GetBattlerAffectionHearts(battlerAtk) == AFFECTION_FIVE_HEARTS)
                     + (abilityAtk == ABILITY_SUPER_LUCK)
+                    + 2 * (gBattleMons[gBattlerAttacker].ability == ABILITY_FAE_LUCK && IsBattlerTerrainAffected(gBattlerAttacker, STATUS_FIELD_MISTY_TERRAIN))
                     + gBattleStruct->bonusCritStages[gBattlerAttacker];
 
         // Record ability only if move had at least +3 chance to get a crit
@@ -2283,6 +2296,18 @@ static void Cmd_adjustdamage(void)
         gBattleMoveDamage = 0;
         RecordAbilityBattle(gBattlerTarget, ABILITY_ICE_FACE);
         gBattleResources->flags->flags[gBattlerTarget] |= RESOURCE_FLAG_ICE_FACE;
+        // Form change will be done after attack animation in Cmd_resultmessage.
+        goto END;
+    }
+
+    if (GetBattlerAbility(gBattlerTarget) == ABILITY_DEBRIS_SHIELD && IS_MOVE_PHYSICAL(gCurrentMove) && !(gBattleResources->flags->flags[gBattlerTarget] & RESOURCE_FLAG_DEBRIS_SHIELD))
+    {
+        // Damage deals typeless 0 HP.
+        gMoveResultFlags &= ~(MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE);
+        gBattleMoveDamage = 0;
+        RecordAbilityBattle(gBattlerTarget, ABILITY_DEBRIS_SHIELD);
+        gBattleResources->flags->flags[gBattlerTarget] |= RESOURCE_FLAG_DEBRIS_SHIELD;
+        gBattleResources->flags->flags[gBattlerTarget] |= RESOURCE_FLAG_SHIELD_ACTIVATED;
         // Form change will be done after attack animation in Cmd_resultmessage.
         goto END;
     }
@@ -2767,6 +2792,14 @@ static void Cmd_resultmessage(void)
         gBattlescriptCurrInstr = BattleScript_IceFaceNullsDamage;
         return;
     }
+
+        if (gBattleResources->flags->flags[gBattlerTarget] & RESOURCE_FLAG_SHIELD_ACTIVATED){
+        gBattleScripting.battler = gBattlerTarget; // For STRINGID_PKMNTRANSFORMED
+        gBattleResources->flags->flags[gBattlerTarget] &= ~(RESOURCE_FLAG_SHIELD_ACTIVATED);
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_DebrisShield;
+        return;
+        }
 
     if (gMoveResultFlags & MOVE_RESULT_MISSED && (!(gMoveResultFlags & MOVE_RESULT_DOESNT_AFFECT_FOE) || gBattleCommunication[MISS_TYPE] > B_MSG_AVOIDED_ATK))
     {
@@ -6253,6 +6286,7 @@ static void Cmd_moveend(void)
                         BattleScriptPush(gBattlescriptCurrInstr + 1);
                         gBattlescriptCurrInstr = BattleScript_DefDownSpeedUp;
                     }
+                    
 
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MultiHitPrintStrings;
@@ -8785,6 +8819,8 @@ static bool32 IsRototillerAffected(u32 battler)
         return FALSE;   // Rototiller doesn't affected semi-invulnerable battlers
     if (BlocksPrankster(MOVE_ROTOTILLER, gBattlerAttacker, battler, FALSE))
         return FALSE;
+        if (BlocksTrickster(MOVE_ROTOTILLER, gBattlerAttacker, battler, FALSE))
+        return FALSE;
     return TRUE;
 }
 
@@ -10562,6 +10598,8 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
         if (BlocksPrankster(gCurrentMove, gBattlerAttacker, battler, TRUE))
+            gBattlescriptCurrInstr = cmd->jumpInstr;
+        else if (BlocksTrickster(gCurrentMove, gBattlerAttacker, battler, TRUE))
             gBattlescriptCurrInstr = cmd->jumpInstr;
         else
             gBattlescriptCurrInstr = cmd->nextInstr;
@@ -12620,7 +12658,7 @@ static void Cmd_weatherdamage(void)
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK))
             {
                 gBattlerAbility = gBattlerAttacker;
-                gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 16;
+                gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 8;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 gBattleMoveDamage *= -1;
@@ -13509,7 +13547,8 @@ static void Cmd_trysetperishsong(void)
     {
         if (gStatuses3[i] & STATUS3_PERISH_SONG
             || GetBattlerAbility(i) == ABILITY_SOUNDPROOF
-            || BlocksPrankster(gCurrentMove, gBattlerAttacker, i, TRUE))
+            || BlocksPrankster(gCurrentMove, gBattlerAttacker, i, TRUE)
+            || BlocksTrickster(gCurrentMove, gBattlerAttacker, i, TRUE))
         {
             notAffectedCount++;
         }
@@ -14545,12 +14584,6 @@ static void Cmd_setyawn(void)
         || gBattleMons[gBattlerTarget].status1 & STATUS1_ANY)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
-    }
-    else if (IsBattlerTerrainAffected(gBattlerTarget, STATUS_FIELD_ELECTRIC_TERRAIN))
-    {
-        // When Yawn is used while Electric Terrain is set and drowsiness is set from Yawn being used against target in the previous turn:
-        // "But it failed" will display first.
-        gBattlescriptCurrInstr = BattleScript_ElectricTerrainPrevents;
     }
     else if (IsBattlerTerrainAffected(gBattlerTarget, STATUS_FIELD_MISTY_TERRAIN))
     {
@@ -16882,6 +16915,23 @@ void BS_SetRemoveTerrain(void)
     }
 }
 
+void BS_RemoveWeather(void){
+
+    CMD_ARGS();
+
+    if (!TryChangeBattleWeather(gBattlerAttacker, ENUM_WEATHER_NONE, FALSE))
+    {
+        gMoveResultFlags |= MOVE_RESULT_MISSED;
+    }
+    else
+    {
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_AIR_CLEARED;
+        gBattleStruct->weatherStore = B_WEATHER_NONE;
+    }
+
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
 void BS_JumpIfTerrainAffected(void)
 {
     NATIVE_ARGS(u8 battler, u32 flags, const u8 *jumpInstr);
@@ -17063,6 +17113,17 @@ void BS_SetPledge(void)
         gBattlescriptCurrInstr = cmd->jumpInstr;
 
     }
+}
+
+void BS_SetFireAll(void)
+{
+    NATIVE_ARGS(u8 battler, u32 sideStatus);
+    u32 battler = GetBattlerForBattleScript(cmd->battler);
+    gSideStatuses[GetBattlerSide(battler)] |= SIDE_STATUS_SEA_OF_FIRE;
+    gSideTimers[GetBattlerSide(battler)].seaOfFireTimer = 4;
+    gSideStatuses[GetBattlerSide(BATTLE_OPPOSITE(battler))] |= SIDE_STATUS_SEA_OF_FIRE;
+    gSideTimers[GetBattlerSide(BATTLE_OPPOSITE(battler))].seaOfFireTimer = 4;
+    gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
 void BS_SetPledgeStatus(void)

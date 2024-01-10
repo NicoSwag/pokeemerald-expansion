@@ -404,8 +404,9 @@
 #define MOVE_EFFECT_TRIPLE_ARROWS       81
 #define MOVE_EFFECT_SYRUP_BOMB          82
 #define MOVE_EFFECT_FLORAL_HEALING      83
+#define MOVE_EFFECT_MAGICAL_WHIP        84
 
-#define NUM_MOVE_EFFECTS                79
+#define NUM_MOVE_EFFECTS                85
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

@@ -1579,7 +1579,7 @@
 	.endm
 
 	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro normalmsg
+	.macro settorcheffect centerX:req, centerY:req, radius:req
 	.byte 0xcb
 	.endm
 

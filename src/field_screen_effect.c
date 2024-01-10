@@ -935,6 +935,11 @@ static void StartWaitForFlashUpdate(void)
         CreateTask(Task_WaitForFlashUpdate, 80);
 }
 
+
+
+
+
+
 static u8 StartUpdateFlashLevelEffect(s32 centerX, s32 centerY, s32 initialFlashRadius, s32 destFlashRadius, s32 clearScanlineEffect, u8 delta)
 {
     u8 taskId = CreateTask(UpdateFlashLevelEffect, 80);
@@ -952,6 +957,13 @@ static u8 StartUpdateFlashLevelEffect(s32 centerX, s32 centerY, s32 initialFlash
         tFlashRadiusDelta = -delta;
 
     return taskId;
+}
+
+void SetTorchEffect(s32 centerX, s32 centerY, s32 radius)
+{
+    StartUpdateFlashLevelEffect(centerX, centerY, 0, 1, 4, 1);
+    StartWaitForFlashUpdate();
+    LockPlayerFieldControls();
 }
 
 static u8 StartUpdateOrbFlashEffect(s32 centerX, s32 centerY, s32 initialFlashRadius, s32 destFlashRadius, s32 clearScanlineEffect, u8 delta)

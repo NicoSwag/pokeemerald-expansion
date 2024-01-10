@@ -388,8 +388,34 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .paletteNum = 0,
         .baseBlock = 0x00b0,
     },
-
-       [B_WIN_MOVE_DESCRIPTION] = {
+    { // super effective
+	    .bg = 0,
+    	.tilemapLeft = 21,
+    	.tilemapTop = 57,
+    	.width = 8,
+    	.height = 2,
+    	.paletteNum = 5,
+    	.baseBlock = 0x02a0,
+    },
+    { // not very effective
+    	.bg = 0,
+    	.tilemapLeft = 21,
+	    .tilemapTop = 57,
+	    .width = 8,
+	    .height = 2,
+	    .paletteNum = 5,
+	    .baseBlock = 0x02a0,
+    },
+    { // no effect
+	    .bg = 0,
+	    .tilemapLeft = 21,
+	    .tilemapTop = 57,
+	    .width = 8,
+	    .height = 2,
+	    .paletteNum = 5,
+	    .baseBlock = 0x02a0,
+    },
+           [B_WIN_MOVE_DESCRIPTION] = {
         .bg = 0,
         .tilemapLeft = 1,
         .tilemapTop = 47,
@@ -397,34 +423,6 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .height = 6,
        .paletteNum = 5,
        .baseBlock = 0x0350,
-    },
-
-    [B_WIN_TYPE_SUPER_EFF] = { // super effective
-        .bg = 0,
-        .tilemapLeft = 21,
-        .tilemapTop = 57,
-       .width = 8,
-      .height = 2,
-        .paletteNum = 5,
-       .baseBlock = 0x02a0,
-          },
-    [B_WIN_TYPE_NOT_VERY_EFF] = {
-        .bg = 0,
-        .tilemapLeft = 21,
-       .tilemapTop = 57,
-        .width = 8,
-        .height = 2,
-        .paletteNum = 5,
-        .baseBlock = 0x02a0,
-    },
-    [B_WIN_TYPE_NO_EFF] = {
-        .bg = 0,
-        .tilemapLeft = 21,
-        .tilemapTop = 57,
-        .width = 8,
-       .height = 2,
-       .paletteNum = 5,
-       .baseBlock = 0x02a0,
     },
     DUMMY_WIN_TEMPLATE
 };

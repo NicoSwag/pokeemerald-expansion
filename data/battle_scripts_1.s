@@ -451,6 +451,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectHitEscape               @ EFFECT_ESCAPE_HEAL
 	.4byte BattleScript_EffectHit                     @ EFFECT_CHANGE_TYPE_HIDDEN
 	.4byte BattleScript_EffectEmp           @ EFFECT_EMP
+	.4byte BattleScript_EffectPiercingWail       @ EFFECT_PIERCING_WAIL
 	.4byte BattleScript_EffectChillyReception         @ EFFECT_CHILLY_RECEPTION
 	.4byte BattleScript_EffectMatchaGotcha            @ EFFECT_MATCHA_GOTCHA
 	.4byte BattleScript_EffectSyrupBomb               @ EFFECT_SYRUP_BOMB
@@ -458,6 +459,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectGlaiveRush              @ EFFECT_GLAIVE_RUSH
 	.4byte BattleScript_EffectBrickBreak              @ EFFECT_RAGING_BULL
 	.4byte BattleScript_EffectHit                     @ EFFECT_RAGE_FIST
+	.4byte BattleScript_EffectBadPoisonHit               @ EFFECT_BAD_POISON_HIT
 
 BattleScript_EffectGlaiveRush::
 	call BattleScript_EffectHit_Ret
@@ -587,6 +589,15 @@ BattleScript_EffectCombinedPledge_Fire::
 	playanimation BS_TARGET, B_ANIM_SEA_OF_FIRE
 	waitanimation
 	goto BattleScript_MoveEnd
+
+BattleScript_SeaOfFire::
+	setpledgestatus BS_TARGET, SIDE_STATUS_SEA_OF_FIRE
+	pause B_WAIT_TIME_SHORTEST
+	printstring STRINGID_SEAOFFIREENVELOPEDSIDE
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_TARGET, B_ANIM_SEA_OF_FIRE
+	waitanimation
+	end
 
 BattleScript_HurtByTheSeaOfFire::
 	printstring STRINGID_HURTBYTHESEAOFFIRE
@@ -3582,6 +3593,11 @@ BattleScript_CantMakeAsleep::
 BattleScript_EffectBarbBarrage:
 BattleScript_EffectPoisonHit:
 	setmoveeffect MOVE_EFFECT_POISON
+	goto BattleScript_EffectHit
+
+
+BattleScript_EffectBadPoisonHit:
+	setmoveeffect MOVE_EFFECT_TOXIC
 	goto BattleScript_EffectHit
 
 BattleScript_EffectAbsorb::
@@ -8133,6 +8149,12 @@ BattleScript_TargetFormChangeWithStringNoPopup::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_ShieldRestored::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_SHIELDRESTORED
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
 BattleScript_BattlerFormChangeWithStringEnd3::
 	pause 5
 	call BattleScript_AbilityPopUp
@@ -9152,6 +9174,19 @@ BattleScript_GrassySurgeActivates::
 	call BattleScript_ActivateTerrainEffects
 	end3
 
+BattleScript_SeaOfFireActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	removeterrain
+	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
+	printfromtable gTerrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+	setseaoffire
+	printstring STRINGID_SEAOFFIREENVELOPEDSIDE
+	end3
+	
+	
+
 BattleScript_PsychicSurgeActivates::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
@@ -9353,6 +9388,12 @@ BattleScript_SoundproofProtected::
 BattleScript_IceFaceNullsDamage::
 	call BattleScript_TargetFormChangeWithString
 	return
+
+BattleScript_DebrisShield::
+	call BattleScript_AbilityPopUpTarget
+	printstring STRINGID_SHIELDBROKE
+	waitmessage B_WAIT_TIME_LONG
+	end
 
 BattleScript_DazzlingProtected::
 	attackstring
@@ -11244,6 +11285,36 @@ BattleScript_EffectRainHit::
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_NoReliefFromHeavyRain
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
 	setrain
+	printfromtable gMoveWeatherChangeStringIds
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_ActivateWeatherAbilities
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectPiercingWail::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN_PRIMAL, BattleScript_ExtremelyHarshSunlightWasNotLessened
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_NoReliefFromHeavyRain
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
+	removeweather
 	printfromtable gMoveWeatherChangeStringIds
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_ActivateWeatherAbilities

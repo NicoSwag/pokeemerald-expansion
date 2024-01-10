@@ -216,6 +216,7 @@ SINGLE_BATTLE_TEST("Signature items Leek and Lucky Punch increase the critical h
     PASSES_RANDOMLY(1, 2, RNG_CRITICAL_HIT);
 
     PARAMETRIZE { species = SPECIES_FARFETCHD; item = ITEM_LEEK; }
+    PARAMETRIZE { species = SPECIES_LUXWAN; item = ITEM_LEEK; }
     PARAMETRIZE { species = SPECIES_FARFETCHD_GALARIAN; item = ITEM_LEEK; }
     PARAMETRIZE { species = SPECIES_SIRFETCHD; item = ITEM_LEEK; }
     PARAMETRIZE { species = SPECIES_CHANSEY; item = ITEM_LUCKY_PUNCH; }

@@ -6016,6 +6016,12 @@ Cry_Gholdengo::
 	.incbin "sound/direct_sound_samples/cries/gholdengo.bin"
 .endif @ P_FAMILY_GIMMIGHOUL
 
+Cry_Gorochu::
+	.incbin "sound/direct_sound_samples/cries/raichu.bin"
+
+Cry_Luxwan::
+	.incbin "sound/direct_sound_samples/cries/sirfetchd.bin"
+
 .if P_FAMILY_WO_CHIEN == TRUE
 	.align 2
 Cry_WoChien::

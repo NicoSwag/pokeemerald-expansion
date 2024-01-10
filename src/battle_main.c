@@ -3268,6 +3268,7 @@ const u8* FaintClearSetData(u32 battler)
     gProtectStructs[battler].statRaised = FALSE;
     gProtectStructs[battler].statFell = FALSE;
     gProtectStructs[battler].pranksterElevated = FALSE;
+    gProtectStructs[battler].tricksterElevated = FALSE;
 
     gDisableStructs[battler].isFirstTurn = 2;
 
@@ -4655,6 +4656,7 @@ s8 GetChosenMovePriority(u32 battler)
     u16 move;
 
     gProtectStructs[battler].pranksterElevated = 0;
+    gProtectStructs[battler].tricksterElevated = 0;
     if (gProtectStructs[battler].noValidMoves)
         move = MOVE_STRUGGLE;
     else
@@ -4690,6 +4692,11 @@ s8 GetMovePriority(u32 battler, u16 move)
     else if (ability == ABILITY_PRANKSTER && IS_MOVE_STATUS(move))
     {
         gProtectStructs[battler].pranksterElevated = 1;
+        priority++;
+    }
+        else if (ability == ABILITY_TRICKSTER && IsBattlerTerrainAffected(battler,STATUS_FIELD_MISTY_TERRAIN) && gBattleMoves[move].type == TYPE_FAIRY && (gBattleMons[battler].hp >= gBattleMons[battler].maxHP * 0.75))
+    {
+        gProtectStructs[battler].tricksterElevated = 1;
         priority++;
     }
     else if (gBattleMoves[move].effect == EFFECT_GRASSY_GLIDE && gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && IsBattlerGrounded(battler))

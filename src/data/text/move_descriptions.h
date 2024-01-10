@@ -1658,6 +1658,10 @@ static const u8 sPoisonJabDescription[] = _(
     "A stabbing attack that\n"
     "may poison the foe.");
 
+static const u8 sThornyBushDescription[] = _(
+    "An attack that may\n"
+    "badly poison the foe.");
+
 static const u8 sDarkPulseDescription[] = _(
     "Attacks with a horrible\n"
     "aura. May cause flinching.");
@@ -1937,6 +1941,10 @@ static const u8 sTailSlapDescription[] = _(
 static const u8 sVenoshockDescription[] = _(
     "Does double damage if the\n"
     "foe is poisoned.");
+
+static const u8 sPiercingWailDescription[] = _(
+    "Doubles damage in weather\n"
+    "and clears it.");
 
 static const u8 sAutotomizeDescription[] = _(
     "Sheds additional weight to\n"
@@ -2653,10 +2661,6 @@ static const u8 sStompingTantrumDescription[] = _(
     "Stomps around angrily.\n"
     "Stronger after a failure.");
 
-static const u8 sTemperFlareDescription[] = _(
-    "Rushes the foe angrily.\n"
-    "Stronger after a failure.");
-
 static const u8 sShadowBoneDescription[] = _(
     "Strikes with a haunted\n"
     "bone. Might drop Defense.");
@@ -2941,6 +2945,10 @@ static const u8 sSteelRollerDescription[] = _(
 static const u8 sScaleShotDescription[] = _(
     "Shoots scales 2 to 5 times.\n"
     "Ups Speed, lowers defense.");
+
+static const u8 sMagicalWhipDescription[] = _(
+    "Whips the target, lowering\n"
+    "its Sp. Defense.");
 
 static const u8 sMeteorBeamDescription[] = _(
     "A 2-turn move that raises\n"
@@ -3377,9 +3385,6 @@ static const u8 sElectroShotDescription[] = _(
     "Absorbs electricity in one turn,\n"
     "then attacks next turn.");
 
-static const u8 sTeraStarstormDescription[] = _(
-    "Damages all opponents if user is\n"
-    "Stellar form Terapagos.");
 
 static const u8 sFickleBeamDescription[] = _(
     "Shoots a beam of light. Sometimes\n"
@@ -3835,6 +3840,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_CHI_BLAST - 1] = sChiBlastDescription,
     [MOVE_ROCK_POLISH - 1] = sRockPolishDescription,
     [MOVE_POISON_JAB - 1] = sPoisonJabDescription,
+    [MOVE_THORNY_BUSH - 1] = sThornyBushDescription,
     [MOVE_DARK_PULSE - 1] = sDarkPulseDescription,
     [MOVE_NIGHT_SLASH - 1] = sNightSlashDescription,
     [MOVE_AQUA_TAIL - 1] = sAquaTailDescription,
@@ -3913,6 +3919,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_WONDER_ROOM - 1] = sWonderRoomDescription,
     [MOVE_PSYSHOCK - 1] = sPsyshockDescription,
     [MOVE_VENOSHOCK - 1] = sVenoshockDescription,
+    [MOVE_PIERCING_WAIL - 1] = sPiercingWailDescription,
     [MOVE_AUTOTOMIZE - 1] = sAutotomizeDescription,
     [MOVE_RAGE_POWDER - 1] = sRagePowderDescription,
     [MOVE_TELEKINESIS - 1] = sTelekinesisDescription,
@@ -4103,7 +4110,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_FLEUR_CANNON - 1] = sFleurCannonDescription,
     [MOVE_PSYCHIC_FANGS - 1] = sPsychicFangsDescription,
     [MOVE_STOMPING_TANTRUM - 1] = sStompingTantrumDescription,
-    [MOVE_TEMPER_FLARE - 1] = sStompingTantrumDescription,
     [MOVE_SHADOW_BONE - 1] = sShadowBoneDescription,
     [MOVE_ACCELEROCK - 1] = sAccelerockDescription,
     [MOVE_LIQUIDATION - 1] = sLiquidationDescription,
@@ -4177,6 +4183,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_EXPANDING_FORCE - 1] = sExpandingForceDescription,
     [MOVE_STEEL_ROLLER - 1] = sSteelRollerDescription,
     [MOVE_SCALE_SHOT - 1] = sScaleShotDescription,
+    [MOVE_MAGICAL_WHIP - 1] = sMagicalWhipDescription,
     [MOVE_METEOR_BEAM - 1] = sMeteorBeamDescription,
     [MOVE_SHELL_SIDE_ARM - 1] = sShellSideArmDescription,
     [MOVE_MISTY_EXPLOSION - 1] = sMistyExplosionDescription,
@@ -4286,7 +4293,6 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_SYRUP_BOMB - 1] = sSyrupBombDescription,
     [MOVE_IVY_CUDGEL - 1] = sIvyCudgelDescription,
     [MOVE_ELECTRO_SHOT - 1] = sElectroShotDescription,
-    [MOVE_TERA_STARSTORM - 1] = sTeraStarstormDescription,
     [MOVE_FICKLE_BEAM - 1] = sFickleBeamDescription,
     [MOVE_BURNING_BULWARK - 1] = sBurningBulwarkDescription,
     [MOVE_THUNDERCLAP - 1] = sSuckerPunchDescription,

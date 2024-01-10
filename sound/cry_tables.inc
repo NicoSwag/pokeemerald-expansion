@@ -2355,6 +2355,8 @@ gCryTable::
 	cry Cry_Gimmighoul
 	cry Cry_Gholdengo
 .endif @ P_FAMILY_GIMMIGHOUL
+	cry Cry_Gorochu
+	cry Cry_Luxwan
 .if P_FAMILY_WO_CHIEN == TRUE
 	cry Cry_WoChien
 .endif @ P_FAMILY_WO_CHIEN
@@ -4759,6 +4761,8 @@ gCryTable_Reverse::
 	cry_reverse Cry_Gimmighoul
 	cry_reverse Cry_Gholdengo
 .endif @ P_FAMILY_GIMMIGHOUL
+cry_reverse Cry_Gorochu
+cry_reverse Cry_Luxwan
 .if P_FAMILY_WO_CHIEN == TRUE
 	cry_reverse Cry_WoChien
 .endif @ P_FAMILY_WO_CHIEN

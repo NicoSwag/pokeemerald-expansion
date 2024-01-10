@@ -24,6 +24,7 @@
 #include "task.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "daycare.h"
 
 /*
  * Move relearner state machine
@@ -370,6 +371,29 @@ static void VBlankCB_MoveRelearner(void)
 }
 
 // Script arguments: The pokemon to teach is in VAR_0x8004
+
+void RevertToBaby(void)
+    {
+        struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
+        u16 species = GetEggSpecies(GetMonData(mon, MON_DATA_SPECIES));
+        u16 level = 1;
+        u16 none = MOVE_NONE;
+        
+        GetMonData(mon, MON_DATA_NICKNAME, gStringVar1);
+        if (!StringCompare(GetSpeciesName(GetMonData(mon, MON_DATA_SPECIES)), gStringVar1))
+            SetMonData(mon, MON_DATA_NICKNAME, GetSpeciesName(species));
+        SetMonData(mon, MON_DATA_SPECIES, &species);
+        SetMonData(mon, MON_DATA_EXP, &gExperienceTables[gSpeciesInfo[species].growthRate][level]);
+        SetMonData(mon, MON_DATA_MOVE1, &none);
+        SetMonData(mon, MON_DATA_MOVE2, &none);
+        SetMonData(mon, MON_DATA_MOVE3, &none);
+        SetMonData(mon, MON_DATA_MOVE4, &none);
+        GiveMonInitialMoveset(mon);
+        CalculateMonStats(mon); 
+        return;
+    }
+
+
 void TeachMoveRelearnerMove(void)
 {
     LockPlayerFieldControls();

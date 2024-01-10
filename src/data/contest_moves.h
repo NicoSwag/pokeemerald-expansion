@@ -6077,7 +6077,6 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
 
     [MOVE_ELECTRO_SHOT] = {0}, // TODO
 
-    [MOVE_TERA_STARSTORM] = {0}, // TODO
 
     [MOVE_FICKLE_BEAM] = {0}, // TODO
 

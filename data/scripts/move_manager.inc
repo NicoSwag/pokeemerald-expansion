@@ -288,3 +288,27 @@ MoveManager_ComeBack::
 
 MoveManager_ComeBackWithItem::
 	.string "You don't have any?\nCome back another time.$"
+
+
+Common_EventScript_DevolveMon::
+	msgbox DevolveMon_Text_Thisisatest
+	special ChooseMonForDevolution
+	waitstate
+	special RevertToBaby
+	msgbox DevolveMon_Text_Finished
+	closemessage
+	return
+
+DevolveMon_InvalidMon:
+	msgbox DevolveMon_Text_Invalid
+	closemessage
+	return
+
+DevolveMon_Text_Thisisatest::
+	.string "Select a mon to devolve.$"
+
+DevolveMon_Text_Invalid::
+	.string "Invalid POKéMON.$"
+
+DevolveMon_Text_Finished::
+	.string "The dark deed is done.$"

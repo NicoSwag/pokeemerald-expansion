@@ -1412,25 +1412,24 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     {
         .baseHP        = 45,
         .baseAttack    = 60,
-        .baseDefense   = 32,
-        .baseSpeed     = 76,
+        .baseDefense   = 35,
+        .baseSpeed     = 75,
         .baseSpAttack  = 50,
-        .baseSpDefense = 32,
-        .types = { TYPE_ELECTRIC, TYPE_ELECTRIC },
+        .baseSpDefense = 35,
+        .types = { TYPE_ELECTRIC, TYPE_FIRE},
         .catchRate = 190,
         .expYield = 59,
-        .evYield_Speed = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_LIGHTNING_ROD, ABILITY_MOTOR_DRIVE, ABILITY_SAP_SIPPER },
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_BLAZING_FAST, ABILITY_NONE, ABILITY_SURGE_SURFER},
         .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("Blitzle"),
+        .speciesName = _("BLIYZLE"),
         .cryId = CRY_BLITZLE,
         .natDexNum = NATIONAL_DEX_BLITZLE,
-        .categoryName = _("Electrified"),
+        .categoryName = _("SPARKING"),
         .height = 8,
         .weight = 298,
         .description = COMPOUND_STRING(
@@ -1460,30 +1459,29 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     {
         .baseHP        = 75,
         .baseAttack    = 100,
-        .baseDefense   = 63,
-        .baseSpeed     = 116,
+        .baseDefense   = 65,
+        .baseSpeed     = 115,
         .baseSpAttack  = 80,
-        .baseSpDefense = 63,
-        .types = { TYPE_ELECTRIC, TYPE_ELECTRIC },
+        .baseSpDefense = 65,
+        .types = { TYPE_ELECTRIC, TYPE_FIRE},
         .catchRate = 75,
         .expYield = 174,
-        .evYield_Speed = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_LIGHTNING_ROD, ABILITY_MOTOR_DRIVE, ABILITY_SAP_SIPPER },
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_BLAZING_FAST, ABILITY_NONE, ABILITY_QUARK_DRIVE},
         .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("Zebstrika"),
+        .speciesName = _("ZEBSTRIKA"),
         .cryId = CRY_ZEBSTRIKA,
         .natDexNum = NATIONAL_DEX_ZEBSTRIKA,
-        .categoryName = _("Thunderbolt"),
+        .categoryName = _("THUNDERFLAME"),
         .height = 16,
         .weight = 795,
         .description = COMPOUND_STRING(
-            "When Zebstrika run at full speed, the\n"
-            "sound of thunder reverberates. It is\n"
+            "When ZEBSTRIKA runs at full speed, it\n"
+            "leaves behind a trail of fire. It is\n"
             "dangerous when it's angry as it shoots\n"
             "lightning from its mane in all directions."),
         .pokemonScale = 259,
@@ -2906,22 +2904,21 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
 #if P_FAMILY_BASCULIN
 #define BASCULIN_MISC_INFO                                      \
         .baseHP        = 70,                                    \
-        .baseAttack    = 92,                                    \
+        .baseAttack    = 90,                                    \
         .baseDefense   = 65,                                    \
-        .baseSpeed     = 98,                                    \
+        .baseSpeed     = 100,                                    \
         .baseSpAttack  = 80,                                    \
         .baseSpDefense = 55,                                    \
         .types = { TYPE_WATER, TYPE_WATER },                    \
         .catchRate = 190,                                       \
         .expYield = 161,                                        \
-        .evYield_Speed = 2,                                     \
         .genderRatio = PERCENT_FEMALE(50),                      \
         .eggCycles = 40,                                        \
         .friendship = STANDARD_FRIENDSHIP,                      \
         .growthRate = GROWTH_MEDIUM_FAST,                       \
         .eggGroups = { EGG_GROUP_WATER_2, EGG_GROUP_WATER_2 },  \
         .bodyColor = BODY_COLOR_GREEN,                          \
-        .speciesName = _("Basculin"),                           \
+        .speciesName = _("BASCULIN"),                           \
         .cryId = CRY_BASCULIN,                                  \
         .natDexNum = NATIONAL_DEX_BASCULIN,                     \
         .height = 10,                                           \
@@ -2985,13 +2982,13 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     {
         BASCULIN_MISC_INFO,
         .itemRare = ITEM_DEEP_SEA_SCALE,
-        .abilities = { ABILITY_RATTLED, ABILITY_ADAPTABILITY, ABILITY_MOLD_BREAKER },
-        .categoryName = _("Mellow"),
+        .abilities = { ABILITY_ADAPTABILITY, ABILITY_MOLD_BREAKER, ABILITY_SWIFT_SWIM },
+        .categoryName = _("MELLOW"),
         .description = COMPOUND_STRING(
-            "While this ancient form of Basculin shares\n"
-            "a vast array of qualities with other forms,\n"
-            "it differs in several respects, including\n"
-            "demeanor, being much gentler than others."),
+            "In foreign countries there exist red and blue\n"
+            "striped variations of BASCULIN, but in HOENN\n"
+            "the more intelligente white-striped form has\n"
+            "driven them away."),
         FRONT_PIC(BasculinWhiteStriped, 48, 40),
         .frontPicYOffset = 12,
         .frontAnimFrames = sAnims_Basculin,
@@ -3017,10 +3014,10 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .eggGroups = { EGG_GROUP_WATER_2, EGG_GROUP_WATER_2 },                              \
         .abilities = { ABILITY_SWIFT_SWIM, ABILITY_ADAPTABILITY, ABILITY_MOLD_BREAKER },    \
         .bodyColor = BODY_COLOR_GREEN,                                                      \
-        .speciesName = _("Bsculegion"),                                                     \
+        .speciesName = _("BSCULEGION"),                                                    \
         .cryId = CRY_BASCULEGION,                                                           \
         .natDexNum = NATIONAL_DEX_BASCULEGION,                                              \
-        .categoryName = _("Big Fish"),                                                      \
+        .categoryName = _("BIG FISH"),                                                      \
         .height = 30,                                                                       \
         .weight = 1100,                                                                     \
         .pokemonScale = 275,                                                                \
@@ -3041,9 +3038,9 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     {
         BASCULEGION_MISC_INFO,
         .baseHP        = 120,
-        .baseAttack    = 112,
+        .baseAttack    = 110,
         .baseDefense   = 65,
-        .baseSpeed     = 78,
+        .baseSpeed     = 75,
         .baseSpAttack  = 80,
         .baseSpDefense = 75,
         .genderRatio = MON_MALE,
@@ -3051,7 +3048,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             "Clads itself in the souls of comrades that\n"
             "perished before fulfilling their goals of\n"
             "journeying upstream. No other species in\n"
-            "all Hisui's rivers is Basculegion's equal."),
+            "HOENN's waters is BASCULEGION's equal."),
         FRONT_PIC(BasculegionMale, 64, 64),
         BACK_PIC(BasculegionMale, 64, 64),
         PALETTES(BasculegionMale),
@@ -3062,9 +3059,9 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     {
         BASCULEGION_MISC_INFO,
         .baseHP        = 120,
-        .baseAttack    = 92,
+        .baseAttack    = 90,
         .baseDefense   = 65,
-        .baseSpeed     = 78,
+        .baseSpeed     = 75,
         .baseSpAttack  = 100,
         .baseSpDefense = 75,
         .genderRatio = MON_FEMALE,
@@ -3765,17 +3762,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
 #define YAMASK_MISC_INFO                                            \
         .catchRate = 190,                                           \
         .expYield = 61,                                             \
-        .evYield_Defense = 1,                                       \
         .genderRatio = PERCENT_FEMALE(50),                          \
         .eggCycles = 25,                                            \
         .friendship = STANDARD_FRIENDSHIP,                          \
         .growthRate = GROWTH_MEDIUM_FAST,                           \
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_AMORPHOUS },    \
         .bodyColor = BODY_COLOR_BLACK,                              \
-        .speciesName = _("Yamask"),                                 \
+        .speciesName = _("YAMASK"),                                 \
         .cryId = CRY_YAMASK,                                        \
         .natDexNum = NATIONAL_DEX_YAMASK,                           \
-        .categoryName = _("Spirit"),                                \
+        .categoryName = _("SPIRIT"),                                \
         .height = 5,                                                \
         .weight = 15,                                               \
         .pokemonScale = 432,                                        \
@@ -3868,19 +3864,19 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     [SPECIES_YAMASK_GALARIAN] =
     {
         YAMASK_MISC_INFO,
-        .baseHP        = 38,
+        .baseHP        = 40,
         .baseAttack    = 55,
         .baseDefense   = 85,
         .baseSpeed     = 30,
         .baseSpAttack  = 30,
         .baseSpDefense = 65,
         .types = { TYPE_GROUND, TYPE_GHOST },
-        .abilities = { ABILITY_WANDERING_SPIRIT, ABILITY_NONE },
+        .abilities = { ABILITY_WANDERING_SPIRIT, ABILITY_ANCIENT_GRUDGE },
         .description = COMPOUND_STRING(
-            "A clay slab with cursed engravings\n"
-            "took possession of a Yamask. The\n"
-            "slab is said to be absorbing the\n"
-            "Yamask's dark power."),
+            "A spirit possessing the remains\n"
+            "of a shattered clay object. Touching\n"
+            "it may reveal shattered memories of\n"
+            "a past life."),
         FRONT_PIC(YamaskGalarian, 48, 40),
         .frontPicYOffset = 13,
         .frontAnimFrames = sAnims_YamaskGalarian,
@@ -3893,38 +3889,38 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         ICON(YamaskGalarian, 2),
         LEARNSETS(YamaskGalarian),
         .isGalarianForm = TRUE,
-        .evolutions = EVOLUTION({EVO_SCRIPT_TRIGGER_DMG, 49, SPECIES_RUNERIGUS}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_RUNERIGUS}),
     },
 
     [SPECIES_RUNERIGUS] =
     {
-        .baseHP        = 58,
+        .baseHP        = 75,
         .baseAttack    = 95,
         .baseDefense   = 145,
         .baseSpeed     = 30,
         .baseSpAttack  = 50,
         .baseSpDefense = 105,
-        .types = { TYPE_GROUND, TYPE_GHOST },
+        .types = { TYPE_GROUND, TYPE_GHOST},
         .catchRate = 90,
         .expYield = 169,
-        .evYield_Defense = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 25,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_AMORPHOUS },
-        .abilities = { ABILITY_WANDERING_SPIRIT, ABILITY_NONE },
+        .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_AMORPHOUS},
+        .abilities = {ABILITY_TABLETS_OF_RUIN, ABILITY_ANCIENT_GRUDGE},
         .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("Runerigus"),
+        .speciesName = _("RUNERIGUS"),
         .cryId = CRY_RUNERIGUS,
         .natDexNum = NATIONAL_DEX_RUNERIGUS,
-        .categoryName = _("Grudge"),
+        .categoryName = _("GRUDGE"),
         .height = 16,
         .weight = 666,
         .description = COMPOUND_STRING(
-            "A powerful curse was woven into an ancient\n"
-            "painting. After absorbing the spirit of\n"
-            "a Yamask, the painting began to move."),
+            "A mysterious tablet possessed by a\n"
+            "vengeful ghost. Some speculate the\n"
+            "runes to be a curse, but scholars\n"
+            "have found no agreement so far."),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
@@ -5672,26 +5668,25 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     [SPECIES_JOLTIK] =
     {
         .baseHP        = 50,
-        .baseAttack    = 47,
+        .baseAttack    = 50,
         .baseDefense   = 50,
         .baseSpeed     = 65,
-        .baseSpAttack  = 57,
+        .baseSpAttack  = 60,
         .baseSpDefense = 50,
-        .types = { TYPE_BUG, TYPE_ELECTRIC },
+        .types = { TYPE_BUG, TYPE_ELECTRIC},
         .catchRate = 190,
         .expYield = 64,
-        .evYield_Speed = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG },
-        .abilities = { ABILITY_COMPOUND_EYES, ABILITY_UNNERVE, ABILITY_SWARM },
+        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG},
+        .abilities = {ABILITY_COMPOUND_EYES, ABILITY_SWARM, ABILITY_STATIC},
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("Joltik"),
+        .speciesName = _("JOLTIK"),
         .cryId = CRY_JOLTIK,
         .natDexNum = NATIONAL_DEX_JOLTIK,
-        .categoryName = _("Attaching"),
+        .categoryName = _("ATTACHING"),
         .height = 1,
         .weight = 6,
         .description = COMPOUND_STRING(
@@ -5718,28 +5713,26 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
     [SPECIES_GALVANTULA] =
-    {
-        .baseHP        = 70,
-        .baseAttack    = 77,
+        {.baseHP        = 70,
+        .baseAttack    = 80,
         .baseDefense   = 60,
-        .baseSpeed     = 108,
-        .baseSpAttack  = 97,
+        .baseSpeed     = 110,
+        .baseSpAttack  = 105,
         .baseSpDefense = 60,
-        .types = { TYPE_BUG, TYPE_ELECTRIC },
+        .types = { TYPE_BUG, TYPE_ELECTRIC},
         .catchRate = 75,
         .expYield = 165,
-        .evYield_Speed = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG },
-        .abilities = { ABILITY_COMPOUND_EYES, ABILITY_UNNERVE, ABILITY_SWARM },
+        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG},
+        .abilities = {ABILITY_COMPOUND_EYES, ABILITY_SWARM, ABILITY_ELECTRIC_SURGE},
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("Galvantula"),
+        .speciesName = _("GALVANTULA"),
         .cryId = CRY_GALVANTULA,
         .natDexNum = NATIONAL_DEX_GALVANTULA,
-        .categoryName = _("EleSpider"),
+        .categoryName = _("ELESPIDER"),
         .height = 8,
         .weight = 143,
         .description = COMPOUND_STRING(

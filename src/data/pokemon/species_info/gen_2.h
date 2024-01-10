@@ -2918,25 +2918,24 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .types = { TYPE_NORMAL, TYPE_PSYCHIC },
         .catchRate = 60,
         .expYield = 159,
-        .evYield_SpAttack = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_INNER_FOCUS, ABILITY_EARLY_BIRD, ABILITY_SAP_SIPPER },
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_SAP_SIPPER, ABILITY_LIGHTNING_ROD},
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("Girafarig"),
+        .speciesName = _("GIRAFARIG"),
         .cryId = CRY_GIRAFARIG,
         .natDexNum = NATIONAL_DEX_GIRAFARIG,
-        .categoryName = _("Long Neck"),
+        .categoryName = _("LONG NECK"),
         .height = 15,
         .weight = 415,
         .description = COMPOUND_STRING(
-            "A Girafarig is an herbivore--it eats\n"
-            "grass and tree shoots. While it is eating,\n"
-            "its tail makes chewing and swallowing\n"
-            "motions as if it were also eating."),
+            "The tiny head on GIRAFARIG's tail has\n"
+            "its own brain, and often acts in an\n"
+            "indipendent way, for the little it can.\n"
+            "It yearns for true independence."),
         .pokemonScale = 281,
         .pokemonOffset = 1,
         .trainerScale = 256,
@@ -3737,18 +3736,16 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .baseSpDefense = 75,                                \
         .catchRate = 60,                                    \
         .expYield = 86,                                     \
-        .evYield_Speed = 1,                                 \
-        .itemRare = ITEM_QUICK_CLAW,                        \
         .genderRatio = PERCENT_FEMALE(50),                  \
         .eggCycles = 20,                                    \
         .friendship = 35,                                   \
         .growthRate = GROWTH_MEDIUM_SLOW,                   \
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },  \
         .noFlip = TRUE,                                     \
-        .speciesName = _("Sneasel"),                        \
+        .speciesName = _("SNEASEL"),                        \
         .cryId = CRY_SNEASEL,                               \
         .natDexNum = NATIONAL_DEX_SNEASEL,                  \
-        .categoryName = _("Sharp Claw"),                    \
+        .categoryName = _("SHARP CLAW"),                    \
         .height = 9,                                        \
         .pokemonScale = 413,                                \
         .pokemonOffset = -3,                                \
@@ -3761,14 +3758,14 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     {
         SNEASEL_MISC_INFO,
         .types = { TYPE_DARK, TYPE_ICE },
-        .abilities = { ABILITY_INNER_FOCUS, ABILITY_KEEN_EYE, ABILITY_PICKPOCKET },
+        .abilities = {ABILITY_DEFIANT, ABILITY_OPPORTUNIST},
         .bodyColor = BODY_COLOR_BLACK,
         .weight = 280,
         .description = COMPOUND_STRING(
-            "A Sneasel scales trees by punching its\n"
-            "hooked claws into the bark. It seeks out\n"
-            "unguarded nests and steals eggs for food\n"
-            "while the parents are away."),
+            "SNEASEL is a cunning scavenger POKéMON.\n"
+            "It climb trees with its claws, then steal\n"
+            "eggs from nests for food while the parents\n"
+            "are away."),
         FRONT_PIC(Sneasel, 56, 48),
         FRONT_PIC_FEMALE(Sneasel, 56, 48),
         .frontPicYOffset = 8,
@@ -3781,43 +3778,40 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         PALETTES(Sneasel),
         ICON(Sneasel, 0),
         LEARNSETS(Sneasel),
-        .evolutions = EVOLUTION({EVO_ITEM_HOLD_NIGHT, ITEM_RAZOR_CLAW, SPECIES_WEAVILE},
-                                {EVO_ITEM_NIGHT, ITEM_RAZOR_CLAW, SPECIES_WEAVILE}),
+        .evolutions = EVOLUTION({EVO_ITEM_HOLD, ITEM_RAZOR_CLAW, SPECIES_WEAVILE},
+                                {EVO_ITEM, ITEM_RAZOR_CLAW, SPECIES_WEAVILE}),
     },
 
 #if P_GEN_4_CROSS_EVOS
     [SPECIES_WEAVILE] =
     {
-        .baseHP        = 70,
+       .baseHP        = 70,
         .baseAttack    = 120,
         .baseDefense   = 65,
         .baseSpeed     = 125,
         .baseSpAttack  = 45,
         .baseSpDefense = 85,
-        .types = { TYPE_DARK, TYPE_ICE },
+        .types = { TYPE_DARK, TYPE_ICE},
         .catchRate = 45,
         .expYield = 179,
-        .evYield_Attack = 1,
-        .evYield_Speed = 1,
-        .itemRare = ITEM_QUICK_CLAW,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = 35,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_PICKPOCKET },
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_DEFIANT, ABILITY_OPPORTUNIST},
         .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("Weavile"),
+        .speciesName = _("WEAVILE"),
         .cryId = CRY_WEAVILE,
         .natDexNum = NATIONAL_DEX_WEAVILE,
-        .categoryName = _("Sharp Claw"),
+        .categoryName = _("SHARP CLAW"),
         .height = 11,
         .weight = 340,
         .description = COMPOUND_STRING(
             "They travel in groups of four or five,\n"
-            "leaving signs for one another on trees\n"
-            "and rocks. They bring down their prey\n"
-            "with coordinated attacks."),
+            "but constantly quarrel with each other.\n"
+            "Once they find a prey, they fight it as\n"
+            "much as they fight among themselves."),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,

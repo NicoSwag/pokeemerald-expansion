@@ -1390,6 +1390,10 @@
 	.4byte \sidestatus
 	.endm
 
+	.macro setseaoffire
+	callnative BS_SetFireAll
+	.endm
+
 	.macro trycopycat failInstr:req
 	callnative BS_TryCopycat
 	.4byte \failInstr
@@ -1482,6 +1486,10 @@
 	.macro setremoveterrain failInstr:req
 	callnative BS_SetRemoveTerrain
 	.4byte \failInstr
+	.endm
+
+	.macro removeweather
+	callnative BS_RemoveWeather
 	.endm
 
 	.macro jumpifterrainaffected battler:req, terrainFlags:req, jumpInstr:req

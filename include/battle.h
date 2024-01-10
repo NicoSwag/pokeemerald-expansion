@@ -55,11 +55,13 @@ struct ResourceFlags
 #define RESOURCE_FLAG_FLASH_FIRE        0x1
 #define RESOURCE_FLAG_ROOST             0x2
 #define RESOURCE_FLAG_UNBURDEN          0x4
-#define RESOURCE_FLAG_UNUSED            0x8
+#define RESOURCE_FLAG_DEBRIS_SHIELD          0x8
 #define RESOURCE_FLAG_TRACED            0x10
 #define RESOURCE_FLAG_EMERGENCY_EXIT    0x20
 #define RESOURCE_FLAG_NEUTRALIZING_GAS  0x40
 #define RESOURCE_FLAG_ICE_FACE          0x80
+#define RESOURCE_FLAG_SHIELD_ACTIVATED  0x120
+
 
 struct DisableStruct
 {
@@ -155,6 +157,7 @@ struct ProtectStruct
     u16 disableEjectPack:1;
     u16 statFell:1;
     u16 pranksterElevated:1;
+    u16 tricksterElevated:1;
     u16 quickDraw:1;
     u16 beakBlastCharge:1;
     u16 quash:1;

@@ -2731,28 +2731,27 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpeed     = 60,
         .baseSpAttack  = 35,
         .baseSpDefense = 40,
-        .types = { TYPE_FIGHTING, TYPE_FIGHTING },
+        .types = { TYPE_FIGHTING, TYPE_FIGHTING},
         .catchRate = 75,
         .expYield = 57,
-        .evYield_Attack = 1,
-        .genderRatio = PERCENT_FEMALE(12.5),
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 25,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_NO_EGGS_DISCOVERED, EGG_GROUP_NO_EGGS_DISCOVERED },
-        .abilities = { ABILITY_STEADFAST, ABILITY_INNER_FOCUS, ABILITY_PRANKSTER },
+        .eggGroups = { EGG_GROUP_UNDISCOVERED, EGG_GROUP_UNDISCOVERED},
+        .abilities = {ABILITY_PRANKSTER, ABILITY_MEGA_LAUNCHER},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("Riolu"),
+        .speciesName = _("RIOLU"),
         .cryId = CRY_RIOLU,
         .natDexNum = NATIONAL_DEX_RIOLU,
-        .categoryName = _("Emanation"),
+        .categoryName = _("EMANATION"),
         .height = 7,
         .weight = 202,
         .description = COMPOUND_STRING(
-            "It can discern the physical and emotional\n"
-            "states of people, Pokémon, and other\n"
-            "natural things from the shape of their\n"
-            "aura waves."),
+            "A weak power resides within it, growing\n"
+            "stronger as RIOLU grows older. It can\n"
+            "faintly sense its surroundings through\n"
+            "the power of Aura."),
         .pokemonScale = 365,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -2774,17 +2773,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 #define LUCARIO_MISC_INFO                                       \
         .types = { TYPE_FIGHTING, TYPE_STEEL },                 \
         .catchRate = 45,                                        \
-        .evYield_Attack = 1,                                    \
-        .evYield_SpAttack = 1,                                  \
-        .genderRatio = PERCENT_FEMALE(12.5),                    \
+        .genderRatio = PERCENT_FEMALE(50),                    \
         .eggCycles = 25,                                        \
         .friendship = STANDARD_FRIENDSHIP,                      \
         .growthRate = GROWTH_MEDIUM_SLOW,                       \
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_HUMAN_LIKE }, \
         .bodyColor = BODY_COLOR_BLUE,                           \
-        .speciesName = _("Lucario"),                            \
+        .speciesName = _("LUCARIO"),                            \
         .natDexNum = NATIONAL_DEX_LUCARIO,                      \
-        .categoryName = _("Aura"),                              \
+        .categoryName = _("AURA"),                              \
         .footprint = gMonFootprint_Lucario,                     \
         LEARNSETS(Lucario),                                     \
         .formSpeciesIdTable = sLucarioFormSpeciesIdTable,       \
@@ -2794,21 +2791,21 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
     {
         LUCARIO_MISC_INFO,
         .baseHP        = 70,
-        .baseAttack    = 110,
-        .baseDefense   = 70,
+        .baseAttack    = 115,
+        .baseDefense   = 80,
         .baseSpeed     = 90,
         .baseSpAttack  = 115,
-        .baseSpDefense = 70,
+        .baseSpDefense = 80,
         .expYield = 184,
-        .abilities = { ABILITY_STEADFAST, ABILITY_INNER_FOCUS, ABILITY_JUSTIFIED },
+        .abilities = {ABILITY_JUSTIFIED, ABILITY_MEGA_LAUNCHER},
         .cryId = CRY_LUCARIO,
         .height = 12,
         .weight = 540,
         .description = COMPOUND_STRING(
-            "It understands human speech.\n"
-            "It is said that no foe can remain invisible\n"
-            "to Lucario, since it can detect Auras.\n"
-            "Even foes it could not otherwise see."),
+            "LUCARIO has mastered the power of Aura.\n"
+            "The more damage it takes during a fight,\n"
+            "the more fearsome its power becomes.\n"
+            "It's able to sense human emotions."),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,

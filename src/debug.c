@@ -4332,6 +4332,9 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_VS_GIRATINA) \
     X(MUS_VS_ULTRA_BEAST) \
     X(MUS_VS_DEVON) \
+    X(MUS_VS_INTENSE) \
+    X(MUS_VS_JAZZY) \
+    X(MUS_VS_HACKERS) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \

@@ -1264,6 +1264,9 @@ SECTIONS {
         sound/songs/midi/mus_vs_giratina.o(.rodata);
         sound/songs/midi/mus_vs_ultra_beast.o(.rodata);
         sound/songs/midi/mus_vs_devon.o(.rodata);
+        sound/songs/midi/mus_vs_intense.o(.rodata);
+        sound/songs/midi/mus_vs_jazzy.o(.rodata);
+        sound/songs/midi/mus_vs_hackers.o(.rodata);
 
 
 

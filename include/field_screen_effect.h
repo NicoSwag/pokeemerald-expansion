@@ -10,6 +10,7 @@ void FadeInFromWhite(void);
 void FieldCB_ContinueScriptUnionRoom(void);
 void FieldCB_ContinueScriptHandleMusic(void);
 void FieldCB_ContinueScript(void);
+void SetTorchEffect(s32 centerX, s32 centeryY, s32 radius);
 void Task_ReturnToFieldRecordMixing(u8 taskId);
 void FieldCB_ReturnToFieldCableLink(void);
 void FieldCB_ReturnToFieldWirelessLink(void);

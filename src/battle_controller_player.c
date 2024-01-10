@@ -7,10 +7,8 @@
 #include "battle_interface.h"
 #include "battle_message.h"
 #include "battle_setup.h"
-#include "battle_ai_util.h"
-#include "constants/battle_ai.h"
 #include "battle_tv.h"
-#include "battle_util.h"
+#include"battle_util.h"
 #include "battle_z_move.h"
 #include "bg.h"
 #include "data.h"
@@ -34,6 +32,7 @@
 #include "text.h"
 #include "util.h"
 #include "window.h"
+#include "constants/abilities.h"
 #include "constants/battle_anim.h"
 #include "constants/battle_move_effects.h"
 #include "constants/hold_effects.h"
@@ -43,9 +42,6 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "constants/rgb.h"
-#include "menu.h"
-#include "pokemon_summary_screen.h"
-
 static void PlayerBufferExecCompleted(u32 battler);
 static void PlayerHandleLoadMonSprite(u32 battler);
 static void PlayerHandleSwitchInAnim(u32 battler);
@@ -106,28 +102,36 @@ static const u16 sSplitIcons_Pal[] = INCBIN_U16("graphics/battle_interface/split
 static const u8 sSplitIcons_Gfx[] = INCBIN_U8("graphics/battle_interface/split_icons_battle.4bpp");
 
 #define X UQ_4_12
-static const u16 sTypeEffectivenessTable[NUMBER_OF_MON_TYPES][NUMBER_OF_MON_TYPES] =
+static const uq4_12_t sTypeEffectivenessTable[NUMBER_OF_MON_TYPES][NUMBER_OF_MON_TYPES] =
 {
-	//   normal  fight   flying  poison  ground  rock    bug     ghost   steel   mystery fire    water   grass  electric psychic ice     dragon  dark    fairy
-		{X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // normal
-		{X(2.0), X(1.0), X(0.5), X(0.5), X(1.0), X(2.0), X(0.5), X(0.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(0.5)}, // fight
-		{X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // flying
-		{X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(0.5), X(1.0), X(0.5), X(0.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0)}, // poison
-		{X(1.0), X(1.0), X(0.0), X(2.0), X(1.0), X(2.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // ground
-		{X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0)}, // rock
-		{X(1.0), X(0.5), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0), X(1.0)}, // bug
-		{X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0)}, // ghost
-		{X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0)}, // steel
-		{X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // mystery
-		{X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0)}, // fire
-		{X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // water
-		{X(1.0), X(1.0), X(0.5), X(0.5), X(2.0), X(2.0), X(0.5), X(1.0), X(0.5), X(1.0), X(0.5), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // grass
-		{X(1.0), X(1.0), X(2.0), X(1.0), X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // electric
-		{X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(0.0), X(1.0)}, // psychic
-		{X(1.0), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0)}, // ice
-		{X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(0.0)}, // dragon
-		{X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(0.5)}, // dark
-		{X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0)}, // fairy
+//   normal  fight   flying  poison  ground  rock    bug     ghost   steel   mystery fire    water   grass  electric psychic ice     dragon  dark    fairy
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // normal
+    {X(2.0), X(1.0), X(0.5), X(0.5), X(1.0), X(2.0), X(0.5), X(0.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(0.5)}, // fight
+    {X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // flying
+    {X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(0.5), X(1.0), X(0.5), X(0.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0)}, // poison
+    {X(1.0), X(1.0), X(0.0), X(2.0), X(1.0), X(2.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // ground
+    {X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0)}, // rock
+    {X(1.0), X(0.5), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0), X(1.0)}, // bug
+    #if B_STEEL_RESISTANCES >= GEN_6
+    {X(0.0), X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0)}, // ghost
+    #else
+    {X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0)}, // ghost
+    #endif
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0)}, // steel
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // mystery
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0)}, // fire
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // water
+    {X(1.0), X(1.0), X(0.5), X(0.5), X(2.0), X(2.0), X(0.5), X(1.0), X(0.5), X(1.0), X(0.5), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // grass
+    {X(1.0), X(1.0), X(2.0), X(1.0), X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // electric
+    {X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(0.0), X(1.0)}, // psychic
+    {X(1.0), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0)}, // ice
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(0.0)}, // dragon
+    #if B_STEEL_RESISTANCES >= GEN_6
+    {X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(0.5)}, // dark
+    #else
+    {X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(0.5)}, // dark
+    #endif
+    {X(1.0), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0)}, // fairy
 };
 #undef X
 static void ReloadMoveNames(u32 battler);
@@ -461,10 +465,160 @@ static void HandleInputChooseAction(u32 battler)
 #endif
 }
 
+static void MulModifier(u16 *modifier, u16 val)
+{
+	*modifier = UQ_4_12_TO_INT((*modifier * val) + UQ_4_12_ROUND);
+}
+
+
+u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId, u32 battler)
+{
+    u32 battlerAtk = battler;
+    u32 battlerDef = BATTLE_OPPOSITE(battlerAtk);
+    u32 defAbility = GetBattlerAbility(battlerDef);
+	bool8 isInverse = (B_FLAG_INVERSE_BATTLE != 0 && FlagGet(B_FLAG_INVERSE_BATTLE)) ? TRUE : FALSE;
+ 
+	u16 mod = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type][gBattleMons[targetId].type1];
+    u16 mod2 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type][gBattleMons[targetId].type2];
+	u16 mod3 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type1];
+    u16 mod4 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type2];
+    u16 attackingMove = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].power >= 1;
+ 
+	
+    if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].power >= 1)
+    {
+        if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
+	    {
+		    MulModifier(&mod, mod2);
+        }
+ 
+	    if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_TWO_TYPED_MOVE)
+	    {
+		    MulModifier(&mod, mod3);
+
+		    if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
+		    {
+			    MulModifier(&mod, mod4);
+		    }
+	    }
+    }
+    else
+		return 10;
+ 
+//if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].power == 0)
+ 
+	// 10 - normal effectiveness / normal
+	// 24 - super effective / green
+	// 25 - not very effective / black
+	// 26 - no effect / white
+
+
+    // Grass-types are immune to powder moves and Leech Seed
+    if (((gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].powderMove == TRUE) || (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_LEECH_SEED)) && IS_BATTLER_OF_TYPE(targetId, TYPE_GRASS))
+    {
+        return 26;
+    }
+    else if(gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_CONFUSE &&  IS_BATTLER_OF_TYPE(targetId, TYPE_BUG))
+        return 26;
+    else if(gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect== (EFFECT_ENCORE || EFFECT_TAUNT || EFFECT_TORMENT) &&  IS_BATTLER_OF_TYPE(targetId, TYPE_PSYCHIC))
+        return 26;
+    
+    else
+    {
+        if (mod == UQ_4_12(1.0))
+        {
+		    return 10;
+        }
+        else if (mod == UQ_4_12(0.0))
+        {
+		    if(isInverse)
+			    return 24;
+		    else
+			    return 26;
+	    }
+	    else if (mod <= UQ_4_12(0.5))
+        {
+		    if(isInverse)
+		        return 24;
+		    else
+			    return 25;
+	    }
+	    else if (mod >= UQ_4_12(2.0))
+        {
+		    if(isInverse)
+			    return 25;
+		    else
+			    return 24;
+	    }
+    }
+}
+
+
+
+
+static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId, u32 battler)
+{
+	u8 *txtPtr;
+	struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[battler][4]);
+
+	txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
+	txtPtr[0] = EXT_CTRL_CODE_BEGIN;
+	txtPtr++;
+	txtPtr[0] = 6;
+	txtPtr++;
+	txtPtr[0] = 1;
+	txtPtr++;
+
+	StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type]);
+	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, targetId, battler));
+}
+
+
+
+static void MoveSelectionDisplayMoveType(u32 battler)
+{
+    u8 *txtPtr;
+    u8 type;
+    u32 itemId;
+    struct Pokemon *mon;
+    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
+
+    txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
+    *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
+    *(txtPtr)++ = EXT_CTRL_CODE_FONT;
+    *(txtPtr)++ = FONT_NORMAL;
+
+    if (moveInfo->moves[gMoveSelectionCursor[battler]] == MOVE_IVY_CUDGEL)
+    {
+        mon = &GetSideParty(GetBattlerSide(battler))[gBattlerPartyIndexes[battler]];
+        itemId = GetMonData(mon, MON_DATA_HELD_ITEM);
+
+        if (ItemId_GetHoldEffect(itemId) == HOLD_EFFECT_MASK)
+            type = ItemId_GetSecondaryId(itemId);
+        else
+            type = gBattleMoves[MOVE_IVY_CUDGEL].type;
+    }
+    else
+        type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
+
+    StringCopy(txtPtr, gTypeNames[type]);
+    if(IsDoubleBattle() == FALSE)
+        BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, 1, battler));
+    else
+        BattlePutTextOnWindow(gDisplayedStringBattle, 10);
+    if (B_PSS_SPLIT_ICONS == TRUE)
+    {
+        MoveSelectionDisplaySplitIcon(battler);
+    }
+}
+
+
+
 static void HandleInputChooseTarget(u32 battler)
 {
     s32 i;
     static const u8 identities[MAX_BATTLERS_COUNT] = {B_POSITION_PLAYER_LEFT, B_POSITION_PLAYER_RIGHT, B_POSITION_OPPONENT_RIGHT, B_POSITION_OPPONENT_LEFT};
+    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
     u16 move = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_MOVE1 + gMoveSelectionCursor[battler]);
     u16 moveTarget = GetBattlerMoveTargetType(battler, move);
 
@@ -482,6 +636,7 @@ static void HandleInputChooseTarget(u32 battler)
 
     if (JOY_NEW(A_BUTTON))
     {
+        BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, gMoveSelectionCursor[battler], battler));
         PlaySE(SE_SELECT);
         gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_HideAsMoveTarget;
         if (gBattleStruct->mega.playerSelect)
@@ -504,6 +659,7 @@ static void HandleInputChooseTarget(u32 battler)
         gBattlerControllerFuncs[battler] = HandleInputChooseMove;
         DoBounceEffect(battler, BOUNCE_HEALTHBOX, 7, 1);
         DoBounceEffect(battler, BOUNCE_MON, 7, 1);
+            BattlePutTextOnWindow(gDisplayedStringBattle, 10);
         EndBounceEffect(gMultiUsePlayerCursor, BOUNCE_HEALTHBOX);
     }
     else if (JOY_NEW(DPAD_LEFT | DPAD_UP))
@@ -548,7 +704,7 @@ static void HandleInputChooseTarget(u32 battler)
                     i++;
                     break;
                 }
-
+                        MoveSelectionDisplayMoveTypeDoubles(GetBattlerPosition(gMultiUsePlayerCursor), battler);
                 if (gAbsentBattlerFlags & gBitTable[gMultiUsePlayerCursor]
                  || !CanTargetBattler(battler, gMultiUsePlayerCursor, move))
                     i = 0;
@@ -598,7 +754,7 @@ static void HandleInputChooseTarget(u32 battler)
                     i++;
                     break;
                 }
-
+                       MoveSelectionDisplayMoveTypeDoubles(GetBattlerPosition(gMultiUsePlayerCursor), battler); 
                 if (gAbsentBattlerFlags & gBitTable[gMultiUsePlayerCursor]
                  || !CanTargetBattler(battler, gMultiUsePlayerCursor, move))
                     i = 0;
@@ -606,6 +762,7 @@ static void HandleInputChooseTarget(u32 battler)
         }
 
         gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_ShowAsMoveTarget;
+
     }
 }
 
@@ -802,6 +959,7 @@ static void HandleInputChooseMove(u32 battler)
         {
         case 0:
         default:
+        	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, gMoveSelectionCursor[battler], battler));
             if (gBattleStruct->mega.playerSelect)
                 BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | RET_MEGA_EVOLUTION | (gMultiUsePlayerCursor << 8));
             else if (gBattleStruct->burst.playerSelect)
@@ -815,6 +973,7 @@ static void HandleInputChooseMove(u32 battler)
             PlayerBufferExecCompleted(battler);
             break;
         case 1:
+        	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, gMoveSelectionCursor[battler], battler));
             gBattlerControllerFuncs[battler] = HandleInputChooseTarget;
 
             if (moveTarget & (MOVE_TARGET_USER | MOVE_TARGET_USER_OR_SELECTED))
@@ -826,9 +985,11 @@ static void HandleInputChooseMove(u32 battler)
             gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_ShowAsMoveTarget;
             break;
         case 2:
+        	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, gMoveSelectionCursor[battler], battler));
             gBattlerControllerFuncs[battler] = HandleInputShowTargets;
             break;
         case 3: // Entire field
+        	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, gMoveSelectionCursor[battler], battler));
             gBattlerControllerFuncs[battler] = HandleInputShowEntireFieldTargets;
             break;
         }
@@ -1788,39 +1949,6 @@ static void MoveSelectionDisplayPpNumber(u32 battler)
 }
 
 
-static void MoveSelectionDisplayMoveType(u32 battler)
-{
-    u8 *txtPtr;
-    u8 type;
-    u32 itemId;
-    struct Pokemon *mon;
-    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
-
-    txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
-    *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
-    *(txtPtr)++ = EXT_CTRL_CODE_FONT;
-    *(txtPtr)++ = FONT_NORMAL;
-
-    if (moveInfo->moves[gMoveSelectionCursor[battler]] == MOVE_IVY_CUDGEL)
-    {
-        mon = &GetSideParty(GetBattlerSide(battler))[gBattlerPartyIndexes[battler]];
-        itemId = GetMonData(mon, MON_DATA_HELD_ITEM);
-
-        if (ItemId_GetHoldEffect(itemId) == HOLD_EFFECT_MASK)
-            type = ItemId_GetSecondaryId(itemId);
-        else
-            type = gBattleMoves[MOVE_IVY_CUDGEL].type;
-    }
-    else
-        type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
-
-    StringCopy(txtPtr, gTypeNames[type]);
-    BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
-    if (B_PSS_SPLIT_ICONS == TRUE)
-    {
-        MoveSelectionDisplaySplitIcon(battler);
-    }
-}
 
 void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
 {
