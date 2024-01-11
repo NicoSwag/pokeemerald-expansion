@@ -929,7 +929,7 @@ Route110_Text_AquaWasHere:
 
 Route110_Text_Route103Sign:
 	.string "ROUTE 110\n"
-	.string "{LEFT_ARROW} ROUTE 103$"
+	.string "{LEFT_ARROW} PILGRIM'S PASSAGE$"
 
 Route110_Text_SeasideParkingSign:
 	.string "SEASIDE PARKING$"

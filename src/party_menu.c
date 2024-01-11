@@ -183,7 +183,7 @@ enum {
 };
 
 enum {
-    // Window ids 0-5 are implicitly assigned to each party pokemon in InitPartyMenuBoxes
+    // Window ids 0-5 are implicitly assigned to each party Pokémon in InitPartyMenuBoxes
     WIN_MSG = PARTY_SIZE,
 };
 
@@ -4365,6 +4365,7 @@ static void LoadPartyMenuPokeballGfx(void)
     LoadCompressedSpriteSheet(&sSpriteSheet_MenuPokeball);
     LoadCompressedSpriteSheet(&sSpriteSheet_MenuPokeballSmall);
     LoadCompressedSpritePalette(&sSpritePalette_MenuPokeball);
+    
 }
 
 static void CreatePartyMonStatusSprite(struct Pokemon *mon, struct PartyMenuBox *menuBox)
@@ -7035,7 +7036,7 @@ static bool8 TrySwitchInPokemon(void)
     u8 newSlot;
     u8 i;
 
-    // In a multi battle, slots 1, 4, and 5 are the partner's pokemon
+    // In a multi battle, slots 1, 4, and 5 are the partner's Pokémon
     if (IsMultiBattle() == TRUE && (slot == 1 || slot == 4 || slot == 5))
     {
         StringCopy(gStringVar1, GetTrainerPartnerName());

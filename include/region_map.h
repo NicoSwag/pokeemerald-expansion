@@ -87,6 +87,7 @@ struct RegionMapLocation
     u8 width;
     u8 height;
     const u8 *name;
+    const u8 *description;
 };
 
 // Exported RAM declarations

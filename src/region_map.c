@@ -1602,6 +1602,8 @@ u8 *GetMapName(u8 *dest, u16 regionMapId, u16 padLength)
     return str;
 }
 
+
+
 // TODO: probably needs a better name
 u8 *GetMapNameGeneric(u8 *dest, u16 mapSecId)
 {

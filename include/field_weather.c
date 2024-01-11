@@ -80,7 +80,7 @@ static const u16 sDroughtWeatherColors[][0x1000] = {
 // while code in other field weather files accesses gWeather through this pointer.
 // This is likely the result of compiler optimization, since using the pointer in
 // this file produces the same result as accessing gWeather directly.
-struct Weather *const gWeatherPtr = &gWeather;
+
 
 static const struct WeatherCallbacks sWeatherFuncs[] =
 {

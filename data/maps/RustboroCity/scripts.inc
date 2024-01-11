@@ -1355,9 +1355,7 @@ RustboroCity_Text_DevonCorpBranchOfficeSign:
 	.string "and authorized personnel.”$"
 
 RustboroCity_Text_CitySign:
-	.string "RUSTBORO CITY\p"
-	.string "“The city probing the integration of\n"
-	.string "nature and science.”$"
+	.string "RUSTBORO CITY$"
 
 RustboroCity_Text_TrainersSchoolSign:
 	.string "TRAINER'S SCHOOL LECTURE HALL\p"

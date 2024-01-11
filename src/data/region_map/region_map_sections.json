@@ -11,6 +11,7 @@
     {
       "map_section": "MAPSEC_OLDALE_TOWN",
       "name": "OLDALE TOWN",
+      "description": "This is a test.",
       "x": 4,
       "y": 9,
       "width": 1,
@@ -138,7 +139,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_101",
-      "name": "ROUTE 101",
+      "name": "RAINTREE GROVE",
       "x": 4,
       "y": 10,
       "width": 1,
@@ -146,7 +147,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_102",
-      "name": "ROUTE 102",
+      "name": "SEVIPER RIVER",
       "x": 2,
       "y": 9,
       "width": 2,
@@ -154,7 +155,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_103",
-      "name": "ROUTE 103",
+      "name": "PILGRIM'S PASSAGE",
       "x": 5,
       "y": 8,
       "width": 3,
@@ -162,7 +163,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_104",
-      "name": "UPPER ROUTE 104",
+      "name": "ORAN LAKE",
       "x": 0,
       "y": 7,
       "width": 1,
@@ -250,7 +251,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_115",
-      "name": "ROUTE 115",
+      "name": "ENIGMA HILL",
       "x": 0,
       "y": 2,
       "width": 1,
@@ -1706,7 +1707,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_104_LOWER",
-      "name": "LOWER ROUTE 104",
+      "name": "CLAMPERL REEF",
       "x": 0,
       "y": 9,
       "width": 1,

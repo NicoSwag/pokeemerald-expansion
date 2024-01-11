@@ -492,7 +492,7 @@ Route103_EventScript_Isabelle::
 
 Route103_Text_MayRoute103Pokemon:
 	.string "MAY: Let's see… The POKéMON found\n"
-	.string "on ROUTE 103 include…$"
+	.string "on PILGRIM'S PASSAGE include…$"
 
 Route103_Text_MayLetsBattle:
 	.string "Oh, {PLAYER}{KUN}, it's you.\p"
@@ -525,7 +525,8 @@ Route103_Text_MayTimeToHeadBack:
 
 Route103_Text_BrendanRoute103Pokemon:
 	.string "BRENDAN: Okay, so it's this one and\n"
-	.string "that one that live on ROUTE 103…$"
+	.string "that one that live on PILGRIM'S\l"
+	.string "PASSAGE…$"
 
 Route103_Text_BrendanLetsBattle:
 	.string "Oh, {PLAYER}{KUN}, it's you.\p"
@@ -580,7 +581,7 @@ Route103_Text_ShortcutToOldale:
 	.string "Fufufu, that's useful, isn't it?$"
 
 Route103_Text_RouteSign:
-	.string "ROUTE 103\n"
+	.string "PILGRIM'S PASSAGE\n"
 	.string "{DOWN_ARROW} OLDALE TOWN$"
 
 Route103_Text_Volcanic_Rocks:

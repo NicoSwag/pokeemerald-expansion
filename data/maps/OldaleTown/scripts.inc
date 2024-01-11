@@ -565,8 +565,7 @@ OldaleTown_Text_BrendanLetsGoBack:
 	.string "{PLAYER}, hurry up!$"
 
 OldaleTown_Text_TownSign:
-	.string "OLDALE TOWN\n"
-	.string "“Where things start off scarce.”$"
+	.string "OLDALE TOWN$"
 
 OldaleTown_Text_WantToHelpLedyba:
 	.string "An upside down LEDYBA is lying on\n"
