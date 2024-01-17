@@ -5019,6 +5019,13 @@ const u8 gMonFootprint_QuestionMark[] = INCBIN_U8("graphics/pokemon/question_mar
     const u32 gMonShinyPalette_Vespiquen[] = INCBIN_U32("graphics/pokemon/vespiquen/shiny.gbapal.lz");
     const u8 gMonIcon_Vespiquen[] = INCBIN_U8("graphics/pokemon/vespiquen/icon.4bpp");
     const u8 gMonFootprint_Vespiquen[] = INCBIN_U8("graphics/pokemon/vespiquen/footprint.1bpp");
+
+    const u32 gMonFrontPic_Bediguard[] = INCBIN_U32("graphics/pokemon/bediguard/anim_front.4bpp.lz");
+    const u32 gMonPalette_Bediguard[] = INCBIN_U32("graphics/pokemon/bediguard/normal.gbapal.lz");
+    const u32 gMonBackPic_Bediguard[] = INCBIN_U32("graphics/pokemon/bediguard/back.4bpp.lz");
+    const u32 gMonShinyPalette_Bediguard[] = INCBIN_U32("graphics/pokemon/bediguard/shiny.gbapal.lz");
+    const u8 gMonIcon_Bediguard[] = INCBIN_U8("graphics/pokemon/bediguard/icon.4bpp");
+    const u8 gMonFootprint_Bediguard[] = INCBIN_U8("graphics/pokemon/bediguard/footprint.1bpp");
 #endif //P_FAMILY_COMBEE
 
 #if P_FAMILY_PACHIRISU

@@ -1128,6 +1128,7 @@ gCryTable::
 .if P_FAMILY_COMBEE == TRUE
 	cry Cry_Combee
 	cry Cry_Vespiquen
+	cry Cry_Bediguard
 .endif @ P_FAMILY_COMBEE
 .if P_FAMILY_PACHIRISU == TRUE
 	cry Cry_Pachirisu
@@ -3534,6 +3535,7 @@ gCryTable_Reverse::
 .if P_FAMILY_COMBEE == TRUE
 	cry_reverse Cry_Combee
 	cry_reverse Cry_Vespiquen
+	cry_reverse Cry_Bediguard
 .endif @ P_FAMILY_COMBEE
 .if P_FAMILY_PACHIRISU == TRUE
 	cry_reverse Cry_Pachirisu

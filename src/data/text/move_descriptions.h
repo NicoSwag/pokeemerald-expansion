@@ -1870,6 +1870,10 @@ static const u8 sDefendOrderDescription[] = _(
     "Raises Defense and Sp. Def\n"
     "with a living shield.");
 
+static const u8 sSafetyCourseDescription[] = _(
+    "Teaches self-defense,\n"
+    "increasing Def. and Sp. Def.");
+
 static const u8 sHealOrderDescription[] = _(
     "The user's underlings show\n"
     "up to heal half its max HP.");
@@ -3900,6 +3904,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_AQUA_JET - 1] = sAquaJetDescription,
     [MOVE_ATTACK_ORDER - 1] = sAttackOrderDescription,
     [MOVE_DEFEND_ORDER - 1] = sDefendOrderDescription,
+    [MOVE_SAFETY_COURSE - 1] = sSafetyCourseDescription,
     [MOVE_HEAL_ORDER - 1] = sHealOrderDescription,
     [MOVE_HEAD_SMASH - 1] = sHeadSmashDescription,
     [MOVE_DOUBLE_HIT - 1] = sDoubleHitDescription,

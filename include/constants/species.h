@@ -1671,8 +1671,9 @@
 #define SPECIES_1025                                    GEN9_START + 146
 #define SPECIES_GOROCHU                                 GEN9_START + 147
 #define SPECIES_LUXWAN                                 GEN9_START + 148
+#define SPECIES_BEDIGUARD                                 GEN9_START + 149
 
-#define PLACEHOLDER_START                               SPECIES_LUXWAN
+#define PLACEHOLDER_START                               SPECIES_BEDIGUARD
 // XD: Gale of Darkness
 #define SPECIES_LUGIA_SHADOW                            PLACEHOLDER_START + 1
 // Diamond & Pearl

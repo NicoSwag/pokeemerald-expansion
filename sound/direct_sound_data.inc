@@ -3025,6 +3025,9 @@ Cry_Combee::
 	.align 2
 Cry_Vespiquen::
 	.incbin "sound/direct_sound_samples/cries/vespiquen.bin"
+
+Cry_Bediguard::
+	.incbin "sound/direct_sound_samples/cries/combee.bin"
 .endif @ P_FAMILY_COMBEE
 
 .if P_FAMILY_PACHIRISU == TRUE

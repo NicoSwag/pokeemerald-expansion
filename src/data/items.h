@@ -1831,12 +1831,14 @@ const struct Item gItems[] =
 
     [ITEM_HONEY] =
     {
-        .name = _("Honey"),
-        .price = 300,
+        .name = _("HONEY"),
+        .price = 1,
         .description = sHoneyDesc,
         .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_FIELD,
-        .fieldUseFunc = ItemUseOutOfBattle_Honey,
+        .holdEffect = HOLD_EFFECT_HONEY,
+        .holdEffectParam = 25,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 30,
     },
 

@@ -879,6 +879,7 @@ gBattleAnims_Moves::
 	.4byte Move_PIERCING_WAIL
 	.4byte Move_MAGICAL_WHIP
 	.4byte Move_THORNY_BUSH
+	.4byte Move_SAFETY_COURSE
 
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
@@ -26226,6 +26227,9 @@ Move_MAGICAL_WHIP:
 
 Move_THORNY_BUSH:
 	goto Move_NEEDLE_ARM
+
+Move_SAFETY_COURSE:
+	goto Move_DEFEND_ORDER
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT

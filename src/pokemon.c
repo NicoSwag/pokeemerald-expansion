@@ -3936,6 +3936,10 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 if (MonKnowsMove(mon, evolutions[i].param))
                     targetSpecies = evolutions[i].targetSpecies;
                 break;
+                case EVO_MOVE_MALE:
+                if (MonKnowsMove(mon, evolutions[i].param) && GetMonGender(mon) == MON_MALE)
+                    targetSpecies = evolutions[i].targetSpecies;
+                break;
             case EVO_MOVE_TWO_SEGMENT:
                 if (MonKnowsMove(mon, evolutions[i].param) && (personality % 100) != 0)
                     targetSpecies = evolutions[i].targetSpecies;

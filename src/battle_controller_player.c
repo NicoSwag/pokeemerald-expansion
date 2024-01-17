@@ -570,7 +570,7 @@ static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId, u32 battler)
 	txtPtr++;
 
 	StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type]);
-	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, targetId, battler));
+	BattlePutTextOnWindow(gDisplayedStringBattle, 10);
 }
 
 
@@ -602,10 +602,7 @@ static void MoveSelectionDisplayMoveType(u32 battler)
         type = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type;
 
     StringCopy(txtPtr, gTypeNames[type]);
-    if(IsDoubleBattle() == FALSE)
-        BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, 1, battler));
-    else
-        BattlePutTextOnWindow(gDisplayedStringBattle, 10);
+    BattlePutTextOnWindow(gDisplayedStringBattle, 10);
     if (B_PSS_SPLIT_ICONS == TRUE)
     {
         MoveSelectionDisplaySplitIcon(battler);
@@ -636,7 +633,6 @@ static void HandleInputChooseTarget(u32 battler)
 
     if (JOY_NEW(A_BUTTON))
     {
-        BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, gMoveSelectionCursor[battler], battler));
         PlaySE(SE_SELECT);
         gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_HideAsMoveTarget;
         if (gBattleStruct->mega.playerSelect)
@@ -959,7 +955,6 @@ static void HandleInputChooseMove(u32 battler)
         {
         case 0:
         default:
-        	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, gMoveSelectionCursor[battler], battler));
             if (gBattleStruct->mega.playerSelect)
                 BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, gMoveSelectionCursor[battler] | RET_MEGA_EVOLUTION | (gMultiUsePlayerCursor << 8));
             else if (gBattleStruct->burst.playerSelect)
@@ -973,7 +968,6 @@ static void HandleInputChooseMove(u32 battler)
             PlayerBufferExecCompleted(battler);
             break;
         case 1:
-        	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, gMoveSelectionCursor[battler], battler));
             gBattlerControllerFuncs[battler] = HandleInputChooseTarget;
 
             if (moveTarget & (MOVE_TARGET_USER | MOVE_TARGET_USER_OR_SELECTED))
@@ -985,11 +979,9 @@ static void HandleInputChooseMove(u32 battler)
             gSprites[gBattlerSpriteIds[gMultiUsePlayerCursor]].callback = SpriteCB_ShowAsMoveTarget;
             break;
         case 2:
-        	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, gMoveSelectionCursor[battler], battler));
             gBattlerControllerFuncs[battler] = HandleInputShowTargets;
             break;
         case 3: // Entire field
-        	BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, gMoveSelectionCursor[battler], battler));
             gBattlerControllerFuncs[battler] = HandleInputShowEntireFieldTargets;
             break;
         }

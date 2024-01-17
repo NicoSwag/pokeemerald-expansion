@@ -5105,6 +5105,18 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     effect++;
                 }
                 break;
+            case ABILITY_HONEY_GATHER:
+                gBattlerTarget = BATTLE_PARTNER(battler);
+                if(IsBattlerAlive(gBattlerTarget)
+                && gBattleMons[gBattlerTarget].hp <  gBattleMons[gBattlerTarget].maxHP){
+                BattleScriptPushCursorAndCallback(BattleScript_HoneyGatherActivates);
+                    gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerTarget) /8;
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                    gBattleMoveDamage *= -1;
+                    effect++;
+                }
+                break;
             case ABILITY_DRY_SKIN:
                 if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN))
                     goto SOLAR_POWER_HP_DROP;
@@ -6843,6 +6855,7 @@ enum
     ITEM_PP_CHANGE,
     ITEM_HP_CHANGE,
     ITEM_STATS_CHANGE,
+    ITEM_HP_CHANGE_ALLY,
 };
 
 bool32 IsBattlerTerrainAffected(u32 battler, u32 terrainFlag)
@@ -7276,6 +7289,33 @@ static u8 ItemHealHp(u32 battler, u32 itemId, bool32 end2, bool32 percentHeal)
     return 0;
 }
 
+
+static u8 ItemHealHpBoth(u32 battler, u32 itemId, bool32 end2, bool32 percentHeal)
+{
+    gBattlerTarget = battler;
+    if(gBattleMons[battler].hp>gBattleMons[BATTLE_PARTNER(battler)].hp && IsBattlerAlive(BATTLE_PARTNER(battler)))
+        gBattlerAttacker = BATTLE_PARTNER(battler);
+    
+    if (!(gBattleScripting.overrideBerryRequirements && gBattleMons[gBattlerAttacker].hp == gBattleMons[gBattlerAttacker].maxHP)
+        && (B_HEAL_BLOCKING < GEN_5 || !(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK))
+        && HasEnoughHpToEatBerry(gBattlerAttacker, 2, itemId))
+    {
+        if (percentHeal)
+            gBattleMoveDamage = (GetNonDynamaxMaxHP(gBattlerAttacker) * GetBattlerItemHoldEffectParam(gBattlerTarget, itemId) / 100) * -1;
+        else
+            gBattleMoveDamage = GetBattlerItemHoldEffectParam(gBattlerTarget, itemId) * -1;
+
+        // check ripen
+        if (ItemId_GetPocket(itemId) == POCKET_BERRIES && GetBattlerAbility(gBattlerAttacker) == ABILITY_RIPEN)
+            gBattleMoveDamage *= 2;
+
+        gBattlerAbility = gBattlerAttacker;    // in SWSH, berry juice shows ability pop up but has no effect. This is mimicked here
+            BattleScriptExecute(BattleScript_ItemHealHP_RemoveItemEnd3);
+        return ITEM_HP_CHANGE_ALLY;
+    }
+    return 0;
+}
+
 static bool32 UnnerveOn(u32 battler, u32 itemId)
 {
     if (ItemId_GetPocket(itemId) == POCKET_BERRIES && IsUnnerveAbilityOnOpposingSide(battler))
@@ -7373,6 +7413,10 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_RESTORE_HP:
         if (B_HP_BERRIES >= GEN_4)
             effect = ItemHealHp(battler, gLastUsedItem, FALSE, FALSE);
+        break;
+    case HOLD_EFFECT_HONEY:
+            if (B_BERRIES_INSTANT >= GEN_4)
+            effect = ItemHealHpBoth(battler, gLastUsedItem, TRUE, TRUE);
         break;
     case HOLD_EFFECT_RESTORE_PCT_HP:
         if (B_BERRIES_INSTANT >= GEN_4)
@@ -7809,6 +7853,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 if (B_BERRIES_INSTANT >= GEN_4)
                     effect = ItemHealHp(battler, gLastUsedItem, TRUE, FALSE);
                 break;
+            case HOLD_EFFECT_HONEY:
+                if (B_BERRIES_INSTANT >= GEN_4)
+                    effect = ItemHealHpBoth(battler, gLastUsedItem, TRUE, TRUE);
+                break;
             case HOLD_EFFECT_RESTORE_PCT_HP:
                 if (B_BERRIES_INSTANT >= GEN_4)
                     effect = ItemHealHp(battler, gLastUsedItem, TRUE, TRUE);
@@ -7900,6 +7948,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_RESTORE_HP:
                 if (!moveTurn)
                     effect = ItemHealHp(battler, gLastUsedItem, TRUE, FALSE);
+                break;
+            case HOLD_EFFECT_HONEY:
+                if (!moveTurn)
+                    effect = ItemHealHpBoth(battler, gLastUsedItem, TRUE, TRUE);
                 break;
             case HOLD_EFFECT_RESTORE_PCT_HP:
                 if (!moveTurn)
@@ -11598,9 +11650,11 @@ void TryRestoreHeldItems(void)
     #endif
         {
             lostItem = gBattleStruct->itemLost[i].originalItem;
-            if (lostItem != ITEM_NONE && ItemId_GetPocket(lostItem) != POCKET_BERRIES)
+            if (lostItem != ITEM_NONE && ItemId_GetPocket(lostItem) != POCKET_BERRIES && lostItem != ITEM_HONEY && gBattleStruct->itemLost[gBattlerPartyIndexes[i]].stolen == TRUE)
                 SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &lostItem);  // Restore stolen non-berry items
         }
+        if (lostItem == ITEM_NONE)
+            SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &lostItem);
     }
 }
 

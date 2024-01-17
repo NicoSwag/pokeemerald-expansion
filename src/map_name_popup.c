@@ -370,44 +370,44 @@ StringCopy(withoutPrefixPtr, mapDisplayHeaderSource);
     mapDisplayHeader[1] = EXT_CTRL_CODE_HIGHLIGHT;
     mapDisplayHeader[2] = TEXT_COLOR_TRANSPARENT;
 
-    AddTextPrinterParameterized(mapNamePopUpWindowId, FONT_SHORT, mapDisplayHeader, mapNameX, mapNameY, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized(primaryPopUpWindowId, FONT_SHORT, mapDisplayHeader, mapNameX, mapNameY, TEXT_SKIP_DRAW, NULL);
     
     switch (GetCurrentRegionMapSectionId()){
         default:
-            AddTextPrinterParameterized(weatherPopUpWindowId, FONT_SMALL, gText_Null, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Null, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_OLDALE_TOWN:
-            AddTextPrinterParameterized(weatherPopUpWindowId, FONT_SMALL, gText_Oldale_Town, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Oldale_Town, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_ROUTE_101:
-            AddTextPrinterParameterized(weatherPopUpWindowId, FONT_SMALL, gText_Route101, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Route101, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_ROUTE_103:
-            AddTextPrinterParameterized(weatherPopUpWindowId, FONT_SMALL, gText_Route103, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Route103, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_OLDALE_RUINS:
-            AddTextPrinterParameterized(weatherPopUpWindowId, FONT_SMALL, gText_Oldale_Ruins, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Oldale_Ruins, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_ROUTE_102:
-            AddTextPrinterParameterized(weatherPopUpWindowId, FONT_SMALL, gText_Route102, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Route102, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_PETALBURG_CITY:
-            AddTextPrinterParameterized(weatherPopUpWindowId, FONT_SMALL, gText_Petalburg_City, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Petalburg_City, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_ROUTE_104_LOWER:
-            AddTextPrinterParameterized(weatherPopUpWindowId, FONT_SMALL, gText_Route104_Lower, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Route104_Lower, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_ROUTE_104:
-            AddTextPrinterParameterized(weatherPopUpWindowId, FONT_SMALL, gText_Route104_Upper, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Route104_Upper, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_RUSTBORO_CITY:
-            AddTextPrinterParameterized(weatherPopUpWindowId, FONT_SMALL, gText_Rustboro_City, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Rustboro_City, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_ROUTE_115:
-            AddTextPrinterParameterized(weatherPopUpWindowId, FONT_SMALL, gText_Route115, mapNameX + 90, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Route115, mapNameX + 90, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_PETALBURG_WOODS:
-            AddTextPrinterParameterized(weatherPopUpWindowId, FONT_SMALL, gText_Petalburg_Woods, mapNameX + 90, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Petalburg_Woods, mapNameX + 90, timeY, TEXT_SKIP_DRAW, NULL);
         break;
     }
     

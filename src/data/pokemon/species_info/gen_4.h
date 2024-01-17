@@ -1437,7 +1437,8 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         ICON(Combee, 0),
         .footprint = gMonFootprint_Combee,
         LEARNSETS(Combee),
-        .evolutions = EVOLUTION({EVO_LEVEL_FEMALE, 21, SPECIES_VESPIQUEN}),
+        .evolutions = EVOLUTION({EVO_LEVEL_FEMALE, 21, SPECIES_VESPIQUEN},
+                                EVO_MOVE_MALE, MOVE_FOLLOW_ME, SPECIES_BEDIGUARD),
     },
 
     [SPECIES_VESPIQUEN] =
@@ -1488,6 +1489,55 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         ICON(Vespiquen, 0),
         .footprint = gMonFootprint_Vespiquen,
         LEARNSETS(Vespiquen),
+    },
+
+
+
+
+    [SPECIES_BEDIGUARD] =
+    {
+        .baseHP        = 70,
+        .baseAttack    = 70,
+        .baseDefense   = 120,
+        .baseSpeed     = 40,
+        .baseSpAttack  = 70,
+        .baseSpDefense = 120,
+        .types = { TYPE_BUG, TYPE_STEEL },
+        .catchRate = 45,
+        .expYield = 166,
+        .genderRatio = MON_MALE,
+        .eggCycles = 15,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG },
+        .abilities = { ABILITY_HONEY_GATHER, ABILITY_FRIEND_GUARD },
+        .bodyColor = BODY_COLOR_YELLOW,
+        .speciesName = _("BEDIGUARD"),
+        .cryId = CRY_BEDIGUARD,
+        .categoryName = _("PROTECTOR"),
+        .height = 12,
+        .weight = 385,
+        .description = COMPOUND_STRING(
+            "It tirelessly protect the queen\n"
+            "of the hive with its very life.\n"
+            "It's common to see swarms of them\n"
+            "surrounding a VESPIQUEN."),
+        .pokemonScale = 282,
+        .pokemonOffset = 4,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        FRONT_PIC(Bediguard, 48, 56),
+        .frontPicYOffset = 4,
+        .frontAnimFrames = sAnims_Bediguard,
+        .frontAnimId = ANIM_LUNGE_GROW,
+        .enemyMonElevation = 4,
+        BACK_PIC(Bediguard, 64, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_CIRCLE_COUNTERCLOCKWISE,
+        PALETTES(Bediguard),
+        ICON(Bediguard, 0),
+        .footprint = gMonFootprint_Bediguard,
+        LEARNSETS(Bediguard),
     },
 #endif //P_FAMILY_COMBEE
 

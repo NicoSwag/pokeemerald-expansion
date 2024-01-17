@@ -8761,8 +8761,23 @@ BattleScript_AbilityHpHeal:
 	datahpupdate BS_ATTACKER
 	return
 
+
+BattleScript_AbilityHpHealPartner:
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_SHAREDHONEY
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	return
+
+
 BattleScript_RainDishActivates::
 	call BattleScript_AbilityHpHeal
+	end3
+
+BattleScript_HoneyGatherActivates::
+	call BattleScript_AbilityHpHealPartner
 	end3
 
 BattleScript_ForestBountyActivates::
@@ -10040,6 +10055,24 @@ BattleScript_ItemHealHP_RemoveItemEnd2_Anim:
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
 	removeitem BS_ATTACKER
+	end2
+
+
+
+
+BattleScript_ItemHealHP_RemoveItemEnd3::
+	jumpifability BS_ATTACKER, ABILITY_RIPEN, BattleScript_ItemHealHP_RemoveItemEnd3_AbilityPopUp
+	goto BattleScript_ItemHealHP_RemoveItemEnd3_Anim
+BattleScript_ItemHealHP_RemoveItemEnd3_AbilityPopUp:
+	call BattleScript_AbilityPopUp
+BattleScript_ItemHealHP_RemoveItemEnd3_Anim:
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	removeitem BS_TARGET
 	end2
 
 BattleScript_BerryPPHealRet::

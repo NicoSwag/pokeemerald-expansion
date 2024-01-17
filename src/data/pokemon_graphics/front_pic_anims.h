@@ -5543,6 +5543,21 @@ static const union AnimCmd sAnim_Vespiquen_1[] =
     ANIMCMD_FRAME(0, 8),
     ANIMCMD_END,
 };
+
+
+static const union AnimCmd sAnim_Bediguard_1[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 12),
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 12),
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 12),
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 12),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_END,
+};
 #endif //P_FAMILY_COMBEE
 
 #if P_FAMILY_PACHIRISU
@@ -11380,6 +11395,7 @@ SINGLE_ANIMATION(Mothim);
 #if P_FAMILY_COMBEE
 SINGLE_ANIMATION(Combee);
 SINGLE_ANIMATION(Vespiquen);
+SINGLE_ANIMATION(Bediguard);
 #endif //P_FAMILY_COMBEE
 #if P_FAMILY_PACHIRISU
 SINGLE_ANIMATION(Pachirisu);

@@ -228,7 +228,8 @@ static const u8 sText_EVO_LEVEL_DAY[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, day");
 static const u8 sText_EVO_LEVEL_DUSK[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, dusk (5-6PM)");
 static const u8 sText_EVO_ITEM_HOLD_DAY[] = _("{LV}{UP_ARROW}, holds {STR_VAR_2}, day");
 static const u8 sText_EVO_ITEM_HOLD_NIGHT[] = _("{LV}{UP_ARROW}, holds {STR_VAR_2}, night");
-static const u8 sText_EVO_MOVE[] = _("{LV}{UP_ARROW}, knows {STR_VAR_2}");
+static const u8 sText_EVO_MOVE[] = _("{LV}{UP_ARROW}, knows {STR_VAR_2}, male");
+static const u8 sText_EVO_MOVE_MALE[] = _("{LV}{UP_ARROW}, knows {STR_VAR_2}");
 static const u8 sText_EVO_MAPSEC[] = _("{LV}{UP_ARROW} on {STR_VAR_2}");
 static const u8 sText_EVO_ITEM_MALE[] = _("{STR_VAR_2} used on male");
 static const u8 sText_EVO_ITEM_FEMALE[] = _("{STR_VAR_2} used on female");
@@ -6718,6 +6719,10 @@ static u8 PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 depth,
             StringExpandPlaceholders(gStringVar4, sText_EVO_ITEM_HOLD_NIGHT );
             break;
         case EVO_MOVE:
+            StringCopy(gStringVar2, gMoveNames[evolutions[i].param]);
+            StringExpandPlaceholders(gStringVar4, sText_EVO_MOVE );
+            break;
+        case EVO_MOVE_MALE:
             StringCopy(gStringVar2, gMoveNames[evolutions[i].param]);
             StringExpandPlaceholders(gStringVar4, sText_EVO_MOVE );
             break;
