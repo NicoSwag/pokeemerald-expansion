@@ -5453,11 +5453,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseSpDefense = 30,                                \
         .catchRate = 255,                                   \
         .expYield = 60,                                     \
-        .evYield_Defense = 1,                               \
-        .speciesName = _("Geodude"),                        \
+        .speciesName = _("GEODUDE"),                        \
         .cryId = CRY_GEODUDE,                               \
         .natDexNum = NATIONAL_DEX_GEODUDE,                  \
-        .categoryName = _("Rock"),                          \
+        .categoryName = _("ROCK"),                          \
         .height = 4,                                        \
         .pokemonScale = 347,                                \
         .pokemonOffset = 18,                                \
@@ -5471,16 +5470,15 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseHP        = 55,                                \
         .baseAttack    = 95,                                \
         .baseDefense   = 115,                               \
-        .baseSpeed     = 35,                                \
+        .baseSpeed     = 55,                                \
         .baseSpAttack  = 45,                                \
         .baseSpDefense = 45,                                \
         .catchRate = 120,                                   \
         .expYield = 137,                                    \
-        .evYield_Defense = 2,                               \
-        .speciesName = _("Graveler"),                       \
+        .speciesName = _("GRAVELER"),                       \
         .cryId = CRY_GRAVELER,                              \
         .natDexNum = NATIONAL_DEX_GRAVELER,                 \
-        .categoryName = _("Rock"),                          \
+        .categoryName = _("ROCK"),                          \
         .height = 10,                                       \
         .pokemonScale = 256,                                \
         .pokemonOffset = 2,                                 \
@@ -5494,18 +5492,18 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 
 #define GOLEM_MISC_INFO                                 \
         .baseHP        = 80,                            \
-        .baseAttack    = GOLEM_ATTACK,                  \
+        .baseAttack    = 120,                  \
         .baseDefense   = 130,                           \
-        .baseSpeed     = 45,                            \
-        .baseSpAttack  = 55,                            \
-        .baseSpDefense = 65,                            \
+        .baseSpeed     = 75,                            \
+        .baseSpAttack  = 45,                            \
+        .baseSpDefense = 75,                            \
         .catchRate = 45,                                \
         .expYield = 223,                                \
         .evYield_Defense = 3,                           \
-        .speciesName = _("Golem"),                      \
+        .speciesName = _("GOLEM"),                      \
         .cryId = CRY_GOLEM,                             \
         .natDexNum = NATIONAL_DEX_GOLEM,                \
-        .categoryName = _("Megaton"),                   \
+        .categoryName = _("MEGATON"),                   \
         .footprint = gMonFootprint_Golem,               \
         .formSpeciesIdTable = sGolemFormSpeciesIdTable, \
         GEODUDE_FAMILY_MISC_INFO
@@ -5588,7 +5586,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 #if P_ALOLAN_FORMS
 #define ALOLAN_GEODUDE_FAMILY_INFO                                              \
         .types = { TYPE_ROCK, TYPE_ELECTRIC },                                  \
-        .abilities = { ABILITY_MAGNET_PULL, ABILITY_STURDY, ABILITY_GALVANIZE },\
         .isAlolanForm = TRUE
 
     [SPECIES_GEODUDE_ALOLAN] =
@@ -5610,6 +5607,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         BACK_PIC(GeodudeAlolan, 64, 56),
         .backPicYOffset = 13,
         //.backAnimId = BACK_ANIM_NONE,
+            .abilities = { ABILITY_MAGNET_PULL, ABILITY_STURDY, ABILITY_GALVANIZE },
         PALETTES(GeodudeAlolan),
         ICON(GeodudeAlolan, 2),
         LEARNSETS(GeodudeAlolan),
@@ -5620,10 +5618,9 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     {
         ALOLAN_GEODUDE_FAMILY_INFO,
         GRAVELER_MISC_INFO,
-        .itemRare = ITEM_CELL_BATTERY,
         .weight = 1100,
         .description = COMPOUND_STRING(
-            "When two Graveler smash each other over\n"
+            "When two GRAVELER smash each other over\n"
             "dravite, their favorite food, they cause\n"
             "flashes of light and booming noises.\n"
             "People call them “fireworks of the earth.”"),
@@ -5634,6 +5631,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         BACK_PIC(GravelerAlolan, 64, 48),
         .backPicYOffset = 10,
         //.backAnimId = BACK_ANIM_NONE,
+            .abilities = { ABILITY_MAGNET_PULL, ABILITY_STURDY, ABILITY_GALVANIZE },
         PALETTES(GravelerAlolan),
         ICON(GravelerAlolan, 2),
         LEARNSETS(GravelerAlolan),
@@ -5659,6 +5657,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerOffset = 2,
         FRONT_PIC(GolemAlolan, 56, 64),
         .frontPicYOffset = 1,
+            .abilities = { ABILITY_MAGNET_PULL, ABILITY_STURDY, ABILITY_DEMOLITIONIST },
         .frontAnimFrames = sAnims_GolemAlolan,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         BACK_PIC(GolemAlolan, 64, 48),
@@ -6870,27 +6869,26 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_WATER, TYPE_WATER },
         .catchRate = 190,
         .expYield = 61,
-        .evYield_Defense = 1,
         .itemCommon = ITEM_PEARL,
         .itemRare = ITEM_BIG_PEARL,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
-        .eggGroups = { EGG_GROUP_WATER_3, EGG_GROUP_WATER_3 },
-        .abilities = { ABILITY_SHELL_ARMOR, ABILITY_SKILL_LINK, ABILITY_OVERCOAT },
+        .eggGroups = { EGG_GROUP_WATER_3, EGG_GROUP_WATER_3},
+        .abilities = {ABILITY_SHELL_ARMOR, ABILITY_SKILL_LINK, ABILITY_SNOW_CLOAK},
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("Shellder"),
+        .speciesName = _("SHELLDER"),
         .cryId = CRY_SHELLDER,
         .natDexNum = NATIONAL_DEX_SHELLDER,
-        .categoryName = _("Bivalve"),
+        .categoryName = _("BIVALVE"),
         .height = 3,
         .weight = 40,
         .description = COMPOUND_STRING(
             "At night, it burrows a hole in the seafloor\n"
-            "with its broad tongue to make a place to\n"
-            "sleep. While asleep, it closes its shell,\n"
-            "but leaves its tongue hanging out."),
+            "with its tongue hanging out. It likes to\n"
+            "bite on fishing lines and especially\n"
+            "on SLOWPOKE tails."),
         .pokemonScale = 675,
         .pokemonOffset = 24,
         .trainerScale = 256,
@@ -6916,31 +6914,28 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseAttack    = 95,
         .baseDefense   = 180,
         .baseSpeed     = 70,
-        .baseSpAttack  = 85,
-        .baseSpDefense = 45,
+        .baseSpAttack  = 45,
+        .baseSpDefense = 85,
         .types = { TYPE_WATER, TYPE_ICE },
         .catchRate = 60,
         .expYield = 184,
-        .evYield_Defense = 2,
-        .itemCommon = ITEM_PEARL,
-        .itemRare = ITEM_BIG_PEARL,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
-        .eggGroups = { EGG_GROUP_WATER_3, EGG_GROUP_WATER_3 },
-        .abilities = { ABILITY_SHELL_ARMOR, ABILITY_SKILL_LINK, ABILITY_OVERCOAT },
+        .eggGroups = { EGG_GROUP_WATER_3, EGG_GROUP_WATER_3},
+        .abilities = {ABILITY_SHELL_ARMOR, ABILITY_SKILL_LINK, ABILITY_SNOW_CLOAK},
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("Cloyster"),
+        .speciesName = _("CLOYSTER"),
         .cryId = CRY_CLOYSTER,
         .natDexNum = NATIONAL_DEX_CLOYSTER,
-        .categoryName = _("Bivalve"),
+        .categoryName = _("BIVALVE"),
         .height = 15,
         .weight = 1325,
         .description = COMPOUND_STRING(
             "It swims in the sea by swallowing water,\n"
             "then jetting it out toward the rear.\n"
-            "The Cloyster shoots spikes from its\n"
+            "CLOYSTER shoots spikes from its\n"
             "shell using the same system."),
         .pokemonScale = 256,
         .pokemonOffset = 0,
@@ -7732,26 +7727,24 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_GRASS, TYPE_PSYCHIC },
         .catchRate = 90,
         .expYield = 65,
-        .evYield_Defense = 1,
-        .itemRare = ITEM_PSYCHIC_SEED,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS },
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_NONE, ABILITY_HARVEST },
+        .abilities = { ABILITY_HARVEST, ABILITY_TELEPATHY, ABILITY_SEED_SOWER },
         .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("Exeggcute"),
+        .speciesName = _("EXEGGCUTE"),
         .cryId = CRY_EXEGGCUTE,
         .natDexNum = NATIONAL_DEX_EXEGGCUTE,
-        .categoryName = _("Egg"),
+        .categoryName = _("EGG"),
         .height = 4,
         .weight = 25,
         .description = COMPOUND_STRING(
-            "It consists of six eggs that care for each\n"
-            "other. The eggs attract each other and\n"
-            "spin around. When cracks increasingly\n"
-            "appear, it is close to evolution."),
+            "Even if it looks like eggs, it's actually\n"
+            "closer to a kind of plant seed. They\n"
+            "appear to share a single mind thanks to\n"
+            "their telepathy."),
         .pokemonScale = 489,
         .pokemonOffset = -4,
         .trainerScale = 256,
@@ -7774,17 +7767,16 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 #define EXEGGUTOR_MISC_INFO                                 \
         .catchRate = 45,                                    \
         .expYield = 186,                                    \
-        .evYield_SpAttack = 2,                              \
         .genderRatio = PERCENT_FEMALE(50),                  \
         .eggCycles = 20,                                    \
         .friendship = STANDARD_FRIENDSHIP,                  \
         .growthRate = GROWTH_SLOW,                          \
         .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS },  \
         .bodyColor = BODY_COLOR_YELLOW,                     \
-        .speciesName = _("Exeggutor"),                      \
+        .speciesName = _("EXEGGUTOR"),                      \
         .cryId = CRY_EXEGGUTOR,                             \
         .natDexNum = NATIONAL_DEX_EXEGGUTOR,                \
-        .categoryName = _("Coconut"),                       \
+        .categoryName = _("COCONUT"),                       \
         .footprint = gMonFootprint_Exeggutor,               \
         .formSpeciesIdTable = sExeggutorFormSpeciesIdTable
 
@@ -7794,20 +7786,20 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     {
         EXEGGUTOR_MISC_INFO,
         .baseHP        = 95,
-        .baseAttack    = 95,
-        .baseDefense   = 85,
+        .baseAttack    = 75,
+        .baseDefense   = 95,
         .baseSpeed     = 55,
         .baseSpAttack  = 125,
-        .baseSpDefense = EXEGGUTOR_SP_DEF,
+        .baseSpDefense = 85,
         .types = { TYPE_GRASS, TYPE_PSYCHIC },
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_NONE, ABILITY_HARVEST },
+        .abilities = { ABILITY_HARVEST, ABILITY_TELEPATHY, ABILITY_SEED_SOWER },
         .height = 20,
         .weight = 1200,
         .description = COMPOUND_STRING(
-            "Originally from the tropics, Exeggutor's\n"
-            "heads grow larger from exposure to strong\n"
-            "sunlight. It is said that when the heads\n"
-            "fall, they group to form an Exeggcute."),
+            "Unlike its pre-evolution, its head are\n"
+            "able to think indipendently. They argue\n"
+            "a lot, and because of this EXEGGUTOR can\n"
+            "often be found in a cranky mood."),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 309,

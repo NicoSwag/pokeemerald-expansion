@@ -2056,3 +2056,8 @@
 	callnative CreateTrainerPartyForPlayer
 	trainerbattle_no_intro \trainer2, NULL
 	.endm
+
+
+	.macro doesplayerhavepokeball
+	callnative CheckBallPocket
+	.endm

@@ -3067,22 +3067,20 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .baseSpeed     = 50,
         .baseSpAttack  = 50,
         .baseSpDefense = 150,
-        .types = { TYPE_ROCK, TYPE_FAIRY },
+        .types = { TYPE_ROCK, TYPE_FAIRY},
         .catchRate = 60,
         .expYield = 100,
-        .evYield_Defense = 1,
-        .evYield_SpDefense = 1,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 25,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
-        .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_MINERAL },
-        .abilities = { ABILITY_CLEAR_BODY, ABILITY_NONE, ABILITY_STURDY },
+        .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_MINERAL},
+        .abilities = {ABILITY_CLEAR_BODY, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("Carbink"),
+        .speciesName = _("CARBINK"),
         .cryId = CRY_CARBINK,
         .natDexNum = NATIONAL_DEX_CARBINK,
-        .categoryName = _("Jewel"),
+        .categoryName = _("JEWEL"),
         .height = 3,
         .weight = 57,
         .description = COMPOUND_STRING(
@@ -3926,7 +3924,6 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .types = { TYPE_FLYING, TYPE_DRAGON },
         .catchRate = 190,
         .expYield = 49,
-        .evYield_Speed = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -3936,20 +3933,19 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         #else
             .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_FLYING },
         #endif
-        .abilities = { ABILITY_FRISK, ABILITY_INFILTRATOR, ABILITY_TELEPATHY },
+        .abilities = { ABILITY_NO_GUARD, ABILITY_STORM_VOICE},
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("Noibat"),
+        .speciesName = _("NOIBAT"),
         .cryId = CRY_NOIBAT,
         .natDexNum = NATIONAL_DEX_NOIBAT,
-        .categoryName = _("Sound Wave"),
+        .categoryName = _("SOUND WAVE"),
         .height = 5,
         .weight = 80,
         .description = COMPOUND_STRING(
-            "They live in pitch-black caves. Even a\n"
-            "robust wrestler will become dizzy and\n"
-            "unable to stand when exposed to its\n"
-            "200,000-hertz ultrasonic waves."),
-        .pokemonScale = 432,
+            "No wavelength of sound is beyond\n"
+            "NOIBAT's vocal range. The ultrasonic\n"
+            "waves it creates can overcome even\n"
+            "larger POKéMON."),
         .pokemonOffset = 13,
         .trainerScale = 256,
         .trainerOffset = 0,
@@ -3965,16 +3961,16 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         ICON(Noibat, 2),
         .footprint = gMonFootprint_Noibat,
         LEARNSETS(Noibat),
-        .evolutions = EVOLUTION({EVO_LEVEL, 48, SPECIES_NOIVERN}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_NOIVERN}),
     },
 
     [SPECIES_NOIVERN] =
     {
         .baseHP        = 85,
-        .baseAttack    = 70,
+        .baseAttack    = 60,
         .baseDefense   = 80,
-        .baseSpeed     = 123,
-        .baseSpAttack  = 97,
+        .baseSpeed     = 125,
+        .baseSpAttack  = 115,
         .baseSpDefense = 80,
         .types = { TYPE_FLYING, TYPE_DRAGON },
         .catchRate = 45,
@@ -3989,12 +3985,12 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         #else
             .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_FLYING },
         #endif
-        .abilities = { ABILITY_FRISK, ABILITY_INFILTRATOR, ABILITY_TELEPATHY },
+        .abilities = { ABILITY_NO_GUARD, ABILITY_STORM_VOICE},
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("Noivern"),
+        .speciesName = _("NOIVERN"),
         .cryId = CRY_NOIVERN,
         .natDexNum = NATIONAL_DEX_NOIVERN,
-        .categoryName = _("Sound Wave"),
+        .categoryName = _("SOUND WAVE"),
         .height = 15,
         .weight = 850,
         .description = COMPOUND_STRING(

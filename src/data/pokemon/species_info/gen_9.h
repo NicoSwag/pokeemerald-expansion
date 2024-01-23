@@ -1519,7 +1519,6 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .types = { TYPE_FIRE, TYPE_FIRE },
         .catchRate = 90,
         .expYield = 51,
-        .evYield_SpAttack = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 35,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1527,16 +1526,16 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE },
         .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_FLAME_BODY },
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Charcadet"),
+        .speciesName = _("CHARCADET"),
         .cryId = CRY_CHARCADET,
         .natDexNum = NATIONAL_DEX_CHARCADET,
-        .categoryName = _("Fire Child"),
+        .categoryName = _("FIRE CHILD"),
         .height = 6,
         .weight = 105,
         .description = COMPOUND_STRING(
             "Burnt charcoal came to life and\n"
             "became a Pokémon. Possessing a fiery\n"
-            "fighting spirit, Charcadet will\n"
+            "fighting spirit, CHARCADET will\n"
             "battle even tough opponents."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
@@ -1568,7 +1567,6 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .types = { TYPE_FIRE, TYPE_PSYCHIC },
         .catchRate = 25,
         .expYield = 263,
-        .evYield_SpAttack = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 35,
         .friendship = 20,
@@ -1576,14 +1574,14 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE },
         .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_WEAK_ARMOR },
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("Armarouge"),
+        .speciesName = _("ARMAROUGE"),
         .cryId = CRY_ARMAROUGE,
         .natDexNum = NATIONAL_DEX_ARMAROUGE,
-        .categoryName = _("Fire Warrior"),
+        .categoryName = _("FIRE WARRIOR"),
         .height = 15,
         .weight = 850,
         .description = COMPOUND_STRING(
-            "Armarouge evolved through the use\n"
+            "ARMAROUGE evolved through the use\n"
             "of a set of armor that belonged to\n"
             "a distinguished warrior. This\n"
             "Pokémon is incredibly loyal."),
@@ -1615,7 +1613,6 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .types = { TYPE_FIRE, TYPE_GHOST },
         .catchRate = 25,
         .expYield = 263,
-        .evYield_Attack = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 35,
         .friendship = 20,
@@ -1623,10 +1620,10 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE },
         .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_WEAK_ARMOR },
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("Ceruledge"),
+        .speciesName = _("CERULEDGE"),
         .cryId = CRY_CERULEDGE,
         .natDexNum = NATIONAL_DEX_CERULEDGE,
-        .categoryName = _("Fire Blades"),
+        .categoryName = _("FIRE BLADES"),
         .height = 16,
         .weight = 620,
         .description = COMPOUND_STRING(
@@ -4475,7 +4472,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .frontAnimFrames = sAnims_Gimmighoul,                                           \
         LEARNSETS(Gimmighoul),                                                          \
         .formSpeciesIdTable = sGimmighoulFormSpeciesIdTable,                            \
-        .evolutions = EVOLUTION({EVO_NONE, 0, SPECIES_GHOLDENGO})
+        .evolutions = EVOLUTION({EVO_MONEY, 0, SPECIES_GHOLDENGO})
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         //.backAnimId = BACK_ANIM_NONE,
         //.footprint = gMonFootprint_Gimmighoul,

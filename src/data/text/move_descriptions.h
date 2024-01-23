@@ -3254,6 +3254,10 @@ static const u8 sTorchSongDescription[] = _(
     "Flames scorch the target.\n"
     "Boosts the user's Sp. Atk.");
 
+static const u8 sSonicStompDescription[] = _(
+    "Stomps the ground to charge.\n"
+    "Boosts the user's Sp. Atk.");
+
 static const u8 sGargleDescription[] = _(
     "Spits water after gargling.\n"
     "Boosts the user's Sp. Atk.");
@@ -4263,6 +4267,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_KOWTOW_CLEAVE - 1] = sKowtowCleaveDescription,
     [MOVE_FLOWER_TRICK - 1] = sFlowerTrickDescription,
     [MOVE_TORCH_SONG - 1] = sTorchSongDescription,
+    [MOVE_SONIC_STOMP - 1] = sSonicStompDescription,
     [MOVE_GARGLE - 1] = sGargleDescription,
     [MOVE_AQUA_STEP - 1] = sAquaStepDescription,
     [MOVE_RAGING_BULL - 1] = sRagingBullDescription,

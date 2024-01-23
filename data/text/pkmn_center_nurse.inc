@@ -14,6 +14,16 @@ gText_RestoredPkmnToFullHealth::
 	.string "We've restored your POKéMON\n"
 	.string "to full health.$"
 
+
+gText_NoBalls::
+	.string "Sorry about prying, but…\p"
+	.string "You don't have any POKé BALL,\n"
+	.string "do you?\p"
+	.string "It's dangerous to venture out\n"
+	.string "without any POKé BALL.\p"
+	.string "Here, take these.$"
+
+
 gText_WeHopeToSeeYouAgain::
 	.string "We hope to see you again!$"
 

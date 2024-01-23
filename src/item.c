@@ -145,6 +145,13 @@ bool8 IsBagPocketNonEmpty(u8 pocket)
     return FALSE;
 }
 
+
+bool8 CheckBallPocket(void){
+    if(IsBagPocketNonEmpty(POCKET_POKE_BALLS))
+        return TRUE;
+    return FALSE;
+}
+
 bool8 CheckBagHasItem(u16 itemId, u16 count)
 {
     u8 i;

@@ -880,6 +880,7 @@ gBattleAnims_Moves::
 	.4byte Move_MAGICAL_WHIP
 	.4byte Move_THORNY_BUSH
 	.4byte Move_SAFETY_COURSE
+	.4byte Move_SONIC_STOMP
 
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
@@ -26209,7 +26210,7 @@ Move_RECHARGE::
 	goto Move_CHARGE
 
 Move_DING_DOOM::
-	goto Move_IRON_HEAD
+	goto Move_UPROAR
 
 Move_MONSOON:
 	goto Move_HURRICANE
@@ -26234,6 +26235,9 @@ Move_THORNY_BUSH:
 
 Move_SAFETY_COURSE:
 	goto Move_DEFEND_ORDER
+
+Move_SONIC_STOMP:
+	goto Move_CLANGING_SCALES
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT

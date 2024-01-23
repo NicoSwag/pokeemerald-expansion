@@ -173,7 +173,6 @@ static const u16 sMachampFormSpeciesIdTable[] = {
 
 #if P_FAMILY_GEODUDE
 static const u16 sGeodudeFormSpeciesIdTable[] = {
-    SPECIES_GEODUDE,
     SPECIES_GEODUDE_ALOLAN,
     FORM_SPECIES_END,
 };
@@ -290,7 +289,6 @@ static const u16 sElectrodeFormSpeciesIdTable[] = {
 #if P_FAMILY_EXEGGCUTE
 static const u16 sExeggutorFormSpeciesIdTable[] = {
     SPECIES_EXEGGUTOR,
-    SPECIES_EXEGGUTOR_ALOLAN,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_EXEGGCUTE
@@ -544,7 +542,6 @@ static const u16 sHoundoomFormSpeciesIdTable[] = {
 #if P_FAMILY_LARVITAR
 static const u16 sTyranitarFormSpeciesIdTable[] = {
     SPECIES_TYRANITAR,
-    SPECIES_TYRANITAR_MEGA,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_LARVITAR
@@ -616,7 +613,6 @@ static const u16 sGalladeFormSpeciesIdTable[] = {
 #if P_FAMILY_SABLEYE
 static const u16 sSableyeFormSpeciesIdTable[] = {
     SPECIES_SABLEYE,
-    SPECIES_SABLEYE_MEGA,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_SABLEYE
@@ -624,7 +620,6 @@ static const u16 sSableyeFormSpeciesIdTable[] = {
 #if P_FAMILY_MAWILE
 static const u16 sMawileFormSpeciesIdTable[] = {
     SPECIES_MAWILE,
-    SPECIES_MAWILE_MEGA,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_MAWILE
@@ -632,7 +627,6 @@ static const u16 sMawileFormSpeciesIdTable[] = {
 #if P_FAMILY_ARON
 static const u16 sAggronFormSpeciesIdTable[] = {
     SPECIES_AGGRON,
-    SPECIES_AGGRON_MEGA,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_ARON
@@ -640,7 +634,6 @@ static const u16 sAggronFormSpeciesIdTable[] = {
 #if P_FAMILY_MEDITITE
 static const u16 sMedichamFormSpeciesIdTable[] = {
     SPECIES_MEDICHAM,
-    SPECIES_MEDICHAM_MEGA,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_MEDITITE
@@ -1279,7 +1272,6 @@ static const u16 sOricorioFormSpeciesIdTable[] = {
 #if P_FAMILY_ROCKRUFF
 static const u16 sRockruffFormSpeciesIdTable[] = {
     SPECIES_ROCKRUFF,
-    SPECIES_ROCKRUFF_OWN_TEMPO,
     FORM_SPECIES_END,
 };
 
@@ -1428,7 +1420,6 @@ static const u16 sDrednawFormSpeciesIdTable[] = {
 #if P_FAMILY_ROLYCOLY
 static const u16 sCoalossalFormSpeciesIdTable[] = {
     SPECIES_COALOSSAL,
-    SPECIES_COALOSSAL_GIGANTAMAX,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_ROLYCOLY

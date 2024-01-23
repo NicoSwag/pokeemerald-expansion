@@ -736,19 +736,6 @@ static void Cmd_end(void)
     }
 
     // Finish the sound effects.
-    if (IsSEPlaying())
-    {
-        if (++sSoundAnimFramesToWait <= 90) // Wait 90 frames, then halt the sound effect.
-        {
-            sAnimFramesToWait = 1;
-            return;
-        }
-        else
-        {
-            m4aMPlayStop(&gMPlayInfo_SE1);
-            m4aMPlayStop(&gMPlayInfo_SE2);
-        }
-    }
 
     // The SE has halted, so set the SE Frame Counter to 0 and continue.
     sSoundAnimFramesToWait = 0;
