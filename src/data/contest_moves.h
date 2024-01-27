@@ -3157,7 +3157,7 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
         .comboMoves = {0}
     },
 
-    [MOVE_CHI_BLAST] =
+    [MOVE_AURA_SPHERE] =
     {
         .effect = CONTEST_EFFECT_BETTER_IF_FIRST,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
@@ -6077,6 +6077,7 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
 
     [MOVE_ELECTRO_SHOT] = {0}, // TODO
 
+    [MOVE_TERA_STARSTORM] = {0}, // TODO
 
     [MOVE_FICKLE_BEAM] = {0}, // TODO
 

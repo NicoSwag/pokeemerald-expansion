@@ -150,7 +150,6 @@ static const u16 sRegionMap_SpecialPlaceLocations[][2] =
     {MAPSEC_MAGMA_HIDEOUT,              MAPSEC_ROUTE_112},
     {MAPSEC_UNDERWATER_SEALED_CHAMBER,  MAPSEC_ROUTE_134},
     {MAPSEC_PETALBURG_WOODS,            MAPSEC_ROUTE_104},
-    {MAPSEC_BRINE_CAVE,            MAPSEC_ROUTE_115},
     {MAPSEC_JAGGED_PASS,                MAPSEC_ROUTE_112},
     {MAPSEC_MT_PYRE,                    MAPSEC_ROUTE_122},
     {MAPSEC_SKY_PILLAR,                 MAPSEC_ROUTE_131},
@@ -339,7 +338,6 @@ static const u8 sMapHealLocations[][3] =
     [MAPSEC_ROUTE_132] = {MAP_GROUP(ROUTE132), MAP_NUM(ROUTE132), HEAL_LOCATION_NONE},
     [MAPSEC_ROUTE_133] = {MAP_GROUP(ROUTE133), MAP_NUM(ROUTE133), HEAL_LOCATION_NONE},
     [MAPSEC_ROUTE_134] = {MAP_GROUP(ROUTE134), MAP_NUM(ROUTE134), HEAL_LOCATION_NONE},
-    [MAPSEC_OLDALE_RUINS] = {MAP_GROUP(OLDALE_RUINS), MAP_NUM(OLDALE_RUINS), HEAL_LOCATION_NONE},
 };
 
 static const u8 *const sEverGrandeCityNames[] =
@@ -993,8 +991,6 @@ static void InitMapBasedOnPlayerLocation(void)
     case MAP_TYPE_TOWN:
     case MAP_TYPE_CITY:
     case MAP_TYPE_ROUTE:
-    case MAP_TYPE_OVERCAST:
-    case MAP_TYPE_FOREST:
     case MAP_TYPE_UNDERWATER:
     case MAP_TYPE_OCEAN_ROUTE:
         sRegionMap->mapSecId = gMapHeader.regionMapSectionId;
@@ -1038,7 +1034,6 @@ static void InitMapBasedOnPlayerLocation(void)
         y = gSaveBlock1Ptr->dynamicWarp.y;
         break;
     case MAP_TYPE_INDOOR:
-    case MAP_TYPE_GYM_ARENA:
         sRegionMap->mapSecId = gMapHeader.regionMapSectionId;
         if (sRegionMap->mapSecId != MAPSEC_DYNAMIC)
         {
@@ -1602,8 +1597,6 @@ u8 *GetMapName(u8 *dest, u16 regionMapId, u16 padLength)
     return str;
 }
 
-
-
 // TODO: probably needs a better name
 u8 *GetMapNameGeneric(u8 *dest, u16 mapSecId)
 {
@@ -1741,17 +1734,6 @@ void CB2_OpenFlyMap(void)
         gMain.state++;
         break;
     }
-}
-
-// Town Map port
-void CB2_OpenTownMap(void)
-{   
-    // Draw map
-    SetMainCallback2(CB2_FieldShowRegionMap);
-    ResetPaletteFade();
-    ResetSpriteData();
-    FreeSpriteTileRanges();
-    FreeAllSpritePalettes();
 }
 
 static void VBlankCB_FlyMap(void)

@@ -2,13 +2,13 @@
 #define GUARD_CONSTANTS_TMS_HMS_H
 
 #define FOREACH_TM(F) \
-    F(HELPING_HAND) \
-    F(CHILLING_WATER) \
-    F(QUASH) \
-    F(TRAILBLAZE) \
-    F(PROTECT) \
-    F(SANDSTORM) \
-    F(FIRE_SPIN) \
+    F(FOCUS_PUNCH) \
+    F(DRAGON_CLAW) \
+    F(WATER_PULSE) \
+    F(CALM_MIND) \
+    F(ROAR) \
+    F(TOXIC) \
+    F(HAIL) \
     F(BULK_UP) \
     F(BULLET_SEED) \
     F(HIDDEN_POWER) \
@@ -18,7 +18,7 @@
     F(BLIZZARD) \
     F(HYPER_BEAM) \
     F(LIGHT_SCREEN) \
-    F(ROAR) \
+    F(PROTECT) \
     F(RAIN_DANCE) \
     F(GIGA_DRAIN) \
     F(SAFEGUARD) \
@@ -38,7 +38,7 @@
     F(SHOCK_WAVE) \
     F(FLAMETHROWER) \
     F(SLUDGE_BOMB) \
-    F(TOXIC) \
+    F(SANDSTORM) \
     F(FIRE_BLAST) \
     F(ROCK_TOMB) \
     F(AERIAL_ACE) \

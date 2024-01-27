@@ -34,7 +34,6 @@
 #include "constants/songs.h"
 #include "constants/rgb.h"
 #include "constants/items.h"
-#include "pokedex_plus_hgss.h"
 
 struct EvoInfo
 {
@@ -640,10 +639,6 @@ enum {
 
 // Task data from CycleEvolutionMonSprite
 #define tEvoStopped data[8]
-#define tOtIdLo        data[12]
-#define tOtIdHi        data[13]
-#define tPersonalityLo data[14]
-#define tPersonalityHi data[15]
 
 static void Task_EvolutionScene(u8 taskId)
 {

@@ -616,16 +616,6 @@ bool8 ScrCmd_setflashlevel(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_settorcheffect(struct ScriptContext *ctx)
-{
-    s32 centerX = VarGet(ScriptReadHalfword(ctx));
-    s32 centerY = VarGet(ScriptReadHalfword(ctx));
-    s32 radius = VarGet(ScriptReadHalfword(ctx));
-    
-    SetTorchEffect(centerX, centerY, radius);
-    return FALSE;
-}
-
 static bool8 IsPaletteNotActive(void)
 {
     if (!gPaletteFade.active)
@@ -1187,7 +1177,7 @@ bool8 ScrCmd_setobjectmovementtype(struct ScriptContext *ctx)
 
 bool8 ScrCmd_createvobject(struct ScriptContext *ctx)
 {
-    u16 graphicsId = ScriptReadByte(ctx);
+    u8 graphicsId = ScriptReadByte(ctx);
     u8 virtualObjId = ScriptReadByte(ctx);
     u16 x = VarGet(ScriptReadHalfword(ctx));
     u32 y = VarGet(ScriptReadHalfword(ctx));
@@ -1731,29 +1721,7 @@ bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
         u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
         if (!species)
             break;
-        if(CanLearnTeachableMove(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG), moveId))
-        {
-            gSpecialVar_Result = i;
-            gSpecialVar_0x8004 = species;
-            break;
-        }
-    }
-    return FALSE;
-}
-
-
-bool8 ScrCmd_checkpartycanlearn(struct ScriptContext *ctx)
-{
-    u8 i;
-    u16 moveId = ScriptReadHalfword(ctx);
-
-    gSpecialVar_Result = PARTY_SIZE;
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
-        if (!species)
-            break;
-        if(CanLearnTeachableMove(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG), moveId))
+        if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && MonKnowsMove(&gPlayerParty[i], moveId) == TRUE)
         {
             gSpecialVar_Result = i;
             gSpecialVar_0x8004 = species;
@@ -2355,14 +2323,4 @@ bool8 ScrCmd_warpwhitefade(struct ScriptContext *ctx)
     DoWhiteFadeWarp();
     ResetInitialPlayerAvatarState();
     return TRUE;
-}
-
-bool8 ScrCmd_showitemdesc(struct ScriptContext *ctx)
-{
-    return FALSE;
-}
-
-bool8 ScrCmd_hideitemdesc(struct ScriptContext *ctx)
-{
-    return FALSE;
 }

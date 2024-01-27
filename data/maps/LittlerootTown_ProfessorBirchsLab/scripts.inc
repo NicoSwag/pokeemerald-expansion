@@ -4,7 +4,6 @@
 .set LOCALID_BALL_CYNDAQUIL, 4
 .set LOCALID_BALL_TOTODILE, 5
 .set LOCALID_BALL_CHIKORITA, 6
-.set LOCALID_PIKACHU, 7
 
 LittlerootTown_ProfessorBirchsLab_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_ProfessorBirchsLab_OnTransition
@@ -636,231 +635,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_RivalTakeBreakFromFieldwork::
 	release
 	end
 
-LittlerootTown_ProfessorBirchsLab_EventScript_Pikachu::
-	lock
-	faceplayer
-	playmoncry SPECIES_PIKACHU, CRY_MODE_NORMAL
-	goto_if_unset FLAG_RECEIVED_POKEDEX_FROM_BIRCH, LittlerootTown_ProfessorBirchsLab_EventScript_WaitABit
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_Pikachu, MSGBOX_DEFAULT
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_Options::
-	multichoice 12, 0, SPECIAL_OPTIONS_MENU, FALSE
-	switch VAR_RESULT
-	case 0, LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle
-	case 1, LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops
-	case 2, LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps
-	case 3, LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint
-	case 4, LittlerootTown_ProfessorBirchsLab_EventScript_Catch
-	case 5, LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
-	end
-	
-	
-LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle::
-	goto_if_set FLAG_HEAL_AFTER_BATTLE, LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle_True
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle_False
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle_True::
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffHealing, MSGBOX_YESNO
-	SWITCH VAR_RESULT
-	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	clearflag FLAG_HEAL_AFTER_BATTLE
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOffHealing, MSGBOX_NPC
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	end
-
-Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffHealing:
-	.string "Healing automatically after battles\n"
-	.string "is currently turned ON.\l"
-	.string "Do you want to turn it OFF?$"
-
-Text_LittlerootTown_ProfessorBirchsLab_TurnedOffHealing:
-	.string "You will no longer heal after battles.$"
-
-LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle_False::
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnHealing, MSGBOX_YESNO
-	SWITCH VAR_RESULT
-	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	setflag FLAG_HEAL_AFTER_BATTLE
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOnHealing, MSGBOX_NPC
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	end
-
-Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnHealing:
-	.string "Healing automatically after battles\n"
-	.string "is currently turned OFF.\l"
-	.string "Do you want to turn it ON?$"
-
-Text_LittlerootTown_ProfessorBirchsLab_TurnedOnHealing:
-	.string "You will now heal after battles.$"
-
-
-LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops::
-	goto_if_set FLAG_CANDY_IN_SHOPS, LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops_True
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops_False
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops_True::
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffCandies, MSGBOX_YESNO
-	SWITCH VAR_RESULT
-	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	clearflag FLAG_CANDY_IN_SHOPS
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOffCandies, MSGBOX_NPC
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	end
-
-Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffCandies:
-	.string "Rare candies in POKé MARTS\n"
-	.string "are currently turned ON.\l"
-	.string "Do you want to turn them OFF?$"
-
-Text_LittlerootTown_ProfessorBirchsLab_TurnedOffCandies:
-	.string "Rare candies won't be sold anymore.$"
-
-LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops_False::
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCandies, MSGBOX_YESNO
-	SWITCH VAR_RESULT
-	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	setflag FLAG_CANDY_IN_SHOPS
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCandies, MSGBOX_NPC
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	end
-
-Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCandies:
-	.string "Rare candies in POKé MARTS\n"
-	.string "are currently turned OFF.\l"
-	.string "Do you want to turn them ON?$"
-
-Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCandies:
-	.string "Rare candies are now sold in shops.$"
-
-
-LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps::
-	goto_if_set FLAG_LEVEL_CAPS, LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps_True
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps_False
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps_True::
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffCaps, MSGBOX_YESNO
-	SWITCH VAR_RESULT
-	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	clearflag FLAG_LEVEL_CAPS
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOffCaps, MSGBOX_NPC
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	end
-
-Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffCaps:
-	.string "Level caps are currently turned ON.\n"
-	.string "Do you want to turn them OFF?$"
-
-Text_LittlerootTown_ProfessorBirchsLab_TurnedOffCaps:
-	.string "Level caps are no longer in effect.$"
-
-LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps_False::
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCaps, MSGBOX_YESNO
-	SWITCH VAR_RESULT
-	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	setflag FLAG_LEVEL_CAPS
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCaps, MSGBOX_NPC
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	end
-
-Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCaps:
-	.string "Level caps are currently turned OFF.\n"
-	.string "Do you want to turn them ON?$"
-
-Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCaps:
-	.string "Level caps are now in effect.$"
-
-LittlerootTown_ProfessorBirchsLab_EventScript_Catch::
-	goto_if_set FLAG_CATCH_ONE, LittlerootTown_ProfessorBirchsLab_EventScript_Catch_True
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_Catch_False
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_Catch_True::
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffCatch, MSGBOX_YESNO
-	SWITCH VAR_RESULT
-	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	clearflag FLAG_CATCH_ONE
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOffCatch, MSGBOX_NPC
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	end
-
-Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffCatch:
-	.string "Catching one POKéMON per route is\n"
-	.string "currently turned ON.\l"
-	.string "Do you want to turn it OFF?$"
-
-Text_LittlerootTown_ProfessorBirchsLab_TurnedOffCatch:
-	.string "You can now catch multiple POKéMON.$"
-
-LittlerootTown_ProfessorBirchsLab_EventScript_Catch_False::
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCatch, MSGBOX_YESNO
-	SWITCH VAR_RESULT
-	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	setflag FLAG_CATCH_ONE
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCatch, MSGBOX_NPC
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	end
-
-Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCatch:
-	.string "Catching one POKéMON per route is\n"
-	.string "currently turned OFF.\l"
-	.string "Do you want to turn it ON?$"
-
-Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCatch:
-	.string "You can now only catch the first POKéMON.$"
-
-LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint::
-	goto_if_set FLAG_DEAD_WHEN_FAINT, LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint_True
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint_False
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint_True::
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffFainting, MSGBOX_YESNO
-	SWITCH VAR_RESULT
-	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	clearflag FLAG_DEAD_WHEN_FAINT
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOffFaint, MSGBOX_NPC
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	end
-
-Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffFainting:
-	.string "Permanent fainting is currently\n"
-	.string "turned ON.\l"
-	.string "Do you want to turn it OFF?$"
-
-Text_LittlerootTown_ProfessorBirchsLab_TurnedOffFaint:
-	.string "Fainted POKéMON can now be healed.$"
-
-LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint_False::
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnFainting, MSGBOX_YESNO
-	SWITCH VAR_RESULT
-	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	setflag FLAG_DEAD_WHEN_FAINT
-	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOnFainting, MSGBOX_NPC
-	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
-	end
-
-Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnFainting:
-	.string "Permanent fainting is currently\n"
-	.string "turned OFF.\l"
-	.string "Do you want to turn it ON?$"
-
-Text_LittlerootTown_ProfessorBirchsLab_TurnedOnFainting:
-	.string "Fainted POKéMON now can't be healed.$"
-
-
-
-LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu::
-	applymovement LOCALID_PIKACHU, Common_Movement_FaceLeft
-	release
-	end
-
-
 LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayTakeBreakFromFieldwork, MSGBOX_DEFAULT
 	return
@@ -890,14 +664,17 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	end
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork:
-	.string "Huh? PROF. BIRCH?\p"
-	.string "Well, yes, I could be asking the same\n"
-	.string "question.\p"
-	.string "He was supposed to fill out a research\n"
-	.string "report, but it seems he sneaked out.\p"
-	.string "Without his assistant, no less!\p"
-	.string "I hate to ask, but…\n"
-	.string "Could you maybe check up on him?$"
+	.string "Hunh? PROF. BIRCH?\p"
+	.string "The PROF's away on fieldwork.\n"
+	.string "Ergo, he isn't here.\p"
+	.string "Oh, let me explain what fieldwork is.\p"
+	.string "It is to study things in the natural\n"
+	.string "environment, like fields and mountains,\l"
+	.string "instead of a laboratory.\p"
+	.string "The PROF isn't one for doing desk work.\n"
+	.string "He's the type of person who would\l"
+	.string "rather go outside and experience\l"
+	.string "things than read about them here.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
 	.string "The PROF isn't one for doing desk work.\n"
@@ -905,26 +682,11 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
 	.string "rather go outside and experience\l"
 	.string "things than read about them here.$"
 
-
 LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
-	.string "PROF. BIRCH is studying the effects\n"
-	.string "the strange weather has on POKéMON.\p"
+	.string "PROF. BIRCH is studying the habitats\n"
+	.string "and distribution of POKéMON.\p"
 	.string "The PROF enjoys {RIVAL}'s help, too.\n"
-	.string "Oh, and let's not forget PIKACHU's\l"
-	.string "invaluable contributions!\p"
-	.string "Well, I'm not sure what she does, but\n"
-	.string "it looks to be very important.$"
-
-Text_LittlerootTown_ProfessorBirchsLab_Pikachu:
-	.string "It seems like the PIKACHU wants\n"
-	.string "to tell you something.\p"
-	.string "You can't hear it, but if you could\n"
-	.string "you bet it'd go like this:\p"
-	.string "PIKACHU: Hello, trainer! I am PROF.\n"
-	.string "BIRCH's assistant. I handle the game\l"
-	.string "options!\p"
-	.string "Is there anything that you want to\n"
-	.string "change?$"
+	.string "There's a lot of love there.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
 	.string "PROF. BIRCH: So, {PLAYER}{KUN}.\p"
@@ -974,25 +736,12 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
 
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "PROF. BIRCH: Oh, hi, {PLAYER}{KUN}!\p"
-	.string "I heard you and {RIVAL} faced off\n"
-	.string "against some TEAM MAGMA goons.\p"
-	.string "They're a strange group that showed\n"
-	.string "up very recently to stir up trouble.\p"
-	.string "No one knows what their goals are,\n"
-	.string "really.\p"
-	.string "They seem very interested in volcanoes,\n"
-	.string "and I suppose that's admirable, but…\p"
-	.string "It's no excuse to go around stealing\n"
-	.string "rocks!\p"
-	.string "Don't they know that HOENN has special\n"
-	.string "laws for the preservation of the\l"
-	.string "environment?\p"
-	.string "You need a license for that, good\n"
-	.string "heavens!\p"
-	.string "Er, anyway…\p"
-	.string "Even if it was a bit careless,\n"
-	.string "no one can deny you and {RIVAL}\l"
-	.string "did a truly fine job.\p"
+	.string "I heard you beat {RIVAL} on\n"
+	.string "your first try. That's excellent!\p"
+	.string "{RIVAL}'s been helping with my research\n"
+	.string "for a long time.\p"
+	.string "{RIVAL} has an extensive history as\n"
+	.string "a TRAINER already.\p"
 	.string "Here, {PLAYER}{KUN}, I ordered this for my\n"
 	.string "research, but I think you should have\l"
 	.string "this POKéDEX.$"
@@ -1002,44 +751,34 @@ LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "PROF. BIRCH: The POKéDEX is a high-tech\n"
-	.string "tool that lets you easily catalogue\l"
-	.string "information about POKEMON that you\l"
-	.string "encounter.\p"
-	.string "Back in my days, we had to do this by\n"
-	.string "hand!\p"
-	.string "Anyway, {PLAYER}{KUN}.\p"
-	.string "Now that you have your own POKéMON,\n"
-	.string "what are you gonna do?\p"
-	.string "If I may suggest something…\p"
-	.string "I think you could aim to enter the\n"
-	.string "EVER GRANDE CONFERENCE!\p"
-	.string "It's a tournament organized every\n"
-	.string "year by the POKéMON LEAGUE, where\l"
-	.string "the best TRAINERS of the region\l"
-	.string "compete with each other.\p"
-	.string "Oh, but… I've been rambling for\n"
-	.string "far too long.\p"
-	.string "I won't keep you and {RIVAL}\n"
-	.string "any longer than this.\p"
-	.string "Now go!$"
+	.string "tool that automatically makes a record\l"
+	.string "of any POKéMON you meet or catch.\p"
+	.string "My kid, {RIVAL}, goes everywhere\n"
+	.string "with it.\p"
+	.string "Whenever my kid catches a rare POKéMON\n"
+	.string "and records its data in the POKéDEX,\l"
+	.string "why, {RIVAL} looks for me while I'm out\l"
+	.string "doing fieldwork, and shows me.$"
 
+LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
+	.string "PROF. BIRCH: Countless POKéMON\n"
+	.string "await you!\p"
+	.string "Argh, I'm getting the itch to get out\n"
+	.string "and do fieldwork again!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese:
-	.string "MAY: The EVER GRANDE CONFERENCE…\p"
-	.string "To participate, you're gonna need\n"
-	.string "to defeat the eight GYM LEADERS.\p"
-	.string "You're gonna need a strong team for\n"
-	.string "that!\p"
-	.string "Well then, here.\n"
-	.string "I guess you're gonna need these.$"
+	.string "MAY: Oh, wow, {PLAYER}{KUN}!\n"
+	.string "You got a POKéDEX, too!\p"
+	.string "That's great! Just like me!\n"
+	.string "I've got something for you, too!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls:
-	.string "MAY: You know, it's more fun to\n"
-	.string "have a whole bunch of POKéMON.\p"
-	.string "I'm going to explore all over the place\n"
-	.string "to find different POKéMON.\p"
-	.string "If I find any cool POKéMON, you bet\n"
-	.string "I'll try to get them with POKé BALLS.$"
+	.string "MAY: It's fun if you can get a lot of\n"
+	.string "POKéMON!\p"
+	.string "I'm going to look all over the place\n"
+	.string "because I want different POKéMON.\p"
+	.string "If I find any cute POKéMON, I'll catch\n"
+	.string "them with POKé BALLS!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_OhYourBagsFull:
 	.string "Oh? Your BAG's full.$"
@@ -1049,17 +788,13 @@ LittlerootTown_ProfessorBirchsLab_Text_MayWhereShouldIGoNext:
 	.string "for POKéMON next?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese:
-	.string "BRENDAN: EVER GRANDE CONFERENCE…\p"
-	.string "To participate, you're gonna need\n"
-	.string "to defeat the eight GYM LEADERS.\p"
-	.string "You're gonna need a strong team for\n"
-	.string "that!\p"
+	.string "BRENDAN: Huh…\n"
+	.string "So you got a POKéDEX, too.\p"
 	.string "Well then, here.\n"
-	.string "I guess you're gonna need these.$"
-
+	.string "I'll give you these.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls:
-	.string "BRENDAN: You know, it's more fun to\n"
+	.string "BRENDAN: You know it's more fun to\n"
 	.string "have a whole bunch of POKéMON.\p"
 	.string "I'm going to explore all over the place\n"
 	.string "to find different POKéMON.\p"
@@ -1264,24 +999,3 @@ LittlerootTown_ProfessorBirchsLab_Text_ScottAboardSSTidalCall:
 	.string "we meet. I'll be waiting!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
-
-LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
-	.string "PROF. BIRCH: Go forth, now!\n"
-	.string "Countless POKéMON await!$"
-
-LittlerootTown_ProfessorBirchsLab_EventScript_WaitABit:
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_WaitABit, MSGBOX_NPC
-	release
-	end
-
-LittlerootTown_ProfessorBirchsLab_Text_WaitABit:
-	.string "It seems like the PIKACHU wants\n"
-	.string "to tell you something.\p"
-	.string "You can't hear it, but if you could\n"
-	.string "you bet it'd go like this:\p"
-	.string "PIKACHU: TRAINER!\p"
-	.string "I have some useful things to tell\n"
-	.string "you, but…\p"
-	.string "You must wait until you properly\n"
-	.string "start your adventure to receive my\l"
-	.string "knowledge.$"

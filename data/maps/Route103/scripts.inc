@@ -1,6 +1,4 @@
 .set LOCALID_RIVAL, 2
-.set LOCALID_MAGMAM, 21
-.set LOCALID_MAGMAF, 22
 
 Route103_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route103_OnTransition
@@ -36,17 +34,13 @@ Route103_EventScript_RivalMay::
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
-	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_RIVAL, Common_Movement_Delay48
 	waitmovement 0
-	msgbox Route103_Text_Suckers, MSGBOX_DEFAULT
-	closemessage
-	playbgm MUS_ENCOUNTER_MAGMA, TRUE
-	applymovement LOCALID_MAGMAM Common_Movement_ExclamationMark
-	applymovement LOCALID_MAGMAM Common_Movement_ExclamationMark
-	waitmovement 0
-	goto Route103_EventScript_MagmaStart
+	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartMayBattleTreecko
+	case 1, Route103_EventScript_StartMayBattleTorchic
+	case 2, Route103_EventScript_StartMayBattleMudkip
 	end
 
 Route103_EventScript_RivalBrendan::
@@ -57,238 +51,62 @@ Route103_EventScript_RivalBrendan::
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
+	applymovement LOCALID_RIVAL, Common_Movement_Delay48
+	waitmovement 0
 	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	msgbox Route103_Text_Suckers, MSGBOX_DEFAULT
-	closemessage
-	playbgm MUS_ENCOUNTER_MAGMA, TRUE
-	applymovement LOCALID_MAGMAM Common_Movement_ExclamationMark
-	applymovement LOCALID_MAGMAM Common_Movement_ExclamationMark
-	waitmovement 0
-	goto Route103_EventScript_MagmaStart
-	end
-
-Route103_EventScript_MagmaStart::
-	switch VAR_FACING
-	case DIR_EAST, Route103_EventScript_MagmaEast
-	case DIR_WEST, Route103_EventScript_MagmaWest
-	case DIR_NORTH, Route103_EventScript_MagmaNorth
-end
-
-Route103_EventScript_MagmaEast::
-	applymovement OBJ_EVENT_ID_PLAYER Route103_Movement_Down
-	waitmovement 0
-	goto Route103_EventScript_MagmaFight
-	end
-
-Route103_EventScript_MagmaWest::
-	applymovement OBJ_EVENT_ID_PLAYER Route103_Movement_West
-	waitmovement 0
-	goto Route103_EventScript_MagmaFight
-	end
-
-Route103_EventScript_MagmaNorth::
-	applymovement OBJ_EVENT_ID_PLAYER Route103_Movement_North
-	waitmovement 0
-	goto Route103_EventScript_MagmaFight
-	end
-
-Route103_EventScript_MagmaFight::
-	applymovement LOCALID_MAGMAM Route103_Movement_Magmam
-	applymovement LOCALID_MAGMAF Route103_Movement_Magmaf
-	applymovement LOCALID_RIVAL Route103_Movement_Rival
-	msgbox Route_103_Text_SayWhat, MSGBOX_DEFAULT
-	closemessage
-	waitmovement 0
-	lockall
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route103_EventScript_PrepareFightMay
-	goto_if_eq VAR_RESULT, FEMALE, Route103_EventScript_PrepareFightBrendan
-	end
-
-Route103_EventScript_PrepareFightBrendan::
 	switch VAR_STARTER_MON
 	case 0, Route103_EventScript_StartBrendanBattleTreecko
 	case 1, Route103_EventScript_StartBrendanBattleTorchic
 	case 2, Route103_EventScript_StartBrendanBattleMudkip
 	end
 
-Route103_EventScript_PrepareFightMay::
-	switch VAR_STARTER_MON
-	case 0, Route103_EventScript_StartMayBattleTreecko
-	case 1, Route103_EventScript_StartMayBattleTorchic
-	case 2, Route103_EventScript_StartMayBattleMudkip
-	end
-
-Route103_Movement_Rival::
-	walk_down
-	step_end
-
-Route103_Movement_Magmam::
-	walk_up
-	step_end
-
-Route103_Movement_Magmaf::
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-Route103_Movement_Down::
-	walk_down
-	step_end
-
-Route103_Movement_West::
-	walk_down
-	walk_left
-	walk_left
-	walk_in_place_faster_down
-	step_end
-
-Route103_Movement_North::
-	walk_left
-	walk_in_place_faster_down
-	step_end
-
 Route103_EventScript_StartMayBattleTreecko::
-multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Enemy1DefeatText, TRAINER_ROUTE_103_MAGMAF, Enemy2DefeatText, TRAINER_MAY_ROUTE_103_TREECKO, TRAINER_BACK_PIC_MAY
-    specialvar VAR_RESULT, GetBattleOutcome
-    compare VAR_RESULT, B_OUTCOME_LOST
-    goto_if_eq script_PlayerLostTheFight
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TREECKO, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartMayBattleTorchic::
-multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Enemy1DefeatText, TRAINER_ROUTE_103_MAGMAF, Enemy2DefeatText, TRAINER_MAY_ROUTE_103_TORCHIC, TRAINER_BACK_PIC_MAY
-	specialvar VAR_RESULT, GetBattleOutcome
-    compare VAR_RESULT, B_OUTCOME_LOST
-    goto_if_eq script_PlayerLostTheFight
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TORCHIC, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartMayBattleMudkip::
-multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Enemy1DefeatText, TRAINER_ROUTE_103_MAGMAF, Enemy2DefeatText, TRAINER_MAY_ROUTE_103_MUDKIP, TRAINER_BACK_PIC_MAY
-	specialvar VAR_RESULT, GetBattleOutcome
-    compare VAR_RESULT, B_OUTCOME_LOST
-    goto_if_eq script_PlayerLostTheFight
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_MUDKIP, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartBrendanBattleTreecko::
-multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Enemy1DefeatText, TRAINER_ROUTE_103_MAGMAF, Enemy2DefeatText, TRAINER_BRENDAN_ROUTE_103_TREECKO, TRAINER_BACK_PIC_BRENDAN
-    specialvar VAR_RESULT, GetBattleOutcome
-    compare VAR_RESULT, B_OUTCOME_LOST
-    goto_if_eq script_PlayerLostTheFight	
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TREECKO, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_StartBrendanBattleTorchic::
-    specialvar VAR_RESULT, GetBattleOutcome
-    compare VAR_RESULT, B_OUTCOME_LOST
-    goto_if_eq script_PlayerLostTheFight	
-	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Enemy1DefeatText, TRAINER_ROUTE_103_MAGMAF, Enemy2DefeatText, TRAINER_BRENDAN_ROUTE_103_TORCHIC, TRAINER_BACK_PIC_BRENDAN
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TORCHIC, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_StartBrendanBattleMudkip::
-    specialvar VAR_RESULT, GetBattleOutcome
-    compare VAR_RESULT, B_OUTCOME_LOST
-    goto_if_eq script_PlayerLostTheFight	
-	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Enemy1DefeatText, TRAINER_ROUTE_103_MAGMAF, Enemy2DefeatText, TRAINER_BRENDAN_ROUTE_103_MUDKIP, TRAINER_BACK_PIC_BRENDAN
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_MUDKIP, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_AfterMayBattle::
-msgbox Route103_Text_Revenge, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER Route103_Movement_Stepup
-	applymovement LOCALID_RIVAL Route103_Movement_Stepup
-	waitmovement 0
-	applymovement LOCALID_MAGMAM Route_103_Magmam_Exit
-	applymovement LOCALID_MAGMAF Route_103_Magmaf_Exit
-	waitmovement 0
-	playbgm MUS_ENCOUNTER_MAY, FALSE
 	msgbox Route103_Text_MayTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
 
 Route103_EventScript_AfterBrendanBattle::
-	msgbox Route103_Text_Revenge, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER Route103_Movement_Stepup
-	applymovement LOCALID_RIVAL Route103_Movement_Stepup
-	waitmovement 0
-	applymovement LOCALID_MAGMAM Route_103_Magmam_Exit
-	applymovement LOCALID_MAGMAF Route_103_Magmaf_Exit
-	waitmovement 0
-	playbgm MUS_ENCOUNTER_BRENDAN, FALSE
 	msgbox Route103_Text_BrendanTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
 
-script_PlayerLostTheFight::
-end
-
-Route103_Movement_Stepup::
-	walk_up
-	walk_in_place_faster_down
-	step_end
-
-Route_103_Magmam_Exit::
-	walk_up
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-Route_103_Magmaf_Exit::
-	walk_up
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-Route103_Text_Revenge::
-	.string "COURTNEY: MAXIE will have our head on\n"
-	.string "a platter…\p"
-	.string "First we can't get to the ruins…\p"
-	.string "Then a couple of kids show up and\n"
-	.string "attack us!\p"
-	.string "Do you even know who we are?\p"
-	.string "We're TEAM MAGMA. An organization\n"
-	.string "dedicated to the betterement of the\l"
-	.string "world, at any cost.\p"
-	.string "You're either with us, or against us.\n"
-	.string "We won't let anyone stand in the way of\l"
-	.string "our goals.\p"
-	.string "So you better remember it!$"
-
-Enemy1DefeatText::
-	.string "U… Unbelievable…$"
-
-Enemy2DefeatText::
-	.string "COURTNEY: No! This isn't how it was\n"
-	.string "supposed to go!$"
-
 Route103_EventScript_RivalExit::
 	closemessage
-	goto Route103_EventScript_RivalExitFacingSouth
+	switch VAR_FACING
+	case DIR_SOUTH, Route103_EventScript_RivalExitFacingSouth
+	case DIR_NORTH, Route103_EventScript_RivalExitFacingNorth
+	case DIR_WEST, Route103_EventScript_RivalExitFacingEastOrWest
+	case DIR_EAST, Route103_EventScript_RivalExitFacingEastOrWest
 	end
 
 Route103_EventScript_RivalExitFacingNorth::
@@ -314,15 +132,15 @@ Route103_EventScript_RivalExitFacingEastOrWest::
 Route103_EventScript_RivalExitFacingSouth::
 	applymovement LOCALID_RIVAL, Route103_Movement_RivalExit1
 	waitmovement 0
+	playse SE_LEDGE
+	applymovement LOCALID_RIVAL, Route103_Movement_RivalExit2
+	waitmovement 0
 	goto Route103_EventScript_RivalEnd
 	end
 
 Route103_EventScript_RivalEnd::
 	removeobject LOCALID_RIVAL
-	removeobject LOCALID_MAGMAF
-	removeobject LOCALID_MAGMAM
 	setvar VAR_BIRCH_LAB_STATE, 4
-	setvar VAR_LITTLEROOT_TOWN_STATE, 2
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
 	setflag FLAG_DEFEATED_RIVAL_ROUTE103
 	setvar VAR_OLDALE_RIVAL_STATE, 1
@@ -331,16 +149,6 @@ Route103_EventScript_RivalEnd::
 	fadedefaultbgm
 	releaseall
 	end
-
-Route103_EventScript_MagmaF::
-	msgbox Route103_Text_Volcanic_Rocks, MSGBOX_DEFAULT
-	closemessage
-end
-
-Route103_EventScript_MagmaM::
-	msgbox Route103_Text_Complaining, MSGBOX_DEFAULT
-	closemessage
-end
 
 Route103_Movement_RivalExitFacingNorth1:
 	walk_left
@@ -365,16 +173,6 @@ Route103_Movement_WatchRivalExitFacingNorth:
 	step_end
 
 Route103_Movement_RivalExit1:
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_down
-	walk_down
-	walk_down
 	walk_down
 	step_end
 
@@ -492,88 +290,59 @@ Route103_EventScript_Isabelle::
 
 Route103_Text_MayRoute103Pokemon:
 	.string "MAY: Let's see… The POKéMON found\n"
-	.string "on PILGRIM'S PASSAGE include…$"
+	.string "on ROUTE 103 include…$"
 
 Route103_Text_MayLetsBattle:
-	.string "Oh, {PLAYER}{KUN}, it's you.\p"
-	.string "…What, my dad gave you a POKéMON\n"
-	.string "as a gift?\p"
-	.string "…Mhmm.\p"
-	.string "Do you see those two suspicious guys\n"
-	.string "back there?\p"
-	.string "Yeah, they're actually from TEAM\n"
-	.string "MAGMA.\p"
-	.string "I've seen them wander around here\n"
-	.string "before, acting all shady and yelling\l"
-	.string "at people…\p"
-	.string "What do you say, {PLAYER}{KUN}?\p"
-	.string "Let's team up and show them who's\n"
-	.string "really the boss around here.$"
-
-
+	.string "Oh, hi, {PLAYER}{KUN}!\p"
+	.string "…Oh, I see, my dad gave you\n"
+	.string "a POKéMON as a gift.\p"
+	.string "Since we're here, let's have a quick\n"
+	.string "battle!\p"
+	.string "I'll give you a taste of what being\n"
+	.string "a TRAINER is like.$"
 
 Route103_Text_MayDefeated:
 	.string "Wow! That's great!\n"
 	.string "{PLAYER}{KUN}, you're pretty good!$"
 
 Route103_Text_MayTimeToHeadBack:
-	.string "MAY: Well, that was decent.\n"
-	.string "I suppose you can handle a POKéMON.\p"
-	.string "Maybe my dad wasn't wrong on that one.\p"
-	.string "Well, I'm heading back to the lab now.\n"
-	.string "Don't trip over yourself.$"
+	.string "MAY: I think I know why my dad has\n"
+	.string "an eye out for you now.\p"
+	.string "I mean, you just got that POKéMON,\n"
+	.string "but it already likes you.\p"
+	.string "You might be able to befriend any\n"
+	.string "kind of POKéMON easily.\p"
+	.string "Well, it's time to head back to\n"
+	.string "the LAB.$"
 
 Route103_Text_BrendanRoute103Pokemon:
 	.string "BRENDAN: Okay, so it's this one and\n"
-	.string "that one that live on PILGRIM'S\l"
-	.string "PASSAGE…$"
+	.string "that one that live on ROUTE 103…$"
 
 Route103_Text_BrendanLetsBattle:
-	.string "Oh, {PLAYER}{KUN}, it's you.\p"
-	.string "…What, my dad gave you a POKéMON\n"
-	.string "as a gift?\p"
-	.string "…Mhmm.\p"
-	.string "Do you see those two suspicious guys\n"
-	.string "back there?\p"
-	.string "Yeah, they're actually from TEAM\n"
-	.string "MAGMA.\p"
-	.string "I've seen them wander around here\n"
-	.string "before, acting all shady and yelling\l"
-	.string "at people…\p"
-	.string "What do you say, {PLAYER}{KUN}?\p"
-	.string "Let's team up and show them who's\n"
-	.string "really the boss around here.$"
-
-Route103_Text_Suckers:
-	.string "Yo, suckers!\p"
-	.string "Your uniforms are ridicolous!$"
-
-Route_103_Text_SayWhat:
-	.string "COURTNEY: What was that, kid?\p"
-	.string "I'll let you know, I'm already\n"
-	.string "in a bad mood!\p"
-	.string "We've been sent here to investigate\n"
-	.string "the ruins up north, but we can't get\l"
-	.string "past those stupid trees…\p"
-	.string "At least we can still get the volcanic\n"
-	.string "samples we need from here, but…\p"
-	.string "Gah! Why am I saying this to you?!\n"
-	.string "Now I'm even more upset!\p"
-	.string "Prepare to get steamed, kids!$"
+	.string "Hey, it's {PLAYER}!\p"
+	.string "…Oh, yeah, Dad gave you a POKéMON.\p"
+	.string "Since we're here, how about a little\n"
+	.string "battle?\p"
+	.string "I'll teach you what being a TRAINER's\n"
+	.string "about!$"
 
 Route103_Text_BrendanDefeated:
 	.string "Huh, {PLAYER}, you're not too shabby.$"
 
 Route103_Text_BrendanTimeToHeadBack:
-	.string "BRENDAN: Well, that was decent.\n"
-	.string "I suppose you can handle a POKéMON.\p"
-	.string "Maybe my dad wasn't wrong on that one.\p"
-	.string "Well, I'm heading back to the lab now.\n"
-	.string "Don't trip over yourself.$"
+	.string "BRENDAN: I think I get it.\n"
+	.string "I think I know why my dad has his eye\l"
+	.string "out for you now.\p"
+	.string "Look, your POKéMON already likes you,\n"
+	.string "even though you just got it.\p"
+	.string "{PLAYER}, I get the feeling that you\n"
+	.string "could befriend any POKéMON with ease.\p"
+	.string "We should head back to the LAB.$"
 
 Route103_Text_ShouldHaveBroughtPotion:
-	.string "If only I had the CUT, I could get\n"
-	.string "into the ruins…$"
+	.string "My POKéMON is staggeringly tired…\n"
+	.string "I should have brought a POTION…$"
 
 Route103_Text_ShortcutToOldale:
 	.string "If you cross the sea from here,\n"
@@ -581,14 +350,6 @@ Route103_Text_ShortcutToOldale:
 	.string "Fufufu, that's useful, isn't it?$"
 
 Route103_Text_RouteSign:
-	.string "PILGRIM'S PASSAGE\n"
+	.string "ROUTE 103\n"
 	.string "{DOWN_ARROW} OLDALE TOWN$"
 
-Route103_Text_Volcanic_Rocks:
-	.string "COURTNEY: Hmm, no doubt about it…\n"
-	.string "These are volcanic formations.\p"
-	.string "Better take some samples.$"
-
-Route103_Text_Complaining:
-	.string "Why do we always have to do\n"
-	.string "the dirty work?$"

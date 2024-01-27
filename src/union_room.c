@@ -1067,7 +1067,7 @@ static void Task_TryJoinLinkGroup(u8 taskId)
                     PlaySE(SE_WALL_HIT);
                 }
             }
-            if (JOY_NEW(B_BUTTON))
+            else if (JOY_NEW(B_BUTTON))
             {
                 data->state = LG_STATE_CANCEL_CHOOSE_LEADER;
             }
@@ -1075,7 +1075,7 @@ static void Task_TryJoinLinkGroup(u8 taskId)
         default:
             RedrawListMenu(data->listTaskId);
             break;
-        
+        }
         break;
     case LG_STATE_ASK_JOIN_GROUP:
         GetYouAskedToJoinGroupPleaseWaitMessage(gStringVar4, gPlayerCurrActivity);
@@ -1260,7 +1260,6 @@ static void Task_TryJoinLinkGroup(u8 taskId)
         DestroyTask(taskId);
         break;
     }
-}
 }
 
 static u32 IsTryingToTradeAcrossVersionTooSoon(struct WirelessLink_Group *data, s32 id)
@@ -1516,7 +1515,44 @@ static void Task_StartUnionRoomTrade(u8 taskId)
 
 static void Task_ExchangeCards(u8 taskId)
 {
-   
+    switch (gTasks[taskId].data[0])
+    {
+    case 0:
+        if (GetMultiplayerId() == 0)
+            SendBlockRequest(BLOCK_REQ_SIZE_100);
+        gTasks[taskId].data[0]++;
+        break;
+    case 1:
+        if (GetBlockReceivedStatus() == GetLinkPlayerCountAsBitFlags())
+        {
+            s32 i;
+            u16 *recvBuff;
+
+            for (i = 0; i < GetLinkPlayerCount(); i++)
+            {
+                recvBuff = gBlockRecvBuffer[i];
+                CopyTrainerCardData(&gTrainerCards[i], (struct TrainerCard *)recvBuff, gLinkPlayers[i].version);
+            }
+
+            if (GetLinkPlayerCount() == 2)
+            {
+                // Note: hasAllFrontierSymbols is a re-used field.
+                // Here it is set by CreateTrainerCardInBuffer.
+                // If the player has a saved Wonder Card and it is the same Wonder Card
+                // as their partner then mystery gift stats are enabled.
+                recvBuff = gBlockRecvBuffer[GetMultiplayerId() ^ 1];
+                MysteryGift_TryEnableStatsByFlagId(((struct TrainerCard *)recvBuff)->hasAllFrontierSymbols);
+            }
+            else
+            {
+                MysteryGift_DisableStats();
+            }
+
+            ResetBlockReceivedFlags();
+            DestroyTask(taskId);
+        }
+        break;
+    }
 }
 
 static void CB2_ShowCard(void)
@@ -1593,12 +1629,122 @@ static void CB2_TransitionToCableClub(void)
 
 static void CreateTrainerCardInBuffer(void *dest, bool32 setWonderCard)
 {
-   
+    struct TrainerCard * card = (struct TrainerCard *)dest;
+    TrainerCard_GenerateCardForLinkPlayer(card);
+
+    // Below field is re-used, to be read by Task_ExchangeCards
+    if (setWonderCard)
+        card->hasAllFrontierSymbols = GetWonderCardFlagID();
+    else
+        card->hasAllFrontierSymbols = 0;
 }
 
 static void Task_StartActivity(u8 taskId)
 {
-   }
+    MysteryGift_DisableStats();
+    switch (gPlayerCurrActivity)
+    {
+    case ACTIVITY_BATTLE_SINGLE:
+    case ACTIVITY_BATTLE_DOUBLE:
+    case ACTIVITY_BATTLE_MULTI:
+    case ACTIVITY_TRADE:
+    case ACTIVITY_POKEMON_JUMP:
+    case ACTIVITY_BERRY_CRUSH:
+    case ACTIVITY_BERRY_PICK:
+    case ACTIVITY_SPIN_TRADE:
+    case ACTIVITY_RECORD_CORNER:
+        SaveLinkTrainerNames();
+        break;
+    }
+
+    switch (gPlayerCurrActivity)
+    {
+    case ACTIVITY_BATTLE_SINGLE | IN_UNION_ROOM:
+    case ACTIVITY_ACCEPT | IN_UNION_ROOM:
+        CleanupOverworldWindowsAndTilemaps();
+        gMain.savedCallback = CB2_UnionRoomBattle;
+        InitChooseHalfPartyForBattle(3);
+        break;
+    case ACTIVITY_BATTLE_SINGLE:
+        CleanupOverworldWindowsAndTilemaps();
+        CreateTrainerCardInBuffer(gBlockSendBuffer, TRUE);
+        HealPlayerParty();
+        SavePlayerParty();
+        LoadPlayerBag();
+        WarpForCableClubActivity(MAP_GROUP(BATTLE_COLOSSEUM_2P), MAP_NUM(BATTLE_COLOSSEUM_2P), 6, 8, USING_SINGLE_BATTLE);
+        SetMainCallback2(CB2_TransitionToCableClub);
+        break;
+    case ACTIVITY_BATTLE_DOUBLE:
+        CleanupOverworldWindowsAndTilemaps();
+        HealPlayerParty();
+        SavePlayerParty();
+        LoadPlayerBag();
+        CreateTrainerCardInBuffer(gBlockSendBuffer, TRUE);
+        WarpForCableClubActivity(MAP_GROUP(BATTLE_COLOSSEUM_2P), MAP_NUM(BATTLE_COLOSSEUM_2P), 6, 8, USING_DOUBLE_BATTLE);
+        SetMainCallback2(CB2_TransitionToCableClub);
+        break;
+    case ACTIVITY_BATTLE_MULTI:
+        CleanupOverworldWindowsAndTilemaps();
+        HealPlayerParty();
+        SavePlayerParty();
+        LoadPlayerBag();
+        CreateTrainerCardInBuffer(gBlockSendBuffer, TRUE);
+        WarpForCableClubActivity(MAP_GROUP(BATTLE_COLOSSEUM_4P), MAP_NUM(BATTLE_COLOSSEUM_4P), 5, 8, USING_MULTI_BATTLE);
+        SetMainCallback2(CB2_TransitionToCableClub);
+        break;
+    case ACTIVITY_TRADE:
+        CreateTrainerCardInBuffer(gBlockSendBuffer, TRUE);
+        CleanupOverworldWindowsAndTilemaps();
+        WarpForCableClubActivity(MAP_GROUP(TRADE_CENTER), MAP_NUM(TRADE_CENTER), 5, 8, USING_TRADE_CENTER);
+        SetMainCallback2(CB2_TransitionToCableClub);
+        break;
+    case ACTIVITY_RECORD_CORNER:
+        CreateTrainerCardInBuffer(gBlockSendBuffer, TRUE);
+        CleanupOverworldWindowsAndTilemaps();
+        WarpForCableClubActivity(MAP_GROUP(RECORD_CORNER), MAP_NUM(RECORD_CORNER), 8, 9, USING_RECORD_CORNER);
+        SetMainCallback2(CB2_TransitionToCableClub);
+        break;
+    case ACTIVITY_TRADE | IN_UNION_ROOM:
+        CleanupOverworldWindowsAndTilemaps();
+        CreateTask(Task_StartUnionRoomTrade, 0);
+        break;
+    case ACTIVITY_CHAT:
+    case ACTIVITY_CHAT | IN_UNION_ROOM:
+        if (GetMultiplayerId() == 0)
+        {
+            LinkRfu_CreateConnectionAsParent();
+        }
+        else
+        {
+            LinkRfu_StopManagerBeforeEnteringChat();
+            SetHostRfuGameData(ACTIVITY_CHAT | IN_UNION_ROOM, 0, TRUE);
+        }
+        EnterUnionRoomChat();
+        break;
+    case ACTIVITY_CARD:
+    case ACTIVITY_CARD | IN_UNION_ROOM:
+        CreateTrainerCardInBuffer(gBlockSendBuffer, FALSE);
+        SetMainCallback2(CB2_ShowCard);
+        break;
+    case ACTIVITY_POKEMON_JUMP:
+        WarpForWirelessMinigame(USING_MINIGAME, 5, 1);
+        StartPokemonJump(GetCursorSelectionMonId(), CB2_LoadMap);
+        break;
+    case ACTIVITY_BERRY_CRUSH:
+        WarpForWirelessMinigame(USING_BERRY_CRUSH, 9, 1);
+        StartBerryCrush(CB2_LoadMap);
+        break;
+    case ACTIVITY_BERRY_PICK:
+        WarpForWirelessMinigame(USING_MINIGAME, 5, 1);
+        StartDodrioBerryPicking(GetCursorSelectionMonId(), CB2_LoadMap);
+        break;
+    }
+
+    DestroyTask(taskId);
+    gSpecialVar_Result = LINKUP_SUCCESS;
+    if (gPlayerCurrActivity != (ACTIVITY_TRADE | IN_UNION_ROOM))
+        UnlockPlayerFieldControls();
+}
 
 static void Task_RunScriptAndFadeToActivity(u8 taskId)
 {
@@ -1935,6 +2081,7 @@ void CreateTask_LinkMysteryGiftWithFriend(u32 activity)
 
     data->state = 0;
     data->textState = 0;
+    data->isWonderNews = activity - ACTIVITY_WONDER_CARD;
     gSpecialVar_Result = LINKUP_ONGOING;
 }
 
@@ -1947,6 +2094,7 @@ static void Task_CardOrNewsWithFriend(u8 taskId)
     switch (data->state)
     {
     case 0:
+        SetHostRfuGameData(data->isWonderNews + ACTIVITY_WONDER_CARD, 0, FALSE);
         SetWirelessCommType1();
         OpenLink();
         InitializeRfuLinkManager_JoinGroup();
@@ -1961,6 +2109,7 @@ static void Task_CardOrNewsWithFriend(u8 taskId)
     case 2:
         ClearIncomingPlayerList(data->incomingPlayerList, RFU_CHILD_MAX);
         ClearRfuPlayerList(data->playerList->players, MAX_RFU_PLAYER_LIST_SIZE);
+        data->listenTaskId = CreateTask_ListenForCompatiblePartners(data->incomingPlayerList, data->isWonderNews + LINK_GROUP_WONDER_CARD);
 
         listWinTemplate = sWindowTemplate_GroupList;
         listWinTemplate.baseBlock = GetMysteryGiftBaseBlock();
@@ -2100,6 +2249,7 @@ void CreateTask_LinkMysteryGiftOverWireless(u32 activity)
 
     data->state = 0;
     data->textState = 0;
+    data->isWonderNews = activity - ACTIVITY_WONDER_CARD;
     gSpecialVar_Result = LINKUP_ONGOING;
 }
 
@@ -2127,6 +2277,7 @@ static void Task_CardOrNewsOverWireless(u8 taskId)
     case 2:
         ClearIncomingPlayerList(data->incomingPlayerList, RFU_CHILD_MAX);
         ClearRfuPlayerList(data->playerList->players, MAX_RFU_PLAYER_LIST_SIZE);
+        data->listenTaskId = CreateTask_ListenForWonderDistributor(data->incomingPlayerList, data->isWonderNews + LINK_GROUP_WONDER_CARD);
 
         if (data->showListMenu)
         {
@@ -2162,14 +2313,23 @@ static void Task_CardOrNewsOverWireless(u8 taskId)
             {
                 if (data->playerList->players[0].groupScheduledAnim == UNION_ROOM_SPAWN_IN && !data->playerList->players[0].rfu.data.startedActivity)
                 {
-                }
+                    if (HasWonderCardOrNewsByLinkGroup(&data->playerList->players[0].rfu.data, data->isWonderNews + LINK_GROUP_WONDER_CARD))
+                    {
+                        data->leaderId = 0;
+                        data->refreshTimer = 0;
+                        LoadWirelessStatusIndicatorSpriteGfx();
+                        CreateWirelessStatusIndicatorSprite(0, 0);
+                        CreateTask_RfuReconnectWithParent(data->playerList->players[0].rfu.name, ReadAsU16(data->playerList->players[0].rfu.data.compatibility.playerTrainerId));
+                        PlaySE(SE_POKENAV_ON);
+                        data->state = 4;
+                    }
                     else
                     {
                         PlaySE(SE_BOO);
                         data->state = 10;
                     }
                 }
-            
+            }
             else if (JOY_NEW(B_BUTTON))
             {
                 data->state = 6;
@@ -2230,6 +2390,15 @@ static void Task_CardOrNewsOverWireless(u8 taskId)
         break;
     case 7:
         if (PrintMysteryGiftMenuMessage(&data->textState, sText_WirelessSearchCanceled))
+        {
+            DestroyWirelessStatusIndicatorSprite();
+            DestroyTask(taskId);
+            LinkRfu_Shutdown();
+            gSpecialVar_Result = LINKUP_FAILED;
+        }
+        break;
+    case 11:
+        if (PrintMysteryGiftMenuMessage(&data->textState, sNoWonderSharedTexts[data->isWonderNews]))
         {
             DestroyWirelessStatusIndicatorSprite();
             DestroyTask(taskId);

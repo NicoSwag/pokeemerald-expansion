@@ -181,7 +181,7 @@
 #define MAPSEC_ICEFALL_CAVE                 0xB1
 #define MAPSEC_ROCKET_WAREHOUSE             0xB2
 #define MAPSEC_TRAINER_TOWER_2              0xB3
-#define MAPSEC_ROUTE_104_LOWER              0xB4
+#define MAPSEC_DOTTED_HOLE                  0xB4
 #define MAPSEC_LOST_CAVE                    0xB5
 #define MAPSEC_PATTERN_BUSH                 0xB6
 #define MAPSEC_ALTERING_CAVE_FRLG           0xB7
@@ -214,10 +214,7 @@
 #define MAPSEC_ALTERING_CAVE                0xD2
 #define MAPSEC_NAVEL_ROCK                   0xD3
 #define MAPSEC_TRAINER_HILL                 0xD4
-#define MAPSEC_OLDALE_RUINS                 0xD5
-#define MAPSEC_BRINE_CAVE          0xD6
-#define MAPSEC_NONE                         0xD7
-
+#define MAPSEC_NONE                         0xD5
 
 #define METLOC_SPECIAL_EGG                  0xFD
 #define METLOC_IN_GAME_TRADE                0xFE

@@ -129,6 +129,17 @@ void ClearMysteryGiftFlags(void)
     FlagClear(FLAG_MYSTERY_GIFT_15);
 }
 
+void ClearMysteryGiftVars(void)
+{
+    VarSet(VAR_GIFT_PICHU_SLOT, 0);
+    VarSet(VAR_GIFT_UNUSED_1, 0);
+    VarSet(VAR_GIFT_UNUSED_2, 0);
+    VarSet(VAR_GIFT_UNUSED_3, 0);
+    VarSet(VAR_GIFT_UNUSED_4, 0);
+    VarSet(VAR_GIFT_UNUSED_5, 0);
+    VarSet(VAR_GIFT_UNUSED_6, 0);
+    VarSet(VAR_GIFT_UNUSED_7, 0);
+}
 
 void DisableResetRTC(void)
 {
@@ -185,7 +196,7 @@ bool8 VarSet(u16 id, u16 value)
     return TRUE;
 }
 
-u16 VarGetObjectEventGraphicsId(u8 id)
+u8 VarGetObjectEventGraphicsId(u8 id)
 {
     return VarGet(VAR_OBJ_GFX_ID_0 + id);
 }
@@ -227,48 +238,6 @@ u8 FlagClear(u16 id)
 bool8 FlagGet(u16 id)
 {
     u8 *ptr = GetFlagPointer(id);
-
-    if (!ptr)
-        return FALSE;
-
-    if (!(((*ptr) >> (id & 7)) & 1))
-        return FALSE;
-
-    return TRUE;
-}
-
-u8 *GetTMFlagPointer(u16 id)
-{
-    return &gSaveBlock1Ptr->acquiredTMs[id / 8];
-}
-
-u8 TMFlagSet(u16 id)
-{
-    u8 *ptr = GetTMFlagPointer(id);
-    if (ptr)
-        *ptr |= 1 << (id & 7);
-    return 0;
-}
-
-u8 TMFlagToggle(u16 id)
-{
-    u8 *ptr = GetTMFlagPointer(id);
-    if (ptr)
-        *ptr ^= 1 << (id & 7);
-    return 0;
-}
-
-u8 TMFlagClear(u16 id)
-{
-    u8 *ptr = GetTMFlagPointer(id);
-    if (ptr)
-        *ptr &= ~(1 << (id & 7));
-    return 0;
-}
-
-bool8 TMFlagGet(u16 id)
-{
-    u8 *ptr = GetTMFlagPointer(id);
 
     if (!ptr)
         return FALSE;

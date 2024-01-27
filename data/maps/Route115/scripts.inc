@@ -130,16 +130,16 @@ Route115_EventScript_Marlene::
 	end
 
 Route115_Text_NeverKnowWhenCavePokemonWillAppear:
-	.string "Rumor has it that an extremely\n"
-	.string "powerful POKEMON lives in the\l"
-	.string "FORBIDDEN FOREST.\p"
-	.string "No one is allowed to enter,\n"
-	.string "however.$"
+	.string "Exploring a cave isn't like walking\n"
+	.string "on a road.\p"
+	.string "You never know when wild POKéMON will\n"
+	.string "appear. It's full of suspense.$"
 
 Route115_Text_RouteSignRustboro:
-	.string "ENIGMA HILL\n"
+	.string "ROUTE 115\n"
 	.string "{DOWN_ARROW} RUSTBORO CITY$"
 
 Route115_Text_MeteorFallsSign:
 	.string "METEOR FALLS\n"
 	.string "FALLARBOR TOWN THROUGH HERE$"
+

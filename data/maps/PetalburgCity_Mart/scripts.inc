@@ -29,7 +29,6 @@ PetalburgCity_Mart_Pokemart_Basic:
 	release
 	end
 
-
 PetalburgCity_Mart_EventScript_ExpandedItems::
 	pokemart PetalburgCity_Mart_Pokemart_Expanded
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
@@ -84,3 +83,4 @@ PetalburgCity_Mart_Text_TakeSomeAntidotesWithYou:
 	.string "If you walk around with a poisoned\n"
 	.string "POKéMON, it will lose HP until it faints.\l"
 	.string "Take some ANTIDOTES with you.$"
+

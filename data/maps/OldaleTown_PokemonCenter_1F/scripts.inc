@@ -18,37 +18,6 @@ OldaleTown_PokemonCenter_1F_EventScript_Nurse::
 	release
 	end
 
-OldaleTown_PokemonCenter_1F_EventScript_Mart::
-	lock
-	faceplayer
-	goto_if_unset FLAG_RECEIVED_POKEDEX_FROM_BIRCH, OldaleTown_PokemonCenter_1F_EventScript_StillStocking
-	message gText_HowMayIServeYou
-	waitmessage
-	pokemart OldaleTown_Mart_Pokemart
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-	release
-	end
-
-		.align 2
-
-OldaleTown_Mart_Pokemart:
-	.2byte ITEM_POKE_BALL
-	.2byte ITEM_POTION
-	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_AWAKENING
-	.2byte ITEM_NONE
-	release
-	end
-
-
-
-OldaleTown_PokemonCenter_1F_EventScript_StillStocking:
-	msgbox OldaleTown_PokemonCenter_1F_Text_StillStocking, MSGBOX_NPC
-	release
-	end
-
-
 OldaleTown_PokemonCenter_1F_EventScript_Gentleman::
 	msgbox OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC, MSGBOX_NPC
 	end
@@ -77,26 +46,19 @@ OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
 	.string "to use it, too.$"
 
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
-	.string "I spent too much money at the MART,\n"
-	.string "and now I'm completely broke.\p"
-	.string "I beg you, TRAINER, don't make the\n"
-	.string "same mistake as me!$"
+	.string "POKéMON CENTERS are great!\p"
+	.string "You can use their services as much\n"
+	.string "as you like, and it's all for free.\l"
+	.string "You never have to worry!$"
 
 OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:
-	.string "The second floor of POKEMON CENTRES\n"
-	.string "houses a bunch of useful services.\p"
-	.string "You can make your PokéMON forget and\n"
-	.string "remember moves, or even learn brand\l"
-	.string "new ones!$"
+	.string "The POKéMON WIRELESS CLUB on\n"
+	.string "the second floor was built recently.\p"
+	.string "But they say they're still making\n"
+	.string "adjustments.$"
 
 OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
-	.string "The second floor of POKEMON CENTRES\n"
-	.string "houses a bunch of useful services.\p"
-	.string "You can make your PokéMON forget and\n"
-	.string "remember moves, or even learn brand\l"
-	.string "new ones!$"
+	.string "The POKéMON WIRELESS CLUB on\n"
+	.string "the second floor was built recently.\p"
+	.string "I traded POKéMON right away.$"
 
-OldaleTown_PokemonCenter_1F_Text_StillStocking:
-	.string "I'm terribly sorry, but we're still\n"
-	.string "stocking our inventory.\p"
-	.string "Do come back in a little!$"

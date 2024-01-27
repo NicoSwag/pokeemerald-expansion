@@ -55,13 +55,11 @@ struct ResourceFlags
 #define RESOURCE_FLAG_FLASH_FIRE        0x1
 #define RESOURCE_FLAG_ROOST             0x2
 #define RESOURCE_FLAG_UNBURDEN          0x4
-#define RESOURCE_FLAG_DEBRIS_SHIELD          0x8
+#define RESOURCE_FLAG_UNUSED            0x8
 #define RESOURCE_FLAG_TRACED            0x10
 #define RESOURCE_FLAG_EMERGENCY_EXIT    0x20
 #define RESOURCE_FLAG_NEUTRALIZING_GAS  0x40
 #define RESOURCE_FLAG_ICE_FACE          0x80
-#define RESOURCE_FLAG_SHIELD_ACTIVATED  0x120
-
 
 struct DisableStruct
 {
@@ -157,7 +155,6 @@ struct ProtectStruct
     u16 disableEjectPack:1;
     u16 statFell:1;
     u16 pranksterElevated:1;
-    u16 tricksterElevated:1;
     u16 quickDraw:1;
     u16 beakBlastCharge:1;
     u16 quash:1;
@@ -190,7 +187,6 @@ struct SpecialStatus
     // End of byte
     u8 sturdied:1;
     u8 stormDrainRedirected:1;
-    u8 steamBarrierRedirected:1;
     u8 switchInAbilityDone:1;
     u8 switchInItemDone:1;
     u8 instructedChosenTarget:3;
@@ -201,7 +197,6 @@ struct SpecialStatus
     u8 gemBoost:1;
     u8 rototillerAffected:1;  // to be affected by rototiller
     u8 parentalBondState:2;
-    u8 fistBarrageState:4;
     u8 multiHitOn:1;
     u8 announceNeutralizingGas:1;   // See Cmd_switchineffects
     u8 neutralizingGasRemoved:1;    // See VARIOUS_TRY_END_NEUTRALIZING_GAS
@@ -210,12 +205,10 @@ struct SpecialStatus
     u8 damagedMons:4; // Mons that have been damaged directly by using a move, includes substitute.
     u8 dancerUsedMove:1;
     u8 dancerOriginalTarget:3;
-    u8 singerUsedMove:1;
-    u8 singerOriginalTarget:3;
     // End of byte
     u8 emergencyExited:1;
     u8 afterYou:1;
-    u8 magicianStolen:1; // So that Life Orb doesn't activate after Magician steals it.
+    u8 preventLifeOrbDamage:1; // So that Life Orb doesn't activate various effects.
 };
 
 struct SideTimer
@@ -742,7 +735,6 @@ struct BattleStruct
     u8 trainerSlideDynamaxMsgDone:1;
     u8 pledgeMove:1;
     u8 isSkyBattle:1;
-    u16 weatherStore;
     u32 aiDelayTimer; // Counts number of frames AI takes to choose an action.
     u32 aiDelayFrames; // Number of frames it took to choose an action.
     u8 timesGotHit[NUM_BATTLE_SIDES][PARTY_SIZE];

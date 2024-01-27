@@ -5,7 +5,7 @@
       "id": "LAYOUT_PETALBURG_CITY",
       "name": "PetalburgCity_Layout",
       "width": 30,
-      "height": 36,
+      "height": 30,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/PetalburgCity/border.bin",
@@ -94,8 +94,8 @@
     {
       "id": "LAYOUT_LITTLEROOT_TOWN",
       "name": "LittlerootTown_Layout",
-      "width": 25,
-      "height": 29,
+      "width": 20,
+      "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/LittlerootTown/border.bin",
@@ -104,8 +104,8 @@
     {
       "id": "LAYOUT_OLDALE_TOWN",
       "name": "OldaleTown_Layout",
-      "width": 23,
-      "height": 24,
+      "width": 20,
+      "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/OldaleTown/border.bin",
@@ -164,8 +164,8 @@
     {
       "id": "LAYOUT_ROUTE101",
       "name": "Route101_Layout",
-      "width": 24,
-      "height": 24,
+      "width": 20,
+      "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route101/border.bin",
@@ -174,7 +174,7 @@
     {
       "id": "LAYOUT_ROUTE102",
       "name": "Route102_Layout",
-      "width": 54,
+      "width": 50,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
@@ -305,7 +305,7 @@
       "id": "LAYOUT_ROUTE115",
       "name": "Route115_Layout",
       "width": 40,
-      "height": 60,
+      "height": 80,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Fallarbor",
       "border_filepath": "data/layouts/Route115/border.bin",
@@ -935,7 +935,7 @@
       "id": "LAYOUT_RUSTBORO_CITY_GYM",
       "name": "RustboroCity_Gym_Layout",
       "width": 11,
-      "height": 24,
+      "height": 20,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_RustboroGym",
       "border_filepath": "data/layouts/RustboroCity_Gym/border.bin",
@@ -974,10 +974,10 @@
     {
       "id": "LAYOUT_RUSTBORO_CITY_CUTTERS_HOUSE",
       "name": "RustboroCity_CuttersHouse_Layout",
-      "width": 13,
-      "height": 10,
-      "primary_tileset": "gTileset_SecretBase",
-      "secondary_tileset": "gTileset_SecretBaseTree",
+      "width": 11,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/RustboroCity_CuttersHouse/border.bin",
       "blockdata_filepath": "data/layouts/RustboroCity_CuttersHouse/map.bin"
     },
@@ -1164,10 +1164,10 @@
     {
       "id": "LAYOUT_ROUTE104_PRETTY_PETAL_FLOWER_SHOP",
       "name": "Route104_PrettyPetalFlowerShop_Layout",
-      "width": 14,
+      "width": 15,
       "height": 9,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_Shop",
+      "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
       "border_filepath": "data/layouts/Route104_PrettyPetalFlowerShop/border.bin",
       "blockdata_filepath": "data/layouts/Route104_PrettyPetalFlowerShop/map.bin"
     },
@@ -4410,116 +4410,6 @@
       "secondary_tileset": "gTileset_MysteryEventsHouse",
       "border_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
-    },
-    {
-      "id": "LAYOUT_BIRCHS_RESERVE",
-      "name": "BirchsReserve_Layout",
-      "width": 20,
-      "height": 20,
-      "primary_tileset": "gTileset_PoryTilesetTest",
-      "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/BirchsReserve/border.bin",
-      "blockdata_filepath": "data/layouts/BirchsReserve/map.bin"
-    },
-    {
-      "id": "LAYOUT_LITTLEROOT_TOWN_NEIGHBORS_HOUSR",
-      "name": "LittlerootTown_NeighborsHousr_Layout",
-      "width": 10,
-      "height": 9,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/LittlerootTown_NeighborsHousr/border.bin",
-      "blockdata_filepath": "data/layouts/LittlerootTown_NeighborsHousr/map.bin"
-    },
-    {
-      "id": "LAYOUT_OLDALE_TOWN_HOUSE3",
-      "name": "OldaleTown_House3_Layout",
-      "width": 10,
-      "height": 9,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/OldaleTown_House3/border.bin",
-      "blockdata_filepath": "data/layouts/OldaleTown_House3/map.bin"
-    },
-    {
-      "id": "LAYOUT_ROUTE104LOWER",
-      "name": "Route104Lower_Layout",
-      "width": 50,
-      "height": 64,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/Route104Lower/border.bin",
-      "blockdata_filepath": "data/layouts/Route104Lower/map.bin"
-    },
-    {
-      "id": "LAYOUT_ROUTE104UPPER",
-      "name": "Route104Upper_Layout",
-      "width": 40,
-      "height": 40,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Rustboro",
-      "border_filepath": "data/layouts/Route104Upper/border.bin",
-      "blockdata_filepath": "data/layouts/Route104Upper/map.bin"
-    },
-    {
-      "id": "LAYOUT_OLDALE_RUINS_ENTRANCE_1",
-      "name": "OldaleRuinsEntrance_1_Layout",
-      "width": 8,
-      "height": 6,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/OldaleRuinsEntrance_1/border.bin",
-      "blockdata_filepath": "data/layouts/OldaleRuinsEntrance_1/map.bin"
-    },
-    {
-      "id": "LAYOUT_OLDALE_RUINS_ENTRANCE_2",
-      "name": "OldaleRuinsEntrance_2_Layout",
-      "width": 8,
-      "height": 6,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/OldaleRuinsEntrance_2/border.bin",
-      "blockdata_filepath": "data/layouts/OldaleRuinsEntrance_2/map.bin"
-    },
-    {
-      "id": "LAYOUT_LOWER_ROUTE115",
-      "name": "LowerRoute115_Layout",
-      "width": 47,
-      "height": 40,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Rustboro",
-      "border_filepath": "data/layouts/LowerRoute115/border.bin",
-      "blockdata_filepath": "data/layouts/LowerRoute115/map.bin"
-    },
-    {
-      "id": "LAYOUT_BRINE_CAVE",
-      "name": "BrineCave_Layout",
-      "width": 30,
-      "height": 30,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Cave",
-      "border_filepath": "data/layouts/BrineCave/border.bin",
-      "blockdata_filepath": "data/layouts/BrineCave/map.bin"
-    },
-    {
-      "id": "LAYOUT_RUSTBORO_CITY_GYM_ARENA",
-      "name": "RustboroCity_Gym_Arena_Layout",
-      "width": 14,
-      "height": 12,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_RustboroGym",
-      "border_filepath": "data/layouts/RustboroCity_Gym_Arena/border.bin",
-      "blockdata_filepath": "data/layouts/RustboroCity_Gym_Arena/map.bin"
-    },
-    {
-      "id": "LAYOUT_OLDALE_RUINS",
-      "name": "OldaleRuins_Layout",
-      "width": 80,
-      "height": 50,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg_Ruins",
-      "border_filepath": "data/layouts/OldaleRuins/border.bin",
-      "blockdata_filepath": "data/layouts/OldaleRuins/map.bin"
     }
   ]
 }

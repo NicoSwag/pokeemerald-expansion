@@ -77,7 +77,7 @@
 #define OBJ_EVENT_GFX_SPENSER                     73
 #define OBJ_EVENT_GFX_NOLAND                      74
 #define OBJ_EVENT_GFX_LUCY                        75
-#define OBJ_EVENT_GFX_HOOTHOOT                    76
+#define OBJ_EVENT_GFX_UNUSED_NATU_DOLL            76
 #define OBJ_EVENT_GFX_UNUSED_MAGNEMITE_DOLL       77
 #define OBJ_EVENT_GFX_UNUSED_SQUIRTLE_DOLL        78
 #define OBJ_EVENT_GFX_UNUSED_WOOPER_DOLL          79
@@ -240,26 +240,6 @@
 #define OBJ_EVENT_GFX_LINK_RS_MAY                236
 #define OBJ_EVENT_GFX_LUGIA                      237
 #define OBJ_EVENT_GFX_HOOH                       238
-#define OBJ_EVENT_GFX_SUNFLORA                   239
-#define OBJ_EVENT_GFX_SLUGMA                     240
-#define OBJ_EVENT_GFX_LEDYBA                     241
-#define OBJ_EVENT_GFX_LOTAD                      242
-#define OBJ_EVENT_GFX_TAILLOW                    243
-#define OBJ_EVENT_GFX_SMARTCHU                   244
-#define OBJ_EVENT_GFX_LOOKER                     245
-#define OBJ_EVENT_GFX_BULLDOZER                  246
-#define OBJ_EVENT_GFX_CRANE                     247
-#define OBJ_EVENT_GFX_ENGINEER                  248
-#define OBJ_EVENT_GFX_DIGLETT                   249
-#define OBJ_EVENT_GFX_RHYDON                    250
-#define OBJ_EVENT_GFX_DELIBIRD                  251
-#define OBJ_EVENT_GFX_CHANNELER                 252
-#define OBJ_EVENT_GFX_KADABRA                  253
-#define OBJ_EVENT_GFX_SCIZOR                  254
-#define OBJ_EVENT_GFX_SHELLY                  255
-#define OBJ_EVENT_GFX_MATT                  256
-#define OBJ_EVENT_GFX_COURTNEY                  257
-#define OBJ_EVENT_GFX_TABITHA                  258
 
 // NOTE: By default, the max value for NUM_OBJ_EVENT_GFX is 239.
 //
@@ -270,7 +250,7 @@
 // object graphics that can be removed. If more graphics are needed, anything that
 // stores graphics ids will need to be increased in size. See wiki entry below:
 // https://github.com/pret/pokeemerald/wiki/Feature-Branches#overworld-expansion
-#define NUM_OBJ_EVENT_GFX                        259
+#define NUM_OBJ_EVENT_GFX                        239
 
 
 // These are dynamic object gfx ids.

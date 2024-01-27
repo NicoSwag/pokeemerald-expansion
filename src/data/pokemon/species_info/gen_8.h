@@ -1518,17 +1518,18 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .types = { TYPE_ROCK, TYPE_ROCK },
         .catchRate = 255,
         .expYield = 48,
+        .evYield_Defense = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
-        .abilities = { ABILITY_STEAM_ENGINE, ABILITY_FLASH_FIRE },
+        .abilities = { ABILITY_STEAM_ENGINE, ABILITY_HEATPROOF, ABILITY_FLASH_FIRE },
         .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("ROLYCOLY"),
+        .speciesName = _("Rolycoly"),
         .cryId = CRY_ROLYCOLY,
         .natDexNum = NATIONAL_DEX_ROLYCOLY,
-        .categoryName = _("COAL"),
+        .categoryName = _("Coal"),
         .height = 3,
         .weight = 120,
         .description = COMPOUND_STRING(
@@ -1565,23 +1566,24 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .types = { TYPE_ROCK, TYPE_FIRE },
         .catchRate = 120,
         .expYield = 144,
+        .evYield_Defense = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
-        .abilities = { ABILITY_STEAM_ENGINE, ABILITY_FLASH_FIRE },
+        .abilities = { ABILITY_STEAM_ENGINE, ABILITY_FLAME_BODY, ABILITY_FLASH_FIRE },
         .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("CARKOL"),
+        .speciesName = _("Carkol"),
         .cryId = CRY_CARKOL,
         .natDexNum = NATIONAL_DEX_CARKOL,
-        .categoryName = _("COAL"),
+        .categoryName = _("Coal"),
         .height = 11,
         .weight = 780,
         .description = COMPOUND_STRING(
             "It forms coal inside its body. Coal\n"
-            "dropped by this Pokémon once helped are\n"
-            "harvested in HOENN's coal mines."),
+            "dropped by this Pokémon once helped fuel\n"
+            "the lives of people in the Galar region."),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -1610,17 +1612,18 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .types = { TYPE_ROCK, TYPE_FIRE },                                              \
         .catchRate = 45,                                                                \
         .expYield = 255,                                                                \
+        .evYield_Defense = 3,                                                           \
         .genderRatio = PERCENT_FEMALE(50),                                              \
         .eggCycles = 15,                                                                \
         .friendship = STANDARD_FRIENDSHIP,                                              \
         .growthRate = GROWTH_MEDIUM_SLOW,                                               \
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },                          \
-        .abilities = { ABILITY_STEAM_ENGINE, ABILITY_FLASH_FIRE },  \
+        .abilities = { ABILITY_STEAM_ENGINE, ABILITY_FLAME_BODY, ABILITY_FLASH_FIRE },  \
         .bodyColor = BODY_COLOR_BLACK,                                                  \
-        .speciesName = _("COALOSSAL"),                                                  \
+        .speciesName = _("Coalossal"),                                                  \
         .cryId = CRY_COALOSSAL,                                                         \
         .natDexNum = NATIONAL_DEX_COALOSSAL,                                            \
-        .categoryName = _("COAL"),                                                      \
+        .categoryName = _("Coal"),                                                      \
         .footprint = gMonFootprint_Coalossal,                                           \
         LEARNSETS(Coalossal),                                                           \
         .formSpeciesIdTable = sCoalossalFormSpeciesIdTable,                             \
@@ -1635,7 +1638,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
             "It's usually peaceful, but the vandalism\n"
             "of mines enrages it. Offenders will be\n"
             "incinerated with flames that reach\n"
-            "smoldering temperatures."),
+            "2,700 degrees Fahrenheit."),
         .pokemonScale = 275,
         .pokemonOffset = 7,
         .trainerScale = 256,

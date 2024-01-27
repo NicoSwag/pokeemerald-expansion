@@ -52,8 +52,8 @@ Route109_SeashoreHouse_EventScript_BuySodaPop::
 	msgbox Route109_SeashoreHouse_Text_HereYouGo, MSGBOX_DEFAULT
 	removemoney 300
 	updatemoneybox
-	hidemoneybox
 	giveitem ITEM_SODA_POP
+	hidemoneybox
 	release
 	end
 
@@ -174,3 +174,4 @@ Route109_SeashoreHouse_Text_SimonPostBattle:
 	.string "If one of my POKéMON knew the move\n"
 	.string "for carrying me across water on its\l"
 	.string "back, I could get rid of this inner tube.$"
+

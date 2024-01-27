@@ -2605,4 +2605,3 @@ static void UpdateRainCounter(u8 newWeather, u8 oldWeather)
         IncrementGameStat(GAME_STAT_GOT_RAINED_ON);
 }
 
-

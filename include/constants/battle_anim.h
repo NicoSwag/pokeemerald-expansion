@@ -338,7 +338,7 @@
 #define ANIM_TAG_ASSURANCE_HAND             (ANIM_SPRITES_START + 324)
 #define ANIM_TAG_WISHIWASHI_FISH            (ANIM_SPRITES_START + 325)
 #define ANIM_TAG_ZYGARDE_HEXES              (ANIM_SPRITES_START + 326)
-#define ANIM_TAG_CHI_BLAST               (ANIM_SPRITES_START + 327)
+#define ANIM_TAG_AURA_SPHERE                (ANIM_SPRITES_START + 327)
 #define ANIM_TAG_OMEGA_STONE                (ANIM_SPRITES_START + 328)
 #define ANIM_TAG_ALPHA_STONE                (ANIM_SPRITES_START + 329)
 #define ANIM_TAG_BERRY_NORMAL               (ANIM_SPRITES_START + 330)
@@ -511,7 +511,7 @@
 #define BG_GARBAGE_FALLS 74
 #define BG_HYPER_BEAM 75
 #define BG_DYNAMAX_CANNON 76
-#define BG_CHI_BLAST 77
+#define BG_AURA_SPHERE 77
 #define BG_STEEL_BEAM_OPPONENT 78
 #define BG_STEEL_BEAM_PLAYER 79
 #define BG_CHLOROBLAST 80
@@ -555,15 +555,14 @@
 #define B_ANIM_ZMOVE_ACTIVATE           34 // Using Z Moves
 #define B_ANIM_AFFECTION_HANGED_ON      35
 #define B_ANIM_SNOW_CONTINUES           36
-#define B_ANIM_GRAVITY                  37
-#define B_ANIM_POLLUTION_CONTINUES      38
-#define B_ANIM_TRICK_ROOM               39
-#define B_ANIM_DYNAMAX_GROWTH           40
-#define B_ANIM_MAX_SET_WEATHER          41
-#define B_ANIM_SYRUP_BOMB_SPEED_DROP    42
-#define B_ANIM_RAINBOW                  43
-#define B_ANIM_SEA_OF_FIRE              44
-#define B_ANIM_SWAMP                    45
+#define B_ANIM_ULTRA_BURST              37
+#define B_ANIM_SALT_CURE_DAMAGE         38
+#define B_ANIM_DYNAMAX_GROWTH           39
+#define B_ANIM_MAX_SET_WEATHER          40
+#define B_ANIM_SYRUP_BOMB_SPEED_DROP    41
+#define B_ANIM_RAINBOW                  42
+#define B_ANIM_SEA_OF_FIRE              43
+#define B_ANIM_SWAMP                    44
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0
@@ -604,7 +603,6 @@
 #define TRAP_ANIM_INFESTATION 6
 #define TRAP_ANIM_SNAP_TRAP 7
 #define TRAP_ANIM_THUNDER_CAGE 8
-#define TRAP_ANIM_FOREST_CURSE 9
 
 // Weather defines for battle animation scripts.
 #define ANIM_WEATHER_NONE 0
@@ -613,7 +611,6 @@
 #define ANIM_WEATHER_SANDSTORM 3
 #define ANIM_WEATHER_HAIL 4
 #define ANIM_WEATHER_SNOW 5
-#define ANIM_WEATHER_POLLUTION 6
 
 // horseshoe/fist frames
 #define ANIM_RIGHT_FIST  0

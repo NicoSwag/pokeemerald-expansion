@@ -507,6 +507,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .pokemonOffset = 17,                                \
         .trainerScale = 256,                                \
         .trainerOffset = 0,                                 \
+        .teachableLearnset = sOinkologneTeachableLearnset,  \
         .formSpeciesIdTable = sOinkologneFormSpeciesIdTable
 
     [SPECIES_OINKOLOGNE_MALE] =
@@ -535,8 +536,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         PALETTES(OinkologneMale),
         ICON(OinkologneMale, 1),
         //.footprint = gMonFootprint_Oinkologne,
-        LEARNSETS(OinkologneMale),
-
+        .levelUpLearnset = sOinkologneMaleLevelUpLearnset,
     },
 
     [SPECIES_OINKOLOGNE_FEMALE] =
@@ -566,7 +566,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         PALETTES(OinkologneFemale),
         ICON(OinkologneFemale, 2),
         //.footprint = gMonFootprint_Oinkologne,
-        LEARNSETS(OinkologneFemale),
+        .levelUpLearnset = sOinkologneFemaleLevelUpLearnset,
     },
 #endif //P_FAMILY_LECHONK
 
@@ -1519,6 +1519,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .types = { TYPE_FIRE, TYPE_FIRE },
         .catchRate = 90,
         .expYield = 51,
+        .evYield_SpAttack = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 35,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1526,16 +1527,16 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE },
         .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_FLAME_BODY },
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("CHARCADET"),
+        .speciesName = _("Charcadet"),
         .cryId = CRY_CHARCADET,
         .natDexNum = NATIONAL_DEX_CHARCADET,
-        .categoryName = _("FIRE CHILD"),
+        .categoryName = _("Fire Child"),
         .height = 6,
         .weight = 105,
         .description = COMPOUND_STRING(
             "Burnt charcoal came to life and\n"
             "became a Pokémon. Possessing a fiery\n"
-            "fighting spirit, CHARCADET will\n"
+            "fighting spirit, Charcadet will\n"
             "battle even tough opponents."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
@@ -1567,6 +1568,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .types = { TYPE_FIRE, TYPE_PSYCHIC },
         .catchRate = 25,
         .expYield = 263,
+        .evYield_SpAttack = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 35,
         .friendship = 20,
@@ -1574,14 +1576,14 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE },
         .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_WEAK_ARMOR },
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("ARMAROUGE"),
+        .speciesName = _("Armarouge"),
         .cryId = CRY_ARMAROUGE,
         .natDexNum = NATIONAL_DEX_ARMAROUGE,
-        .categoryName = _("FIRE WARRIOR"),
+        .categoryName = _("Fire Warrior"),
         .height = 15,
         .weight = 850,
         .description = COMPOUND_STRING(
-            "ARMAROUGE evolved through the use\n"
+            "Armarouge evolved through the use\n"
             "of a set of armor that belonged to\n"
             "a distinguished warrior. This\n"
             "Pokémon is incredibly loyal."),
@@ -1613,6 +1615,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .types = { TYPE_FIRE, TYPE_GHOST },
         .catchRate = 25,
         .expYield = 263,
+        .evYield_Attack = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 35,
         .friendship = 20,
@@ -1620,10 +1623,10 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE },
         .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_WEAK_ARMOR },
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("CERULEDGE"),
+        .speciesName = _("Ceruledge"),
         .cryId = CRY_CERULEDGE,
         .natDexNum = NATIONAL_DEX_CERULEDGE,
-        .categoryName = _("FIRE BLADES"),
+        .categoryName = _("Fire Blades"),
         .height = 16,
         .weight = 620,
         .description = COMPOUND_STRING(
@@ -2578,30 +2581,31 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .baseHP        = 50,
         .baseAttack    = 45,
         .baseDefense   = 45,
-        .baseSpeed     = 60,
+        .baseSpeed     = 58,
         .baseSpAttack  = 35,
-        .baseSpDefense = 65,
+        .baseSpDefense = 64,
         .types = { TYPE_FAIRY, TYPE_STEEL },
         .catchRate = 190,
         .expYield = 59,
+        .evYield_SpDefense = 1,
         .genderRatio = MON_FEMALE,
         .eggCycles = 20,
-        .friendship = 50,
+        .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_FAIRY},
-        .abilities = {ABILITY_MOLD_BREAKER, ABILITY_DECOMMISSIONER},
+        .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_FAIRY },
+        .abilities = { ABILITY_MOLD_BREAKER, ABILITY_OWN_TEMPO, ABILITY_PICKPOCKET },
         .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("TINKATINK"),
+        .speciesName = _("Tinkatink"),
         .cryId = CRY_TINKATINK,
         .natDexNum = NATIONAL_DEX_TINKATINK,
-        .categoryName = _("METALSMITH"),
+        .categoryName = _("Metalsmith"),
         .height = 4,
         .weight = 89,
         .description = COMPOUND_STRING(
-            "TINKATINK pounds iron scraps together\n"
-            "to make a hammer. It throws pebbles at\n"
-            "nearby FLYING and STEEL POKéMON\n"
-            "that try to snatch its loot."),
+            "This Pokémon pounds iron scraps\n"
+            "together to make a hammer. It will\n"
+            "remake the hammer again and again until\n"
+            "it's satisfied with the result."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -2625,30 +2629,31 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .baseHP        = 65,
         .baseAttack    = 55,
         .baseDefense   = 55,
-        .baseSpeed     = 80,
+        .baseSpeed     = 78,
         .baseSpAttack  = 45,
-        .baseSpDefense = 85,
+        .baseSpDefense = 82,
         .types = { TYPE_FAIRY, TYPE_STEEL },
         .catchRate = 90,
         .expYield = 133,
+        .evYield_SpDefense = 2,
         .genderRatio = MON_FEMALE,
         .eggCycles = 20,
-        .friendship = 50,
+        .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_FAIRY},
-        .abilities = {ABILITY_MOLD_BREAKER, ABILITY_DECOMMISSIONER},
+        .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_FAIRY },
+        .abilities = { ABILITY_MOLD_BREAKER, ABILITY_OWN_TEMPO, ABILITY_PICKPOCKET },
         .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("TINKATUFF"),
+        .speciesName = _("Tinkatuff"),
         .cryId = CRY_TINKATUFF,
         .natDexNum = NATIONAL_DEX_TINKATUFF,
-        .categoryName = _("HAMMER"),
+        .categoryName = _("Hammer"),
         .height = 7,
         .weight = 591,
         .description = COMPOUND_STRING(
-            "These POKéMON make their homes in\n"
+            "These Pokémon make their homes in\n"
             "piles of scrap metal. They test the\n"
             "strength of each other's hammers by\n"
-            "smashing on sleeping STEEL POKéMON."),
+            "smashing them together."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -2671,31 +2676,32 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
     {
         .baseHP        = 85,
         .baseAttack    = 75,
-        .baseDefense   = 80,
-        .baseSpeed     = 95,
+        .baseDefense   = 77,
+        .baseSpeed     = 94,
         .baseSpAttack  = 70,
         .baseSpDefense = 105,
         .types = { TYPE_FAIRY, TYPE_STEEL },
         .catchRate = 45,
         .expYield = 253,
+        .evYield_SpDefense = 3,
         .genderRatio = MON_FEMALE,
         .eggCycles = 20,
-        .friendship = 50,
+        .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_FAIRY},
-           .abilities = {ABILITY_MOLD_BREAKER, ABILITY_DECOMMISSIONER},
+        .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_FAIRY },
+        .abilities = { ABILITY_MOLD_BREAKER, ABILITY_OWN_TEMPO, ABILITY_PICKPOCKET },
         .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("TINKATON"),
+        .speciesName = _("Tinkaton"),
         .cryId = CRY_TINKATON,
         .natDexNum = NATIONAL_DEX_TINKATON,
-        .categoryName = _("HAMMER"),
+        .categoryName = _("Hammer"),
         .height = 7,
         .weight = 1128,
         .description = COMPOUND_STRING(
-            "This intelligent Pokémon has a very\n"
-            "daring disposition. With its 220-pounds\n"
-            "hammer, it takes revenge on those that\n"
-            "bullied it in its youth."),
+            "The hammer tops 220 pounds, yet it\n"
+            "gets swung around easily by\n"
+            "Tinkaton as it steals whatever it pleases\n"
+            "and carries its plunder back home."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -3186,30 +3192,31 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
 #if P_FAMILY_GLIMMET
     [SPECIES_GLIMMET] =
     {
-        .baseHP        = 50,
+        .baseHP        = 48,
         .baseAttack    = 35,
-        .baseDefense   = 40,
+        .baseDefense   = 42,
         .baseSpeed     = 60,
         .baseSpAttack  = 105,
         .baseSpDefense = 60,
         .types = { TYPE_ROCK, TYPE_POISON },
         .catchRate = 70,
         .expYield = 70,
+        .evYield_SpAttack = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 30,
-        .friendship = 50,
+        .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL},
-        .abilities = {ABILITY_TOXIC_DEBRIS, ABILITY_CORROSION, ABILITY_NONE},
+        .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
+        .abilities = { ABILITY_TOXIC_DEBRIS, ABILITY_NONE, ABILITY_CORROSION },
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("GLIMMET"),
+        .speciesName = _("Glimmet"),
         .cryId = CRY_GLIMMET,
         .natDexNum = NATIONAL_DEX_GLIMMET,
-        .categoryName = _("ORE"),
+        .categoryName = _("Ore"),
         .height = 7,
         .weight = 80,
         .description = COMPOUND_STRING(
-            "GLIMMET's toxic mineral crystals\n"
+            "Glimmet's toxic mineral crystals\n"
             "look just like flower petals. This\n"
             "Pokémon scatters poisonous powder like\n"
             "pollen to protect itself."),
@@ -3234,33 +3241,34 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
 
     [SPECIES_GLIMMORA] =
     {
-        .baseHP        = 85,
+        .baseHP        = 83,
         .baseAttack    = 55,
         .baseDefense   = 90,
-        .baseSpeed     = 85,
+        .baseSpeed     = 86,
         .baseSpAttack  = 130,
-        .baseSpDefense = 80,
+        .baseSpDefense = 81,
         .types = { TYPE_ROCK, TYPE_POISON },
         .catchRate = 25,
         .expYield = 184,
+        .evYield_SpAttack = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 30,
-        .friendship = 50,
+        .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL},
-        .abilities = {ABILITY_TOXIC_DEBRIS, ABILITY_CORROSION, ABILITY_NONE},
+        .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
+        .abilities = { ABILITY_TOXIC_DEBRIS, ABILITY_NONE, ABILITY_CORROSION },
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("GLIMMORA"),
+        .speciesName = _("Glimmora"),
         .cryId = CRY_GLIMMORA,
         .natDexNum = NATIONAL_DEX_GLIMMORA,
-        .categoryName = _("ORE"),
+        .categoryName = _("Ore"),
         .height = 15,
         .weight = 450,
         .description = COMPOUND_STRING(
-            "GLIMMORA's petals are made of\n"
-            "crystallized poison energy. When\n"
-            "hit, they break and release toxic\n"
-            "waste everywhere."),
+            "Glimmora's petals are made of\n"
+            "crystallized poison energy. It has\n"
+            "recently become evident that these\n"
+            "petals resemble Tera Jewels."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -4472,7 +4480,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .frontAnimFrames = sAnims_Gimmighoul,                                           \
         LEARNSETS(Gimmighoul),                                                          \
         .formSpeciesIdTable = sGimmighoulFormSpeciesIdTable,                            \
-        .evolutions = EVOLUTION({EVO_MONEY, 0, SPECIES_GHOLDENGO})
+        .evolutions = EVOLUTION({EVO_NONE, 0, SPECIES_GHOLDENGO})
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         //.backAnimId = BACK_ANIM_NONE,
         //.footprint = gMonFootprint_Gimmighoul,
@@ -4586,58 +4594,6 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         LEARNSETS(Gholdengo),
     },
 #endif //P_FAMILY_GIMMIGHOUL
-
-
- [SPECIES_GOROCHU] =
-    {
-        .baseHP        = 80,
-        .baseAttack    = 70,
-        .baseDefense   = 65,
-        .baseSpeed     = 90,
-        .baseSpAttack  = 120,
-        .baseSpDefense = 85,
-        .types = { TYPE_ELECTRIC, TYPE_FIGHTING },
-        .catchRate = 75,                                  
-        .expYield = 218,    
-        .genderRatio = PERCENT_FEMALE(50), 
-        .eggCycles = 10, 
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FAIRY },
-        .abilities = { ABILITY_FLARE_BOOST, ABILITY_TERAVOLT, ABILITY_OVERCHARGE },
-        .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("GOROCHU"),
-        .cryId = CRY_GOROCHU,
-        .natDexNum = NATIONAL_DEX_GOROCHU,
-        .categoryName = _("MOUSE"),
-        .height = 12,
-        .weight = 300,
-        .description = COMPOUND_STRING(
-            "An exceedingly rare POKéMON, GOROCHU\n"
-            "is constantly itching for a fight.\n"
-            "It's recommended that only expert\n"
-            "TRAINERs attempt to raise this POKéMON"),
-       .pokemonScale = 426,
-        .pokemonOffset = 13,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        FRONT_PIC(Gorochu, 64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_Gorochu,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        BACK_PIC(Gorochu, 64, 64),
-        .backPicYOffset = 6,
-        //.backAnimId = BACK_ANIM_NONE,
-        PALETTES(Gorochu),
-        ICON(Gorochu, 0),
-        .footprint = gMonFootprint_Gorochu,
-        LEARNSETS(Gorochu),
-    },
-
-
-
-
-
 
 #if P_FAMILY_WO_CHIEN
     [SPECIES_WO_CHIEN] =

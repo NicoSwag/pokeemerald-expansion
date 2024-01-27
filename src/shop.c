@@ -38,18 +38,11 @@
 #include "constants/metatile_behaviors.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
-#include "event_data.h"
-#include "constants/flags.h"
 
 #define TAG_SCROLL_ARROW   2100
 #define TAG_ITEM_ICON_BASE 2110
 
 #define MAX_ITEMS_SHOWN 8
-
-bool8 TM09 = FALSE;
-
-
-
 
 enum {
     WIN_BUY_SELL_QUIT,
@@ -111,7 +104,6 @@ struct ShopData
     s16 viewportObjects[OBJECT_EVENTS_COUNT][5];
 };
 
-
 static EWRAM_DATA struct MartInfo sMartInfo = {0};
 static EWRAM_DATA struct ShopData *sShopData = NULL;
 static EWRAM_DATA struct ListMenuItem *sListMenuItems = NULL;
@@ -148,7 +140,7 @@ static void BuyMenuDrawMapMetatileLayer(u16 *dest, s16 offset1, s16 offset2, con
 static bool8 BuyMenuCheckIfObjectEventOverlapsMenuBg(s16 *);
 static void ExitBuyMenu(u8 taskId);
 static void Task_ExitBuyMenu(u8 taskId);
-void BuyMenuTryMakePurchase(u8 taskId);
+static void BuyMenuTryMakePurchase(u8 taskId);
 static void BuyMenuReturnToItemList(u8 taskId);
 static void Task_BuyHowManyDialogueInit(u8 taskId);
 static void BuyMenuConfirmPurchase(u8 taskId);
@@ -560,87 +552,28 @@ static void BuyMenuFreeMemory(void)
     FreeAllWindowBuffers();
 }
 
-
 static void BuyMenuBuildListMenuTemplate(void)
 {
     u16 i;
-    u16 added_TMs = 0;
-    i=0;
-    if(gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP))
-        added_TMs = FlagGet(FLAG_CANDY_IN_SHOPS) + FlagGet(FLAG_HELPED_LEDYBA) + FlagGet(FLAG_RECEIVED_TM02) + FlagGet(FLAG_ITEM_PETALBURG_WOODS_QUASH) + FlagGet(FLAG_RECEIVED_TM04) + FlagGet(FLAG_RECEIVED_TM05) + FlagGet(FLAG_RECEIVED_TM06);
-    sListMenuItems = Alloc((sMartInfo.itemCount + 1 + added_TMs) * sizeof(*sListMenuItems));
-    sItemNames = Alloc((sMartInfo.itemCount + 1 + added_TMs) * sizeof(*sItemNames));
-    for (i; i < sMartInfo.itemCount; i++)
+
+    sListMenuItems = Alloc((sMartInfo.itemCount + 1) * sizeof(*sListMenuItems));
+    sItemNames = Alloc((sMartInfo.itemCount + 1) * sizeof(*sItemNames));
+    for (i = 0; i < sMartInfo.itemCount; i++)
         BuyMenuSetListEntry(&sListMenuItems[i], sMartInfo.itemList[i], sItemNames[i]);
 
-    
-    if((FlagGet(FLAG_CANDY_IN_SHOPS) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
-    StringCopy(sItemNames[i], gText_RareCandy);
-    sListMenuItems[i].name = sItemNames[i];
-    sListMenuItems[i].id = ITEM_RARE_CANDY;
-    i++;
-    }
-    
-    
-    if((FlagGet(FLAG_HELPED_LEDYBA) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
-    StringCopy(sItemNames[i], gText_TM01);
-    sListMenuItems[i].name = sItemNames[i];
-    sListMenuItems[i].id = ITEM_TM01;
-    i++;
-    }
-
-    if((FlagGet(FLAG_RECEIVED_TM02) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
-    StringCopy(sItemNames[i], gText_TM02);
-    sListMenuItems[i].name = sItemNames[i];
-    sListMenuItems[i].id = ITEM_TM02;
-    i++;
-    }
-
-    if((FlagGet(FLAG_ITEM_PETALBURG_WOODS_QUASH) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
-    StringCopy(sItemNames[i], gText_TM03);
-    sListMenuItems[i].name = sItemNames[i];
-    sListMenuItems[i].id = ITEM_TM03;
-    i++;
-
-    }
-
-    if((FlagGet(FLAG_RECEIVED_TM04) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
-    StringCopy(sItemNames[i], gText_TM04);
-    sListMenuItems[i].name = sItemNames[i];
-    sListMenuItems[i].id = ITEM_TM04;
-    i++;
-    }
-
-    if((FlagGet(FLAG_RECEIVED_TM05) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
-    StringCopy(sItemNames[i], gText_TM05);
-    sListMenuItems[i].name = sItemNames[i];
-    sListMenuItems[i].id = ITEM_TM05;
-    i++;
-    }
-
-    if((FlagGet(FLAG_RECEIVED_TM06) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
-    StringCopy(sItemNames[i], gText_TM06);
-    sListMenuItems[i].name = sItemNames[i];
-    sListMenuItems[i].id = ITEM_TM06;
-    i++;
-    }
-    
     StringCopy(sItemNames[i], gText_Cancel2);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = LIST_CANCEL;
 
     gMultiuseListMenuTemplate = sShopBuyMenuListTemplate;
     gMultiuseListMenuTemplate.items = sListMenuItems;
-    gMultiuseListMenuTemplate.totalItems = sMartInfo.itemCount + 1 + added_TMs;
+    gMultiuseListMenuTemplate.totalItems = sMartInfo.itemCount + 1;
     if (gMultiuseListMenuTemplate.totalItems > MAX_ITEMS_SHOWN)
         gMultiuseListMenuTemplate.maxShowed = MAX_ITEMS_SHOWN;
     else
         gMultiuseListMenuTemplate.maxShowed = gMultiuseListMenuTemplate.totalItems;
 
     sShopData->itemsShowed = gMultiuseListMenuTemplate.maxShowed;
-    
-
-    
 }
 
 static void BuyMenuSetListEntry(struct ListMenuItem *menuItem, u16 item, u8 *name)
@@ -686,6 +619,7 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
 static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y)
 {
     u8 x;
+
     if (itemId != LIST_CANCEL)
     {
         if (sMartInfo.martType == MART_TYPE_NORMAL)
@@ -705,10 +639,7 @@ static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y)
                 5);
         }
 
-        
-        if( (itemId == ITEM_MYSTIC_WATER) && (CheckBagHasItem(itemId, 1) || CheckPCHasItem(itemId, 1)))
-            StringCopy(gStringVar4, gText_SoldOut);
-        else if ((ItemId_GetImportance(itemId) == 1) && (CheckBagHasItem(itemId, 1) || CheckPCHasItem(itemId, 1)))
+        if (ItemId_GetImportance(itemId) && (CheckBagHasItem(itemId, 1) || CheckPCHasItem(itemId, 1)))
             StringCopy(gStringVar4, gText_SoldOut);
         else
             StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
@@ -1035,16 +966,11 @@ static bool8 BuyMenuCheckForOverlapWithMenuBg(int x, int y)
 static void Task_BuyMenu(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    s32 itemId = ListMenu_ProcessInput(tListTaskId);
-    u8 totalberries;
-    totalberries = (CheckBagHasItem(itemId, 1) + CheckPCHasItem(itemId, 1));
 
     if (!gPaletteFade.active)
     {
-
+        s32 itemId = ListMenu_ProcessInput(tListTaskId);
         ListMenuGetScrollAndRow(tListTaskId, &sShopData->scrollOffset, &sShopData->selectedRow);
-
-        
 
         switch (itemId)
         {
@@ -1066,8 +992,7 @@ static void Task_BuyMenu(u8 taskId)
             else
                 sShopData->totalCost = gDecorations[itemId].price;
 
-            
-            if (((ItemId_GetImportance(itemId) == 1) && (CheckBagHasItem(itemId, 1) || CheckPCHasItem(itemId, 1))))
+            if (ItemId_GetImportance(itemId) && (CheckBagHasItem(itemId, 1) || CheckPCHasItem(itemId, 1)))
                 BuyMenuDisplayMessage(taskId, gText_ThatItemIsSoldOut, BuyMenuReturnToItemList);
             else if (!IsEnoughMoney(&gSaveBlock1Ptr->money, sShopData->totalCost))
             {
@@ -1078,7 +1003,7 @@ static void Task_BuyMenu(u8 taskId)
                 if (sMartInfo.martType == MART_TYPE_NORMAL)
                 {
                     CopyItemName(itemId, gStringVar1);
-                    if (ItemId_GetImportance(itemId) || itemId == ITEM_MYSTIC_WATER)
+                    if (ItemId_GetImportance(itemId))
                     {
                         ConvertIntToDecimalStringN(gStringVar2, sShopData->totalCost, STR_CONV_MODE_LEFT_ALIGN, 6);
                         StringExpandPlaceholders(gStringVar4, gText_YouWantedVar1ThatllBeVar2);
@@ -1181,17 +1106,16 @@ static void BuyMenuConfirmPurchase(u8 taskId)
     CreateYesNoMenuWithCallbacks(taskId, &sShopBuyMenuYesNoWindowTemplates, 1, 0, 0, 1, 13, &sShopPurchaseYesNoFuncs);
 }
 
-void BuyMenuTryMakePurchase(u8 taskId)
+static void BuyMenuTryMakePurchase(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
     PutWindowTilemap(WIN_ITEM_LIST);
+
     if (sMartInfo.martType == MART_TYPE_NORMAL)
     {
         if (AddBagItem(tItemId, tItemCount) == TRUE)
         {
-            GetSetItemObtained(tItemId, FLAG_SET_OBTAINED);
-            BuyMenuDisplayMessage(taskId, gText_HereYouGoThankYou, BuyMenuSubtractMoney);
             RecordItemPurchase(taskId);
             BuyMenuDisplayMessage(taskId, gText_HereYouGoThankYou, BuyMenuSubtractMoney);
         }
@@ -1218,12 +1142,11 @@ void BuyMenuTryMakePurchase(u8 taskId)
 
 static void BuyMenuSubtractMoney(u8 taskId)
 {
-    s16 *data = gTasks[taskId].data;
     IncrementGameStat(GAME_STAT_SHOPPED);
     RemoveMoney(&gSaveBlock1Ptr->money, sShopData->totalCost);
     PlaySE(SE_SHOP);
     PrintMoneyAmountInMoneyBox(WIN_MONEY, GetMoney(&gSaveBlock1Ptr->money), 0);
-    
+
     if (sMartInfo.martType == MART_TYPE_NORMAL)
         gTasks[taskId].func = Task_ReturnToItemListAfterItemPurchase;
     else

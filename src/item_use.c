@@ -32,7 +32,6 @@
 #include "party_menu.h"
 #include "pokeblock.h"
 #include "pokemon.h"
-#include "region_map.h"
 #include "script.h"
 #include "sound.h"
 #include "strings.h"
@@ -45,8 +44,6 @@
 #include "constants/item_effects.h"
 #include "constants/items.h"
 #include "constants/songs.h"
-#include "battle_setup.h"
-#include "region_map.h"
 #include "constants/map_types.h"
 
 static void SetUpItemUseCallback(u8);
@@ -75,7 +72,6 @@ static void UseTMHM(u8);
 static void Task_StartUseRepel(u8);
 static void Task_StartUseLure(u8 taskId);
 static void Task_UseRepel(u8);
-void Cycle_Through_Repels(void);
 static void Task_UseLure(u8 taskId);
 static void Task_CloseCantUseKeyItemMessage(u8);
 static void SetDistanceOfClosestHiddenItem(u8, s16, s16);
@@ -207,6 +203,7 @@ void ItemUseOutOfBattle_Mail(u8 taskId)
     Task_FadeAndCloseBagMenu(taskId);
 }
 
+STATIC_ASSERT(I_EXP_SHARE_ITEM < GEN_6 || I_EXP_SHARE_FLAG > TEMP_FLAGS_END, YouNeedToSetAFlagToUseGen6ExpShare);
 
 void ItemUseOutOfBattle_ExpShare(u8 taskId)
 {
@@ -319,7 +316,6 @@ void ItemUseOutOfBattle_Itemfinder(u8 var)
     sItemUseOnFieldCB = ItemUseOnFieldCB_Itemfinder;
     SetUpItemUseOnFieldCallback(var);
 }
-
 
 static void ItemUseOnFieldCB_Itemfinder(u8 taskId)
 {
@@ -835,8 +831,8 @@ void ItemUseOutOfBattle_PPUp(u8 taskId)
 void ItemUseOutOfBattle_RareCandy(u8 taskId)
 {
     gItemUseCB = ItemUseCB_RareCandy;
-    SetUpItemUseCallback(taskId);}
-
+    SetUpItemUseCallback(taskId);
+}
 
 void ItemUseOutOfBattle_TMHM(u8 taskId)
 {
@@ -917,7 +913,6 @@ static void Task_UseRepel(u8 taskId)
     if (!IsSEPlaying())
     {
         VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_ItemId));
-        VarSet(VAR_REPEL_LAST_USED, gSpecialVar_ItemId);
     #if VAR_LAST_REPEL_LURE_USED != 0
         VarSet(VAR_LAST_REPEL_LURE_USED, gSpecialVar_ItemId);
     #endif
@@ -928,26 +923,7 @@ static void Task_UseRepel(u8 taskId)
             DisplayItemMessageInBattlePyramid(taskId, gStringVar4, Task_CloseBattlePyramidBagMessage);
     }
 }
-
- void Cycle_Through_Repels(void){
-
-     u16 RepelCycle[] = {ITEM_REPEL, ITEM_SUPER_REPEL, ITEM_MAX_REPEL};    
-     u8 i = 0;
-
-    while (gSpecialVar_Result == FALSE){
-         gSpecialVar_Result = CheckBagHasItem(RepelCycle[i],1);
-         if (gSpecialVar_Result == TRUE)
-             VarSet(VAR_REPEL_LAST_USED, RepelCycle[i]);
-            i++;
-         if (i > 2)
-             return;
-     }
-
-     return;
- }
-
-
-void HandleUseExpiredRepel(void)
+void HandleUseExpiredRepel(struct ScriptContext *ctx)
 {
 #if VAR_LAST_REPEL_LURE_USED != 0
     VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(VarGet(VAR_LAST_REPEL_LURE_USED)));
@@ -1079,9 +1055,6 @@ void ItemUseOutOfBattle_EvolutionStone(u8 taskId)
 
 static u32 GetBallThrowableState(void)
 {
-    if (gNuzlockeCannotCatch == 1){
-        return BALL_THROW_UNABLE_DISABLED_FLAG;
-    }
     if (IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT))
      && IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)))
         return BALL_THROW_UNABLE_TWO_MONS;
@@ -1273,7 +1246,6 @@ void ItemUseInBattle_BagMenu(u8 taskId)
 
 void ItemUseOutOfBattle_EnigmaBerry(u8 taskId)
 {
-    u8 i;
     switch (GetItemEffectType(gSpecialVar_ItemId))
     {
     case ITEM_EFFECT_HEAL_HP:
@@ -1404,24 +1376,6 @@ void ItemUseOutOfBattle_Honey(u8 taskId)
     gFieldCallback = FieldCB_UseItemOnField;
     gBagMenu->newScreenCallback = CB2_ReturnToField;
     Task_FadeAndCloseBagMenu(taskId);
-}
-
-void ItemUseOutOfBattle_TownMap(u8 taskId)
-{
-    if (MenuHelpers_IsLinkActive() == TRUE)
-    {
-        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
-    } 
-    else if (!gTasks[taskId].tUsingRegisteredKeyItem) 
-    {
-        gBagMenu->newScreenCallback = CB2_OpenTownMap;
-        Task_FadeAndCloseBagMenu(taskId);
-    } 
-    else if (gTasks[taskId].tUsingRegisteredKeyItem) 
-    {
-        gBagMenu->newScreenCallback = CB2_OpenTownMap;
-        Task_FadeAndCloseBagMenu(taskId);
-    }
 }
 
 void ItemUseOutOfBattle_CannotUse(u8 taskId)

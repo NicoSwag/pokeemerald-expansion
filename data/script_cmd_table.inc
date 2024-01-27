@@ -203,7 +203,7 @@ gScriptCmdTable::
 	.4byte ScrCmd_nop1                              @ 0xc8
 	.4byte ScrCmd_nop1                              @ 0xc9
 	.4byte ScrCmd_nop1                              @ 0xca
-	.4byte ScrCmd_settorcheffect                    @ 0xcb
+	.4byte ScrCmd_nop1                              @ 0xcb
 	.4byte ScrCmd_nop1                              @ 0xcc
 	.4byte ScrCmd_setmonmodernfatefulencounter      @ 0xcd
 	.4byte ScrCmd_checkmonmodernfatefulencounter    @ 0xce
@@ -227,9 +227,6 @@ gScriptCmdTable::
 	.4byte ScrCmd_warpwhitefade                     @ 0xe0
 	.4byte ScrCmd_buffercontestname                 @ 0xe1
 	.4byte ScrCmd_bufferitemnameplural              @ 0xe2
-	.4byte ScrCmd_checkpartycanlearn              @ 0xe2
-	.4byte ScrCmd_showitemdesc              			@ 0xe3
-	.4byte ScrCmd_hideitemdesc              			@ 0xe4
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop

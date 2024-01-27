@@ -9,6 +9,3 @@ GraniteCave_B1F_SetHoleWarp:
 	setholewarp MAP_GRANITE_CAVE_B2F
 	end
 
-GraniteCave_B1F_Torch::
-	settorcheffect 23, 18, 4
-	end

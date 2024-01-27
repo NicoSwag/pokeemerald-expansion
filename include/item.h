@@ -32,7 +32,6 @@ struct BagPocket
 extern const struct Item gItems[];
 extern struct BagPocket gBagPockets[];
 
-u16 GetBagItemQuantity(u16 *quantity);
 void ApplyNewEncryptionKeyToBagItems(u32 newKey);
 void ApplyNewEncryptionKeyToBagItems_(u32 newKey);
 void SetBagItemsPointers(void);
@@ -43,7 +42,6 @@ bool8 IsBagPocketNonEmpty(u8 pocket);
 bool8 CheckBagHasItem(u16 itemId, u16 count);
 bool8 HasAtLeastOneBerry(void);
 bool8 CheckBagHasSpace(u16 itemId, u16 count);
-void ItemId_GetHoldEffectParam_Script();
 bool8 AddBagItem(u16 itemId, u16 count);
 bool8 RemoveBagItem(u16 itemId, u16 count);
 u8 GetPocketByItemId(u16 itemId);
@@ -77,15 +75,6 @@ u8 ItemId_GetSecondaryId(u16 itemId);
 u32 ItemId_GetFlingPower(u32 itemId);
 u32 GetItemStatus1Mask(u16 itemId);
 u32 GetItemStatus2Mask(u16 itemId);
-void DrawHeaderBox(void);
-void HideHeaderBox(void);
-
-enum ItemObtainFlags
-{
-    FLAG_GET_OBTAINED,
-    FLAG_SET_OBTAINED,
-};
-bool8 GetSetItemObtained(u16 item, u8 caseId);
 
 /* Expands to:
  * enum

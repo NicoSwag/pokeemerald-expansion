@@ -495,6 +495,12 @@ static void SpriteCB_PokemonLogoShine(struct Sprite *sprite)
 
             // Flash the background green for 4 frames of movement.
             // Otherwise use the updating color.
+            if (sprite->x == DISPLAY_WIDTH / 2 + (3 * SHINE_SPEED)
+             || sprite->x == DISPLAY_WIDTH / 2 + (4 * SHINE_SPEED)
+             || sprite->x == DISPLAY_WIDTH / 2 + (5 * SHINE_SPEED)
+             || sprite->x == DISPLAY_WIDTH / 2 + (6 * SHINE_SPEED))
+                gPlttBufferFaded[0] = RGB(24, 31, 12);
+            else
                 gPlttBufferFaded[0] = backgroundColor;
         }
 
@@ -597,6 +603,8 @@ void CB2_InitTitleScreen(void)
         LZ77UnCompVram(sTitleScreenRayquazaGfx, (void *)(BG_CHAR_ADDR(2)));
         LZ77UnCompVram(sTitleScreenRayquazaTilemap, (void *)(BG_SCREEN_ADDR(26)));
         // bg1
+        LZ77UnCompVram(sTitleScreenCloudsGfx, (void *)(BG_CHAR_ADDR(3)));
+        LZ77UnCompVram(gTitleScreenCloudsTilemap, (void *)(BG_SCREEN_ADDR(27)));
         ScanlineEffect_Stop();
         ResetTasks();
         ResetSpriteData();
@@ -672,7 +680,7 @@ static void MainCB2(void)
     UpdatePaletteFade();
 }
 
-// Shine the Pokémon logo two more times, and fade in the version banner
+// Shine the Pokemon logo two more times, and fade in the version banner
 static void Task_TitleScreenPhase1(u8 taskId)
 {
     // Skip to next phase when A, B, Start, or Select is pressed
@@ -720,7 +728,7 @@ static void Task_TitleScreenPhase1(u8 taskId)
 #undef sParentTaskId
 #undef sAlphaBlendIdx
 
-// Create "Press Start" and copyright banners, and slide Pokémon logo up
+// Create "Press Start" and copyright banners, and slide Pokemon logo up
 static void Task_TitleScreenPhase2(u8 taskId)
 {
     u32 yPos;
@@ -759,7 +767,7 @@ static void Task_TitleScreenPhase2(u8 taskId)
     if (!(gTasks[taskId].tCounter & 1) && gTasks[taskId].tBg2Y != 0)
         gTasks[taskId].tBg2Y++;
 
-    // Slide Pokémon logo up
+    // Slide Pokemon logo up
     yPos = gTasks[taskId].tBg2Y * 256;
     SetGpuReg(REG_OFFSET_BG2Y_L, yPos);
     SetGpuReg(REG_OFFSET_BG2Y_H, yPos / 0x10000);
@@ -798,6 +806,13 @@ static void Task_TitleScreenPhase3(u8 taskId)
     {
         SetGpuReg(REG_OFFSET_BG2Y_L, 0);
         SetGpuReg(REG_OFFSET_BG2Y_H, 0);
+        if (++gTasks[taskId].tCounter & 1)
+        {
+            gTasks[taskId].tBg1Y++;
+            gBattle_BG1_Y = gTasks[taskId].tBg1Y / 2;
+            gBattle_BG1_X = 0;
+        }
+        UpdateLegendaryMarkingColor(gTasks[taskId].tCounter);
         if ((gMPlayInfo_BGM.status & 0xFFFF) == 0)
         {
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_WHITEALPHA);

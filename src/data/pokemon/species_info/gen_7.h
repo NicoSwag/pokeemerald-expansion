@@ -1199,16 +1199,17 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .types = { TYPE_ROCK, TYPE_ROCK },                      \
         .catchRate = 190,                                       \
         .expYield = 56,                                         \
+        .evYield_Attack = 1,                                    \
         .genderRatio = PERCENT_FEMALE(50),                      \
         .eggCycles = 15,                                        \
         .friendship = STANDARD_FRIENDSHIP,                      \
         .growthRate = GROWTH_MEDIUM_FAST,                       \
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },      \
         .bodyColor = BODY_COLOR_BROWN,                          \
-        .speciesName = _("ROCKRUFF"),                           \
+        .speciesName = _("Rockruff"),                           \
         .cryId = CRY_ROCKRUFF,                                  \
         .natDexNum = NATIONAL_DEX_ROCKRUFF,                     \
-        .categoryName = _("PUPPY"),                             \
+        .categoryName = _("Puppy"),                             \
         .height = 5,                                            \
         .weight = 92,                                           \
         .description = gRockruffPokedexText,                    \
@@ -1229,7 +1230,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
     [SPECIES_ROCKRUFF] =
     {
         ROCKRUFF_MISC_INFO,
-        .abilities = { ABILITY_KEEN_EYE, ABILITY_STEADFAST, ABILITY_VITAL_SPIRIT},
+        .abilities = { ABILITY_KEEN_EYE, ABILITY_VITAL_SPIRIT, ABILITY_STEADFAST },
         FRONT_PIC(Rockruff, 37, 39),
         BACK_PIC(Rockruff, 64, 56),
         .backAnimId = BACK_ANIM_V_STRETCH,
@@ -1248,16 +1249,18 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
     },
 
 #define LYCANROC_MISC_INFO                                  \
+        .types = { TYPE_ROCK, TYPE_ROCK },                  \
         .catchRate = 90,                                    \
         .expYield = 170,                                    \
+        .evYield_Attack = 2,                                \
         .genderRatio = PERCENT_FEMALE(50),                  \
         .eggCycles = 15,                                    \
         .friendship = STANDARD_FRIENDSHIP,                  \
         .growthRate = GROWTH_MEDIUM_FAST,                   \
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },  \
-        .speciesName = _("LYCANROC"),                       \
+        .speciesName = _("Lycanroc"),                       \
         .natDexNum = NATIONAL_DEX_LYCANROC,                 \
-        .categoryName = _("WOLF"),                          \
+        .categoryName = _("Wolf"),                          \
         .weight = 250,                                      \
         .pokemonScale = 366,                                \
         .pokemonOffset = 7,                                 \
@@ -1270,22 +1273,21 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
     [SPECIES_LYCANROC_MIDDAY] =
     {
         LYCANROC_MISC_INFO,
-        .types = { TYPE_ROCK, TYPE_FIRE },     
         .baseHP        = 75,
-        .baseAttack    = 125,
+        .baseAttack    = 115,
         .baseDefense   = 65,
-        .baseSpeed     = 115,
+        .baseSpeed     = 112,
         .baseSpAttack  = 55,
         .baseSpDefense = 65,
-        .abilities = { ABILITY_SUN_WITHIN, ABILITY_SPEED_BOOST, ABILITY_ORICHALCUM_PULSE },
+        .abilities = { ABILITY_KEEN_EYE, ABILITY_SAND_RUSH, ABILITY_STEADFAST },
         .bodyColor = BODY_COLOR_BROWN,
         .cryId = CRY_LYCANROC_MIDDAY,
         .height = 8,
         .description = COMPOUND_STRING(
-            "Absorbed the power of the Sun, it\n"
-            "protects its TRAINER with its life.\n"
-            "It slices its foes them with the\n"
-            "rocks in its mane."),
+            "It has a calm and collected\n"
+            "demeanor. It swiftly closes in on its prey,\n"
+            "then slices them with the rocks in\n"
+            "its mane."),
         FRONT_PIC(LycanrocMidday, 57, 53),
         .frontPicYOffset = 5,
         .frontAnimFrames = sAnims_LycanrocMidday,
@@ -1300,22 +1302,21 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
     [SPECIES_LYCANROC_MIDNIGHT] =
     {
         LYCANROC_MISC_INFO,
-        .types = { TYPE_ROCK, TYPE_GHOST },    
-        .baseHP        = 75,
-        .baseAttack    = 55,
+        .baseHP        = 85,
+        .baseAttack    = 115,
         .baseDefense   = 75,
-        .baseSpeed     = 95,
-        .baseSpAttack  = 125,
+        .baseSpeed     = 82,
+        .baseSpAttack  = 55,
         .baseSpDefense = 75,
-        .abilities = { ABILITY_PALEBLOOD, ABILITY_VAMPIRIC, ABILITY_MIASMA_FORCE },
+        .abilities = { ABILITY_KEEN_EYE, ABILITY_VITAL_SPIRIT, ABILITY_NO_GUARD },
         .bodyColor = BODY_COLOR_RED,
         .cryId = CRY_LYCANROC_MIDNIGHT,
         .height = 11,
         .description = COMPOUND_STRING(
-            "Absorbed the power of malice and\n"
-            "became attuned with the Moon. It\n"
-            "frequently disobeys its TRAINER,\n"
-            "and always fights with no mercy."),
+            "This Pokémon uses its rocky mane\n"
+            "to slash any who approach. It will\n"
+            "even disobey its Trainer if it dislikes\n"
+            "the orders it was given."),
         FRONT_PIC(LycanrocMidnight, 56, 61),
         .frontPicYOffset = 0,
         .frontAnimFrames = sAnims_LycanrocMidnight,
@@ -1330,21 +1331,20 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
     [SPECIES_LYCANROC_DUSK] =
     {
         LYCANROC_MISC_INFO,
-            .types = { TYPE_ROCK, TYPE_FIGHTING },   
-        .baseHP        = 80,
-        .baseAttack    = 115,
-        .baseDefense   = 70,
+        .baseHP        = 75,
+        .baseAttack    = 117,
+        .baseDefense   = 65,
         .baseSpeed     = 110,
         .baseSpAttack  = 55,
-        .baseSpDefense = 70,
-        .abilities = { ABILITY_MINDS_EYE, ABILITY_TOUGH_CLAWS, ABILITY_SAND_RUSH },
+        .baseSpDefense = 65,
+        .abilities = { ABILITY_TOUGH_CLAWS, ABILITY_NONE },
         .bodyColor = BODY_COLOR_BROWN,
         .cryId = CRY_LYCANROC_DUSK,
         .height = 8,
         .description = COMPOUND_STRING(
-            "These POKéMON have both calm and\n"
+            "These Pokémon have both calm and\n"
             "ferocious qualities. It's said that\n"
-            "this form of LYCANROC is the most\n"
+            "this form of Lycanroc is the most\n"
             "troublesome to raise."),
         FRONT_PIC(LycanrocDusk, 57, 58),
         .frontPicYOffset = 6,
@@ -1846,20 +1846,23 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .baseSpeed     = 15,
         .baseSpAttack  = 65,
         .baseSpDefense = 75,
-        .types = { TYPE_POISON, TYPE_FAIRY},
+        .types = { TYPE_GRASS, TYPE_FAIRY },
         .catchRate = 190,
         .expYield = 57,
+        .evYield_SpDefense = 1,
+        .itemCommon = ITEM_TINY_MUSHROOM,
+        .itemRare = ITEM_BIG_MUSHROOM,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS},
-        .abilities = {ABILITY_ILLUMINATE, ABILITY_WONDER_SKIN, ABILITY_STENCH},
+        .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS },
+        .abilities = { ABILITY_ILLUMINATE, ABILITY_EFFECT_SPORE, ABILITY_RAIN_DISH },
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("MORELULL"),
+        .speciesName = _("Morelull"),
         .cryId = CRY_MORELULL,
         .natDexNum = NATIONAL_DEX_MORELULL,
-        .categoryName = _("ILLUMINATE"),
+        .categoryName = _("Illuminate"),
         .height = 2,
         .weight = 15,
         .description = COMPOUND_STRING(
@@ -1887,32 +1890,33 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
 
     [SPECIES_SHIINOTIC] =
     {
-        .baseHP        = 80,
+        .baseHP        = 60,
         .baseAttack    = 45,
-        .baseDefense   = 90,
+        .baseDefense   = 80,
         .baseSpeed     = 30,
         .baseSpAttack  = 90,
-        .baseSpDefense = 110,
-        .types = { TYPE_POISON, TYPE_FAIRY},
+        .baseSpDefense = 100,
+        .types = { TYPE_GRASS, TYPE_FAIRY },
         .catchRate = 75,
         .expYield = 142,
+        .evYield_SpDefense = 2,
         .itemCommon = ITEM_TINY_MUSHROOM,
         .itemRare = ITEM_BIG_MUSHROOM,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS},
-        .abilities = {ABILITY_ILLUMINATE, ABILITY_WONDER_SKIN, ABILITY_MISTY_SURGE},
+        .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS },
+        .abilities = { ABILITY_ILLUMINATE, ABILITY_EFFECT_SPORE, ABILITY_RAIN_DISH },
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("SHIINORIC"),
+        .speciesName = _("Shiinotic"),
         .cryId = CRY_SHIINOTIC,
         .natDexNum = NATIONAL_DEX_SHIINOTIC,
-        .categoryName = _("ILLUMINATE"),
+        .categoryName = _("Illuminate"),
         .height = 10,
         .weight = 115,
         .description = COMPOUND_STRING(
-            "Forests where SHIINOTIC live are\n"
+            "Forests where Shiinotic live are\n"
             "treacherous to enter at night.\n"
             "People confused by its strange lights\n"
             "can never find their way home again."),

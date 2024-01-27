@@ -247,7 +247,7 @@ static bool8 ShouldSwitchIfWonderGuard(u32 battler)
     if (GetBattlerAbility(GetBattlerAtPosition(opposingPosition)) != ABILITY_WONDER_GUARD)
         return FALSE;
 
-    // Check if Pokémon has a super effective move.
+    // Check if Pokemon has a super effective move.
     for (opposingBattler = GetBattlerAtPosition(opposingPosition), i = 0; i < MAX_MON_MOVES; i++)
     {
         move = gBattleMons[battler].moves[i];
@@ -266,7 +266,7 @@ static bool8 ShouldSwitchIfWonderGuard(u32 battler)
     else
         party = gEnemyParty;
 
-    // Find a Pokémon in the party that has a super effective move.
+    // Find a Pokemon in the party that has a super effective move.
     for (i = firstId; i < lastId; i++)
     {
         if (!IsValidForBattle(&party[i]))
@@ -292,7 +292,7 @@ static bool8 ShouldSwitchIfWonderGuard(u32 battler)
         }
     }
 
-    return FALSE; // There is not a single Pokémon in the party that has a super effective move against a mon with Wonder Guard.
+    return FALSE; // There is not a single Pokemon in the party that has a super effective move against a mon with Wonder Guard.
 }
 
 static bool8 FindMonThatAbsorbsOpponentsMove(u32 battler)
@@ -351,11 +351,6 @@ static bool8 FindMonThatAbsorbsOpponentsMove(u32 battler)
     else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_GRASS)
     {
         absorbingTypeAbilities[0] = ABILITY_SAP_SIPPER;
-        numAbsorbingAbilities = 1;
-    }
-        else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_DARK)
-    {
-        absorbingTypeAbilities[0] = ABILITY_JUSTIFIED;
         numAbsorbingAbilities = 1;
     }
     else
@@ -476,8 +471,7 @@ static bool8 ShouldSwitchIfGameStatePrompt(u32 battler)
                                 && i != gBattlerPartyIndexes[BATTLE_PARTNER(battler)]
                                 && IsBattlerGrounded(battler)
                                 && (GetMonAbility(&party[i]) == ABILITY_MISTY_SURGE
-                                    || GetMonAbility(&party[i]) == ABILITY_ELECTRIC_SURGE
-                                    || GetMonAbility(&party[i]) == ABILITY_GEOMAGNETISM)) //Ally has Misty or Electric Surge
+                                    || GetMonAbility(&party[i]) == ABILITY_ELECTRIC_SURGE)) //Ally has Misty or Electric Surge
                                 {
                                     *(gBattleStruct->AI_monToSwitchIntoId + BATTLE_PARTNER(battler)) = i;
                                     BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
@@ -650,11 +644,7 @@ static bool8 HasSuperEffectiveMoveAgainstOpponents(u32 battler, bool8 noRng)
             if (move == MOVE_NONE)
                 continue;
 
-            if (
-                ((!gBattleMons[opposingBattler].ability == ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0)))
-            || ((gBattleMons[opposingBattler].ability == ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) < UQ_4_12(2.0)))   
-            )
-
+            if (AI_GetTypeEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
             {
                 if (noRng)
                     return TRUE;
@@ -676,11 +666,7 @@ static bool8 HasSuperEffectiveMoveAgainstOpponents(u32 battler, bool8 noRng)
             if (move == MOVE_NONE)
                 continue;
 
-            if (
-                ((!gBattleMons[opposingBattler].ability == ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0)))
-            || ((gBattleMons[opposingBattler].ability == ABILITY_CLIMATE_CHANGE) && (AI_GetTypeEffectiveness(move, battler, opposingBattler) < UQ_4_12(2.0)))
-            
-            )
+            if (AI_GetTypeEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
             {
                 if (noRng)
                     return TRUE;

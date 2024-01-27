@@ -37,18 +37,7 @@ void HealPlayerParty(void)
     // restore HP.
     for(i = 0; i < gPlayerPartyCount; i++)
     {
-           u16 maxHP;
-           if (GetMonData(&gPlayerParty[i], MON_DATA_DEAD)){
-              if (!FlagGet(FLAG_DEAD_WHEN_FAINT) || !FlagGet(FLAG_SYS_POKEDEX_GET)){
-               bool8 dead = FALSE;
-                   SetMonData(&gPlayerParty[i], MON_DATA_DEAD, &dead);
-               }
-               else{
-                    continue;
-                }
-            }
-        
-        maxHP = GetMonData(&gPlayerParty[i], MON_DATA_MAX_HP);
+        u16 maxHP = GetMonData(&gPlayerParty[i], MON_DATA_MAX_HP);
         arg[0] = maxHP;
         arg[1] = maxHP >> 8;
         SetMonData(&gPlayerParty[i], MON_DATA_HP, arg);
@@ -271,7 +260,7 @@ void ReducePlayerPartyToSelectedMons(void)
 
     CpuFill32(0, party, sizeof party);
 
-    // copy the selected Pokémon according to the order.
+    // copy the selected pokemon according to the order.
     for (i = 0; i < MAX_FRONTIER_PARTY_SIZE; i++)
         if (gSelectedOrderFromParty[i]) // as long as the order keeps going (did the player select 1 mon? 2? 3?), do not stop
             party[i] = gPlayerParty[gSelectedOrderFromParty[i] - 1]; // index is 0 based, not literal

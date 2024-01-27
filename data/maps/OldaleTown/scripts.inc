@@ -1,7 +1,6 @@
 .set LOCALID_MART_EMPLOYEE, 2
 .set LOCALID_FOOTPRINTS_MAN, 3
 .set LOCALID_RIVAL, 4
-.set LOCALID_LEDYBA, 7
 
 OldaleTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, OldaleTown_OnTransition
@@ -10,10 +9,9 @@ OldaleTown_MapScripts::
 OldaleTown_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_OLDALE_TOWN
-	call_if_unset FLAG_RECEIVED_EEVEE, OldaleTown_EventScript_BlockWestEntrance
+	call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
 	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
-	call_if_set FLAG_HELPED_LEDYBA, OldaleTown_EventScript_LedybaFlip
 	end
 
 @ This script seems pointless because nothing uses VAR_OLDALE_TOWN_STATE
@@ -21,61 +19,13 @@ OldaleTown_EventScript_SetOldaleState::
 	setvar VAR_OLDALE_TOWN_STATE, 1
 	return
 
-OldaleTown_EventScript_Slugma::
-	playmoncry SPECIES_SLUGMA, CRY_MODE_NORMAL
-	msgbox OldaleTown_Text_Slugma, MSGBOX_NPC
-	release
-	end
-
-OldaleTown_EventScript_LedybaFlip::
-	setobjectmovementtype LOCALID_LEDYBA, MOVEMENT_TYPE_FACE_DOWN
-	return
-
-OldaleTown_Text_Slugma:
-	.string "SLUGMA: Bwshsh!$"
-
-OldaleTown_EventScript_Ledyba::
- call_if_set FLAG_HELPED_LEDYBA, OldaleTown_EventScript_LedybaGrateful
- call OldaleTown_EventScript_HelpingLedyba
- end
-
-OldaleTown_EventScript_HelpingLedyba::
-	lock
-	msgbox OldaleTown_Text_WantToHelpLedyba, MSGBOX_DEFAULT
-	waitmessage
-	msgbox OldaleTown_Text_YesOrNoLedyba, MSGBOX_YESNO
-	waitmessage
-	goto_if_eq VAR_RESULT, YES, OldaleTown_EventScript_LedybaGetUp
-	release
-	end
-
-
-OldaleTown_EventScript_LedybaGetUp::	
-	applymovement LOCALID_LEDYBA, OldaleTown_Movement_Ledyba
-	waitmovement 0
-	applymovement LOCALID_LEDYBA, Common_Movement_ExclamationMark
-	waitmovement 0
-	msgbox OldaleTown_Text_LedybaPresent, MSGBOX_NPC
-	waitmessage
-	giveitem ITEM_TM_HELPING_HAND
-	call_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_BagIsFull
-	setflag FLAG_HELPED_LEDYBA
-	release
-	end
-	
-OldaleTown_EventScript_LedybaGrateful::
-	lockall
-	msgbox OldaleTown_Text_LedybaHello, MSGBOX_NPC
-	release
-	end
-
 OldaleTown_EventScript_BlockWestEntrance::
-	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 0, 11
+	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 1, 11
 	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_FACE_LEFT
 	return
 
 OldaleTown_EventScript_MoveMartEmployee::
-	setobjectxyperm LOCALID_MART_EMPLOYEE, 6, 17
+	setobjectxyperm LOCALID_MART_EMPLOYEE, 13, 14
 	setobjectmovementtype LOCALID_MART_EMPLOYEE, MOVEMENT_TYPE_FACE_DOWN
 	return
 
@@ -91,7 +41,15 @@ OldaleTown_EventScript_MartEmployee::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_ExplainPotion
-	goto OldaleTown_EventScript_ExplainPokemonMart
+	goto_if_set FLAG_TEMP_1, OldaleTown_EventScript_ExplainPotion
+	setflag FLAG_TEMP_1
+	playbgm MUS_FOLLOW_ME, FALSE
+	msgbox OldaleTown_Text_IWorkAtPokemonMart, MSGBOX_DEFAULT
+	closemessage
+	switch VAR_FACING
+	case DIR_SOUTH, OldaleTown_EventScript_GoToMartSouth
+	case DIR_NORTH, OldaleTown_EventScript_GoToMartNorth
+	case DIR_EAST, OldaleTown_EventScript_GoToMartEast
 	end
 
 OldaleTown_EventScript_GoToMartSouth::
@@ -236,7 +194,7 @@ OldaleTown_Movement_Unknown2:
 OldaleTown_EventScript_FootprintsMan::
 	lock
 	faceplayer
-	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_Eevee_Check
+	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_NotBlockingPath
 	msgbox OldaleTown_Text_DiscoveredFootprints, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_FOOTPRINTS_MAN, Common_Movement_FaceOriginalDirection
@@ -245,80 +203,21 @@ OldaleTown_EventScript_FootprintsMan::
 	end
 
 OldaleTown_EventScript_BlockedPath::
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_PlayerStepBack
+	applymovement LOCALID_FOOTPRINTS_MAN, OldaleTown_Movement_BackUp
+	waitmovement 0
 	msgbox OldaleTown_Text_WaitDontComeInHere, MSGBOX_DEFAULT
 	closemessage
+	applymovement LOCALID_FOOTPRINTS_MAN, OldaleTown_Movement_ReturnToOriginalPosition
+	waitmovement 0
+	releaseall
 	end
 
 OldaleTown_EventScript_NotBlockingPath::
 	msgbox OldaleTown_Text_FinishedSketchingFootprints, MSGBOX_DEFAULT
 	release
 	end
-
-OldaleTown_EventScript_Eevee_Check::
-	goto_if_unset FLAG_RECEIVED_EEVEE, OldaleTown_EventScript_Eevee_Get
-	msgbox OldaleTown_Text_FinishedSketchingFootprints, MSGBOX_DEFAULT
-	release
-	end
-
-
-
-
-
-OldaleTown_EventScript_Eevee_Get::
-	msgbox OldaleTown_Text_GiveEevee, MSGBOX_DEFAULT
-	setvar VAR_TEMP_1, SPECIES_EEVEE
-	givemon SPECIES_EEVEE, 5
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, OldaleTown_EventScript_SendEeveeParty
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, OldaleTown_EventScript_SendEeveePC
-	goto Common_EventScript_NoMoreRoomForPokemon
-	release
-	end
-
-OldaleTown_EventScript_SendEeveeParty::
-	call OldaleTown_EventScript_ReceivedEeveeFanfare
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, OldaleTown_EventScript_ReceivedEevee
-	call Common_EventScript_GetGiftMonPartySlot
-	call Common_EventScript_NameReceivedPartyMon
-	goto OldaleTown_EventScript_ReceivedEevee
-	end
-
-OldaleTown_EventScript_SendEeveePC::
-	call OldaleTown_EventScript_ReceivedEeveeFanfare
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, OldaleTown_EventScript_EeveeTransferredToPC
-	call Common_EventScript_NameReceivedBoxMon
-	goto OldaleTown_EventScript_EeveeTransferredToPC
-	end
-
-OldaleTown_EventScript_EeveeTransferredToPC::
-	call Common_EventScript_TransferredToPC
-	goto OldaleTown_EventScript_ReceivedEevee
-	end
-
-OldaleTown_EventScript_ReceivedEeveeFanfare::
-	bufferspeciesname STR_VAR_2, SPECIES_EEVEE
-	playfanfare MUS_OBTAIN_ITEM
-	message OldaleTown_Text_ObtainedEevee
-	waitmessage
-	waitfanfare
-	bufferspeciesname STR_VAR_1, SPECIES_EEVEE
-	return
-
-OldaleTown_EventScript_ReceivedEevee::
-	setflag FLAG_RECEIVED_EEVEE
-	msgbox OldaleTown_Text_FinishedSketchingFootprints, MSGBOX_DEFAULT
-	closemessage
-	switch VAR_FACING
-	case DIR_NORTH, OldaleTown_EventScript_FootprintsManRight
-	case DIR_WEST, OldaleTown_EventScript_FootprintsManDown
-	case DIR_SOUTH, OldaleTown_EventScript_FootprintsManDown
-	releaseall
-	end
-
-
-OldaleTown_Text_ObtainedEevee:
-	.string "{PLAYER} obtained EEVEE.$"
 
 OldaleTown_EventScript_Rival::
 	lockall
@@ -330,7 +229,7 @@ OldaleTown_EventScript_Rival::
 
 OldaleTown_EventScript_RivalTrigger1::
 	lockall
-	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
+	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer1
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
@@ -340,7 +239,17 @@ OldaleTown_EventScript_RivalTrigger1::
 
 OldaleTown_EventScript_RivalTrigger2::
 	lockall
-	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
+	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer2
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	setvar VAR_0x8009, 1
+	goto OldaleTown_EventScript_ShowRivalMessage
+	end
+
+OldaleTown_EventScript_RivalTrigger3::
+	lockall
+	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalApproachPlayer3
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
@@ -377,7 +286,7 @@ OldaleTown_EventScript_RivalFinish::
 	end
 
 OldaleTown_EventScript_DoExitMovement1::
-	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Movement_WatchRivalExit
+	goto_if_ne VAR_FACING, DIR_SOUTH, OldaleTown_EventScript_DoExitMovement2
 	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalExit
 	waitmovement 0
 	return
@@ -389,17 +298,20 @@ OldaleTown_EventScript_DoExitMovement2::
 	return
 
 OldaleTown_Movement_RivalApproachPlayer1:
-	walk_in_place_faster_left
-	end
+	walk_left
+	walk_left
+	step_end
 
 OldaleTown_Movement_RivalApproachPlayer2:
-	walk_in_place_faster_left
-	end
+	walk_left
+	step_end
 
+OldaleTown_Movement_RivalApproachPlayer3:
+	face_left
+	step_end
 
 OldaleTown_Movement_RivalExit:
 	walk_down
-	walk_left
 	walk_down
 	walk_down
 	walk_down
@@ -426,94 +338,23 @@ OldaleTown_Movement_BackUp:
 	unlock_facing_direction
 	step_end
 
-OldaleTown_EventScript_FootprintsManRight::
-	applymovement LOCALID_FOOTPRINTS_MAN OldaleTown_Movement_FootprintsRight
-	waitmovement 0
-	removeobject LOCALID_FOOTPRINTS_MAN
-	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 10, 6
-	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
-	releaseall
-	end
-
-OldaleTown_EventScript_FootprintsManDown::
-	applymovement LOCALID_FOOTPRINTS_MAN OldaleTown_Movement_FootprintsDown
-	waitmovement 0
-	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 10, 6
-	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
-	releaseall
-	end
-
-OldaleTown_Movement_FootprintsRight::
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-OldaleTown_Movement_FootprintsDown::
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-
-
 OldaleTown_Movement_ReturnToOriginalPosition:
 	walk_down
 	walk_left
 	step_end
 
-OldaleTown_Movement_Ledyba:
-	face_down
-	delay_16
-	face_left
-	delay_16
-	face_right
-	delay_16
-	face_down
-	delay_16
-	step_end
-	
-
 OldaleTown_Text_SavingMyProgress:
-	.string "I've heard that the best way\n"
-	.string "of making a POKEMON stronger is\l"
-	.string "to feed it VITAMINS.\p"
-	.string "Supposedly, they're distributed by\n"
-	.string "the POKEMON LEAGUE to particularly\l"
-	.string "strong trainers.$"
+	.string "I want to take a rest, so I'm saving my\n"
+	.string "progress.$"
 
 OldaleTown_Text_IWorkAtPokemonMart:
 	.string "Hi!\n"
-	.string "I work at a POKéMON MART.$"
+	.string "I work at a POKéMON MART.\p"
+	.string "Can I get you to come with me?$"
 
 OldaleTown_Text_ThisIsAPokemonMart:
-	.string "This is a POKéMON CENTER.\n"
-	.string "The POKéMON MART is inside it!\p"
+	.string "This is a POKéMON MART.\n"
+	.string "Just look for our blue roof.\p"
 	.string "We sell a variety of goods including\n"
 	.string "POKé BALLS for catching POKéMON.\p"
 	.string "Here, I'd like you to have this as\n"
@@ -525,7 +366,7 @@ OldaleTown_Text_PotionExplanation:
 	.string "in certain situations.$"
 
 OldaleTown_Text_WaitDontComeInHere:
-	.string "Oh, hello!\n"
+	.string "Aaaaah! Wait!\n"
 	.string "Please don't come in here.\p"
 	.string "I just discovered the footprints of\n"
 	.string "a rare POKéMON!\p"
@@ -539,47 +380,22 @@ OldaleTown_Text_DiscoveredFootprints:
 	.string "them, okay?$"
 
 OldaleTown_Text_FinishedSketchingFootprints:
-	.string "Thank you for taking care of EEVEE!\p"
-	.string "I'm sure it'll be very happy in your\n"
-	.string "care.$"
-
-OldaleTown_Text_GiveEevee:
-	.string "I was sketching the footprints of\n"
-	.string "a rare POKéMON, but…\p"
-	.string "You can imagine my surprise when\n"
-	.string "said POKéMON jumped out of the\l"
-	.string "grass and approached me!\p"
-	.string "Now the little fellow won't leave\n"
-	.string "me alone, but I'm hardly a trainer…\p"
-	.string "But you, you look the part!\p"
-	.string "Please, do me a favor and accept it!$"
+	.string "I finished sketching the footprints of\n"
+	.string "a rare POKéMON.\p"
+	.string "But it turns out they were only my\n"
+	.string "own footprints…$"
 
 OldaleTown_Text_MayLetsGoBack:
-	.string "MAY: I'm heading back to my dad's\n"
-	.string "LAB now.\l"
-	.string "{PLAYER}, hurry up!$"
+	.string "MAY: {PLAYER}{KUN}!\n"
+	.string "Over here!\l"
+	.string "Let's hurry home!$"
 
 OldaleTown_Text_BrendanLetsGoBack:
 	.string "BRENDAN: I'm heading back to my dad's\n"
 	.string "LAB now.\l"
-	.string "{PLAYER}, hurry up!$"
+	.string "{PLAYER}, you should hustle back, too.$"
 
 OldaleTown_Text_TownSign:
-	.string "OLDALE TOWN$"
+	.string "OLDALE TOWN\n"
+	.string "“Where things start off scarce.”$"
 
-OldaleTown_Text_WantToHelpLedyba:
-	.string "An upside down LEDYBA is lying on\n"
-	.string "the grass…$"
-
-OldaleTown_Text_YesOrNoLedyba:
-	.string "Do you want to help it get back up?$"
-
-OldaleTown_Text_LedybaPresent:
-	.string "LEDYBA looks grateful.\p"
-	.string "Oh, but what's this?\n"
-	.string "It seems like LEDYBA is offering you\l"
-	.string "a gift!$"
-
-OldaleTown_Text_LedybaHello:
-	.string "LEDYBA is waving to you with all of\n"
-	.string "its hands.$"

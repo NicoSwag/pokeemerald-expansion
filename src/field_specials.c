@@ -102,7 +102,7 @@ void SetPlayerGotFirstFans(void);
 u16 GetNumFansOfPlayerInTrainerFanClub(void);
 
 static void RecordCyclingRoadResults(u32, u8);
-static void LoadLinkPartnerObjectEventSpritePalette(u16, u8, u8);
+static void LoadLinkPartnerObjectEventSpritePalette(u8, u8, u8);
 static void Task_PetalburgGymSlideOpenRoomDoors(u8);
 static void PetalburgGymSetDoorMetatiles(u8, u16);
 static void Task_PCTurnOnEffect(u8);
@@ -362,8 +362,6 @@ bool32 ShouldDoWallyCall(void)
         case MAP_TYPE_TOWN:
         case MAP_TYPE_CITY:
         case MAP_TYPE_ROUTE:
-        case MAP_TYPE_OVERCAST:
-        case MAP_TYPE_FOREST:
         case MAP_TYPE_OCEAN_ROUTE:
             if (++(*GetVarPointer(VAR_WALLY_CALL_STEP_COUNTER)) < 250)
                 return FALSE;
@@ -389,8 +387,6 @@ bool32 ShouldDoScottFortreeCall(void)
         case MAP_TYPE_TOWN:
         case MAP_TYPE_CITY:
         case MAP_TYPE_ROUTE:
-            case MAP_TYPE_OVERCAST:
-                case MAP_TYPE_FOREST:
         case MAP_TYPE_OCEAN_ROUTE:
             if (++(*GetVarPointer(VAR_SCOTT_FORTREE_CALL_STEP_COUNTER)) < 10)
                 return FALSE;
@@ -416,8 +412,6 @@ bool32 ShouldDoScottBattleFrontierCall(void)
         case MAP_TYPE_TOWN:
         case MAP_TYPE_CITY:
         case MAP_TYPE_ROUTE:
-            case MAP_TYPE_OVERCAST:
-        case MAP_TYPE_FOREST:
         case MAP_TYPE_OCEAN_ROUTE:
             if (++(*GetVarPointer(VAR_SCOTT_BF_CALL_STEP_COUNTER)) < 10)
                 return FALSE;
@@ -443,8 +437,6 @@ bool32 ShouldDoRoxanneCall(void)
         case MAP_TYPE_TOWN:
         case MAP_TYPE_CITY:
         case MAP_TYPE_ROUTE:
-            case MAP_TYPE_OVERCAST:
-        case MAP_TYPE_FOREST:
         case MAP_TYPE_OCEAN_ROUTE:
             if (++(*GetVarPointer(VAR_ROXANNE_CALL_STEP_COUNTER)) < 250)
                 return FALSE;
@@ -470,8 +462,6 @@ bool32 ShouldDoRivalRayquazaCall(void)
         case MAP_TYPE_TOWN:
         case MAP_TYPE_CITY:
         case MAP_TYPE_ROUTE:
-            case MAP_TYPE_OVERCAST:
-        case MAP_TYPE_FOREST:
         case MAP_TYPE_OCEAN_ROUTE:
             if (++(*GetVarPointer(VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER)) < 250)
                 return FALSE;
@@ -524,7 +514,7 @@ void SpawnLinkPartnerObjectEvent(void)
     };
     u8 myLinkPlayerNumber;
     u8 playerFacingDirection;
-    u16 linkSpriteId;
+    u8 linkSpriteId;
     u8 i;
 
     myLinkPlayerNumber = GetMultiplayerId();
@@ -585,7 +575,7 @@ void SpawnLinkPartnerObjectEvent(void)
     }
 }
 
-static void LoadLinkPartnerObjectEventSpritePalette(u16 graphicsId, u8 localEventId, u8 paletteNum)
+static void LoadLinkPartnerObjectEventSpritePalette(u8 graphicsId, u8 localEventId, u8 paletteNum)
 {
     u8 adjustedPaletteNum;
     // Note: This temp var is necessary; paletteNum += 6 doesn't match.
@@ -964,7 +954,7 @@ u8 GetLeadMonFriendshipScore(void)
     return GetMonFriendshipScore(&gPlayerParty[GetLeadMonIndex()]);
 }
 
-void CB2_FieldShowRegionMap(void)
+static void CB2_FieldShowRegionMap(void)
 {
     FieldInitRegionMap(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
@@ -1636,8 +1626,21 @@ void BufferLottoTicketNumber(void)
 
 u16 GetMysteryGiftCardStat(void)
 {
-
-    
+    switch (gSpecialVar_Result)
+    {
+    case GET_NUM_STAMPS:
+        return MysteryGift_GetCardStat(CARD_STAT_NUM_STAMPS);
+    case GET_MAX_STAMPS:
+        return MysteryGift_GetCardStat(CARD_STAT_MAX_STAMPS);
+    case GET_CARD_BATTLES_WON:
+        return MysteryGift_GetCardStat(CARD_STAT_BATTLES_WON);
+    case GET_CARD_BATTLES_LOST: // Never occurs
+        return MysteryGift_GetCardStat(CARD_STAT_BATTLES_LOST);
+    case GET_CARD_NUM_TRADES: // Never occurs
+        return MysteryGift_GetCardStat(CARD_STAT_NUM_TRADES);
+    default:
+        return 0;
+    }
 }
 
 bool8 BufferTMHMMoveName(void)

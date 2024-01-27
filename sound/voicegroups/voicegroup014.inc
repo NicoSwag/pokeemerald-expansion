@@ -2,7 +2,7 @@
 voicegroup014::
 	voice_keysplit_all voicegroup001
 	voice_keysplit voicegroup005, KeySplitTable1
-	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_slap_bass, 255, 235, 128, 115
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_2_alt 60, 0, 3, 0, 1, 6, 1
 	voice_square_1_alt 60, 0, 0, 3, 0, 1, 6, 1

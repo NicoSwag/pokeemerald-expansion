@@ -827,9 +827,9 @@ static const u8 sGreenShardDesc[] = _(
     "be sold cheaply.");
 
 static const u8 sHeartScaleDesc[] = _(
-    "A strange shard.\n"
-    "Turn it in for\n"
-    "a reward.");
+    "A lovely scale.\n"
+    "It is coveted by\n"
+    "collectors.");
 
 static const u8 sHoneyDesc[] = _(
     "Sweet honey that\n"
@@ -3011,9 +3011,9 @@ static const u8 sJabocaBerryDesc[] = _(
     "the attacker a bit.");
 
 static const u8 sRowapBerryDesc[] = _(
-    "A hold item that\n"
-    "heals frostbite\n"
-    "in battle.");
+    "If hit by a special\n"
+    "move, it will hurt\n"
+    "the attacker a bit.");
 
 static const u8 sKeeBerryDesc[] = _(
     "If hit by a physical\n"
@@ -3032,39 +3032,39 @@ static const u8 sEnigmaBerryEReaderDesc[] = _(
 
 // TMs/HMs
 static const u8 sTM01Desc[] = _(
-    "Boosts the power\n"
-    "of the recipient's\n"
-    "moves.");
+    "Powerful, but makes\n"
+    "the user flinch if\n"
+    "hit by the foe.");
 
 static const u8 sTM02Desc[] = _(
-    "A shower with cold\n"
-    "water that may\n"
-    "freeze the foe.");
+    "Hooks and slashes\n"
+    "the foe with long,\n"
+    "sharp claws.");
 
 static const u8 sTM03Desc[] = _(
-    "Suppresses the foe,\n"
-    "making it move last\n"
-    "in a turn.");
+    "Generates an\n"
+    "ultrasonic wave\n"
+    "that may confuse.");
 
 static const u8 sTM04Desc[] = _(
-    "The user attacks\n"
-    "in a sudden way,\n"
-    "raising its Speed.");
+    "Raises Sp. Atk and\n"
+    "Sp. Def by focusing\n"
+    "the mind.");
 
 static const u8 sTM05Desc[] = _(
-    "Evades attacks, but\n"
-    "may fail if used\n"
-    "in succession.");
+    "A savage roar that\n"
+    "makes the foe flee \n"
+    "to end the battle.");
 
 static const u8 sTM06Desc[] = _(
-    "Causes a sandstorm\n"
-    "that hits the foe\n"
-    "over several turns.");
+    "Poisons the foe\n"
+    "with a toxin that\n"
+    "gradually worsens.");
 
 static const u8 sTM07Desc[] = _(
-    "Traps the foe in a \n"
-    "ring of fire for 5\n"
-    "turns.");
+    "Creates a hailstorm\n"
+    "that damages all\n"
+    "types except Ice.");
 
 static const u8 sTM08Desc[] = _(
     "Bulks up the body\n"
@@ -3768,11 +3768,6 @@ static const u8 sBikeVoucherDesc[] = _(
     "A voucher for\n"
     "obtaining a bicycle\n"
     "from the Bike Shop.");
-
-static const u8 sOddInscriptionDesc[] = _(
-    "A reproduction of\n"
-    "some carvings from\n"
-    "ages past.");
 
 static const u8 sGoldTeethDesc[] = _(
     "Gold dentures lost\n"

@@ -12,7 +12,6 @@
 #include "field_effect.h"
 #include "field_effect_helpers.h"
 #include "field_player_avatar.h"
-#include "field_weather.h"
 #include "fieldmap.h"
 #include "mauville_old_man.h"
 #include "metatile_behavior.h"
@@ -77,6 +76,8 @@ static u8 setup##_callback(struct ObjectEvent *objectEvent, struct Sprite *sprit
     return 0;\
 }
 
+static EWRAM_DATA u8 sCurrentReflectionType = 0;
+static EWRAM_DATA u16 sCurrentSpecialObjectPaletteTag = 0;
 static EWRAM_DATA struct LockedAnimObjectEvents *sLockedAnimObjectEvents = {0};
 
 static void MoveCoordsInDirection(u32, s16 *, s16 *, s16, s16);
@@ -134,7 +135,7 @@ static void UpdateObjectEventVisibility(struct ObjectEvent *, struct Sprite *);
 static void MakeSpriteTemplateFromObjectEventTemplate(const struct ObjectEventTemplate *, struct SpriteTemplate *, const struct SubspriteTable **);
 static void GetObjectEventMovingCameraOffset(s16 *, s16 *);
 static const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8, u8, u8);
-void LoadObjectEventPalette(u16);
+static void LoadObjectEventPalette(u16);
 static void RemoveObjectEventIfOutsideView(struct ObjectEvent *);
 static void SpawnObjectEventOnReturnToField(u8, s16, s16);
 static void SetPlayerAvatarObjectEventIdAndObjectId(u8, u8);
@@ -451,45 +452,15 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_LUGIA                   0x1121
 #define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
 #define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
-#define OBJ_EVENT_PAL_TAG_HOOTHOOT                0x1124
-#define OBJ_EVENT_PAL_TAG_SUNFLORA                0x1125
-#define OBJ_EVENT_PAL_TAG_SLUGMA                  0x1126
-#define OBJ_EVENT_PAL_TAG_LEDYBA                  0x1127
-#define OBJ_EVENT_PAL_TAG_LOTAD                   0x1128
-#define OBJ_EVENT_PAL_TAG_TAILLOW                 0x1129
-#define OBJ_EVENT_PAL_TAG_SMARTCHU                0x112A
-#define OBJ_EVENT_PAL_TAG_LOOKER                  0X112B
-#define OBJ_EVENT_PAL_TAG_BULLDOZER               0x112C
-#define OBJ_EVENT_PAL_TAG_CRANE                   0x112D
-#define OBJ_EVENT_PAL_TAG_ENGINEER                0x112E
-#define OBJ_EVENT_PAL_TAG_DIGLETT                 0x112F
-#define OBJ_EVENT_PAL_TAG_RHYDON                  0x1130
-#define OBJ_EVENT_PAL_TAG_DELIBIRD                0x1131
-#define OBJ_EVENT_PAL_TAG_CHANNELER               0x1132
-#define OBJ_EVENT_PAL_TAG_KADABRA               0x1133
-#define OBJ_EVENT_PAL_TAG_SCIZOR               0x1134
-#define OBJ_EVENT_PAL_TAG_MAXIE               0x1135
-#define OBJ_EVENT_PAL_TAG_ARCHIE               0x1136
-#define OBJ_EVENT_PAL_TAG_SHELLY               0x1137   
-#define OBJ_EVENT_PAL_TAG_MATT               0x1138
-#define OBJ_EVENT_PAL_TAG_COURTNEY               0x1139
-#define OBJ_EVENT_PAL_TAG_TABITHA               0x113A
-#define OBJ_EVENT_PAL_TAG_AQUA               0x113B
-#define OBJ_EVENT_PAL_TAG_DARK_SKIN               0x113C
-#define OBJ_EVENT_PAL_TAG_DARK_SKIN_2               0x113D
-#define OBJ_EVENT_PAL_TAG_DARK_SKIN_3               0x113E
-#define OBJ_EVENT_PAL_TAG_DARK_SKIN_4               0x113F        
-#define OBJ_EVENT_PAL_TAG_HIKER               0x1140
-#define OBJ_EVENT_PAL_TAG_RICH_BOY               0x1141         
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
+#include "data/object_events/object_event_graphics_info_pointers.h"
 #include "data/field_effects/field_effect_object_template_pointers.h"
 #include "data/object_events/object_event_pic_tables.h"
 #include "data/object_events/object_event_anims.h"
 #include "data/object_events/base_oam.h"
 #include "data/object_events/object_event_subsprites.h"
 #include "data/object_events/object_event_graphics_info.h"
-#include "data/object_events/object_event_graphics_info_pointers.h"
 
 static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Npc1,                  OBJ_EVENT_PAL_TAG_NPC_1},
@@ -507,15 +478,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_QuintyPlump,           OBJ_EVENT_PAL_TAG_QUINTY_PLUMP},
     {gObjectEventPal_QuintyPlumpReflection, OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION},
     {gObjectEventPal_Truck,                 OBJ_EVENT_PAL_TAG_TRUCK},
-    {gObjectEventPal_Bulldozer,                 OBJ_EVENT_PAL_TAG_BULLDOZER},
-    {gObjectEventPal_Crane,                 OBJ_EVENT_PAL_TAG_CRANE},
     {gObjectEventPal_Vigoroth,              OBJ_EVENT_PAL_TAG_VIGOROTH},
     {gObjectEventPal_EnemyZigzagoon,        OBJ_EVENT_PAL_TAG_ZIGZAGOON},
-    {gObjectEventPal_Diglett,        OBJ_EVENT_PAL_TAG_DIGLETT},
-    {gObjectEventPal_Delibird,        OBJ_EVENT_PAL_TAG_DELIBIRD},
-    {gObjectEventPal_Kadabra,        OBJ_EVENT_PAL_TAG_KADABRA},
-    {gObjectEventPal_Scizor,        OBJ_EVENT_PAL_TAG_SCIZOR},
-    {gObjectEventPal_Channeler,        OBJ_EVENT_PAL_TAG_CHANNELER},
     {gObjectEventPal_May,                   OBJ_EVENT_PAL_TAG_MAY},
     {gObjectEventPal_MayReflection,         OBJ_EVENT_PAL_TAG_MAY_REFLECTION},
     {gObjectEventPal_MovingBox,             OBJ_EVENT_PAL_TAG_MOVING_BOX},
@@ -524,7 +488,6 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Kyogre,                OBJ_EVENT_PAL_TAG_KYOGRE},
     {gObjectEventPal_KyogreReflection,      OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION},
     {gObjectEventPal_Groudon,               OBJ_EVENT_PAL_TAG_GROUDON},
-    {gObjectEventPal_Rhydon,               OBJ_EVENT_PAL_TAG_RHYDON},
     {gObjectEventPal_GroudonReflection,     OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION},
     {gObjectEventPal_SubmarineShadow,       OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW},
     {gObjectEventPal_Poochyena,             OBJ_EVENT_PAL_TAG_POOCHYENA},
@@ -533,28 +496,6 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_BirthIslandStone,      OBJ_EVENT_PAL_TAG_BIRTH_ISLAND_STONE},
     {gObjectEventPal_HoOh,                  OBJ_EVENT_PAL_TAG_HO_OH},
     {gObjectEventPal_Lugia,                 OBJ_EVENT_PAL_TAG_LUGIA},
-    {gObjectEventPal_Hoothoot,              OBJ_EVENT_PAL_TAG_HOOTHOOT},
-    {gObjectEventPal_Smartchu,              OBJ_EVENT_PAL_TAG_SMARTCHU},
-    {gObjectEventPal_Looker,              OBJ_EVENT_PAL_TAG_LOOKER},
-    {gObjectEventPal_Shelly,              OBJ_EVENT_PAL_TAG_SHELLY},
-    {gObjectEventPal_Hiker,              OBJ_EVENT_PAL_TAG_HIKER},
-    {gObjectEventPal_DarkSkin,              OBJ_EVENT_PAL_TAG_DARK_SKIN},
-   {gObjectEventPal_DarkSkin2,              OBJ_EVENT_PAL_TAG_DARK_SKIN_2},
-   {gObjectEventPal_RichBoy,              OBJ_EVENT_PAL_TAG_RICH_BOY},
-   {gObjectEventPal_DarkSkin3,              OBJ_EVENT_PAL_TAG_DARK_SKIN_3},
-   {gObjectEventPal_DarkSkin4,              OBJ_EVENT_PAL_TAG_DARK_SKIN_4},
-    {gObjectEventPal_Aqua,              OBJ_EVENT_PAL_TAG_AQUA},
-    {gObjectEventPal_Courtney,              OBJ_EVENT_PAL_TAG_COURTNEY},
-    {gObjectEventPal_Tabitha,              OBJ_EVENT_PAL_TAG_TABITHA},
-    {gObjectEventPal_Matt,              OBJ_EVENT_PAL_TAG_MATT},
-    {gObjectEventPal_Maxie,              OBJ_EVENT_PAL_TAG_MAXIE},
-    {gObjectEventPal_Archie,              OBJ_EVENT_PAL_TAG_ARCHIE},
-    {gObjectEventPal_Engineer,              OBJ_EVENT_PAL_TAG_ENGINEER},
-    {gObjectEventPal_Sunflora,              OBJ_EVENT_PAL_TAG_SUNFLORA},
-    {gObjectEventPal_Lotad,                 OBJ_EVENT_PAL_TAG_LOTAD},
-    {gObjectEventPal_Taillow,                 OBJ_EVENT_PAL_TAG_TAILLOW},
-    {gObjectEventPal_Slugma,              OBJ_EVENT_PAL_TAG_SLUGMA},
-    {gObjectEventPal_Ledyba,              OBJ_EVENT_PAL_TAG_LEDYBA},
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
 #ifdef BUGFIX
@@ -607,20 +548,6 @@ static const u16 sReflectionPaletteTags_Truck[] = {
     OBJ_EVENT_PAL_TAG_TRUCK,
 };
 
-static const u16 sReflectionPaletteTags_Bulldozer[] = {
-    OBJ_EVENT_PAL_TAG_BULLDOZER,
-    OBJ_EVENT_PAL_TAG_BULLDOZER,
-    OBJ_EVENT_PAL_TAG_BULLDOZER,
-    OBJ_EVENT_PAL_TAG_BULLDOZER,
-};
-
-static const u16 sReflectionPaletteTags_Crane[] = {
-    OBJ_EVENT_PAL_TAG_CRANE,
-    OBJ_EVENT_PAL_TAG_CRANE,
-    OBJ_EVENT_PAL_TAG_CRANE,
-    OBJ_EVENT_PAL_TAG_CRANE,
-};
-
 static const u16 sReflectionPaletteTags_VigorothMover[] = {
     OBJ_EVENT_PAL_TAG_VIGOROTH,
     OBJ_EVENT_PAL_TAG_VIGOROTH,
@@ -670,14 +597,6 @@ static const u16 sReflectionPaletteTags_Groudon[] = {
     OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION,
 };
 
-
-static const u16 sReflectionPaletteTags_Rhydon[] = {
-    OBJ_EVENT_PAL_TAG_RHYDON,
-    OBJ_EVENT_PAL_TAG_RHYDON,
-    OBJ_EVENT_PAL_TAG_RHYDON,
-    OBJ_EVENT_PAL_TAG_RHYDON,
-};
-
 static const u16 sReflectionPaletteTags_Npc3[] = { // Only used by the Route 120 bridge Kecleon
     OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
     OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION,
@@ -697,15 +616,12 @@ static const struct PairedPalettes sSpecialObjectReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_MAY,              sReflectionPaletteTags_May},
     {OBJ_EVENT_PAL_TAG_QUINTY_PLUMP,     sReflectionPaletteTags_QuintyPlump},
     {OBJ_EVENT_PAL_TAG_TRUCK,            sReflectionPaletteTags_Truck},
-    {OBJ_EVENT_PAL_TAG_BULLDOZER,            sReflectionPaletteTags_Bulldozer},
-    {OBJ_EVENT_PAL_TAG_CRANE,            sReflectionPaletteTags_Crane},
     {OBJ_EVENT_PAL_TAG_VIGOROTH,         sReflectionPaletteTags_VigorothMover},
     {OBJ_EVENT_PAL_TAG_MOVING_BOX,       sReflectionPaletteTags_MovingBox},
     {OBJ_EVENT_PAL_TAG_CABLE_CAR,        sReflectionPaletteTags_CableCar},
     {OBJ_EVENT_PAL_TAG_SSTIDAL,          sReflectionPaletteTags_SSTidal},
     {OBJ_EVENT_PAL_TAG_KYOGRE,           sReflectionPaletteTags_Kyogre},
     {OBJ_EVENT_PAL_TAG_GROUDON,          sReflectionPaletteTags_Groudon},
-    {OBJ_EVENT_PAL_TAG_RHYDON,          sReflectionPaletteTags_Rhydon},
     {OBJ_EVENT_PAL_TAG_NPC_3,            sReflectionPaletteTags_Npc3},
     {OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW, sReflectionPaletteTags_SubmarineShadow},
     {OBJ_EVENT_PAL_TAG_RED_LEAF,         sReflectionPaletteTags_RedLeaf},
@@ -786,10 +702,10 @@ static const u8 sFaceDirectionAnimNums[] = {
     [DIR_NORTH] = ANIM_STD_FACE_NORTH,
     [DIR_WEST] = ANIM_STD_FACE_WEST,
     [DIR_EAST] = ANIM_STD_FACE_EAST,
-    [DIR_SOUTHWEST] = ANIM_STD_FACE_WEST,
-    [DIR_SOUTHEAST] = ANIM_STD_FACE_EAST,
-    [DIR_NORTHWEST] = ANIM_STD_FACE_WEST,
-    [DIR_NORTHEAST] = ANIM_STD_FACE_EAST,
+    [DIR_SOUTHWEST] = ANIM_STD_FACE_SOUTH,
+    [DIR_SOUTHEAST] = ANIM_STD_FACE_SOUTH,
+    [DIR_NORTHWEST] = ANIM_STD_FACE_NORTH,
+    [DIR_NORTHEAST] = ANIM_STD_FACE_NORTH,
 };
 static const u8 sMoveDirectionAnimNums[] = {
     [DIR_NONE] = ANIM_STD_GO_SOUTH,
@@ -797,10 +713,10 @@ static const u8 sMoveDirectionAnimNums[] = {
     [DIR_NORTH] = ANIM_STD_GO_NORTH,
     [DIR_WEST] = ANIM_STD_GO_WEST,
     [DIR_EAST] = ANIM_STD_GO_EAST,
-    [DIR_SOUTHWEST] = ANIM_STD_GO_WEST,
-    [DIR_SOUTHEAST] = ANIM_STD_GO_EAST,
-    [DIR_NORTHWEST] = ANIM_STD_GO_WEST,
-    [DIR_NORTHEAST] = ANIM_STD_GO_EAST,
+    [DIR_SOUTHWEST] = ANIM_STD_GO_SOUTH,
+    [DIR_SOUTHEAST] = ANIM_STD_GO_SOUTH,
+    [DIR_NORTHWEST] = ANIM_STD_GO_NORTH,
+    [DIR_NORTHEAST] = ANIM_STD_GO_NORTH,
 };
 static const u8 sMoveDirectionFastAnimNums[] = {
     [DIR_NONE] = ANIM_STD_GO_FAST_SOUTH,
@@ -808,10 +724,10 @@ static const u8 sMoveDirectionFastAnimNums[] = {
     [DIR_NORTH] = ANIM_STD_GO_FAST_NORTH,
     [DIR_WEST] = ANIM_STD_GO_FAST_WEST,
     [DIR_EAST] = ANIM_STD_GO_FAST_EAST,
-    [DIR_SOUTHWEST] = ANIM_STD_GO_FAST_WEST,
-    [DIR_SOUTHEAST] = ANIM_STD_GO_FAST_EAST,
-    [DIR_NORTHWEST] = ANIM_STD_GO_FAST_WEST,
-    [DIR_NORTHEAST] = ANIM_STD_GO_FAST_EAST,
+    [DIR_SOUTHWEST] = ANIM_STD_GO_FAST_SOUTH,
+    [DIR_SOUTHEAST] = ANIM_STD_GO_FAST_SOUTH,
+    [DIR_NORTHWEST] = ANIM_STD_GO_FAST_NORTH,
+    [DIR_NORTHEAST] = ANIM_STD_GO_FAST_NORTH,
 };
 static const u8 sMoveDirectionFasterAnimNums[] = {
     [DIR_NONE] = ANIM_STD_GO_FASTER_SOUTH,
@@ -841,10 +757,10 @@ static const u8 sJumpSpecialDirectionAnimNums[] = { // used for jumping onto sur
     [DIR_NORTH] = ANIM_GET_ON_OFF_POKEMON_NORTH,
     [DIR_WEST] = ANIM_GET_ON_OFF_POKEMON_WEST,
     [DIR_EAST] = ANIM_GET_ON_OFF_POKEMON_EAST,
-    [DIR_SOUTHWEST] = ANIM_GET_ON_OFF_POKEMON_WEST,
-    [DIR_SOUTHEAST] = ANIM_GET_ON_OFF_POKEMON_EAST,
-    [DIR_NORTHWEST] = ANIM_GET_ON_OFF_POKEMON_WEST,
-    [DIR_NORTHEAST] = ANIM_GET_ON_OFF_POKEMON_EAST,
+    [DIR_SOUTHWEST] = ANIM_GET_ON_OFF_POKEMON_SOUTH,
+    [DIR_SOUTHEAST] = ANIM_GET_ON_OFF_POKEMON_SOUTH,
+    [DIR_NORTHWEST] = ANIM_GET_ON_OFF_POKEMON_NORTH,
+    [DIR_NORTHEAST] = ANIM_GET_ON_OFF_POKEMON_NORTH,
 };
 static const u8 sAcroWheelieDirectionAnimNums[] = {
     [DIR_NONE] = ANIM_BUNNY_HOP_BACK_WHEEL_SOUTH,
@@ -1072,10 +988,6 @@ const u8 gJumpSpecialMovementActions[] = {
     MOVEMENT_ACTION_JUMP_SPECIAL_DOWN,
     MOVEMENT_ACTION_JUMP_SPECIAL_DOWN,
     MOVEMENT_ACTION_JUMP_SPECIAL_UP,
-    MOVEMENT_ACTION_JUMP_SPECIAL_LEFT,
-    MOVEMENT_ACTION_JUMP_SPECIAL_RIGHT,
-    MOVEMENT_ACTION_JUMP_SPECIAL_LEFT,
-    MOVEMENT_ACTION_JUMP_SPECIAL_RIGHT,
     MOVEMENT_ACTION_JUMP_SPECIAL_LEFT,
     MOVEMENT_ACTION_JUMP_SPECIAL_RIGHT,
 };
@@ -1470,14 +1382,10 @@ void RemoveObjectEventByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 
 static void RemoveObjectEventInternal(struct ObjectEvent *objectEvent)
 {
-    u8 paletteNum;
-
     struct SpriteFrameImage image;
     image.size = GetObjectEventGraphicsInfo(objectEvent->graphicsId)->size;
     gSprites[objectEvent->spriteId].images = &image;
-    paletteNum = gSprites[objectEvent->spriteId].oam.paletteNum;
     DestroySprite(&gSprites[objectEvent->spriteId]);
-    FieldEffectFreePaletteIfUnused(paletteNum);
 }
 
 void RemoveAllObjectEventsExceptPlayer(void)
@@ -1506,15 +1414,25 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
 
     objectEvent = &gObjectEvents[objectEventId];
     graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
-    if (spriteTemplate->paletteTag != 0xFFFF)
+    paletteSlot = graphicsInfo->paletteSlot;
+    if (paletteSlot == PALSLOT_PLAYER)
     {
-        LoadObjectEventPalette(spriteTemplate->paletteTag);
-        UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate->paletteTag), GAMMA_ALT);
+        LoadPlayerObjectReflectionPalette(graphicsInfo->paletteTag, paletteSlot);
     }
-    
+    else if (paletteSlot == PALSLOT_NPC_SPECIAL)
+    {
+        LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, paletteSlot);
+    }
+    else if (paletteSlot >= 16)
+    {
+        paletteSlot -= 16;
+        _PatchObjectPalette(graphicsInfo->paletteTag, paletteSlot);
+    }
+
     if (objectEvent->movementType == MOVEMENT_TYPE_INVISIBLE)
         objectEvent->invisible = TRUE;
 
+    *(u16 *)&spriteTemplate->paletteTag = TAG_NONE;
     spriteId = CreateSprite(spriteTemplate, 0, 0, 0);
     if (spriteId == MAX_SPRITES)
     {
@@ -1528,7 +1446,7 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
     sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
     sprite->x += 8;
     sprite->y += 16 + sprite->centerToCornerVecY;
-    sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate->paletteTag);
+    sprite->oam.paletteNum = paletteSlot;
     sprite->coordOffsetEnabled = TRUE;
     sprite->sObjEventId = objectEventId;
     objectEvent->spriteId = spriteId;
@@ -1538,7 +1456,6 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
 
     SetObjectSubpriorityByElevation(objectEvent->previousElevation, sprite, 1);
     UpdateObjectEventVisibility(objectEvent, sprite);
-    UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(graphicsInfo->paletteTag));
     return objectEventId;
 }
 
@@ -1574,7 +1491,7 @@ u8 SpawnSpecialObjectEvent(struct ObjectEventTemplate *objectEventTemplate)
     return TrySpawnObjectEventTemplate(objectEventTemplate, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
 }
 
-u8 SpawnSpecialObjectEventParameterized(u16 graphicsId, u8 movementBehavior, u8 localId, s16 x, s16 y, u8 elevation)
+u8 SpawnSpecialObjectEventParameterized(u8 graphicsId, u8 movementBehavior, u8 localId, s16 x, s16 y, u8 elevation)
 {
     struct ObjectEventTemplate objectEventTemplate;
 
@@ -1664,7 +1581,7 @@ u8 CreateObjectGraphicsSprite(u16 graphicsId, void (*callback)(struct Sprite *),
 // A unique id is given as an argument and stored in the sprite data to allow referring back to the same virtual object.
 // They can be turned (and, in the case of the Union Room, animated teleporting in and out) but do not have movement types
 // or any of the other data normally associated with object events.
-u8 CreateVirtualObject(u16 graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevation, u8 direction)
+u8 CreateVirtualObject(u8 graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevation, u8 direction)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -1674,11 +1591,7 @@ u8 CreateVirtualObject(u16 graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevati
 
     graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
     CopyObjectGraphicsInfoToSpriteTemplate(graphicsId, SpriteCB_VirtualObject, &spriteTemplate, &subspriteTables);
-    if (spriteTemplate.paletteTag != 0xFFFF)
-    {
-        LoadObjectEventPalette(spriteTemplate.paletteTag);
-        UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate.paletteTag), GAMMA_ALT);
-    }
+    *(u16 *)&spriteTemplate.paletteTag = TAG_NONE;
     x += MAP_OFFSET;
     y += MAP_OFFSET;
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 16);
@@ -1689,10 +1602,18 @@ u8 CreateVirtualObject(u16 graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevati
         sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
         sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
         sprite->y += sprite->centerToCornerVecY;
-        sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate.paletteTag);
+        sprite->oam.paletteNum = graphicsInfo->paletteSlot;
+        if (sprite->oam.paletteNum >= 16)
+            sprite->oam.paletteNum -= 16;
+
         sprite->coordOffsetEnabled = TRUE;
         sprite->sVirtualObjId = virtualObjId;
         sprite->sVirtualObjElev = elevation;
+        if (graphicsInfo->paletteSlot == PALSLOT_NPC_SPECIAL)
+            LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
+        else if (graphicsInfo->paletteSlot >= 16)
+            _PatchObjectPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot | 0xf0);
+
         if (subspriteTables != NULL)
         {
             SetSubspriteTables(sprite, subspriteTables);
@@ -1811,11 +1732,23 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
     spriteFrameImage.size = graphicsInfo->size;
     CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(objectEvent->graphicsId, objectEvent->movementType, &spriteTemplate, &subspriteTables);
     spriteTemplate.images = &spriteFrameImage;
-    if (spriteTemplate.paletteTag != 0xFFFF)
+
+    *(u16 *)&spriteTemplate.paletteTag = TAG_NONE;
+    paletteSlot = graphicsInfo->paletteSlot;
+    if (paletteSlot == PALSLOT_PLAYER)
     {
-        LoadObjectEventPalette(spriteTemplate.paletteTag);
-        UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate.paletteTag), GAMMA_ALT);
+        LoadPlayerObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
     }
+    else if (paletteSlot == PALSLOT_NPC_SPECIAL)
+    {
+        LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
+    }
+    else if (paletteSlot >= 16)
+    {
+        paletteSlot -= 16;
+        _PatchObjectPalette(graphicsInfo->paletteTag, paletteSlot);
+    }
+    *(u16 *)&spriteTemplate.paletteTag = TAG_NONE;
 
     i = CreateSprite(&spriteTemplate, 0, 0, 0);
     if (i != MAX_SPRITES)
@@ -1835,7 +1768,7 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
         if (subspriteTables != NULL)
             SetSubspriteTables(sprite, subspriteTables);
 
-        sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate.paletteTag);
+        sprite->oam.paletteNum = paletteSlot;
         sprite->coordOffsetEnabled = TRUE;
         sprite->sObjEventId = objectEventId;
         objectEvent->spriteId = i;
@@ -1868,7 +1801,7 @@ static void SetPlayerAvatarObjectEventIdAndObjectId(u8 objectEventId, u8 spriteI
     SetPlayerAvatarExtraStateTransition(gObjectEvents[objectEventId].graphicsId, PLAYER_AVATAR_FLAG_CONTROLLABLE);
 }
 
-void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, u16 graphicsId)
+void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, u8 graphicsId)
 {
     const struct ObjectEventGraphicsInfo *graphicsInfo;
     struct Sprite *sprite;
@@ -1876,17 +1809,26 @@ void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, u16 graphicsId)
 
     graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
     sprite = &gSprites[objectEvent->spriteId];
-    if (graphicsInfo->paletteTag != 0xFFFF)
+    paletteSlot = graphicsInfo->paletteSlot;
+    if (paletteSlot == PALSLOT_PLAYER)
     {
-        LoadObjectEventPalette(graphicsInfo->paletteTag);
-        UpdatePaletteGammaType(IndexOfSpritePaletteTag(graphicsInfo->paletteTag), GAMMA_ALT);
+        PatchObjectPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
+    }
+    else if (paletteSlot == PALSLOT_NPC_SPECIAL)
+    {
+        LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
+    }
+    else if (paletteSlot >= 16)
+    {
+        paletteSlot -= 16;
+        _PatchObjectPalette(graphicsInfo->paletteTag, paletteSlot);
     }
     sprite->oam.shape = graphicsInfo->oam->shape;
     sprite->oam.size = graphicsInfo->oam->size;
     sprite->images = graphicsInfo->images;
     sprite->anims = graphicsInfo->anims;
     sprite->subspriteTables = graphicsInfo->subspriteTables;
-    sprite->oam.paletteNum = IndexOfSpritePaletteTag(graphicsInfo->paletteTag);
+    sprite->oam.paletteNum = paletteSlot;
     objectEvent->inanimate = graphicsInfo->inanimate;
     objectEvent->graphicsId = graphicsId;
     SetSpritePosToMapCoords(objectEvent->currentCoords.x, objectEvent->currentCoords.y, &sprite->x, &sprite->y);
@@ -1898,7 +1840,7 @@ void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, u16 graphicsId)
         CameraObjectReset1();
 }
 
-void ObjectEventSetGraphicsIdByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup, u16 graphicsId)
+void ObjectEventSetGraphicsIdByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup, u8 graphicsId)
 {
     u8 objectEventId;
 
@@ -1946,16 +1888,14 @@ static void SetBerryTreeGraphics(struct ObjectEvent *objectEvent, struct Sprite 
         if (berryId > ITEM_TO_BERRY(LAST_BERRY_INDEX))
             berryId = 0;
 
-        LoadObjectEventPalette(gBerryTreePaletteTagTablePointers[berryId][berryStage]);
         ObjectEventSetGraphicsId(objectEvent, gBerryTreeObjectEventGraphicsIdTablePointers[berryId][berryStage]);
         sprite->images = gBerryTreePicTablePointers[berryId];
-        sprite->oam.paletteNum = IndexOfSpritePaletteTag(gBerryTreePaletteTagTablePointers[berryId][berryStage]);
-        UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_ALT);
+        sprite->oam.paletteNum = gBerryTreePaletteSlotTablePointers[berryId][berryStage];
         StartSpriteAnim(sprite, berryStage);
     }
 }
 
-const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
+const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u8 graphicsId)
 {
     u8 bard;
 
@@ -2055,7 +1995,7 @@ void FreeAndReserveObjectSpritePalettes(void)
     gReservedSpritePaletteCount = OBJ_PALSLOT_COUNT;
 }
 
-void LoadObjectEventPalette(u16 paletteTag)
+static void LoadObjectEventPalette(u16 paletteTag)
 {
     u16 i = FindObjectEventPaletteIndexByTag(paletteTag);
 
@@ -2112,6 +2052,37 @@ static u8 FindObjectEventPaletteIndexByTag(u16 tag)
             return i;
     }
     return 0xFF;
+}
+
+void LoadPlayerObjectReflectionPalette(u16 tag, u8 slot)
+{
+    u8 i;
+
+    PatchObjectPalette(tag, slot);
+    for (i = 0; sPlayerReflectionPaletteSets[i].tag != OBJ_EVENT_PAL_TAG_NONE; i++)
+    {
+        if (sPlayerReflectionPaletteSets[i].tag == tag)
+        {
+            PatchObjectPalette(sPlayerReflectionPaletteSets[i].data[sCurrentReflectionType], gReflectionEffectPaletteMap[slot]);
+            return;
+        }
+    }
+}
+
+void LoadSpecialObjectReflectionPalette(u16 tag, u8 slot)
+{
+    u8 i;
+
+    sCurrentSpecialObjectPaletteTag = tag;
+    PatchObjectPalette(tag, slot);
+    for (i = 0; sSpecialObjectReflectionPaletteSets[i].tag != OBJ_EVENT_PAL_TAG_NONE; i++)
+    {
+        if (sSpecialObjectReflectionPaletteSets[i].tag == tag)
+        {
+            PatchObjectPalette(sSpecialObjectReflectionPaletteSets[i].data[sCurrentReflectionType], gReflectionEffectPaletteMap[slot]);
+            return;
+        }
+    }
 }
 
 static void _PatchObjectPalette(u16 tag, u8 slot)
@@ -2546,6 +2517,37 @@ void OverrideSecretBaseDecorationSpriteScript(u8 localId, u8 mapNum, u8 mapGroup
             break;
         }
     }
+}
+
+void InitObjectEventPalettes(u8 reflectionType)
+{
+    FreeAndReserveObjectSpritePalettes();
+    sCurrentSpecialObjectPaletteTag = OBJ_EVENT_PAL_TAG_NONE;
+    sCurrentReflectionType = reflectionType;
+    if (reflectionType == 1)
+    {
+        PatchObjectPaletteRange(sObjectPaletteTagSets[sCurrentReflectionType], PALSLOT_PLAYER, PALSLOT_NPC_4 + 1);
+        gReservedSpritePaletteCount = 8;
+    }
+    else
+    {
+        PatchObjectPaletteRange(sObjectPaletteTagSets[sCurrentReflectionType], PALSLOT_PLAYER, PALSLOT_NPC_4_REFLECTION + 1);
+    }
+}
+
+u16 GetObjectPaletteTag(u8 palSlot)
+{
+    u8 i;
+
+    if (palSlot < PALSLOT_NPC_SPECIAL)
+        return sObjectPaletteTagSets[sCurrentReflectionType][palSlot];
+
+    for (i = 0; sSpecialObjectReflectionPaletteSets[i].tag != OBJ_EVENT_PAL_TAG_NONE; i++)
+    {
+        if (sSpecialObjectReflectionPaletteSets[i].tag == sCurrentSpecialObjectPaletteTag)
+            return sSpecialObjectReflectionPaletteSets[i].data[sCurrentReflectionType];
+    }
+    return OBJ_EVENT_PAL_TAG_NONE;
 }
 
 movement_type_empty_callback(MovementType_None)
@@ -8612,7 +8614,7 @@ void TurnVirtualObject(u8 virtualObjId, u8 direction)
         StartSpriteAnim(&gSprites[spriteId], GetFaceDirectionAnimNum(direction));
 }
 
-void SetVirtualObjectGraphics(u8 virtualObjId, u16 graphicsId)
+void SetVirtualObjectGraphics(u8 virtualObjId, u8 graphicsId)
 {
     int spriteId = GetVirtualObjectSpriteId(virtualObjId);
 
@@ -8963,42 +8965,6 @@ u8 MovementAction_Fly_Finish(struct ObjectEvent *objectEvent, struct Sprite *spr
 {
     return TRUE;
 }
-
-// fast diagonal
-bool8 MovementAction_WalkFastDiagonalUpLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
-{
-    InitMovementNormal(objectEvent, sprite, DIR_NORTHWEST, 1);
-    return MovementAction_WalkFastDiagonal_Step1(objectEvent, sprite);
-}
-
-bool8 MovementAction_WalkFastDiagonalUpRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
-{
-    InitMovementNormal(objectEvent, sprite, DIR_NORTHEAST, 1);
-    return MovementAction_WalkFastDiagonal_Step1(objectEvent, sprite);
-}
-
-bool8 MovementAction_WalkFastDiagonalDownLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
-{
-    InitMovementNormal(objectEvent, sprite, DIR_SOUTHWEST, 1);
-    return MovementAction_WalkFastDiagonal_Step1(objectEvent, sprite);
-}
-
-bool8 MovementAction_WalkFastDiagonalDownRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
-{
-    InitMovementNormal(objectEvent, sprite, DIR_SOUTHEAST, 1);
-    return MovementAction_WalkFastDiagonal_Step1(objectEvent, sprite);
-}
-
-bool8 MovementAction_WalkFastDiagonal_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
-{
-    if (UpdateMovementNormal(objectEvent, sprite))
-    {
-        sprite->data[2] = 2;
-        return TRUE;
-    }
-    return FALSE;
-}
-
 
 bool8 MovementAction_EmoteX_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {

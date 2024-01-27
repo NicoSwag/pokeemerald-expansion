@@ -37,7 +37,7 @@
 #define ENGLISH
 
 #ifdef ENGLISH
-#define UNITS_METRIC
+#define UNITS_IMPERIAL
 #define CHAR_DEC_SEPARATOR CHAR_PERIOD // Period is used as a decimal separator only in the UK and the US.
 #else
 #define UNITS_METRIC
@@ -77,7 +77,7 @@
 
 // General settings
 #define EXPANSION_INTRO              TRUE    // If TRUE, a custom RHH intro will play after the vanilla copyright screen.
-#define POKEDEX_PLUS_HGSS            TRUE   // If TRUE, enables the custom HGSS style Pokedex.
+#define POKEDEX_PLUS_HGSS            FALSE   // If TRUE, enables the custom HGSS style Pokedex.
 #define SUMMARY_SCREEN_NATURE_COLORS TRUE    // If TRUE, nature-based stat boosts and reductions will be red and blue in the summary screen.
 
 #endif // GUARD_CONFIG_H

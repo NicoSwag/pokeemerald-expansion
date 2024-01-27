@@ -486,9 +486,6 @@ struct RankingHall2P
     //u8 padding;
 };
 
-#include "constants/items.h"
-#define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
-
 struct SaveBlock2
 {
     /*0x00*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
@@ -523,8 +520,6 @@ struct SaveBlock2
     /*0x57C*/ struct RankingHall2P hallRecords2P[FRONTIER_LVL_MODE_COUNT][HALL_RECORDS_COUNT]; // From record mixing.
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
     /*0x64C*/ struct BattleFrontier frontier;
-    /*0xF2C*/ bool8 autoRun;
-    /*0xF2C*/ u8 itemFlags[ITEM_FLAGS_COUNT];
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -864,7 +859,62 @@ struct TrainerHillSave
                //u16 padding:8;
 };
 
+struct WonderNewsMetadata
+{
+    u8 newsType:2;
+    u8 sentRewardCounter:3;
+    u8 rewardCounter:3;
+    u8 berry;
+    //u8 padding[2];
+};
 
+struct WonderNews
+{
+    u16 id;
+    u8 sendType; // SEND_TYPE_*
+    u8 bgType;
+    u8 titleText[WONDER_NEWS_TEXT_LENGTH];
+    u8 bodyText[WONDER_NEWS_BODY_TEXT_LINES][WONDER_NEWS_TEXT_LENGTH];
+};
+
+struct WonderCard
+{
+    u16 flagId; // Event flag (sReceivedGiftFlags) + WONDER_CARD_FLAG_OFFSET
+    u16 iconSpecies;
+    u32 idNumber;
+    u8 type:2; // CARD_TYPE_*
+    u8 bgType:4;
+    u8 sendType:2; // SEND_TYPE_*
+    u8 maxStamps;
+    u8 titleText[WONDER_CARD_TEXT_LENGTH];
+    u8 subtitleText[WONDER_CARD_TEXT_LENGTH];
+    u8 bodyText[WONDER_CARD_BODY_TEXT_LINES][WONDER_CARD_TEXT_LENGTH];
+    u8 footerLine1Text[WONDER_CARD_TEXT_LENGTH];
+    u8 footerLine2Text[WONDER_CARD_TEXT_LENGTH];
+    //u8 padding[2];
+};
+
+struct WonderCardMetadata
+{
+    u16 battlesWon;
+    u16 battlesLost;
+    u16 numTrades;
+    u16 iconSpecies;
+    u16 stampData[2][MAX_STAMP_CARD_STAMPS]; // First element is STAMP_SPECIES, second is STAMP_ID
+};
+
+struct MysteryGiftSave
+{
+    u32 newsCrc;
+    struct WonderNews news;
+    u32 cardCrc;
+    struct WonderCard card;
+    u32 cardMetadataCrc;
+    struct WonderCardMetadata cardMetadata;
+    u16 questionnaireWords[NUM_QUESTIONNAIRE_WORDS];
+    struct WonderNewsMetadata newsMetadata;
+    u32 trainerIds[2][5]; // Saved ids for 10 trainers, 5 each for battles and trades
+}; // 0x36C 0x3598
 
 // For external event data storage. The majority of these may have never been used.
 // In Emerald, the only known used fields are the PokeCoupon and BoxRS ones, but hacking the distribution discs allows Emerald to receive events and set the others
@@ -994,6 +1044,7 @@ struct SaveBlock1
     /*0x31C7*/ struct ExternalEventFlags externalEventFlags;
     /*0x31DC*/ struct Roamer roamer;
     /*0x31F8*/ struct EnigmaBerry enigmaBerry;
+    /*0x322C*/ struct MysteryGiftSave mysteryGift;
     /*0x3???*/ u8 dexSeen[NUM_DEX_FLAG_BYTES];
     /*0x3???*/ u8 dexCaught[NUM_DEX_FLAG_BYTES];
     /*0x3???*/ u32 trainerHillTimes[NUM_TRAINER_HILL_MODES];
@@ -1004,7 +1055,6 @@ struct SaveBlock1
     /*0x3???*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21];
     /*0x3???*/ struct TrainerHillSave trainerHill;
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
-    u8 acquiredTMs [16];
     // sizeof: 0x3???
 };
 

@@ -20,37 +20,55 @@ Route101_EventScript_HideMapNamePopup::
 	end
 
 Route101_EventScript_StartBirchRescue::
+	lockall
 	playbgm MUS_HELP, TRUE
 	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
 	closemessage
+	setobjectxy LOCALID_BIRCH, 0, 15
+	setobjectxy LOCALID_ZIGZAGOON, 0, 16
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_EnterScene
+	applymovement LOCALID_BIRCH, Route101_Movement_BirchRunAway1
+	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonChase1
+	waitmovement 0
+	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonChaseInCircles
+	applymovement LOCALID_BIRCH, Route101_Movement_BirchRunInCircles
+	waitmovement 0
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonFaceBirch
+	applymovement LOCALID_BIRCH, Route101_Movement_BirchFaceZigzagoon
 	waitmovement 0
 	msgbox Route101_Text_PleaseHelp, MSGBOX_DEFAULT
 	closemessage
-	setobjectmovementtype LOCALID_BIRCH, MOVEMENT_TYPE_JOG_IN_PLACE_RIGHT
-	setobjectmovementtype LOCALID_ZIGZAGOON, MOVEMENT_TYPE_JOG_IN_PLACE_LEFT
 	setvar VAR_ROUTE101_STATE, 2
+	releaseall
 	end
 
 Route101_EventScript_PreventExitSouth::
+	lockall
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitSouth
 	waitmovement 0
+	releaseall
 	end
 
 Route101_EventScript_PreventExitWest::
+	lockall
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitWest
 	waitmovement 0
+	releaseall
 	end
 
 Route101_EventScript_PreventExitNorth::
+	lockall
 	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitNorth
 	waitmovement 0
+	releaseall
 	end
 
 Route101_Movement_PreventExitSouth:
@@ -122,6 +140,7 @@ Route101_Movement_EnterScene:
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
+	walk_in_place_faster_left
 	step_end
 
 Route101_Movement_BirchRunInCircles:
@@ -188,21 +207,7 @@ Route101_Movement_Unused2:
 	step_end
 
 Route101_EventScript_Youngster::
-	lock
-	call_if_set FLAG_101_RECEIVED_HEART_SCALE, Route101_EventScript_Youngster_Received
 	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_NPC
-	closemessage
-	giveitem ITEM_HEART_SCALE
-	faceplayer
-	call_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	setflag FLAG_101_RECEIVED_HEART_SCALE
-	waitmessage
-	release
-	end
-
-Route101_EventScript_Youngster_Received::
-	msgbox Route101_Text_Healthcare, MSGBOX_NPC
-	release
 	end
 
 Route101_EventScript_Boy::
@@ -220,7 +225,7 @@ Route101_EventScript_BirchsBag::
 	setflag FLAG_RESCUED_BIRCH
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_ZIGZAGOON
-	setobjectxy OBJ_EVENT_ID_PLAYER, 12, 14
+	setobjectxy OBJ_EVENT_ID_PLAYER, 6, 13
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	special ChooseStarter
@@ -252,7 +257,7 @@ Route101_EventScript_HideBrendanInBedroom::
 	return
 
 Route101_Movement_BirchApproachPlayer:
-	walk_in_place_fast_right
+	walk_right
 	step_end
 
 Route101_Text_HelpMe:
@@ -281,10 +286,9 @@ Route101_Text_YouSavedMe:
 
 Route101_Text_TakeTiredPokemonToPokeCenter:
 	.string "If POKéMON get tired, take them to\n"
-	.string "the first floor of a POKéMON CENTER.\p"
-	.string "On the second floor, you can exchange\n"
-	.string "SKY FRAGMENTS for powerful moves.\p"
-	.string "Here, try it!$"
+	.string "a POKéMON CENTER.\p"
+	.string "There's a POKéMON CENTER in OLDALE\n"
+	.string "TOWN right close by.$"
 
 Route101_Text_WildPokemonInTallGrass:
 	.string "Wild POKéMON will jump out at you in\n"
@@ -293,9 +297,6 @@ Route101_Text_WildPokemonInTallGrass:
 	.string "to go into the tall grass and search.$"
 
 Route101_Text_RouteSign:
-	.string "RAINTREE GROVE\n"
+	.string "ROUTE 101\n"
 	.string "{UP_ARROW} OLDALE TOWN$"
 
-Route101_Text_Healthcare:
-	.string "POKéMON CENTRES really are an amazing\n"
-	.string "place!$"

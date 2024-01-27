@@ -1,223 +1,14 @@
-.set LOCALID_ROXANNE, 1
-.set LOCALID_LASS, 6
-
 RustboroCity_Gym_MapScripts::
-map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_Gym_OnTransition
 	.byte 0
 
 RustboroCity_Gym_EventScript_Roxanne::
 	trainerbattle_single TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Gym_EventScript_RoxanneRematch
-	goto_if_unset FLAG_RECEIVED_TM06, RustboroCity_Gym_EventScript_GiveRockTomb
+	goto_if_unset FLAG_RECEIVED_TM_ROCK_TOMB, RustboroCity_Gym_EventScript_GiveRockTomb
 	msgbox RustboroCity_Gym_Text_RoxannePostBattle, MSGBOX_DEFAULT
 	release
 	end
-
-RustboroCity_Gym_OnTransition:
-	goto_if_set FLAG_BADGE01_GET, RustboroCity_Gym_MoveLass
-	goto_if_set FLAG_SAW_ROXANNE_CUTSCENE, RustboroCity_Gym_MoveLassRight
-	end
-
-
-RustboroCity_Gym_MoveLass:
-	setobjectxyperm LOCALID_LASS, 4, 6
-	removeobject LOCALID_ROXANNE
-	end
-
-RustboroCity_Gym_MoveLassRight:
-	removeobject LOCALID_LASS
-	removeobject LOCALID_ROXANNE
-	addobject LOCALID_LASS
-	setobjectxyperm LOCALID_LASS, 9, 9
-	end
-
-RustboroCity_Gym_EventScript_Lass::
-	goto_if_set FLAG_BADGE01_GET, RustboroCity_Gym_EventScript_GoodJob
-	goto_if_set FLAG_TEMP_1, RustboroCity_Gym_EventScript_GoodLuck
-	goto_if_set FLAG_SAW_ROXANNE_CUTSCENE, RustboroCity_Gym_EventScript_GoodLuck
-	msgbox RustboroCity_Gym_Text_CanChallengeRoxanne, MSGBOX_NPC
-	applymovement LOCALID_LASS, RustboroCity_Gym_Movement_LassWalksUp
-	applymovement OBJ_EVENT_ID_PLAYER, RustboroCity_Gym_Movement_PlayerWalksUp
-	waitmovement 0
-	msgbox RustboroCity_Gym_Text_WaitHere, MSGBOX_NPC
-	applymovement LOCALID_LASS, RustboroCity_Gym_Movement_LassGoBack
-	waitmovement 0
-	setobjectxy LOCALID_ROXANNE, 2, 2
-	applymovement LOCALID_ROXANNE, RustboroCity_Gym_Movement_RoxanneGoesInPlace
-	waitmovement 0
-	msgbox RustboroCity_Gym_Text_ClassStarting, MSGBOX_NPC
-	applymovement LOCALID_ROXANNE, RustboroCity_Gym_Movement_RoxanneGoesBlackBoard
-	waitmovement 0
-	msgbox RustboroCity_Gym_Text_GymBattles, MSGBOX_NPC
-	applymovement LOCALID_ROXANNE, RustboroCity_Gym_Movement_RoxanneWalksRight
-	waitmovement 0
-	msgbox RustboroCity_Gym_Text_DifferentChallenges, MSGBOX_NPC
-	applymovement LOCALID_ROXANNE, RustboroCity_Gym_Movement_ReturnToDesk
-	waitmovement 0
-	msgbox RustboroCity_Gym_Text_SeeMeAfterClass, MSGBOX_NPC
-	applymovement LOCALID_ROXANNE, RustboroCity_Gym_Movement_GoAway
-	waitmovement 0
-	playse SE_EXIT
-	removeobject LOCALID_ROXANNE
-	setobjectxyperm LOCALID_LASS, 9, 9
-	setobjectmovementtype LOCALID_LASS, MOVEMENT_TYPE_FACE_LEFT
-	setflag FLAG_SAW_ROXANNE_CUTSCENE
-	setflag FLAG_TEMP_1
-	release
-	end
-
-RustboroCity_Gym_EventScript_GoodJob::
-	msgbox RustboroCity_Gym_Text_GoodJob, MSGBOX_NPC
-	release
-	end
-
-RustboroCity_Gym_EventScript_LassMovesAway::
-	msgbox RustboroCity_Gym_Text_LassMovingAway, MSGBOX_NPC
-	setflag FLAG_TEMP_1
-	applymovement LOCALID_LASS, RustboroCity_Gym_Movement_LassGoesAway
-	waitmovement 0
-	release
-	end
-
-RustboroCity_Gym_EventScript_GoodLuck::
-	msgbox RustboroCity_Gym_Text_GoodLuck, MSGBOX_NPC
-	release
-	end
-
-RustboroCity_Gym_EventScript_DefeatAll::
-	msgbox RustboroCity_Gym_Text_DefeatAllTrainers, MSGBOX_NPC
-	release
-	end
-
-RustboroCity_Gym_Text_LassMovingAway:
-	.string "Hi! I'm ROXANNE's assistant.\p"
-	.string "It looks like you defeated every\n"
-	.string "TRAINER in this GYM!\p"
-	.string "Proceed, then!$"
-
-RustboroCity_Gym_Text_GoodJob:
-	.string "Outstanding work!\p"
-	.string "I knew you could do it!$"
-
-RustboroCity_Gym_Text_DefeatAllTrainers:
-	.string "Hi! I'm ROXANNE's assistant.\p"
-	.string "To challenge ROXANNE, first you'll\n"
-	.string "have to defeat all of the TRAINERS\l"
-	.string "in this GYM without leaving.\p"
-	.string "That's the rule!$"
-
-RustboroCity_Gym_Text_CanChallengeRoxanne:
-	.string "Hi! I'm ROXANNE's assistant.\p"
-	.string "It looks like you defeated every\n"
-	.string "TRAINER in this GYM!\p"
-	.string "Very well, then.\n"
-	.string "Come with me!$"
-
-RustboroCity_Gym_Text_WaitHere:
-	.string "Now wait here, please.$"
-
-RustboroCity_Gym_Text_ClassStarting:
-	.string "ROXANNE: Good day, class!\p"
-	.string "Today we'll be covering…\n"
-	.string "GYM challenges!$"
-
-RustboroCity_Gym_Text_GymBattles:
-	.string "GYM challenges are special\n"
-	.string "battles designed by GYM LEADERS.\p"
-	.string "Their purpose is to make sure\n"
-	.string "that TRAINERS that want to sign\l"
-	.string "up to the EVER GRANDE CONFERENCE\l"
-	.string "are up to standards.$"
-
-RustboroCity_Gym_Text_DifferentChallenges:
-	.string "Each GYM LEADER usually\n"
-	.string "specializes in a single type,\l"
-	.string "but TRAINERS must be prepared\l"
-	.string "to face unexpected matchups.$"
-
-RustboroCity_Gym_Text_SeeMeAfterClass:
-	.string "Finally, the reward for passing\n"
-	.string "a GYM challenge is a cash prize,\l"
-	.string "a TECHNICAL MACHINE, several\l"
-	.string "VITAMINS for your POKEMON and a\l"
-	.string "badge.\p"
-	.string "Did you get all of that?\n"
-	.string "Well, either way…\p"
-	.string "I'll be expecting you after class.$"
-
-RustboroCity_Gym_Text_GoodLuck:
-	.string "Good luck!$"
-
-RustboroCity_Gym_Movement_LassGoesAway:
-	walk_right
-	walk_right
-	face_left
-	step_end
-
-RustboroCity_Gym_Movement_LassWalksUp:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	face_left
-	step_end
-
-RustboroCity_Gym_Movement_PlayerWalksUp:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_left
-	face_up
-	step_end
-
-RustboroCity_Gym_Movement_LassGoBack:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	face_left
-	delay_16
-	step_end
-
-RustboroCity_Gym_Movement_RoxanneGoesInPlace:
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	face_down
-	delay_16
-	step_end
-
-RustboroCity_Gym_Movement_RoxanneGoesBlackBoard:
-	walk_left
-	face_up
-	step_end
-
-RustboroCity_Gym_Movement_RoxanneWalksRight:
-	walk_right
-	walk_right
-	walk_right
-	face_down
-	step_end
-
-RustboroCity_Gym_Movement_ReturnToDesk:
-	walk_left
-	walk_left
-	walk_left
-	face_down
-	step_end
-
-RustboroCity_Gym_Movement_GoAway:
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	step_end
 
 RustboroCity_Gym_EventScript_RoxanneDefeated::
 	message RustboroCity_Gym_Text_ReceivedStoneBadge
@@ -235,9 +26,9 @@ RustboroCity_Gym_EventScript_RoxanneDefeated::
 	end
 
 RustboroCity_Gym_EventScript_GiveRockTomb::
-	giveitem ITEM_TM_SANDSTORM
+	giveitem ITEM_TM_ROCK_TOMB
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_TM06
+	setflag FLAG_RECEIVED_TM_ROCK_TOMB
 	msgbox RustboroCity_Gym_Text_ExplainRockTomb, MSGBOX_DEFAULT
 	release
 	end
@@ -252,13 +43,10 @@ RustboroCity_Gym_EventScript_Josh::
 	msgbox RustboroCity_Gym_Text_JoshPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-
 RustboroCity_Gym_EventScript_Tommy::
 	trainerbattle_single TRAINER_TOMMY, RustboroCity_Gym_Text_TommyIntro, RustboroCity_Gym_Text_TommyDefeat
 	msgbox RustboroCity_Gym_Text_TommyPostBattle, MSGBOX_AUTOCLOSE
 	end
-
-
 
 RustboroCity_Gym_EventScript_Marc::
 	trainerbattle_single TRAINER_MARC, RustboroCity_Gym_Text_MarcIntro, RustboroCity_Gym_Text_MarcDefeat
@@ -318,13 +106,12 @@ RustboroCity_Gym_EventScript_RegisterRoxanne::
 RustboroCity_Gym_Text_GymGuideAdvice:
 	.string "Yo, how's it going?\p"
 	.string "Listen, my friend!\n"
-	.string "Would you like to take on the EVER-\l"
-	.string "GRANDE CONFERENCE?\p"
+	.string "Would you like to become the CHAMPION?\p"
 	.string "I'm no TRAINER, not me, but I can\n"
 	.string "sure give you winning advice.\p"
 	.string "That's settled, then! We'll aim for the\n"
-	.string "victory together!\p"
-	.string "It's your goal as a TRAINER to collect\n"
+	.string "POKéMON CHAMPIONSHIP together!\p"
+	.string "It's your job as a TRAINER to collect\n"
 	.string "GYM BADGES, am I right?\p"
 	.string "But GYM LEADERS aren't pushovers!\p"
 	.string "And that's where I come in!\n"
@@ -336,13 +123,6 @@ RustboroCity_Gym_Text_GymGuideAdvice:
 	.string "GRASS-type moves.\p"
 	.string "Come see me afterwards, if you beat\n"
 	.string "the GYM LEADER.\p"
-	.string "Oh, and one final word of advice…\p"
-	.string "It doesn't matter how many TRAINERS\n"
-	.string "you've defeated: if you step out of\l"
-	.string "here, you'll have to fight them all over\l"
-	.string "again.\p"
-	.string "In other words: make sure to bring a\n"
-	.string "team that can overcome any challenge.\p"
 	.string "Well, go for it!$"
 
 RustboroCity_Gym_Text_GymGuidePostVictory:
@@ -354,7 +134,7 @@ RustboroCity_Gym_Text_GymGuidePostVictory:
 	.string "properly recorded on it.\p"
 	.string "In other words…\p"
 	.string "You've climbed the first step on\n"
-	.string "the stairs to glory!\p"
+	.string "the stairs to the CHAMPIONSHIP!\p"
 	.string "That's got to feel awesome!$"
 
 RustboroCity_Gym_Text_JoshIntro:
@@ -447,7 +227,9 @@ RustboroCity_Gym_Text_GymStatue:
 	.string "RUSTBORO CITY POKéMON GYM$"
 
 RustboroCity_Gym_Text_GymStatueCertified:
-	.string "RUSTBORO CITY POKéMON GYM$"
+	.string "RUSTBORO CITY POKéMON GYM\p"
+	.string "ROXANNE'S CERTIFIED TRAINERS:\n"
+	.string "{PLAYER}$"
 
 RustboroCity_Gym_Text_RoxanneRegisterCall:
 	.string "… … … … … …\n"

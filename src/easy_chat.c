@@ -1536,6 +1536,9 @@ void ShowEasyChatScreen(void)
     case EASY_CHAT_TYPE_APPRENTICE:
         words = gSaveBlock2Ptr->apprentices[0].speechWon;
         break;
+    case EASY_CHAT_TYPE_QUESTIONNAIRE:
+        words = GetQuestionnaireWordsPtr();
+        break;
     default:
         return;
     }
@@ -5001,7 +5004,7 @@ static void HideStartSelectButtons(void)
 
 static void TryAddInterviewObjectEvents(void)
 {
-    u16 graphicsId;
+    int graphicsId;
     u8 spriteId;
 
     switch (GetDisplayedPersonType())
@@ -5853,6 +5856,10 @@ void InitializeEasyChatWordArray(u16 *words, u16 length)
 
 void InitQuestionnaireWords(void)
 {
+    int i;
+    u16 *words = GetQuestionnaireWordsPtr();
+    for (i = 0; i < NUM_QUESTIONNAIRE_WORDS; i++)
+        words[i] = EC_EMPTY_WORD;
 }
 
 bool32 IsEasyChatAnswerUnlocked(int easyChatWord)

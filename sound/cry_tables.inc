@@ -1128,7 +1128,6 @@ gCryTable::
 .if P_FAMILY_COMBEE == TRUE
 	cry Cry_Combee
 	cry Cry_Vespiquen
-	cry Cry_Bediguard
 .endif @ P_FAMILY_COMBEE
 .if P_FAMILY_PACHIRISU == TRUE
 	cry Cry_Pachirisu
@@ -2356,8 +2355,6 @@ gCryTable::
 	cry Cry_Gimmighoul
 	cry Cry_Gholdengo
 .endif @ P_FAMILY_GIMMIGHOUL
-	cry Cry_Gorochu
-	cry Cry_Luxwan
 .if P_FAMILY_WO_CHIEN == TRUE
 	cry Cry_WoChien
 .endif @ P_FAMILY_WO_CHIEN
@@ -3535,7 +3532,6 @@ gCryTable_Reverse::
 .if P_FAMILY_COMBEE == TRUE
 	cry_reverse Cry_Combee
 	cry_reverse Cry_Vespiquen
-	cry_reverse Cry_Bediguard
 .endif @ P_FAMILY_COMBEE
 .if P_FAMILY_PACHIRISU == TRUE
 	cry_reverse Cry_Pachirisu
@@ -4763,8 +4759,6 @@ gCryTable_Reverse::
 	cry_reverse Cry_Gimmighoul
 	cry_reverse Cry_Gholdengo
 .endif @ P_FAMILY_GIMMIGHOUL
-cry_reverse Cry_Gorochu
-cry_reverse Cry_Luxwan
 .if P_FAMILY_WO_CHIEN == TRUE
 	cry_reverse Cry_WoChien
 .endif @ P_FAMILY_WO_CHIEN

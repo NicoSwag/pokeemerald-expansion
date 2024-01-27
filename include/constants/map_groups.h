@@ -63,12 +63,6 @@
 #define MAP_UNDERWATER_ROUTE129 (54 | (0 << 8))
 #define MAP_UNDERWATER_ROUTE105 (55 | (0 << 8))
 #define MAP_UNDERWATER_ROUTE125 (56 | (0 << 8))
-#define MAP_BIRCHS_RESERVE      (57 | (0 << 8))
-#define MAP_ROUTE104LOWER       (58 | (0 << 8))
-#define MAP_ROUTE104UPPER       (59 | (0 << 8))
-#define MAP_LOWER_ROUTE115      (60 | (0 << 8))
-#define MAP_BRINE_CAVE          (61 | (0 << 8))
-#define MAP_OLDALE_RUINS        (62 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))
@@ -76,7 +70,6 @@
 #define MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F        (2 | (1 << 8))
 #define MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F        (3 | (1 << 8))
 #define MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB (4 | (1 << 8))
-#define MAP_LITTLEROOT_TOWN_NEIGHBORS_HOUSR      (5 | (1 << 8))
 
 // gMapGroup_IndoorOldale
 #define MAP_OLDALE_TOWN_HOUSE1            (0 | (2 << 8))
@@ -84,9 +77,6 @@
 #define MAP_OLDALE_TOWN_POKEMON_CENTER_1F (2 | (2 << 8))
 #define MAP_OLDALE_TOWN_POKEMON_CENTER_2F (3 | (2 << 8))
 #define MAP_OLDALE_TOWN_MART              (4 | (2 << 8))
-#define MAP_OLDALE_TOWN_HOUSE3            (5 | (2 << 8))
-#define MAP_OLDALE_RUINS_ENTRANCE_1       (6 | (2 << 8))
-#define MAP_OLDALE_RUINS_ENTRANCE_2       (7 | (2 << 8))
 
 // gMapGroup_IndoorDewford
 #define MAP_DEWFORD_TOWN_HOUSE1            (0 | (3 << 8))
@@ -188,7 +178,6 @@
 #define MAP_RUSTBORO_CITY_FLAT2_2F          (14 | (11 << 8))
 #define MAP_RUSTBORO_CITY_FLAT2_3F          (15 | (11 << 8))
 #define MAP_RUSTBORO_CITY_HOUSE3            (16 | (11 << 8))
-#define MAP_RUSTBORO_CITY_GYM_ARENA         (17 | (11 << 8))
 
 // gMapGroup_IndoorFortree
 #define MAP_FORTREE_CITY_HOUSE1            (0 | (12 << 8))

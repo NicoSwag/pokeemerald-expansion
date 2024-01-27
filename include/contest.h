@@ -89,7 +89,7 @@ struct ContestPokemon
     u16 species;
     u8 nickname[POKEMON_NAME_LENGTH + 1];
     u8 trainerName[PLAYER_NAME_LENGTH + 1];
-    u16 trainerGfxId;
+    u8 trainerGfxId;
     u32 aiFlags;
     u8 whichRank:2;
     u8 aiPool_Cool:1;
@@ -209,7 +209,7 @@ struct ContestantStatus
     u8 comboAppealBonus;
     u8 repeatJam;
     u8 nextTurnOrder;  // turn position
-    u8 attentionLevel;  // How much the Pokémon "stood out"
+    u8 attentionLevel;  // How much the Pokemon "stood out"
     u8 contestantAnimTarget;
 };
 

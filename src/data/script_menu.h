@@ -65,6 +65,8 @@ static const struct MenuAction MultichoiceList_StatusInfo[] =
     {gText_Psn},
     {gText_Par},
     {gText_Slp},
+    {gText_Brn},
+    {gText_Frz},
     {gText_Exit},
 };
 
@@ -260,16 +262,6 @@ static const struct MenuAction MultichoiceList_GameCornerDolls[] =
     {gText_TreeckoDollAndPrice},
     {gText_TorchicDollAndPrice},
     {gText_MudkipDollAndPrice},
-    {gText_Exit},
-};
-
-static const struct MenuAction MultichoiceList_SpecialOptionsMenu[] =
-{
-    {gText_HealAfterBattle},
-    {gText_CandiesInShop},
-    {gText_LevelCaps},
-    {gText_PermaFaint},
-    {gText_CatchOne},
     {gText_Exit},
 };
 
@@ -841,7 +833,6 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_STERN_DEEPSEA]              = MULTICHOICE(MultichoiceList_SternDeepSea),
     [MULTI_UNUSED_ASH_VENDOR]          = MULTICHOICE(MultichoiceList_UnusedAshVendor),
     [MULTI_GAME_CORNER_DOLLS]          = MULTICHOICE(MultichoiceList_GameCornerDolls),
-    [SPECIAL_OPTIONS_MENU]             = MULTICHOICE(MultichoiceList_SpecialOptionsMenu),
     [MULTI_GAME_CORNER_COINS]          = MULTICHOICE(MultichoiceList_GameCornerCoins),
     [MULTI_HOWS_FISHING]               = MULTICHOICE(MultichoiceList_HowsFishing),
     [MULTI_UNUSED_51]                  = MULTICHOICE(MultichoiceList_Exit),

@@ -12,28 +12,39 @@ RustboroCity_PokemonSchool_EventScript_ChooseBlackboardTopic::
 	waitmessage
 	multichoicegrid 8, 1, MULTI_STATUS_INFO, 3, FALSE
 	switch VAR_RESULT
-	case 0, RustboroCity_PokemonSchool_EventScript_Types
-	case 1, RustboroCity_PokemonSchool_EventScript_Field_Changes
-	case 2, RustboroCity_PokemonSchool_EventScript_Statuses
+	case 0, RustboroCity_PokemonSchool_EventScript_Poison
+	case 1, RustboroCity_PokemonSchool_EventScript_Paralysis
+	case 2, RustboroCity_PokemonSchool_EventScript_Sleep
+	case 3, RustboroCity_PokemonSchool_EventScript_Burn
+	case 4, RustboroCity_PokemonSchool_EventScript_Freeze
 	case 5, RustboroCity_PokemonSchool_EventScript_ExitTopicSelect
 	case MULTI_B_PRESSED, RustboroCity_PokemonSchool_EventScript_ExitTopicSelect
 	end
 
-RustboroCity_PokemonSchool_EventScript_Types::
-	msgbox RustboroCity_PokemonSchool_Text_ExplainTypes, MSGBOX_DEFAULT
+RustboroCity_PokemonSchool_EventScript_Poison::
+	msgbox RustboroCity_PokemonSchool_Text_ExplainPoison, MSGBOX_DEFAULT
 	goto RustboroCity_PokemonSchool_EventScript_ChooseBlackboardTopic
 	end
 
-RustboroCity_PokemonSchool_EventScript_Field_Changes::
-	msgbox RustboroCity_PokemonSchool_Text_ExplainField_Changes, MSGBOX_DEFAULT
+RustboroCity_PokemonSchool_EventScript_Paralysis::
+	msgbox RustboroCity_PokemonSchool_Text_ExplainParalysis, MSGBOX_DEFAULT
 	goto RustboroCity_PokemonSchool_EventScript_ChooseBlackboardTopic
 	end
 
-RustboroCity_PokemonSchool_EventScript_Statuses::
-	msgbox RustboroCity_PokemonSchool_Text_ExplainStatuses, MSGBOX_DEFAULT
+RustboroCity_PokemonSchool_EventScript_Sleep::
+	msgbox RustboroCity_PokemonSchool_Text_ExplainSleep, MSGBOX_DEFAULT
 	goto RustboroCity_PokemonSchool_EventScript_ChooseBlackboardTopic
 	end
 
+RustboroCity_PokemonSchool_EventScript_Burn::
+	msgbox RustboroCity_PokemonSchool_Text_ExplainBurn, MSGBOX_DEFAULT
+	goto RustboroCity_PokemonSchool_EventScript_ChooseBlackboardTopic
+	end
+
+RustboroCity_PokemonSchool_EventScript_Freeze::
+	msgbox RustboroCity_PokemonSchool_Text_ExplainFreeze, MSGBOX_DEFAULT
+	goto RustboroCity_PokemonSchool_EventScript_ChooseBlackboardTopic
+	end
 
 RustboroCity_PokemonSchool_EventScript_ExitTopicSelect::
 	releaseall
@@ -70,7 +81,7 @@ RustboroCity_PokemonSchool_EventScript_Teacher::
 	call_if_eq VAR_FACING, DIR_EAST, RustboroCity_PokemonSchool_EventScript_TeacherCheckOnStudentsEast
 	call_if_eq VAR_FACING, DIR_WEST, RustboroCity_PokemonSchool_EventScript_TeacherCheckOnStudentsWest
 	msgbox RustboroCity_PokemonSchool_Text_StudentsWhoDontStudyGetQuickClaw, MSGBOX_DEFAULT
-	giveitem ITEM_DRAGON_FANG
+	giveitem ITEM_QUICK_CLAW
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
@@ -189,77 +200,60 @@ RustboroCity_PokemonSchool_EventScript_ScottWatchStudents::
 	end
 
 RustboroCity_PokemonSchool_Text_BlackboardListsStatusChanges:
-	.string "The blackboard lists newly discovered\n"
-	.string "information about POKéMON.$"
+	.string "The blackboard lists status changes\n"
+	.string "that may affect POKéMON in battle.$"
 
 RustboroCity_PokemonSchool_Text_ReadWhichTopic:
 	.string "Which topic do you want to read?$"
 
-RustboroCity_PokemonSchool_Text_ExplainTypes:
-	.string "A recent paper by PROF. LUND\n"
-	.string "has revealed many type-specific\l"
-	.string "interactions that were previously\l"
-	.string "unknown.\p"
-	.string "We now know the following:\p"
-	.string "BUG hits FAIRY for neutral damage\n"
-	.string "and resists FAIRY and DARK. Also,\l"
-	.string "it's unaffected by confusion.\p"
-	.string "PSYCHIC is unaffected by flinching,\n"
-	.string "TAUNT, ENCORE and TORMENT.\p"
-	.string "NORMAL can only be affected by status\n"
-	.string "if applied directly through a status\l"
-	.string "move, like THUNDER WAVE, and not by a\l"
-	.string "secondary effect of an attacking move,\l"
-	.string "like BODY SLAM.\p"
-	.string "Finally, FIGHTING is completely immune\n"
-	.string "to GHOST.$"  
+RustboroCity_PokemonSchool_Text_ExplainPoison:
+	.string "If a POKéMON is poisoned, it will\n"
+	.string "steadily lose HP.\p"
+	.string "The effects of poison remain after\n"
+	.string "a battle.\p"
+	.string "A poisoned POKéMON's HP will drop\n"
+	.string "while it is traveling.\p"
+	.string "Heal a poisoning using an ANTIDOTE.$"
 
-RustboroCity_PokemonSchool_Text_ExplainField_Changes:
-	.string "Research by PROF. BIRCH has revealed\n"
-	.string "information about the relationship\l"
-	.string "between POKéMON and what we call\l"
-	.string "FIELD EFFECTS.\p"
-	.string "FIELD EFFECTS IS an umbrella term used\n"
-	.string "to refer to any battle-altering effect,\l"
-	.string "such as WEATHER or TERRAINS.\p"
-	.string "POKéMON can induce a FIELD change\n"
-	.string "through moves, in which case the effect\l"
-	.string "generally lasts five to eight turns.\p"
-	.string "Some POKéMON, however, are able to\n"
-	.string "provoke such changes with their\l"
-	.string "ABILITY.\p"
-	.string "In this case, the alteration will last\n"
-	.string "until the timer ends or the POKéMON\l"
-	.string "leaves the field for any reason.\p"
-	.string "Lastly, there is much ongoing research\n"
-	.string "over FIELD EFFECTS able to manipulate\l"
-	.string "pollution, gravity, and seemingly\l"
-	.string "even time.$"
+RustboroCity_PokemonSchool_Text_ExplainParalysis:
+	.string "If a POKéMON becomes paralyzed,\n"
+	.string "its SPEED drops.\p"
+	.string "It may also not be able to move while\n"
+	.string "it is in battle.\p"
+	.string "Paralysis remains after battle.\n"
+	.string "Cure it using a PARLYZ HEAL.$"
 
-RustboroCity_PokemonSchool_Text_ExplainStatuses:
-	.string "POKéMON in the HOENN region seem to\n"
-	.string "have evolved different responses to\l"
-	.string "debilitating STATUS conditions.\p"
-	.string "Of particular note is that sleeping\n"
-	.string "POKéMON heal some of their HP for every\l"
-	.string "turn they're asleep.\p"
-	.string "In addition, POKéMON affected by\n"
-	.string "FROSTBITE will be able to act, albeit\l"
-	.string "losing some of their HP every turn and\l"
-	.string "with their SP. ATK halved.$"
+RustboroCity_PokemonSchool_Text_ExplainSleep:
+	.string "If a POKéMON falls asleep, it will be\n"
+	.string "unable to attack.\p"
+	.string "A POKéMON may wake up on its own,\n"
+	.string "but if a battle ends while it is\l"
+	.string "sleeping, it will stay asleep.\p"
+	.string "Wake it up using an AWAKENING.$"
 
+RustboroCity_PokemonSchool_Text_ExplainBurn:
+	.string "A burn reduces ATTACK power, and it\n"
+	.string "steadily reduces the victim's HP.\p"
+	.string "A burn lingers after battle.\n"
+	.string "Cure a burn using a BURN HEAL.$"
+
+RustboroCity_PokemonSchool_Text_ExplainFreeze:
+	.string "If a POKéMON is frozen, it becomes\n"
+	.string "completely helpless.\p"
+	.string "It will remain frozen after battle.\n"
+	.string "Thaw it out using an ICE HEAL.$"
 
 RustboroCity_PokemonSchool_Text_StudentsWhoDontStudyGetQuickClaw:
 	.string "Students who don't study get a little\n"
-	.string "taste of my DRAGON FANG.\p"
+	.string "taste of my QUICK CLAW.\p"
 	.string "Whether or not you are a good student \n"
 	.string "will be evident from the way you use\l"
 	.string "this item.$"
 
 RustboroCity_PokemonSchool_Text_ExplainQuickClaw:
-	.string "A POKéMON holding the DRAGON FANG\n"
-	.string "will have its own DRAGON-TYPE moves\l"
-	.string "empowered.\p"
+	.string "A POKéMON holding the QUICK CLAW will\n"
+	.string "occasionally speed up and get to move\l"
+	.string "before its opponent.\p"
 	.string "There are many other items that are\n"
 	.string "meant to be held by POKéMON.\p"
 	.string "Just those alone will give you many\n"
@@ -270,29 +264,29 @@ RustboroCity_PokemonSchool_Text_TradingRightNow:
 	.string "right now.$"
 
 RustboroCity_PokemonSchool_Text_AlwaysWantedSeedot:
-	.string "Trade evolutions are so annoying…\n"
-	.string "I wish they got rid of them.$"
+	.string "I always wanted a SEEDOT, and\n"
+	.string "I'm finally getting one!$"
 
 RustboroCity_PokemonSchool_Text_PokemontCantUseManMadeItems:
-	.string "This school mostly teaches POKEMON\n"
-	.string "battling.\p"
-	.string "Down in PACIFIDLOG TOWN, they have\n"
-	.string "an university where you can learn\l"
-	.string "science, or history, or whatever.\p"
-	.string "I don't see why you'd wanna do that\n"
-	.string "over being a TRAINER, though!$"
+	.string "POKéMON can hold items, but they\n"
+	.string "don't know what to do with man-made\l"
+	.string "items like POTION and ANTIDOTE.$"
 
 RustboroCity_PokemonSchool_Text_ConfusedPokemonAttacksItself:
-	.string "This building is the lecture hall of\n"
-	.string "the TRAINER SCHOOL.\p"
-	.string "Our second location is the POKEMON GYM,\n"
-	.string "which acts as a library, museum, and\l"
-	.string "battleground all at once.\p"
-	.string "Convenient!$"
+	.string "You know how some POKéMON moves can\n"
+	.string "confuse a POKéMON?\p"
+	.string "A confused POKéMON will sometimes\n"
+	.string "attack itself without meaning to.\p"
+	.string "But once it leaves battle, it will\n"
+	.string "return to normal.$"
 
 RustboroCity_PokemonSchool_Text_PokemonHealItselfWithBerry:
-	.string "Argh! I can't focus at all!\n"
-	.string "There's too much noise outside!$"
+	.string "A POKéMON holding a BERRY will heal\n"
+	.string "itself…\p"
+	.string "There are many kinds of items that\n"
+	.string "POKéMON can hold…\p"
+	.string "Boy, it sure is hard taking notes\n"
+	.string "down…$"
 
 RustboroCity_PokemonSchool_Text_StudentsNotes:
 	.string "It's this student's notebook…\p"
@@ -354,3 +348,4 @@ RustboroCity_PokemonSchool_Text_ScottMetAlreadyStoneBadge:
 	.string "you in battle.\p"
 	.string "It's hard to tell what you're like as\n"
 	.string "a TRAINER from a LEAGUE BADGE.$"
+

@@ -11,7 +11,6 @@
 #include "battle_tower.h"
 #include "battle_z_move.h"
 #include "data.h"
-#include "daycare.h"
 #include "event_data.h"
 #include "evolution_scene.h"
 #include "field_specials.h"
@@ -20,7 +19,6 @@
 #include "item.h"
 #include "link.h"
 #include "main.h"
-#include "money.h"
 #include "overworld.h"
 #include "m4a.h"
 #include "party_menu.h"
@@ -112,9 +110,6 @@ static const struct CombinedMove sCombinedMoves[2] =
 // Assigns all Hoenn Dex Indexes to a National Dex Index
 static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
 {
-    HOENN_TO_NATIONAL(CHIKORITA),
-    HOENN_TO_NATIONAL(BAYLEEF),
-    HOENN_TO_NATIONAL(MEGANIUM),
     HOENN_TO_NATIONAL(TREECKO),
     HOENN_TO_NATIONAL(GROVYLE),
     HOENN_TO_NATIONAL(SCEPTILE),
@@ -126,7 +121,7 @@ static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(SWAMPERT),
     HOENN_TO_NATIONAL(POOCHYENA),
     HOENN_TO_NATIONAL(MIGHTYENA),
-    HOENN_TO_NATIONAL(ZIGZAGOON_GALARIAN),
+    HOENN_TO_NATIONAL(ZIGZAGOON),
     HOENN_TO_NATIONAL(LINOONE),
 #if P_NEW_EVOS_IN_REGIONAL_DEX && P_GALARIAN_FORMS
     HOENN_TO_NATIONAL(OBSTAGOON),
@@ -909,20 +904,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         }
     }
 
-    if (gSpeciesInfo[species].abilities[2])
-    {
-        if ((Random() % 2) == 0) // 50% chance to have roughly a ~50% chance to get Hidden Ability.
-        {
-            value = personality & 2;
-            SetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, &value);
-        }
-        else if (gSpeciesInfo[species].abilities[1])
-        {
-            value = personality & 1;
-            SetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, &value);
-        }
-    }
-    else if (gSpeciesInfo[species].abilities[1])
+    if (gSpeciesInfo[species].abilities[1])
     {
         value = personality & 1;
         SetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, &value);
@@ -2871,7 +2853,7 @@ u16 GetAbilityBySpecies(u16 species, u8 abilityNum)
 
     for (i = 0; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++) // look for any non-empty ability
     {
-        gLastUsedAbility = ABILITY_NONE;
+        gLastUsedAbility = gSpeciesInfo[species].abilities[i];
     }
 
     return gLastUsedAbility;
@@ -3269,7 +3251,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                     case 0: // ITEM4_EV_HP
                     case 1: // ITEM4_EV_ATK
                         evCount = GetMonEVCount(mon);
-                        temp2 = 63;
+                        temp2 = itemEffect[itemEffectParam];
                         dataSigned = GetMonData(mon, sGetMonDataEVConstants[temp1], NULL);
                         evChange = temp2;
 
@@ -3937,10 +3919,6 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 if (MonKnowsMove(mon, evolutions[i].param))
                     targetSpecies = evolutions[i].targetSpecies;
                 break;
-                case EVO_MOVE_MALE:
-                if (MonKnowsMove(mon, evolutions[i].param) && GetMonGender(mon) == MON_MALE)
-                    targetSpecies = evolutions[i].targetSpecies;
-                break;
             case EVO_MOVE_TWO_SEGMENT:
                 if (MonKnowsMove(mon, evolutions[i].param) && (personality % 100) != 0)
                     targetSpecies = evolutions[i].targetSpecies;
@@ -3986,11 +3964,6 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                         }
                     }
                 }
-                break;
-
-            case EVO_MONEY:
-                if(IsEnoughMoney(&gSaveBlock1Ptr->money, 50000))
-                    targetSpecies = evolutions[i].targetSpecies;
                 break;
             case EVO_LEVEL_RAIN:
                 j = GetCurrentWeather();
@@ -4857,49 +4830,44 @@ u8 CanLearnTeachableMove(u16 species, u16 move)
     }
 }
 
-u8 GetMoveTutorMoves(struct Pokemon *mon, u16 *moves)
+u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves)
 {
     u16 learnedMoves[4];
     u8 numMoves = 0;
     u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
     u8 level = GetMonData(mon, MON_DATA_LEVEL, 0);
-    u16 eggSpecies;
-    u16 eggMoves[EGG_MOVES_ARRAY_COUNT] = {0};
-    u8 numEggMoves = 0;
-    u8 moveTutorType = VarGet(VAR_MOVE_MANAGER);
+    const struct LevelUpMove *learnset = GetSpeciesLevelUpLearnset(species);
     int i, j, k;
 
     for (i = 0; i < MAX_MON_MOVES; i++)
         learnedMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, 0);
 
-    switch (moveTutorType) {
+    for (i = 0; i < MAX_LEVEL_UP_MOVES; i++)
+    {
+        u16 moveLevel;
 
-    case MOVE_TUTOR_EGG_MOVES:
-        eggSpecies = species;
-        numEggMoves = GetEggMovesSpecies(eggSpecies, eggMoves);
+        if (learnset[i].move == LEVEL_UP_MOVE_END)
+            break;
 
-// i is the number of egg moves we've iterated through
-// j is for checking that the move is not learned
-// k is for checking that the move is not in the list already
-        for (i = 0; i < EGG_MOVES_ARRAY_COUNT; i++)
+        moveLevel = learnset[i].level;
+
+        if (moveLevel <= level)
         {
-           for (j = 0; j < MAX_MON_MOVES && learnedMoves[j] != eggMoves[i]; j++)
-               ;
+            for (j = 0; j < MAX_MON_MOVES && learnedMoves[j] != learnset[i].move; j++)
+                ;
 
-           if (j == MAX_MON_MOVES)
-           {
-               for (k = 0; k < numMoves && moves[k] != eggMoves[i]; k++)
-                   ;
+            if (j == MAX_MON_MOVES)
+            {
+                for (k = 0; k < numMoves && moves[k] != learnset[i].move; k++)
+                    ;
 
-               if (k == numMoves)
-                   moves[numMoves++] = eggMoves[i];
+                if (k == numMoves)
+                    moves[numMoves++] = learnset[i].move;
             }
         }
-        break;
     }
-    if(species == SPECIES_EEVEE)
-        numMoves--;
-    return (numMoves);
+
+    return numMoves;
 }
 
 u8 GetLevelUpMovesBySpecies(u16 species, u16 *moves)
@@ -4911,83 +4879,7 @@ u8 GetLevelUpMovesBySpecies(u16 species, u16 *moves)
     for (i = 0; i < MAX_LEVEL_UP_MOVES && learnset[i].move != LEVEL_UP_MOVE_END; i++)
          moves[numMoves++] = learnset[i].move;
 
-     return (numMoves);
-}
-
-
-u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves)
-{
-    u16 learnedMoves[4];
-    u8 numMoves = 0;
-    u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
-    u8 level = GetMonData(mon, MON_DATA_LEVEL, 0);
-    u8 moveTutorType = VarGet(VAR_MOVE_MANAGER);
-    const struct LevelUpMove *learnset = GetSpeciesLevelUpLearnset(species);
-    u16 eggMoves[EGG_MOVES_ARRAY_COUNT] = {0};
-    u8 numEggMoves = 0;
-    u16 eggSpecies;
-    switch (moveTutorType) {
-        case MOVE_REMINDER:
-    case MOVE_REMINDER_LEARN_ALL_MOVES:
-    default:
-    int i, j, k;
-
-    for (i = 0; i < MAX_MON_MOVES; i++)
-        learnedMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, 0);
-
-    for (i = 0; i < MAX_LEVEL_UP_MOVES; i++)
-    {
-        u16 moveLevel;
-
-        if (learnset[i].move == LEVEL_UP_MOVE_END)
-            break;
-
-        moveLevel = learnset[i].level;
-
-        if (moveLevel <= level)
-        {
-            for (j = 0; j < MAX_MON_MOVES && learnedMoves[j] != learnset[i].move; j++)
-                ;
-
-            if (j == MAX_MON_MOVES)
-            {
-                for (k = 0; k < numMoves && moves[k] != learnset[i].move; k++)
-                    ;
-
-                if (k == numMoves)
-                    moves[numMoves++] = learnset[i].move;
-            }
-        }
-    }
-
-    return numMoves;
-    case MOVE_TUTOR_EGG_MOVES:
-        eggSpecies = GetEggSpecies(species);
-        numEggMoves = GetEggMoves(eggSpecies, eggMoves);
-
-// i is the number of egg moves we've iterated through
-// j is for checking that the move is not learned
-// k is for checking that the move is not in the list already
-        for (i = 0; i < EGG_MOVES_ARRAY_COUNT; i++)
-        {
-           for (j = 0; j < MAX_MON_MOVES && learnedMoves[j] != eggMoves[i]; j++)
-               ;
-
-           if (j == MAX_MON_MOVES)
-           {
-               for (k = 0; k < numMoves && moves[k] != eggMoves[i]; k++)
-                   ;
-
-               if (k == numMoves)
-                   moves[numMoves++] = eggMoves[i];
-            }
-        }
-        numEggMoves--;
-        return numEggMoves;
-        break;
-    }
-
-    return (numMoves);
+     return numMoves;
 }
 
 u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)
@@ -4997,27 +4889,6 @@ u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)
     u8 numMoves = 0;
     u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
     u8 level = GetMonData(mon, MON_DATA_LEVEL, 0);
-    u16 eggSpecies;
-    u16 eggMoves[EGG_MOVES_ARRAY_COUNT] = {0};
-    u8 numEggMoves = 0;
-    int i, j, k;
-    u8 moveTutorType = VarGet(VAR_MOVE_MANAGER);
-
-    if (species == SPECIES_EGG)
-        return 0;
-
-    for (i = 0; i < MAX_MON_MOVES; i++)
-        learnedMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, 0);
-
-    switch (moveTutorType) {
-    case MOVE_REMINDER:
-    case MOVE_REMINDER_LEARN_ALL_MOVES:
-    default:
-   u16 learnedMoves[MAX_MON_MOVES];
-    u16 moves[MAX_LEVEL_UP_MOVES];
-    u8 numMoves = 0;
-    u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
-    u8 level = GetMonData(mon, MON_DATA_LEVEL, 0);
     const struct LevelUpMove *learnset = GetSpeciesLevelUpLearnset(species);
     int i, j, k;
 
@@ -5053,33 +4924,6 @@ u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)
     }
 
     return numMoves;
-        break;
-    case MOVE_TUTOR_EGG_MOVES:
-        eggSpecies = GetEggSpecies(species);
-        numEggMoves = GetEggMoves(eggSpecies, eggMoves);
-
-// i is the number of egg moves we've iterated through
-// j is for checking that the move is not learned
-// k is for checking that the move is not in the list already
-        for (i = 0; i < EGG_MOVES_ARRAY_COUNT; i++)
-        {
-           for (j = 0; j < MAX_MON_MOVES && learnedMoves[j] != eggMoves[i]; j++)
-               ;
-
-           if (j == MAX_MON_MOVES)
-           {
-               for (k = 0; k < numMoves && moves[k] != eggMoves[i]; k++)
-                   ;
-
-               if (k == numMoves)
-                   moves[numMoves++] = eggMoves[i];
-            }
-        }
-        return numEggMoves;
-        break;
-    }
-
-    return (numMoves);
 }
 
 u16 SpeciesToPokedexNum(u16 species)

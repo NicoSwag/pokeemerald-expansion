@@ -10,7 +10,6 @@ void FadeInFromWhite(void);
 void FieldCB_ContinueScriptUnionRoom(void);
 void FieldCB_ContinueScriptHandleMusic(void);
 void FieldCB_ContinueScript(void);
-void SetTorchEffect(s32 centerX, s32 centeryY, s32 radius);
 void Task_ReturnToFieldRecordMixing(u8 taskId);
 void FieldCB_ReturnToFieldCableLink(void);
 void FieldCB_ReturnToFieldWirelessLink(void);
@@ -42,7 +41,5 @@ void DoOrbEffect(void);
 void FadeOutOrbEffect(void);
 void WriteFlashScanlineEffectBuffer(u8 flashLevel);
 bool8 IsPlayerStandingStill(void);
-void FillPalBufferBlack(void);
-bool32 WaitForWeatherFadeIn(void);
 
 #endif // GUARD_FIELD_SCREEN_EFFECT_H

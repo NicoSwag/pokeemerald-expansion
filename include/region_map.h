@@ -87,7 +87,6 @@ struct RegionMapLocation
     u8 width;
     u8 height;
     const u8 *name;
-    const u8 *description;
 };
 
 // Exported RAM declarations
@@ -111,7 +110,6 @@ u16 CorrectSpecialMapSecId(u16 mapSecId);
 void ShowRegionMapForPokedexAreaScreen(struct RegionMap *regionMap);
 void PokedexAreaScreen_UpdateRegionMapVariablesAndVideoRegs(s16 x, s16 y);
 void CB2_OpenFlyMap(void);
-void CB2_OpenTownMap(void);
 bool8 IsRegionMapZoomed(void);
 void TrySetPlayerIconBlink(void);
 void BlendRegionMap(u16 color, u32 coeff);

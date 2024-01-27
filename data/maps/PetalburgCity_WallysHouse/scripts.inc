@@ -34,7 +34,6 @@ PetalburgCity_WallysHouse_EventScript_WallysDad::
 	goto_if_set FLAG_DEFEATED_WALLY_VICTORY_ROAD, PetalburgCity_WallysHouse_EventScript_DefeatedWallyInVictoryRoad
 	goto_if_set FLAG_RECEIVED_HM_SURF, PetalburgCity_WallysHouse_EventScript_ReceievedHMSurf
 	goto_if_set FLAG_THANKED_FOR_PLAYING_WITH_WALLY, PetalburgCity_WallysHouse_EventScript_PlayedWithWally
-	call_if_eq VAR_PETALBURG_CITY_STATE, 0, PetalburgCity_WallysHouse_EventScript_WheresWally
 	msgbox PetalburgCity_WallysHouse_Text_ThanksForPlayingWithWally, MSGBOX_DEFAULT
 	setflag FLAG_THANKED_FOR_PLAYING_WITH_WALLY
 	release
@@ -55,13 +54,13 @@ PetalburgCity_WallysHouse_EventScript_PlayedWithWally::
 	release
 	end
 
-PetalburgCity_WallysHouse_EventScript_WheresWally::
-	msgbox PetalburgCity_WallysHouse_Text_WheresWally, MSGBOX_DEFAULT
+PetalburgCity_WallysHouse_EventScript_WallysMom::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_HM_SURF, PetalburgCity_WallysHouse_EventScript_ReceivedHMSurf
+	msgbox PetalburgCity_WallysHouse_Text_WallyWasReallyHappy, MSGBOX_DEFAULT
 	release
 	end
-
-
-
 
 PetalburgCity_WallysHouse_EventScript_ReceivedHMSurf::
 	msgbox PetalburgCity_WallysHouse_Text_WallyLeftWithoutTelling, MSGBOX_DEFAULT
@@ -136,9 +135,3 @@ PetalburgCity_WallysHouse_Text_WallyLeftWithoutTelling:
 	.string "I'm sure that he'll come back safe\n"
 	.string "and sound one day!$"
 
-PetalburgCity_WallysHouse_Text_WheresWally:
-	.string "Our WALLY should be outside catching\n"
-	.string "some POKéMON.\p"
-	.string "Between you and me…\n"
-	.string "I'm not sure if he's quite built for\l"
-	.string "being a TRAINER.$"

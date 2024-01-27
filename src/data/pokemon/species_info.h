@@ -68,10 +68,10 @@ const u8 gZygarde10PokedexText[] = _(
     "sinks its sharp fangs into them.");
 
 const u8 gRockruffPokedexText[] = _(
-    "This POKéMON has lived with people since\n"
+    "This Pokémon has lived with people since\n"
     "times long ago. It can sense when its\n"
-    "TRAINER is in the dumps and will stick\n"
-    "close by its TRAINER's side.");
+    "Trainer is in the dumps and will stick\n"
+    "close by its Trainer's side.");
 
 const u8 gSilvallyNormalPokedexText[] = _(
     "Its trust in its partner awakens it.\n"

@@ -1,7 +1,6 @@
 @ Interact with cuttable tree
 EventScript_CutTree::
 	lockall
-	goto_if_unset FLAG_RECEIVED_HM_CUT, EventScript_CheckTreeCantCut
 	goto_if_unset FLAG_BADGE01_GET, EventScript_CheckTreeCantCut
 	checkpartymove MOVE_CUT
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckTreeCantCut
@@ -288,50 +287,3 @@ EventScript_FailSweetScent::
 
 Text_FailSweetScent:
 	.string "Looks like there's nothing here…$"
-    
-    
-EventScript_DisableAutoRun::
-    msgbox AutoRunDisabled MSGBOX_SIGN
-    end
-AutoRunDisabled:
-    .string "Auto Run {COLOR RED}Disabled{COLOR DARK_GRAY}.$"
-    
-EventScript_EnableAutoRun::
-    msgbox AutoRunEnabled MSGBOX_SIGN
-    end
-AutoRunEnabled:
-    .string "Auto Run {COLOR GREEN}Enabled{COLOR DARK_GRAY}.$"
-
-EventScript_UseRockClimb::
-	lockall
-	checkpartymove MOVE_ROCK_CLIMB
-	compare VAR_RESULT, PARTY_SIZE
-	goto_if_eq EventScript_CantRockClimb
-	bufferpartymonnick 0, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
-	msgbox Text_WantToRockClimb, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq EventScript_EndRockClimb
-	msgbox Text_MonUsedRockClimb, MSGBOX_DEFAULT
-	closemessage
-	dofieldeffect FLDEFF_USE_ROCK_CLIMB
-	waitstate
-	goto EventScript_EndRockClimb
-	
-EventScript_CantRockClimb::
-	msgbox Text_CantRockClimb, MSGBOX_DEFAULT
-	
-EventScript_EndRockClimb::
-	releaseall
-	end
-	
-Text_WantToRockClimb:
-    .string "The cliff is steep.\n"
-    .string "Would you like to use Rock Climb?$"
-    
-Text_MonUsedRockClimb:
-    .string "{STR_VAR_1} used Rock Climb!$"
-    
-Text_CantRockClimb:
-    .string "The cliff is steep.\n"
-    .string "A Pokémon may be able to climb it.$"

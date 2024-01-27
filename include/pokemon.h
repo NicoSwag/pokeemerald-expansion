@@ -18,7 +18,6 @@ enum {
     MON_DATA_SANITY_IS_BAD_EGG,
     MON_DATA_SANITY_HAS_SPECIES,
     MON_DATA_SANITY_IS_EGG,
-    MON_DATA_DEAD,
     MON_DATA_OT_NAME,
     MON_DATA_MARKINGS,
     MON_DATA_CHECKSUM,
@@ -211,7 +210,6 @@ struct BoxPokemon
     u8 isBadEgg:1;
     u8 hasSpecies:1;
     u8 isEgg:1;
-    u8 dead:1;
     u8 blockBoxRS:1; // Unused, but Pokémon Box Ruby & Sapphire will refuse to deposit a Pokémon with this flag set
     u8 unused:4;
     u8 otName[PLAYER_NAME_LENGTH];
@@ -303,12 +301,6 @@ struct BattlePokemon
     /*0x51*/ u32 status2;
     /*0x55*/ u32 otId;
     /*0x59*/ u8 metLevel;
-             u8 canWeatherChange:1;
-             u8 canGravityChange:1;
-             u8 canTrickRoomChange:1;
-             u8 canTerrainChange:1;
-             u8 gangstered:1;
-             u8 justWokeUp:1;
 };
 
 struct Evolution
@@ -435,7 +427,6 @@ struct BattleMove
     u32 highCritRatio:1;
     u32 twoTurnMove:1;
     u32 punchingMove:1;
-    u32 lunarMove:1;
     u32 sheerForceBoost:1;
     u32 bitingMove:1;
     u32 pulseMove:1;
@@ -666,9 +657,6 @@ void PartySpreadPokerus(struct Pokemon *party);
 bool8 TryIncrementMonLevel(struct Pokemon *mon);
 u8 CanLearnTeachableMove(u16 species, u16 move);
 u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves);
-u32 CanMonLearnTMHM(struct Pokemon *mon, u8 tm);
-u32 CanSpeciesLearnTMHM(u16 species, u8 tm);
-u8 GetMoveTutorMoves(struct Pokemon *mon, u16 *moves);
 u8 GetLevelUpMovesBySpecies(u16 species, u16 *moves);
 u8 GetNumberOfRelearnableMoves(struct Pokemon *mon);
 u16 SpeciesToPokedexNum(u16 species);

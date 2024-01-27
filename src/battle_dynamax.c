@@ -488,7 +488,13 @@ bool32 IsMaxMove(u16 move)
 }
 
 // Returns the full name of a Max Move for the move usage text.
-
+const u8 *GetMaxMoveName(u16 move)
+{
+    if (IsMaxMove(move))
+        return gMaxMoveNames[move - FIRST_MAX_MOVE];
+    else
+        return gMaxMoveNames[0];   // Failsafe
+}
 
 // Assigns the multistring to use for the "Damage Non- Types" G-Max effect.
 void ChooseDamageNonTypesString(u8 type)

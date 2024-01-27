@@ -126,7 +126,7 @@
 #define STATUS2_FLINCHED              (1 << 3)
 #define STATUS2_UPROAR                (1 << 4 | 1 << 5 | 1 << 6)
 #define STATUS2_UPROAR_TURN(num)      ((num) << 4)
-#define STATUS2_UNUSED         (1 << 7)
+#define STATUS2_UNUSED                (1 << 7)
 #define STATUS2_BIDE                  (1 << 8 | 1 << 9)
 #define STATUS2_BIDE_TURN(num)        (((num) << 8) & STATUS2_BIDE)
 #define STATUS2_LOCK_CONFUSE          (1 << 10 | 1 << 11) // e.g. Thrash
@@ -148,7 +148,6 @@
 #define STATUS2_FORESIGHT             (1 << 29)
 #define STATUS2_DEFENSE_CURL          (1 << 30)
 #define STATUS2_TORMENT               (1 << 31)
-
 
 #define STATUS3_LEECHSEED_BATTLER       (1 << 0 | 1 << 1) // The battler to receive HP from Leech Seed
 #define STATUS3_LEECHSEED               (1 << 2)
@@ -181,18 +180,15 @@
 #define STATUS3_LASER_FOCUS             (1 << 29)
 #define STATUS3_POWER_TRICK             (1 << 30)
 #define STATUS3_SKY_DROPPED             (1 << 31) // Target of Sky Drop
-#define STATUS3_MESMERIZE_POKES         (1 << 32)
 #define STATUS3_SEMI_INVULNERABLE       (STATUS3_UNDERGROUND | STATUS3_ON_AIR | STATUS3_UNDERWATER | STATUS3_PHANTOM_FORCE)
 
 #define STATUS4_ELECTRIFIED             (1 << 0)
 #define STATUS4_MUD_SPORT               (1 << 1)    // Only used if B_SPORT_TURNS < GEN_6
 #define STATUS4_WATER_SPORT             (1 << 2)    // Only used if B_SPORT_TURNS < GEN_6
 #define STATUS4_INFINITE_CONFUSION      (1 << 3)    // Used for Berserk Gene
-#define STATUS4_SNAP_TRAPPED            (1 << 4)
-
-#define STATUS4_SALT_CURE               (1 << 5)
-#define STATUS4_SYRUP_BOMB              (1 << 6)
-#define STATUS4_GLAIVE_RUSH             (1 << 7)
+#define STATUS4_SALT_CURE               (1 << 4)
+#define STATUS4_SYRUP_BOMB              (1 << 5)
+#define STATUS4_GLAIVE_RUSH             (1 << 6)
 
 #define HITMARKER_WAKE_UP_CLEAR         (1 << 4) // Cleared when waking up. Never set or checked.
 #define HITMARKER_IGNORE_BIDE           (1 << 5)
@@ -299,14 +295,11 @@
 #define B_WEATHER_HAIL_PERMANENT      (1 << 10)
 #define B_WEATHER_HAIL                (B_WEATHER_HAIL_TEMPORARY | B_WEATHER_HAIL_PERMANENT)
 #define B_WEATHER_STRONG_WINDS        (1 << 11)
-#define B_WEATHER_ANY                 (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_SUN | B_WEATHER_HAIL | B_WEATHER_STRONG_WINDS | B_WEATHER_SNOW | B_WEATHER_POLLUTION)
+#define B_WEATHER_ANY                 (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_SUN | B_WEATHER_HAIL | B_WEATHER_STRONG_WINDS | B_WEATHER_SNOW)
 #define B_WEATHER_PRIMAL_ANY          (B_WEATHER_RAIN_PRIMAL | B_WEATHER_SUN_PRIMAL | B_WEATHER_STRONG_WINDS)
 #define B_WEATHER_SNOW_TEMPORARY      (1 << 12)
 #define B_WEATHER_SNOW_PERMANENT      (1 << 13)
 #define B_WEATHER_SNOW                (B_WEATHER_SNOW_TEMPORARY | B_WEATHER_SNOW_PERMANENT)
-#define B_WEATHER_POLLUTION_TEMPORARY (1 << 14)
-#define B_WEATHER_POLLUTION_PERMANENT (1 << 15)
-#define B_WEATHER_POLLUTION           (B_WEATHER_POLLUTION_TEMPORARY | B_WEATHER_POLLUTION_PERMANENT)
 
 // Battle Weather as enum
 #define ENUM_WEATHER_NONE                 0
@@ -318,7 +311,6 @@
 #define ENUM_WEATHER_RAIN_PRIMAL          6
 #define ENUM_WEATHER_STRONG_WINDS         7
 #define ENUM_WEATHER_SNOW                 8
-#define ENUM_WEATHER_POLLUTION            9
 
 // Move Effects
 #define MOVE_EFFECT_SLEEP               1
@@ -393,20 +385,16 @@
 #define MOVE_EFFECT_RECOIL_HP_25        69
 #define MOVE_EFFECT_TRAP_BOTH           70
 #define MOVE_EFFECT_DOUBLE_SHOCK        71
-#define MOVE_EFFECT_ROUND               73
-#define MOVE_EFFECT_STOCKPILE_WORE_OFF  74
-#define MOVE_EFFECT_DIRE_CLAW           75
-#define MOVE_EFFECT_STEALTH_ROCK        76
-#define MOVE_EFFECT_SPIKES              77
-#define MOVE_EFFECT_SNAP_TRAP           78
-#define MOVE_EFFECT_CORROSION           79
-#define MOVE_EFFECT_GANGSTER            80
-#define MOVE_EFFECT_TRIPLE_ARROWS       81
-#define MOVE_EFFECT_SYRUP_BOMB          82
-#define MOVE_EFFECT_FLORAL_HEALING      83
-#define MOVE_EFFECT_MAGICAL_WHIP        84
+#define MOVE_EFFECT_ROUND               72
+#define MOVE_EFFECT_STOCKPILE_WORE_OFF  73
+#define MOVE_EFFECT_DIRE_CLAW           74
+#define MOVE_EFFECT_STEALTH_ROCK        75
+#define MOVE_EFFECT_SPIKES              76
+#define MOVE_EFFECT_TRIPLE_ARROWS       77
+#define MOVE_EFFECT_SYRUP_BOMB          78
+#define MOVE_EFFECT_FLORAL_HEALING      79
 
-#define NUM_MOVE_EFFECTS                85
+#define NUM_MOVE_EFFECTS                80
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000
@@ -435,14 +423,11 @@
 #define BATTLE_TERRAIN_DISTORTION_WORLD 19
 #define BATTLE_TERRAIN_SPACE            20
 #define BATTLE_TERRAIN_ULTRA_SPACE      21
-#define BATTLE_TERRAIN_OVERCAST         22
-#define BATTLE_TERRAIN_FOREST           23
-#define BATTLE_TERRAIN_GYM_ARENA        24
 
-#define BATTLE_TERRAIN_COUNT            25
+#define BATTLE_TERRAIN_COUNT            22
 
-#define B_WAIT_TIME_LONG        (B_WAIT_TIME_MULTIPLIER * 2)
-#define B_WAIT_TIME_MED         (B_WAIT_TIME_MULTIPLIER * 2)
+#define B_WAIT_TIME_LONG        (B_WAIT_TIME_MULTIPLIER * 4)
+#define B_WAIT_TIME_MED         (B_WAIT_TIME_MULTIPLIER * 3)
 #define B_WAIT_TIME_SHORT       (B_WAIT_TIME_MULTIPLIER * 2)
 #define B_WAIT_TIME_SHORTEST    (B_WAIT_TIME_MULTIPLIER)
 
@@ -466,7 +451,7 @@
 #define B_WIN_MOVE_NAME_3         5 // Bottom left
 #define B_WIN_MOVE_NAME_4         6 // Bottom right
 #define B_WIN_PP                  7
-#define B_WIN_PSS_ICON 8
+#define B_WIN_DUMMY               8
 #define B_WIN_PP_REMAINING        9
 #define B_WIN_MOVE_TYPE          10
 #define B_WIN_SWITCH_PROMPT      11 // "Switch which?"
@@ -482,10 +467,6 @@
 #define B_WIN_VS_OUTCOME_DRAW    21
 #define B_WIN_VS_OUTCOME_LEFT    22
 #define B_WIN_VS_OUTCOME_RIGHT   23
-#define B_WIN_TYPE_SUPER_EFF     24
-#define B_WIN_TYPE_NOT_VERY_EFF  25
-#define B_WIN_TYPE_NO_EFF        26
-#define B_WIN_MOVE_DESCRIPTION   27
 
 // The following are duplicate id values for windows that Battle Arena uses differently.
 #define ARENA_WIN_PLAYER_NAME      15
@@ -522,12 +503,6 @@
 #define PARENTAL_BOND_2ND_HIT 1
 #define PARENTAL_BOND_OFF     0
 
-// Constants for Fist Barrage
-#define FIST_BARRAGE_1ST_HIT 4
-#define FIST_BARRAGE_2ND_HIT 3
-#define FIST_BARRAGE_3RD_HIT 2
-#define FIST_BARRAGE_4TH_HIT 1
-#define FIST_BARRAGE_OFF    0
 // Constants for if HandleScriptMegaPrimalBurst should handle Mega Evolution, Primal Reversion, or Ultra Burst.
 #define HANDLE_TYPE_MEGA_EVOLUTION 0
 #define HANDLE_TYPE_PRIMAL_REVERSION 1

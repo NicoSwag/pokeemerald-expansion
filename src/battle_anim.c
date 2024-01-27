@@ -276,6 +276,7 @@ void LaunchBattleAnimation(u32 animType, u32 animId)
         case B_ANIM_WISH_HEAL:
         case B_ANIM_MEGA_EVOLUTION:
         case B_ANIM_PRIMAL_REVERSION:
+        case B_ANIM_ULTRA_BURST:
         case B_ANIM_GULP_MISSILE:
         case B_ANIM_RAINBOW:
         case B_ANIM_SEA_OF_FIRE:
@@ -736,6 +737,19 @@ static void Cmd_end(void)
     }
 
     // Finish the sound effects.
+    if (IsSEPlaying())
+    {
+        if (++sSoundAnimFramesToWait <= 90) // Wait 90 frames, then halt the sound effect.
+        {
+            sAnimFramesToWait = 1;
+            return;
+        }
+        else
+        {
+            m4aMPlayStop(&gMPlayInfo_SE1);
+            m4aMPlayStop(&gMPlayInfo_SE2);
+        }
+    }
 
     // The SE has halted, so set the SE Frame Counter to 0 and continue.
     sSoundAnimFramesToWait = 0;

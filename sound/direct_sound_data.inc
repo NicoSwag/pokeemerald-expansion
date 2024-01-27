@@ -3025,9 +3025,6 @@ Cry_Combee::
 	.align 2
 Cry_Vespiquen::
 	.incbin "sound/direct_sound_samples/cries/vespiquen.bin"
-
-Cry_Bediguard::
-	.incbin "sound/direct_sound_samples/cries/combee.bin"
 .endif @ P_FAMILY_COMBEE
 
 .if P_FAMILY_PACHIRISU == TRUE
@@ -6018,12 +6015,6 @@ Cry_Gimmighoul::
 Cry_Gholdengo::
 	.incbin "sound/direct_sound_samples/cries/gholdengo.bin"
 .endif @ P_FAMILY_GIMMIGHOUL
-
-Cry_Gorochu::
-	.incbin "sound/direct_sound_samples/cries/raichu.bin"
-
-Cry_Luxwan::
-	.incbin "sound/direct_sound_samples/cries/sirfetchd.bin"
 
 .if P_FAMILY_WO_CHIEN == TRUE
 	.align 2

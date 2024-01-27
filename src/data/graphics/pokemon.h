@@ -5019,13 +5019,6 @@ const u8 gMonFootprint_QuestionMark[] = INCBIN_U8("graphics/pokemon/question_mar
     const u32 gMonShinyPalette_Vespiquen[] = INCBIN_U32("graphics/pokemon/vespiquen/shiny.gbapal.lz");
     const u8 gMonIcon_Vespiquen[] = INCBIN_U8("graphics/pokemon/vespiquen/icon.4bpp");
     const u8 gMonFootprint_Vespiquen[] = INCBIN_U8("graphics/pokemon/vespiquen/footprint.1bpp");
-
-    const u32 gMonFrontPic_Bediguard[] = INCBIN_U32("graphics/pokemon/bediguard/anim_front.4bpp.lz");
-    const u32 gMonPalette_Bediguard[] = INCBIN_U32("graphics/pokemon/bediguard/normal.gbapal.lz");
-    const u32 gMonBackPic_Bediguard[] = INCBIN_U32("graphics/pokemon/bediguard/back.4bpp.lz");
-    const u32 gMonShinyPalette_Bediguard[] = INCBIN_U32("graphics/pokemon/bediguard/shiny.gbapal.lz");
-    const u8 gMonIcon_Bediguard[] = INCBIN_U8("graphics/pokemon/bediguard/icon.4bpp");
-    const u8 gMonFootprint_Bediguard[] = INCBIN_U8("graphics/pokemon/bediguard/footprint.1bpp");
 #endif //P_FAMILY_COMBEE
 
 #if P_FAMILY_PACHIRISU
@@ -10732,23 +10725,6 @@ const u8 gMonFootprint_QuestionMark[] = INCBIN_U8("graphics/pokemon/question_mar
     const u8 gMonIcon_Gholdengo[] = INCBIN_U8("graphics/pokemon/gholdengo/icon.4bpp");
     // const u8 gMonFootprint_Gholdengo[] = INCBIN_U8("graphics/pokemon/gholdengo/footprint.1bpp");
 #endif //P_FAMILY_GIMMIGHOUL
-
-
-    const u32 gMonFrontPic_Gorochu[] = INCBIN_U32("graphics/pokemon/gorochu/front.4bpp.lz");
-    const u32 gMonPalette_Gorochu[] = INCBIN_U32("graphics/pokemon/gorochu/normal.gbapal.lz");
-    const u32 gMonBackPic_Gorochu[] = INCBIN_U32("graphics/pokemon/gorochu/back.4bpp.lz");
-    const u32 gMonShinyPalette_Gorochu[] = INCBIN_U32("graphics/pokemon/gorochu/shiny.gbapal.lz");
-    const u8 gMonIcon_Gorochu[] = INCBIN_U8("graphics/pokemon/gorochu/icon.4bpp");
-    const u8 gMonFootprint_Gorochu[] = INCBIN_U8("graphics/pokemon/raichu/footprint.1bpp");
-
-
-    const u32 gMonFrontPic_Luxwan[] = INCBIN_U32("graphics/pokemon/luxwan/front.4bpp.lz");
-    const u32 gMonPalette_Luxwan[] = INCBIN_U32("graphics/pokemon/luxwan/normal.gbapal.lz");
-    const u32 gMonBackPic_Luxwan[] = INCBIN_U32("graphics/pokemon/luxwan/back.4bpp.lz");
-    const u32 gMonShinyPalette_Luxwan[] = INCBIN_U32("graphics/pokemon/luxwan/shiny.gbapal.lz");
-    const u8 gMonIcon_Luxwan[] = INCBIN_U8("graphics/pokemon/luxwan/icon.4bpp");
-    const u8 gMonFootprint_Luxwan[] = INCBIN_U8("graphics/pokemon/sirfetchd/footprint.1bpp");
-
 
 #if P_FAMILY_WO_CHIEN
     const u32 gMonFrontPic_WoChien[] = INCBIN_U32("graphics/pokemon/wo_chien/front.4bpp.lz");

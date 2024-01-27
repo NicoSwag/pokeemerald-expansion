@@ -1,11 +1,6 @@
 Route102_EventScript_ItemPotion::
 	finditem ITEM_POTION
 	end
-	
-Route102_EventScript_ItemMuscleBand::
-	finditem ITEM_MUSCLE_BAND
-	end
-
 
 Route103_EventScript_ItemGuardSpec::
 	finditem ITEM_GUARD_SPEC
@@ -15,17 +10,12 @@ Route103_EventScript_ItemPPUp::
 	finditem ITEM_PP_UP
 	end
 
-
 Route104_EventScript_ItemPPUp::
 	finditem ITEM_PP_UP
 	end
 
-Route104_EventScript_ItemSkyFragment::
-	finditem ITEM_HEART_SCALE
-	end
-
-BrineCave_EventScript_Protect::
-	finditem ITEM_TM_PROTECT
+Route104_EventScript_ItemPokeBall::
+	finditem ITEM_POKE_BALL
 	end
 
 Route104_EventScript_ItemXAccuracy::
@@ -117,6 +107,7 @@ Route115_EventScript_ItemSuperPotion::
 	end
 
 Route115_EventScript_ItemTMFocusPunch::
+	finditem ITEM_TM_FOCUS_PUNCH
 	end
 
 Route115_EventScript_ItemIron::
@@ -324,7 +315,7 @@ MauvilleCity_EventScript_ItemXSpeed::
 	end
 
 RustboroCity_EventScript_ItemXDefend::
-	finditem ITEM_TM_FIRE_SPIN
+	finditem ITEM_X_DEFENSE
 	end
 
 LilycoveCity_EventScript_ItemMaxRepel::
@@ -344,15 +335,11 @@ PetalburgWoods_EventScript_ItemGreatBall::
 	end
 
 PetalburgWoods_EventScript_ItemEther::
-	finditem ITEM_HEART_SCALE
+	finditem ITEM_ETHER
 	end
 
-PetalburgWoods_EventScript_ItemQuash::
-	finditem ITEM_TM_QUASH
-	end
-	
-Route104Upper_EventScript_HeartScale2::
-	finditem ITEM_HEART_SCALE
+PetalburgWoods_EventScript_ItemParalyzeHeal::
+	finditem ITEM_PARALYZE_HEAL
 	end
 
 RusturfTunnel_EventScript_ItemPokeBall::
@@ -408,6 +395,7 @@ MeteorFalls_1F_1R_EventScript_ItemPPUP::
 	end
 
 MeteorFalls_B1F_2R_EventScript_ItemTMDragonClaw::
+	finditem ITEM_TM_DRAGON_CLAW
 	end
 
 NewMauville_Inside_EventScript_ItemUltraBall::
@@ -567,6 +555,7 @@ ShoalCave_LowTideStairsRoom_EventScript_ItemIceHeal::
 	end
 
 ShoalCave_LowTideIceRoom_EventScript_ItemTMHail::
+	finditem ITEM_TM_HAIL
 	end
 
 ShoalCave_LowTideIceRoom_EventScript_ItemNeverMeltIce::

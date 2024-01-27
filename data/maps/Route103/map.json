@@ -5,8 +5,8 @@
   "music": "MUS_ROUTE101",
   "region_map_section": "MAPSEC_ROUTE_103",
   "requires_flash": false,
-  "weather": "WEATHER_SHADE",
-  "map_type": "MAP_TYPE_OVERCAST",
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
@@ -22,11 +22,6 @@
       "map": "MAP_ROUTE110",
       "offset": -60,
       "direction": "right"
-    },
-    {
-      "map": "MAP_OLDALE_RUINS",
-      "offset": -10,
-      "direction": "up"
     }
   ],
   "object_events": [
@@ -45,10 +40,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",
-      "x": 11,
-      "y": 2,
+      "x": 10,
+      "y": 3,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -150,7 +145,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",
       "x": 20,
-      "y": 9,
+      "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
@@ -159,6 +154,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route103_EventScript_Boy",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
+      "x": 7,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ProfBirch_EventScript_RatePokedexOrRegister",
+      "flag": "FLAG_HIDE_ROUTE_103_BIRCH"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_M",
@@ -276,32 +284,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route103_EventScript_ItemPPUp",
       "flag": "FLAG_ITEM_ROUTE_103_PP_UP"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
-      "x": 10,
-      "y": 5,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route103_EventScript_MagmaM",
-      "flag": "FLAG_HIDE_ROUTE_103_RIVAL"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_COURTNEY",
-      "x": 11,
-      "y": 7,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route103_EventScript_MagmaF",
-      "flag": "FLAG_HIDE_ROUTE_103_RIVAL"
     }
   ],
   "warp_events": [
@@ -313,25 +295,15 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
-      "x": 8,
-      "y": 11,
+      "x": 11,
+      "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route103_EventScript_RouteSign"
-    },
-    {
-      "type": "hidden_item",
-      "x": 17,
-      "y": 9,
-      "elevation": 0,
-      "item": "ITEM_IRON_BALL",
-      "flag": "FLAG_ITEM_ROUTE_103_IRON_BALL"
     }
   ]
 }

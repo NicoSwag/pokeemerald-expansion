@@ -6,7 +6,6 @@
 #include "fldeff.h"
 #include "gpu_regs.h"
 #include "main.h"
-#include "map_preview.h"
 #include "overworld.h"
 #include "palette.h"
 #include "party_menu.h"
@@ -37,6 +36,7 @@ static void Task_ExitCaveTransition4(u8 taskId);
 static void Task_ExitCaveTransition5(u8 taskId);
 static void DoEnterCaveTransition(void);
 static void Task_EnterCaveTransition1(u8 taskId);
+static void Task_EnterCaveTransition2(u8 taskId);
 static void Task_EnterCaveTransition3(u8 taskId);
 static void Task_EnterCaveTransition4(u8 taskId);
 
@@ -45,8 +45,6 @@ static const struct FlashStruct sTransitionTypes[] =
     {MAP_TYPE_TOWN,        MAP_TYPE_UNDERGROUND,  TRUE, FALSE, DoEnterCaveTransition},
     {MAP_TYPE_CITY,        MAP_TYPE_UNDERGROUND,  TRUE, FALSE, DoEnterCaveTransition},
     {MAP_TYPE_ROUTE,       MAP_TYPE_UNDERGROUND,  TRUE, FALSE, DoEnterCaveTransition},
-    {MAP_TYPE_OVERCAST,       MAP_TYPE_UNDERGROUND,  TRUE, FALSE, DoEnterCaveTransition},
-    {MAP_TYPE_FOREST,       MAP_TYPE_UNDERGROUND,  TRUE, FALSE, DoEnterCaveTransition},
     {MAP_TYPE_UNDERWATER,  MAP_TYPE_UNDERGROUND,  TRUE, FALSE, DoEnterCaveTransition},
     {MAP_TYPE_OCEAN_ROUTE, MAP_TYPE_UNDERGROUND,  TRUE, FALSE, DoEnterCaveTransition},
     {MAP_TYPE_UNKNOWN,     MAP_TYPE_UNDERGROUND,  TRUE, FALSE, DoEnterCaveTransition},
@@ -55,8 +53,6 @@ static const struct FlashStruct sTransitionTypes[] =
     {MAP_TYPE_UNDERGROUND, MAP_TYPE_TOWN,        FALSE,  TRUE, DoExitCaveTransition},
     {MAP_TYPE_UNDERGROUND, MAP_TYPE_CITY,        FALSE,  TRUE, DoExitCaveTransition},
     {MAP_TYPE_UNDERGROUND, MAP_TYPE_ROUTE,       FALSE,  TRUE, DoExitCaveTransition},
-    {MAP_TYPE_UNDERGROUND, MAP_TYPE_OVERCAST,       FALSE,  TRUE, DoExitCaveTransition},
-    {MAP_TYPE_UNDERGROUND, MAP_TYPE_FOREST,       FALSE,  TRUE, DoExitCaveTransition},
     {MAP_TYPE_UNDERGROUND, MAP_TYPE_UNDERWATER,  FALSE,  TRUE, DoExitCaveTransition},
     {MAP_TYPE_UNDERGROUND, MAP_TYPE_OCEAN_ROUTE, FALSE,  TRUE, DoExitCaveTransition},
     {MAP_TYPE_UNDERGROUND, MAP_TYPE_UNKNOWN,     FALSE,  TRUE, DoExitCaveTransition},
@@ -161,6 +157,14 @@ static bool8 TryDoMapTransition(void)
     u8 fromType = GetLastUsedWarpMapType();
     u8 toType = GetCurrentMapType();
 
+    for (i = 0; sTransitionTypes[i].fromType; i++)
+    {
+        if (sTransitionTypes[i].fromType == fromType && sTransitionTypes[i].toType == toType)
+        {
+            sTransitionTypes[i].func();
+            return TRUE;
+        }
+    }
 
     return FALSE;
 }
@@ -294,7 +298,7 @@ static void Task_EnterCaveTransition1(u8 taskId)
     gTasks[taskId].func = Task_EnterCaveTransition2;
 }
 
-void Task_EnterCaveTransition2(u8 taskId)
+static void Task_EnterCaveTransition2(u8 taskId)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     LZ77UnCompVram(sCaveTransitionTiles, (void *)(VRAM + 0xC000));

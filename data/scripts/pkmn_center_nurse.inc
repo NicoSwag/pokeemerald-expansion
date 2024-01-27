@@ -56,8 +56,6 @@ EventScript_PkmnCenterNurse_ReturnPkmn::
 	goto_if_eq VAR_0x8004, 1, EventScript_PkmnCenterNurse_ReturnPkmn2
 	message gText_RestoredPkmnToFullHealth
 	waitmessage
-	doesplayerhavepokeball
-	call_if_eq VAR_RESULT, FALSE, EventScript_CheckMoney
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
 	message gText_WeHopeToSeeYouAgain
@@ -70,19 +68,6 @@ EventScript_PkmnCenterNurse_ReturnPkmn2::
 	waitmovement 0
 	message gText_WeHopeToSeeYouAgain2
 	return
-
-EventScript_CheckMoney::
-	checkmoney 30, 0
-	call_if_eq VAR_RESULT, FALSE, EventScript_HasNoMoney
-	return
-
-
-EventScript_HasNoMoney::
-	message gText_NoBalls
-	waitmessage
-	giveitem ITEM_POKE_BALL, 5
-	return
-
 
 EventScript_PkmnCenterNurse_PlayerWaitingInUnionRoom::
 	goto_if_set FLAG_NURSE_UNION_ROOM_REMINDER, EventScript_PkmnCenterNurse_ReturnPkmn

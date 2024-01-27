@@ -31,7 +31,6 @@
 #include "malloc.h"
 #include "m4a.h"
 #include "map_name_popup.h"
-#include "map_preview.h"
 #include "match_call.h"
 #include "menu.h"
 #include "metatile_behavior.h"
@@ -1328,7 +1327,7 @@ void UpdateAmbientCry(s16 *state, u16 *delayCounter)
             }
         }
         // Ambient cries after the first one take between 1200-2399 frames (~20-40 seconds)
-        // If the player has a Pokémon with the ability Swarm in their party, the time is halved to 600-1199 frames (~10-20 seconds)
+        // If the player has a pokemon with the ability Swarm in their party, the time is halved to 600-1199 frames (~10-20 seconds)
         *delayCounter = ((Random() % 1200) + 1200) / divBy;
         *state = AMB_CRY_WAIT;
         break;
@@ -1340,7 +1339,7 @@ void UpdateAmbientCry(s16 *state, u16 *delayCounter)
         }
         break;
     case AMB_CRY_IDLE:
-        // No land/water Pokémon on this map
+        // No land/water pokemon on this map
         break;
     }
 }
@@ -1351,7 +1350,7 @@ static void ChooseAmbientCrySpecies(void)
      && gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE130))
      && !IsMirageIslandPresent())
     {
-        // Only play water Pokémon cries on this route
+        // Only play water pokemon cries on this route
         // when Mirage Island is not present
         sIsAmbientCryWaterMon = TRUE;
         sAmbientCrySpecies = GetLocalWaterMon();
@@ -1386,8 +1385,6 @@ bool8 IsMapTypeOutdoors(u8 mapType)
 {
     if (mapType == MAP_TYPE_ROUTE
      || mapType == MAP_TYPE_TOWN
-     || mapType == MAP_TYPE_OVERCAST
-     || mapType == MAP_TYPE_FOREST
      || mapType == MAP_TYPE_UNDERWATER
      || mapType == MAP_TYPE_CITY
      || mapType == MAP_TYPE_OCEAN_ROUTE)
@@ -1399,8 +1396,6 @@ bool8 IsMapTypeOutdoors(u8 mapType)
 bool8 Overworld_MapTypeAllowsTeleportAndFly(u8 mapType)
 {
     if (mapType == MAP_TYPE_ROUTE
-     || mapType == MAP_TYPE_OVERCAST
-     || mapType == MAP_TYPE_FOREST
      || mapType == MAP_TYPE_TOWN
      || mapType == MAP_TYPE_OCEAN_ROUTE
      || mapType == MAP_TYPE_CITY)
@@ -1978,10 +1973,8 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
         (*state)++;
         break;
     case 11:
-if (gMapHeader.showMapName == TRUE && SecretBaseMapPopupEnabled() == TRUE)
-        {
+        if (gMapHeader.showMapName == TRUE && SecretBaseMapPopupEnabled() == TRUE)
             ShowMapNamePopup();
-        }
         (*state)++;
         break;
     case 12:
@@ -2174,7 +2167,10 @@ static void ResumeMap(bool32 a1)
     ResetAllPicSprites();
     ResetCameraUpdateInfo();
     InstallCameraPanAheadCallback();
-    FreeAllSpritePalettes();
+    if (!a1)
+        InitObjectEventPalettes(0);
+    else
+        InitObjectEventPalettes(1);
 
     FieldEffectActiveListClear();
     StartWeather();
@@ -3258,9 +3254,3 @@ static void SpriteCB_LinkPlayer(struct Sprite *sprite)
         sprite->data[7]++;
     }
 }
-
-u8 GetLastUsedWarpMapSectionId(void)
-{
-    return Overworld_GetMapHeaderByGroupAndId(gLastUsedWarp.mapGroup, gLastUsedWarp.mapNum)->regionMapSectionId;
-}
-

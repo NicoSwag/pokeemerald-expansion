@@ -696,28 +696,8 @@
 #define STRINGID_SWAMPENVELOPEDSIDE                   694
 #define STRINGID_THESWAMPDISAPPEARED                  695
 #define STRINGID_PKMNTELLCHILLINGRECEPTIONJOKE        696
-#define STRINGID_PKMNCUTSSPATTACKWITH                 697
-#define STRINGID_SLEEPHEALHPUP                        698
-#define STRINGID_SNAPTRAPHURT                         699
-#define STRINGID_DEFENDERLOSTSTEELTYPE                700
-#define STRINGID_POLLUTIONSTOPPED                     701
-#define STRINGID_POLLUTIONCONTINUES                   702
-#define STRINGID_POLLUTIONSEEPS                       703
-#define STRINGID_SUMMONEDPOLLUTION                    704
-#define STRINGID_POLLUTEDTHEAIR                       705
-#define STRINGID_PKMNDAMAGEDPOLLUTION                 706
-#define STRINGID_PKMNALREADYHASFROST                 707
-#define STRINGID_ATTACKERITEMMELTED                  708
-#define STRINGID_CLIMATECHANGEENTERS                  709
-#define STRINGID_FORESTCURSETRAPPED                   710
-#define STRINGID_PKMNISRESTED                         711
-#define STRINGID_AIR_CLEARED                       712
-#define STRINGID_SHIELDBROKE                       713
-#define STRINGID_SHIELDRESTORED                    714
-#define STRINGID_SHAREDHONEY                       715
 
-
-#define BATTLESTRINGS_COUNT                           716
+#define BATTLESTRINGS_COUNT                           697
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -784,8 +764,6 @@
 #define B_MSG_STARTED_SUNLIGHT  4
 #define B_MSG_STARTED_HAIL      5
 #define B_MSG_STARTED_SNOW      6
-#define B_MSG_STARTED_POLLUTION 7
-#define B_MSG_AIR_CLEARED       8
 
 // gRainContinuesStringIds
 #define B_MSG_RAIN_CONTINUES     0
@@ -796,9 +774,6 @@
 #define B_MSG_SANDSTORM  0
 #define B_MSG_HAIL       1
 #define B_MSG_SNOW       2
-#define B_MSG_POLLUTION  3
-
-
 
 // gReflectLightScreenSafeguardStringIds
 #define B_MSG_SIDE_STATUS_FAILED     0
@@ -975,7 +950,6 @@
 #define B_MSG_SWITCHIN_CURIOUS_MEDICINE 14
 #define B_MSG_SWITCHIN_PASTEL_VEIL      15
 #define B_MSG_SWITCHIN_NEUTRALIZING_GAS 16
-#define B_MSG_SWITCHIN_CLIMATE_CHANGE 17
 
 // gMentalHerbCureStringIds
 #define B_MSG_MENTALHERBCURE_INFATUATION       0
@@ -1012,8 +986,7 @@
 #define B_MSG_WRAPPED_INFESTATION  7
 #define B_MSG_WRAPPED_SNAP_TRAP    8
 #define B_MSG_WRAPPED_THUNDER_CAGE 9
-#define B_MSG_WRAPPED_FOREST_CURSE   10
-#define NUM_TRAPPING_MOVES         11
+#define NUM_TRAPPING_MOVES         10
 
 // z effects
 #define B_MSG_Z_RESET_STATS   0
