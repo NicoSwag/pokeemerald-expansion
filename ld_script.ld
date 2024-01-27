@@ -343,8 +343,7 @@ SECTIONS {
         src/international_string_util.o(.text);
         src/pokemon_debug.o(.text);
         src/expansion_intro.o(.text);
-        src/map_preview.o(.text);
-    } ROM =0
+    } > ROM =0
 
     script_data :
     ALIGN(4)
@@ -711,8 +710,7 @@ SECTIONS {
         data/sound_data.o(.rodata);
         src/pokemon_debug.o(.rodata);
         src/expansion_intro.o(.rodata);
-        src/map_preview.o(.rodata);
-    } ROM =0
+    } > ROM =0
 
     song_data :
     ALIGN(4)
@@ -1247,30 +1245,7 @@ SECTIONS {
         sound/songs/midi/ph_nurse_blend.o(.rodata);
         sound/songs/midi/ph_nurse_held.o(.rodata);
         sound/songs/midi/ph_nurse_solo.o(.rodata);
-        sound/songs/midi/mus_looker_theme.o(.rodata);
-        sound/songs/midi/mus_vs_johto_leader.o(.rodata);
-        sound/songs/midi/mus_vs_zinnia.o(.rodata);
-        sound/songs/midi/mus_eterna_forest.o(.rodata);
-        sound/songs/midi/mus_mt_coronet.o(.rodata);
-        sound/songs/midi/mus_mt_thunder.o(.rodata);
-        sound/songs/midi/mus_route216.o(.rodata);
-        sound/songs/midi/mus_unova_route10.o(.rodata);
-        sound/songs/midi/mus_azalea.o(.rodata);
-        sound/songs/midi/mus_pmd_dialga.o(.rodata);
-        sound/songs/midi/mus_vs_wally.o(.rodata);
-        sound/songs/midi/mus_temporal_tower.o(.rodata);
-        sound/songs/midi/mus_brine_cave.o(.rodata);
-        sound/songs/midi/mus_waterfall_cave.o(.rodata);
-        sound/songs/midi/mus_vs_giratina.o(.rodata);
-        sound/songs/midi/mus_vs_ultra_beast.o(.rodata);
-        sound/songs/midi/mus_vs_devon.o(.rodata);
-        sound/songs/midi/mus_vs_intense.o(.rodata);
-        sound/songs/midi/mus_vs_jazzy.o(.rodata);
-        sound/songs/midi/mus_vs_hackers.o(.rodata);
-
-
-
-    } ROM =0
+    } > ROM =0
 
     lib_rodata :
     SUBALIGN(4)

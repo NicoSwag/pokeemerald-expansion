@@ -300,14 +300,6 @@
 	.2byte \flag
 	.endm
 
-
-	@ Sets flag to FALSE.
-	.macro clearTMflag flag:req
-	.byte 0xe4
-	.2byte \flag
-	.endm
-
-
 	@ Compares flag to TRUE and stores the result in comparisonResult to be used by goto_if, etc
 	@ See additional _if_unset and _if_set macros
 	.macro checkflag flag:req
@@ -1355,7 +1347,7 @@
 	@ The specified id can be used to refer to the sprite again later with turnvobject.
 	.macro createvobject graphicsId:req, id:req, x:req, y:req, elevation=3, direction=DIR_SOUTH
 	.byte 0xaa
-	.2byte \graphicsId
+	.byte \graphicsId
 	.byte \id
 	.2byte \x
 	.2byte \y
@@ -1579,7 +1571,7 @@
 	.endm
 
 	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro settorcheffect centerX:req, centerY:req, radius:req
+	.macro normalmsg
 	.byte 0xcb
 	.endm
 
@@ -1741,29 +1733,6 @@
 	stringvar \stringVarId
 	.2byte \item
 	.2byte \quantity
-	.endm
-
-	.macro showdescription
-	.byte 0xe3
-	.endm
-
-	.macro checkpartycanlearn move:req
-	.byte 0xe4
-	.2byte \move
-	.endm
-
-	.macro showitemdesc
-	setvar VAR_0x8009, 0
-	showdescription
-	.endm
-
-	.macro showberrydesc
-	setvar VAR_0x8009, 1
-	showdescription
-	.endm
-
-	.macro hideitemdesc
-	.byte 0xe4
 	.endm
 
 
@@ -2055,9 +2024,4 @@
 	setvar VAR_0x8004, \trainer1
 	callnative CreateTrainerPartyForPlayer
 	trainerbattle_no_intro \trainer2, NULL
-	.endm
-
-
-	.macro doesplayerhavepokeball
-	callnative CheckBallPocket
 	.endm

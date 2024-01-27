@@ -48,7 +48,6 @@ $(MID_SUBDIR)/mus_vs_wild.s: %.s: %.mid
 $(MID_SUBDIR)/mus_vs_aqua_magma_leader.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G126 -V080 -P1
 
-
 $(MID_SUBDIR)/mus_vs_aqua_magma.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G118 -V080 -P1
 
@@ -1263,64 +1262,3 @@ $(MID_SUBDIR)/se_m_leer.s: %.s: %.mid
 
 $(MID_SUBDIR)/se_dex_search.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -v100 -P5
-
-$(MID_SUBDIR)/mus_looker_theme.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v130 -P5
-
-$(MID_SUBDIR)/mus_vs_johto_leader.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G125 -v100 -P5
-
-$(MID_SUBDIR)/mus_vs_zinnia.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_eterna_forest.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_mt_coronet.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_mt_thunder.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_route216.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_unova_route10.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_azalea.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_pmd_dialga.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_vs_wally.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_temporal_tower.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_brine_cave.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_waterfall_cave.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_vs_giratina.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_vs_ultra_beast.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_vs_devon.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_vs_intense.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_vs_jazzy.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
-
-$(MID_SUBDIR)/mus_vs_hackers.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G193 -v100 -P5
-

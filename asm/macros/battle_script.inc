@@ -1356,10 +1356,6 @@
 	callnative BS_SetSnow
 	.endm
 
-	.macro setpollution
-	callnative BS_SetPollution
-	.endm
-	
 	.macro applysaltcure battler:req
 	callnative BS_ApplySaltCure
 	.byte \battler
@@ -1390,10 +1386,6 @@
 	.4byte \sidestatus
 	.endm
 
-	.macro setseaoffire
-	callnative BS_SetFireAll
-	.endm
-
 	.macro trycopycat failInstr:req
 	callnative BS_TryCopycat
 	.4byte \failInstr
@@ -1416,12 +1408,6 @@
 
 	.macro checkparentalbondcounter counter:req, ptr:req
 	callnative BS_CheckParentalBondCounter
-	.byte \counter
-	.4byte \ptr
-	.endm
-
-	.macro checkfistbarragecounter counter:req, ptr:req
-	callnative BS_CheckFistBarrageCounter
 	.byte \counter
 	.4byte \ptr
 	.endm
@@ -1486,10 +1472,6 @@
 	.macro setremoveterrain failInstr:req
 	callnative BS_SetRemoveTerrain
 	.4byte \failInstr
-	.endm
-
-	.macro removeweather
-	callnative BS_RemoveWeather
 	.endm
 
 	.macro jumpifterrainaffected battler:req, terrainFlags:req, jumpInstr:req
@@ -1724,10 +1706,6 @@
 	various \battler, VARIOUS_TRY_ACTIVATE_MOXIE
 	.endm
 
-	.macro tryactivatecometpunch battler:req
-	various \battler, VARIOUS_TRY_ACTIVATE_COMET_PUNCH
-	.endm
-	
 	.macro tryactivatebeastboost battler:req
 	various \battler, VARIOUS_TRY_ACTIVATE_BEAST_BOOST
 	.endm
@@ -1743,7 +1721,6 @@
 	.macro tryactivatefellstinger battler:req
 	various \battler, VARIOUS_TRY_ACTIVATE_FELL_STINGER
 	.endm
-
 
 	.macro playmoveanimation battler:req, move:req
 	various \battler, VARIOUS_PLAY_MOVE_ANIMATION
