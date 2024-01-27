@@ -3989,7 +3989,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 break;
 
             case EVO_MONEY:
-                if(IsEnoughMoney(&gSaveBlock1Ptr->money, 100000))
+                if(IsEnoughMoney(&gSaveBlock1Ptr->money, 50000))
                     targetSpecies = evolutions[i].targetSpecies;
                 break;
             case EVO_LEVEL_RAIN:
