@@ -315,9 +315,9 @@
       "id": "LAYOUT_ROUTE116",
       "name": "Route116_Layout",
       "width": 100,
-      "height": 20,
+      "height": 28,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Rustboro",
+      "secondary_tileset": "gTileset_RustboroSurroundings",
       "border_filepath": "data/layouts/Route116/border.bin",
       "blockdata_filepath": "data/layouts/Route116/map.bin"
     },
@@ -4520,6 +4520,16 @@
       "secondary_tileset": "gTileset_Petalburg_Ruins",
       "border_filepath": "data/layouts/OldaleRuins/border.bin",
       "blockdata_filepath": "data/layouts/OldaleRuins/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_KIRIKIRI_SIDE_AREA",
+      "name": "MtKirikiri_Side_area_Layout",
+      "width": 47,
+      "height": 45,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/MtKirikiri_Side_area/border.bin",
+      "blockdata_filepath": "data/layouts/MtKirikiri_Side_area/map.bin"
     }
   ]
 }

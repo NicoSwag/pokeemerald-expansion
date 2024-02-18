@@ -2310,26 +2310,25 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .types = { TYPE_BUG, TYPE_GROUND },
         .catchRate = 255,
         .expYield = 53,
-        .evYield_Defense = 1,
         .itemRare = ITEM_SOFT_SAND,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_ERRATIC,
         .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG },
-        .abilities = { ABILITY_COMPOUND_EYES, ABILITY_NONE, ABILITY_RUN_AWAY },
+        .abilities = { ABILITY_COMPOUND_EYES, ABILITY_SAP_SIPPER, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("Nincada"),
+        .speciesName = _("NINCADA"),
         .cryId = CRY_NINCADA,
         .natDexNum = NATIONAL_DEX_NINCADA,
-        .categoryName = _("Trainee"),
+        .categoryName = _("TRAINEE"),
         .height = 5,
         .weight = 55,
         .description = COMPOUND_STRING(
             "It makes its nest at the roots of a mighty\n"
-            "tree. Using its whiskerlike antennae, it\n"
-            "probes its surroundings in the\n"
-            "pitch-black darkness of soil."),
+            "tree, sucking on its roots for nourishment.\n"
+            "It's nearly blind, and uses its antennaes\n"
+            "to probe its surroundings."),
         .pokemonScale = 405,
         .pokemonOffset = 21,
         .trainerScale = 256,
@@ -2360,25 +2359,25 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .types = { TYPE_BUG, TYPE_FLYING },
         .catchRate = 120,
         .expYield = 160,
-        .evYield_Speed = 2,
+
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_ERRATIC,
         .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG },
-        .abilities = { ABILITY_SPEED_BOOST, ABILITY_NONE, ABILITY_INFILTRATOR },
+            .abilities = { ABILITY_SPEED_BOOST, ABILITY_SAP_SIPPER, ABILITY_NONE},
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("Ninjask"),
+        .speciesName = _("NINJASK"),
         .cryId = CRY_NINJASK,
         .natDexNum = NATIONAL_DEX_NINJASK,
-        .categoryName = _("Ninja"),
+        .categoryName = _("NINJA"),
         .height = 8,
         .weight = 120,
         .description = COMPOUND_STRING(
-            "Because it darts about vigorously at high\n"
-            "speed, it is very difficult to see. Hearing\n"
-            "its distinctive cries for too long induces\n"
-            "a headache."),
+            "It moves so fast that, for a time, it was\n"
+            "believed to have the ability to turn\n"
+            "invisible. It is known to congregate around\n"
+            "tree sap."),
         .pokemonScale = 383,
         .pokemonOffset = -9,
         .trainerScale = 256,
@@ -2400,7 +2399,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     [SPECIES_SHEDINJA] =
     {
         .baseHP        = 1,
-        .baseAttack    = 90,
+        .baseAttack    = 120,
         .baseDefense   = 45,
         .baseSpeed     = 40,
         .baseSpAttack  = 30,
@@ -2408,7 +2407,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .types = { TYPE_BUG, TYPE_GHOST },
         .catchRate = 45,
         .expYield = 83,
-        .evYield_HP = 2,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -2416,17 +2414,17 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
         .abilities = { ABILITY_WONDER_GUARD, ABILITY_NONE },
         .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("Shedinja"),
+        .speciesName = _("SHEDINJA"),
         .cryId = CRY_SHEDINJA,
         .natDexNum = NATIONAL_DEX_SHEDINJA,
-        .categoryName = _("Shed"),
+        .categoryName = _("SHED"),
         .height = 8,
         .weight = 12,
         .description = COMPOUND_STRING(
-            "A peculiar Pokémon that floats in air even\n"
-            "though its wings remain completely still.\n"
-            "The inside of its body is hollow and\n"
-            "utterly dark."),
+            "Looking into its back hole for too long\n"
+            "causes the insurgence of a strong feeling\n"
+            "of dread. Some believe it might be a gate\n"
+            "to the afterlife."),
         .pokemonScale = 372,
         .pokemonOffset = -8,
         .trainerScale = 256,
@@ -4880,7 +4878,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             "A Pokémon that has wings like cottony\n"
             "clouds. It uses them to scrub its\n"
             "surroundings of any dirt, otherwise it\n"
-            "cannot relax"),
+            "cannot relax."),
         .pokemonScale = 422,
         .pokemonOffset = -8,
         .trainerScale = 256,

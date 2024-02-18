@@ -11,7 +11,6 @@
     {
       "map_section": "MAPSEC_OLDALE_TOWN",
       "name": "OLDALE TOWN",
-      "description": "This is a test.",
       "x": 4,
       "y": 9,
       "width": 1,
@@ -1718,6 +1717,14 @@
       "name": "BRINE CAVE",
       "x": 0,
       "y": 4,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_MT_KIRIKIRI",
+      "name": "MOUNT KIRIKIRI",
+      "x": 4,
+      "y": 7,
       "width": 1,
       "height": 1
     }

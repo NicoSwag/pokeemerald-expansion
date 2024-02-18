@@ -437,7 +437,8 @@
 #define EFFECT_RAGING_BULL                  431
 #define EFFECT_RAGE_FIST                    432
 #define EFFECT_BAD_POISON_HIT               433
-#define NUM_BATTLE_MOVE_EFFECTS             434
+#define EFFECT_THUNDERSNOW                  434
+#define NUM_BATTLE_MOVE_EFFECTS             435
 
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

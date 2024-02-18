@@ -651,9 +651,10 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Options::
 	case 0, LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle
 	case 1, LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops
 	case 2, LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps
-	case 3, LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint
-	case 4, LittlerootTown_ProfessorBirchsLab_EventScript_Catch
-	case 5, LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
+	case 3, LittlerootTown_ProfessorBirchsLab_EventScript_LevelScaling
+	case 4, LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint
+	case 5, LittlerootTown_ProfessorBirchsLab_EventScript_Catch
+	case 6, LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
 	end
 	
@@ -774,6 +775,46 @@ Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnCaps:
 
 Text_LittlerootTown_ProfessorBirchsLab_TurnedOnCaps:
 	.string "Level caps are now in effect.$"
+
+
+
+
+LittlerootTown_ProfessorBirchsLab_EventScript_LevelScaling::
+	goto_if_set FLAG_LEVEL_SCALING, LittlerootTown_ProfessorBirchsLab_EventScript_LevelScaling_True
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_LevelScaling_False
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_LevelScaling_True::
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffScaling, MSGBOX_YESNO
+	SWITCH VAR_RESULT
+	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	clearflag FLAG_LEVEL_SCALING
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOffScaling, MSGBOX_NPC
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+Text_LittlerootTown_ProfessorBirchsLab_WantTurnOffScaling:
+	.string "Level scaling is currently turned ON.\n"
+	.string "Do you want to turn it OFF?$"
+
+Text_LittlerootTown_ProfessorBirchsLab_TurnedOffScaling:
+	.string "Level scaling is no longer in effect.$"
+
+LittlerootTown_ProfessorBirchsLab_EventScript_LevelScaling_False::
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnScaling, MSGBOX_YESNO
+	SWITCH VAR_RESULT
+	case NO, LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	setflag FLAG_LEVEL_SCALING
+	msgbox Text_LittlerootTown_ProfessorBirchsLab_TurnedOnScaling, MSGBOX_NPC
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_Options
+	end
+
+Text_LittlerootTown_ProfessorBirchsLab_WantTurnOnScaling:
+	.string "Level scaling is currently turned OFF.\n"
+	.string "Do you want to turn it ON?$"
+
+Text_LittlerootTown_ProfessorBirchsLab_TurnedOnScaling:
+	.string "Level scaling is now in effect.$"
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Catch::
 	goto_if_set FLAG_CATCH_ONE, LittlerootTown_ProfessorBirchsLab_EventScript_Catch_True
@@ -1017,11 +1058,13 @@ LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "year by the POKéMON LEAGUE, where\l"
 	.string "the best TRAINERS of the region\l"
 	.string "compete with each other.\p"
-	.string "Oh, but… I've been rambling for\n"
-	.string "far too long.\p"
-	.string "I won't keep you and {RIVAL}\n"
-	.string "any longer than this.\p"
-	.string "Now go!$"
+	.string "I really think that both of you\n"
+	.string "have the determination to get that\l"
+	.string "far.\p"
+	.string "{PLAYER}{KUN}, I'm sure your father\n"
+	.string "will agree with me.\p"
+	.string "Why don't you pay him a visit as the\n"
+	.string "first step in your adventure?$"
 
 
 LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese:

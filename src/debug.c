@@ -4337,12 +4337,14 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_TEMPORAL_TOWER) \
     X(MUS_BRINE_CAVE) \
     X(MUS_WATERFALL_CAVE) \
-    X(MUS_VS_GIRATINA) \
+    X(MUS_VS_SCARY) \
     X(MUS_VS_ULTRA_BEAST) \
     X(MUS_VS_DEVON) \
     X(MUS_VS_INTENSE) \
     X(MUS_VS_JAZZY) \
     X(MUS_VS_HACKERS) \
+    X(MUS_VS_ENEMY_SPIDER) \
+    X(MUS_OLD_CHATEAU) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \

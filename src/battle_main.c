@@ -360,6 +360,7 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_CHAMPION, 50},
     {TRAINER_CLASS_FISHERMAN, 5},
     {TRAINER_CLASS_TRIATHLETE, 10},
+    {TRAINER_CLASS_CREEPING, 0},
     {TRAINER_CLASS_DRAGON_TAMER, 12},
     {TRAINER_CLASS_BIRD_KEEPER, 8},
     {TRAINER_CLASS_NINJA_BOY, 3},
@@ -1925,6 +1926,43 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
     }
 }
 
+
+u8 GetTrainerHighestLevel(void)
+{
+    u8 i;
+    u8 highestLevel = 0;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE && (gPlayerParty[i].level > highestLevel))
+            highestLevel = gPlayerParty[i].level;
+    }
+
+    return highestLevel;
+}
+
+
+
+
+u8 GetEnemyHighestLevel(const struct Trainer *trainer)
+{
+    u8 i;
+    u8 highestLevel = 0;
+    const struct TrainerMon *partyData = trainer->party;
+
+    for (i = 0; i < trainer->partySize; i++)
+    {
+        if (partyData[i].lvl > highestLevel)
+            highestLevel = partyData[i].lvl;
+    }
+
+    return highestLevel;
+}
+
+
+
+
+
 u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer *trainer, bool32 firstTrainer, u32 battleTypeFlags)
 {
     u32 personalityValue;
@@ -1976,7 +2014,22 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 otIdType = OT_ID_PRESET;
                 fixedOtId = HIHALF(personalityValue) ^ LOHALF(personalityValue);
             }
-            CreateMon(&party[i], partyData[i].species, partyData[i].lvl, 0, TRUE, personalityValue, otIdType, fixedOtId);
+            u8 trainerHighestLevel = GetTrainerHighestLevel();
+            u8 enemyHighestLevel = GetEnemyHighestLevel(trainer);
+            u8 currentLevel = partyData[i].lvl;
+            
+            if(FlagGet(FLAG_LEVEL_SCALING) && (trainerHighestLevel > enemyHighestLevel)){
+                u8 levelDifference = enemyHighestLevel - currentLevel;
+                currentLevel = trainerHighestLevel - levelDifference;
+            }
+              
+            CreateMon(&party[i], partyData[i].species, currentLevel, 0, TRUE, personalityValue, otIdType, fixedOtId);
+            
+            
+                
+                
+            
+            
             SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
 
             CustomTrainerPartyAssignMoves(&party[i], &partyData[i]);

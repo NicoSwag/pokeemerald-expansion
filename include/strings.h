@@ -1208,6 +1208,7 @@ extern const u8 gText_MudkipDollAndPrice[];
 extern const u8 gText_HealAfterBattle[];
 extern const u8 gText_CandiesInShop[];
 extern const u8 gText_LevelCaps[];
+extern const u8 gText_LevelScaling[];
 extern const u8 gText_PermaFaint[];
 extern const u8 gText_CatchOne[];
 extern const u8 gText_TM32AndPrice[];

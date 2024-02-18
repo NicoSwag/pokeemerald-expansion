@@ -616,7 +616,9 @@ PetalburgCity_EventScript_Scott::
 	waitmovement 0
 	applymovement LOCALID_LOOKER, Common_Movement_FaceLeft
 	waitmovement 0
-	msgbox PetalburgCity_Text_Looker, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Text_LookerDialogue1, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Text_LookerDialogue2, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Text_LookerDialogue3, MSGBOX_DEFAULT
 	giveitem ITEM_TOWN_MAP
 	msgbox PetalburgCity_Text_Looker2, MSGBOX_DEFAULT
 	setvar VAR_SCOTT_PETALBURG_ENCOUNTER, 1
@@ -723,7 +725,7 @@ PetalburgCity_Movement_PlayerWatchScottExit1:
 	step_end
 
 PetalburgCity_Movement_ScottExit2:
-	walk_down
+	walk_up
 	walk_left
 	walk_left
 	walk_left
@@ -739,7 +741,7 @@ PetalburgCity_Movement_ScottExit2:
 
 PetalburgCity_Movement_PlayerWatchScottExit2:
 	delay_16
-	walk_in_place_faster_down
+	walk_in_place_faster_up
 	delay_16
 	delay_8
 	walk_in_place_faster_left
@@ -769,7 +771,7 @@ PetalburgCity_Movement_PlayerWatchScottExit3:
 	step_end
 
 PetalburgCity_EventScript_GymBoy::
-	msgbox PetalburgCity_Text_AreYouRookieTrainer, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Text_AreYouRookieTrainer, MSGBOX_NPC
 	end
 
 PetalburgCity_Text_WhereIsWally:
@@ -856,8 +858,8 @@ PetalburgCity_Text_ImLookingForTalentedTrainers:
 	.string "Yes, of course! You see right\n"
 	.string "through the ruse, do you not?$"
 
-PetalburgCity_Text_Looker:
-	.string "A clever one, are you?\n"
+PetalburgCity_Text_LookerDialogue1:
+	.string "A clever one, are you not?\n"
 	.string "Yes, I could see it from your eyes…\p"
 	.string "No trickery evades your fine mind!\p"
 	.string "Why, yes, someone with such a\n"
@@ -871,7 +873,9 @@ PetalburgCity_Text_Looker:
 	.string "But my code name, it is LOOKER.\n"
 	.string "It is what they all call me.\p"
 	.string "Yes, I am a globe-trotting\n"
-	.string "elite of the INTERNATIONAL POLICE.\p"
+	.string "elite of the INTERNATIONAL POLICE.$"
+
+PetalburgCity_Text_LookerDialogue2:
 	.string "I was summoned in this region, you\n"
 	.string "see, by a certain individual.\p"
 	.string "My task, it is to investigate some\n"
@@ -887,7 +891,8 @@ PetalburgCity_Text_Looker:
 	.string "But a TRAINER, unfortunately, I am not.\p"
 	.string "Therefore, I have been looking for a\n"
 	.string "trustworthy aide to help me.\p"
-	.string "Say, your name is…?\p"
+	.string "Say, your name is…?$"
+PetalburgCity_Text_LookerDialogue3:
 	.string "… …\p"
 	.string "It is {PLAYER}, then?\n"
 	.string "Magnificent!\p"

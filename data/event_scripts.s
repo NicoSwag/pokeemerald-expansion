@@ -1276,3 +1276,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/RustboroCity_Gym_Arena/scripts.inc"
 
 	.include "data/maps/OldaleRuins/scripts.inc"
+
+	.include "data/maps/MtKirikiri_Side_area/scripts.inc"

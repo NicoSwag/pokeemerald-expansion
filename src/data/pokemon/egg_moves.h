@@ -692,19 +692,9 @@ const u16 gEggMoves[] = {
         MOVE_SUPERPOWER),
 
     egg_moves(LAPRAS,
-        MOVE_FORESIGHT,
-        MOVE_TICKLE,
-        MOVE_REFRESH,
+        MOVE_SHELL_SMASH,
         MOVE_DRAGON_DANCE,
-        MOVE_CURSE,
-        MOVE_SLEEP_TALK,
-        MOVE_HORN_DRILL,
-        MOVE_ANCIENT_POWER,
-        MOVE_WHIRLPOOL,
-        MOVE_FISSURE,
-        MOVE_DRAGON_PULSE,
-        MOVE_AVALANCHE,
-        MOVE_FUTURE_SIGHT,
+        MOVE_RECOVER,
         MOVE_FREEZE_DRY),
 
 
@@ -1556,14 +1546,20 @@ const u16 gEggMoves[] = {
         MOVE_TICKLE),
 
     egg_moves(NINCADA,
-        MOVE_ENDURE,
-        MOVE_FEINT_ATTACK,
-        MOVE_GUST,
-        MOVE_SILVER_WIND,
-        MOVE_BUG_BUZZ,
-        MOVE_NIGHT_SLASH,
-        MOVE_BUG_BITE,
+        MOVE_SKITTER_SMACK,
         MOVE_FINAL_GAMBIT),
+
+   egg_moves(NINJASK,
+        MOVE_SKITTER_SMACK,
+        MOVE_FINAL_GAMBIT,
+        MOVE_WATER_SHURIKEN,
+        MOVE_FOUL_PLAY),
+
+    egg_moves(SHEDINJA,
+        MOVE_SKITTER_SMACK,
+        MOVE_FINAL_GAMBIT,
+        MOVE_LAST_RESPECTS,
+        MOVE_SUCKER_PUNCH),
 
     egg_moves(WHISMUR,
         MOVE_EXTRASENSORY,
@@ -1814,7 +1810,7 @@ const u16 gEggMoves[] = {
         MOVE_POWER_UP_PUNCH),
 
     egg_moves(SWABLU,
-        MOVE_HAZE,
+        MOVE_FAKE_OUT,
         MOVE_TAILWIND),
 
     egg_moves(ZANGOOSE,
@@ -2831,6 +2827,10 @@ const u16 gEggMoves[] = {
         MOVE_BOULDER_TOSS,
         MOVE_KNOCK_OFF),
 
+    egg_moves(GHOLDENGO,
+        MOVE_NASTY_PLOT,
+        MOVE_PSYSHOCK),
+
     egg_moves(ARCHEN,
         MOVE_HIT_AND_RUN,
         MOVE_ROOST),
@@ -3262,10 +3262,14 @@ const u16 gEggMoves[] = {
         MOVE_HELPING_HAND),
 
     egg_moves(HELIOPTILE,
-        MOVE_AGILITY,
         MOVE_GLARE,
-        MOVE_CAMOUFLAGE,
-        MOVE_ELECTRIC_TERRAIN),
+        MOVE_RISING_VOLTAGE),
+
+    egg_moves(HELIOLISK,
+        MOVE_GLARE,
+        MOVE_RISING_VOLTAGE,
+        MOVE_HEAT_WAVE,
+        MOVE_NASTY_PLOT),
 
     egg_moves(TYRUNT,
         MOVE_DRAGON_DANCE,

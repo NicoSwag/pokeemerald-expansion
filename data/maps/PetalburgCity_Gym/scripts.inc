@@ -105,6 +105,7 @@ PetalburgCity_Gym_EventScript_WallyContinue::
 	removeobject LOCALID_WALLY
 	setflag FLAG_HIDE_PETALBURG_CITY_WALLY
 	delay 30
+	faceplayer
 	msgbox PetalburgCity_Gym_Text_DadGoCollectBadges, MSGBOX_DEFAULT
 	setvar VAR_PETALBURG_GYM_STATE, 2
 	setvar VAR_PETALBURG_CITY_STATE, 3
@@ -1178,8 +1179,8 @@ PetalburgCity_Gym_Text_DadOhYoureWallyRight:
 PetalburgCity_Gym_Text_WallyIveNeverCaughtAPokemon:
 	.string "WALLY: I was thinking of starting\n"
 	.string "a journey by myself.\p"
-	.string "I thought I would be lonely all on my,\n"
-	.string "own, so I wanted to take a POKéMON along.\p"
+	.string "I thought I would be lonely all on my\n"
+	.string "own, so I wanted to take a POKéMON.\p"
 	.string "But I've never caught a POKéMON before.\n"
 	.string "Until now…$"
 

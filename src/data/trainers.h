@@ -9921,16 +9921,16 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_Pablo5),
     },
 
-    [TRAINER_KOJI_2] =
+    [TRAINER_KIRIKIRI_SHADOW_1] =
     {
-        .trainerClass = TRAINER_CLASS_BLACK_BELT,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
-        .trainerPic = TRAINER_PIC_BLACK_BELT,
-        .trainerName = _("KOJI"),
+        .trainerClass = TRAINER_CLASS_CREEPING,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
+        .trainerPic = TRAINER_PIC_SHADOW_M,
+        .trainerName = _("SHADOW"),
         .items = {},
-        .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = TRAINER_PARTY(sParty_Koji2),
+        .doubleBattle = TRUE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE | AI_FLAG_HELP_PARTNER | AI_FLAG_SMART_SWITCHING | AI_FLAG_DOUBLE_BATTLE,
+        .party = TRAINER_PARTY(sParty_Kirikiri_Shadow_1)
     },
 
     [TRAINER_KOJI_3] =

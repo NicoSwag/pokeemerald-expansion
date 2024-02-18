@@ -631,6 +631,8 @@ gSongTable::
 	song mus_vs_intense, 0, 0
 	song mus_vs_jazzy, 0, 0
 	song mus_vs_hackers, 0, 0
+	song mus_vs_enemy_spider, 0, 0
+	song mus_old_chateau, 0, 0
 	.align 2
 dummy_song_header:
 	.byte 0, 0, 0, 0

@@ -858,3 +858,25 @@ const struct Tileset gTileset_Petalburg_Ruins =
     .metatileAttributes = gMetatileAttributes_Petalburg_Ruins,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Rustboro_Surroundings =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_Rustboro_Surroundings,
+    .palettes = gTilesetPalettes_Rustboro_Surroundings,
+    .metatiles = gMetatiles_Rustboro_Surroundings,
+    .metatileAttributes = gMetatileAttributes_Rustboro_Surroundings,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_RustboroSurroundings =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_RustboroSurroundings,
+    .palettes = gTilesetPalettes_RustboroSurroundings,
+    .metatiles = gMetatiles_RustboroSurroundings,
+    .metatileAttributes = gMetatileAttributes_RustboroSurroundings,
+    .callback = NULL,
+};

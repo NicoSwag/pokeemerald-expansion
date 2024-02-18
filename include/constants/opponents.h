@@ -825,7 +825,7 @@
 #define TRAINER_PABLO_3                     821
 #define TRAINER_PABLO_4                     822
 #define TRAINER_PABLO_5                     823
-#define TRAINER_KOJI_2                      824
+#define TRAINER_KIRIKIRI_SHADOW_1          824
 #define TRAINER_KOJI_3                      825
 #define TRAINER_KOJI_4                      826
 #define TRAINER_KOJI_5                      827

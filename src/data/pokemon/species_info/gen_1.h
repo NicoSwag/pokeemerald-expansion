@@ -6705,7 +6705,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseSpDefense = 50,                            \
         .catchRate = 190,                               \
         .expYield = 65,                                 \
-        .speciesName = _("Grimer"),                     \
+        .speciesName = _("GRIMER"),                     \
         .cryId = CRY_GRIMER,                            \
         .natDexNum = NATIONAL_DEX_GRIMER,               \
         .categoryName = _("SLUDGE"),                    \
@@ -10457,10 +10457,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 #define LAPRAS_MISC_INFO                                                                \
         .baseHP        = 130,                                                           \
         .baseAttack    = 85,                                                            \
-        .baseDefense   = 80,                                                            \
+        .baseDefense   = 90,                                                            \
         .baseSpeed     = 60,                                                            \
         .baseSpAttack  = 85,                                                            \
-        .baseSpDefense = 95,                                                            \
+        .baseSpDefense = 105,                                                            \
         .types = { TYPE_WATER, TYPE_ICE },                                              \
         .catchRate = 45,                                                                \
         .expYield = 187,                                                                \
@@ -10472,12 +10472,12 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = STANDARD_FRIENDSHIP,                                              \
         .growthRate = GROWTH_SLOW,                                                      \
         .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_WATER_1 },                          \
-        .abilities = { ABILITY_WATER_ABSORB, ABILITY_SHELL_ARMOR, ABILITY_HYDRATION },  \
+        .abilities = { ABILITY_WATER_ABSORB, ABILITY_REGENERATOR, ABILITY_SNOW_FORCE },  \
         .bodyColor = BODY_COLOR_BLUE,                                                   \
-        .speciesName = _("Lapras"),                                                     \
+        .speciesName = _("LAPRAS"),                                                     \
         .cryId = CRY_LAPRAS,                                                            \
         .natDexNum = NATIONAL_DEX_LAPRAS,                                               \
-        .categoryName = _("Transport"),                                                 \
+        .categoryName = _("TRANSPORT"),                                                 \
         .footprint = gMonFootprint_Lapras,                                              \
         LEARNSETS(Lapras),                                                              \
         .formSpeciesIdTable = sLaprasFormSpeciesIdTable,                                \
@@ -10489,10 +10489,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 25,
         .weight = 2200,
         .description = COMPOUND_STRING(
-            "People have driven Lapras almost to the\n"
-            "point of extinction. In the evenings,\n"
-            "it is said to sing plaintively as it seeks\n"
-            "what few others of its kind still remain."),
+            "They have gentle hearts and can understand\n"
+            "human intentions. Because they rarely fight\n"
+            "back, they often get caught by poachers.\n"
+            "Their numbers are dwindling."),
         .pokemonScale = 257,
         .pokemonOffset = 10,
         .trainerScale = 423,

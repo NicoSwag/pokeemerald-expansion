@@ -116,6 +116,7 @@ gSpecials::
 	def_special HipsterTryTeachWord
 	def_special PlayBardSong
 	def_special SetMauvilleOldManObjEventGfx
+	def_special SetMauvilleOldMan
 	def_special GenerateGiddyLine
 	def_special GiddyShouldTellAnotherTale
 	def_special StorytellerGetFreeStorySlot

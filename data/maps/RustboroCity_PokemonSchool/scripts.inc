@@ -211,6 +211,8 @@ RustboroCity_PokemonSchool_Text_ExplainTypes:
 	.string "move, like THUNDER WAVE, and not by a\l"
 	.string "secondary effect of an attacking move,\l"
 	.string "like BODY SLAM.\p"
+	.string "ROCK types, as it turns out, take neutral\n"
+	.string "damage to GROUND attacks.\p"
 	.string "Finally, FIGHTING is completely immune\n"
 	.string "to GHOST.$"  
 

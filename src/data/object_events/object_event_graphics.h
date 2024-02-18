@@ -271,6 +271,7 @@ const u16 gObjectEventPal_DarkSkin2[] = INCBIN_U16("graphics/object_events/palet
 const u16 gObjectEventPal_RichBoy[] = INCBIN_U16("graphics/object_events/palettes/rich_boy.gbapal");
 const u16 gObjectEventPal_DarkSkin3[] = INCBIN_U16("graphics/object_events/palettes/darkskin3.gbapal");
 const u16 gObjectEventPal_DarkSkin4[] = INCBIN_U16("graphics/object_events/palettes/darkskin4.gbapal");
+const u16 gObjectEventPal_PitchBlack[] = INCBIN_U16("graphics/object_events/palettes/pitchblack.gbapal");
 const u16 gObjectEventPal_Aqua[] = INCBIN_U16("graphics/object_events/palettes/aqua.gbapal");
 const u16 gObjectEventPal_Courtney[] = INCBIN_U16("graphics/object_events/palettes/courtney.gbapal");
 const u16 gObjectEventPal_Tabitha[] = INCBIN_U16("graphics/object_events/palettes/tabitha.gbapal");

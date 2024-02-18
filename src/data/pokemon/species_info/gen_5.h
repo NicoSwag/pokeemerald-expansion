@@ -1426,7 +1426,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
         .abilities = {ABILITY_BLAZING_FAST, ABILITY_NONE, ABILITY_SURGE_SURFER},
         .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("BLIYZLE"),
+        .speciesName = _("BLITZLE"),
         .cryId = CRY_BLITZLE,
         .natDexNum = NATIONAL_DEX_BLITZLE,
         .categoryName = _("SPARKING"),
@@ -3871,7 +3871,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .description = COMPOUND_STRING(
             "A spirit possessing the remains\n"
             "of a shattered clay object. Touching\n"
-            "it may reveal shattered memories of\n"
+            "it may reveal distant memories of\n"
             "a past life."),
         FRONT_PIC(YamaskGalarian, 48, 40),
         .frontPicYOffset = 13,

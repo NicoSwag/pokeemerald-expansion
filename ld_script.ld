@@ -1267,6 +1267,8 @@ SECTIONS {
         sound/songs/midi/mus_vs_intense.o(.rodata);
         sound/songs/midi/mus_vs_jazzy.o(.rodata);
         sound/songs/midi/mus_vs_hackers.o(.rodata);
+        sound/songs/midi/mus_vs_enemy_spider.o(.rodata);
+        sound/songs/midi/mus_old_chateau.o(.rodata);
 
 
 

@@ -460,6 +460,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectBrickBreak              @ EFFECT_RAGING_BULL
 	.4byte BattleScript_EffectHit                     @ EFFECT_RAGE_FIST
 	.4byte BattleScript_EffectBadPoisonHit               @ EFFECT_BAD_POISON_HIT
+	.4byte BattleScript_EffectThundersnow              @ EFFECT_THUNDERSNOW
 
 BattleScript_EffectGlaiveRush::
 	call BattleScript_EffectHit_Ret
@@ -11393,3 +11394,19 @@ BattleScript_EffectEmp::
 	call BattleScript_ActivateTerrainEffects
 	goto BattleScript_MoveEnd
 	end
+
+BattleScript_EffectThundersnow::
+	attackcanceler
+	attackstring
+	ppreduce
+	call BattleScript_CheckPrimalWeather
+	setsnow
+	attackanimation
+	waitanimation
+	call BattleScript_MoveWeatherChangeRet
+	setremoveterrain BattleScript_ButItFailed
+	printfromtable gTerrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
+	call BattleScript_ActivateTerrainEffects
+	goto BattleScript_MoveEnd

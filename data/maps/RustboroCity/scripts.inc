@@ -1,7 +1,7 @@
 .set LOCALID_LITTLE_BOY, 7
 .set LOCALID_LITTLE_GIRL, 8
-.set LOCALID_DEVON_EMPLOYEE, 9
-.set LOCALID_GRUNT, 10
+.set LOCALID_LOOKER, 34
+.set LOCALID_DEVON, 9
 .set LOCALID_RIVAL, 14
 .set LOCALID_SCIENTIST, 15
 .set LOCALID_BOYPROTESTER, 18
@@ -192,7 +192,7 @@ RustboroCity_EventScript_BoyProtest::
 
 RustboroCity_EventScript_Engineer_3::
 	lock
-	msgbox RustboroCity_Text_Engineer_3, MSGBOX_NPC
+	msgbox RustboroCity_Text_Engineer_3, MSGBOX_DEFAULT
 	release
 	end
 
@@ -208,7 +208,7 @@ RustboroCity_EventScript_GirlProtest::
 RustboroCity_EventScript_Rhydon::
 	lock
 	playmoncry SPECIES_RHYDON, CRY_MODE_NORMAL
-	msgbox RustboroCity_Text_Rhydon, MSGBOX_NPC
+	msgbox RustboroCity_Text_Rhydon, MSGBOX_DEFAULT
 	release
 	end
 
@@ -332,6 +332,8 @@ RustboroCity_EventScript_LittleGirl::
 
 RustboroCity_EventScript_Bodyguards::
 	msgbox RustboroCity_Text_Bodyguards, MSGBOX_DEFAULT
+	release
+	closemessage
 	end
 
 RustboroCity_EventScript_Man2::
@@ -343,32 +345,32 @@ RustboroCity_EventScript_Man2::
 
 RustboroCity_EventScript_StolenGoodsTrigger0::
 	lockall
-	setobjectxyperm LOCALID_DEVON_EMPLOYEE, 14, 21
-	setobjectmovementtype LOCALID_DEVON_EMPLOYEE, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectxyperm LOCALID_LOOKER, 14, 21
+	setobjectmovementtype LOCALID_LOOKER, MOVEMENT_TYPE_FACE_RIGHT
 	setvar VAR_0x8004, 0
 	goto RustboroCity_EventScript_StolenGoodsScene
 	end
 
 RustboroCity_EventScript_StolenGoodsTrigger1::
 	lockall
-	setobjectxyperm LOCALID_DEVON_EMPLOYEE, 14, 21
-	setobjectmovementtype LOCALID_DEVON_EMPLOYEE, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectxyperm LOCALID_LOOKER, 14, 21
+	setobjectmovementtype LOCALID_LOOKER, MOVEMENT_TYPE_FACE_RIGHT
 	setvar VAR_0x8004, 1
 	goto RustboroCity_EventScript_StolenGoodsScene
 	end
 
 RustboroCity_EventScript_StolenGoodsTrigger2::
 	lockall
-	setobjectxyperm LOCALID_DEVON_EMPLOYEE, 14, 21
-	setobjectmovementtype LOCALID_DEVON_EMPLOYEE, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectxyperm LOCALID_LOOKER, 14, 21
+	setobjectmovementtype LOCALID_LOOKER, MOVEMENT_TYPE_FACE_RIGHT
 	setvar VAR_0x8004, 2
 	goto RustboroCity_EventScript_StolenGoodsScene
 	end
 
 RustboroCity_EventScript_StolenGoodsTrigger3::
 	lockall
-	setobjectxyperm LOCALID_DEVON_EMPLOYEE, 14, 21
-	setobjectmovementtype LOCALID_DEVON_EMPLOYEE, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectxyperm LOCALID_LOOKER, 14, 21
+	setobjectmovementtype LOCALID_LOOKER, MOVEMENT_TYPE_FACE_RIGHT
 	setvar VAR_0x8004, 3
 	goto RustboroCity_EventScript_StolenGoodsScene
 	end
@@ -376,30 +378,30 @@ RustboroCity_EventScript_StolenGoodsTrigger3::
 
 RustboroCity_EventScript_StolenGoodsTrigger4::
 	lockall
-	setobjectxyperm LOCALID_DEVON_EMPLOYEE, 14, 21
-	setobjectmovementtype LOCALID_DEVON_EMPLOYEE, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectxyperm LOCALID_LOOKER, 14, 21
+	setobjectmovementtype LOCALID_LOOKER, MOVEMENT_TYPE_FACE_RIGHT
 	setvar VAR_0x8004, 4
 	goto RustboroCity_EventScript_StolenGoodsScene
 	end
 
 RustboroCity_EventScript_StolenGoodsScene::
 	msgbox RustboroCity_Text_OutOfTheWay, MSGBOX_DEFAULT
+	setflag FLAG_HIDE_RUSTBORO_CITY_LOOKER
 	closemessage
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
-	addobject LOCALID_GRUNT
-	addobject LOCALID_DEVON_EMPLOYEE
-	applymovement LOCALID_GRUNT, RustboroCity_Movement_GruntEscape
+	addobject LOCALID_DEVON
+	setobjectxy LOCALID_DEVON, 12, 21
+	addobject LOCALID_LOOKER
+	applymovement LOCALID_DEVON, RustboroCity_Movement_GruntEscape
 	waitmovement 0
-	removeobject LOCALID_GRUNT
-	applymovement LOCALID_DEVON_EMPLOYEE, RustboroCity_Movement_EmployeeChaseGrunt1
+	removeobject LOCALID_DEVON
+	applymovement LOCALID_LOOKER, RustboroCity_Movement_EmployeeChaseGrunt1
 	waitmovement 0
-	msgbox RustboroCity_Text_WaitDontTakeMyGoods, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_DEVON_EMPLOYEE, RustboroCity_Movement_EmployeeChaseGrunt2
+	applymovement LOCALID_LOOKER, RustboroCity_Movement_EmployeeChaseGrunt2
 	waitmovement 0
 	fadedefaultbgm
-	removeobject LOCALID_DEVON_EMPLOYEE
-	setobjectxyperm LOCALID_DEVON_EMPLOYEE, 30, 10
+	removeobject LOCALID_LOOKER
+	setobjectxyperm LOCALID_LOOKER, 30, 10
 	clearflag FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
 	setflag FLAG_DEVON_GOODS_STOLEN
 	setvar VAR_RUSTBORO_CITY_STATE, 2
@@ -408,8 +410,6 @@ RustboroCity_EventScript_StolenGoodsScene::
 	clearflag FLAG_HIDE_ROUTE_116_MR_BRINEY
 	clearflag FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
 	clearflag FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT
-	setflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
-	setflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
 	releaseall
 	end
 
@@ -425,31 +425,31 @@ RustboroCity_EventScript_YouGotItThankYou::
 
 @ Unknown, unused employee movements. Based on the differences in movement theyre for approaching an object (probably the player) in different positions
 RustboroCity_EventScript_EmployeeApproachUp::
-	applymovement LOCALID_DEVON_EMPLOYEE, RustboroCity_Movement_EmployeeApproachUp
+	applymovement LOCALID_LOOKER, RustboroCity_Movement_EmployeeApproachUp
 	waitmovement 0
 	return
 
 @ Unused, see above
 RustboroCity_EventScript_EmployeeApproachLeft::
-	applymovement LOCALID_DEVON_EMPLOYEE, RustboroCity_Movement_EmployeeApproachLeft
+	applymovement LOCALID_LOOKER, RustboroCity_Movement_EmployeeApproachLeft
 	waitmovement 0
 	return
 
 @ Unused, see above
 RustboroCity_EventScript_EmployeeApproachRight::
-	applymovement LOCALID_DEVON_EMPLOYEE, RustboroCity_Movement_EmployeeApproachRight
+	applymovement LOCALID_LOOKER, RustboroCity_Movement_EmployeeApproachRight
 	waitmovement 0
 	return
 
 @ Unused, see above
 RustboroCity_EventScript_EmployeeApproachDown::
-	applymovement LOCALID_DEVON_EMPLOYEE, RustboroCity_Movement_EmployeeApproachDown
+	applymovement LOCALID_LOOKER, RustboroCity_Movement_EmployeeApproachDown
 	waitmovement 0
 	return
 
 @ Unused, similar movement to the above scripts
 RustboroCity_EventScript_EmployeeApproachPlayerFar::
-	applymovement LOCALID_DEVON_EMPLOYEE, RustboroCity_Movement_EmployeeApproachPlayerFar
+	applymovement LOCALID_LOOKER, RustboroCity_Movement_EmployeeApproachPlayerFar
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
@@ -603,57 +603,57 @@ RustboroCity_EventScript_EmployeeAskToGetGoods::
 	call_if_eq VAR_TEMP_1, 3, RustboroCity_EventScript_EmployeeApproachPlayerDown1
 	setflag FLAG_INTERACTED_WITH_DEVON_EMPLOYEE_GOODS_STOLEN
 	setvar VAR_RUSTBORO_CITY_STATE, 3
-	copyobjectxytoperm LOCALID_DEVON_EMPLOYEE
+	copyobjectxytoperm LOCALID_LOOKER
 	msgbox RustboroCity_Text_HelpMeIWasRobbed, MSGBOX_DEFAULT
 	releaseall
 	end
 
 @ The below movement scripts are either partially or fully duplicated by the movement scripts when the player returns the goods
 RustboroCity_EventScript_EmployeeFacePlayerUp1::
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_LOOKER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+	applymovement LOCALID_LOOKER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_Delay48
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	return
 
 RustboroCity_EventScript_EmployeeFacePlayerLeft1::
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_LOOKER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+	applymovement LOCALID_LOOKER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_Delay48
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
 	return
 
 RustboroCity_EventScript_EmployeeFacePlayerDown1::
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_LOOKER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+	applymovement LOCALID_LOOKER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_Delay48
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	return
 
 RustboroCity_EventScript_EmployeeApproachPlayerDown1::
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_LOOKER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+	applymovement LOCALID_LOOKER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_Delay48
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, RustboroCity_Movement_EmployeeApproachPlayerDown
+	applymovement LOCALID_LOOKER, RustboroCity_Movement_EmployeeApproachPlayerDown
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
@@ -712,62 +712,62 @@ RustboroCity_EventScript_BagFull::
 	return
 
 RustboroCity_EventScript_EmployeeFacePlayerUp2::
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_LOOKER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+	applymovement LOCALID_LOOKER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_Delay48
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	return
 
 RustboroCity_EventScript_EmployeeFacePlayerLeft2::
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_LOOKER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+	applymovement LOCALID_LOOKER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_Delay48
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
 	return
 
 RustboroCity_EventScript_EmployeeFacePlayerDown2::
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_LOOKER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+	applymovement LOCALID_LOOKER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_Delay48
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	return
 
 RustboroCity_EventScript_EmployeeApproachPlayerDown2::
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_LOOKER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+	applymovement LOCALID_LOOKER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_Delay48
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, RustboroCity_Movement_EmployeeApproachPlayerDown
+	applymovement LOCALID_LOOKER, RustboroCity_Movement_EmployeeApproachPlayerDown
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	return
 
 RustboroCity_EventScript_EmployeeFacePlayerRight::
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_LOOKER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_ExclamationMark
+	applymovement LOCALID_LOOKER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_Delay48
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
 	waitmovement 0
 	return
 
@@ -1202,8 +1202,8 @@ RustboroCity_Text_TradePokemonGrowFast:
 	.string "Where will our kids play?$"
 
 RustboroCity_Text_OutOfTheWay:
-	.string "Get out!\n"
-	.string "Out of the way!$"
+	.string "Come back here, suspicious\n"
+	.string "man!$"
 
 RustboroCity_Text_WaitDontTakeMyGoods:
 	.string "Wait! Pleeeaaase!\p"
@@ -1431,18 +1431,20 @@ RustboroCity_Text_Delibird:
 RustboroCity_Text_LookerDisguise:
 	.string "Psst! Hey!\n"
 	.string "It is me, LOOKER!\p"
-	.string "LOOKER: Quite the disguise, is it not?\p"
+	.string "Quite the disguise, is it not?\p"
 	.string "You see, I have reason to believe that\n"
-	.string "the suspicious man we encountered earlier\l"
-	.string "is, in fact, an employee of DEVON CORP.!\p"
-	.string "Therefore, I am snooping around here in an\n"
-	.string "attempt to find out where he has gone.\p"
-	.string "If I uncover any leads, I will let you know,\n"
-	.string "yes!$"
+	.string "the suspicious man we encountered\l"
+	.string "is, in fact, an employee of DEVON!\p"
+	.string "Therefore, I am snooping around here to\n"
+	.string "try and find out where he has gone.\p"
+	.string "If I uncover any leads, I will let you\n"
+	.string "know, yes!$"
 
 RustboroCity_Text_Bodyguards:
-	.string "We! Are PRESIDENT STONE's private security!\n"
-	.string "And you! Are trespassing on private property!\p"
+	.string "We! Are PRESIDENT STONE's private!\n"
+	.string "security!\p"
+	.string "And you! Are trespassing on private\n"
+	.string "property!\p"
 	.string "Get outta here, kid!$"
 
 RustboroCity_Text_MagmaProtest:
@@ -1461,7 +1463,7 @@ RustboroCity_Text_GirlProtest:
 
 RustboroCity_Text_Engineer_3:
 	.string "C'mon, kids…\p"
-	.string "I'm just doing what I've been paid for.$"
+	.string "I'm just trying to do my job.$"
 
 RustboroCity_Text_Rhydon:
 	.string "RHYDON: Gwraaaaaaa!$"
@@ -1484,8 +1486,8 @@ RustboroCity_Text_Mr_Briney:
 	.string "The rascal decided to fly over the\n"
 	.string "fence!\p"
 	.string "Now he's on the other side, but…\n"
-	.string "This rapscallion of a man isn't letting me\l"
-	.string "go through to save me boy!\p"
+	.string "This rapscallion of a man isn't letting\l"
+	.string "me go through to save me boy!\p"
 	.string "Oh, PEEKO, me love…\n"
 	.string "Oh, PEEKO, me son!\p"
 	.string "I can but pray for yer safety!$"

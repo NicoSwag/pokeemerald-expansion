@@ -1634,7 +1634,7 @@ const struct Item gItems[] =
     [ITEM_NUGGET] =
     {
         .name = _("NUGGET"),
-        .price = 6000,
+        .price = 12000,
         .description = sNuggetDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -5688,7 +5688,7 @@ const struct Item gItems[] =
 
     [ITEM_KINGS_ROCK] =
     {
-        .name = _("King's Rock"),
+        .name = _("KING'S ROCK"),
         .price = 5000,
         .holdEffect = HOLD_EFFECT_FLINCH,
         .holdEffectParam = 10,
@@ -6350,7 +6350,7 @@ const struct Item gItems[] =
 
     [ITEM_ASPEAR_BERRY] =
     {
-        .name = _("Aspear Berry"),
+        .name = _("ASPEAR BERRY"),
         .price = 20,
         .holdEffect = HOLD_EFFECT_CURE_FRZ,
         .description = sAspearBerryDesc,

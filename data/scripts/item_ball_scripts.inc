@@ -1,5 +1,9 @@
 Route102_EventScript_ItemPotion::
-	finditem ITEM_POTION
+	finditem ITEM_HEART_SCALE
+	end
+	
+LowerRoute115_EventScript_SkyFragment::
+	finditem ITEM_HEART_SCALE
 	end
 	
 Route102_EventScript_ItemMuscleBand::
@@ -15,6 +19,10 @@ Route103_EventScript_ItemPPUp::
 	finditem ITEM_PP_UP
 	end
 
+Route102_EventScript_ItemSkyFragment::
+	finditem ITEM_HEART_SCALE
+	end
+
 
 Route104_EventScript_ItemPPUp::
 	finditem ITEM_PP_UP
@@ -26,6 +34,10 @@ Route104_EventScript_ItemSkyFragment::
 
 BrineCave_EventScript_Protect::
 	finditem ITEM_TM_PROTECT
+	end
+
+OldaleTown_EventScript_ItemSkyFragment::	
+	finditem ITEM_HEART_SCALE
 	end
 
 Route104_EventScript_ItemXAccuracy::

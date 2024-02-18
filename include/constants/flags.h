@@ -57,7 +57,7 @@
 #define FLAG_SAW_ROXANNE_CUTSCENE    0x2C // Unused Flag
 #define FLAG_EXP_SHARE_GEN6    0x2D // Unused Flag
 #define FLAG_EVO_SCREEN    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
+#define FLAG_LEVEL_SCALING    0x2F // Unused Flag
 #define FLAG_UNUSED_0x030    0x30 // Unused Flag
 #define FLAG_UNUSED_0x031    0x31 // Unused Flag
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
@@ -662,10 +662,10 @@
 #define FLAG_RECEIVED_TM02  0x26B // Unused Flag
 #define FLAG_RECEIVED_TM04  0x26C // Unused Flag
 #define FLAG_RECEIVED_TM05  0x26D // Unused Flag
-#define FLAG_UNUSED_0x26E 0x26E // Battle Move Info
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
-#define FLAG_UNUSED_0x271  0x271 // Unused Flag
+#define FLAG_ITEM_OLDALE_SKY_FRAGMENT 0x26E // Battle Move Info
+#define FLAG_ITEM_PETALBURG_SKY_FRAGMENT  0x26F // Unused Flag
+#define FLAG_ITEM_ROUTE115_SKY_FRAGMENT  0x270 // Unused Flag
+#define FLAG_OLDALE_ODD_INSCRIPTION  0x271 // Unused Flag
 #define FLAG_UNUSED_0x272  0x272 // Unused Flag
 #define FLAG_UNUSED_0x273  0x273 // Unused Flag
 #define FLAG_UNUSED_0x274  0x274 // Unused Flag
@@ -1222,7 +1222,7 @@
 #define FLAG_ITEM_ROUTE104_SKY_FRAGMENT                                           0x494 // Unused Flag
 #define FLAG_ITEM_ROUTE104_SKY_FRAGMENT_2                                           0x495 // Unused Flag
 #define FLAG_ITEM_DRAGON_FANG                                           0x496 // Unused Flag
-#define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
+#define FLAG_HIDE_FIRST_SHADOW                                       0x497 // Unused Flag
 #define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag

@@ -268,6 +268,7 @@ static const struct MenuAction MultichoiceList_SpecialOptionsMenu[] =
     {gText_HealAfterBattle},
     {gText_CandiesInShop},
     {gText_LevelCaps},
+    {gText_LevelScaling},
     {gText_PermaFaint},
     {gText_CatchOne},
     {gText_Exit},

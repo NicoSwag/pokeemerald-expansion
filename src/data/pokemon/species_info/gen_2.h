@@ -602,7 +602,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_FLYING},
-        .abilities = {ABILITY_FIXED_GAZE, ABILITY_NONE, ABILITY_FOREWARN},
+        .abilities = {ABILITY_STALWART, ABILITY_NONE, ABILITY_FOREWARN},
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("HOOTHOOT"),
         .cryId = CRY_HOOTHOOT,
@@ -653,7 +653,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_FLYING},
-        .abilities = {ABILITY_FIXED_GAZE, ABILITY_NONE, ABILITY_PSYCHIC_SURGE},
+        .abilities = {ABILITY_STALWART, ABILITY_NONE, ABILITY_PSYCHIC_SURGE},
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("NOCTOWL"),
         .cryId = CRY_NOCTOWL,
@@ -702,7 +702,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
         .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG},
-        .abilities = {ABILITY_FIST_BARRAGE, ABILITY_NONE, ABILITY_NONE},
+        .abilities = {ABILITY_IRON_FIST, ABILITY_NONE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("LEDYBA"),
         .cryId = CRY_LEDYBA,
@@ -711,10 +711,10 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .height = 10,
         .weight = 108,
         .description = COMPOUND_STRING(
-            "At night, LEDYBA can be found gazing at the\n"
-            "stars. According to folklore, its deepest\n"
-            "wish is to become bigger and stronger to help\n"
-            "those who aren't lucky."),
+            "At night, LEDYBA gazes at the stars\n"
+            "According to folklore, its deepest\n"
+            "wish is to become bigger and stronger\n"
+            "to help the unlucky."),
         .pokemonScale = 256,
         .pokemonOffset = 4,
         .trainerScale = 256,

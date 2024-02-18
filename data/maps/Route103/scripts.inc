@@ -1,6 +1,6 @@
 .set LOCALID_RIVAL, 2
-.set LOCALID_MAGMAM, 21
-.set LOCALID_MAGMAF, 22
+.set LOCALID_MAGMAM, 20
+.set LOCALID_MAGMAF, 21
 
 Route103_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route103_OnTransition
@@ -44,7 +44,7 @@ Route103_EventScript_RivalMay::
 	closemessage
 	playbgm MUS_ENCOUNTER_MAGMA, TRUE
 	applymovement LOCALID_MAGMAM Common_Movement_ExclamationMark
-	applymovement LOCALID_MAGMAM Common_Movement_ExclamationMark
+	applymovement LOCALID_MAGMAF Common_Movement_ExclamationMark
 	waitmovement 0
 	goto Route103_EventScript_MagmaStart
 	end

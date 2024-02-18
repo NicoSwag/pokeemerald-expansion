@@ -1324,3 +1324,9 @@ $(MID_SUBDIR)/mus_vs_jazzy.s: %.s: %.mid
 $(MID_SUBDIR)/mus_vs_hackers.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G193 -v100 -P5
 
+$(MID_SUBDIR)/mus_vs_enemy_spider.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_old_chateau.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+

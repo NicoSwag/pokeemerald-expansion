@@ -5170,6 +5170,8 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_PIKE_QUEEN:
         case TRAINER_CLASS_PYRAMID_KING:
             return MUS_VS_FRONTIER_BRAIN;
+        case TRAINER_CLASS_CREEPING:    
+            return MUS_VS_GIRATINA;
         default:
             return MUS_VS_TRAINER;
         }

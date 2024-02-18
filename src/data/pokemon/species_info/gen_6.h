@@ -2666,31 +2666,30 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
 #if P_FAMILY_HELIOPTILE
     [SPECIES_HELIOPTILE] =
     {
-        .baseHP        = 44,
-        .baseAttack    = 38,
-        .baseDefense   = 33,
+        .baseHP        = 45,
+        .baseAttack    = 40,
+        .baseDefense   = 35,
         .baseSpeed     = 70,
-        .baseSpAttack  = 61,
-        .baseSpDefense = 43,
+        .baseSpAttack  = 60,
+        .baseSpDefense = 45,
         .types = { TYPE_ELECTRIC, TYPE_NORMAL },
         .catchRate = 190,
         .expYield = 58,
-        .evYield_Speed = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_DRAGON },
-        .abilities = { ABILITY_DRY_SKIN, ABILITY_SAND_VEIL, ABILITY_SOLAR_POWER },
+        .abilities = { ABILITY_DRY_SKIN, ABILITY_SUN_WITHIN, ABILITY_SOLAR_POWER },
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("Helioptile"),
+        .speciesName = _("HELIOPTILE"),
         .cryId = CRY_HELIOPTILE,
         .natDexNum = NATIONAL_DEX_HELIOPTILE,
-        .categoryName = _("Generator"),
+        .categoryName = _("GENERATOR"),
         .height = 5,
         .weight = 60,
         .description = COMPOUND_STRING(
-            "They make their home in deserts.\n"
+            "They make their home in sandy locations.\n"
             "They can generate their own energy from\n"
             "basking in the sun, so eating food is not\n"
             "a requirement."),
@@ -2714,33 +2713,31 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
 
     [SPECIES_HELIOLISK] =
     {
-        .baseHP        = 62,
+        .baseHP        = 65,
         .baseAttack    = 55,
-        .baseDefense   = 52,
-        .baseSpeed     = 109,
-        .baseSpAttack  = 109,
-        .baseSpDefense = 94,
+        .baseDefense   = 55,
+        .baseSpeed     = 110,
+        .baseSpAttack  = 110,
+        .baseSpDefense = 95,
         .types = { TYPE_ELECTRIC, TYPE_NORMAL },
         .catchRate = 75,
         .expYield = 168,
-        .evYield_Speed = 1,
-        .evYield_SpAttack = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_DRAGON },
-        .abilities = { ABILITY_DRY_SKIN, ABILITY_SAND_VEIL, ABILITY_SOLAR_POWER },
+        .abilities = { ABILITY_DRY_SKIN, ABILITY_SUN_WITHIN, ABILITY_SOLAR_POWER },
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("Heliolisk"),
+        .speciesName = _("HELIOLISK"),
         .cryId = CRY_HELIOLISK,
         .natDexNum = NATIONAL_DEX_HELIOLISK,
-        .categoryName = _("Generator"),
+        .categoryName = _("GENERATOR"),
         .height = 10,
         .weight = 210,
         .description = COMPOUND_STRING(
             "A single Heliolisk can generate sufficient\n"
-            "electricity to power a skyscraper. It can\n"
+            "electricity to power a small village. It can\n"
             "stimulate its muscles with electricity,\n"
             "boosting the strength in its legs."),
         .pokemonScale = 305,

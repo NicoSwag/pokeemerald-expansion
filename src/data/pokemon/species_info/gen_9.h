@@ -4460,13 +4460,12 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .types = { TYPE_GHOST, TYPE_GHOST },                                            \
         .catchRate = 45,                                                                \
         .expYield = 60,                                                                 \
-        .evYield_SpAttack = 1,                                                          \
         .genderRatio = MON_GENDERLESS,                                                  \
         .eggCycles = 50,                                                                \
         .friendship = STANDARD_FRIENDSHIP,                                              \
         .growthRate = GROWTH_SLOW,                                                      \
         .eggGroups = { EGG_GROUP_NO_EGGS_DISCOVERED, EGG_GROUP_NO_EGGS_DISCOVERED },    \
-        .speciesName = _("Gimmighoul"),                                                 \
+        .speciesName = _("GIMMIGHOUL"),                                                 \
         .cryId = CRY_GIMMIGHOUL,                                                        \
         .natDexNum = NATIONAL_DEX_GIMMIGHOUL,                                           \
         .frontAnimFrames = sAnims_Gimmighoul,                                           \
@@ -4488,14 +4487,14 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .baseSpDefense = 70,
         .abilities = { ABILITY_RATTLED, ABILITY_NONE },
         .bodyColor = BODY_COLOR_RED,
-        .categoryName = _("Coin Chest"),
+        .categoryName = _("COIN CHEST"),
         .height = 3,
         .weight = 50,
         .description = COMPOUND_STRING(
             "It lives inside an old treasure\n"
-            "chest. Sometimes it gets left in shop\n"
-            "corners since no one realizes it's\n"
-            "actually a Pokémon."),
+            "chest. It's always on the lookout\n"
+            "for more gold to add to its precious\n"
+            "reserve."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -4541,12 +4540,12 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
 
     [SPECIES_GHOLDENGO] =
     {
-        .baseHP        = 87,
+        .baseHP        = 90,
         .baseAttack    = 60,
         .baseDefense   = 95,
-        .baseSpeed     = 84,
-        .baseSpAttack  = 133,
-        .baseSpDefense = 91,
+        .baseSpeed     = 85,
+        .baseSpAttack  = 130,
+        .baseSpDefense = 90,
         .types = { TYPE_STEEL, TYPE_GHOST },
         .catchRate = 45,
         .expYield = 275,
@@ -4558,15 +4557,15 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_NO_EGGS_DISCOVERED, EGG_GROUP_NO_EGGS_DISCOVERED },
         .abilities = { ABILITY_GOOD_AS_GOLD, ABILITY_NONE },
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("Gholdengo"),
+        .speciesName = _("GHOLDENGO"),
         .cryId = CRY_GHOLDENGO,
         .natDexNum = NATIONAL_DEX_GHOLDENGO,
-        .categoryName = _("Coin Entity"),
+        .categoryName = _("COIN ENTITY"),
         .height = 12,
         .weight = 300,
         .description = COMPOUND_STRING(
             "It has a sturdy body made up of\n"
-            "stacked coins. Gholdengo overwhelms\n"
+            "stacked coins. GHOLDENGO overwhelms\n"
             "its enemies by firing coin after coin\n"
             "at them in quick succession."),
         .pokemonScale = 356,

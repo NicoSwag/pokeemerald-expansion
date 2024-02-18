@@ -364,7 +364,6 @@ static const u16 sGyaradosFormSpeciesIdTable[] = {
 #if P_FAMILY_LAPRAS
 static const u16 sLaprasFormSpeciesIdTable[] = {
     SPECIES_LAPRAS,
-    SPECIES_LAPRAS_GIGANTAMAX,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_LAPRAS
@@ -1718,7 +1717,6 @@ static const u16 sTatsugiriFormSpeciesIdTable[] = {
 #if P_FAMILY_GIMMIGHOUL
 static const u16 sGimmighoulFormSpeciesIdTable[] = {
     SPECIES_GIMMIGHOUL_CHEST,
-    SPECIES_GIMMIGHOUL_ROAMING,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_GIMMIGHOUL

@@ -218,6 +218,7 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_ROUGH_SKIN] = 6,
     [ABILITY_RUN_AWAY] = 0,
     [ABILITY_SAND_FORCE] = 4,
+    [ABILITY_SNOW_FORCE] = 4,
     [ABILITY_MIASMA_FORCE] = 5,
     [ABILITY_SAND_RUSH] = 6,
     [ABILITY_SAND_STREAM] = 9,
@@ -405,6 +406,7 @@ static const u16 sEncouragedEncoreEffects[] =
     EFFECT_WATER_SPORT,
     EFFECT_DRAGON_DANCE,
     EFFECT_CAMOUFLAGE,
+    EFFECT_THUNDERSNOW,
 };
 
 // Functions
@@ -1598,7 +1600,7 @@ bool32 ShouldSetSandstorm(u32 battler, u32 ability, u32 holdEffect)
 
     if (ability == ABILITY_SAND_VEIL
       || ability == ABILITY_SAND_RUSH
-      || ability == ABILITY_SAND_FORCE
+          || ability == ABILITY_SNOW_FORCE
       || ability == ABILITY_OVERCOAT
       || ability == ABILITY_MAGIC_GUARD
       || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
@@ -1623,6 +1625,7 @@ bool32 ShouldSetHail(u32 battler, u32 ability, u32 holdEffect)
       || ability == ABILITY_ICE_BODY
       || ability == ABILITY_FORECAST
       || ability == ABILITY_SLUSH_RUSH
+      || ability == ABILITY_SNOW_FORCE
       || ability == ABILITY_MAGIC_GUARD
       || ability == ABILITY_OVERCOAT
       || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
@@ -3289,6 +3292,7 @@ bool32 IsMoveEffectWeather(u32 move)
       || gBattleMoves[move].effect == EFFECT_RAIN_DANCE
       || gBattleMoves[move].effect == EFFECT_SANDSTORM
       || gBattleMoves[move].effect == EFFECT_HAIL
+      || gBattleMoves[move].effect == EFFECT_THUNDERSNOW
       || gBattleMoves[move].effect == EFFECT_SNOWSCAPE))
         return TRUE;
     return FALSE;
@@ -3304,6 +3308,7 @@ bool32 PartnerMoveEffectIsTerrain(u32 battlerAtkPartner, u32 partnerMove)
      && (gBattleMoves[partnerMove].effect == EFFECT_GRASSY_TERRAIN
       || gBattleMoves[partnerMove].effect == EFFECT_MISTY_TERRAIN
       || gBattleMoves[partnerMove].effect == EFFECT_ELECTRIC_TERRAIN
+      || gBattleMoves[partnerMove].effect == EFFECT_THUNDERSNOW
       || gBattleMoves[partnerMove].effect == EFFECT_PSYCHIC_TERRAIN))
         return TRUE;
 

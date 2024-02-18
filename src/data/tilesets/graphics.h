@@ -1692,3 +1692,41 @@ const u16 gTilesetPalettes_Petalburg_Ruins[][16] =
 };
 
 const u32 gTilesetTiles_Petalburg_Ruins[] = INCBIN_U32("data/tilesets/secondary/petalburg_ruins/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Rustboro_Surroundings[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/rustboro_surroundings/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Rustboro_Surroundings[] = INCBIN_U32("data/tilesets/primary/rustboro_surroundings/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_RustboroSurroundings[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_RustboroSurroundings[] = INCBIN_U32("data/tilesets/secondary/rustboro_surroundings/tiles.4bpp.lz");

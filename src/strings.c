@@ -688,6 +688,7 @@ const u8 gText_MudkipDollAndPrice[] = _("MUDKIP DOLL   1,000 COINS");
 const u8 gText_HealAfterBattle[] = _("HEAL AFTER BATTLE");
 const u8 gText_CandiesInShop[] = _("RARE CANDIES IN SHOPS");
 const u8 gText_LevelCaps[] = _("LEVEL CAP");
+const u8 gText_LevelScaling[] = _("LEVEL SCALING");
 const u8 gText_PermaFaint[] = _("PERMANENT FAINTING");
 const u8 gText_CatchOne[] = _("FIRST CATCH ONLY");
 const u8 gText_50CoinsAndPrice[] = _("  50 COINS    ¥1,000");

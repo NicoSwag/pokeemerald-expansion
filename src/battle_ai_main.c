@@ -1631,6 +1631,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_SCORE(-2); // mainly to prevent looping between hail and snow
             break;
         case EFFECT_SNOWSCAPE:
+        case EFFECT_THUNDERSNOW:
             if (weather & (B_WEATHER_SNOW | B_WEATHER_PRIMAL_ANY)
              || IsMoveEffectWeather(aiData->partnerMove))
                 ADJUST_SCORE(-8);
@@ -2774,6 +2775,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_SUNNY_DAY:
         case EFFECT_HAIL:
         case EFFECT_SNOWSCAPE:
+        case EFFECT_THUNDERSNOW:
         case EFFECT_RAIN_DANCE:
         case EFFECT_SANDSTORM:
             if (IsMoveEffectWeather(move))
@@ -2832,6 +2834,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         }
         break;
     case EFFECT_SNOWSCAPE:
+    case EFFECT_THUNDERSNOW:
         if (IsBattlerAlive(battlerAtkPartner)
          && ShouldSetSnow(battlerAtkPartner, atkPartnerAbility, atkPartnerHoldEffect))
         {
@@ -4040,6 +4043,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         }
         break;
     case EFFECT_SNOWSCAPE:
+    case EFFECT_THUNDERSNOW:
         if (ShouldSetSnow(battlerAtk, aiData->abilities[battlerAtk], aiData->holdEffects[battlerAtk]))
         {
             if ((HasMoveEffect(battlerAtk, EFFECT_AURORA_VEIL) || HasMoveEffect(BATTLE_PARTNER(battlerAtk), EFFECT_AURORA_VEIL))
@@ -5044,6 +5048,7 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_SANDSTORM:
     case EFFECT_HAIL:
     case EFFECT_SNOWSCAPE:
+    case EFFECT_THUNDERSNOW:
     case EFFECT_PSYCHIC_TERRAIN:
     case EFFECT_GRASSY_TERRAIN:
     case EFFECT_ELECTRIC_TERRAIN:
@@ -5274,6 +5279,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_SANDSTORM:
             case EFFECT_HAIL:
             case EFFECT_SNOWSCAPE:
+            case EFFECT_THUNDERSNOW:
             case EFFECT_RAIN_DANCE:
                 ADJUST_SCORE(-2);
                 break;

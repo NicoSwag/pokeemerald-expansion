@@ -881,6 +881,7 @@ gBattleAnims_Moves::
 	.4byte Move_THORNY_BUSH
 	.4byte Move_SAFETY_COURSE
 	.4byte Move_SONIC_STOMP
+	.4byte MOVE_THUNDERSNOW
 
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
@@ -26238,6 +26239,9 @@ Move_SAFETY_COURSE:
 
 Move_SONIC_STOMP:
 	goto Move_CLANGING_SCALES
+
+Move_THUNDERSNOW:
+	goto Move_ELECTRIC_TERRAIN
 
 Move_COUNT:
 	loadspritegfx ANIM_TAG_IMPACT

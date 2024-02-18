@@ -613,11 +613,11 @@ static void Cmd_tryworryseed(void);
 static void Cmd_callnative(void);
 const u16 sLevelCapFlags[NUM_SOFT_CAPS] =
 {
-    FLAG_BADGE01_GET, FLAG_BADGE02_GET, FLAG_BADGE03_GET, FLAG_BADGE04_GET,
+    FLAG_RECEIVED_EXP_SHARE, FLAG_BADGE01_GET, FLAG_BADGE02_GET, FLAG_BADGE03_GET, FLAG_BADGE04_GET,
     FLAG_BADGE05_GET, FLAG_BADGE06_GET, FLAG_BADGE07_GET, FLAG_BADGE08_GET,
 };
 
-const u16 sLevelCaps[NUM_SOFT_CAPS] = { 15, 20, 30, 40, 50, 60, 70, 80 };
+const u16 sLevelCaps[NUM_SOFT_CAPS] = { 8, 15, 20, 30, 40, 50, 60, 70, 80 };
 const double sLevelCapReduction[7] = { .01, .01, .01, .01, .01, .01, .01};
 const double sRelativePartyScaling[27] =
 {
@@ -16819,6 +16819,7 @@ void BS_SetRemoveTerrain(void)
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_GRASSY;
         break;
     case EFFECT_ELECTRIC_TERRAIN:
+    case EFFECT_THUNDERSNOW:
     case EFFECT_EMP:
         statusFlag = STATUS_FIELD_ELECTRIC_TERRAIN;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_ELECTRIC;

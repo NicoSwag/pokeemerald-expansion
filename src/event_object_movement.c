@@ -480,7 +480,8 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_DARK_SKIN_3               0x113E
 #define OBJ_EVENT_PAL_TAG_DARK_SKIN_4               0x113F        
 #define OBJ_EVENT_PAL_TAG_HIKER               0x1140
-#define OBJ_EVENT_PAL_TAG_RICH_BOY               0x1141         
+#define OBJ_EVENT_PAL_TAG_RICH_BOY               0x1141
+#define OBJ_EVENT_PAL_TAG_PITCH_BLACK               0x1142            
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -543,6 +544,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
    {gObjectEventPal_RichBoy,              OBJ_EVENT_PAL_TAG_RICH_BOY},
    {gObjectEventPal_DarkSkin3,              OBJ_EVENT_PAL_TAG_DARK_SKIN_3},
    {gObjectEventPal_DarkSkin4,              OBJ_EVENT_PAL_TAG_DARK_SKIN_4},
+   {gObjectEventPal_PitchBlack,              OBJ_EVENT_PAL_TAG_PITCH_BLACK},
     {gObjectEventPal_Aqua,              OBJ_EVENT_PAL_TAG_AQUA},
     {gObjectEventPal_Courtney,              OBJ_EVENT_PAL_TAG_COURTNEY},
     {gObjectEventPal_Tabitha,              OBJ_EVENT_PAL_TAG_TABITHA},

@@ -316,15 +316,16 @@ const u8 gText_Oldale_Town[] = _("Built on rocky foundations");
 const u8 gText_Route101[] = _("The road to new adventures");
 const u8 gText_Littleroot_Town[] = _("A town ever shaded by hue");
 const u8 gText_Route103[] = _("A watery crossroads beyond");
-const u8 gText_Oldale_Ruins[] = _("Where past and present meet");
+const u8 gText_Oldale_Ruins[] = _("Past and present joined");
+const u8 gText_Mt_Kirikiri[] = _("The dormant supervolcano");
 const u8 gText_Route102[] = _("A quiet stroll by the water");
 const u8 gText_Petalburg_City[] = _("As quaint as it is rainy");
 const u8 gText_Route104_Lower[] = _("Where river and sea meet");
 const u8 gText_Petalburg_Woods[] = _("A swamp brimming with life");
 const u8 gText_Route104_Upper[] = _("Sponsored by FEEBAS PRO SHOP");
 const u8 gText_Rustboro_City[] = _("Proud home of DEVON CORP.");
-const u8 gText_Route115[] = _("A step from a cursed forest.");
-const u8 gText_BrineCave[] = _("Mystery submerged dungeon");
+const u8 gText_Route115[] = _("A step from a cursed forest");
+const u8 gText_Brine_Cave[] = _("Mystery submerged dungeon");
 
 static void ShowMapNamePopUpWindow(void)
 {
@@ -376,6 +377,9 @@ StringCopy(withoutPrefixPtr, mapDisplayHeaderSource);
         default:
             AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Null, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
+        case MAPSEC_LITTLEROOT_TOWN:
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Littleroot_Town, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+        break;
         case MAPSEC_OLDALE_TOWN:
             AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Oldale_Town, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
@@ -387,6 +391,12 @@ StringCopy(withoutPrefixPtr, mapDisplayHeaderSource);
         break;
         case MAPSEC_OLDALE_RUINS:
             AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Oldale_Ruins, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+        break;
+        case MAPSEC_MT_KIRIKIRI:
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Mt_Kirikiri, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+        break;
+        case MAPSEC_BRINE_CAVE:
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Brine_Cave, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_ROUTE_102:
             AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Route102, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
@@ -404,10 +414,10 @@ StringCopy(withoutPrefixPtr, mapDisplayHeaderSource);
             AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Rustboro_City, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_ROUTE_115:
-            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Route115, mapNameX + 90, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Route115, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
         case MAPSEC_PETALBURG_WOODS:
-            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Petalburg_Woods, mapNameX + 90, timeY, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Petalburg_Woods, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
     }
     

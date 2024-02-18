@@ -486,7 +486,7 @@ LittlerootTown_EventScript_GiveRunningShoesTrigger::
 
 LittlerootTown_EventScript_SetHomeDoorCoordsMale::
 	setvar VAR_0x8009, 5
-	setvar VAR_0x800A, 7
+	setvar VAR_0x800A, 8
 	return
 
 LittlerootTown_EventScript_SetHomeDoorCoordsFemale::
@@ -547,7 +547,6 @@ LittlerootTown_EventScript_MomReturnHome1::
 
 
 LittlerootTown_Movement_MomApproachPlayer0:
-	walk_up
 	walk_up
 	walk_up
 	walk_up
