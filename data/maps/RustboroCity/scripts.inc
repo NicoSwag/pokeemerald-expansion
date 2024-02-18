@@ -390,7 +390,7 @@ RustboroCity_EventScript_StolenGoodsScene::
 	closemessage
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
 	addobject LOCALID_DEVON
-	setobjectxy LOCALID_DEVON, 12, 21
+	setobjectxy LOCALID_DEVON, 13, 21
 	addobject LOCALID_LOOKER
 	applymovement LOCALID_DEVON, RustboroCity_Movement_GruntEscape
 	waitmovement 0
@@ -402,7 +402,6 @@ RustboroCity_EventScript_StolenGoodsScene::
 	fadedefaultbgm
 	removeobject LOCALID_LOOKER
 	setobjectxyperm LOCALID_LOOKER, 30, 10
-	clearflag FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
 	setflag FLAG_DEVON_GOODS_STOLEN
 	setvar VAR_RUSTBORO_CITY_STATE, 2
 	setvar VAR_RUSTURF_TUNNEL_STATE, 2
@@ -496,23 +495,23 @@ RustboroCity_Movement_GruntEscape:
 	step_end
 
 RustboroCity_Movement_EmployeeChaseGrunt1:
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
 	walk_in_place_faster_up
 	step_end
 
 RustboroCity_Movement_EmployeeChaseGrunt2:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
 	step_end
 
 @ Functionally unused
@@ -699,7 +698,6 @@ RustboroCity_EventScript_ReturnGoods::
 	msgbox RustboroCity_Text_PleaseComeWithMe, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_RETURNED_DEVON_GOODS
-	setflag FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
 	setvar VAR_RUSTBORO_CITY_STATE, 5
 	delay 30
 	warp MAP_RUSTBORO_CITY_DEVON_CORP_3F, 2, 2

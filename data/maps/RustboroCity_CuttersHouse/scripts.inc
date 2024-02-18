@@ -5,7 +5,6 @@ RustboroCity_CuttersHouse_EventScript_Cutter::
 	lock
 	faceplayer
 	goto_if_set FLAG_BADGE01_GET, RustboroCity_CuttersHouse_EventScript_YouCanPutThisHMToGoodUse
-	goto_if_set FLAG_RECEIVED_HM_CUT, RustboroCity_CuttersHouse_EventScript_ExplainCut
 	msgbox RustboroCity_CuttersHouse_Text_StayAway, MSGBOX_DEFAULT
 	release
 	end
@@ -21,6 +20,7 @@ RustboroCity_CuttersHouse_EventScript_Lass::
 	
 
 RustboroCity_CuttersHouse_EventScript_YouCanPutThisHMToGoodUse::
+	goto_if_set FLAG_RECEIVED_HM_CUT, RustboroCity_CuttersHouse_EventScript_ExplainCut
 	msgbox RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse, MSGBOX_DEFAULT
 	giveitem ITEM_HM_CUT
 	setflag FLAG_RECEIVED_HM_CUT
@@ -53,7 +53,7 @@ RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse:
 	.string "these tired hands.$"
 
 RustboroCity_CuttersHouse_Text_ExplainCut:
-	.string "What I just GAVE you is the HIDDEN\n"
+	.string "What I just gave you is the HIDDEN\n"
 	.string "MACHINE containing the move CUT, the\l"
 	.string "true source of my powers.\p"
 	.string "HMs are unique in two ways.\p"
