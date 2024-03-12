@@ -14,6 +14,7 @@ OldaleTown_OnTransition:
 	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
 	call_if_set FLAG_HELPED_LEDYBA, OldaleTown_EventScript_LedybaFlip
+	setvar VAR_PELIPPER, 10
 	end
 
 @ This script seems pointless because nothing uses VAR_OLDALE_TOWN_STATE

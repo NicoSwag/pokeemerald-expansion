@@ -459,6 +459,9 @@ $(OBJEVENTGFXDIR)/pokemon/kadabra.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/pokemon/scizor.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(OBJEVENTGFXDIR)/pokemon/pelipper.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 
 $(OBJEVENTGFXDIR)/pokemon/groudon.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4

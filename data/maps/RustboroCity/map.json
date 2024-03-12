@@ -175,7 +175,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_4",
-      "x": 8,
+      "x": 11,
       "y": 53,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -461,8 +461,34 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LOOKER",
-      "x": 29,
-      "y": 8,
+      "x": 34,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustboroCity_EventScript_Looker_Cutscene",
+      "flag": "FLAG_REAL_LOOKER_RUSTBORO"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN",
+      "x": 17,
+      "y": 46,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_FlyingTaxi",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_STEVEN",
+      "x": 23,
+      "y": 10,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -470,19 +496,32 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1"
+      "flag": "FLAG_STEVEN_RUSTBORO"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
-      "x": 17,
-      "y": 32,
+      "graphics_id": "OBJ_EVENT_GFX_PELIPPER",
+      "x": 19,
+      "y": 46,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SUNFLORA",
+      "x": 16,
+      "y": 35,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_FlyingTaxi",
+      "script": "LittlerootTown_EventScript_Sunflora",
       "flag": "0"
     }
   ],
@@ -604,87 +643,6 @@
     },
     {
       "type": "trigger",
-      "x": 30,
-      "y": 9,
-      "elevation": 3,
-      "var": "VAR_RUSTBORO_CITY_STATE",
-      "var_value": "2",
-      "script": "RustboroCity_EventScript_HelpGetGoodsTrigger0"
-    },
-    {
-      "type": "trigger",
-      "x": 29,
-      "y": 10,
-      "elevation": 3,
-      "var": "VAR_RUSTBORO_CITY_STATE",
-      "var_value": "2",
-      "script": "RustboroCity_EventScript_HelpGetGoodsTrigger1"
-    },
-    {
-      "type": "trigger",
-      "x": 30,
-      "y": 11,
-      "elevation": 3,
-      "var": "VAR_RUSTBORO_CITY_STATE",
-      "var_value": "2",
-      "script": "RustboroCity_EventScript_HelpGetGoodsTrigger2"
-    },
-    {
-      "type": "trigger",
-      "x": 30,
-      "y": 12,
-      "elevation": 3,
-      "var": "VAR_RUSTBORO_CITY_STATE",
-      "var_value": "2",
-      "script": "RustboroCity_EventScript_HelpGetGoodsTrigger3"
-    },
-    {
-      "type": "trigger",
-      "x": 30,
-      "y": 9,
-      "elevation": 3,
-      "var": "VAR_RUSTBORO_CITY_STATE",
-      "var_value": "4",
-      "script": "RustboroCity_EventScript_ReturnGoodsTrigger0"
-    },
-    {
-      "type": "trigger",
-      "x": 31,
-      "y": 10,
-      "elevation": 3,
-      "var": "VAR_RUSTBORO_CITY_STATE",
-      "var_value": "4",
-      "script": "RustboroCity_EventScript_ReturnGoodsTrigger1"
-    },
-    {
-      "type": "trigger",
-      "x": 30,
-      "y": 11,
-      "elevation": 3,
-      "var": "VAR_RUSTBORO_CITY_STATE",
-      "var_value": "4",
-      "script": "RustboroCity_EventScript_ReturnGoodsTrigger2"
-    },
-    {
-      "type": "trigger",
-      "x": 30,
-      "y": 12,
-      "elevation": 3,
-      "var": "VAR_RUSTBORO_CITY_STATE",
-      "var_value": "4",
-      "script": "RustboroCity_EventScript_ReturnGoodsTrigger3"
-    },
-    {
-      "type": "trigger",
-      "x": 12,
-      "y": 53,
-      "elevation": 3,
-      "var": "VAR_RUSTBORO_CITY_STATE",
-      "var_value": "7",
-      "script": "RustboroCity_EventScript_RivalTrigger0"
-    },
-    {
-      "type": "trigger",
       "x": 13,
       "y": 53,
       "elevation": 3,
@@ -763,6 +721,24 @@
       "var": "VAR_RUSTBORO_CITY_STATE",
       "var_value": "1",
       "script": "RustboroCity_EventScript_StolenGoodsTrigger4"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 53,
+      "elevation": 3,
+      "var": "VAR_RUSTBORO_CITY_STATE",
+      "var_value": "7",
+      "script": "RustboroCity_EventScript_RivalTrigger1"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 53,
+      "elevation": 3,
+      "var": "VAR_RUSTBORO_CITY_STATE",
+      "var_value": "7",
+      "script": "RustboroCity_EventScript_RivalTrigger1"
     }
   ],
   "bg_events": [
@@ -784,27 +760,11 @@
     },
     {
       "type": "sign",
-      "x": 18,
-      "y": 45,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "Common_EventScript_ShowPokemonCenterSign"
-    },
-    {
-      "type": "sign",
       "x": 19,
       "y": 38,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "RustboroCity_EventScript_CitySign"
-    },
-    {
-      "type": "sign",
-      "x": 17,
-      "y": 45,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "Common_EventScript_ShowPokemonCenterSign"
     },
     {
       "type": "sign",

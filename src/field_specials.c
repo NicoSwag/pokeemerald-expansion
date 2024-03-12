@@ -1000,6 +1000,7 @@ static bool8 IsPlayerInFrontOfPC(void)
 // For this special, gSpecialVar_0x8004 is expected to be some PC_LOCATION_* value.
 static void CB2_FieldLoadFlyMap(void)
 {
+
     FieldInitRegionMap(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }
 

@@ -261,6 +261,7 @@
 #define OBJ_EVENT_GFX_COURTNEY                  257
 #define OBJ_EVENT_GFX_TABITHA                  258
 #define OBJ_EVENT_GFX_CREEPING_SHADOW          259
+#define OBJ_EVENT_GFX_PELIPPER          260
 
 // NOTE: By default, the max value for NUM_OBJ_EVENT_GFX is 239.
 //
@@ -271,7 +272,7 @@
 // object graphics that can be removed. If more graphics are needed, anything that
 // stores graphics ids will need to be increased in size. See wiki entry below:
 // https://github.com/pret/pokeemerald/wiki/Feature-Branches#overworld-expansion
-#define NUM_OBJ_EVENT_GFX                        260
+#define NUM_OBJ_EVENT_GFX                        261
 
 
 // These are dynamic object gfx ids.

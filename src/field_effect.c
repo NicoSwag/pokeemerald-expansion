@@ -2614,12 +2614,14 @@ bool8 FldEff_FieldMoveShowMonInit(void)
     pokemon = &gPlayerParty[(u8)gFieldEffectArguments[0]];
     gFieldEffectArguments[0] = GetMonData(pokemon, MON_DATA_SPECIES);
     if (VarGet(VAR_0x800A) == LAST_TALKED_TO_FLYING_TAXI){
-        gFieldEffectArguments[0] = SPECIES_PELIPPER;}
+        gFieldEffectArguments[0] = SPECIES_PELIPPER;
+        }
     gFieldEffectArguments[1] = GetMonData(pokemon, MON_DATA_OT_ID);
     gFieldEffectArguments[2] = GetMonData(pokemon, MON_DATA_PERSONALITY);
     gFieldEffectArguments[0] |= noDucking;
     FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON);
     FieldEffectActiveListRemove(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+
     return FALSE;
 }
 
@@ -3235,8 +3237,9 @@ static void Task_FlyOut(u8 taskId)
 
 static void FlyOutFieldEffect_FieldMovePose(struct Task *task)
 {
-    struct ObjectEvent *objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-    if (!ObjectEventIsMovementOverridden(objectEvent) || ObjectEventClearHeldMovementIfFinished(objectEvent))
+    
+        struct ObjectEvent *objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+if (!ObjectEventIsMovementOverridden(objectEvent) || ObjectEventClearHeldMovementIfFinished(objectEvent))
     {
         task->tAvatarFlags = gPlayerAvatar.flags;
         gPlayerAvatar.preventStep = TRUE;
@@ -3260,7 +3263,7 @@ static void FlyOutFieldEffect_ShowMon(struct Task *task)
 
 static void FlyOutFieldEffect_BirdLeaveBall(struct Task *task)
 {
-    if (!FieldEffectActiveListContains(FLDEFF_FIELD_MOVE_SHOW_MON))
+if (!FieldEffectActiveListContains(FLDEFF_FIELD_MOVE_SHOW_MON))
     {
         struct ObjectEvent *objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
         if (task->tAvatarFlags & PLAYER_AVATAR_FLAG_SURFING)
@@ -3599,7 +3602,8 @@ static void FlyInFieldEffect_FieldMovePose(struct Task *task)
 {
     struct ObjectEvent *objectEvent;
     struct Sprite *sprite;
-    if (GetFlyBirdAnimCompleted(task->tBirdSpriteId))
+    
+if (GetFlyBirdAnimCompleted(task->tBirdSpriteId))
     {
         objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
         sprite = &gSprites[objectEvent->spriteId];
@@ -3616,7 +3620,7 @@ static void FlyInFieldEffect_FieldMovePose(struct Task *task)
 
 static void FlyInFieldEffect_BirdReturnToBall(struct Task *task)
 {
-    if (ObjectEventClearHeldMovementIfFinished(&gObjectEvents[gPlayerAvatar.objectEventId]))
+if (ObjectEventClearHeldMovementIfFinished(&gObjectEvents[gPlayerAvatar.objectEventId]))
     {
         task->tState++;
         StartFlyBirdReturnToBall(task->tBirdSpriteId);
@@ -3625,7 +3629,7 @@ static void FlyInFieldEffect_BirdReturnToBall(struct Task *task)
 
 static void FlyInFieldEffect_WaitBirdReturn(struct Task *task)
 {
-    if (GetFlyBirdAnimCompleted(task->tBirdSpriteId))
+if (GetFlyBirdAnimCompleted(task->tBirdSpriteId))
     {
         DestroySprite(&gSprites[task->tBirdSpriteId]);
         task->tState++;

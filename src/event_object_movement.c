@@ -481,7 +481,8 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_DARK_SKIN_4               0x113F        
 #define OBJ_EVENT_PAL_TAG_HIKER               0x1140
 #define OBJ_EVENT_PAL_TAG_RICH_BOY               0x1141
-#define OBJ_EVENT_PAL_TAG_PITCH_BLACK               0x1142            
+#define OBJ_EVENT_PAL_TAG_PITCH_BLACK               0x1142    
+#define OBJ_EVENT_PAL_TAG_PELIPPER               0x1143          
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -516,6 +517,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Delibird,        OBJ_EVENT_PAL_TAG_DELIBIRD},
     {gObjectEventPal_Kadabra,        OBJ_EVENT_PAL_TAG_KADABRA},
     {gObjectEventPal_Scizor,        OBJ_EVENT_PAL_TAG_SCIZOR},
+    {gObjectEventPal_Pelipper,        OBJ_EVENT_PAL_TAG_PELIPPER},
     {gObjectEventPal_Channeler,        OBJ_EVENT_PAL_TAG_CHANNELER},
     {gObjectEventPal_May,                   OBJ_EVENT_PAL_TAG_MAY},
     {gObjectEventPal_MayReflection,         OBJ_EVENT_PAL_TAG_MAY_REFLECTION},
@@ -1514,6 +1516,8 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
         UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate->paletteTag), GAMMA_ALT);
     }
     
+
+    
     if (objectEvent->movementType == MOVEMENT_TYPE_INVISIBLE)
         objectEvent->invisible = TRUE;
 
@@ -1523,6 +1527,8 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
         gObjectEvents[objectEventId].active = FALSE;
         return OBJECT_EVENTS_COUNT;
     }
+
+    
 
     sprite = &gSprites[spriteId];
     GetMapCoordsFromSpritePos(objectEvent->currentCoords.x + cameraX, objectEvent->currentCoords.y + cameraY, &sprite->x, &sprite->y);

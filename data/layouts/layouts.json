@@ -34,7 +34,7 @@
     {
       "id": "LAYOUT_RUSTBORO_CITY",
       "name": "RustboroCity_Layout",
-      "width": 40,
+      "width": 46,
       "height": 60,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
@@ -314,7 +314,7 @@
     {
       "id": "LAYOUT_ROUTE116",
       "name": "Route116_Layout",
-      "width": 100,
+      "width": 104,
       "height": 28,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_RustboroSurroundings",

@@ -27,6 +27,7 @@
 #include "constants/map_types.h"
 #include "constants/rgb.h"
 #include "constants/weather.h"
+#include "money.h"
 
 /*
  *  This file handles region maps generally, and the map used when selecting a fly destination.
@@ -1656,6 +1657,7 @@ void CB2_OpenFlyMap(void)
 {
     switch (gMain.state)
     {
+
     case 0:
         SetVBlankCallback(NULL);
         SetGpuReg(REG_OFFSET_DISPCNT, 0);
@@ -1885,7 +1887,7 @@ static void CreateFlyDestIcons(void)
         {
             gSprites[spriteId].oam.shape = shape;
 
-            if (FlagGet(canFlyFlag))
+            if (FlagGet(canFlyFlag) && (mapSecId != gMapHeader.regionMapSectionId || VarGet(VAR_0x800A) != LAST_TALKED_TO_FLYING_TAXI))
                 gSprites[spriteId].callback = SpriteCB_FlyDestIcon;
             else
                 shape += 3;
@@ -1981,7 +1983,7 @@ static void CB_HandleFlyMapInput(void)
             DrawFlyDestTextWindow();
             break;
         case MAP_INPUT_A_BUTTON:
-            if (sFlyMap->regionMap.mapSecType == MAPSECTYPE_CITY_CANFLY || sFlyMap->regionMap.mapSecType == MAPSECTYPE_BATTLE_FRONTIER)
+            if ((sFlyMap->regionMap.mapSecType == MAPSECTYPE_CITY_CANFLY || sFlyMap->regionMap.mapSecType == MAPSECTYPE_BATTLE_FRONTIER) && (sFlyMap->regionMap.mapSecType != gMapHeader.regionMapSectionId && VarGet(VAR_0x800A) != LAST_TALKED_TO_FLYING_TAXI))
             {
                 m4aSongNumStart(SE_SELECT);
                 sFlyMap->choseFlyLocation = TRUE;
@@ -1989,6 +1991,8 @@ static void CB_HandleFlyMapInput(void)
             }
             break;
         case MAP_INPUT_B_BUTTON:
+            if (VarGet(VAR_0x800A) == LAST_TALKED_TO_FLYING_TAXI)
+                AddMoney(&gSaveBlock1Ptr->money, 500);
             m4aSongNumStart(SE_SELECT);
             sFlyMap->choseFlyLocation = FALSE;
             SetFlyMapCallback(CB_ExitFlyMap);
@@ -2032,6 +2036,7 @@ static void CB_ExitFlyMap(void)
                         SetWarpDestinationToMapWarp(sMapHealLocations[sFlyMap->regionMap.mapSecId][0], sMapHealLocations[sFlyMap->regionMap.mapSecId][1], WARP_ID_NONE);
                     break;
                 }
+                
                 ReturnToFieldFromFlyMapSelect();
             }
             else

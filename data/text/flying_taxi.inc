@@ -1,11 +1,10 @@
 gText_FlyingTaxi_Intro::
-    .string "Hello. I pilot one of the\n"
-    .string "FLYING TAXIS.\p"
-    .string "Do you need a lift?$"
+    .string "Welcome to the PELIPPER TAXI!\p"
+    .string "Renting a ride costs 500¥.\n"
+    .string "Are you interested?$"
 
 gText_FlyingTaxi_WhereDoYouWantToGo::
     .string "Where do you want to go?$"
 
 gText_FlyingTaxi_Goodbye::
-    .string "Keep us in mind the next time\n"
-    .string "you need a ride!$"
+    .string "Always here if you need us!$"

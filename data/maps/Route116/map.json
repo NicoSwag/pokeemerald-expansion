@@ -27,7 +27,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 7,
+      "x": 11,
       "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -40,7 +40,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 8,
+      "x": 12,
       "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -53,7 +53,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
-      "x": 53,
+      "x": 56,
       "y": 9,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
@@ -66,7 +66,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
-      "x": 13,
+      "x": 17,
       "y": 16,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
@@ -79,8 +79,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 12,
-      "y": 18,
+      "x": 17,
+      "y": 19,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -92,7 +92,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 9,
+      "x": 13,
       "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -105,7 +105,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 10,
+      "x": 14,
       "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -118,7 +118,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
-      "x": 47,
+      "x": 51,
       "y": 16,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -131,7 +131,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
-      "x": 29,
+      "x": 33,
       "y": 22,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
@@ -157,7 +157,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ENGINEER",
-      "x": 36,
+      "x": 41,
       "y": 19,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -170,7 +170,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
-      "x": 17,
+      "x": 21,
       "y": 13,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -183,7 +183,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_2",
-      "x": 47,
+      "x": 51,
       "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -209,7 +209,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
-      "x": 47,
+      "x": 51,
       "y": 13,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -235,7 +235,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ENGINEER",
-      "x": 38,
+      "x": 42,
       "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -248,7 +248,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ENGINEER",
-      "x": 27,
+      "x": 31,
       "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -261,7 +261,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ENGINEER",
-      "x": 20,
+      "x": 25,
       "y": 21,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
@@ -274,7 +274,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ENGINEER",
-      "x": 42,
+      "x": 46,
       "y": 13,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -287,7 +287,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
-      "x": 29,
+      "x": 32,
       "y": 18,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -300,7 +300,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TRUCK",
-      "x": 52,
+      "x": 56,
       "y": 22,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -313,7 +313,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 18,
+      "x": 22,
       "y": 12,
       "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -326,7 +326,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ENGINEER",
-      "x": 30,
+      "x": 34,
       "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -339,7 +339,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ENGINEER",
-      "x": 43,
+      "x": 48,
       "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -352,7 +352,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
-      "x": 4,
+      "x": 8,
       "y": 24,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -365,7 +365,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
-      "x": 48,
+      "x": 52,
       "y": 20,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -379,15 +379,15 @@
   ],
   "warp_events": [
     {
-      "x": 47,
+      "x": 51,
       "y": 16,
       "elevation": 0,
       "dest_map": "MAP_RUSTURF_TUNNEL",
       "dest_warp_id": "0"
     },
     {
-      "x": 50,
-      "y": 19,
+      "x": 54,
+      "y": 20,
       "elevation": 0,
       "dest_map": "MAP_ROUTE116_TUNNELERS_REST_HOUSE",
       "dest_warp_id": "0"
@@ -417,7 +417,7 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 47,
+      "x": 49,
       "y": 17,
       "elevation": 3,
       "var": "VAR_ROUTE116_STATE",
@@ -428,7 +428,7 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 5,
+      "x": 9,
       "y": 18,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -436,7 +436,7 @@
     },
     {
       "type": "sign",
-      "x": 45,
+      "x": 47,
       "y": 17,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -458,8 +458,8 @@
     },
     {
       "type": "sign",
-      "x": 16,
-      "y": 20,
+      "x": 2,
+      "y": 17,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route116_EventScript_TrainerTipsBToStopEvolution"

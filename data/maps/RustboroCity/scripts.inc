@@ -1,12 +1,14 @@
 .set LOCALID_LITTLE_BOY, 7
 .set LOCALID_LITTLE_GIRL, 8
-.set LOCALID_LOOKER, 34
+.set LOCALID_LOOKER, 33
 .set LOCALID_DEVON, 9
 .set LOCALID_RIVAL, 14
 .set LOCALID_SCIENTIST, 15
 .set LOCALID_BOYPROTESTER, 18
 .set LOCALID_MAGMA_GRUNT, 22
 .set LOCALID_GIRLPROTESTER, 23
+.set LOCALID_STEVEN, 35
+.set LOCALID_ENGINEER, 30
 
 RustboroCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_OnTransition
@@ -30,6 +32,7 @@ RustboroCity_OnTransition:
 	call_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_HideMapNamePopup
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	goto_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_PositionScientistForExit
+	setvar VAR_PELIPPER, 37
 	end
 
 
@@ -388,7 +391,7 @@ RustboroCity_EventScript_StolenGoodsScene::
 	msgbox RustboroCity_Text_OutOfTheWay, MSGBOX_DEFAULT
 	setflag FLAG_HIDE_RUSTBORO_CITY_LOOKER
 	closemessage
-	playbgm MUS_ENCOUNTER_AQUA, FALSE
+	playbgm MUS_LOOKER_THEME, FALSE
 	addobject LOCALID_DEVON
 	setobjectxy LOCALID_DEVON, 13, 21
 	addobject LOCALID_LOOKER
@@ -400,17 +403,197 @@ RustboroCity_EventScript_StolenGoodsScene::
 	applymovement LOCALID_LOOKER, RustboroCity_Movement_EmployeeChaseGrunt2
 	waitmovement 0
 	fadedefaultbgm
-	removeobject LOCALID_LOOKER
-	setobjectxyperm LOCALID_LOOKER, 30, 10
+	setobjectxy LOCALID_LOOKER, 34, 10
+	setobjectxyperm LOCALID_LOOKER, 34, 10
+	setobjectmovementtype LOCALID_LOOKER, MOVEMENT_TYPE_FACE_RIGHT
 	setflag FLAG_DEVON_GOODS_STOLEN
 	setvar VAR_RUSTBORO_CITY_STATE, 2
-	setvar VAR_RUSTURF_TUNNEL_STATE, 2
 	setvar VAR_ROUTE116_STATE, 1
-	clearflag FLAG_HIDE_ROUTE_116_MR_BRINEY
-	clearflag FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
-	clearflag FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT
+	clearflag FLAG_REAL_LOOKER_RUSTBORO
+	special DrawWholeMapView
 	releaseall
 	end
+
+RustboroCity_EventScript_Looker_Cutscene::
+	lock
+	switch VAR_FACING
+	case DIR_EAST, RustboroCity_EventScript_Looker_FaceRight
+	case DIR_WEST RustboroCity_EventScript_Looker_FaceLeft
+	goto RustboroCity_EventScript_Looker_FaceAnyOther
+	end
+
+RustboroCity_EventScript_Looker_FaceRight::
+	setvar VAR_0x8008, 1
+	goto RustboroCity_EventScript_Looker_ContinueScene
+	end
+
+RustboroCity_EventScript_Looker_FaceLeft::
+	setvar VAR_0x8008, 2
+	goto RustboroCity_EventScript_Looker_ContinueScene
+	end
+
+RustboroCity_EventScript_Looker_FaceAnyOther::
+	setvar VAR_0x8008, 3
+	goto RustboroCity_EventScript_Looker_ContinueScene
+	end
+
+RustboroCity_EventScript_Looker_ContinueScene::
+	faceplayer
+	msgbox RustboroCity_Text_AhMyFriend, MSGBOX_NPC
+	call_if_eq VAR_0x8008, 1, RustboroCity_EventScript_Looker_MoveUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement LOCALID_LOOKER, RustboroCity_Movement_LookerLeft
+	waitmovement 0
+	clearflag FLAG_STEVEN_RUSTBORO
+	addobject LOCALID_STEVEN
+	setobjectxy LOCALID_STEVEN, 24, 10
+	applymovement LOCALID_STEVEN, RustboroCity_Movement_StevenRight
+	waitmovement 0
+	call_if_eq VAR_0x8008, 1, RustboroCity_EventScript_StevenTime
+	applymovement LOCALID_STEVEN, RustboroCity_Movement_LookerStepRight
+	waitmovement 0
+	applymovement LOCALID_STEVEN, Common_Movement_FacePlayer
+	goto RustboroCity_EventScript_StevenTime
+	end
+
+
+RustboroCity_EventScript_StevenTime:
+	msgbox RustboroCity_Text_WatchAndLearn, MSGBOX_NPC
+	call_if_eq VAR_0x8008, 1, RustboroCity_EventScript_StevenPlayerFacesLeft
+	call_if_eq VAR_0x8008, 2, RustboroCity_EventScript_StevenPlayerFacesRight
+	call_if_eq VAR_0x8008, 3, RustboroCity_EventScript_StevenPlayerFacesAny
+	waitmovement 0 
+	applymovement LOCALID_ENGINEER, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceRight
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_ENGINEER, Common_Movement_WalkInPlaceLeft
+	waitmovement 0 
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_STEVEN, Common_Movement_WalkInPlaceRight
+	waitmovement 0 
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_ENGINEER, RustboroCity_Movement_EngineerOutOfTheWay
+	waitmovement 0
+	setobjectxy LOCALID_ENGINEER, 38, 8
+	setobjectxyperm LOCALID_ENGINEER, 38, 8
+	setobjectmovementtype LOCALID_ENGINEER, MOVEMENT_TYPE_FACE_DOWN
+	setvar VAR_RUSTBORO_CITY_STATE, 4
+	applymovement LOCALID_STEVEN, RustboroCity_Movement_StevenThreeLeft
+	waitmovement 0
+	applymovement LOCALID_STEVEN, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox RustboroCity_Text_TheWayIsOpen, MSGBOX_NPC
+	applymovement LOCALID_STEVEN, RustboroCity_Movement_StevenLeave
+	waitmovement 0
+	removeobject LOCALID_LOOKER
+	removeobject LOCALID_STEVEN
+	release
+	end
+
+
+RustboroCity_EventScript_Looker_MoveUp::
+	applymovement LOCALID_LOOKER, RustboroCity_Movement_Up
+	waitmovement 0
+	return
+
+RustboroCity_EventScript_StevenPlayerFacesLeft:
+	applymovement OBJ_EVENT_ID_PLAYER, RustboroCity_Movement_Up
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_STEVEN, RustboroCity_Movement_StevenFourRight
+	waitmovement 0
+	return
+
+RustboroCity_EventScript_StevenPlayerFacesRight:
+	applymovement OBJ_EVENT_ID_PLAYER, RustboroCity_Movement_Up
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_STEVEN, RustboroCity_Movement_StevenThreeRight
+	waitmovement 0
+	return
+
+RustboroCity_EventScript_StevenPlayerFacesAny:
+	applymovement LOCALID_STEVEN, RustboroCity_Movement_StevenThreeRight
+	waitmovement 0
+	return
+
+RustboroCity_Movement_EngineerOutOfTheWay:
+	walk_right
+	walk_up
+	walk_up
+	face_down
+	step_end
+
+RustboroCity_Movement_LookerLeft:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+RustboroCity_Movement_StevenFourRight:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	delay_16
+	step_end
+
+RustboroCity_Movement_StevenLeave:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+RustboroCity_Movement_StevenThreeRight:
+	walk_right
+	walk_right
+	walk_right
+	delay_16
+	step_end
+
+RustboroCity_Movement_StevenThreeLeft:
+	walk_left
+	walk_left
+	walk_left
+	step_end
+	
+
+RustboroCity_Movement_StevenRight:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+RustboroCity_Movement_LookerStepRight:
+	walk_right
+	step_end
 
 @ Unused
 RustboroCity_EventScript_ShadyCharacterTookOff::
@@ -475,6 +658,10 @@ RustboroCity_Movement_GruntEscapeExtended:
 	walk_fast_up
 	step_end
 
+RustboroCity_Movement_Up:
+	walk_up
+	step_end
+
 RustboroCity_Movement_GruntEscape:
 	walk_faster_right
 	walk_faster_right
@@ -505,6 +692,9 @@ RustboroCity_Movement_EmployeeChaseGrunt1:
 	step_end
 
 RustboroCity_Movement_EmployeeChaseGrunt2:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
@@ -1489,3 +1679,41 @@ RustboroCity_Text_Mr_Briney:
 	.string "Oh, PEEKO, me love…\n"
 	.string "Oh, PEEKO, me son!\p"
 	.string "I can but pray for yer safety!$"
+
+RustboroCity_Text_AhMyFriend:
+	.string "LOOKER: Ah, my friend… Huff!\p"
+	.string "That scoundrel, he… Puff!\n"
+	.string "Slithered away, yes…\p"
+	.string "And now, this man here taking\n"
+	.string "the post isn't letting us pass!\p"
+	.string "Ah, but… Worry not.\p"
+	.string "As you know, I am a master of\n"
+	.string "the disguise.\p"
+	.string "And I might just have an idea to\n"
+	.string "get us out of this pickle!$"
+
+RustboroCity_Text_WatchAndLearn:
+	.string "LOOKER: And now, observe.$"
+
+RustboroCity_Text_TheWayIsOpen:
+	.string "LOOKER: And as we say in my\n"
+	.string "home region: voilà!\p"
+	.string "Yes my friend, the way is clear,\n"
+	.string "and we can proceed after our ruffian.\p"
+	.string "Who is it I'm masquerading as, you ask?\p"
+	.string "Oh oh! It would be a shame to spoil the\n"
+	.string "surprise, would it not?\p"
+	.string "After all, I have a feeling that you\n"
+	.string "shall meet him soon.\p"
+	.string "Anyway, my apprentice… I have a favor\n"
+	.string "to ask you once more.\p"
+	.string "As you know, I'm no TRAINER… Well,\n"
+	.string "not anymore, but…\p"
+	.string "…Well! Long story short, I am going to\n"
+	.string "need you to find that man.\p"
+	.string "You will be compensated for it,\n"
+	.string "of course.\p"
+	.string "Now, I must take my leave, for…\p"
+	.string "Well, there is someone I must call.\p"
+	.string "Private call, yes. Very confidential.\p"
+	.string "I am counting on you!$"

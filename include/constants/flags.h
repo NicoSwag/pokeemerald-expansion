@@ -58,10 +58,10 @@
 #define FLAG_EXP_SHARE_GEN6    0x2D // Unused Flag
 #define FLAG_EVO_SCREEN    0x2E // Unused Flag
 #define FLAG_LEVEL_SCALING    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
+#define FLAG_STEVEN_RUSTBORO    0x30 // Unused Flag
+#define FLAG_REAL_LOOKER_RUSTBORO    0x31 // Unused Flag
+#define FLAG_USED_TAXI_BEFORE    0x32 // Unused Flag
+#define FLAG_HIDE_PELIPPER    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag

@@ -220,6 +220,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Diglett;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delibird;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kadabra;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scizor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pelipper;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hoothoot;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Smartchu;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ledyba;
@@ -380,6 +381,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DELIBIRD] =              &gObjectEventGraphicsInfo_Delibird,
     [OBJ_EVENT_GFX_KADABRA] =              &gObjectEventGraphicsInfo_Kadabra,
     [OBJ_EVENT_GFX_SCIZOR] =              &gObjectEventGraphicsInfo_Scizor,
+    [OBJ_EVENT_GFX_PELIPPER] =              &gObjectEventGraphicsInfo_Pelipper,
     [OBJ_EVENT_GFX_ARTIST] =                   &gObjectEventGraphicsInfo_Artist,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL] =     &gObjectEventGraphicsInfo_RivalBrendanNormal,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE] =  &gObjectEventGraphicsInfo_RivalBrendanMachBike,
