@@ -341,7 +341,7 @@ bool32 MovesWithCategoryUnusable(u32 attacker, u32 target, u32 category)
             && GetBattleMoveCategory(moves[i]) == category
             && !(unusable & gBitTable[i]))
         {
-            SetTypeBeforeUsingMove(moves[i], attacker, target);
+            SetTypeBeforeUsingMove(moves[i], attacker);
             GET_MOVE_TYPE(moves[i], moveType);
             if (CalcTypeEffectivenessMultiplier(moves[i], moveType, attacker, target, AI_DATA->abilities[target], FALSE) != 0)
                 usable |= gBitTable[i];
@@ -464,7 +464,7 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
     gBattleStruct->dynamicMoveType = 0;
 
 
-    SetTypeBeforeUsingMove(move, battlerAtk, battlerDef);
+    SetTypeBeforeUsingMove(move, battlerAtk);
     GET_MOVE_TYPE(move, moveType);
 
     if (gMovesInfo[move].power)
@@ -476,7 +476,7 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
         s32 critChanceIndex, normalDmg, fixedBasePower, n;
 
         ProteanTryChangeType(battlerAtk, aiData->abilities[battlerAtk], move, moveType);
-        ColorChangeTryChangeType(battlerDef, aiData->abilities[battlerDef], move, moveType);
+ColorChangeTryChangeType(battlerDef, aiData->abilities[battlerDef], move, moveType);
         // Certain moves like Rollout calculate damage based on values which change during the move execution, but before calling dmg calc.
         switch (gMovesInfo[move].effect)
         {
@@ -820,7 +820,7 @@ uq4_12_t AI_GetTypeEffectiveness(u32 move, u32 battlerAtk, u32 battlerDef)
     SetBattlerData(battlerDef);
 
     gBattleStruct->dynamicMoveType = 0;
-    SetTypeBeforeUsingMove(move, battlerAtk, battlerDef);
+    SetTypeBeforeUsingMove(move, battlerAtk);
     GET_MOVE_TYPE(move, moveType);
     typeEffectiveness = CalcTypeEffectivenessMultiplier(move, moveType, battlerAtk, battlerDef, AI_DATA->abilities[battlerDef], FALSE);
 
@@ -837,7 +837,7 @@ u32 AI_GetMoveEffectiveness(u32 move, u32 battlerAtk, u32 battlerDef)
 }
 
 static u32 AI_GetEffectiveness(uq4_12_t multiplier)
-{   
+{
     switch (multiplier)
     {
     case UQ_4_12(0.0):
@@ -1200,7 +1200,7 @@ bool32 IsNonVolatileStatusMoveEffect(u32 moveEffect)
     case EFFECT_POISON:
     case EFFECT_PARALYZE:
     case EFFECT_WILL_O_WISP:
-    case EFFECT_FLASH_FREEZE:
+case EFFECT_FLASH_FREEZE:
     case EFFECT_YAWN:
         return TRUE;
     default:
@@ -1277,8 +1277,6 @@ bool32 IsMoveEncouragedToHit(u32 battlerAtk, u32 battlerDef, u32 move)
 
     if (AI_DATA->abilities[battlerDef] == ABILITY_NO_GUARD || AI_DATA->abilities[battlerAtk] == ABILITY_NO_GUARD)
         return TRUE;
-    if (AI_DATA->abilities[battlerDef] == ABILITY_FIXED_GAZE || AI_DATA->abilities[battlerAtk] == ABILITY_FIXED_GAZE)
-        return TRUE;
 
     if (B_TOXIC_NEVER_MISS >= GEN_6 && gMovesInfo[move].effect == EFFECT_TOXIC && IS_BATTLER_OF_TYPE(battlerAtk, TYPE_POISON))
         return TRUE;
@@ -1289,17 +1287,18 @@ bool32 IsMoveEncouragedToHit(u32 battlerAtk, u32 battlerDef, u32 move)
         return FALSE;
 
     // increased accuracy but don't always hit
-    if ((((weather & B_WEATHER_RAIN) && (gMovesInfo[move].effect == EFFECT_THUNDER || gMovesInfo[move].effect == EFFECT_HURRICANE))
-            || (((weather & (B_WEATHER_HAIL | B_WEATHER_SNOW)) && move == MOVE_BLIZZARD)))
-        || (gMovesInfo[move].effect == EFFECT_VITAL_THROW)
-        || (B_MINIMIZE_DMG_ACC >= GEN_6 && (gStatuses3[battlerDef] & STATUS3_MINIMIZED) && gMovesInfo[move].minimizeDoubleDamage)
-        || ((gBattleWeather & B_WEATHER_POLLUTION) && (move == MOVE_NATURES_MALICE))
-        || (gMovesInfo[move].accuracy == 0))
-    {
+    if ((weather & B_WEATHER_RAIN) && gMovesInfo[move].effect == EFFECT_THUNDER)
+        return TRUE;
+    if ((weather & (B_WEATHER_HAIL | B_WEATHER_SNOW)) && gMovesInfo[move].effect == EFFECT_BLIZZARD)
+        return TRUE;
+    if (B_MINIMIZE_DMG_ACC >= GEN_6 && (gStatuses3[battlerDef] & STATUS3_MINIMIZED) && gMovesInfo[move].minimizeDoubleDamage)
+        return TRUE;
+    if (gMovesInfo[move].accuracy == 0)
         return TRUE;
 
     return FALSE;
 }
+
 
 bool32 ShouldTryOHKO(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbility, u32 move)
 {
@@ -1342,7 +1341,7 @@ bool32 ShouldSetSandstorm(u32 battler, u32 ability, u32 holdEffect)
 
     if (ability == ABILITY_SAND_VEIL
       || ability == ABILITY_SAND_RUSH
-          || ability == ABILITY_SNOW_FORCE
+      || ability == ABILITY_SNOW_FORCE
       || ability == ABILITY_OVERCOAT
       || ability == ABILITY_MAGIC_GUARD
       || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
@@ -1367,7 +1366,7 @@ bool32 ShouldSetHail(u32 battler, u32 ability, u32 holdEffect)
       || ability == ABILITY_ICE_BODY
       || ability == ABILITY_FORECAST
       || ability == ABILITY_SLUSH_RUSH
-      || ability == ABILITY_SNOW_FORCE
+|| ability == ABILITY_SNOW_FORCE
       || ability == ABILITY_MAGIC_GUARD
       || ability == ABILITY_OVERCOAT
       || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
@@ -2676,9 +2675,9 @@ bool32 ShouldPoisonSelf(u32 battler, u32 ability)
       || ability == ABILITY_POISON_HEAL
       || ability == ABILITY_QUICK_FEET
       || ability == ABILITY_MAGIC_GUARD
-      || (ability == ABILITY_TOXIC_BOOST && HasMoveWithSplit(battler, SPLIT_PHYSICAL))
-      || (ability == ABILITY_GUTS && HasMoveWithSplit(battler, SPLIT_PHYSICAL))
-      || (ability == ABILITY_TENACITY && HasMoveWithSplit(battler, SPLIT_SPECIAL))
+      || (ability == ABILITY_TOXIC_BOOST && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL))
+      || (ability == ABILITY_GUTS && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL))
+      || (ability == ABILITY_TENACITY && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL))
       || HasMoveEffect(battler, EFFECT_FACADE)
       || HasMoveEffect(battler, EFFECT_PSYCHO_SHIFT)))
         return TRUE;    // battler can be poisoned and has move/ability that synergizes with being poisoned
@@ -2724,12 +2723,12 @@ bool32 AI_CanParalyze(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move, 
 
 bool32 AI_CanBeConfused(u32 battlerAtk, u32 battlerDef, u32 move, u32 ability)
 {
-    if ((gBattleMons[battler].status2 & STATUS2_CONFUSION)
-      || (ability == ABILITY_OWN_TEMPO)
-      || (IsBattlerGrounded(battler) && (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN))
-      || gBattleMons[battler].type1 == TYPE_BUG
-      || gBattleMons[battler].type2 == TYPE_BUG)
-         || gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_SAFEGUARD
+    if ((gBattleMons[battlerDef].status2 & STATUS2_CONFUSION)
+     || (ability == ABILITY_OWN_TEMPO && !DoesBattlerIgnoreAbilityChecks(AI_DATA->abilities[battlerAtk], move))
+     || (IsBattlerGrounded(battlerDef) && (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN))
+           || gBattleMons[battlerDef].type1 == TYPE_BUG
+      || gBattleMons[battlerDef].type2 == TYPE_BUG
+     || gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_SAFEGUARD
      || DoesSubstituteBlockMove(battlerAtk, battlerDef, move))
         return FALSE;
     return TRUE;
@@ -2780,9 +2779,9 @@ bool32 ShouldBurnSelf(u32 battler, u32 ability)
      ability == ABILITY_QUICK_FEET
       || ability == ABILITY_HEATPROOF
       || ability == ABILITY_MAGIC_GUARD
-      || (ability == ABILITY_FLARE_BOOST && HasMoveWithCategory(battler, SPLIT_SPECIAL))
-      || (ability == ABILITY_GUTS && HasMoveWithCategory(battler, SPLIT_PHYSICAL))
-      || (ability == ABILITY_TENACITY && HasMoveWithCategory(battler, SPLIT_SPECIAL))
+      || (ability == ABILITY_FLARE_BOOST && HasMoveWithCategory(battler, DAMAGE_CATEGORY_SPECIAL))
+      || (ability == ABILITY_GUTS && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL))
+       || (ability == ABILITY_TENACITY && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL))
       || HasMoveEffect(battler, EFFECT_FACADE)
       || HasMoveEffect(battler, EFFECT_PSYCHO_SHIFT)))
         return TRUE;
@@ -2830,8 +2829,8 @@ u32 ShouldTryToFlinch(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbi
       || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER
-        || gBattleMons[battlerDef].type1 == TYPE_PSYCHIC
-        || gBattleMons[battlerDef].type2 == TYPE_PSYCHIC)) // Opponent goes first
+              || gBattleMons[battlerDef].type1 == TYPE_PSYCHIC
+        || gBattleMons[battlerDef].type2 == TYPE_PSYCHIC)) // Opponent goes first) // Opponent goes first
     {
         return 0;
     }
@@ -3094,7 +3093,7 @@ bool32 PartnerMoveEffectIsStatusSameTarget(u32 battlerAtkPartner, u32 battlerDef
        || gMovesInfo[partnerMove].effect == EFFECT_TOXIC
        || gMovesInfo[partnerMove].effect == EFFECT_PARALYZE
        || gMovesInfo[partnerMove].effect == EFFECT_WILL_O_WISP
-       || gMovesInfo[partnerMove].effect == EFFECT_FLASH_FREEZE
+|| gMovesInfo[partnerMove].effect == EFFECT_FLASH_FREEZE
        || gMovesInfo[partnerMove].effect == EFFECT_YAWN))
         return TRUE;
     return FALSE;
@@ -3107,7 +3106,7 @@ bool32 IsMoveEffectWeather(u32 move)
       || gMovesInfo[move].effect == EFFECT_RAIN_DANCE
       || gMovesInfo[move].effect == EFFECT_SANDSTORM
       || gMovesInfo[move].effect == EFFECT_HAIL
-      || gMovesInfo[move].effect == EFFECT_THUNDERSNOW
+|| gMovesInfo[move].effect == EFFECT_THUNDERSNOW
       || gMovesInfo[move].effect == EFFECT_SNOWSCAPE))
         return TRUE;
     return FALSE;
@@ -3123,7 +3122,7 @@ bool32 PartnerMoveEffectIsTerrain(u32 battlerAtkPartner, u32 partnerMove)
      && (gMovesInfo[partnerMove].effect == EFFECT_GRASSY_TERRAIN
       || gMovesInfo[partnerMove].effect == EFFECT_MISTY_TERRAIN
       || gMovesInfo[partnerMove].effect == EFFECT_ELECTRIC_TERRAIN
-      || gMovesInfo[partnerMove].effect == EFFECT_THUNDERSNOW
+|| gMovesInfo[partnerMove].effect == EFFECT_THUNDERSNOW
       || gMovesInfo[partnerMove].effect == EFFECT_PSYCHIC_TERRAIN))
         return TRUE;
 

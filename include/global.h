@@ -1012,7 +1012,6 @@ struct SaveBlock1
     /*0x31F8*/ struct EnigmaBerry enigmaBerry;
 #endif //FREE_ENIGMA_BERRY
 #if FREE_MYSTERY_GIFT == FALSE
-    /*0x322C*/ struct MysteryGiftSave mysteryGift;
 #endif //FREE_MYSTERY_GIFT
     /*0x3???*/ u8 dexSeen[NUM_DEX_FLAG_BYTES];
     /*0x3???*/ u8 dexCaught[NUM_DEX_FLAG_BYTES];

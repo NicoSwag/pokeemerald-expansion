@@ -2230,4 +2230,59 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleTvScore = 0, // TODO: Assign points
         .encourageEncore = TRUE,
     },
+    [EFFECT_SNOW_HIT] =
+    {
+        .battleScript = BattleScript_EffectSnowHit,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+    [EFFECT_THUNDERSNOW] =
+    {
+        .battleScript = BattleScript_EffectThundersnow,
+        .battleTvScore = 0, // TODO: Assign points
+        .encourageEncore = TRUE,
+    },
+    [EFFECT_EMP] =
+        {
+        .battleScript = BattleScript_EffectEmp,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+    [EFFECT_PIERCING_WAIL] =
+        {
+        .battleScript = BattleScript_EffectPiercingWail,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+    [EFFECT_RAIN_HIT] =
+        {
+        .battleScript = BattleScript_EffectRainHit,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+    [EFFECT_RECHARGE_HEALING] =
+        {
+        .battleScript = BattleScript_Effect_RechargeHealing,
+        .battleTvScore = 0, // TODO: Assign points
+        .encourageEncore = TRUE,
+    },
+    [EFFECT_COMET_PUNCH] =
+        {
+        .battleScript = BattleScript_EffectCometPunch,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+    [EFFECT_SPIKES_IF_MISS] =
+        {
+        .battleScript = BattleScript_EffectSpikesIfMiss,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+    [EFFECT_SNAP_TRAP] =
+        {
+        .battleScript = BattleScript_EffectSnapTrap,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+
+    [EFFECT_FLASH_FREEZE] =
+        {
+        .battleScript = BattleScript_EffectFlashFreeze,
+        .battleTvScore = 0, // TODO: Assign points
+        .encourageEncore = TRUE,
+    },
+
 };

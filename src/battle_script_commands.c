@@ -1440,7 +1440,7 @@ bool32 ColorChangeTryChangeType(u32 defender, u32 ability, u32 move, u32 moveTyp
          && (gBattleMons[defender].type1 != moveType || gBattleMons[defender].type2 != moveType
              || (gBattleMons[defender].type3 != moveType && gBattleMons[defender].type3 != TYPE_MYSTERY))
          && move != MOVE_STRUGGLE
-         && gMovesInfo[move].split != SPLIT_STATUS) 
+         && gMovesInfo[move].category != DAMAGE_CATEGORY_STATUS) 
     {
         SET_BATTLER_TYPE(gBattlerTarget, moveType);
         return TRUE;
@@ -4170,17 +4170,7 @@ static void Cmd_setadditionaleffects(void)
 {
     CMD_ARGS();
 
-    u32 percentChance;
-
-    if((GetBattlerAbility(gBattlerAttacker) == ABILITY_PAROTOID_GLANDS)&&(gMovesInfo[gCurrentMove].type==TYPE_POISON))
-        percentChance = 100;
-    else if (GetBattlerAbility(gBattlerAttacker) == ABILITY_SERENE_GRACE)
-        percentChance = gMovesInfo[gCurrentMove].secondaryEffectChance * 2;
-    else
-        percentChance = gMovesInfo[gCurrentMove].secondaryEffectChance;
-
-    if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-     && gBattleScripting.moveEffect)
+    if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
     {
         if (gMovesInfo[gCurrentMove].numAdditionalEffects > gBattleStruct->additionalEffectsCounter)
         {
@@ -6107,8 +6097,8 @@ static void Cmd_moveend(void)
             }
             if(gBattleMons[BATTLE_PARTNER(gBattlerAttacker)].ability == ABILITY_GANGSTER
             && gBattleStruct->moveTarget[BATTLE_PARTNER(gBattlerAttacker)] == gBattlerTarget
-            && gMovesInfo[gCurrentMove].split != SPLIT_STATUS
-            && gMovesInfo[gChosenMoveByBattler[BATTLE_PARTNER(gBattlerAttacker)]].split != SPLIT_STATUS
+            && gMovesInfo[gCurrentMove].category != DAMAGE_CATEGORY_STATUS
+            && gMovesInfo[gChosenMoveByBattler[BATTLE_PARTNER(gBattlerAttacker)]].category != DAMAGE_CATEGORY_STATUS
             && gBattleMons[gBattlerAttacker].speed > gBattleMons[BATTLE_PARTNER(gBattlerAttacker)].speed
             && gBattleMons[gBattlerTarget].hp
             && gMovesInfo[gCurrentMove].target != (MOVE_TARGET_ALL_BATTLERS || MOVE_TARGET_ALLY || MOVE_TARGET_BOTH || MOVE_TARGET_FOES_AND_ALLY || MOVE_TARGET_OPPONENTS_FIELD || MOVE_TARGET_RANDOM)
@@ -7993,11 +7983,74 @@ static void Cmd_hitanimation(void)
     }
 }
 
+const struct TrainerClass gTrainerMoneyTable[] =
+{
+    {TRAINER_CLASS_TEAM_AQUA, 5},
+    {TRAINER_CLASS_AQUA_ADMIN, 15},
+    {TRAINER_CLASS_AQUA_LEADER, 20},
+    {TRAINER_CLASS_AROMA_LADY, 10},
+    {TRAINER_CLASS_RUIN_MANIAC, 15},
+    {TRAINER_CLASS_INTERVIEWER, 12},
+    {TRAINER_CLASS_TUBER_F, 1},
+    {TRAINER_CLASS_TUBER_M, 1},
+    {TRAINER_CLASS_SIS_AND_BRO, 3},
+    {TRAINER_CLASS_COOLTRAINER, 12},
+    {TRAINER_CLASS_HEX_MANIAC, 6},
+    {TRAINER_CLASS_LADY, 10},
+    {TRAINER_CLASS_BEAUTY, 20},
+    {TRAINER_CLASS_RICH_BOY, 25},
+    {TRAINER_CLASS_POKEMANIAC, 15},
+    {TRAINER_CLASS_SWIMMER_M, 2},
+    {TRAINER_CLASS_BLACK_BELT, 8},
+    {TRAINER_CLASS_DEVON_EMPLOYEE, 20},
+    {TRAINER_CLASS_ENGINEER, 10},
+    {TRAINER_CLASS_GUITARIST, 8},
+    {TRAINER_CLASS_KINDLER, 8},
+    {TRAINER_CLASS_CAMPER, 4},
+    {TRAINER_CLASS_OLD_COUPLE, 10},
+    {TRAINER_CLASS_BUG_MANIAC, 15},
+    {TRAINER_CLASS_PSYCHIC, 6},
+    {TRAINER_CLASS_GENTLEMAN, 20},
+    {TRAINER_CLASS_ELITE_FOUR, 25},
+    {TRAINER_CLASS_LEADER, 30},
+    {TRAINER_CLASS_SCHOOL_KID, 5},
+    {TRAINER_CLASS_SR_AND_JR, 4},
+    {TRAINER_CLASS_POKEFAN, 20},
+    {TRAINER_CLASS_EXPERT, 10},
+    {TRAINER_CLASS_YOUNGSTER, 5},
+    {TRAINER_CLASS_CHAMPION, 50},
+    {TRAINER_CLASS_FISHERMAN, 5},
+    {TRAINER_CLASS_TRIATHLETE, 10},
+    {TRAINER_CLASS_CREEPING, 0},
+    {TRAINER_CLASS_DRAGON_TAMER, 12},
+    {TRAINER_CLASS_BIRD_KEEPER, 8},
+    {TRAINER_CLASS_NINJA_BOY, 3},
+    {TRAINER_CLASS_BATTLE_GIRL, 6},
+    {TRAINER_CLASS_PARASOL_LADY, 10},
+    {TRAINER_CLASS_SWIMMER_F, 2},
+    {TRAINER_CLASS_PICNICKER, 4},
+    {TRAINER_CLASS_TWINS, 3},
+    {TRAINER_CLASS_SAILOR, 8},
+    {TRAINER_CLASS_COLLECTOR, 15},
+    {TRAINER_CLASS_RIVAL, 20},
+    {TRAINER_CLASS_PKMN_BREEDER, 10},
+    {TRAINER_CLASS_PKMN_RANGER, 12},
+    {TRAINER_CLASS_TEAM_MAGMA, 10},
+    {TRAINER_CLASS_MAGMA_ADMIN, 10},
+    {TRAINER_CLASS_MAGMA_LEADER, 20},
+    {TRAINER_CLASS_LASS, 5},
+    {TRAINER_CLASS_BUG_CATCHER, 4},
+    {TRAINER_CLASS_HIKER, 10},
+    {TRAINER_CLASS_YOUNG_COUPLE, 8},
+    {TRAINER_CLASS_WINSTRATE, 10},
+    {0xFF, 5}, // Any trainer class not listed above uses this
+};
+
 static u32 GetTrainerMoneyToGive(u16 trainerId)
 {
+    u32 i = 0;
     u32 lastMonLevel = 0;
     u32 moneyReward;
-    u8 trainerMoney = 0;
 
     if (trainerId == TRAINER_SECRET_BASE)
     {
@@ -8005,18 +8058,21 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
     }
     else
     {
-        const struct TrainerMon *party = GetTrainerPartyFromId(trainerId);
-        if (party == NULL)
-            return 20;
-        lastMonLevel = party[GetTrainerPartySizeFromId(trainerId) - 1].lvl;
-        trainerMoney = gTrainerClasses[GetTrainerClassFromId(trainerId)].money;
+        const struct TrainerMon *party = gTrainers[trainerId].party;
+        lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
+
+        for (; gTrainerMoneyTable[i].name != 0xFF; i++)
+        {
+            if (gTrainerMoneyTable[i].name == gTrainers[trainerId].trainerClass)
+                break;
+        }
 
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-            moneyReward = gTrainerMoneyTable[i].value * 100;
+            moneyReward = gTrainerMoneyTable[i].money * 100;
         else if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-            moneyReward = gTrainerMoneyTable[i].value * 100;
+            moneyReward = gTrainerMoneyTable[i].money * 100;
         else
-            moneyReward = gTrainerMoneyTable[i].value * 100;
+            moneyReward = gTrainerMoneyTable[i].money * 100;
     }
     if(GetCurrentMapBattleScene() == MAP_BATTLE_SCENE_GYM)
         moneyReward = 0;
@@ -15237,8 +15293,19 @@ static void Cmd_pickup(void)
                     }
                 }
             }
-            #if P_SHUCKLE_BERRY_JUICE == GEN_2
-            else if (species == SPECIES_SHUCKLE
+            else if (ability == ABILITY_HONEY_GATHER
+                && species != 0
+                && species != SPECIES_EGG
+                && heldItem == ITEM_NONE)
+            {
+                if ((lvlDivBy10 + 1 ) * 5 > Random() % 100)
+                {
+                    heldItem = ITEM_HONEY;
+                    SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);
+                }
+            }
+            else if (P_SHUCKLE_BERRY_JUICE == GEN_2
+                && species == SPECIES_SHUCKLE
                 && heldItem == ITEM_ORAN_BERRY
                 && (Random() % 16) == 0)
             {
@@ -15250,6 +15317,7 @@ static void Cmd_pickup(void)
 
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
+
 
 static void Cmd_unused3(void)
 {

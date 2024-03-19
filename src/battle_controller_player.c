@@ -2338,7 +2338,7 @@ static void MoveSelectionDisplaySplitIcon(u32 battler){
 	u32 moveCategory;
 
 	moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[battler][MAX_BATTLERS_COUNT]);
-    moveCategory = gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].split;
+    moveCategory = gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].category;
 	LoadPalette(sSplitIcons_Pal, 10 * 0x10, 0x20);
 	BlitBitmapToWindow(B_WIN_PSS_ICON, sSplitIcons_Gfx + 0x80 * moveCategory, 0, 0, 16, 16);
 	PutWindowTilemap(B_WIN_PSS_ICON);

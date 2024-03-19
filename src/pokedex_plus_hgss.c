@@ -5348,7 +5348,7 @@ static void PrintStatsScreen_Moves_Bottom(u8 taskId)
     else //Appeal + Jam
     {
             DestroySplitIcon();
-            gSprites[sPokedexView->splitIconSpriteId].invisible = TRUE;
+            gSprites[sPokedexView->categoryIconSpriteId].invisible = TRUE;
 
     }
 }
@@ -6560,7 +6560,7 @@ static u8 PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 depth,
             StringExpandPlaceholders(gStringVar4, sText_EVO_MOVE );
             break;
         case EVO_MOVE_MALE:
-            StringCopy(gStringVar2, gMoveNames[evolutions[i].param]);
+            StringCopy(gStringVar2, GetMoveName(evolutions[i].param));
             StringExpandPlaceholders(gStringVar4, sText_EVO_MOVE );
             break;
         case EVO_FRIENDSHIP_MOVE_TYPE:

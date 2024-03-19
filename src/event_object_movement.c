@@ -1956,8 +1956,7 @@ static void SetBerryTreeGraphics(struct ObjectEvent *objectEvent, struct Sprite 
 
         ObjectEventSetGraphicsId(objectEvent, gBerryTreeObjectEventGraphicsIdTable[berryStage]);
         sprite->images = gBerryTreePicTablePointers[berryId];
-        sprite->oam.paletteNum = IndexOfSpritePaletteTag(gBerryTreePaletteTagTablePointers[berryId][berryStage]);
-        UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_ALT);
+        sprite->oam.paletteNum = gBerryTreePaletteSlotTablePointers[berryId][berryStage];
         StartSpriteAnim(sprite, berryStage);
     }
 }

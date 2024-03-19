@@ -849,5 +849,15 @@ extern const u8 BattleScript_EffectFilletAway[];
 extern const u8 BattleScript_EffectShedTail[];
 extern const u8 BattleScript_EffectUpperHand[];
 extern const u8 BattleScript_EffectTidyUp[];
+extern const u8 BattleScript_EffectSnowHit[];
+extern const u8 BattleScript_EffectThundersnow[];
+extern const u8 BattleScript_EffectEmp[];
+extern const u8 BattleScript_EffectPiercingWail[];
+extern const u8 BattleScript_EffectRainHit[];
+extern const u8 BattleScript_Effect_RechargeHealing[];
+extern const u8 BattleScript_EffectSpikesIfMiss[];
+extern const u8 BattleScript_EffectSnapTrap[];
+extern const u8 BattleScript_EffectCometPunch[];
+extern const u8 BattleScript_EffectFlashFreeze[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

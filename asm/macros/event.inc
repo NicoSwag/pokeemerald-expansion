@@ -1810,6 +1810,8 @@
 
 	.macro hideitemdesc
 	.byte 0xe4
+	.endm
+
 	.macro _dynmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req argv:vararg
 	.byte 0xe3
 	.2byte \left
@@ -2136,6 +2138,7 @@
 
 	.macro doesplayerhavepokeball
 	callnative CheckBallPocket
+	.endm
 	@ Sets VAR_RESULT to TRUE if stat can be hyper trained, or to
 	@ FALSE otherwise.
 	.macro canhypertrain stat:req, slot:req

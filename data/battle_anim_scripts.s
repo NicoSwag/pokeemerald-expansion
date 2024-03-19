@@ -976,7 +976,6 @@ gBattleAnims_General::
 	.4byte General_Snow                     @ B_ANIM_SNOW_CONTINUES
 	.4byte General_Gravity					@ B_ANIM_GRAVITY
 	.4byte General_Pollution                @ B_ANIM_POLLUTION_CONTINUES
-	.4byte General_TrickRoom				@ B_ANIM_TRICK_ROOM
 	.4byte General_UltraBurst               @ B_ANIM_ULTRA_BURST
 	.4byte General_SaltCureDamage           @ B_ANIM_SALT_CURE_DAMAGE
 	.4byte General_DynamaxGrowth            @ B_ANIM_DYNAMAX_GROWTH
@@ -17655,14 +17654,6 @@ Move_POUND:
 	blendoff
 	end
 
-Move_CHILLING_WATER::
-	goto Move_WATER_GUN
-
-Move_TRAILBLAZE::
-	goto Move_GRASSY_GLIDE
-
-Move_GIGATON_HAMMER::
-	goto Move_METEOR_MASH
 
 Move_DOUBLE_SLAP:
 	loadspritegfx ANIM_TAG_IMPACT
@@ -27992,8 +27983,6 @@ General_Snow:
 General_Gravity:
 	goto Move_GRAVITY
 
-General_TrickRoom::
-	goto Move_TRICK_ROOM
 
 
 General_Pollution:

@@ -356,7 +356,7 @@ static bool32 FindMonThatAbsorbsOpponentsMove(u32 battler, bool32 emitResult)
         absorbingTypeAbilities[0] = ABILITY_SAP_SIPPER;
         numAbsorbingAbilities = 1;
     }
-        else if (gBattleMoves[gLastLandedMoves[battler]].type == TYPE_DARK)
+        else if (gMovesInfo[gLastLandedMoves[battler]].type == TYPE_DARK)
     {
         absorbingTypeAbilities[0] = ABILITY_JUSTIFIED;
         numAbsorbingAbilities = 1;

@@ -18,6 +18,46 @@
 
 // Shared Item Description entries
 
+static const u8 sTM01Desc[] = _(
+    "Boosts the power\n"
+    "of the recipient's\n"
+    "moves.");
+
+static const u8 sTM02Desc[] = _(
+    "A shower with cold\n"
+    "water that may\n"
+    "freeze the foe.");
+
+static const u8 sTM03Desc[] = _(
+    "Suppresses the foe,\n"
+    "making it move last\n"
+    "in a turn.");
+
+static const u8 sTM04Desc[] = _(
+    "The user attacks\n"
+    "in a sudden way,\n"
+    "raising its Speed.");
+
+static const u8 sTM05Desc[] = _(
+    "Evades attacks, but\n"
+    "may fail if used\n"
+    "in succession.");
+
+static const u8 sTM06Desc[] = _(
+    "Causes a sandstorm\n"
+    "that hits the foe\n"
+    "over several turns.");
+
+static const u8 sTM07Desc[] = _(
+    "Traps the foe in a \n"
+    "ring of fire for 5\n"
+    "turns.");
+
+static const u8 sTM08Desc[] = _(
+    "Inreases in power\n"
+    "when the user's HP\n"
+    "is low.");
+
 static const u8 sFullHealDesc[]       = _("Heals all the\n"
                                           "status problems of\n"
                                           "one Pokémon.");
@@ -9225,6 +9265,9 @@ const struct Item gItemsInfo[] =
 
 // TMs/HMs. They don't have a set flingPower, as that's handled by GetFlingPowerFromItemId.
 
+
+
+
     [ITEM_TM_HELPING_HAND] =
     {
         .name = _("TM01"),
@@ -11510,16 +11553,6 @@ const struct Item gItemsInfo[] =
     },
 
 
-    [ITEM_ODD_INSCRIPTION] =
-    {
-        .name = _("ODD CARVING"),
-        .price = 0,
-        .description = sOddInscriptionDesc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
 
     [ITEM_GOLD_TEETH] =
     {
