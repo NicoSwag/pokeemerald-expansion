@@ -285,9 +285,9 @@ Route116_EventScript_Clark::
 	msgbox Route116_Text_ClarkPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route116_EventScript_Janice::
-	trainerbattle_single TRAINER_JANICE, Route116_Text_JaniceIntro, Route116_Text_JaniceDefeat
-	msgbox Route116_Text_JanicePostBattle, MSGBOX_AUTOCLOSE
+Route116_EventScript_Wyll::
+	trainerbattle_single TRAINER_WYLL, Route116_Text_WyllIntro, Route116_Text_WyllDefeat
+	msgbox Route116_Text_WyllPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route116_EventScript_Karen::

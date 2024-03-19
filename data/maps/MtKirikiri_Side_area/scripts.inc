@@ -21,6 +21,10 @@ EventScript_MtKirikiri_Shadow_1::
 	setvar VAR_DEFEATED_KIRIKIRI_SHADOW_1, 1
 	end
 
+EventScript_MtKirikiri_StrangeWall:
+	msgbox Text_MtKirikiri_StrangeWall, MSGBOX_SIGN
+	end
+
 EventScript_KirikiriMountain_ShadowAppears::
 	lock
 	addobject LOCALID_SHADOW
@@ -88,3 +92,8 @@ Kirikiri_Text_DotDotDot::
 	.string "… … …$"
 
 
+Text_MtKirikiri_StrangeWall::
+	.string "The wall is decorated by undecipherable\n"
+	.string "carvings.\p"
+	.string "You can hear a faint wooshing noise\n"
+	.string "coming from behind it.$"

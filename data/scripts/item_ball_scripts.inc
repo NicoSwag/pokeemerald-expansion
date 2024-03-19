@@ -24,6 +24,24 @@ Route102_EventScript_ItemSkyFragment::
 	end
 
 
+MtKirikiri_SideArea_EventScript_ItemSkyFragment::
+	finditem ITEM_HEART_SCALE
+	end
+
+MtKirikiri_SideArea_EventScript_ItemReversal::
+	finditem ITEM_TM_REVERSAL
+	end
+
+
+MtKirikiri_SideArea_EventScript_ItemHardStone::
+	finditem ITEM_HARD_STONE
+	end
+
+
+MtKirikiri_SideArea_EventScript_ItemEviolite::
+	finditem ITEM_EVIOLITE
+	end
+
 Route104_EventScript_ItemPPUp::
 	finditem ITEM_PP_UP
 	end

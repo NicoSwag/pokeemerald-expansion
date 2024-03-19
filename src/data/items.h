@@ -7228,7 +7228,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_FIRE_SPIN,
     },
 
-    [ITEM_TM_BULK_UP] =
+    [ITEM_TM_REVERSAL] =
     {
         .name = _("TM08"),
         .price = 3000,
@@ -7237,7 +7237,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_BULK_UP,
+        .secondaryId = MOVE_REVERSAL,
     },
 
     [ITEM_TM_BULLET_SEED] =

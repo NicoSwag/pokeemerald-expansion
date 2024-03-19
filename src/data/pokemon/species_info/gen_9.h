@@ -3912,34 +3912,34 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
 #if P_FAMILY_SLITHER_WING
     [SPECIES_SLITHER_WING] =
     {
-        .baseHP        = 85,
-        .baseAttack    = 135,
-        .baseDefense   = 79,
-        .baseSpeed     = 81,
-        .baseSpAttack  = 85,
-        .baseSpDefense = 105,
+        .baseHP        = 80,
+        .baseAttack    = 140,
+        .baseDefense   = 80,
+        .baseSpeed     = 80,
+        .baseSpAttack  = 70,
+        .baseSpDefense = 110,
         .types = { TYPE_BUG, TYPE_FIGHTING },
         .catchRate = 30,
         .expYield = 285,
-        .evYield_Attack = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 50,
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = { EGG_GROUP_NO_EGGS_DISCOVERED, EGG_GROUP_NO_EGGS_DISCOVERED },
-        .abilities = { ABILITY_PROTOSYNTHESIS, ABILITY_NONE },
+        .abilities = { ABILITY_GUTS, ABILITY_SHIELD_DUST, ABILITY_PROTOSYNTHESIS },
         .bodyColor = BODY_COLOR_WHITE,
         .isParadoxForm = TRUE,
-        .speciesName = _("SlithrWing"),
+        .speciesName = _("VOLCARONA"),
         .cryId = CRY_SLITHER_WING,
         .natDexNum = NATIONAL_DEX_SLITHER_WING,
-        .categoryName = _("Paradox"),
+        .categoryName = _("PARADOX"),
         .height = 32,
         .weight = 920,
         .description = COMPOUND_STRING(
-            "This mysterious Pokémon has some\n"
-            "similarities to a creature that an\n"
-            "old book introduced as Slither Wing."),
+            "This creature was known in the ancient\n"
+            "past as SLITHER WING. Eventually, due to\n"
+            "the difficulties that it had moving, it\n"
+            "evolved a pair of wings."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
         .trainerScale = 256,

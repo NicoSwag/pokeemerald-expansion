@@ -567,7 +567,7 @@ static void BuyMenuBuildListMenuTemplate(void)
     u16 added_TMs = 0;
     i=0;
     if(gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP))
-        added_TMs = FlagGet(FLAG_CANDY_IN_SHOPS) + FlagGet(FLAG_HELPED_LEDYBA) + FlagGet(FLAG_RECEIVED_TM02) + FlagGet(FLAG_ITEM_PETALBURG_WOODS_QUASH) + FlagGet(FLAG_RECEIVED_TM04) + FlagGet(FLAG_RECEIVED_TM05) + FlagGet(FLAG_RECEIVED_TM06);
+    added_TMs = FlagGet(FLAG_CANDY_IN_SHOPS) + FlagGet(FLAG_HELPED_LEDYBA) + FlagGet(FLAG_RECEIVED_TM02) + FlagGet(FLAG_ITEM_PETALBURG_WOODS_QUASH) + FlagGet(FLAG_RECEIVED_TM04) + FlagGet(FLAG_RECEIVED_TM05) + FlagGet(FLAG_RECEIVED_TM06) + FlagGet(FLAG_ITEM_RUSTBORO_CITY_X_DEFEND) + FlagGet(FLAG_RECEIVED_TM08);
     sListMenuItems = Alloc((sMartInfo.itemCount + 1 + added_TMs) * sizeof(*sListMenuItems));
     sItemNames = Alloc((sMartInfo.itemCount + 1 + added_TMs) * sizeof(*sItemNames));
     for (i; i < sMartInfo.itemCount; i++)
@@ -620,6 +620,20 @@ static void BuyMenuBuildListMenuTemplate(void)
 
     if((FlagGet(FLAG_RECEIVED_TM06) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
     StringCopy(sItemNames[i], gText_TM06);
+    sListMenuItems[i].name = sItemNames[i];
+    sListMenuItems[i].id = ITEM_TM06;
+    i++;
+    }
+
+    if((FlagGet(FLAG_ITEM_RUSTBORO_CITY_X_DEFEND) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    StringCopy(sItemNames[i], gText_TM07);
+    sListMenuItems[i].name = sItemNames[i];
+    sListMenuItems[i].id = ITEM_TM06;
+    i++;
+
+    }
+    if((FlagGet(FLAG_RECEIVED_TM08) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    StringCopy(sItemNames[i], gText_TM08);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM06;
     i++;

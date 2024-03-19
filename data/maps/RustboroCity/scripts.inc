@@ -228,7 +228,13 @@ RustboroCity_EventScript_Man1::
 	end
 
 RustboroCity_EventScript_Engineer_4::
+	goto_if_eq VAR_RUSTBORO_CITY_STATE, 4, RustboroCity_EventScript_Engineer_4_After
 	msgbox RustboroCity_Text_CantPass, MSGBOX_NPC
+	end
+
+
+RustboroCity_EventScript_Engineer_4_After::
+	msgbox RustboroCity_Text_Advice, MSGBOX_NPC
 	end
 
 RustboroCity_EventScript_Man1HaveBadge::
@@ -1717,3 +1723,13 @@ RustboroCity_Text_TheWayIsOpen:
 	.string "Well, there is someone I must call.\p"
 	.string "Private call, yes. Very confidential.\p"
 	.string "I am counting on you!$"
+
+RustboroCity_Text_Advice:
+	.string "You seem to have some powerful\n"
+	.string "friends, kid.\p"
+	.string "Can't really disobey those orders.\p"
+	.string "But let me give you a piece of\n"
+	.string "advice.\p"
+	.string "If you keep sticking your nose in\n"
+	.string "things too complex for you…\p"
+	.string "Well, it just might end up badly.$"

@@ -2152,27 +2152,28 @@ Route116_Text_JoeyPostBattle:
 	.string "I've got another one!$"
 
 Route116_Text_JoseIntro:
-	.string "My BUG POKéMON are tough!\n"
-	.string "Let's battle!$"
+	.string "Oi! I'm stomping here!$"
 
 Route116_Text_JoseDefeat:
-	.string "I lost!\n"
-	.string "I thought I had you!$"
+	.string "This makes me want to stomp!\n"
+	.string "even more!$"
 
 Route116_Text_JosePostBattle:
-	.string "BUG POKéMON evolve quickly.\n"
-	.string "So they get strong quickly, too.$"
+	.string "I'm flattening the ground to\n"
+	.string "prepare it for construction.$"
 
-Route116_Text_JaniceIntro:
-	.string "Let me teach you how strong my\n"
-	.string "adorable POKéMON is!$"
+Route116_Text_WyllIntro:
+	.string "Hey! You're not allowed\n"
+	.string "here!$"
 
-Route116_Text_JaniceDefeat:
-	.string "You're a notch above me…$"
+Route116_Text_WyllDefeat:
+	.string "You really can handle\n"
+	.string "yourself…$"
 
-Route116_Text_JanicePostBattle:
-	.string "POKéMON that possess cuteness and\n"
-	.string "power, that's ideal, I think.$"
+Route116_Text_WyllPostBattle:
+	.string "What? The guy at the entrance\n"
+	.string "gave you permission?.\p"
+	.string "I guess you can stay, then.$"
 
 Route116_Text_JerryIntro:
 	.string "We learn all sorts of things at the\n"

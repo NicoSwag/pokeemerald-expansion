@@ -513,9 +513,9 @@
 #define FLAG_DEFEATED_LUGIA                  0x1DD
 
 #define FLAG_ROUTE102_TRADE_COMPLETE                   0x1DE // Unused Flag
-#define FLAG_UNUSED_0x1DF                    0x1DF // Unused Flag
-#define FLAG_UNUSED_0x1E0                    0x1E0 // Unused Flag
-#define FLAG_UNUSED_0x1E1                    0x1E1 // Unused Flag
+#define FLAG_RECEIVED_TM08                    0x1DF // Unused Flag
+#define FLAG_RECEIVED_HARD_STONE                    0x1E0 // Unused Flag
+#define FLAG_RECEIVED_EVIOLITE                   0x1E1 // Unused Flag
 #define FLAG_UNUSED_0x1E2                    0x1E2 // Unused Flag
 #define FLAG_UNUSED_0x1E3                    0x1E3 // Unused Flag
 
@@ -1223,7 +1223,7 @@
 #define FLAG_ITEM_ROUTE104_SKY_FRAGMENT_2                                           0x495 // Unused Flag
 #define FLAG_ITEM_DRAGON_FANG                                           0x496 // Unused Flag
 #define FLAG_HIDE_FIRST_SHADOW                                       0x497 // Unused Flag
-#define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
+#define FLAG_MT_KIRIKIRI_SIDE_FRAGMENT                                          0x498 // Unused Flag
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
 #define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag

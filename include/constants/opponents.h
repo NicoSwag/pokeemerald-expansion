@@ -606,7 +606,7 @@
 #define TRAINER_MAXIE_MT_CHIMNEY            602
 #define TRAINER_TIANA                       603
 #define TRAINER_HALEY_1                     604
-#define TRAINER_JANICE                      605
+#define TRAINER_WYLL                      605
 #define TRAINER_VIVI                        606
 #define TRAINER_HALEY_2                     607
 #define TRAINER_HALEY_3                     608

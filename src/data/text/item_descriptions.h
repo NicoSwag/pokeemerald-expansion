@@ -3067,9 +3067,9 @@ static const u8 sTM07Desc[] = _(
     "turns.");
 
 static const u8 sTM08Desc[] = _(
-    "Bulks up the body\n"
-    "to boost both\n"
-    "Attack & Defense.");
+    "Inreases in power\n"
+    "when the user's HP\n"
+    "is low.");
 
 static const u8 sTM09Desc[] = _(
     "Shoots 2 to 5 seeds\n"

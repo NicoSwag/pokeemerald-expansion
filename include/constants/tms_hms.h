@@ -9,7 +9,7 @@
     F(PROTECT) \
     F(SANDSTORM) \
     F(FIRE_SPIN) \
-    F(BULK_UP) \
+    F(REVERSAL) \
     F(BULLET_SEED) \
     F(HIDDEN_POWER) \
     F(SUNNY_DAY) \

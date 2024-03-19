@@ -192,6 +192,12 @@ const u32 gTrainerPalette_DragonTamer[] = INCBIN_U32("graphics/trainers/front_pi
 const u32 gTrainerFrontPic_NinjaBoy[] = INCBIN_U32("graphics/trainers/front_pics/ninja_boy.4bpp.lz");
 const u32 gTrainerPalette_NinjaBoy[] = INCBIN_U32("graphics/trainers/front_pics/ninja_boy.gbapal.lz");
 
+const u32 gTrainerFrontPic_DevonEmployee[] = INCBIN_U32("graphics/trainers/front_pics/devon_employee.4bpp.lz");
+const u32 gTrainerPalette_Devon_Employee[] = INCBIN_U32("graphics/trainers/front_pics/devon_employee.gbapal.lz");
+
+const u32 gTrainerFrontPic_Engineer[] = INCBIN_U32("graphics/trainers/front_pics/engineer.4bpp.lz");
+const u32 gTrainerPalette_Engineer[] = INCBIN_U32("graphics/trainers/front_pics/engineer.gbapal.lz");
+
 const u32 gTrainerFrontPic_BattleGirl[] = INCBIN_U32("graphics/trainers/front_pics/battle_girl.4bpp.lz");
 const u32 gTrainerPalette_BattleGirl[] = INCBIN_U32("graphics/trainers/front_pics/battle_girl.gbapal.lz");
 

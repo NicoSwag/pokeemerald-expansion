@@ -16424,7 +16424,7 @@ static void TryUpdateGangsterOrder(void)
     }
 }
 
-u8 GetFirstFaintedPartyIndex(u32 battler)
+u8 GetFirstFaintedPartyIndex(u8 battler)
 {
     u32 i;
     u32 start = 0;
