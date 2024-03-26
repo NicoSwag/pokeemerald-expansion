@@ -155,5 +155,6 @@ bool32 Overworld_SendKeysToLinkIsRunning(void);
 bool32 IsSendingKeysOverCable(void);
 void ClearLinkPlayerObjectEvents(void);
 u8 GetLastUsedWarpMapSectionId(void);
+void CB2_ReturnToFullScreenStartMenu(void);
 
 #endif // GUARD_OVERWORLD_H

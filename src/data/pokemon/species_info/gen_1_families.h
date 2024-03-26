@@ -4915,7 +4915,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .natDexNum = NATIONAL_DEX_ALAKAZAM,                         \
         .categoryName = _("Psi"),                                   \
         .footprint = gMonFootprint_Alakazam,                        \
-        LEARNSETS(Alakazam),                                        \
+        LEARNSETS(Alakazam)                                        \
 
     [SPECIES_ALAKAZAM] =
     {
@@ -6227,7 +6227,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         ICON(Magneton, 0),
         .footprint = gMonFootprint_Magneton,
         LEARNSETS(Magneton),
-        .evolutions = EVOLUTION{EVO_MAPSEC, MAPSEC_NEW_MAUVILLE, SPECIES_MAGNEZONE},
+        .evolutions = EVOLUTION({EVO_MAPSEC, MAPSEC_NEW_MAUVILLE, SPECIES_MAGNEZONE}),
     },
 
 #if P_GEN_4_CROSS_EVOS

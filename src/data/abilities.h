@@ -2640,13 +2640,13 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Reduces Sp. Atk on entry."),
         .aiRating = 9,
     },
-    [TENACITY] =
+    [ABILITY_TENACITY] =
     {
         .name = _("Tenacity"),
         .description = COMPOUND_STRING("Sp. Atk up when suffering."),
         .aiRating = 8,
     },
-    [SINGER] =
+    [ABILITY_SINGER] =
     {
         .name = _("Singer"),
         .description = COMPOUND_STRING("Copies sound moves."),
@@ -2688,7 +2688,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Bug moves are stronger."),
         .aiRating = 7,
     },
-    [ABILITY_MIASMA FORCE] =
+    [ABILITY_MIASMA_FORCE] =
     {
         .name = _("Miasma Force"),
         .description = COMPOUND_STRING("Powers up under Pollution."),
@@ -2730,9 +2730,9 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Defenses up on Psychic Terrain."),
         .aiRating = 8,
     },
-    [ABILITY_BLAZING_SPEED] =
+    [ABILITY_BLAZING_FAST] =
     {
-        .name = _("Blazing Speed"),
+        .name = _("Blazing Fast"),
         .description = COMPOUND_STRING("Speed raises crit chance."),
         .aiRating = 8,
     },
@@ -2779,7 +2779,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Punching moves use Sp. Atk."),
         .aiRating = 6,
     },
-    [ABILITY_FAE LUCK] =
+    [ABILITY_FAE_LUCK] =
     {
         .name = _("Fae Luck"),
         .description = COMPOUND_STRING("Crits up on Psychic Terrain."),
@@ -2791,7 +2791,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Fire moves are stronger."),
         .aiRating = 7,
     },
-    [ABILITY_FAE_FPRCE] =
+    [ABILITY_FAE_FORCE] =
     {
         .name = _("Face Force"),
         .description = COMPOUND_STRING("Fairy moves are stronger on terrain."),

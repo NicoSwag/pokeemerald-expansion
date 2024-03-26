@@ -361,7 +361,8 @@ SECTIONS {
         src/pokemon_debug.o(.text);
         src/expansion_intro.o(.text);
         src/map_preview.o(.text);
-    } ROM =0
+        src/ui_startmenu_full.o(.text);
+    } > ROM =0
 
     script_data :
     ALIGN(4)
@@ -729,7 +730,8 @@ SECTIONS {
         src/pokemon_debug.o(.rodata);
         src/expansion_intro.o(.rodata);
         src/map_preview.o(.rodata);
-    } ROM =0
+        src/ui_startmenu_full.o(.rodata);
+    } > ROM =0
 
     song_data :
     ALIGN(4)
