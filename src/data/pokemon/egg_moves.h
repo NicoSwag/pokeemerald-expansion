@@ -106,6 +106,10 @@ const u16 gEggMoves[] = {
         MOVE_SUCKER_PUNCH,
         MOVE_SNATCH),
 
+    egg_moves(KLINK,
+        MOVE_RAPID_SPIN,
+        MOVE_METAL_BURST),
+
     egg_moves(SANDSHREW,
         MOVE_FLAIL,
         MOVE_COUNTER,
@@ -304,19 +308,14 @@ const u16 gEggMoves[] = {
         MOVE_WATER_PULSE),
 
     egg_moves(ABRA,
-        MOVE_ENCORE,
-        MOVE_BARRIER,
-        MOVE_KNOCK_OFF,
         MOVE_FIRE_PUNCH,
-        MOVE_THUNDER_PUNCH,
-        MOVE_ICE_PUNCH,
-        MOVE_POWER_TRICK,
-        MOVE_GUARD_SWAP,
+        MOVE_SKILL_SWAP),
+
+    egg_moves(KADABRA,
+        MOVE_FIRE_PUNCH,
         MOVE_SKILL_SWAP,
-        MOVE_GUARD_SPLIT,
-        MOVE_PSYCHO_SHIFT,
-        MOVE_ALLY_SWITCH,
-        MOVE_PSYCHIC_TERRAIN),
+        MOVE_THUNDER_PUNCH,
+        MOVE_FOCUS_BLAST),
 
     egg_moves(MACHOP,
         MOVE_MEDITATE,
@@ -2964,6 +2963,10 @@ const u16 gEggMoves[] = {
     egg_moves(JOLTIK,
         MOVE_SILK_TRAP,
         MOVE_RISING_VOLTAGE),
+
+    egg_moves(VOLTORB_HISUIAN,
+        MOVE_LEECH_SEED,
+        MOVE_COMBUSTION),
 
     egg_moves(FERROSEED,
         MOVE_BULLET_SEED,

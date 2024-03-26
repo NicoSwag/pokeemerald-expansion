@@ -3459,18 +3459,17 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     {
         .name = COMPOUND_STRING("Kinesis"),
         .description = COMPOUND_STRING(
-            "Distracts the foe.\n"
-            "May lower accuracy."),
-        .effect = EFFECT_ACCURACY_DOWN,
-        .power = 0,
+            "Channels energy through.\n"
+            "a spoon, removing terrain."),
+        .effect = EFFECT_HIT_SET_REMOVE_TERRAIN,
+        .power = 70,
         .type = TYPE_PSYCHIC,
-        .accuracy = 80,
-        .pp = 15,
+        .accuracy = 95,
+        .pp = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .category = DAMAGE_CATEGORY_STATUS,
+        .category = DAMAGE_CATEGORY_SPECIAL,
         .zMove = { .effect = Z_EFFECT_EVSN_UP_1 },
-        .magicCoatAffected = B_UPDATED_MOVE_FLAGS >= GEN_5,
         .contestEffect = CONTEST_EFFECT_DONT_EXCITE_AUDIENCE,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = COMBO_STARTER_KINESIS,
@@ -11500,12 +11499,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     },
 
 
-        [MOVE_MAGMA_STORM] =
+        [MOVE_FORESTS_CURSE] =
     {
-        .name = COMPOUND_STRING("Magma Storm"),
+        .name = COMPOUND_STRING("THORNY BUSH"),
         .description = COMPOUND_STRING(
             "Traps the foe in a thicket\n"
-            "of thorn for "BINDING_TURNS" turns."),
+            "of thorns for "BINDING_TURNS" turns."),
         .effect = EFFECT_HIT,
         .power = 80,
         .type = TYPE_GRASS,
@@ -14103,28 +14102,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .contestComboMoves = {0}
     },
 
-    [MOVE_FORESTS_CURSE] =
-    {
-        .name = HANDLE_EXPANDED_MOVE_NAME("Forest'sCurs", "Forest's Curse"),
-        .description = COMPOUND_STRING(
-            "Puts a curse on the foe\n"
-            "making the foe Grass-type."),
-        .effect = EFFECT_THIRD_TYPE,
-        .power = 0,
-        .type = TYPE_GRASS,
-        .accuracy = 100,
-        .pp = 20,
-        .target = MOVE_TARGET_SELECTED,
-        .priority = 0,
-        .category = DAMAGE_CATEGORY_STATUS,
-        .argument = TYPE_GRASS,
-        .zMove = { .effect = Z_EFFECT_ALL_STATS_UP_1 },
-        .magicCoatAffected = TRUE,
-        .contestEffect = CONTEST_EFFECT_WORSEN_CONDITION_OF_PREV_MONS,
-        .contestCategory = CONTEST_CATEGORY_SMART,
-        .contestComboStarterId = 0,
-        .contestComboMoves = {0}
-    },
+
 
     [MOVE_PETAL_BLIZZARD] =
     {
@@ -15049,7 +15027,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .contestComboMoves = {0}
     },
 
-    [MOVE_NUZZLE] =
+    [MOVE_NUMBING_KISS] =
     {
         .name = COMPOUND_STRING("Numbing Kiss"),
         .description = COMPOUND_STRING(
@@ -17388,31 +17366,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .contestComboMoves = {0}
     },
 
-    [MOVE_SNAP_TRAP] =
-    {
-        .name = COMPOUND_STRING("Snap Trap"),
-        .description = COMPOUND_STRING(
-            "Snares the target in a snap\n"
-            "trap for four to five turns."),
-        .effect = EFFECT_HIT,
-        .power = 35,
-        .type = TYPE_GRASS,
-        .accuracy = 100,
-        .pp = 15,
-        .target = MOVE_TARGET_SELECTED,
-        .priority = 0,
-        .category = DAMAGE_CATEGORY_PHYSICAL,
-        .makesContact = TRUE,
-        .metronomeBanned = TRUE,
-        .skyBattleBanned = B_EXTRAPOLATED_MOVE_FLAGS,
-        .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_WRAP,
-        }),
-        .contestEffect = CONTEST_EFFECT_DONT_EXCITE_AUDIENCE,
-        .contestCategory = CONTEST_CATEGORY_TOUGH,
-        .contestComboStarterId = 0,
-        .contestComboMoves = {0}
-    },
+
 
     [MOVE_PYRO_BALL] =
     {

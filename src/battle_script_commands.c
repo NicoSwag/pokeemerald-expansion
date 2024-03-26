@@ -7983,7 +7983,13 @@ static void Cmd_hitanimation(void)
     }
 }
 
-const struct TrainerClass gTrainerMoneyTable[] =
+struct TrainerMoney
+{
+    u8 name;
+    u8 money;
+};
+
+const struct TrainerMoney gTrainerMoneyTable[] =
 {
     {TRAINER_CLASS_TEAM_AQUA, 5},
     {TRAINER_CLASS_AQUA_ADMIN, 15},

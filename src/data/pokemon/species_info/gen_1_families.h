@@ -4816,14 +4816,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_PSYCHIC, TYPE_PSYCHIC },
         .catchRate = 200,
         .expYield = 62,
-        .evYield_SpAttack = 1,
-        .itemRare = ITEM_TWISTED_SPOON,
-        .genderRatio = PERCENT_FEMALE(25),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE },
-        .abilities = { ABILITY_SYNCHRONIZE, ABILITY_INNER_FOCUS, ABILITY_MAGIC_GUARD },
+        .abilities = { ABILITY_SHADOW_BOXING, ABILITY_NO_GUARD, ABILITY_PSYCHIC_SHIELD },
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Abra"),
         .cryId = CRY_ABRA,
@@ -4832,10 +4829,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 9,
         .weight = 195,
         .description = COMPOUND_STRING(
-            "A Pokémon that sleeps 18 hours a day.\n"
-            "Observation revealed that it uses\n"
-            "Teleport to change its location once\n"
-            "every hour."),
+            "It's able to create psychic barriers,\n"
+            "which it uses to sleep without being\n"
+            "bothered. If startled, it will teleport\n"
+            "away quickly."),
         .pokemonScale = 363,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -4865,14 +4862,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_PSYCHIC, TYPE_PSYCHIC },
         .catchRate = 100,
         .expYield = 140,
-        .evYield_SpAttack = 2,
-        .itemRare = ITEM_TWISTED_SPOON,
-        .genderRatio = PERCENT_FEMALE(25),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE },
-        .abilities = { ABILITY_SYNCHRONIZE, ABILITY_INNER_FOCUS, ABILITY_MAGIC_GUARD },
+        .abilities = { ABILITY_SHADOW_BOXING, ABILITY_NO_GUARD, ABILITY_PSYCHIC_SHIELD },
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = TRUE,
         .speciesName = _("Kadabra"),
@@ -4882,10 +4876,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 13,
         .weight = 565,
         .description = COMPOUND_STRING(
-            "It is rumored that a boy with psychic\n"
-            "abilities suddenly transformed into\n"
-            "Kadabra while he was assisting research\n"
-            "into extrasensory powers."),
+            "Its powers have grown to the point\n"
+            "where it's able to manipulate physical\n"
+            "matter with a mere thought. It likes to\n"
+            "steal spoons and bend them."),
         .pokemonScale = 256,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -4912,9 +4906,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 #define ALAKAZAM_MISC_INFO                                          \
         .types = { TYPE_PSYCHIC, TYPE_PSYCHIC },                    \
         .catchRate = 50,                                            \
-        .evYield_SpAttack = 3,                                      \
-        .itemRare = ITEM_TWISTED_SPOON,                             \
-        .genderRatio = PERCENT_FEMALE(25),                          \
         .eggCycles = 20,                                            \
         .friendship = STANDARD_FRIENDSHIP,                          \
         .growthRate = GROWTH_MEDIUM_SLOW,                           \
@@ -4925,8 +4916,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .categoryName = _("Psi"),                                   \
         .footprint = gMonFootprint_Alakazam,                        \
         LEARNSETS(Alakazam),                                        \
-        .formSpeciesIdTable = sAlakazamFormSpeciesIdTable,          \
-        .formChangeTable = sAlakazamFormChangeTable
 
     [SPECIES_ALAKAZAM] =
     {
@@ -4938,15 +4927,15 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseSpAttack  = 135,
         .baseSpDefense = ALAKAZAM_SP_DEF,
         .expYield = 225,
-        .abilities = { ABILITY_SYNCHRONIZE, ABILITY_INNER_FOCUS, ABILITY_MAGIC_GUARD },
+        .abilities = { ABILITY_SHADOW_BOXING, ABILITY_NO_GUARD, ABILITY_PSYCHIC_SHIELD },
         .cryId = CRY_ALAKAZAM,
         .height = 15,
         .weight = 480,
         .description = COMPOUND_STRING(
-            "While it has strong psychic abilities and\n"
-            "high intelligence, an Alakazam's muscles\n"
-            "are very weak. It uses psychic power to\n"
-            "move its body."),
+            "It has complete control over its brain, but\n"
+            "as a result it has to consciously manage all\n"
+            "of its bodily functions. It uses psychic power\n"
+            "to move its body."),
         .pokemonScale = 256,
         .pokemonOffset = 3,
         .trainerScale = 256,
@@ -6156,14 +6145,12 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_ELECTRIC, TYPE_STEEL },
         .catchRate = 190,
         .expYield = 65,
-        .evYield_SpAttack = 1,
-        .itemRare = ITEM_METAL_COAT,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
-        .abilities = { ABILITY_MAGNET_PULL, ABILITY_STURDY, ABILITY_ANALYTIC },
+        .abilities = { ABILITY_MAGNET_PULL, ABILITY_STURDY, ABILITY_STATIC },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Magnemite"),
         .cryId = CRY_MAGNEMITE,
@@ -6175,7 +6162,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             "The units at its sides are extremely\n"
             "powerful magnets. They generate enough\n"
             "magnetism to draw in iron objects from\n"
-            "over 300 feet away."),
+            "over 300 meters away."),
         .pokemonScale = 288,
         .pokemonOffset = -9,
         .trainerScale = 256,
@@ -6197,23 +6184,21 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 
     [SPECIES_MAGNETON] =
     {
-        .baseHP        = 50,
+        .baseHP        = 70,
         .baseAttack    = 60,
         .baseDefense   = 95,
-        .baseSpeed     = 70,
-        .baseSpAttack  = 120,
-        .baseSpDefense = 70,
+        .baseSpeed     = 110,
+        .baseSpAttack  = 110,
+        .baseSpDefense = 80,
         .types = { TYPE_ELECTRIC, TYPE_STEEL },
         .catchRate = 60,
         .expYield = 163,
-        .evYield_SpAttack = 2,
-        .itemRare = ITEM_METAL_COAT,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
-        .abilities = { ABILITY_MAGNET_PULL, ABILITY_STURDY, ABILITY_ANALYTIC },
+        .abilities = { ABILITY_MAGNET_PULL, ABILITY_STURDY, ABILITY_ELECTRIC_SURGE },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Magneton"),
         .cryId = CRY_MAGNETON,
@@ -6222,10 +6207,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 10,
         .weight = 600,
         .description = COMPOUND_STRING(
-            "It is actually three Magnemite linked\n"
-            "by magnetism. It generates powerful radio\n"
-            "waves that raise temperatures by 3.6\n"
-            "degrees F within a 3,300-foot radius."),
+            "Many mysteriously appear when more sunspots\n"
+            "dot the Sun. It normally fries any nearby\n"
+            "electronic, but tame MAGNETONs can be taught\n"
+            "to control this power."),
         .pokemonScale = 292,
         .pokemonOffset = 1,
         .trainerScale = 256,
@@ -6242,42 +6227,39 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         ICON(Magneton, 0),
         .footprint = gMonFootprint_Magneton,
         LEARNSETS(Magneton),
-        .evolutions = EVOLUTION({EVO_MAPSEC, MAPSEC_NEW_MAUVILLE, SPECIES_MAGNEZONE},
-                                {EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_MAGNEZONE}),
+        .evolutions = EVOLUTION{EVO_MAPSEC, MAPSEC_NEW_MAUVILLE, SPECIES_MAGNEZONE},
     },
 
 #if P_GEN_4_CROSS_EVOS
     [SPECIES_MAGNEZONE] =
     {
-        .baseHP        = 70,
+        .baseHP        = 80,
         .baseAttack    = 70,
         .baseDefense   = 115,
-        .baseSpeed     = 60,
-        .baseSpAttack  = 130,
+        .baseSpeed     = 30,
+        .baseSpAttack  = 140,
         .baseSpDefense = 90,
         .types = { TYPE_ELECTRIC, TYPE_STEEL },
         .catchRate = 30,
         .expYield = 241,
-        .evYield_SpAttack = 3,
-        .itemRare = ITEM_METAL_COAT,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
-        .abilities = { ABILITY_MAGNET_PULL, ABILITY_STURDY, ABILITY_ANALYTIC },
+        .abilities = { ABILITY_ANALYTIC, ABILITY_LEVITATE, ABILITY_SOLAR_POWER },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Magnezone"),
         .cryId = CRY_MAGNEZONE,
         .natDexNum = NATIONAL_DEX_MAGNEZONE,
-        .categoryName = _("Magnet Area"),
+        .categoryName = _("UFO"),
         .height = 12,
         .weight = 1800,
         .description = COMPOUND_STRING(
-            "As it zooms through the sky, this\n"
-            "Pokémon seems to be receiving signals\n"
-            "of unknown origin, while transmitting its\n"
-            "own signals of unknown purpose."),
+            "It is constantly sending and receiving\n"
+            "unintelligible signals. It seems to use\n"
+            "a combination of magnetism and solar\n"
+            "power in order to float."),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -7582,7 +7564,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .catchRate = 190,                                   \
         .expYield = 66,                                     \
         .evYield_Speed = 1,                                 \
-        .speciesName = _("Voltorb"),                        \
         .cryId = CRY_VOLTORB,                               \
         .natDexNum = NATIONAL_DEX_VOLTORB,                  \
         .height = 5,                                        \
@@ -7591,19 +7572,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,                                \
         .trainerOffset = 0,                                 \
         .footprint = gMonFootprint_Voltorb,                 \
-        .formSpeciesIdTable = sVoltorbFormSpeciesIdTable,   \
         VOLTORB_FAMILY_MISC_INFO
 
 #define ELECTRODE_MISC_INFO                                     \
         .baseHP        = 60,                                    \
         .baseAttack    = 50,                                    \
-        .baseDefense   = 70,                                    \
-        .baseSpAttack  = 80,                                    \
+        .baseDefense   = 90,                                    \
+        .baseSpAttack  = 85,                                    \
         .baseSpDefense = 80,                                    \
         .baseSpeed     = P_UPDATED_STATS >= GEN_7 ? 150 : 140,  \
         .catchRate = 60,                                        \
         .expYield = 172,                                        \
-        .evYield_Speed = 2,                                     \
         .speciesName = _("Electrode"),                          \
         .cryId = CRY_ELECTRODE,                                 \
         .natDexNum = NATIONAL_DEX_ELECTRODE,                    \
@@ -7613,7 +7592,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,                                    \
         .trainerOffset = 0,                                     \
         .footprint = gMonFootprint_Electrode,                   \
-        .formSpeciesIdTable = sElectrodeFormSpeciesIdTable,     \
         VOLTORB_FAMILY_MISC_INFO
 
     [SPECIES_VOLTORB] =
@@ -7671,10 +7649,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .categoryName = _("Sphere"),
         .weight = 130,
         .description = COMPOUND_STRING(
-            "It esembles an ancient Poké Ball design.\n"
-            "When excited, it discharges the electric\n"
-            "current it has stored in its belly, then\n"
-            "lets out a great, uproarious laugh."),
+            "It resembles a wooden POKé BALL.\n"
+            "It rolls around covering itself in\n"
+            "grass, using it to build up static\n"
+            "electricity to unleash later."),
         FRONT_PIC(VoltorbHisuian, 32, 32),
         .frontPicYOffset = 17,
         .frontAnimFrames = sAnims_VoltorbHisuian,
@@ -7696,8 +7674,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .categoryName = _("Sphere"),
         .weight = 710,
         .description = COMPOUND_STRING(
-            "The tissue on the surface of its body is\n"
-            "similar in composition to an Apricorn.\n"
+            "The surface of its body is very conductive,\n"
+            "and charges at the slight touch.\n"
             "When irritated, it lets loose an electric\n"
             "current equal to 20 lightning bolts."),
         FRONT_PIC(ElectrodeHisuian, 48, 48),

@@ -40,6 +40,6 @@ OldaleRuins_Text_Cave:
 OldaleRuins_Text_Trees:
 	.string "This was a tourist spot, once.\p"
 	.string "But then more and more people came\n"
-	.string "here trying to steal things.\p"
+	.string "here trying to steal artefacts.\p"
 	.string "We decided to plant cacti in front\n"
 	.string "of the entrance to keep people out.$"

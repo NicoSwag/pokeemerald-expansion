@@ -2599,4 +2599,226 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
     },
+
+    [ABILITY_POLAR_HERITAGE] =
+    {
+        .name = _("Polar heritage"),
+        .description = COMPOUND_STRING("Ice moves are stronger."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_FIST_BARRAGE] =
+    {
+        .name = _("Fist Barrage"),
+        .description = COMPOUND_STRING("Punches many times."),
+        .aiRating = 10,
+        .cantBeCopied = TRUE,
+        .cantBeSwapped = TRUE,
+        .cantBeTraced = TRUE,
+    },
+    [ABILITY_SUN_WITHIN] =
+    {
+        .name = _("Sun Within"),
+        .description = COMPOUND_STRING("Acts as if under sun."),
+        .aiRating = 8,
+    },
+    [ABILITY_STEAM_BARRIER] =
+    {
+        .name = _("Steam Barrier"),
+        .description = COMPOUND_STRING("Draws in Water moves."),
+        .aiRating = 8,
+    },
+    [ABILITY_TOXIC_SECRETIONS] =
+    {
+        .name = _("Toxic Secretions"),
+        .description = COMPOUND_STRING("All contact poisons."),
+        .aiRating = 5,
+    },
+    [ABILITY_MESMERIZE] =
+    {
+        .name = _("Mesmerize"),
+        .description = COMPOUND_STRING("Reduces Sp. Atk on entry."),
+        .aiRating = 9,
+    },
+    [TENACITY] =
+    {
+        .name = _("Tenacity"),
+        .description = COMPOUND_STRING("Sp. Atk up when suffering."),
+        .aiRating = 8,
+    },
+    [SINGER] =
+    {
+        .name = _("Singer"),
+        .description = COMPOUND_STRING("Copies sound moves."),
+        .aiRating = 6,
+    },
+    [ABILITY_BLACK_HOLE] =
+    {
+        .name = _("Black Hole"),
+        .description = COMPOUND_STRING("Sets up gravity on entry."),
+        .aiRating = 8,
+    },
+    [ABILITY_PAROTOID_GLANDS] =
+    {
+        .name = _("Parotoid Glands"),
+        .description = COMPOUND_STRING("Always poisons if possible."),
+        .aiRating = 5,
+    },
+    [ABILITY_CRUELTY] =
+    {
+        .name = _("Cruelty"),
+        .description = COMPOUND_STRING("Supereffective if paralyzed."),
+        .aiRating = 7,
+    },
+    [ABILITY_NOXIOUS_FUMES] =
+    {
+        .name = _("Noxious Fumes"),
+        .description = COMPOUND_STRING("Summons Pollution on entry."),
+        .aiRating = 10,
+    },
+    [ABILITY_FOUL_RUSH] =
+    {
+        .name = _("Foul Rush"),
+        .description = COMPOUND_STRING("Faster under Pollution."),
+        .aiRating = 9,
+    },
+    [ABILITY_PLAGUE_SPREADER] =
+    {
+        .name = _("Plague Spreader"),
+        .description = COMPOUND_STRING("Bug moves are stronger."),
+        .aiRating = 7,
+    },
+    [ABILITY_MIASMA FORCE] =
+    {
+        .name = _("Miasma Force"),
+        .description = COMPOUND_STRING("Powers up under Pollution."),
+        .aiRating = 6,
+    },
+    [ABILITY_VAMPIRIC] =
+    {
+        .name = _("Vampiric"),
+        .description = COMPOUND_STRING("Heals some damage dealt."),
+        .aiRating = 8,
+    },
+    [ABILITY_GANGSTER] =
+    {
+        .name = _("Gangster"),
+        .description = COMPOUND_STRING("Gangs up on single foe."),
+        .aiRating = 5,
+    },
+    [ABILITY_DECOMMISSIONER] =
+    {
+        .name = _("Decommissioner"),
+        .description = COMPOUND_STRING("Makes Steel strong on Steel."),
+        .aiRating = 6,
+    },
+    [ABILITY_CAUSTIC_BODY] =
+    {
+        .name = _("Caustic Body"),
+        .description = COMPOUND_STRING("Melts item on contact."),
+        .aiRating = 6,
+    },
+    [ABILITY_ANCIENT_GRUDGE] =
+    {
+        .name = _("Ancient Grudge"),
+        .description = COMPOUND_STRING("Might remove PP on contact."),
+        .aiRating = 5,
+    },
+    [ABILITY_PSYCHIC_SHIELD] =
+    {
+        .name = _("Psychic Shield"),
+        .description = COMPOUND_STRING("Defenses up on Psychic Terrain."),
+        .aiRating = 8,
+    },
+    [ABILITY_BLAZING_SPEED] =
+    {
+        .name = _("Blazing Speed"),
+        .description = COMPOUND_STRING("Speed raises crit chance."),
+        .aiRating = 8,
+    },
+    [ABILITY_CLIMATE_CHANGE] =
+    {
+        .name = _("Climate Change"),
+        .description = COMPOUND_STRING("Inverts the type chart."),
+        .aiRating = 10,
+    },
+    [ABILITY_OVERCHARGE] =
+    {
+        .name = _("Overcharge"),
+        .description = COMPOUND_STRING("Powers up in Electric Terrain."),
+        .aiRating = 5,
+    },
+    [ABILITY_FRENZY] =
+    {
+        .name = _("Frenzy"),
+        .description = COMPOUND_STRING("Raises Atk. on low health."),
+        .aiRating = 4,
+    },
+    [ABILITY_PALEBLOOD] =
+    {
+        .name = _("Paleblood"),
+        .description = COMPOUND_STRING("Lunar moves have priority."),
+        .aiRating = 9,
+    },
+    [ABILITY_SUPERALLOY] =
+    {
+        .name = _("Superalloy"),
+        .description = COMPOUND_STRING("Ignores Rock weaknesses."),
+        .aiRating = 6,
+    },
+    [ABILITY_DEMOLITIONIST] =
+    {
+        .name = _("Demolitionist"),
+        .description = COMPOUND_STRING("Ballistic moves use Atk."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_SHADOW_BOXING] =
+    {
+        .name = _("Shadow Boxing"),
+        .description = COMPOUND_STRING("Punching moves use Sp. Atk."),
+        .aiRating = 6,
+    },
+    [ABILITY_FAE LUCK] =
+    {
+        .name = _("Fae Luck"),
+        .description = COMPOUND_STRING("Crits up on Psychic Terrain."),
+        .aiRating = 9,
+    },
+    [ABILITY_PYROMANIAC] =
+    {
+        .name = _("Pyromaniac"),
+        .description = COMPOUND_STRING("Fire moves are stronger."),
+        .aiRating = 7,
+    },
+    [ABILITY_FAE_FPRCE] =
+    {
+        .name = _("Face Force"),
+        .description = COMPOUND_STRING("Fairy moves are stronger on terrain."),
+        .aiRating = 8,
+    },
+    [ABILITY_TRICKSTER] =
+    {
+        .name = _("Trickster"),
+        .description = COMPOUND_STRING("Fairies have priority on terrain."),
+        .aiRating = 8,
+    },
+    [ABILITY_DEBRIS_SHIELD] =
+    {
+        .name = _("Debris Shield"),
+        .description = COMPOUND_STRING("Creates shield on pollution."),
+        .aiRating = 9,
+    },
+    [ABILITY_STORM_VOICE] =
+    {
+        .name = _("Storm Voice"),
+        .description = COMPOUND_STRING("Sound moves can flinch."),
+        .aiRating = 6,
+    },
+    [ABILITY_SNOW_FORCE] =
+    {
+        .name = _("Snow Force"),
+        .description = COMPOUND_STRING("Ice is stronger under snow."),
+        .aiRating = 7,
+    },
 };

@@ -9478,6 +9478,16 @@ AcidDrench:
 	delay 0x2
 	return
 
+
+
+SparkBeam:
+	createsprite gSparkBeamSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 0, 0
+	delay 1
+	createsprite gSparkBeamSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 0, 0
+	delay 1
+	return
+
+
 Move_POWDER::
 	loadspritegfx ANIM_TAG_HANDS_AND_FEET @black color
 	loadspritegfx ANIM_TAG_SPORE @powder
@@ -22509,6 +22519,19 @@ Move_RAIN_DANCE:
 	waitforvisualfinish
 	end
 
+RainDrops:
+	loadspritegfx ANIM_TAG_RAIN_DROPS
+	playsewithpan SE_M_RAIN_DANCE, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, (F_PAL_BG | F_PAL_BATTLERS_2), 2, 0, 4, RGB_BLACK
+	waitforvisualfinish
+	createvisualtask AnimTask_CreateRaindrops, 2, 0, 3, 60
+	createvisualtask AnimTask_CreateRaindrops, 2, 0, 3, 60
+	delay 50
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, (F_PAL_BG | F_PAL_BATTLERS_2), 2, 4, 0, RGB_BLACK
+	waitforvisualfinish
+	return
+
 Move_BITE:
 	loadspritegfx ANIM_TAG_SHARP_TEETH
 	loadspritegfx ANIM_TAG_IMPACT
@@ -28381,17 +28404,6 @@ General_AffectionHangedOn_3Hearts:
 	end
 
 
-SnatchMoveTrySwapFromSubstitute:
-	createvisualtask AnimTask_IsAttackerBehindSubstitute, 2
-	jumprettrue SnatchMoveSwapSubstituteForMon
-SnatchMoveTrySwapFromSubstituteEnd:
-	waitforvisualfinish
-	return
-SnatchMoveSwapSubstituteForMon:
-	createvisualtask AnimTask_SwapMonSpriteToFromSubstitute, 2, TRUE
-	waitforvisualfinish
-	goto SnatchMoveTrySwapFromSubstituteEnd
-
 SnatchMoveTrySwapToSubstitute:
 	createvisualtask AnimTask_IsAttackerBehindSubstitute, 2
 	jumprettrue SnatchMoveSwapMonForSubstitute
@@ -34102,3 +34114,141 @@ SoulStealingSevenStarStrikeExplosion:
 	createsprite gSoulStealExplosionSpriteTemplate, ANIM_TARGET, 3, 0x10, 0x10, ANIM_TARGET, 0x1
 	delay 0x6
 	return
+
+General_UltraBurst::
+	loadspritegfx ANIM_TAG_ULTRA_BURST_SYMBOL
+	loadspritegfx ANIM_TAG_SPARK_2 @spark
+	loadspritegfx ANIM_TAG_LEAF @green
+	loadspritegfx ANIM_TAG_ELECTRIC_ORBS @charge particles
+	loadspritegfx ANIM_TAG_CIRCLE_OF_LIGHT @psycho boost
+	monbg ANIM_ATTACKER
+	setalpha 12, 8
+	createvisualtask AnimTask_BlendBattleAnimPal, 0xa, (F_PAL_BG | F_PAL_ADJACENT), 0x2, 0x0, 0xF, 0x0000
+	waitforvisualfinish
+	createvisualtask AnimTask_ElectricChargingParticles, 2, ANIM_ATTACKER, 60, 2, 12 	@ charge particles to attacker
+	delay 0x1e
+	loopsewithpan SE_M_CHARGE, SOUND_PAN_ATTACKER, 0xe, 0xa
+	createsprite gSuperpowerOrbSpriteTemplate, ANIM_TARGET, 3, 0x0
+	call LightThatBurnsTheSkyGreenSparks
+	call LightThatBurnsTheSkyGreenSparks
+	call LightThatBurnsTheSkyGreenSparks
+	call LightThatBurnsTheSkyGreenSparks
+	call LightThatBurnsTheSkyGreenSparks
+	call LightThatBurnsTheSkyGreenSparks
+	call LightThatBurnsTheSkyGreenSparks
+	call LightThatBurnsTheSkyGreenSparks
+	call LightThatBurnsTheSkyGreenSparks
+	delay 20
+	createvisualtask AnimTask_BlendBattleAnimPalExclude, 5, 5, 2, 0, 16, RGB_WHITEALPHA
+	createvisualtask AnimTask_TransformMon, 2, 1, 0
+	createsprite gUltraBurstSymbolSpriteTemplate, ANIM_ATTACKER, 0x0, 0x0, 0x0, 0x0, 0x0
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendBattleAnimPalExclude, 5, 5, 2, 16, 0, RGB_WHITEALPHA
+	createvisualtask AnimTask_HorizontalShake, 5, ANIM_TARGET, 5, 14
+	waitforvisualfinish
+	createvisualtask SoundTask_PlayNormalCry, 0
+	waitforvisualfinish
+	clearmonbg ANIM_ATK_PARTNER
+	blendoff
+	end
+
+
+General_SaltCureDamage::
+	goto Status_Freeze
+
+General_Rainbow::
+	call RainDrops
+	delay 30
+	loadspritegfx ANIM_TAG_SUNLIGHT
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, (F_PAL_BG | F_PAL_BATTLERS_2), 1, 0, 6, RGB_WHITE
+	waitforvisualfinish
+	panse_adjustnone SE_M_PETAL_DANCE, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +1, 0
+	call SunnyDayLightRay
+	call SunnyDayLightRay
+	call SunnyDayLightRay
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, (F_PAL_BG | F_PAL_BATTLERS_2), 1, 6, 0, RGB_WHITE
+	waitforvisualfinish
+	delay 30
+	fadetobg BG_RAINBOW
+	panse_adjustnone SE_M_ABSORB_2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +1, 0
+	delay 90
+	blendoff
+	restorebg
+	waitbgfadein
+	clearmonbg ANIM_ATK_PARTNER
+	end
+
+General_SeaOfFire::
+	loadspritegfx ANIM_TAG_SMALL_EMBER
+	monbg ANIM_DEF_PARTNER
+	splitbgprio ANIM_TARGET
+	playsewithpan SE_M_SACRED_FIRE2, SOUND_PAN_TARGET
+	call SeaOfFireTwisterDos
+	delay 3
+	call SeaOfFireTwisterTres
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	end
+
+SeaOfFireTwisterDos:
+	createsprite gTwisterEmberSpriteTemplate, ANIM_TARGET, 2, 45, 90, 5, 70, 30
+	delay 2
+	createsprite gTwisterEmberSpriteTemplate, ANIM_TARGET, 2, 50, 85, 6, 60, 30
+	delay 1
+	createsprite gTwisterEmberSpriteTemplate, ANIM_TARGET, 2, 47, 77, 7, 60, 30
+	delay 2
+	createsprite gTwisterEmberSpriteTemplate, ANIM_TARGET, 2, 40, 86, 8, 50, 30
+	delay 3
+	createsprite gTwisterEmberSpriteTemplate, ANIM_TARGET, 2, 42, 82, 7, 45, 30
+	delay 1
+	createsprite gTwisterEmberSpriteTemplate, ANIM_TARGET, 2, 47, 83, 5, 38, 30
+	delay 2
+	return
+
+SeaOfFireTwisterTres:
+	createsprite gTwisterEmberSpriteTemplate, ANIM_TARGET, 2, 45, 90, 3, 45, 30
+	delay 2
+	createsprite gTwisterEmberSpriteTemplate, ANIM_TARGET, 2, 50, 85, 4, 39, 30
+	delay 1
+	createsprite gTwisterEmberSpriteTemplate, ANIM_TARGET, 2, 47, 77, 5, 39, 30
+	delay 2
+	createsprite gTwisterEmberSpriteTemplate, ANIM_TARGET, 2, 40, 86, 6, 32, 30
+	delay 3
+	createsprite gTwisterEmberSpriteTemplate, ANIM_TARGET, 2, 42, 82, 5, 27, 30
+	delay 1
+	createsprite gTwisterEmberSpriteTemplate, ANIM_TARGET, 2, 47, 83, 3, 24, 30
+	delay 2
+	return
+
+General_Swamp:: @ To do
+	goto Move_HAZE
+
+SnatchMoveTrySwapFromSubstitute:
+	createvisualtask AnimTask_IsAttackerBehindSubstitute, 2
+	jumprettrue SnatchMoveSwapSubstituteForMon
+SnatchMoveTrySwapFromSubstituteEnd:
+	waitforvisualfinish
+	return
+SnatchMoveSwapSubstituteForMon:
+	createvisualtask AnimTask_SwapMonSpriteToFromSubstitute, 2, TRUE
+	waitforvisualfinish
+	goto SnatchMoveTrySwapFromSubstituteEnd
+
+
+
+General_DynamaxGrowth:: @ PORTED FROM CFRU
+	createvisualtask SoundTask_PlayCryWithEcho, 2, ANIM_ATTACKER, 2
+	delay 8
+	createvisualtask AnimTask_DynamaxGrowth, 0x5, 0x1, 0x0
+	waitforvisualfinish
+	end
+
+General_SetWeather::
+	createvisualtask AnimTask_GetWeatherToSet, 2
+	jumpreteq 1, General_Sun
+	jumpreteq 2, General_Rain
+	jumpreteq 3, General_Sandstorm
+	jumpreteq 4, General_Hail
+	end

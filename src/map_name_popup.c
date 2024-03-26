@@ -292,13 +292,12 @@ void HideMapNamePopUpWindow(void)
 {
     if (FuncIsActiveTask(Task_MapNamePopUpWindow))
     {
-    #ifdef UBFIX
-        if (GetMapNamePopUpWindowId() != WINDOW_NONE)
-    #endif // UBFIX
-        {
-            ClearStdWindowAndFrame(GetMapNamePopUpWindowId(), TRUE);
-            RemoveMapNamePopUpWindow();
-        }
+        ClearStdWindowAndFrame(GetPrimaryPopUpWindowId(), TRUE);
+        ClearStdWindowAndFrame(GetSecondaryPopUpWindowId(), TRUE);
+        RemovePrimaryPopUpWindow();
+        RemoveSecondaryPopUpWindow();
+        DisableInterrupts(INTR_FLAG_HBLANK);
+        SetHBlankCallback(NULL);
         SetGpuReg_ForcedBlank(REG_OFFSET_BG0VOFS, 0);
 
         if (MAPPOPUP_ALPHA_BLEND)
@@ -327,6 +326,7 @@ const u8 gText_Route104_Upper[] = _("Sponsored by FEEBAS PRO SHOP");
 const u8 gText_Rustboro_City[] = _("Proud home of DEVON CORP.");
 const u8 gText_Route115[] = _("A step from a cursed forest");
 const u8 gText_Brine_Cave[] = _("Mystery submerged dungeon");
+const u8 gText_Route116[] = _("Exclusive district to-be");
 
 static void ShowMapNamePopUpWindow(void)
 {
@@ -419,6 +419,9 @@ StringCopy(withoutPrefixPtr, mapDisplayHeaderSource);
         break;
         case MAPSEC_PETALBURG_WOODS:
             AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Petalburg_Woods, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+        break;
+        case MAPSEC_ROUTE_116:
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Route116, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
     }
     

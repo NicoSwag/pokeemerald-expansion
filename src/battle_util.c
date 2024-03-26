@@ -9402,6 +9402,13 @@ case EFFECT_PIERCING_WAIL:
         if (MoveIsAffectedBySheerForce(move))
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
         break;
+        case ABILITY_GRASS_PELT:
+        if ((gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN) && IS_MOVE_SPECIAL(move))
+        {
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+        }
+
+        break;
     case ABILITY_SAND_FORCE:
         if ((moveType == TYPE_STEEL || moveType == TYPE_ROCK || moveType == TYPE_GROUND)
             && weather & B_WEATHER_SANDSTORM)
@@ -9449,6 +9456,10 @@ case ABILITY_PYROMANIAC:
         break;
         case ABILITY_DEMOLITIONIST:
         if (gMovesInfo[move].ballisticMove && gMovesInfo[move].category == DAMAGE_CATEGORY_PHYSICAL)
+           gBattleStruct->swapDamageCategory = TRUE;
+        break;
+         case ABILITY_SHADOW_BOXING:
+        if (gMovesInfo[move].punchingMove && gMovesInfo[move].category == DAMAGE_CATEGORY_SPECIAL)
            gBattleStruct->swapDamageCategory = TRUE;
         break;
     case ABILITY_WATER_BUBBLE:
@@ -10040,14 +10051,6 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
         break;
 if (gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 2))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
-    case ABILITY_GRASS_PELT:
-        if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && usesDefStat)
-        {
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
-            if (updateFlags)
-                RecordAbilityBattle(battlerDef, ABILITY_GRASS_PELT);
-        }
-        break;
     case ABILITY_FLOWER_GIFT:
         if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN) && !usesDefStat)
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));

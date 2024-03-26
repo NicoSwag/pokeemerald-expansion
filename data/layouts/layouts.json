@@ -4494,7 +4494,7 @@
     {
       "id": "LAYOUT_BRINE_CAVE",
       "name": "BrineCave_Layout",
-      "width": 30,
+      "width": 34,
       "height": 30,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",

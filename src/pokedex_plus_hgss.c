@@ -133,7 +133,6 @@ static const u8 sText_Stats_Buttons_Decapped[] = _("{A_BUTTON}Toggle   {DPAD_UPD
 static const u8 sText_Stats_HP[] = _("HP");
 static const u8 sText_Stats_Attack[] = _("ATK");
 static const u8 sText_Stats_Defense[] = _("DEF");
-static const u8 sText_Stats_Total[] = _("BST");
 static const u8 sText_Stats_Speed[] = _("SPE");
 static const u8 sText_Stats_SpAttack[] = _("SP.A");
 static const u8 sText_Stats_SpDefense[] = _("SP.D");
@@ -143,7 +142,6 @@ static const u8 sText_Stats_EV_Plus3[] = _("{UP_ARROW_2}{UP_ARROW_2}{UP_ARROW_2}
 static const u8 sText_Stats_EvStr1Str2[] = _("{STR_VAR_1}{STR_VAR_2}");
 static const u8 sText_Stats_MoveSelectedMax[] = _("{STR_VAR_1} / {STR_VAR_2}");
 static const u8 sText_Stats_MoveLevel[] = _("LVL");
-static const u8 sText_Stats_Evo[] = _("EVO");
 static const u8 sText_Stats_Gender_0[] = _("♂");
 static const u8 sText_Stats_Gender_12_5[] = _("♀ 1/7 ♂"); //_("♀ 12.5 / 87.5 ♂");
 static const u8 sText_Stats_Gender_25[] = _("♀ 1/3 ♂");     //_("♀ 25 / 75 ♂");
@@ -228,15 +226,13 @@ static const u8 sText_EVO_LEVEL_DAY[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, day");
 static const u8 sText_EVO_LEVEL_DUSK[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, dusk (5-6PM)");
 static const u8 sText_EVO_ITEM_HOLD_DAY[] = _("{LV}{UP_ARROW}, holds {STR_VAR_2}, day");
 static const u8 sText_EVO_ITEM_HOLD_NIGHT[] = _("{LV}{UP_ARROW}, holds {STR_VAR_2}, night");
-static const u8 sText_EVO_MOVE[] = _("{LV}{UP_ARROW}, knows {STR_VAR_2}, male");
-static const u8 sText_EVO_MOVE_MALE[] = _("{LV}{UP_ARROW}, knows {STR_VAR_2}");
+static const u8 sText_EVO_MOVE[] = _("{LV}{UP_ARROW}, knows {STR_VAR_2}");
 static const u8 sText_EVO_MAPSEC[] = _("{LV}{UP_ARROW} on {STR_VAR_2}");
 static const u8 sText_EVO_ITEM_MALE[] = _("{STR_VAR_2} used on male");
 static const u8 sText_EVO_ITEM_FEMALE[] = _("{STR_VAR_2} used on female");
 static const u8 sText_EVO_LEVEL_RAIN[] = _("{LV}{UP_ARROW} to {STR_VAR_2} while raining");
 static const u8 sText_EVO_SPECIFIC_MON_IN_PARTY[] = _("{LV}{UP_ARROW} with {STR_VAR_2} in party");
 static const u8 sText_EVO_LEVEL_DARK_TYPE_MON_IN_PARTY[] = _("{LV}{UP_ARROW} with dark type in party");
-static const u8 sText_EVO_MONEY[] = _("50,000¥ in your balance");
 static const u8 sText_EVO_TRADE_SPECIFIC_MON[] = _("Traded for {STR_VAR_2}");
 static const u8 sText_EVO_SPECIFIC_MAP[] = _("{LV}{UP_ARROW} on {STR_VAR_2}");
 static const u8 sText_EVO_LEVEL_NATURE_AMPED[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, Amped natures");
@@ -5227,26 +5223,22 @@ static void PrintStatsScreen_Moves_Top(u8 taskId)
     }
     else
     {
-        SetTypeIconPosAndPal(gMovesInfo[move].type, moves_x + 146, moves_y + 17, 0);
-        SetSpriteInvisibility(1, TRUE);
+        SetTypeIconPosAndPal(NUMBER_OF_MON_TYPES + gMovesInfo[move].contestCategory, moves_x + 146, moves_y + 17, 1);
+        SetSpriteInvisibility(0, TRUE);
     }
 
     //Calculate and retrieve correct move from the arrays
     if (selected < numEggMoves)
     {
         PrintStatsScreenTextSmall(WIN_STATS_MOVES_TOP, gText_ThreeDashes, moves_x + 113, moves_y + 9);
-        item = ITEM_HEART_SCALE;
+        item = ITEM_LUCKY_EGG;
     }
     else if (selected < (numEggMoves + numLevelUpMoves))
     {
         level = GetSpeciesLevelUpLearnset(species)[(selected-numEggMoves)].level;
-
         ConvertIntToDecimalStringN(gStringVar1, level, STR_CONV_MODE_LEFT_ALIGN, 3); //Move learn lvl
         PrintStatsScreenTextSmall(WIN_STATS_MOVES_TOP, sText_Stats_MoveLevel, moves_x + 113, moves_y + 3); //Level text
-        if(level!=0)
         PrintStatsScreenTextSmall(WIN_STATS_MOVES_TOP, gStringVar1, moves_x + 113, moves_y + 14); //Print level
-        else
-        PrintStatsScreenTextSmall(WIN_STATS_MOVES_TOP, sText_Stats_Evo, moves_x + 113, moves_y + 14);
         item = ITEM_RARE_CANDY;
     }
     else if (selected < (numEggMoves + numLevelUpMoves + numTMHMMoves))
@@ -5292,7 +5284,7 @@ static void PrintStatsScreen_Moves_Description(u8 taskId)
     }
     else
     {
-        StringCopy(gStringVar4, gMoveDescriptionPointers[(move - 1)]);
+        StringCopy(gStringVar4, gContestEffectDescriptionPointers[gMovesInfo[move].contestEffect]);
         PrintStatsScreenTextSmall(WIN_STATS_MOVES_DESCRIPTION, gStringVar4, moves_x, moves_y);
     }
 }
@@ -5309,6 +5301,7 @@ static void PrintStatsScreen_Moves_BottomText(u8 taskId)
     else
     {
         PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, gText_Appeal,  moves_x, moves_y);
+        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, gText_Jam,  moves_x + 66, moves_y);
     }
 }
 
@@ -5347,9 +5340,25 @@ static void PrintStatsScreen_Moves_Bottom(u8 taskId)
     }
     else //Appeal + Jam
     {
-            DestroySplitIcon();
-            gSprites[sPokedexView->categoryIconSpriteId].invisible = TRUE;
+        DestroyCategoryIcon();
+        gSprites[sPokedexView->categoryIconSpriteId].invisible = TRUE;
+        //Appeal
+        contest_effectValue = gContestEffects[gMovesInfo[move].contestEffect].appeal;
+        if (contest_effectValue != 0xFF)
+            contest_appeal = contest_effectValue / 10;
+        ConvertIntToDecimalStringN(gStringVar1, contest_appeal, STR_CONV_MODE_RIGHT_ALIGN, 1);
+        StringCopy(gStringVar2, sText_PlusSymbol);
+        StringAppend(gStringVar2, gStringVar1);
+        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, gStringVar2, moves_x + 45, moves_y);
 
+        //Jam
+        contest_effectValue = gContestEffects[gMovesInfo[move].contestEffect].jam;
+        if (contest_effectValue != 0xFF)
+            contest_jam = contest_effectValue / 10;
+        ConvertIntToDecimalStringN(gStringVar1, contest_jam, STR_CONV_MODE_RIGHT_ALIGN, 1);
+        StringCopy(gStringVar2, sText_Stats_Minus);
+        StringAppend(gStringVar2, gStringVar1);
+        PrintStatsScreenTextSmall(WIN_STATS_MOVES_BOTTOM, gStringVar2,  moves_x + 119, moves_y);
     }
 }
 
@@ -5455,7 +5464,6 @@ static void PrintStatsScreen_Left(u8 taskId)
     u8 strBase[14];
     u8 EVs[6] = {sPokedexView->sPokemonStats.evYield_HP, sPokedexView->sPokemonStats.evYield_Speed, sPokedexView->sPokemonStats.evYield_Attack, sPokedexView->sPokemonStats.evYield_SpAttack, sPokedexView->sPokemonStats.evYield_Defense, sPokedexView->sPokemonStats.evYield_SpDefense};
     u8 differentEVs = 0;
-    u16 total = sPokedexView->sPokemonStats.baseHP + sPokedexView->sPokemonStats.baseSpeed + sPokedexView->sPokemonStats.baseAttack + sPokedexView->sPokemonStats.baseDefense + sPokedexView->sPokemonStats.baseSpAttack + sPokedexView->sPokemonStats.baseSpDefense;
 
     //Base stats
     if (gTasks[taskId].data[5] == 0)
@@ -5485,11 +5493,6 @@ static void PrintStatsScreen_Left(u8 taskId)
         PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_SpDefense, base_x+base_x_second_row, base_y + base_y_offset*base_i);
         ConvertIntToDecimalStringN(strBase, sPokedexView->sPokemonStats.baseSpDefense, STR_CONV_MODE_RIGHT_ALIGN, 3);
         PrintStatsScreenTextSmall(WIN_STATS_LEFT, strBase, base_x+base_x_offset, base_y + base_y_offset*base_i);
-        base_i++;
-
-        PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_Total, base_x, base_y + base_y_offset*base_i);
-        ConvertIntToDecimalStringN(strBase, total, STR_CONV_MODE_RIGHT_ALIGN, 3);
-        PrintStatsScreenTextSmall(WIN_STATS_LEFT, strBase, base_x+base_x_first_row, base_y + base_y_offset*base_i);
         base_i++;
     }
     else //EV increases
@@ -6559,10 +6562,6 @@ static u8 PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 depth,
             StringCopy(gStringVar2, GetMoveName(evolutions[i].param));
             StringExpandPlaceholders(gStringVar4, sText_EVO_MOVE );
             break;
-        case EVO_MOVE_MALE:
-            StringCopy(gStringVar2, GetMoveName(evolutions[i].param));
-            StringExpandPlaceholders(gStringVar4, sText_EVO_MOVE );
-            break;
         case EVO_FRIENDSHIP_MOVE_TYPE:
             StringCopy(gStringVar2, gTypesInfo[evolutions[i].param].name);
             StringExpandPlaceholders(gStringVar4, sText_EVO_FRIENDSHIP_MOVE_TYPE );
@@ -6591,10 +6590,6 @@ static u8 PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 depth,
             break;
         case EVO_LEVEL_DARK_TYPE_MON_IN_PARTY:
             StringExpandPlaceholders(gStringVar4, sText_EVO_LEVEL_DARK_TYPE_MON_IN_PARTY );
-            break;
-
-        case EVO_MONEY:
-            StringExpandPlaceholders(gStringVar4, sText_EVO_MONEY );
             break;
         case EVO_TRADE_SPECIFIC_MON:
             StringCopy(gStringVar2, GetSpeciesName(evolutions[i].param)); //mon name

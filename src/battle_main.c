@@ -5784,7 +5784,6 @@ static void HandleEndTurn_FinishBattle(void)
                     }
                 }
             }
-            TryPutPokemonTodayOnAir();
         }
 
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK

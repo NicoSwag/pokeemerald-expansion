@@ -392,6 +392,7 @@
 #define METATILE_Petalburg_Door_BirchsLab   0x249
 #define METATILE_Petalburg_Door_Littleroot  0x248
 #define METATILE_Petalburg_Door_Oldale      0x287
+#define METATILE_Petalburg_LongGrass        0x2AA
 
 // gTileset_PetalburgGym
 #define METATILE_PetalburgGym_Door                0x224
@@ -402,12 +403,6 @@
 #define METATILE_PetalburgGym_SlidingDoor_Frame2  0x21A
 #define METATILE_PetalburgGym_SlidingDoor_Frame3  0x21B
 #define METATILE_PetalburgGym_SlidingDoor_Frame4  0x21C
-
-// gTileset_Petalburg
-#define METATILE_Petalburg_Door_BirchsLab   0x249
-#define METATILE_Petalburg_Door_Littleroot  0x248
-#define METATILE_Petalburg_Door_Oldale      0x287
-#define METATILE_Petalburg_LongGrass        0x2AA
 
 // gTileset_PokemonCenter
 #define METATILE_PokemonCenter_CounterBarrier            0x25D

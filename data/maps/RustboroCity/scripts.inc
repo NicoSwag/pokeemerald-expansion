@@ -1,13 +1,13 @@
 .set LOCALID_LITTLE_BOY, 7
 .set LOCALID_LITTLE_GIRL, 8
-.set LOCALID_LOOKER, 33
+.set LOCALID_LOOKER, 34
 .set LOCALID_DEVON, 9
 .set LOCALID_RIVAL, 14
 .set LOCALID_SCIENTIST, 15
 .set LOCALID_BOYPROTESTER, 18
 .set LOCALID_MAGMA_GRUNT, 22
 .set LOCALID_GIRLPROTESTER, 23
-.set LOCALID_STEVEN, 35
+.set LOCALID_STEVEN, 36
 .set LOCALID_ENGINEER, 30
 
 RustboroCity_MapScripts::
@@ -30,6 +30,7 @@ RustboroCity_OnTransition:
 	setflag FLAG_VISITED_RUSTBORO_CITY
 	call Common_EventScript_SetupRivalGfxId
 	call_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_HideMapNamePopup
+	call_if_eq VAR_RUSTBORO_CITY_STATE, 4, RustboroCity_EventScript_MoveEngineer
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	goto_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_PositionScientistForExit
 	setvar VAR_PELIPPER, 37
@@ -47,6 +48,11 @@ RustboroCity_EventScript_PositionScientistLeftExit::
 
 RustboroCity_EventScript_HideMapNamePopup::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
+	return
+
+RustboroCity_EventScript_MoveEngineer:
+	setobjectxyperm LOCALID_ENGINEER, 38, 8
+	setobjectmovementtype LOCALID_ENGINEER, MOVEMENT_TYPE_FACE_DOWN
 	return
 
 RustboroCity_OnFrame:

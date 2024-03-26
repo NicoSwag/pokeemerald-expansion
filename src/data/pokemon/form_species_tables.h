@@ -275,7 +275,6 @@ static const u16 sKinglerFormSpeciesIdTable[] = {
 
 #if P_FAMILY_VOLTORB
 static const u16 sVoltorbFormSpeciesIdTable[] = {
-    SPECIES_VOLTORB,
     SPECIES_VOLTORB_HISUIAN,
     FORM_SPECIES_END,
 };
