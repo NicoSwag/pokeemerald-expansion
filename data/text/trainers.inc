@@ -2128,28 +2128,31 @@ Route115_Text_MarlenePostBattle:
 	.string "But this place isn't very peaceful…$"
 
 Route116_Text_ClarkIntro:
-	.string "If the tunnel doesn't go through, then\n"
-	.string "I'll just go over the top.$"
+	.string "Pull the weeds and stomp the\n"
+	.string "ground! Ha ha!$"
 
 Route116_Text_ClarkDefeat:
 	.string "Gasp… Gasp…\n"
-	.string "Losing made me tired…$"
+	.string "The stomping made me tired…$"
 
 Route116_Text_ClarkPostBattle:
-	.string "It's no big deal if there's no tunnel.\n"
-	.string "To a HIKER, mountains are roads!$"
+	.string "I really need to get this\n"
+	.string "job done… But I'm so tired!$"
 
 Route116_Text_JoeyIntro:
-	.string "My POKéMON rule!\n"
-	.string "Check them out!$"
+	.string "I like helmets!\p"
+	.string "They protect me from\n"
+	.string "accidents!$"
 
 Route116_Text_JoeyDefeat:
-	.string "Ouch! A scrape!\n"
-	.string "I have to put on a bandage!$"
+	.string "Ouch! I was hit!\n"
+	.string "Good thing I have my helmet!$"
 
 Route116_Text_JoeyPostBattle:
-	.string "Bandages are signs of toughness!\n"
-	.string "I've got another one!$"
+	.string "Helmets are a must for\n"
+	.string "workplace security.\p"
+	.string "And they're comfy and easy\n"
+	.string "to wear, too!$"
 
 Route116_Text_JoseIntro:
 	.string "Oi! I'm stomping here!$"
@@ -2176,18 +2179,20 @@ Route116_Text_WyllPostBattle:
 	.string "I guess you can stay, then.$"
 
 Route116_Text_JerryIntro:
-	.string "We learn all sorts of things at the\n"
-	.string "TRAINER'S SCHOOL.\p"
-	.string "I want to test things out for real!$"
+	.string "Hey! This is my spot!\n"
+	.string "I'm doing a, huh…\p"
+	.string "Field research, yes!$"
+
 
 Route116_Text_JerryDefeat:
-	.string "I slacked off in school…\n"
-	.string "That's why I lost.$"
+	.string "The gig is up…$"
 
 Route116_Text_JerryPostBattle:
-	.string "I'll have to redo some courses at\n"
-	.string "the TRAINER'S SCHOOL.\l"
-	.string "If I don't, ROXANNE will be steamed.$"
+	.string "To be honest, I'm not really\n"
+	.string "a scientist.\p"
+	.string "I wanted to see what was going\n"
+	.string "on, so I put on a lab coat and\l"
+	.string "they let me pass.$"
 
 Route116_Text_JerryRegister1:
 	.string "I learned at the TRAINER'S SCHOOL\n"
@@ -2216,15 +2221,16 @@ Route116_Text_JerryPostRematch:
 	.string "If I don't, ROXANNE will be steamed.$"
 
 Route116_Text_KarenIntro:
-	.string "I study at school, and I study on\n"
-	.string "the way home, too!$"
+	.string "Hello, my name is Karl.\n"
+	.string "Please, go away.$"
 
 Route116_Text_KarenDefeat:
-	.string "I'm in shock--I lost?$"
+	.string "Oh no.?$"
 
 Route116_Text_KarenPostBattle:
-	.string "Awww, I'll never become an elegant\n"
-	.string "TRAINER like ROXANNE this way!$"
+	.string "Hello, my name is Karl.\p"
+	.string "You can pass, but I do not\n"
+	.string "like it.$"
 
 Route116_Text_KarenRegister1:
 	.string "Oh, wow! Isn't that a POKéNAV?\n"
@@ -2275,7 +2281,7 @@ Route116_Text_DawsonPostBattle:
 	.string "I'll have to call my stylist now!$"
 
 Route116_Text_DevanIntro:
-	.string "We'll rock you hard!$"
+	.string "We'll shock you hard!$"
 
 Route116_Text_DevanDefeat:
 	.string "Aiyiyi!\n"
@@ -2286,11 +2292,11 @@ Route116_Text_DevanPostBattle:
 	.string "types, that's what I ought to do.$"
 
 Route116_Text_JohnsonIntro:
-	.string "It's a dead end up here.\n"
-	.string "I'm bored, so can we battle?$"
+	.string "Construction is taking forever.\n"
+	.string "A battle will dispel boredom!$"
 
 Route116_Text_JohnsonDefeat:
-	.string "That was fun even though I lost.$"
+	.string "Well, that's it I guess.$"
 
 Route116_Text_JohnsonPostBattle:
 	.string "Want to stay here and keep\n"

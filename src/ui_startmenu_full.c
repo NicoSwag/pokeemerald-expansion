@@ -1263,7 +1263,7 @@ static void PrintMapNameAndTime(void) //this code is ripped froom different part
     mapDisplayHeader[1] = EXT_CTRL_CODE_HIGHLIGHT;
     mapDisplayHeader[2] = TEXT_COLOR_TRANSPARENT;
     AddTextPrinterParameterized(WINDOW_TOP_BAR, FONT_NARROW, mapDisplayHeader, x + 152, 1, TEXT_SKIP_DRAW, NULL); // Print Map Name
-    AddTextPrinterParameterized3(WINDOW_TOP_BAR, FONT_NARROW, x, 1, sTimeTextColors, TEXT_SKIP_DRAW, sGameVersion);
+    AddTextPrinterParameterized3(WINDOW_TOP_BAR, FONT_NORMAL, x, 1, sTimeTextColors, TEXT_SKIP_DRAW, sGameVersion);
 
     PutWindowTilemap(WINDOW_TOP_BAR);
     CopyWindowToVram(WINDOW_TOP_BAR, COPYWIN_FULL);

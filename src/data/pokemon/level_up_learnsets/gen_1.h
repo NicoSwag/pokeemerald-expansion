@@ -2741,6 +2741,11 @@ static const struct LevelUpMove sTaurosLevelUpLearnset[] = {
     LEVEL_UP_END
 };
 
+
+
+
+
+
 #if P_PALDEAN_FORMS
 static const struct LevelUpMove sTaurosPaldeanCombatBreedLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),

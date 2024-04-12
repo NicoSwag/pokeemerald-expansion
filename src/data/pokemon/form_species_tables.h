@@ -352,6 +352,13 @@ static const u16 sTaurosFormSpeciesIdTable[] = {
     SPECIES_TAUROS_PALDEAN_AQUA_BREED,
     FORM_SPECIES_END,
 };
+
+static const u16 sCalflingFormSpeciesIdTable[] = {
+    SPECIES_CALFLING,
+    SPECIES_CALFLING_RED,
+    SPECIES_CALFLING_BLUE,
+    FORM_SPECIES_END,
+};
 #endif //P_FAMILY_TAUROS
 
 #if P_FAMILY_MAGIKARP

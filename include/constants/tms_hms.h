@@ -10,7 +10,7 @@
     F(SANDSTORM) \
     F(FIRE_SPIN) \
     F(REVERSAL) \
-    F(BULLET_SEED) \
+    F(BULLDOZE) \
     F(HIDDEN_POWER) \
     F(SUNNY_DAY) \
     F(TAUNT) \

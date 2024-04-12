@@ -241,11 +241,6 @@ Route116_EventScript_Jose::
 
 Route116_EventScript_Jerry::
 	trainerbattle_single TRAINER_JERRY_1, Route116_Text_JerryIntro, Route116_Text_JerryDefeat, Route116_EventScript_TryRegisterJerryAfterBattle
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route116_EventScript_RematchJerry
-	setvar VAR_0x8004, TRAINER_JERRY_1
-	specialvar VAR_RESULT, IsTrainerRegistered
-	goto_if_eq VAR_RESULT, FALSE, Route116_EventScript_TryRegisterJerry
 	msgbox Route116_Text_JerryPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -292,11 +287,6 @@ Route116_EventScript_Wyll::
 
 Route116_EventScript_Karen::
 	trainerbattle_single TRAINER_KAREN_1, Route116_Text_KarenIntro, Route116_Text_KarenDefeat, Route116_EventScript_TryRegisterKarenAfterBattle
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route116_EventScript_RematchKaren
-	setvar VAR_0x8004, TRAINER_KAREN_1
-	specialvar VAR_RESULT, IsTrainerRegistered
-	goto_if_eq VAR_RESULT, FALSE, Route116_EventScript_TryRegisterKaren
 	msgbox Route116_Text_KarenPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -334,6 +324,30 @@ Route116_EventScript_RematchKaren::
 Route116_EventScript_Sarah::
 	trainerbattle_single TRAINER_SARAH, Route116_Text_SarahIntro, Route116_Text_SarahDefeat
 	msgbox Route116_Text_SarahPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route116_EventScript_FriendlyEngineer1::
+	lock
+	msgbox Route116_Text_Engineer1, MSGBOX_DEFAULT
+	release
+	end
+
+Route116_EventScript_FriendlyEngineer2::
+	lock
+	msgbox Route116_Text_Engineer2, MSGBOX_DEFAULT
+	release
+	end
+
+Route116_EventScript_FriendlyEngineer3::
+	lock
+	msgbox Route116_Text_Engineer3, MSGBOX_NPC
+	release
+	end
+
+Route116_EventScript_Scientist::
+	lock
+	msgbox Route116_Text_Scientist, MSGBOX_NPC
+	release
 	end
 
 Route116_EventScript_Dawson::
@@ -470,3 +484,30 @@ Route116_Text_TrainerTipsBagHasPockets:
 	.string "placed in the appropriate POCKETS.\p"
 	.string "No TRAINER can afford to be without\n"
 	.string "a BAG of their own.$"
+
+Route116_Text_Engineer1:
+	.string "What kinda place is this to\n"
+	.string "build a swimming pool?\p"
+	.string "Ah well, money is money.$"
+
+Route116_Text_Engineer2:
+	.string "DRRRRRRRRRRRRRRRRRRRR!\p"
+	.string "He's drilling, so he can't\n"
+	.string "hear you.$"
+
+Route116_Text_Engineer3:
+	.string "Oh, this?\p"
+	.string "Why, this is PRESIDENT STONE's\n"
+	.string "fancy new vacation house.\p"
+	.string "Yes, he does live in RUSTBORO\n"
+	.string "already.\p"
+	.string "But this area, you see, is just\n"
+	.string "for him.\p"
+	.string "And for all those who can afford\n"
+	.string "it, of course.$"
+
+Route116_Text_Scientist:
+	.string "Eveything is progressing\n"
+	.string "as scheduled.\p"
+	.string "This land's value will\n"
+	.string "skyrocket!$"

@@ -2033,14 +2033,8 @@ static u8 CalcBerryYieldInternal(u16 max, u16 min, u8 water)
     u32 randMax;
     u32 rand;
     u32 extraYield;
-
-    if (water == 0 || OW_BERRY_MOISTURE)
-        return min;
-    else
     {
-        randMin = (max - min) * (water - 1);
-        randMax = (max - min) * (water);
-        rand = randMin + Random() % (randMax - randMin + 1);
+        rand = min + Random() % (max);
 
         // Round upwards
         if ((rand % NUM_WATER_STAGES) >= NUM_WATER_STAGES / 2)
@@ -2053,18 +2047,9 @@ static u8 CalcBerryYieldInternal(u16 max, u16 min, u8 water)
 
 static u8 CalcBerryYield(struct BerryTree *tree)
 {
-    const struct Berry *berry = GetBerryInfo(tree->berry);
-    u8 min = tree->berryYield;
-    u8 max = berry->maxYield;
-    u8 result;
-    if (OW_BERRY_MULCH_USAGE && (tree->mulch == ITEM_TO_MULCH(ITEM_RICH_MULCH) || tree->mulch == ITEM_TO_MULCH(ITEM_AMAZE_MULCH)))
-        min += 2;
-    if (!(OW_BERRY_MOISTURE && OW_BERRY_ALWAYS_WATERABLE))
-        min += berry->minYield;
-    if (min >= max)
-        result = max;
-    else
-        result = CalcBerryYieldInternal(max, min, BerryTreeGetNumStagesWatered(tree));
+    u8 min = 1;
+    u8 max = 10;
+    u8 result = CalcBerryYieldInternal(max, min, BerryTreeGetNumStagesWatered(tree));
 
     return result;
 }

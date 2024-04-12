@@ -3955,6 +3955,18 @@ const u16 gEggMoves[] = {
 	egg_moves(TAUROS_PALDEAN_AQUA_BREED,
 		MOVE_CURSE,
 		MOVE_ENDEAVOR),
+	
+    egg_moves(CALFLING,
+		MOVE_RECYCLE,
+		MOVE_BELCH),
+
+    egg_moves(CALFLING_RED,
+		MOVE_RECYCLE,
+		MOVE_BELCH),
+
+    egg_moves(CALFLING_BLUE,
+		MOVE_RECYCLE,
+		MOVE_BELCH),
 
     egg_moves(INDEEDEE_FEMALE,
         MOVE_PSYCH_UP,

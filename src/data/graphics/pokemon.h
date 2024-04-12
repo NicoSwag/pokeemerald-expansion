@@ -2151,7 +2151,7 @@ const u8 gMonFootprint_QuestionMark[] = INCBIN_U8("graphics/pokemon/question_mar
 #endif //P_MEGA_EVOLUTIONS
 #endif //P_FAMILY_PINSIR
 
-#if P_FAMILY_TAUROS
+
     const u32 gMonFrontPic_Tauros[] = INCBIN_U32("graphics/pokemon/tauros/anim_front.4bpp.lz");
     const u32 gMonPalette_Tauros[] = INCBIN_U32("graphics/pokemon/tauros/normal.gbapal.lz");
     const u32 gMonBackPic_Tauros[] = INCBIN_U32("graphics/pokemon/tauros/back.4bpp.lz");
@@ -2160,6 +2160,27 @@ const u8 gMonFootprint_QuestionMark[] = INCBIN_U8("graphics/pokemon/question_mar
 #if P_FOOTPRINTS
     const u8 gMonFootprint_Tauros[] = INCBIN_U8("graphics/pokemon/tauros/footprint.1bpp");
 #endif //P_FOOTPRINTS
+
+    const u32 gMonFrontPic_Calfling[] = INCBIN_U32("graphics/pokemon/calfling/anim_front.4bpp.lz");
+    const u32 gMonPalette_Calfling[] = INCBIN_U32("graphics/pokemon/calfling/normal.gbapal.lz");
+    const u32 gMonBackPic_Calfling[] = INCBIN_U32("graphics/pokemon/calfling/back.4bpp.lz");
+    const u32 gMonShinyPalette_Calfling[] = INCBIN_U32("graphics/pokemon/calfling/shiny.gbapal.lz");
+    const u8 gMonIcon_Calfling[] = INCBIN_U8("graphics/pokemon/calfling/icon.4bpp");
+#if P_FOOTPRINTS
+    const u8 gMonFootprint_Calfling[] = INCBIN_U8("graphics/pokemon/calfling/footprint.1bpp");
+
+
+const u32 gMonPalette_CalflingRed[] = INCBIN_U32("graphics/pokemon/calfling/red_breed/normal.gbapal.lz");
+const u32 gMonShinyPalette_CalflingRed[] = INCBIN_U32("graphics/pokemon/calfling/red_breed/shiny.gbapal.lz");
+const u8 gMonIcon_CalflingRed[] = INCBIN_U8("graphics/pokemon/calfling/red_breed/icon.4bpp");
+
+const u32 gMonPalette_CalflingBlue[] = INCBIN_U32("graphics/pokemon/calfling/blue_breed/normal.gbapal.lz");
+const u32 gMonShinyPalette_CalflingBlue[] = INCBIN_U32("graphics/pokemon/calfling/blue_breed/shiny.gbapal.lz");
+const u8 gMonIcon_CalflingBlue[] = INCBIN_U8("graphics/pokemon/calfling/blue_breed/icon.4bpp");
+
+
+
+
 
 #if P_PALDEAN_FORMS
     const u32 gMonFrontPic_TaurosPaldeanCombatBreed[] = INCBIN_U32("graphics/pokemon/tauros/paldean_combat_breed/front.4bpp.lz");
@@ -3782,10 +3803,18 @@ const u8 gMonFootprint_QuestionMark[] = INCBIN_U8("graphics/pokemon/question_mar
 
 #if P_FAMILY_MILTANK
     const u32 gMonFrontPic_Miltank[] = INCBIN_U32("graphics/pokemon/miltank/anim_front.4bpp.lz");
+    const u32 gMonFrontPic_MiltankStrawberry[] = INCBIN_U32("graphics/pokemon/miltank/miltank_strawberry/anim_front.4bpp.lz");
+    const u32 gMonFrontPic_MiltankBlueberry[] = INCBIN_U32("graphics/pokemon/miltank/miltank_blueberry/anim_front.4bpp.lz");
     const u32 gMonPalette_Miltank[] = INCBIN_U32("graphics/pokemon/miltank/normal.gbapal.lz");
+    const u32 gMonPalette_MiltankStrawberry[] = INCBIN_U32("graphics/pokemon/miltank/miltank_strawberry/normal.gbapal.lz");
+    const u32 gMonPalette_MiltankBlueberry[] = INCBIN_U32("graphics/pokemon/miltank/miltank_blueberry/normal.gbapal.lz");
     const u32 gMonBackPic_Miltank[] = INCBIN_U32("graphics/pokemon/miltank/back.4bpp.lz");
     const u32 gMonShinyPalette_Miltank[] = INCBIN_U32("graphics/pokemon/miltank/shiny.gbapal.lz");
+    const u32 gMonShinyPalette_MiltankStrawberry[] = INCBIN_U32("graphics/pokemon/miltank/miltank_strawberry/shiny.gbapal.lz");
+    const u32 gMonShinyPalette_MiltankBlueberry[] = INCBIN_U32("graphics/pokemon/miltank/miltank_blueberry/shiny.gbapal.lz");
     const u8 gMonIcon_Miltank[] = INCBIN_U8("graphics/pokemon/miltank/icon.4bpp");
+    const u8 gMonIcon_MiltankStrawberry[] = INCBIN_U8("graphics/pokemon/miltank/miltank_strawberry/icon.4bpp");
+    const u8 gMonIcon_MiltankBlueberry[] = INCBIN_U8("graphics/pokemon/miltank/miltank_blueberry/icon.4bpp");
 #if P_FOOTPRINTS
     const u8 gMonFootprint_Miltank[] = INCBIN_U8("graphics/pokemon/miltank/footprint.1bpp");
 #endif //P_FOOTPRINTS

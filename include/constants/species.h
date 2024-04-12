@@ -1631,8 +1631,13 @@
 #define SPECIES_GOROCHU                                 1524
 #define SPECIES_LUXWAN                                 1525
 #define SPECIES_BEDIGUARD                                 1526
+#define SPECIES_CALFLING                         1527
+#define SPECIES_CALFLING_RED                         1528
+#define SPECIES_CALFLING_BLUE                         1529
+#define SPECIES_MILTANK_STRAWBERRY                        1530
+#define SPECIES_MILTANK_BLUEBERRY                        1531
 
-#define SPECIES_EGG 1527
+#define SPECIES_EGG 1532
 
 #define NUM_SPECIES SPECIES_EGG
 

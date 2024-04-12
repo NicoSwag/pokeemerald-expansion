@@ -1058,6 +1058,7 @@ static const u16 sNidoranFTeachableLearnset[] = {
     MOVE_SANDSTORM,
     MOVE_REVERSAL,
     MOVE_CUT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -1067,6 +1068,7 @@ static const u16 sNidorinaTeachableLearnset[] = {
     MOVE_SANDSTORM,
     MOVE_REVERSAL,
     MOVE_CUT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -1141,6 +1143,7 @@ static const u16 sNidoranMTeachableLearnset[] = {
     MOVE_SANDSTORM,
     MOVE_REVERSAL,
     MOVE_CUT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -1150,6 +1153,7 @@ static const u16 sNidorinoTeachableLearnset[] = {
     MOVE_SANDSTORM,
     MOVE_REVERSAL,
     MOVE_CUT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -4032,6 +4036,7 @@ static const u16 sGrimerTeachableLearnset[] = {
     MOVE_QUASH,
     MOVE_ENDURE,
     MOVE_SANDSTORM,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -4274,6 +4279,7 @@ static const u16 sOnixTeachableLearnset[] = {
     MOVE_ENDURE,
     MOVE_PROTECT,
     MOVE_SANDSTORM,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -4603,6 +4609,7 @@ static const u16 sExeggutorTeachableLearnset[] = {
     MOVE_PROTECT,
     MOVE_ENDURE,
     MOVE_TRAILBLAZE,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -6620,6 +6627,14 @@ static const u16 sTaurosTeachableLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 
+static const u16 sCalflingTeachableLearnset[] = {
+    MOVE_PROTECT,
+    MOVE_ENDURE,
+    MOVE_REVERSAL,
+    MOVE_BULLDOZE,
+    MOVE_UNAVAILABLE,
+};
+
 #if P_PALDEAN_FORMS
 static const u16 sTaurosPaldeanCombatBreedTeachableLearnset[] = {
     MOVE_BODY_SLAM,
@@ -6764,6 +6779,7 @@ static const u16 sEeveeTeachableLearnset[] = {
     MOVE_FIRE_SPIN,
     MOVE_CHILLING_WATER,
     MOVE_TRAILBLAZE,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -6774,6 +6790,7 @@ static const u16 sVaporeonTeachableLearnset[] = {
     MOVE_FIRE_SPIN,
     MOVE_CHILLING_WATER,
     MOVE_TRAILBLAZE,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -6784,6 +6801,7 @@ static const u16 sJolteonTeachableLearnset[] = {
     MOVE_FIRE_SPIN,
     MOVE_CHILLING_WATER,
     MOVE_TRAILBLAZE,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -6794,6 +6812,7 @@ static const u16 sFlareonTeachableLearnset[] = {
     MOVE_FIRE_SPIN,
     MOVE_CHILLING_WATER,
     MOVE_TRAILBLAZE,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 #if P_GEN_2_CROSS_EVOS
@@ -6804,6 +6823,7 @@ static const u16 sEspeonTeachableLearnset[] = {
     MOVE_FIRE_SPIN,
     MOVE_CHILLING_WATER,
     MOVE_TRAILBLAZE,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -6814,6 +6834,7 @@ static const u16 sUmbreonTeachableLearnset[] = {
     MOVE_FIRE_SPIN,
     MOVE_CHILLING_WATER,
     MOVE_TRAILBLAZE,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 #endif //P_GEN_2_CROSS_EVOS
@@ -6826,6 +6847,7 @@ static const u16 sLeafeonTeachableLearnset[] = {
     MOVE_FIRE_SPIN,
     MOVE_CHILLING_WATER,
     MOVE_TRAILBLAZE,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -6836,6 +6858,7 @@ static const u16 sGlaceonTeachableLearnset[] = {
     MOVE_FIRE_SPIN,
     MOVE_CHILLING_WATER,
     MOVE_TRAILBLAZE,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 #endif //P_GEN_4_CROSS_EVOS
@@ -6848,6 +6871,7 @@ static const u16 sSylveonTeachableLearnset[] = {
     MOVE_FIRE_SPIN,
     MOVE_CHILLING_WATER,
     MOVE_TRAILBLAZE,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 #endif //P_GEN_6_CROSS_EVOS
@@ -7202,6 +7226,7 @@ static const u16 sMunchlaxTeachableLearnset[] = {
     MOVE_PROTECT,
     MOVE_ENDURE,
     MOVE_REVERSAL,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 #endif //P_GEN_4_CROSS_EVOS
@@ -7693,6 +7718,7 @@ static const u16 sChikoritaTeachableLearnset[] = {
     MOVE_TRAILBLAZE,
     MOVE_PROTECT,
     MOVE_CUT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -7701,6 +7727,7 @@ static const u16 sBayleefTeachableLearnset[] = {
     MOVE_TRAILBLAZE,
     MOVE_PROTECT,
     MOVE_CUT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -9540,6 +9567,7 @@ static const u16 sGirafarigTeachableLearnset[] = {
     MOVE_TRAILBLAZE,
     MOVE_QUASH,
     MOVE_PROTECT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -10349,6 +10377,7 @@ static const u16 sSlugmaTeachableLearnset[] = {
     MOVE_FIRE_SPIN,
     MOVE_PROTECT,
     MOVE_SANDSTORM,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -10357,6 +10386,7 @@ static const u16 sMagcargoTeachableLearnset[] = {
     MOVE_FIRE_SPIN,
     MOVE_PROTECT,
     MOVE_SANDSTORM,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 #endif //P_FAMILY_SLUGMA
@@ -10383,6 +10413,7 @@ static const u16 sSwinubTeachableLearnset[] = {
     MOVE_CHILLING_WATER,
     MOVE_PROTECT,
     MOVE_SANDSTORM,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 #endif //P_GEN_4_CROSS_EVOS
@@ -11024,6 +11055,7 @@ static const u16 sMiltankTeachableLearnset[] = {
     MOVE_THUNDER_WAVE,
     MOVE_UNAVAILABLE,
 };
+
 #endif //P_FAMILY_MILTANK
 
 #if P_FAMILY_RAIKOU
@@ -11167,6 +11199,7 @@ static const u16 sLarvitarTeachableLearnset[] = {
     MOVE_ENDURE,
     MOVE_SANDSTORM,
     MOVE_CUT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -11978,6 +12011,7 @@ static const u16 sZigzagoonGalarianTeachableLearnset[] = {
     MOVE_PROTECT,
     MOVE_REVERSAL,
     MOVE_CUT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -11987,6 +12021,7 @@ static const u16 sLinooneGalarianTeachableLearnset[] = {
     MOVE_PROTECT,
     MOVE_REVERSAL,
     MOVE_CUT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -11996,6 +12031,7 @@ static const u16 sObstagoonTeachableLearnset[] = {
     MOVE_PROTECT,
     MOVE_REVERSAL,
     MOVE_CUT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 #endif //P_GALARIAN_FORMS
@@ -12690,6 +12726,7 @@ static const u16 sMakuhitaTeachableLearnset[] = {
     MOVE_PROTECT,
     MOVE_HELPING_HAND,
     MOVE_REVERSAL,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -15543,6 +15580,7 @@ static const u16 sBeldumTeachableLearnset[] = {
 static const u16 sMetangTeachableLearnset[] = {
     MOVE_PROTECT,
     MOVE_ENDURE,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -20202,6 +20240,7 @@ static const u16 sBlitzleTeachableLearnset[] = {
     MOVE_ENDURE,
     MOVE_FIRE_SPIN,
     MOVE_PROTECT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -20401,6 +20440,7 @@ static const u16 sDrilburTeachableLearnset[] = {
     MOVE_PROTECT,
     MOVE_SANDSTORM,
     MOVE_REVERSAL,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -20494,6 +20534,7 @@ static const u16 sTimburrTeachableLearnset[] = {
     MOVE_HELPING_HAND,
     MOVE_ENDURE,
     MOVE_REVERSAL,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -25183,6 +25224,7 @@ static const u16 sPanchamTeachableLearnset[] = {
     MOVE_QUASH,
     MOVE_PROTECT,
     MOVE_REVERSAL,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -26386,6 +26428,7 @@ static const u16 sBergmiteTeachableLearnset[] = {
     MOVE_ENDURE,
     MOVE_CHILLING_WATER,
     MOVE_PROTECT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 
@@ -33102,6 +33145,7 @@ static const u16 sTinkatinkTeachableLearnset[] = {
     MOVE_ENDURE,
     MOVE_QUASH,
     MOVE_PROTECT,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 

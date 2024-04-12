@@ -32,6 +32,7 @@
 #include "mail.h"
 #include "event_data.h"
 #include "pokemon_storage_system.h"
+#include "pokemon_animation.h"
 #include "task.h"
 #include "naming_screen.h"
 #include "battle_setup.h"
@@ -4356,13 +4357,15 @@ static void Cmd_dofaintanimation(void)
     }
 }
 
+
 static void Cmd_cleareffectsonfaint(void)
 {
     CMD_ARGS(u8 battler);
+    u32 battler = GetBattlerForBattleScript(cmd->battler);
+
 
     if (gBattleControllerExecFlags == 0)
     {
-        u32 battler = GetBattlerForBattleScript(cmd->battler);
         const u8 *clearDataResult = NULL;
         if (!(gBattleTypeFlags & BATTLE_TYPE_ARENA) || gBattleMons[battler].hp == 0)
         {
@@ -5411,6 +5414,7 @@ static void Cmd_pause(void)
         }
     }
 }
+
 
 static void Cmd_waitstate(void)
 {
@@ -8009,7 +8013,8 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_SWIMMER_M, 2},
     {TRAINER_CLASS_BLACK_BELT, 8},
     {TRAINER_CLASS_DEVON_EMPLOYEE, 20},
-    {TRAINER_CLASS_ENGINEER, 10},
+    {TRAINER_CLASS_ENGINEER, 8},
+    {TRAINER_CLASS_SCIENTIST, 10},
     {TRAINER_CLASS_GUITARIST, 8},
     {TRAINER_CLASS_KINDLER, 8},
     {TRAINER_CLASS_CAMPER, 4},

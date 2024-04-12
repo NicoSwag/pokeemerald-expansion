@@ -4495,7 +4495,7 @@
       "id": "LAYOUT_BRINE_CAVE",
       "name": "BrineCave_Layout",
       "width": 34,
-      "height": 30,
+      "height": 40,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/BrineCave/border.bin",

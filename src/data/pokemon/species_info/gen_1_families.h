@@ -10220,11 +10220,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseHP        = 75,                                                        \
         .baseAttack    = 110,                                                       \
         .baseDefense   = 105,                                                       \
-        .baseSpeed     = 100,                                                       \
+        .baseSpeed     = 120,                                                       \
         .baseSpAttack  = 30,                                                        \
-        .baseSpDefense = 70,                                                        \
-        .evYield_Attack = 2,                                                        \
-        .abilities = { ABILITY_INTIMIDATE, ABILITY_ANGER_POINT, ABILITY_CUD_CHEW }, \
+        .baseSpDefense = 80,                                                        \
+        .abilities = { ABILITY_CUD_CHEW, ABILITY_INTIMIDATE}, \
         .bodyColor = BODY_COLOR_BLACK,                                              \
         .frontAnimFrames = sAnims_TaurosPaldean,                                    \
         /*.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,*/                                \
@@ -10247,7 +10246,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         BACK_PIC(TaurosPaldeanCombatBreed, 64, 48),
         .backPicYOffset = 9,
         PALETTES(TaurosPaldeanCombatBreed),
-        ICON(TaurosPaldeanCombatBreed, 0),
+        ICON(TaurosPaldeanCombatBreed, 2),
         LEARNSETS(TaurosPaldeanCombatBreed),
     },
 
@@ -10293,6 +10292,141 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 #endif //P_PALDEAN_FORMS
 #endif //P_FAMILY_TAUROS
 
+
+
+    [SPECIES_CALFLING] =
+    {
+        .baseHP        = 50,
+        .baseAttack    = 55,
+        .baseDefense   = 70,
+        .baseSpeed     = 60,
+        .baseSpAttack  = 30,
+        .baseSpDefense = 65,
+        .types = { TYPE_NORMAL, TYPE_FIGHTING},
+        .catchRate = 100,
+        .expYield = 150,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 5,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
+        .abilities = {ABILITY_CUD_CHEW, ABILITY_HUSTLE},
+        .bodyColor = BODY_COLOR_BROWN,
+        .speciesName = _("CALFLING"),
+        .cryId = CRY_MILTANK,
+        .categoryName = _("CALF"),
+        .height = 9,
+        .weight = 100,
+        .description = COMPOUND_STRING(
+            "Under research."),
+        .pokemonScale = 310,
+        .pokemonOffset = 4,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        FRONT_PIC(Calfling, 48, 56),
+        .frontPicYOffset = 4,
+        .frontAnimFrames = sAnims_Calfling,
+        .frontAnimId = ANIM_V_SHAKE_TWICE,
+        BACK_PIC(Calfling, 64, 56),
+        .backPicYOffset = 6,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_LARGE,
+        PALETTES(Calfling),
+        ICON(Calfling, 2),
+        .footprint = gMonFootprint_Calfling,
+        LEARNSETS(Calfling),
+    },
+
+
+
+    [SPECIES_CALFLING_RED] =
+    {
+        .baseHP        = 50,
+        .baseAttack    = 55,
+        .baseDefense   = 70,
+        .baseSpeed     = 60,
+        .baseSpAttack  = 30,
+        .baseSpDefense = 65,
+        .types = { TYPE_NORMAL, TYPE_FIGHTING},
+        .catchRate = 100,
+        .expYield = 150,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 5,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
+        .abilities = {ABILITY_CUD_CHEW, ABILITY_HUSTLE},
+        .bodyColor = BODY_COLOR_BROWN,
+        .speciesName = _("CALFLING"),
+        .cryId = CRY_MILTANK,
+        .categoryName = _("CALF"),
+        .height = 9,
+        .weight = 100,
+        .description = COMPOUND_STRING(
+            "Under research."),
+        .pokemonScale = 310,
+        .pokemonOffset = 4,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        FRONT_PIC(Calfling, 48, 56),
+        .frontPicYOffset = 4,
+        .frontAnimFrames = sAnims_Calfling,
+        .frontAnimId = ANIM_V_SHAKE_TWICE,
+        BACK_PIC(Calfling, 64, 56),
+        .backPicYOffset = 6,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_LARGE,
+        PALETTES(CalflingRed),
+        ICON(CalflingRed, 2),
+        .footprint = gMonFootprint_Calfling,
+        LEARNSETS(Calfling),
+    },
+
+
+    [SPECIES_CALFLING_BLUE] =
+    {
+        .baseHP        = 50,
+        .baseAttack    = 55,
+        .baseDefense   = 70,
+        .baseSpeed     = 60,
+        .baseSpAttack  = 30,
+        .baseSpDefense = 65,
+        .types = { TYPE_NORMAL, TYPE_FIGHTING},
+        .catchRate = 100,
+        .expYield = 150,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 5,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
+        .abilities = {ABILITY_CUD_CHEW, ABILITY_HUSTLE},
+        .bodyColor = BODY_COLOR_BROWN,
+        .speciesName = _("CALFLING"),
+        .cryId = CRY_MILTANK,
+        .categoryName = _("CALF"),
+        .height = 9,
+        .weight = 100,
+        .description = COMPOUND_STRING(
+            "Under research."),
+        .pokemonScale = 310,
+        .pokemonOffset = 4,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        FRONT_PIC(Calfling, 48, 56),
+        .frontPicYOffset = 4,
+        .frontAnimFrames = sAnims_Calfling,
+        .frontAnimId = ANIM_V_SHAKE_TWICE,
+        BACK_PIC(Calfling, 64, 56),
+        .backPicYOffset = 6,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_LARGE,
+        PALETTES(CalflingBlue),
+        ICON(CalflingBlue, 2),
+        .footprint = gMonFootprint_Calfling,
+        LEARNSETS(Calfling),
+    },
+
+
+
+
+
 #if P_FAMILY_MAGIKARP
         [SPECIES_MAGIKARP] =
     {
@@ -10316,8 +10450,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .cryId = CRY_MAGIKARP,
         .natDexNum = NATIONAL_DEX_MAGIKARP,
         .categoryName = _("SPLASHING"),
-        .height = 9,
-        .weight = 100,
+        .height = 12,
+        .weight = 200,
         .description = COMPOUND_STRING(
             "Once upon a time, it is said that a MAGIKARP\n"
             "jumped so high that it landed above a\n"
@@ -10328,7 +10462,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerScale = 256,
         .trainerOffset = 0,
         FRONT_PIC(Magikarp, 48, 56),
-        FRONT_PIC_FEMALE(Magikarp, 48, 56),
         .frontPicYOffset = 4,
         .frontAnimFrames = sAnims_Magikarp,
         .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES,

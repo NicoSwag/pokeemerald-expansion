@@ -22703,7 +22703,17 @@ static const struct LevelUpMove sGholdengoLevelUpLearnset[] = {
     LEVEL_UP_END
 };
 #endif //P_FAMILY_GIMMIGHOUL
-
+static const struct LevelUpMove sCalflingLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 1, MOVE_TACKLE),
+    LEVEL_UP_MOVE(1, MOVE_TAIL_WHIP),
+    LEVEL_UP_MOVE(5, MOVE_STOMP),
+    LEVEL_UP_MOVE(8, MOVE_DEFENSE_CURL),
+    LEVEL_UP_MOVE(12, MOVE_ROLLOUT),
+    LEVEL_UP_MOVE(15, MOVE_DOUBLE_KICK),
+    LEVEL_UP_MOVE(19, MOVE_BODY_SLAM),
+    LEVEL_UP_MOVE(24, MOVE_PURSUIT),
+    LEVEL_UP_END
+};
 
 static const struct LevelUpMove sGorochuLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 0, MOVE_VACUUM_WAVE),

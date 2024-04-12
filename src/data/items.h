@@ -58,6 +58,11 @@ static const u8 sTM08Desc[] = _(
     "when the user's HP\n"
     "is low.");
 
+static const u8 sTM09Desc[] = _(
+    "Stomps down on the\n"
+    "ground, lowering the\n"
+    "foe's speed.");
+
 static const u8 sFullHealDesc[]       = _("Heals all the\n"
                                           "status problems of\n"
                                           "one Pokémon.");
@@ -9363,9 +9368,9 @@ const struct Item gItemsInfo[] =
         .name = _("TM08"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Bulks up the body\n"
-            "to boost both\n"
-            "Attack & Defense."),
+    "Inreases in power\n"
+    "when the user's HP\n"
+    "is low."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -9373,19 +9378,20 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_REVERSAL,
     },
 
-    [ITEM_TM_BULLET_SEED] =
+    [ITEM_TM_BULLDOZE] =
     {
         .name = _("TM09"),
-        .price = 3000,
+        .price = 4000,
         .description = COMPOUND_STRING(
-            "Shoots 2 to 5 seeds\n"
-            "in a row to strike\n"
-            "the foe."),
+    "Stomps down on the\n"
+    "ground, lowering the\n"
+    "foe's speed."),
+
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_BULLET_SEED,
+        .secondaryId = MOVE_BULLDOZE,
     },
 
     [ITEM_TM_HIDDEN_POWER] =

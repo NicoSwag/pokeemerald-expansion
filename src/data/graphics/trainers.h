@@ -29,6 +29,7 @@ const u32 gTrainerFrontPic_MagmaGruntM[] = INCBIN_U32("graphics/trainers/front_p
 const u32 gTrainerPalette_MagmaGruntM[] = INCBIN_U32("graphics/trainers/front_pics/magma_grunt_m.gbapal.lz");
 
 const u32 gTrainerFrontPic_ExpertM[] = INCBIN_U32("graphics/trainers/front_pics/expert_m.4bpp.lz");
+const u32 gTrainerFrontPic_ShadowM[] = INCBIN_U32("graphics/trainers/front_pics/shadow_m.4bpp.lz");
 const u32 gTrainerPalette_ExpertM[] = INCBIN_U32("graphics/trainers/front_pics/expert_m.gbapal.lz");
 const u32 gTrainerPalette_ShadowM[] = INCBIN_U32("graphics/trainers/palettes/shadow_m.gbapal.lz");
 const u32 gTrainerPalette_ShadowF[] = INCBIN_U32("graphics/trainers/palettes/shadow_f.gbapal.lz");
@@ -200,6 +201,10 @@ const u32 gTrainerPalette_Devon_Employee[] = INCBIN_U32("graphics/trainers/front
 
 const u32 gTrainerFrontPic_Engineer[] = INCBIN_U32("graphics/trainers/front_pics/engineer.4bpp.lz");
 const u32 gTrainerPalette_Engineer[] = INCBIN_U32("graphics/trainers/front_pics/engineer.gbapal.lz");
+
+const u32 gTrainerFrontPic_Scientist[] = INCBIN_U32("graphics/trainers/front_pics/scientist.4bpp.lz");
+const u32 gTrainerPalette_Scientist[] = INCBIN_U32("graphics/trainers/front_pics/scientist.gbapal.lz");
+
 
 const u32 gTrainerFrontPic_BattleGirl[] = INCBIN_U32("graphics/trainers/front_pics/battle_girl.4bpp.lz");
 const u32 gTrainerPalette_BattleGirl[] = INCBIN_U32("graphics/trainers/front_pics/battle_girl.gbapal.lz");
@@ -421,6 +426,8 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(LEAF, Leaf),
     TRAINER_SPRITE(RS_BRENDAN, RubySapphireBrendan),
     TRAINER_SPRITE(RS_MAY, RubySapphireMay),
+    TRAINER_SPRITE(SHADOW_M, ShadowM),
+    TRAINER_SPRITE(ENGINEER, Engineer),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =
