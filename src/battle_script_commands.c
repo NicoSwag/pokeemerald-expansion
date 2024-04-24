@@ -6336,29 +6336,7 @@ static void Cmd_moveend(void)
             }
             gBattleScripting.moveendState++;
             break;
-        case MOVEEND_MAGICIAN:
-            if (GetBattlerAbility(gBattlerAttacker) == ABILITY_MAGICIAN
-              && gCurrentMove != MOVE_FLING && gCurrentMove != MOVE_NATURAL_GIFT
-              && IsBattlerAlive(gBattlerAttacker)
-              && TARGET_TURN_DAMAGED
-              && CanStealItem(gBattlerAttacker, gBattlerTarget, gBattleMons[gBattlerTarget].item)
-              && ((gBattleMons[gBattlerAttacker].item != ITEM_NONE) || (gBattleMons[gBattlerTarget].item != ITEM_NONE))
-              && !gSpecialStatuses[gBattlerAttacker].gemBoost   // In base game, gems are consumed after magician would activate.
-              && !(gWishFutureKnock.knockedOffMons[GetBattlerSide(gBattlerTarget)] & gBitTable[gBattlerPartyIndexes[gBattlerTarget]])
-              && !DoesSubstituteBlockMove(gBattlerAttacker, gBattlerTarget, gCurrentMove)
-              && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-              && (GetBattlerAbility(gBattlerTarget) != ABILITY_STICKY_HOLD || !IsBattlerAlive(gBattlerTarget))
-              && gDisableStructs[gBattlerAttacker].isFirstTurn)
-            {
-                gBattleScripting.battler = gBattlerAbility = gBattlerAttacker;
-                gEffectBattler = gBattlerTarget;
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_MagicianActivates;
-                gSpecialStatuses[gBattlerAttacker].preventLifeOrbDamage = TRUE;
-                effect = TRUE;
-            }
-            gBattleScripting.moveendState++;
-            break;
+
         case MOVEEND_NEXT_TARGET: // For moves hitting two opposing Pokémon.
         {
             u16 moveTarget = GetBattlerMoveTargetType(gBattlerAttacker, gCurrentMove);
@@ -6514,7 +6492,7 @@ static void Cmd_moveend(void)
             }
             gBattleScripting.moveendState++;
             break;
-        case MOVEEND_EJECT_ITEMS:
+         case MOVEEND_EJECT_ITEMS:
             {
                 // Because sorting the battlers by speed takes lots of cycles, it's better to just check if any of the battlers has the Eject items.
                 u32 ejectPackBattlers = 0, ejectButtonBattlers = 0, i;
@@ -6536,16 +6514,52 @@ static void Cmd_moveend(void)
 
                     for (i = 0; i < gBattlersCount; i++)
                     {
-                        gBattleScripting.battler = battler;
-                        gLastUsedItem = gBattleMons[battler].item;
-                        if (gMovesInfo[gCurrentMove].effect == EFFECT_HIT_ESCAPE)
-                            gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
-                        if (gMovesInfo[gCurrentMove].effect == EFFECT_ESCAPE_HEAL)
-                            gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
-                        BattleScriptPushCursor();
-                        gBattlescriptCurrInstr = BattleScript_EjectButtonActivates;
-                        effect = TRUE;
-                        break; // Only the fastest Eject Button activates
+                        u32 battler = battlers[i];
+
+                        if (ejectButtonBattlers & gBitTable[battler])
+                        {
+                            if (TestIfSheerForceAffected(gBattlerAttacker, gCurrentMove)) // Apparently Sheer Force blocks Eject Button, but not Eject Pack
+                                continue;
+                            // Since we check if battler was damaged, we don't need to check move result.
+                            // In fact, doing so actually prevents multi-target moves from activating eject button properly
+                            if (!BATTLER_TURN_DAMAGED(battler))
+                                continue;
+                        }
+                        else if (ejectPackBattlers & gBitTable[battler])
+                        {
+                            if (!gProtectStructs[battler].statFell || gProtectStructs[battler].disableEjectPack)
+                                continue;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+
+                        if (IsBattlerAlive(battler)
+                            && CountUsablePartyMons(battler) > 0 // Has mon to switch into
+                            // Does not activate if attacker used Parting Shot and can switch out
+                            && !(gMovesInfo[gCurrentMove].effect == EFFECT_HIT_SWITCH_TARGET && CanBattlerSwitch(gBattlerAttacker))
+                            )
+                        {
+                            gBattleScripting.battler = battler;
+                            gLastUsedItem = gBattleMons[battler].item;
+                            if (gMovesInfo[gCurrentMove].effect == EFFECT_HIT_ESCAPE)
+                                gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
+                            effect = TRUE;
+                            BattleScriptPushCursor();
+                            if (ejectButtonBattlers & gBitTable[battler])
+                            {
+                                gBattlescriptCurrInstr = BattleScript_EjectButtonActivates;
+                            }
+                            else // Eject Pack
+                            {
+                                gBattlescriptCurrInstr = BattleScript_EjectPackActivates;
+                                // Are these 2 lines below needed?
+                                gProtectStructs[battler].statFell = FALSE;
+                                gSpecialStatuses[gBattlerAttacker].preventLifeOrbDamage = TRUE;
+                            }
+                            break; // Only the fastest Eject item activates
+                        }
                     }
                 }
             }
@@ -6564,34 +6578,15 @@ static void Cmd_moveend(void)
             if (!effect)
                 gBattleScripting.moveendState++;
             break;
-        case MOVEEND_RED_CARD:
+         case MOVEEND_RED_CARD:
             {
                 u32 redCardBattlers = 0, i;
                 for (i = 0; i < gBattlersCount; i++)
                 {
-                    u8 battler = battlers[i];
-                    // Search for fastest hit pokemon with a red card
-                    // Attacker is the one to be switched out, battler is one with red card
-                    if (battler != gBattlerAttacker
-                      && IsBattlerAlive(battler)
-                      && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
-                      && GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_RED_CARD
-                      && BATTLER_TURN_DAMAGED(battler)
-                      && CanBattlerSwitch(gBattlerAttacker))
-                    {
-                        gLastUsedItem = gBattleMons[battler].item;
-                        gBattleStruct->savedBattlerTarget = gBattleScripting.battler = battler;  // Battler with red card
-                        gEffectBattler = gBattlerAttacker;
-                        if (gMovesInfo[gCurrentMove].effect == EFFECT_HIT_ESCAPE)
-                            gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
-                         if (gMovesInfo[gCurrentMove].effect == EFFECT_ESCAPE_HEAL)
-                            gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
-                        BattleScriptPushCursor();
-                        gBattlescriptCurrInstr = BattleScript_RedCardActivates;
-                        gSpecialStatuses[gBattlerAttacker].preventLifeOrbDamage = TRUE;
-                        effect = TRUE;
-                        break;  // Only fastest red card activates
-                    }
+                    if (i == gBattlerAttacker)
+                        continue;
+                    if (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_RED_CARD)
+                        redCardBattlers |= gBitTable[i];
                 }
                 if (redCardBattlers
                   && (gMovesInfo[gCurrentMove].effect != EFFECT_HIT_SWITCH_TARGET || gBattleStruct->hitSwitchTargetFailed)

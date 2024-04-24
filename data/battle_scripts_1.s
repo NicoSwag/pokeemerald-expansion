@@ -8048,7 +8048,6 @@ BattleScript_MesmerizeEffect:
 BattleScript_MesmerizeEffect_WaitString:
 	waitmessage B_WAIT_TIME_LONG
 	copybyte sBATTLER, gBattlerTarget
-	call BattleScript_TryAdrenalineOrb
 BattleScript_MesmerizeLoopIncrement:
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_MesmerizeLoop
@@ -8074,7 +8073,6 @@ BattleScript_MesmerizeInReverse:
 	call BattleScript_AbilityPopUpTarget
 	pause B_WAIT_TIME_SHORT
 	modifybattlerstatstage BS_TARGET, STAT_ATK, INCREASE, 1, BattleScript_MesmerizeLoopIncrement, ANIM_ON
-	call BattleScript_TryAdrenalineOrb
 	goto BattleScript_MesmerizeLoopIncrement
 
 BattleScript_BlackHoleActivates::

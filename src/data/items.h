@@ -11364,8 +11364,8 @@ const struct Item gItemsInfo[] =
 
     [ITEM_DEVON_PARTS] =
     {
-        .name = _("Devon Parts"),
-        .pluralName = _("Devon Parts"),
+        .name = _("Devon Goods"),
+        .pluralName = _("Devon Goods"),
         .price = 0,
         .description = COMPOUND_STRING(
             "A package that\n"

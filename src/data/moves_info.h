@@ -6007,7 +6007,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .description = COMPOUND_STRING(
             "The effectiveness varies\n"
             "with the opponent."),
-        .power = 40,
+        .power = 50,
         .effect = EFFECT_HIDDEN_POWER,
         .type = TYPE_NORMAL,
         .accuracy = 100,

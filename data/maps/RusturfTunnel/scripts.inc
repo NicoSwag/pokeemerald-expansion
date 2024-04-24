@@ -346,7 +346,16 @@ RusturfTunnel_EventScript_Grunt::
 	setvar VAR_RUSTURF_TUNNEL_STATE, 4
 	release
 	end
+	
+RusturfTunnel_EventScript_Grunt2Top::
+	setvar VAR_TEMP_1, 1
+	goto RusturfTunnel_EventScript_Grunt2
+	end
 
+RusturfTunnel_EventScript_Grunt2Bottom::
+	setvar VAR_TEMP_1, 2
+	goto RusturfTunnel_EventScript_Grunt2
+	end
 
 RusturfTunnel_EventScript_Grunt2::
 	lock
@@ -361,7 +370,8 @@ RusturfTunnel_EventScript_Grunt2::
 	waitmovement 0
 	msgbox RusturfTunnel_Message_Fine, MSGBOX_NPC
 	closemessage
-	setobjectxy OBJ_EVENT_ID_PLAYER, 21, 17
+	call_if_eq VAR_TEMP_1, 1, RusturfTunnel_EventScript_Grunt2PlayerWalkDown
+	call_if_eq VAR_TEMP_1, 2, RusturfTunnel_EventScript_Grunt2PlayerWalkUp
 	trainerbattle_no_intro TRAINER_DEVON_MANAGER_1, RustturfTunnel_Message_DevonDefeat
 	setvar VAR_RUSTURF_TUNNEL_STATE, 5
 	msgbox RusturfTunnel_Message_GetItThen, MSGBOX_DEFAULT
@@ -371,8 +381,6 @@ RusturfTunnel_EventScript_Grunt2::
 	applymovement LOCALID_BALL, RusturfTunnel_Movement_BallThrow
 	waitmovement 0
 	playse SE_WALL_HIT
-	msgbox RusturfTunnel_Message_Thud, MSGBOX_DEFAULT
-	closemessage
 	msgbox RusturfTunnel_Message_Escape, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_DEVON_EMPLOYEE, RusturfTunnel_Movement_DevonEscapes
@@ -388,6 +396,7 @@ RusturfTunnel_EventScript_Grunt2::
 	waitmovement 0
 	removeobject LOCALID_BALL
 	giveitem ITEM_DEVON_GOODS
+	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
 	msgbox RusturfTunnel_Message_NoClue, MSGBOX_DEFAULT
@@ -643,7 +652,7 @@ RusturfTunnel_Message_GetItThen:
 	.string "Ha… Hahaha!\n"
 	.string "I get it!\p"
 	.string "You're after the GOODS, aren't you?\p"
-	.string "T-then try and catch them!$"
+	.string "T-then go ahead and get them!$"
 
 
 RusturfTunnel_Movement_BallThrow:
@@ -685,7 +694,7 @@ RusturfTunnel_Message_HolyMiltank:
 	.string "Holy MILTANK, man!\p"
 	.string "Did you see how fast that guy ran?\p"
 	.string "Guess this weird package was really\n"
-	.string "weighing on him.\p"
+	.string "weighing him down.\p"
 	.string "Speaking of…\n"
 	.string "What even is it?$"
 
@@ -699,8 +708,8 @@ RusturfTunnel_Message_NoClue:
 	.string "See you there, eh?$"
 
 RusturfTunnel_Movement_GetToPeeko:
-	walk_left
-	walk_left
+	walk_right
+	walk_right
 	walk_up
 	step_end
 
@@ -731,4 +740,25 @@ RusturfTunnel_Movement_PeekoExitCave:
 	walk_left
 	walk_left
 	walk_left
+	step_end
+
+RusturfTunnel_EventScript_Grunt2PlayerWalkDown::
+	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWalkDown
+	waitmovement 0
+	return
+
+RusturfTunnel_Movement_PlayerWalkDown:
+	walk_down
+	face_right
+	step_end
+
+
+RusturfTunnel_EventScript_Grunt2PlayerWalkUp::
+	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWalkUp
+	waitmovement 0
+	return
+
+RusturfTunnel_Movement_PlayerWalkUp:
+	walk_up
+	face_right
 	step_end
