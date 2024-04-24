@@ -893,11 +893,12 @@ case EFFECT_FLASH_FREEZE:
                   && move != MOVE_PLAY_NICE && move != MOVE_NOBLE_ROAR && move != MOVE_TEARFUL_LOOK && move != MOVE_VENOM_DRENCH)
                     RETURN_SCORE_MINUS(10);
                 break;
-case ABILITY_COLOR_CHANGE:
+            case ABILITY_COLOR_CHANGE:
                 if(moveType == (TYPE_GHOST || TYPE_DRAGON))
                     RETURN_SCORE_PLUS(8);
                 if(moveType == (TYPE_FIRE || TYPE_GRASS || TYPE_WATER || TYPE_POISON || TYPE_ELECTRIC || TYPE_ICE || TYPE_DARK || TYPE_STEEL || TYPE_PSYCHIC))
                     RETURN_SCORE_MINUS(8);
+            break;
             case ABILITY_ILLUMINATE:
                 if (B_ILLUMINATE_EFFECT < GEN_9)
                     break;
@@ -4401,6 +4402,9 @@ static u32 AI_CalcMoveScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_SALT_CURE:
         if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_WATER) || IS_BATTLER_OF_TYPE(battlerDef, TYPE_STEEL))
             ADJUST_SCORE(DECENT_EFFECT);
+        break;
+    case EFFECT_HIDDEN_POWER:
+        ADJUST_SCORE(GOOD_EFFECT);
         break;
     } // move effect checks
 

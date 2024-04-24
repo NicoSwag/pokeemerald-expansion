@@ -54,7 +54,6 @@ u32 GetHighestStatId(u32 battlerId);
 bool32 ProteanTryChangeType(u32 battler, u32 ability, u32 move, u32 moveType);
 u8 GetHiddenPowerType(u32 move, u32 attacker, u32 target);
 u32 CalcBestType(u32 move, u32* types, u8 size, u32 attacker, u32 target);
-bool32 ColorChangeTryChangeType(u32 defender, u32 ability, u32 move, u32 moveType);
 bool32 IsMoveNotAllowedInSkyBattles(u32 move);
 bool32 DoSwitchInAbilities(u32 battlerId);
 u8 GetFirstFaintedPartyIndex(u8 battlerId);

@@ -446,8 +446,9 @@
 #define BATTLE_TERRAIN_OVERCAST         22
 #define BATTLE_TERRAIN_FOREST           23
 #define BATTLE_TERRAIN_GYM_ARENA        24
+#define BATTLE_TERRAIN_CAVERUST        25
 
-#define BATTLE_TERRAIN_COUNT            25
+#define BATTLE_TERRAIN_COUNT            26
 
 #define B_WAIT_TIME_LONG        (B_WAIT_TIME_MULTIPLIER * 2)
 #define B_WAIT_TIME_MED         (B_WAIT_TIME_MULTIPLIER * 2)

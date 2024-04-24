@@ -2166,8 +2166,7 @@ Route116_Text_JosePostBattle:
 	.string "prepare it for construction.$"
 
 Route116_Text_WyllIntro:
-	.string "Hey! You're not allowed\n"
-	.string "here!$"
+	.string "Hey! You're not allowed here!$"
 
 Route116_Text_WyllDefeat:
 	.string "You really can handle\n"
@@ -2175,7 +2174,7 @@ Route116_Text_WyllDefeat:
 
 Route116_Text_WyllPostBattle:
 	.string "What? The guy at the entrance\n"
-	.string "gave you permission?.\p"
+	.string "gave you permission?\p"
 	.string "I guess you can stay, then.$"
 
 Route116_Text_JerryIntro:
@@ -2221,14 +2220,14 @@ Route116_Text_JerryPostRematch:
 	.string "If I don't, ROXANNE will be steamed.$"
 
 Route116_Text_KarenIntro:
-	.string "Hello, my name is Karl.\n"
+	.string "Hello, my name is KARL.\n"
 	.string "Please, go away.$"
 
 Route116_Text_KarenDefeat:
-	.string "Oh no.?$"
+	.string "Oh no.$"
 
 Route116_Text_KarenPostBattle:
-	.string "Hello, my name is Karl.\p"
+	.string "Hello, my name is KARL.\p"
 	.string "You can pass, but I do not\n"
 	.string "like it.$"
 
@@ -2293,7 +2292,7 @@ Route116_Text_DevanPostBattle:
 
 Route116_Text_JohnsonIntro:
 	.string "Construction is taking forever.\n"
-	.string "A battle will dispel boredom!$"
+	.string "Time for a little break!$"
 
 Route116_Text_JohnsonDefeat:
 	.string "Well, that's it I guess.$"

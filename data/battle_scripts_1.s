@@ -8586,8 +8586,7 @@ BattleScript_ProteanActivates::
 	return
 
 BattleScript_ColorChangeActivates::
-	pause B_WAIT_TIME_SHORTEST
-	call BattleScript_AbilityPopUp
+	call BattleScript_AbilityPopUpTarget
 	printstring STRINGID_PKMNCHANGEDTYPEWITH
 	waitmessage B_WAIT_TIME_LONG
 	return

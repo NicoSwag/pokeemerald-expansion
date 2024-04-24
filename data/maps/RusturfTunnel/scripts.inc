@@ -1,27 +1,50 @@
 .equ LOCALID_WANDAS_BF, 1
-.set LOCALID_BRINEY, 5
-.set LOCALID_GRUNT, 6
-.set LOCALID_PEEKO, 7
-.equ LOCALID_WANDA, 10
+.set LOCALID_DEVON_EMPLOYEE, 3
+.set LOCALID_PEEKO, 4
+.set LOCALID_GRUNT, 5
+.set LOCALID_BALL, 13
 
 RusturfTunnel_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, RusturfTunnel_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, RusturfTunnel_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, RusturfTunnel_OnTransition
 	.byte 0
 
 RusturfTunnel_OnFrame:
-	map_script_2 VAR_RUSTURF_TUNNEL_STATE, 4, RusturfTunnel_EventScript_ClearTunnelScene
-	map_script_2 VAR_RUSTURF_TUNNEL_STATE, 5, RusturfTunnel_EventScript_ClearTunnelScene
+	map_script_2 VAR_RUSTURF_TUNNEL_STATE, 2, RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos
 	.2byte 0
 
-RusturfTunnel_OnTransition:
-	call_if_eq VAR_RUSTURF_TUNNEL_STATE, 2, RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos
+RusturfTunnel_OnLoad:
+	end
+
+RusturfTunnel_OnTransition::
+	goto_if_eq VAR_RUSTURF_TUNNEL_STATE, 3, RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos3
+	goto_if_eq VAR_RUSTURF_TUNNEL_STATE, 4 RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos4
 	end
 
 RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos::
-	setobjectxyperm LOCALID_PEEKO, 13, 4
-	setobjectxyperm LOCALID_GRUNT, 13, 5
-	return
+	msgbox RustturfTunnel_Message_AfterHim, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WANDAS_BF, RustturfTunnel_Movement_AfterHim
+	waitmovement 0
+	copyobjectxytoperm LOCALID_WANDAS_BF
+	setobjectmovementtype LOCALID_WANDAS_BF, MOVEMENT_TYPE_FACE_RIGHT
+	setvar VAR_RUSTURF_TUNNEL_STATE, 3
+	release
+	end
+
+RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos3::
+	setobjectxyperm LOCALID_WANDAS_BF, 16, 17
+	setobjectmovementtype LOCALID_WANDAS_BF, MOVEMENT_TYPE_FACE_RIGHT
+	end
+
+RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos4::
+	setobjectxyperm LOCALID_DEVON_EMPLOYEE, 23, 17
+	setobjectxyperm LOCALID_PEEKO, 23, 16
+	setobjectxyperm LOCALID_WANDAS_BF, 20, 17
+	setobjectmovementtype LOCALID_WANDAS_BF, MOVEMENT_TYPE_FACE_RIGHT
+	end
+
+
 
 RusturfTunnel_EventScript_Wanda::
 	lock
@@ -34,13 +57,10 @@ RusturfTunnel_EventScript_Wanda::
 	end
 
 RusturfTunnel_EventScript_WandasBoyfriend::
-	lock
 	faceplayer
-	goto_if_set FLAG_TEMP_1, RusturfTunnel_EventScript_AlreadySpokenTo
-	setflag FLAG_TEMP_1
 	msgbox RusturfTunnel_Text_WhyCantTheyKeepDigging, MSGBOX_DEFAULT
 	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_WANDAS_BF, Common_Movement_FaceRight
 	waitmovement 0
 	release
 	end
@@ -88,7 +108,6 @@ RusturfTunnel_EventScript_BoyfriendApproachWanda2::
 	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
 	applymovement LOCALID_WANDAS_BF, RusturfTunnel_Movement_BoyfriendApproachWanda
 	waitmovement 0
-	applymovement LOCALID_WANDA, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	return
 
@@ -96,7 +115,6 @@ RusturfTunnel_EventScript_BoyfriendApproachWanda3::
 	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBoyfriend
 	applymovement LOCALID_WANDAS_BF, RusturfTunnel_Movement_BoyfriendApproachWanda
 	waitmovement 0
-	applymovement LOCALID_WANDA, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	return
 
@@ -122,23 +140,18 @@ RusturfTunnel_EventScript_WandasBoyfriendApproachPlayer::
 	return
 
 RusturfTunnel_EventScript_WandaAndBoyfriendExit1::
-	applymovement LOCALID_WANDA, RusturfTunnel_Movement_WandaExit1
 	applymovement LOCALID_WANDAS_BF, RusturfTunnel_Movement_WandasBoyfriendExit1
 	waitmovement 0
 	return
 
 RusturfTunnel_EventScript_WandaAndBoyfriendExit::
 	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchWandaExit
-	applymovement LOCALID_WANDA, RusturfTunnel_Movement_WandaExit
 	applymovement LOCALID_WANDAS_BF, RusturfTunnel_Movement_WandasBoyfriendExit
 	waitmovement 0
 	return
 
 RusturfTunnel_EventScript_WandasBoyfriendNotice::
 	playse SE_PIN
-	applymovement LOCALID_WANDAS_BF, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_WANDAS_BF, Common_Movement_Delay48
 	waitmovement 0
 	return
 
@@ -242,6 +255,19 @@ RusturfTunnel_Movement_WandasBoyfriendExit:
 	walk_down
 	step_end
 
+RustturfTunnel_Movement_AfterHim:
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	step_end
+
 RusturfTunnel_Movement_WandasBoyfriendApproachPlayer:
 	walk_right
 	step_end
@@ -303,45 +329,77 @@ RusturfTunnel_EventScript_Peeko::
 
 RusturfTunnel_EventScript_Grunt::
 	lock
-	faceplayer
-	playbgm MUS_ENCOUNTER_AQUA, FALSE
-	msgbox RusturfTunnel_Text_GruntIntro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, RusturfTunnel_Text_GruntDefeat
-	msgbox RusturfTunnel_Text_GruntTakePackage, MSGBOX_DEFAULT
-	giveitem ITEM_DEVON_PARTS
+	msgbox RusturfTunnel_Message_dontyoudare, MSGBOX_NPC
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PushPlayerAsideForGrunt
-	applymovement LOCALID_GRUNT, RusturfTunnel_Movement_GruntEscape
+	applymovement LOCALID_DEVON_EMPLOYEE, RusturfTunnel_Movement_Retreat
+	applymovement LOCALID_PEEKO, RusturfTunnel_Movement_Retreat
 	waitmovement 0
-	removeobject LOCALID_GRUNT
-	delay 50
-	addobject LOCALID_BRINEY
-	applymovement LOCALID_BRINEY, RusturfTunnel_Movement_BrineyApproachPeeko1
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerMoveAsideForBriney
-	applymovement LOCALID_BRINEY, RusturfTunnel_Movement_BrineyApproachPeeko2
-	waitmovement 0
-	msgbox RusturfTunnel_Text_PeekoGladToSeeYouSafe, MSGBOX_DEFAULT
-	applymovement LOCALID_BRINEY, Common_Movement_FacePlayer
-	waitmovement 0
-	message RusturfTunnel_Text_ThankYouLetsGoHomePeeko
-	waitmessage
-	waitse
-	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
-	waitbuttonpress
-	waitmoncry
+	copyobjectxytoperm LOCALID_DEVON_EMPLOYEE
+	copyobjectxytoperm LOCALID_PEEKO
+	setobjectmovementtype LOCALID_PEEKO, MOVEMENT_TYPE_FACE_LEFT
+	setobjectmovementtype LOCALID_DEVON_EMPLOYEE, MOVEMENT_TYPE_FACE_LEFT
+	msgbox RusturfTunnel_Message_CornerHim, MSGBOX_NPC
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PlayerWatchBrineyExit
-	applymovement LOCALID_BRINEY, RusturfTunnel_Movement_BrineyExit
-	applymovement LOCALID_PEEKO, RusturfTunnel_Movement_PeekoExit
+	applymovement LOCALID_WANDAS_BF, RustturfTunnel_Movement_BlackBeltRight
 	waitmovement 0
-	removeobject LOCALID_BRINEY
+	copyobjectxytoperm LOCALID_WANDAS_BF
+	setvar VAR_RUSTURF_TUNNEL_STATE, 4
+	release
+	end
+
+
+RusturfTunnel_EventScript_Grunt2::
+	lock
+	msgbox RusturfTunnel_Message_StopIt, MSGBOX_NPC
+	closemessage
+	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_FaceDown
+	applymovement LOCALID_WANDAS_BF, RustturfTunnel_Movement_BlockExit
+	waitmovement 0
+	msgbox RusturfTunnel_Message_Noyoudont, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_FaceLeft
+	waitmovement 0
+	msgbox RusturfTunnel_Message_Fine, MSGBOX_NPC
+	closemessage
+	setobjectxy OBJ_EVENT_ID_PLAYER, 21, 17
+	trainerbattle_no_intro TRAINER_DEVON_MANAGER_1, RustturfTunnel_Message_DevonDefeat
+	setvar VAR_RUSTURF_TUNNEL_STATE, 5
+	msgbox RusturfTunnel_Message_GetItThen, MSGBOX_DEFAULT
+	closemessage
+	addobject LOCALID_BALL
+	setobjectxy LOCALID_BALL, 23, 17
+	applymovement LOCALID_BALL, RusturfTunnel_Movement_BallThrow
+	waitmovement 0
+	playse SE_WALL_HIT
+	msgbox RusturfTunnel_Message_Thud, MSGBOX_DEFAULT
+	closemessage
+	msgbox RusturfTunnel_Message_Escape, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_DEVON_EMPLOYEE, RusturfTunnel_Movement_DevonEscapes
+	waitmovement 0
+	removeobject LOCALID_DEVON_EMPLOYEE
+	applymovement LOCALID_WANDAS_BF, RusturfTunnel_Movement_BfReachesYou
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	msgbox RusturfTunnel_Message_HolyMiltank, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
+	removeobject LOCALID_BALL
+	giveitem ITEM_DEVON_GOODS
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	msgbox RusturfTunnel_Message_NoClue, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WANDAS_BF, RusturfTunnel_Movement_GetToPeeko
+	waitmovement 0
+	applymovement LOCALID_WANDAS_BF, RusturfTunnel_Movement_BfExitCave
+	applymovement LOCALID_PEEKO, RusturfTunnel_Movement_PeekoExitCave
+	waitmovement 0
+	removeobject LOCALID_WANDAS_BF
 	removeobject LOCALID_PEEKO
-	clearflag FLAG_DEVON_GOODS_STOLEN
-	setflag FLAG_RECOVERED_DEVON_GOODS
-	setvar VAR_RUSTBORO_CITY_STATE, 4
-	setvar VAR_BRINEY_HOUSE_STATE, 1
-	setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
+	setvar VAR_RUSTBORO_CITY_STATE, 10
 	release
 	end
 
@@ -418,6 +476,30 @@ RusturfTunnel_Movement_PeekoExit:
 	walk_left
 	step_end
 
+RusturfTunnel_Movement_Retreat:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	face_left
+	step_end
+
+RustturfTunnel_Movement_BlackBeltRight:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+RustturfTunnel_Movement_BlockExit:
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	face_up
+	step_end
+
 RusturfTunnel_EventScript_Mike::
 	trainerbattle_single TRAINER_MIKE_2, RusturfTunnel_Text_MikeIntro, RusturfTunnel_Text_MikeDefeat
 	msgbox RusturfTunnel_Text_MikePostBattle, MSGBOX_AUTOCLOSE
@@ -472,17 +554,19 @@ RusturfTunnel_Text_ThankYouLetsGoHomePeeko:
 	.string "home.\p"
 	.string "PEEKO: Pihyoh!$"
 
+RusturfTunnel_Message_CornerHim:
+	.string "Corner him!$"
+
+RustturfTunnel_Message_AfterHim:
+	.string "Go! After him!$"
+
+RusturfTunnel_Message_dontyoudare:
+	.string "DEVON MANAGER: S-stop it right there!\p"
+	.string "Don't you dare move a step…\n"
+	.string "Or this WINGULL is gonna get it!$"
+
 RusturfTunnel_Text_WhyCantTheyKeepDigging:
-	.string "… …\p"
-	.string "Why can't they keep digging?\n"
-	.string "Is the bedrock too hard?\p"
-	.string "My beloved awaits me in VERDANTURF\n"
-	.string "TOWN just beyond here…\p"
-	.string "If RUSTBORO and VERDANTURF were\n"
-	.string "joined by this tunnel, I could visit\l"
-	.string "her every day…\p"
-	.string "But this…\n"
-	.string "What am I to do?$"
+	.string "What are you waiting for?$"
 
 RusturfTunnel_Text_ToGetToVerdanturf:
 	.string "To get from RUSTBORO to VERDANTURF,\n"
@@ -529,3 +613,122 @@ RusturfTunnel_Text_MikePostBattle:
 	.string "They halted development here to\n"
 	.string "protect POKéMON, right?\l"
 	.string "There's a feel-good story!$"
+
+
+RusturfTunnel_Message_StopIt:
+	.string "DEVON MANAGER: G-gah!\n"
+	.string "I'm outta here!$"
+
+RusturfTunnel_Message_Noyoudont:
+	.string "No you don't!$"
+
+
+RusturfTunnel_Message_Fine:
+	.string "DEVON MANAGER: …F-fine!\p"
+	.string "You want me so badly?\n"
+	.string "Come and get me, then!\p"
+	.string "I-I'll let you know…\p"
+	.string "I didn't rise to my position by\n"
+	.string "being a weakling…!$"
+
+
+RustturfTunnel_Message_DevonDefeat:
+	.string "No, no, no, no!\n"
+	.string "You stupid b-brat!$"
+
+
+RusturfTunnel_Message_GetItThen:
+	.string "DEVON MANAGER: W-what have I even\n"
+	.string "done to you!?\p"
+	.string "Ha… Hahaha!\n"
+	.string "I get it!\p"
+	.string "You're after the GOODS, aren't you?\p"
+	.string "T-then try and catch them!$"
+
+
+RusturfTunnel_Movement_BallThrow:
+	walk_left
+	step_end
+
+RusturfTunnel_Message_Thud:
+	.string "THUD!$"
+
+RusturfTunnel_Message_Escape:
+	.string "DEVON MANAGER: And finally, without\n"
+	.string "that junk slowing me down…\p"
+	.string "I can finally make my escape!\p"
+	.string "G-gyahaha!\p"
+	.string "See you later, suckers!$"
+
+RusturfTunnel_Movement_DevonEscapes:
+	walk_faster_down
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	step_end
+
+ RusturfTunnel_Movement_BfReachesYou:
+	walk_up
+	walk_left
+	walk_left
+	face_up
+	step_end
+
+RusturfTunnel_Message_HolyMiltank:
+	.string "Holy MILTANK, man!\p"
+	.string "Did you see how fast that guy ran?\p"
+	.string "Guess this weird package was really\n"
+	.string "weighing on him.\p"
+	.string "Speaking of…\n"
+	.string "What even is it?$"
+
+
+RusturfTunnel_Message_NoClue:
+	.string "Yeah, huh, I got no clue.\n"
+	.string "You can keep that.\p"
+	.string "I'm just glad old PEEKO is safe,\n"
+	.string "really.\p"
+	.string "I'll bring him back to MR. BRINEY.\n"
+	.string "See you there, eh?$"
+
+RusturfTunnel_Movement_GetToPeeko:
+	walk_left
+	walk_left
+	walk_up
+	step_end
+
+RusturfTunnel_Movement_BfExitCave:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+RusturfTunnel_Movement_PeekoExitCave:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end

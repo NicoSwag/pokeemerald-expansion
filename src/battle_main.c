@@ -655,6 +655,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     TRAINER_CLASS(CHAMPION, "CHAMPION", 50),
     TRAINER_CLASS(FISHERMAN, "FISHERMAN", 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? ITEM_DIVE_BALL : ITEM_LURE_BALL),
     TRAINER_CLASS(TRIATHLETE, "TRIATHLETE", 10),
+    TRAINER_CLASS(DEVON_EMPLOYEE, "DEVON"),
     TRAINER_CLASS(DRAGON_TAMER, "DRAGON TAMER", 12),
     TRAINER_CLASS(NINJA_BOY, "NINJA BOY", 3),
     TRAINER_CLASS(BATTLE_GIRL, "BATTLE GIRL", 6),
@@ -2304,16 +2305,19 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 otIdType = OT_ID_PRESET;
                 fixedOtId = HIHALF(personalityValue) ^ LOHALF(personalityValue);
             }
+            
             u8 trainerHighestLevel = GetTrainerHighestLevel();
             u8 enemyHighestLevel = GetEnemyHighestLevel(trainer);
-            u8 currentLevel = partyData[i].lvl;
+            u8 currentEnemyLevel = partyData[i].lvl;
+            u8 trainerScaling = GetTrainerScalingFromId(gTrainerBattleOpponent_A);
+            u8 levelDifference = enemyHighestLevel - currentEnemyLevel;
+
             
-            if(FlagGet(FLAG_LEVEL_SCALING) && (trainerHighestLevel > enemyHighestLevel)){
-                u8 levelDifference = enemyHighestLevel - currentLevel;
-                currentLevel = trainerHighestLevel - levelDifference;
+            if(FlagGet(FLAG_LEVEL_SCALING) && (trainerHighestLevel - trainerScaling > enemyHighestLevel)){
+                currentEnemyLevel = trainerHighestLevel - levelDifference - trainerScaling;
             }
               
-            CreateMon(&party[i], partyData[i].species, currentLevel, 0, TRUE, personalityValue, otIdType, fixedOtId);
+            CreateMon(&party[i], partyData[i].species, currentEnemyLevel, 0, TRUE, personalityValue, otIdType, fixedOtId);
             
             
                 
@@ -6031,19 +6035,7 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
     }
     else if (gMovesInfo[move].effect == EFFECT_HIDDEN_POWER)
     {
-        u8 typeBits  = ((gBattleMons[battlerAtk].hpIV & 1) << 0)
-                     | ((gBattleMons[battlerAtk].attackIV & 1) << 1)
-                     | ((gBattleMons[battlerAtk].defenseIV & 1) << 2)
-                     | ((gBattleMons[battlerAtk].speedIV & 1) << 3)
-                     | ((gBattleMons[battlerAtk].spAttackIV & 1) << 4)
-                     | ((gBattleMons[battlerAtk].spDefenseIV & 1) << 5);
-
-        // Subtract 4 instead of 1 below because 3 types are excluded (TYPE_NORMAL and TYPE_MYSTERY and TYPE_FAIRY)
-        // The final + 1 skips past Normal, and the following conditional skips TYPE_MYSTERY
-        gBattleStruct->dynamicMoveType = ((NUMBER_OF_MON_TYPES - 4) * typeBits) / 63 + 1;
-        if (gBattleStruct->dynamicMoveType >= TYPE_MYSTERY)
-            gBattleStruct->dynamicMoveType++;
-        gBattleStruct->dynamicMoveType |= F_DYNAMIC_TYPE_IGNORE_PHYSICALITY | F_DYNAMIC_TYPE_SET;
+        gBattleStruct->dynamicMoveType = GetHiddenPowerType(move, battlerAtk, gBattleStruct->moveTarget[battlerAtk]) | F_DYNAMIC_TYPE_SET;
     }
     else if (gMovesInfo[move].effect == EFFECT_CHANGE_TYPE_ON_ITEM && holdEffect == gMovesInfo[move].argument)
     {

@@ -48,7 +48,7 @@ gText_FlyingTaxi_Explanation:
     .string "Hi! You've never used our services\n"
     .string "before, have you?\p"
     .string "Allow me to explain, then!\p"
-    .string "Thanks to our PELIPPER TAXI, you can\n"
+    .string "Thanks to our Pelipper Taxi, you can\n"
     .string "fly to any city you've visited before.\p"
     .string "For a small fee, of course.\p"
     .string "Oh and don't worry about our PELIPPER.\n"

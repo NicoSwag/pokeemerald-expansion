@@ -1021,6 +1021,7 @@ static const u16 sNaturePowerMoves[BATTLE_TERRAIN_COUNT] =
     [BATTLE_TERRAIN_POND]       = MOVE_HYDRO_PUMP,
     [BATTLE_TERRAIN_MOUNTAIN]   = MOVE_EARTH_POWER,
     [BATTLE_TERRAIN_CAVE]       = MOVE_EARTH_POWER,
+    [BATTLE_TERRAIN_CAVERUST]       = MOVE_EARTH_POWER,
     [BATTLE_TERRAIN_BUILDING]   = MOVE_TRI_ATTACK,
     [BATTLE_TERRAIN_GYM_ARENA]   = MOVE_TRI_ATTACK,
     [BATTLE_TERRAIN_PLAIN]      = MOVE_TRI_ATTACK,
@@ -1435,19 +1436,7 @@ u32 CalcBestType(u32 move, u32* type, u8 size, u32 target, u32 attacker)
 }
 
 
-bool32 ColorChangeTryChangeType(u32 defender, u32 ability, u32 move, u32 moveType)
-{
-      if ((ability == ABILITY_COLOR_CHANGE)
-         && (gBattleMons[defender].type1 != moveType || gBattleMons[defender].type2 != moveType
-             || (gBattleMons[defender].type3 != moveType && gBattleMons[defender].type3 != TYPE_MYSTERY))
-         && move != MOVE_STRUGGLE
-         && gMovesInfo[move].category != DAMAGE_CATEGORY_STATUS) 
-    {
-        SET_BATTLER_TYPE(gBattlerTarget, moveType);
-        return TRUE;
-    }
-    return FALSE;
-}
+
 bool32 IsMoveNotAllowedInSkyBattles(u32 move)
 {
     return ((gBattleStruct->isSkyBattle) && (gMovesInfo[gCurrentMove].skyBattleBanned));
@@ -1504,6 +1493,19 @@ static void Cmd_attackcanceler(void)
         }
     }
 
+    
+    if (GetBattlerAbility(gBattlerTarget) == ABILITY_COLOR_CHANGE
+        && gCurrentMove != MOVE_STRUGGLE
+        && gMovesInfo[gCurrentMove].power != 0
+        && !IS_BATTLER_OF_TYPE(gBattlerTarget, moveType))
+        {
+                SET_BATTLER_TYPE(gBattlerTarget, moveType);
+                PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_ColorChangeActivates;
+                return;
+        }
+
     if (gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_OFF
     && GetBattlerAbility(gBattlerAttacker) == ABILITY_PARENTAL_BOND
     && IsMoveAffectedByParentalBond(gCurrentMove, gBattlerAttacker)
@@ -1542,16 +1544,6 @@ static void Cmd_attackcanceler(void)
         return;
     }
 
-    if (ColorChangeTryChangeType(gBattlerTarget, targetAbility, gCurrentMove, moveType))
-    {
-        PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
-        gBattlerAbility = gBattlerTarget;
-        BattleScriptPushCursor();
-        PrepareStringBattle(STRINGID_EMPTYSTRING3, gBattlerTarget);
-        gBattleCommunication[MSG_DISPLAY] = 1;
-        gBattlescriptCurrInstr = BattleScript_ColorChangeActivates;
-        return;
-    }
 
     if (AtkCanceller_UnableToUseMove2())
         return;
@@ -4096,6 +4088,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                         gBattleScripting.moveEffect = MOVE_EFFECT_ATK_MINUS_1;
                         break;
                     case BATTLE_TERRAIN_CAVE:
+                    case BATTLE_TERRAIN_CAVERUST:
                     case BATTLE_TERRAIN_BURIAL_GROUND:
                     case BATTLE_TERRAIN_SPACE:
                         gBattleScripting.moveEffect = MOVE_EFFECT_FLINCH;
@@ -4595,6 +4588,20 @@ u8 GetTeamLevel(void)
     return partyLevel;
 }
 
+u8 GetHighestLevel(void)
+{
+    u8 i;
+    u8 highestLevel = 0;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE && (gPlayerParty[i].level > highestLevel))
+            highestLevel = gPlayerParty[i].level;
+    }
+
+    return highestLevel;
+}
+
 double GetPkmnExpMultiplier(u8 level)
 {
     u8 i;
@@ -4603,6 +4610,9 @@ double GetPkmnExpMultiplier(u8 level)
     s8 avgDiff;
 
     // multiply the usual exp yield by the soft cap multiplier
+    
+    if(level < GetHighestLevel())
+        lvlCapMultiplier = 3.0;
     
     if(FlagGet(FLAG_LEVEL_CAPS) == TRUE){
         for (i = 0; i < NUM_SOFT_CAPS; i++)

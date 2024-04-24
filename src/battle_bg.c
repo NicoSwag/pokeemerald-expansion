@@ -761,6 +761,15 @@ const struct BattleBackground sBattleTerrainTable[] =
         .palette = gBattleTerrainPalette_Cave,
     },
 
+    [BATTLE_TERRAIN_CAVERUST] =
+    {
+        .tileset = gBattleTerrainTiles_Cave,
+        .tilemap = gBattleTerrainTilemap_Cave,
+        .entryTileset = gBattleTerrainAnimTiles_Cave,
+        .entryTilemap = gBattleTerrainAnimTilemap_Cave,
+        .palette = gBattleTerrainPalette_CaveRust,
+    },
+
     [BATTLE_TERRAIN_BUILDING] =
     {
         .tileset = gBattleTerrainTiles_Building,
@@ -1507,48 +1516,48 @@ bool8 LoadChosenBattleElement(u8 caseId)
                     {
                         LZDecompressVram(gBattleTerrainAnimTiles_Sand, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_Sand, (void *)(BG_SCREEN_ADDR(28)));
-                        return;
+                        break;
                     }
                     else if (MetatileBehavior_IsDeepOrOceanWater(tileBehavior))
                     {
                         LZDecompressVram(gBattleTerrainAnimTiles_Water, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_Water, (void *)(BG_SCREEN_ADDR(28)));
-                        return;
+                        break;
                     }
                     else if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
                     {
                         LZDecompressVram(gBattleTerrainAnimTiles_PondWater, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_PondWater, (void *)(BG_SCREEN_ADDR(28)));
-                        return;
+                        break;
                     }
                     else if (MetatileBehavior_IsMountain(tileBehavior))
                     {
                         LZDecompressVram(gBattleTerrainAnimTiles_Rock, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_Rock, (void *)(BG_SCREEN_ADDR(28)));
-                        return;
+                        break;
                     }
                     else switch (gBattleTerrain)
                     {
                         case MAP_TYPE_UNDERGROUND:
                         LZDecompressVram(gBattleTerrainAnimTiles_Cave, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_Cave, (void *)(BG_SCREEN_ADDR(28)));
-                        return;
+                        break;
                         case MAP_TYPE_ROUTE:    
                         LZDecompressVram(gBattleTerrainAnimTiles_TallGrass, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_TallGrass, (void *)(BG_SCREEN_ADDR(28)));
-                        return;
+                        break;
                         case MAP_TYPE_OVERCAST:
                         LZDecompressVram(gBattleTerrainAnimTiles_TallGrassOvercast, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_TallGrassOvercast, (void *)(BG_SCREEN_ADDR(28)));
-                        return;                        
+                        break;                     
                         case MAP_TYPE_GYM_ARENA:
                         LZDecompressVram(gBattleTerrainAnimTiles_GymArena, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_GymArena, (void *)(BG_SCREEN_ADDR(28)));
-                        return;
+                        break;
                         case MAP_TYPE_FOREST:
                         LZDecompressVram(gBattleTerrainAnimTiles_Forest, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_Forest, (void *)(BG_SCREEN_ADDR(28)));
-                        return;
+                        break;
                     }
                 }
                 
@@ -1757,7 +1766,11 @@ case MAP_BATTLE_SCENE_GYM:
                     else switch (gBattleTerrain)
                     {
                         case MAP_TYPE_UNDERGROUND:
-                    LoadCompressedPalette(gBattleTerrainPalette_Cave, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+                        if (GetCurrentRegionMapSectionId() == MAPSEC_RUSTURF_TUNNEL)
+                            LoadCompressedPalette(gBattleTerrainPalette_CaveRust, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+                        else
+                            LoadCompressedPalette(gBattleTerrainPalette_Cave, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+
                         break;
                         case MAP_TYPE_ROUTE:    
                     LoadCompressedPalette(gBattleTerrainPalette_TallGrass, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);

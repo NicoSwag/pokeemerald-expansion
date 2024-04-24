@@ -197,7 +197,7 @@ const u32 gTrainerFrontPic_NinjaBoy[] = INCBIN_U32("graphics/trainers/front_pics
 const u32 gTrainerPalette_NinjaBoy[] = INCBIN_U32("graphics/trainers/front_pics/ninja_boy.gbapal.lz");
 
 const u32 gTrainerFrontPic_DevonEmployee[] = INCBIN_U32("graphics/trainers/front_pics/devon_employee.4bpp.lz");
-const u32 gTrainerPalette_Devon_Employee[] = INCBIN_U32("graphics/trainers/front_pics/devon_employee.gbapal.lz");
+const u32 gTrainerPalette_DevonEmployee[] = INCBIN_U32("graphics/trainers/front_pics/devon_employee.gbapal.lz");
 
 const u32 gTrainerFrontPic_Engineer[] = INCBIN_U32("graphics/trainers/front_pics/engineer.4bpp.lz");
 const u32 gTrainerPalette_Engineer[] = INCBIN_U32("graphics/trainers/front_pics/engineer.gbapal.lz");
@@ -428,6 +428,8 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(RS_MAY, RubySapphireMay),
     TRAINER_SPRITE(SHADOW_M, ShadowM),
     TRAINER_SPRITE(ENGINEER, Engineer),
+    TRAINER_SPRITE(SCIENTIST, Scientist),
+    TRAINER_SPRITE(DEVON_EMPLOYEE, DevonEmployee),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =

@@ -402,7 +402,7 @@ PetalburgWoods_EventScript_JamesRematch::
 	end
 
 PetalburgWoods_Text_NotAOneToBeFound:
-	.string "DEVON RESEARCHER: Hmmm…\n"
+	.string "DEVON MANAGER: Hmmm…\n"
 	.string "Sh-she's late…$"
 
 PetalburgWoods_Text_HaveYouSeenShroomish:
@@ -414,14 +414,14 @@ PetalburgWoods_Text_IWasGoingToAmbushYou:
 	.string "SHELLY: Yo, guy.\p"
 	.string "As promised, you got me the\n"
 	.string "GOODS, right?\p"
-	.string "DEVON RESEARCHER: O-o-of\n"
+	.string "DEVON MANAGER: O-o-of\n"
 	.string "course! And I made sure to not\l"
 	.string "be followed!\p"
 	.string "SHELLY: Oh yeah? Who's that\n"
 	.string "behind you, then?$"
 
 PetalburgWoods_Text_DealIsOff:
-	.string "DEVON RESEARCHER: W-w-we've\n"
+	.string "DEVON MANAGER: W-w-we've\n"
 	.string "been caught!\p"
 	.string "I'm sorry, but the deal is off!$"
 

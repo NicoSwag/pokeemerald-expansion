@@ -1,5 +1,5 @@
-.set LOCALID_BRINEY, 11
-.set LOCALID_WANDAS_BF_OUTSIDE, 21
+
+.set LOCALID_WANDAS_BF_OUTSIDE, 12
 
 Route116_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route116_OnTransition
@@ -28,12 +28,7 @@ Route116_OnFrame:
 	.2byte 0
 
 Route116_EventScript_WandasBoyfriend::
-	lock
-	faceplayer
-	goto_if_set FLAG_RECOVERED_DEVON_GOODS, Route116_EventScript_BoyfriendGruntLeftTunnel
-	goto_if_set FLAG_DEVON_GOODS_STOLEN, Route116_EventScript_BoyfriendGruntInTunnel
-	msgbox Route116_Text_WantToDigTunnel, MSGBOX_DEFAULT
-	release
+	msgbox Route116_Text_WantToDigTunnel, MSGBOX_NPC
 	end
 
 Route116_EventScript_BoyfriendGruntLeftTunnel::
@@ -142,14 +137,20 @@ Route116_EventScript_Briney::
 	release
 	end
 
-Route116_EventScript_BrineyTrigger::
-	lockall
-	applymovement LOCALID_BRINEY, Common_Movement_WalkInPlaceFasterRight
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
+Route116_EventScript_WandasBoyfriendJumps::
+	lock
+	msgbox Route116_Text_Wait, MSGBOX_NPC
+	playse SE_LEDGE
+	applymovement LOCALID_WANDAS_BF_OUTSIDE, Route116_Movement_BfSlidesDown
 	waitmovement 0
-	msgbox Route116_Text_ScoundrelMadeOffWithPeeko, MSGBOX_DEFAULT
+	playse SE_WALL_HIT
+	delay 4
+	msgbox Route116_Text_Greetings, MSGBOX_NPC
+	applymovement LOCALID_WANDAS_BF_OUTSIDE, Route116_Movement_BfEntersCave
+	waitmovement 0
+	playse SE_EXIT
+	removeobject LOCALID_WANDAS_BF_OUTSIDE
 	setvar VAR_ROUTE116_STATE, 2
-	releaseall
 	end
 
 Route116_EventScript_GlassesMan::
@@ -227,6 +228,19 @@ Route116_Movement_GlassesManExitEast:
 	walk_left
 	walk_left
 	walk_left
+	step_end
+
+
+Route116_Movement_BfSlidesDown:
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	step_end
+
+
+Route116_Movement_BfEntersCave:
+	walk_up
 	step_end
 
 Route116_EventScript_Joey::
@@ -345,7 +359,6 @@ Route116_EventScript_FriendlyEngineer3::
 	end
 
 Route116_EventScript_Scientist::
-	lock
 	msgbox Route116_Text_Scientist, MSGBOX_NPC
 	release
 	end
@@ -358,6 +371,10 @@ Route116_EventScript_Dawson::
 Route116_EventScript_Devan::
 	trainerbattle_single TRAINER_DEVAN, Route116_Text_DevanIntro, Route116_Text_DevanDefeat
 	msgbox Route116_Text_DevanPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route116_EventScript_FriendlyBlackBelt::
+	msgbox Route116_Text_FriendlyBlackBelt, MSGBOX_NPC
 	end
 
 Route116_EventScript_Johnson::
@@ -374,8 +391,8 @@ Route116_Text_ScoundrelMadeOffWithPeeko:
 	.string "Wrrrooooooaaaar! PEEKO!$"
 
 Route116_Text_WantToDigTunnel:
-	.string "Nnn… Roar!\p"
-	.string "I want to dig that tunnel!$"
+	.string "Hey!\p"
+	.string "You're spoiling my grand entrance!$"
 
 Route116_Text_DiggingTunnelWhenGoonOrderedMeOut:
 	.string "Nnn… Roar!\n"
@@ -509,5 +526,49 @@ Route116_Text_Engineer3:
 Route116_Text_Scientist:
 	.string "Eveything is progressing\n"
 	.string "as scheduled.\p"
-	.string "This land's value will\n"
-	.string "skyrocket!$"
+	.string "This land's value will soar!$"
+
+Route116_Text_FriendlyBlackBelt:
+	.string "A-a-are you the inspector?\p"
+	.string "I've been doing my job, sir, I\n"
+	.string "swear it!\p"
+	.string "Please don't put me in the hole\n"
+	.string "of shame again…\p"
+	.string "Oh, wait.\n"
+	.string "You're just some kid.\p"
+	.string "Buzz of, will ya?$"
+
+Route116_Text_Wait:
+	.string "Waaaaait!$"
+
+Route116_Text_Greetings:
+	.string "Greetings.\p"
+	.string "I will cut straight to\n"
+	.string "the chase.\p"
+	.string "I am but a humble BLACK BELT.\p"
+	.string "Not like the other ones you've met,\n"
+	.string "but a BLACK BELT regardless.\p"
+	.string "Anyway…\p"
+	.string "Me and my WANDA, we've had this dream\n"
+	.string "for a while.\p"
+	.string "We've been hoping to, eventually,\n"
+	.string "dig a hole in this cave.\p"
+	.string "That way, our aching hearts would\n"
+	.string "finally be connected.\p"
+	.string "We thought that with DEVON starting\n"
+	.string "to drill, it could finally come true.\p"
+	.string "But the way they're doing it…\n"
+	.string "It's just not right, man.\p"
+	.string "They're displacing the POKéMON from\n"
+	.string "their habitat, scaring them…\p"
+	.string "To put it simply, I don't like it.\n"
+	.string "So here's the deal.\p"
+	.string "I saw what happened from up here.\p"
+	.string "A DEVON crook barged in and took old\n"
+	.string "MR. BRINEY's WINGULL as hostage.\p"
+	.string "I don't know if I can do much by\n"
+	.string "myself, but with you?\p"
+	.string "I've seen you fight.\n"
+	.string "You're a one-man army.\p"
+	.string "So, meet me inside.\n"
+	.string "We'll give him a lesson.$"

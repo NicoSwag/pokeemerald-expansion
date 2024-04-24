@@ -3092,7 +3092,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .height = 4,
         .weight = 600,
         .description = COMPOUND_STRING(
-            "In order to mantain its iron body it.\n"
+            "In order to mantain its iron body, it\n"
             "frequently eats rocks, iron ore and,\n"
             "occasionally, manmade steel items\n"
             "such as railroad tracks."),

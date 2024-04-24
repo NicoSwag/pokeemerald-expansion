@@ -5212,10 +5212,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .description = COMPOUND_STRING(
             "An attack lasting 5 turns\n"
             "with rising intensity."),
-        .effect = EFFECT_ROLLOUT,
-        .power = 30,
+        .effect = EFFECT_FURY_CUTTER,
+        .power = 40,
         .type = TYPE_ROCK,
-        .accuracy = 90,
+        .accuracy = 95,
         .pp = 20,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
@@ -6003,8 +6003,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .description = COMPOUND_STRING(
             "The effectiveness varies\n"
             "with the opponent."),
-        .power = 50,
-        .effect = EFFECT_CHANGE_TYPE_HIDDEN,
+        .power = 40,
+        .effect = EFFECT_HIDDEN_POWER,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 15,
@@ -7631,10 +7631,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .description = COMPOUND_STRING(
             "A 5-turn attack that gains\n"
             "power on successive hits."),
-        .effect = EFFECT_ROLLOUT,
-        .power = 30,
+        .effect = EFFECT_FURY_CUTTER,
+        .power = 40,
         .type = TYPE_ICE,
-        .accuracy = 90,
+        .accuracy = 95,
         .pp = 20,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,

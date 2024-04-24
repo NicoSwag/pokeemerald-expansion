@@ -631,7 +631,6 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_TM07] = {gItemIcon_TM, gItemIconPalette_FireTMHM},
     [ITEM_TM08] = {gItemIcon_TM, gItemIconPalette_FightingTMHM},
     [ITEM_TM09] = {gItemIcon_TM, gItemIconPalette_GroundTMHM},
-    [ITEM_TM09] = {gItemIcon_TM, gItemIconPalette_GrassTMHM},
     [ITEM_TM10] = {gItemIcon_TM, gItemIconPalette_NormalTMHM},
     [ITEM_TM11] = {gItemIcon_TM, gItemIconPalette_FireTMHM},
     [ITEM_TM12] = {gItemIcon_TM, gItemIconPalette_DarkTMHM},

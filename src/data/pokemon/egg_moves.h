@@ -4,6 +4,10 @@
 
 const u16 gEggMoves[] = {
     egg_moves(FENNEKIN,
+        MOVE_RECHARGE,
+        MOVE_GRAVITY),
+
+    egg_moves(PORYGON,
         MOVE_INCINERATE,
         MOVE_ALLY_SWITCH),
 

@@ -756,6 +756,8 @@ u8 BattleSetup_GetTerrainId(void)
             return BATTLE_TERRAIN_BUILDING;
         if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
             return BATTLE_TERRAIN_POND;
+        if (GetCurrentRegionMapSectionId() == MAPSEC_RUSTURF_TUNNEL)
+            return BATTLE_TERRAIN_CAVERUST;
         return BATTLE_TERRAIN_CAVE;
     case MAP_TYPE_INDOOR:
     case MAP_TYPE_SECRET_BASE:

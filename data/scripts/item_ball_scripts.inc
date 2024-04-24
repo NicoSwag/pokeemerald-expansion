@@ -166,15 +166,24 @@ Route115_EventScript_ItemPPUp::
 	end
 
 Route116_EventScript_ItemXSpecial::
-	finditem ITEM_X_SP_ATK
+	finditem ITEM_HEART_SCALE
 	end
+
+Route116_EventScript_ItemEjectPack::
+	finditem ITEM_EJECT_PACK
+	end
+
+Route116_EventScript_ItemSmoothRock::
+	finditem ITEM_SMOOTH_ROCK
+	end
+
 
 Route116_EventScript_ItemEther::
-	finditem ITEM_ETHER
+	finditem ITEM_MUSCLE_BAND
 	end
 
-Route116_EventScript_ItemRepel::
-	finditem ITEM_REPEL
+Route116_EventScript_ItemBlackBelt::
+	finditem ITEM_BLACK_BELT
 	end
 
 Route116_EventScript_ItemHPUp::

@@ -1,5 +1,5 @@
 gText_FlyingTaxi_Intro::
-    .string "Welcome to the PELIPPER TAXI!\p"
+    .string "Welcome to the Pelipper Taxi!\p"
     .string "Renting a ride costs 500¥.\n"
     .string "Are you interested?$"
 

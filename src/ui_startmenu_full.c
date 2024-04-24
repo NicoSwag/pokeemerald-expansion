@@ -659,7 +659,7 @@ static void CreatePartyMonIcons()
 
         gSprites[sStartMenuDataPtr->iconMonSpriteIds[i]].oam.priority = 0;
 
-        if (GetHPEggCyclePercent(i) == 0)
+        if (GetMonData(mon, MON_DATA_DEAD))
         {
             gSprites[sStartMenuDataPtr->iconMonSpriteIds[i]].callback = SpriteCallbackDummy;
         }
@@ -715,9 +715,14 @@ static bool32 IsMonNotEmpty(u32 partyIndex)
 
 static u32 GetHPEggCyclePercent(u32 partyIndex)
 {
+
     struct Pokemon *mon = &gPlayerParty[partyIndex];
+
+    u16 currLevelExp = gExperienceTables[gSpeciesInfo[GetMonData(mon,MON_DATA_SPECIES)].growthRate][GetMonData(mon, MON_DATA_LEVEL)];
+    
+
     if (!GetMonData(mon, MON_DATA_IS_EGG))
-        return ((GetMonData(mon, MON_DATA_HP)) * 100 / (GetMonData(mon,MON_DATA_MAX_HP)));
+        return (((GetMonData(mon, MON_DATA_EXP)) - currLevelExp) * 100 / (gExperienceTables[gSpeciesInfo[GetMonData(mon,MON_DATA_SPECIES)].growthRate][GetMonData(mon, MON_DATA_LEVEL) + 1] - currLevelExp));
     else
         return ((GetMonData(mon, MON_DATA_FRIENDSHIP)) * 100 / (gSpeciesInfo[GetMonData(mon,MON_DATA_SPECIES)].eggCycles));
 }

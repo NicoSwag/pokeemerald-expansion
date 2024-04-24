@@ -3342,6 +3342,60 @@ static const struct TrainerMon sParty_Roxanne1[] = {
     }
 };
 
+
+static const struct TrainerMon sParty_DevonManager1[] = {
+    {
+    .species = SPECIES_KLINK,
+    .heldItem = ITEM_TERRAIN_EXTENDER,
+    .moves = {MOVE_ELECTRIC_TERRAIN, MOVE_CHARGE_BEAM, MOVE_VISE_GRIP, MOVE_METAL_BURST},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 16,
+    .ball = ITEM_LUXURY_BALL,
+    .ability = ABILITY_SURGE_SURFER,
+    .nature = NATURE_HASTY,
+    },
+    {
+    .species = SPECIES_PORYGON,
+    .heldItem = ITEM_SITRUS_BERRY,
+    .moves = {MOVE_THUNDERSHOCK, MOVE_RECHARGE, MOVE_PSYBEAM, MOVE_CONVERSION_2},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 16,
+    .ball = ITEM_LUXURY_BALL,
+    .ability = ABILITY_DOWNLOAD,
+    .nature = NATURE_MODEST,
+    },
+    {
+    .species = SPECIES_DITTO,
+    .heldItem = ITEM_ELECTRIC_SEED,
+    .moves = {MOVE_TRANSFORM},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 17,
+    .ball = ITEM_LUXURY_BALL,
+    .ability = ABILITY_IMPOSTER,
+    .nature = NATURE_NAIVE,
+    },
+    {
+    .species = SPECIES_KECLEON,
+    .heldItem = ITEM_KASIB_BERRY,
+    .moves = {MOVE_ANCIENT_POWER, MOVE_HIDDEN_POWER, MOVE_FAKE_OUT, MOVE_FAKE_TEARS},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 17,
+    .ball = ITEM_LUXURY_BALL,
+    .ability = ABILITY_COLOR_CHANGE,
+    .nature = NATURE_MODEST,
+    },
+    {
+    .species = SPECIES_WINGULL,
+    .moves = {MOVE_TACKLE, MOVE_GROWL},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 10,
+    .ball = ITEM_POKE_BALL,
+    .ability = ABILITY_HYDRATION,
+    .nature = NATURE_DOCILE,
+    .nickname = COMPOUND_STRING("PEEKO"),
+    }
+};
+
 static const struct TrainerMon sParty_Brawly1[] = {
     {
     .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
@@ -3573,7 +3627,7 @@ static const struct TrainerMon sParty_Jerry1[] = {
     .heldItem = ITEM_POISON_BARB,
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 16,
-    .ability = ABILITY_CAUSTIC_BODY,
+    .ability = ABILITY_STICKY_HOLD,
     .nature = NATURE_RELAXED,
     },
     {
@@ -8360,7 +8414,7 @@ static const struct TrainerMon sParty_Clark[] = {
     },
     {
     .species = SPECIES_CALFLING,
-    .moves = {MOVE_FOCUS_ENERGY, MOVE_FORCE_PALM, MOVE_TACKLE, MOVE_HELPING_HAND},
+    .moves = {MOVE_BULLDOZE, MOVE_BELCH, MOVE_DOUBLE_KICK, MOVE_STOMP},
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 14,
     .ability = ABILITY_GLUTTONY,

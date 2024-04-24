@@ -651,8 +651,8 @@ RustboroCity_EventScript_EmployeeApproachPlayerFar::
 
 @ Unused
 RustboroCity_Movement_GruntEscapeExtended:
-	walk_faster_right
-	walk_faster_right
+	walk_fast_right
+	walk_fast_right
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
@@ -675,8 +675,8 @@ RustboroCity_Movement_Up:
 	step_end
 
 RustboroCity_Movement_GruntEscape:
-	walk_faster_right
-	walk_faster_right
+	walk_fast_right
+	walk_fast_right
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
