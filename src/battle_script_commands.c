@@ -620,11 +620,11 @@ static void Cmd_tryworryseed(void);
 static void Cmd_callnative(void);
 const u16 sLevelCapFlags[NUM_SOFT_CAPS] =
 {
-    FLAG_RECEIVED_EXP_SHARE, FLAG_BADGE01_GET, FLAG_BADGE02_GET, FLAG_BADGE03_GET, FLAG_BADGE04_GET,
+    FLAG_BADGE01_GET, FLAG_BADGE02_GET, FLAG_BADGE03_GET, FLAG_BADGE04_GET,
     FLAG_BADGE05_GET, FLAG_BADGE06_GET, FLAG_BADGE07_GET, FLAG_BADGE08_GET,
 };
 
-const u16 sLevelCaps[NUM_SOFT_CAPS] = { 8, 15, 20, 30, 40, 50, 60, 70, 80 };
+const u16 sLevelCaps[NUM_SOFT_CAPS] = { 15, 24, 30, 40, 50, 60, 70, 80 };
 const double sLevelCapReduction[7] = { .01, .01, .01, .01, .01, .01, .01};
 const double sRelativePartyScaling[27] =
 {
@@ -4617,19 +4617,6 @@ double GetPkmnExpMultiplier(u8 level)
     if(level < GetHighestLevel())
         lvlCapMultiplier = 3.0;
     
-    if(FlagGet(FLAG_LEVEL_CAPS) == TRUE){
-        for (i = 0; i < NUM_SOFT_CAPS; i++)
-        {
-            if (!FlagGet(sLevelCapFlags[i]) && level >= sLevelCaps[i])
-            {
-                levelDiff = level - sLevelCaps[i];
-                if (levelDiff > 6)
-                levelDiff = 6;
-                lvlCapMultiplier = sLevelCapReduction[levelDiff];
-                 break;
-            }
-        }
-    }
 
     // multiply the usual exp yield by the party level multiplier
     avgDiff = level - GetTeamLevel();
@@ -4823,6 +4810,8 @@ static void Cmd_getexp(void)
                     double expMultiplier = GetPkmnExpMultiplier(gPlayerParty[gBattleStruct->expGetterMonId].level);
                     if (wasSentOut)
                         gBattleMoveDamage = gBattleStruct->expValue * expMultiplier;
+                        if(FlagGet(FLAG_LEVEL_CAPS) == TRUE && gPlayerParty[gBattleStruct->expGetterMonId].level >=GetCurrentLevelCap())
+                            gBattleMoveDamage = 1;
                     else
                         gBattleMoveDamage = 0;
 
@@ -4831,6 +4820,8 @@ static void Cmd_getexp(void)
                     {
                         double expMultiplier = GetPkmnExpMultiplier(gPlayerParty[gBattleStruct->expGetterMonId].level);
                         gBattleMoveDamage += gBattleStruct->expShareExpValue * expMultiplier;
+                        if(FlagGet(FLAG_LEVEL_CAPS) == TRUE && gPlayerParty[gBattleStruct->expGetterMonId].level >=GetCurrentLevelCap())
+                            gBattleMoveDamage = 1;
                     }
                     if (IsTradedMon(&gPlayerParty[*expMonId]))
                     {

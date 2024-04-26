@@ -3377,7 +3377,7 @@ static const struct TrainerMon sParty_DevonManager1[] = {
     {
     .species = SPECIES_KECLEON,
     .heldItem = ITEM_KASIB_BERRY,
-    .moves = {MOVE_ANCIENT_POWER, MOVE_HIDDEN_POWER, MOVE_FAKE_OUT, MOVE_FAKE_TEARS},
+    .moves = {MOVE_ANCIENT_POWER, MOVE_NIGHT_SHADE, MOVE_FAKE_OUT, MOVE_FAKE_TEARS},
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 17,
     .ball = ITEM_LUXURY_BALL,

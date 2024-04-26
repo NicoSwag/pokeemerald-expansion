@@ -408,6 +408,7 @@ RusturfTunnel_EventScript_Grunt2::
 	waitmovement 0
 	removeobject LOCALID_WANDAS_BF
 	removeobject LOCALID_PEEKO
+	setflag FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
 	setvar VAR_RUSTBORO_CITY_STATE, 10
 	release
 	end

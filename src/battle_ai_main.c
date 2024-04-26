@@ -553,6 +553,7 @@ static bool32 AI_ShouldSwitchIfBadMoves(u32 battler, bool32 doubleBattle)
     return FALSE;
 }
 
+
 static u32 ChooseMoveOrAction_Singles(u32 battlerAi)
 {
     u8 currentMoveArray[MAX_MON_MOVES];

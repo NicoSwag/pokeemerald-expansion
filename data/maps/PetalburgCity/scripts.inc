@@ -778,11 +778,14 @@ PetalburgCity_EventScript_GymBoy::
 PetalburgCity_Text_WhereIsWally:
 	.string "Our WALLY has always been a\n"
 	.string "sick boy.\p"
-	.string "We were thinking of having him\n"
-	.string "move to VERDANTURF with our relatives\l"
-	.string "for some fresh air…\p"
-	.string "But after the whole power plant\n"
-	.string "situation, I'm not so sure anymore.$"
+	.string "And now he's made up his mind\n"
+	.string "to journey the region…\p"
+	.string "Maybe some activity would do him\n"
+	.string "good, but I'm still worried.\p"
+	.string "I hate to ask, but if you happen\n"
+	.string "to come across him, please do check\l"
+	.string "up on how he's doing.$"
+
 
 PetalburgCity_Text_AreYouRookieTrainer:
 	.string "Hiya! Are you maybe…\n"

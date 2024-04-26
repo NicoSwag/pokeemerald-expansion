@@ -1168,16 +1168,15 @@ PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon:
 	.string "I'll be looking forward to it!$"
 
 PetalburgCity_Gym_Text_WallyIdLikeAPokemon:
-	.string "Um… Hi MR. NORMAN…\n"
+	.string "Um… Hi MR. NORMAN… Cough…\n"
 	.string "I caught some POKéMON like you said…$"
 
 PetalburgCity_Gym_Text_DadOhYoureWallyRight:
 	.string "DAD: Hm? You're… Uh… Oh, right.\n"
-	.string "Yeah, good job, kid!\p"
-	.string "(I have no clue who this is…)$"
+	.string "Yeah, good job, kid!$"
 
 PetalburgCity_Gym_Text_WallyIveNeverCaughtAPokemon:
-	.string "WALLY: I was thinking of starting\n"
+	.string "I was thinking of starting\n"
 	.string "a journey by myself.\p"
 	.string "I thought I would be lonely all on my\n"
 	.string "own, so I wanted to take a POKéMON.\p"
@@ -1197,27 +1196,34 @@ PetalburgCity_Gym_Text_IllLoanYouMyZigzagoon:
 	.string "What's your name again?$"
 
 PetalburgCity_Gym_Text_WallyThankYouAndDadGivesPokeBall:
-	.string "WALLY: It's WALLY…$"
+	.string "It's WALLY…$"
 
 PetalburgCity_Gym_Text_WallyOhWowThankYou:
 	.string "DAD: Ah, yes, I remember!$"
 
 PetalburgCity_Gym_Text_WouldYouReallyComeWithMe:
-	.string "WALLY: {PLAYER}… I guess we could\n"
-	.string "try having a battle…\p"
-	.string "Here goes nothing…$"
+	.string "WALLY: {PLAYER}… You're MR. NORMAN's\n"
+	.string "kid who just moved in, right…?\p"
+	.string "I asked him some advice to start my\n"
+	.string "journey and he sent me to catch some\l"
+	.string "POKéMON, but I've never battled before…\p"
+	.string "So you'll… Cough…\n"
+	.string "You'll be my first…\p"
+	.string "Don't go easy on me, ok…?$"
 
 PetalburgCity_Gym_Text_DadSoDidItWorkOut:
 	.string "DAD: Marvelous battle, {PLAYER}!\n"
 	.string "And you too, WALTER.$"
 
 PetalburgCity_Gym_Text_WallyThankYouBye:
-	.string "WALLY: It's WALLY…\p"
-	.string "You know what?\n"
-	.string "I'm tired of always being in the\l"
-	.string "background.\p"
-	.string "I'll become a great POKéMON trainer,\n"
-	.string "and I'll show you, MR. NORMAN!\p"
+	.string "WALLY: It's WALLY…\n"
+	.string "Sigh…\p"
+	.string "Everybody… Cough…\p"
+	.string "Everybody always looks down on me\n"
+	.string "because I'm weak, and sick, and all of that…\p"
+	.string "But if I become a great POKéMON trainer,\n"
+	.string "I bet people will start remembering my name…\p"
+	.string "So I'll show you, MR. NORMAN!\p"
 	.string "And you too, {PLAYER}!\p"
 	.string "I'll show you what I can do!$"
 
