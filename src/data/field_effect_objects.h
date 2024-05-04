@@ -1,6 +1,7 @@
 const struct SpritePalette gSpritePalette_GeneralFieldEffect0 = {gFieldEffectObjectPalette0, FLDEFF_PAL_TAG_GENERAL_0};
 const struct SpritePalette gSpritePalette_GeneralFieldEffect1 = {gFieldEffectObjectPalette1, FLDEFF_PAL_TAG_GENERAL_1};
 const struct SpritePalette gSpritePalette_GeneralFieldEffect2 = {gFieldEffectObjectPalette2, FLDEFF_PAL_TAG_GENERAL_2};
+const struct SpritePalette gSpritePalette_GeneralFieldEffect3 = {gFieldEffectObjectPalette2, FLDEFF_PAL_TAG_GENERAL_3};
 
 static const union AnimCmd sAnim_Shadow[] =
 {
@@ -95,6 +96,16 @@ static const union AnimCmd *const sAnimTable_TallGrass[] =
 const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrass = {
     .tileTag = 0xFFFF,
     .paletteTag = FLDEFF_PAL_TAG_GENERAL_1,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_TallGrass,
+    .images = sPicTable_TallGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateTallGrassFieldEffect,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrassYellow = {
+    .tileTag = 0xFFFF,
+    .paletteTag = FLDEFF_PAL_TAG_GENERAL_3,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_TallGrass,
     .images = sPicTable_TallGrass,

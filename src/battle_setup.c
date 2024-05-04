@@ -749,6 +749,7 @@ u8 BattleSetup_GetTerrainId(void)
         break;
     case MAP_TYPE_ROUTE:
         return BATTLE_TERRAIN_GRASS;
+    
     case MAP_TYPE_GYM_ARENA:
         return BATTLE_TERRAIN_GYM_ARENA;
     case MAP_TYPE_UNDERGROUND:
@@ -768,6 +769,8 @@ u8 BattleSetup_GetTerrainId(void)
         if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
             return BATTLE_TERRAIN_WATER;
         return BATTLE_TERRAIN_OVERCAST;
+    case MAP_TYPE_YELLOW:
+        return BATTLE_TERRAIN_YELLOW_FOREST;
     case MAP_TYPE_FOREST:
         if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
             return BATTLE_TERRAIN_WATER;
@@ -1344,7 +1347,7 @@ void ClearTrainerFlag(u16 trainerId)
 void BattleSetup_StartTrainerBattle(void)
 {
     gNuzlockeCannotCatch = HasWildPokmnOnThisRouteBeenSeen(GetCurrentRegionMapSectionId(), FALSE);
-    if (gNoOfApproachingTrainers == 2)
+        if (gNoOfApproachingTrainers == 2)
         gBattleTypeFlags = (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TRAINER);
     else
         gBattleTypeFlags = (BATTLE_TYPE_TRAINER);

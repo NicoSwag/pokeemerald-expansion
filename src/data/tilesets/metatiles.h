@@ -222,3 +222,12 @@ const u16 gMetatileAttributes_Rustboro_Surroundings[] = INCBIN_U16("data/tileset
 
 const u16 gMetatiles_RustboroSurroundings[] = INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/metatiles.bin");
 const u16 gMetatileAttributes_RustboroSurroundings[] = INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/metatile_attributes.bin");
+
+const u16 gMetatiles_rustboro_inner[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/metatiles.bin");
+const u16 gMetatileAttributes_rustboro_inner[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/metatile_attributes.bin");
+
+const u16 gMetatiles_Dewford_New[] = INCBIN_U16("data/tilesets/primary/dewford_new/metatiles.bin");
+const u16 gMetatileAttributes_Dewford_New[] = INCBIN_U16("data/tilesets/primary/dewford_new/metatile_attributes.bin");
+
+const u16 gMetatiles_Dewford_Final[] = INCBIN_U16("data/tilesets/secondary/dewford_final/metatiles.bin");
+const u16 gMetatileAttributes_Dewford_Final[] = INCBIN_U16("data/tilesets/secondary/dewford_final/metatile_attributes.bin");

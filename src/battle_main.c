@@ -2222,13 +2222,17 @@ u8 GetTrainerHighestLevel(void)
 {
     u8 i;
     u8 highestLevel = 0;
+    u8 partySize = 0;
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE && (gPlayerParty[i].level > highestLevel))
-            highestLevel = gPlayerParty[i].level;
+            highestLevel += gPlayerParty[i].level;
+            partySize++;
     }
-
+    if(partySize<=0)
+        partySize = 1;
+    highestLevel = highestLevel/partySize; 
     return highestLevel;
 }
 
@@ -5062,8 +5066,6 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
         speed *= 2;
 
     // paralysis drop
-    if (gBattleMons[battler].status1 & STATUS1_PARALYSIS && ability != ABILITY_QUICK_FEET)
-        speed /= B_PARALYSIS_SPEED >= GEN_7 ? 2 : 4;
 
     if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SWAMP)
         speed /= 4;
@@ -5101,6 +5103,8 @@ s8 GetMovePriority(u32 battler, u16 move)
         move = gBattleStruct->zmove.toBeUsed[battler];
 
     priority = gMovesInfo[move].priority;
+    if(gBattleMons[battler].status1 & STATUS1_PARALYSIS && priority <= 0)
+        priority--;
     
     if(ability == ABILITY_PALEBLOOD && gMovesInfo[move].lunarMove && (gBattleMons[battler].hp >= gBattleMons[battler].maxHP * 0.75))
         priority++;

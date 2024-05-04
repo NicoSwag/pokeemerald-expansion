@@ -1730,3 +1730,60 @@ const u16 gTilesetPalettes_RustboroSurroundings[][16] =
 };
 
 const u32 gTilesetTiles_RustboroSurroundings[] = INCBIN_U32("data/tilesets/secondary/rustboro_surroundings/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_rustboro_inner[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/rustboro_inner/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_rustboro_inner[] = INCBIN_U32("data/tilesets/secondary/rustboro_inner/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Dewford_New[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/dewford_new/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Dewford_New[] = INCBIN_U32("data/tilesets/primary/dewford_new/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Dewford_Final[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dewford_final/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Dewford_Final[] = INCBIN_U32("data/tilesets/secondary/dewford_final/tiles.4bpp.lz");

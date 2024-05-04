@@ -457,7 +457,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RustboroCity_EventScript_Mr_Briney",
-      "flag": "0"
+      "flag": "FLAG_HIDE_MR_BRINEY_RUSTBORO"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LOOKER",
@@ -536,6 +536,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BULLDOZER",
+      "x": 31,
+      "y": 29,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+      "x": 31,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustboroCity_EventScript_WandasBf",
+      "flag": "FLAG_HIDE_PEEKO_EVENT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WINGULL",
+      "x": 35,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RustboroCity_EventScript_Peeko",
+      "flag": "FLAG_HIDE_PEEKO_EVENT"
     }
   ],
   "warp_events": [
@@ -719,15 +758,6 @@
     },
     {
       "type": "trigger",
-      "x": 27,
-      "y": 20,
-      "elevation": 0,
-      "var": "VAR_RUSTBORO_CITY_STATE",
-      "var_value": "0",
-      "script": "RustboroCity_EventScript_ResetGymTrainers"
-    },
-    {
-      "type": "trigger",
       "x": 23,
       "y": 24,
       "elevation": 3,
@@ -752,6 +782,15 @@
       "var": "VAR_RUSTBORO_CITY_STATE",
       "var_value": "7",
       "script": "RustboroCity_EventScript_RivalTrigger1"
+    },
+    {
+      "type": "trigger",
+      "x": 27,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_RUSTBORO_CITY_STATE",
+      "var_value": "0",
+      "script": "RustboroCity_EventScript_ResetGymTrainers"
     }
   ],
   "bg_events": [

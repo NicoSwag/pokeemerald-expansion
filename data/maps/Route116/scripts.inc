@@ -158,8 +158,6 @@ Route116_EventScript_GlassesMan::
 	faceplayer
 	checkitem ITEM_BLACK_GLASSES
 	goto_if_eq VAR_RESULT, TRUE, Route116_EventScript_PlayerHasGlasses
-	specialvar VAR_RESULT, FoundBlackGlasses
-	goto_if_eq VAR_RESULT, TRUE, Route116_EventScript_FoundGlassesNotOnPlayer
 	msgbox Route116_Text_CanYouHelpMeFindGlasses, MSGBOX_DEFAULT
 	release
 	end
@@ -171,10 +169,6 @@ Route116_EventScript_FoundGlassesNotOnPlayer::
 	end
 
 Route116_EventScript_PlayerHasGlasses::
-	msgbox Route116_Text_CanYouHelpMeFindGlasses, MSGBOX_DEFAULT
-	msgbox Route116_Text_MayISeeThoseGlasses, MSGBOX_DEFAULT
-	specialvar VAR_RESULT, FoundBlackGlasses
-	goto_if_eq VAR_RESULT, TRUE, Route116_EventScript_FoundGlassesOnPlayer
 	msgbox Route116_Text_NotWhatImLookingFor, MSGBOX_DEFAULT
 	release
 	end
@@ -449,7 +443,7 @@ Route116_Text_TokenOfAppreciation:
 	.string "for our most wonderful TRAINER!$"
 
 Route116_Text_CanYouHelpMeFindGlasses:
-	.string "I dropped my glasses…\n"
+	.string "I lost my glasses…\n"
 	.string "Can you help me find them?$"
 
 Route116_Text_MayISeeThoseGlasses:
@@ -469,9 +463,11 @@ Route116_Text_CantFindGlassesNotHere:
 	.string "Maybe they're not around here…$"
 
 Route116_Text_NotWhatImLookingFor:
-	.string "Hmm…\n"
-	.string "These are BLACKGLASSES.\l"
-	.string "They're not what I'm looking for…$"
+	.string "My glasses?\n"
+	.string "Oh, don't worry.\p"
+	.string "I realized they were right on my\n"
+	.string "nose all along.\p"
+	.string "You could have just told me so!$"
 
 Route116_Text_RouteSignRustboro:
 	.string "ROUTE 116\n"

@@ -187,7 +187,7 @@ Route116_EventScript_ItemBlackBelt::
 	end
 
 Route116_EventScript_ItemHPUp::
-	finditem ITEM_HP_UP
+	finditem ITEM_BLACK_GLASSES
 	end
 
 Route116_EventScript_ItemPotion::
@@ -396,6 +396,10 @@ Route104Upper_EventScript_HeartScale2::
 
 RusturfTunnel_EventScript_ItemPokeBall::
 	finditem ITEM_POKE_BALL
+	end
+
+Rusturf_EventScript_ItemSkyFragment::
+	finditem ITEM_HEART_SCALE
 	end
 
 RusturfTunnel_EventScript_ItemMaxEther::

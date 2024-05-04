@@ -867,7 +867,7 @@ const struct Tileset gTileset_Rustboro_Surroundings =
     .palettes = gTilesetPalettes_Rustboro_Surroundings,
     .metatiles = gMetatiles_Rustboro_Surroundings,
     .metatileAttributes = gMetatileAttributes_Rustboro_Surroundings,
-    .callback = NULL,
+        .callback = InitTilesetAnim_Rustboro,
 };
 
 const struct Tileset gTileset_RustboroSurroundings =
@@ -878,5 +878,38 @@ const struct Tileset gTileset_RustboroSurroundings =
     .palettes = gTilesetPalettes_RustboroSurroundings,
     .metatiles = gMetatiles_RustboroSurroundings,
     .metatileAttributes = gMetatileAttributes_RustboroSurroundings,
+        .callback = InitTilesetAnim_Rustboro,
+};
+
+const struct Tileset gTileset_rustboro_inner =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_rustboro_inner,
+    .palettes = gTilesetPalettes_rustboro_inner,
+    .metatiles = gMetatiles_rustboro_inner,
+    .metatileAttributes = gMetatileAttributes_rustboro_inner,
+        .callback = InitTilesetAnim_Rustboro,
+};
+
+const struct Tileset gTileset_Dewford_New =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_Dewford_New,
+    .palettes = gTilesetPalettes_Dewford_New,
+    .metatiles = gMetatiles_Dewford_New,
+    .metatileAttributes = gMetatileAttributes_Dewford_New,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Dewford_Final =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Dewford_Final,
+    .palettes = gTilesetPalettes_Dewford_Final,
+    .metatiles = gMetatiles_Dewford_Final,
+    .metatileAttributes = gMetatileAttributes_Dewford_Final,
     .callback = NULL,
 };

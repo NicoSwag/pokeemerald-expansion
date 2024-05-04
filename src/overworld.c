@@ -1396,6 +1396,7 @@ bool8 IsMapTypeOutdoors(u8 mapType)
     if (mapType == MAP_TYPE_ROUTE
      || mapType == MAP_TYPE_TOWN
      || mapType == MAP_TYPE_OVERCAST
+         || mapType == MAP_TYPE_YELLOW
      || mapType == MAP_TYPE_FOREST
      || mapType == MAP_TYPE_UNDERWATER
      || mapType == MAP_TYPE_CITY
@@ -1409,6 +1410,7 @@ bool8 Overworld_MapTypeAllowsTeleportAndFly(u8 mapType)
 {
     if (mapType == MAP_TYPE_ROUTE
      || mapType == MAP_TYPE_OVERCAST
+             || mapType == MAP_TYPE_YELLOW
      || mapType == MAP_TYPE_FOREST
      || mapType == MAP_TYPE_TOWN
      || mapType == MAP_TYPE_OCEAN_ROUTE

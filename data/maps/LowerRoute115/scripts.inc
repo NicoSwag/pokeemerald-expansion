@@ -12,6 +12,11 @@ Route115_EventScript_Engineer1::
 	closemessage
 	end
 
+Route115_EventScript_FriendlyAqua::
+	msgbox Route115_Text_Aqua, MSGBOX_NPC
+	closemessage
+	end
+
 Route115_EventScript_Engineer2::
 	msgbox Route115_Text_Door, MSGBOX_NPC
 	closemessage
@@ -47,3 +52,10 @@ Route115_Text_DestroyBarrier:
 
 Route115_Text_Scizor:
 	.string "SCIZOR: Hya! Hya! Hya!$"
+
+Route115_Text_Aqua:
+	.string "DEVON is discharing their waste\n"
+	.string "in the sea.\p"
+	.string "Unforgivable!\p"
+	.string "Look at what they're doing to\n"
+	.string "the water!$"

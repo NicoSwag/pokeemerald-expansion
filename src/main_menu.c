@@ -414,8 +414,8 @@ static const struct WindowTemplate sNewGameBirchSpeechTextWindows[] =
 static const u16 sMainMenuBgPal[] = INCBIN_U16("graphics/interface/main_menu_bg.gbapal");
 static const u16 sMainMenuTextPal[] = INCBIN_U16("graphics/interface/main_menu_text.gbapal");
 
-static const u8 sTextColor_Headers[] = {TEXT_DYNAMIC_COLOR_1, TEXT_DYNAMIC_COLOR_2, TEXT_DYNAMIC_COLOR_3};
-static const u8 sTextColor_MenuInfo[] = {TEXT_DYNAMIC_COLOR_1, TEXT_COLOR_WHITE, TEXT_DYNAMIC_COLOR_3};
+static const u8 sTextColor_Headers[] = {TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GREEN, TEXT_COLOR_DARK_GRAY};
+static const u8 sTextColor_MenuInfo[] = {TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GREEN, TEXT_COLOR_DARK_GRAY};
 
 static const struct BgTemplate sMainMenuBgTemplates[] = {
     {
@@ -1654,6 +1654,20 @@ static void Task_NewGameBirchSpeech_WaitPressBeforeNameChoice(u8 taskId)
     }
 }
 
+void NewGameBirchSpeech_SetDefaultPlayerName(u8 nameId)
+{
+    const u8 *name;
+    u8 i;
+
+    if (gSaveBlock2Ptr->playerGender == MALE)
+        name = sMalePresetNames[nameId];
+    else
+        name = sFemalePresetNames[nameId];
+    for (i = 0; i < PLAYER_NAME_LENGTH; i++)
+        gSaveBlock2Ptr->playerName[i] = name[i];
+    gSaveBlock2Ptr->playerName[PLAYER_NAME_LENGTH] = EOS;
+}
+
 static void Task_NewGameBirchSpeech_StartNamingScreen(u8 taskId)
 {
     if (!gPaletteFade.active)
@@ -2163,19 +2177,7 @@ static s8 NewGameBirchSpeech_ProcessGenderMenuInput(void)
     return Menu_ProcessInputNoWrap();
 }
 
-void NewGameBirchSpeech_SetDefaultPlayerName(u8 nameId)
-{
-    const u8 *name;
-    u8 i;
 
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        name = sMalePresetNames[nameId];
-    else
-        name = sFemalePresetNames[nameId];
-    for (i = 0; i < PLAYER_NAME_LENGTH; i++)
-        gSaveBlock2Ptr->playerName[i] = name[i];
-    gSaveBlock2Ptr->playerName[PLAYER_NAME_LENGTH] = EOS;
-}
 
 static void CreateMainMenuErrorWindow(const u8 *str)
 {

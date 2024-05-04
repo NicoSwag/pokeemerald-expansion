@@ -365,8 +365,8 @@ RustboroCity_Gym_Text_JoshDefeat:
 	.string "You were too good for me…$"
 
 RustboroCity_Gym_Text_JoshPostBattle:
-	.string "You haven't seen anything of the ROCK\n"
-	.string "type's terrifying power!$"
+	.string "ROXANNE uses four different\n"
+	.string "POKéMON, so you better be ready!$"
 
 RustboroCity_Gym_Text_TommyIntro:
 	.string "If you can't beat me, you won't stand\n"
@@ -376,12 +376,14 @@ RustboroCity_Gym_Text_TommyDefeat:
 	.string "Wow! You've got some potential!$"
 
 RustboroCity_Gym_Text_TommyPostBattle:
-	.string "ROXANNE is stronger than me by\n"
-	.string "several times.\p"
-	.string "You'd better be on your guard!$"
+	.string "Watch out for ROXANNE's fearsome\n"
+	.string "SANDSTORM.\p"
+	.string "If you aren't prepared, her ONIX\n"
+	.string "will crush you with overwhelming\l"
+	.string "speed and power!$"
 
 RustboroCity_Gym_Text_MarcIntro:
-	.string "We might be in the middle of town,\n"
+	.string "We might be in the middle of a museum,\n"
 	.string "but so what?\p"
 	.string "My ROCK POKéMON need room to\n"
 	.string "rampage!$"
@@ -391,9 +393,14 @@ RustboroCity_Gym_Text_MarcDefeat:
 	.string "Our challenger is one feisty customer!$"
 
 RustboroCity_Gym_Text_MarcPostBattle:
-	.string "I have to hand it to our LEADER.\p"
-	.string "It took smarts and sense for her to\n"
-	.string "pick the ROCK type at her young age.$"
+	.string "A hint to defeat ROXANNE?\n"
+	.string "Sure, you've earned it.\p"
+	.string "The secondary types of her POKéMON\n"
+	.string "are FLYING, STEEL, WATER and GROUND,\l"
+	.string "in this order.\p"
+	.string "If you need a refresher on types,\n"
+	.string "you should go to RUSTBORO'S TRAINER\l"
+	.string "SCHOOL.$"
 
 RustboroCity_Gym_Text_RoxanneIntro:
 	.string "Hello, I am ROXANNE, the RUSTBORO\n"

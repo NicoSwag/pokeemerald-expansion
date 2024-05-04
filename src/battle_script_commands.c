@@ -1015,6 +1015,7 @@ static const u16 sNaturePowerMoves[BATTLE_TERRAIN_COUNT] =
     [BATTLE_TERRAIN_GRASS]      = MOVE_ENERGY_BALL,
     [BATTLE_TERRAIN_OVERCAST]      = MOVE_ENERGY_BALL,
     [BATTLE_TERRAIN_FOREST]      = MOVE_ENERGY_BALL,
+    [BATTLE_TERRAIN_YELLOW_FOREST]      = MOVE_ENERGY_BALL,
     [BATTLE_TERRAIN_LONG_GRASS] = MOVE_ENERGY_BALL,
     [BATTLE_TERRAIN_SAND]       = MOVE_EARTH_POWER,
     [BATTLE_TERRAIN_WATER]      = MOVE_HYDRO_PUMP,
@@ -1912,6 +1913,10 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     calc = gAccuracyStageRatios[buff].dividend * moveAcc;
     calc /= gAccuracyStageRatios[buff].divisor;
 
+    
+    if(gBattleMons[battlerDef].status1 & STATUS1_PARALYSIS)
+        calc = (calc * 130) / 100;
+    
     // Attacker's ability
     switch (atkAbility)
     {
@@ -3380,9 +3385,9 @@ void SetMoveEffect(bool32 primary, bool32 certain)
             if (sStatusFlagsForMoveEffects[gBattleScripting.moveEffect] == STATUS1_SLEEP)
             {
                 if (B_SLEEP_TURNS >= GEN_5)
-                    gBattleMons[gEffectBattler].status1 |= STATUS1_SLEEP_TURN(1 + RandomUniform(RNG_SLEEP_TURNS, 1, 3));
+                    gBattleMons[gEffectBattler].status1 |= STATUS1_SLEEP_TURN(3);
                 else
-                    gBattleMons[gEffectBattler].status1 |= STATUS1_SLEEP_TURN(1 + RandomUniform(RNG_SLEEP_TURNS, 2, 5));
+                    gBattleMons[gEffectBattler].status1 |= STATUS1_SLEEP_TURN(3);
             }
             else
             {
@@ -4092,6 +4097,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                         break;
                     case BATTLE_TERRAIN_CAVE:
                     case BATTLE_TERRAIN_CAVERUST:
+                    case BATTLE_TERRAIN_YELLOW_FOREST:
                     case BATTLE_TERRAIN_BURIAL_GROUND:
                     case BATTLE_TERRAIN_SPACE:
                         gBattleScripting.moveEffect = MOVE_EFFECT_FLINCH;
@@ -4594,14 +4600,15 @@ u8 GetTeamLevel(void)
 u8 GetHighestLevel(void)
 {
     u8 i;
+    u8 partyNumber = 0;
     u8 highestLevel = 0;
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE && (gPlayerParty[i].level > highestLevel))
             highestLevel = gPlayerParty[i].level;
-    }
 
+    }
     return highestLevel;
 }
 
@@ -11785,7 +11792,7 @@ static void Cmd_trysetrest(void)
 
     const u8 *failInstr = cmd->failInstr;
     gBattlerTarget = gBattlerAttacker;
-    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP * (-1);
+    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP * (-0.75);
 
     if (gBattleMons[gBattlerTarget].hp == gBattleMons[gBattlerTarget].maxHP)
     {

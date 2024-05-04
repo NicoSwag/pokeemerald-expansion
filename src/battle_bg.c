@@ -670,6 +670,15 @@ const struct BattleBackground sBattleTerrainTable[] =
         .palette = gBattleTerrainPalette_TallGrass,
     },
 
+    [BATTLE_TERRAIN_YELLOW_FOREST] =
+    {
+        .tileset = gBattleTerrainTiles_TallGrass,
+        .tilemap = gBattleTerrainTilemap_TallGrass,
+        .entryTileset = gBattleTerrainAnimTiles_TallGrass,
+        .entryTilemap = gBattleTerrainAnimTilemap_TallGrass,
+        .palette = gBattleTerrainPalette_YellowForest,
+    },
+
 
     [BATTLE_TERRAIN_OVERCAST] =
     {
@@ -896,7 +905,7 @@ void DrawMainBattleBackground(void)
         PlayerGetDestCoords(&x, &y);
         tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
         
-        if (MetatileBehavior_IsSandOrDeepSand(tileBehavior) && gMapHeader.mapType == MAP_TYPE_OVERCAST)
+        if (MetatileBehavior_IsSandOrDeepSand(tileBehavior) && (gMapHeader.mapType == MAP_TYPE_OVERCAST || GetCurrentRegionMapSectionId() == MAPSEC_ROUTE_115))
         {
             LZDecompressVram(gBattleTerrainTiles_Sand, (void *)(BG_CHAR_ADDR(2)));
             LZDecompressVram(gBattleTerrainTilemap_Sand, (void *)(BG_SCREEN_ADDR(26)));
@@ -1422,7 +1431,8 @@ void DrawBattleEntryBackground(void)
                         LZDecompressVram(gBattleTerrainAnimTiles_Cave, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_Cave, (void *)(BG_SCREEN_ADDR(28)));
                         return;
-                        case MAP_TYPE_ROUTE:    
+                        case MAP_TYPE_ROUTE:
+                        case MAP_TYPE_YELLOW:    
                         LZDecompressVram(gBattleTerrainAnimTiles_TallGrass, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_TallGrass, (void *)(BG_SCREEN_ADDR(28)));
                         return;
@@ -1543,6 +1553,7 @@ bool8 LoadChosenBattleElement(u8 caseId)
                         LZDecompressVram(gBattleTerrainAnimTilemap_Cave, (void *)(BG_SCREEN_ADDR(28)));
                         break;
                         case MAP_TYPE_ROUTE:    
+                        case MAP_TYPE_YELLOW:
                         LZDecompressVram(gBattleTerrainAnimTiles_TallGrass, (void *)(BG_CHAR_ADDR(1)));
                         LZDecompressVram(gBattleTerrainAnimTilemap_TallGrass, (void *)(BG_SCREEN_ADDR(28)));
                         break;
@@ -1657,8 +1668,9 @@ case MAP_BATTLE_SCENE_GYM:
                         case MAP_TYPE_UNDERGROUND:
                     LZDecompressVram(gBattleTerrainTilemap_Cave, (void *)(BG_SCREEN_ADDR(26)));
                         break;
-                        case MAP_TYPE_ROUTE:    
-                    LZDecompressVram(gBattleTerrainTilemap_TallGrass, (void *)(BG_SCREEN_ADDR(26)));
+                        case MAP_TYPE_ROUTE:
+                        case MAP_TYPE_YELLOW:
+                        LZDecompressVram(gBattleTerrainTilemap_TallGrass, (void *)(BG_SCREEN_ADDR(26)));
                         break;
                         case MAP_TYPE_OVERCAST:
                         LZDecompressVram(gBattleTerrainTilemap_TallGrassOvercast, (void *)(BG_SCREEN_ADDR(26)));
@@ -1769,14 +1781,16 @@ case MAP_BATTLE_SCENE_GYM:
                         if (GetCurrentRegionMapSectionId() == MAPSEC_RUSTURF_TUNNEL)
                             LoadCompressedPalette(gBattleTerrainPalette_CaveRust, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
                         else
-                            LoadCompressedPalette(gBattleTerrainPalette_Cave, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-
+                         LoadCompressedPalette(gBattleTerrainPalette_Cave, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
                         break;
                         case MAP_TYPE_ROUTE:    
-                    LoadCompressedPalette(gBattleTerrainPalette_TallGrass, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+                            LoadCompressedPalette(gBattleTerrainPalette_TallGrass, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
                         break;
                         case MAP_TYPE_OVERCAST:
                         LoadCompressedPalette(gBattleTerrainPalette_TallGrassOvercast, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+                        break;
+                        case MAP_TYPE_YELLOW:
+                        LoadCompressedPalette(gBattleTerrainPalette_YellowForest, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
                         break;
                         case MAP_TYPE_GYM_ARENA:
                         LoadCompressedPalette(gBattleTerrainPalette_GymArena, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);

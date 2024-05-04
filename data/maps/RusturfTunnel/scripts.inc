@@ -65,6 +65,22 @@ RusturfTunnel_EventScript_WandasBoyfriend::
 	release
 	end
 
+RusturfTunnel_EventScript_Engineer1::
+	msgbox RusturfTunnel_Text_Oncethisisover, MSGBOX_NPC
+	end
+
+RusturfTunnel_EventScript_Sign::
+	lock
+	msgbox RusturfTunnel_Text_Sign, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+RusturfTunnel_EventScript_Engineer2::
+	msgbox RusturfTunnel_Text_Heyquitit, MSGBOX_NPC
+	end
+
+
 RusturfTunnel_EventScript_AlreadySpokenTo::
 	msgbox RusturfTunnel_Text_ToGetToVerdanturf, MSGBOX_DEFAULT
 	closemessage
@@ -132,6 +148,8 @@ RusturfTunnel_EventScript_FaceWandasBoyfriend2::
 
 RusturfTunnel_EventScript_FaceWandasBoyfriend3::
 	return
+
+	
 
 RusturfTunnel_EventScript_WandasBoyfriendApproachPlayer::
 	closemessage
@@ -410,6 +428,8 @@ RusturfTunnel_EventScript_Grunt2::
 	removeobject LOCALID_PEEKO
 	setflag FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
 	setvar VAR_RUSTBORO_CITY_STATE, 10
+	clearflag FLAG_HIDE_PEEKO_EVENT
+	clearflag FLAG_REAL_LOOKER_RUSTBORO
 	release
 	end
 
@@ -763,3 +783,15 @@ RusturfTunnel_Movement_PlayerWalkUp:
 	walk_up
 	face_right
 	step_end
+
+RusturfTunnel_Text_Oncethisisover:
+	.string "I can't wait for this job to be\n"
+	.string "over with.$"
+
+RusturfTunnel_Text_Heyquitit:
+	.string "Hey, man, quit it!\p"
+	.string "You're spoiling my focus!$"
+
+RusturfTunnel_Text_Sign:
+	.string "KEEP OUT\p"
+	.string "Looks like the door is locked.$"

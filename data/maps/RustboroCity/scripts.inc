@@ -9,6 +9,9 @@
 .set LOCALID_GIRLPROTESTER, 23
 .set LOCALID_STEVEN, 36
 .set LOCALID_ENGINEER, 30
+.set LOCALID_WANDAS_BF, 41
+.set LOCALID_PEEKO, 42
+.set LOCALID_MR_BRINEY, 33
 
 RustboroCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_OnTransition
@@ -31,8 +34,10 @@ RustboroCity_OnTransition:
 	call Common_EventScript_SetupRivalGfxId
 	call_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_HideMapNamePopup
 	call_if_eq VAR_RUSTBORO_CITY_STATE, 4, RustboroCity_EventScript_MoveEngineer
+	call_if_eq VAR_RUSTBORO_CITY_STATE, 11, RustboroCity_EventScript_MoveEngineer
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
-	goto_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_PositionScientistForExit
+	call_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_PositionScientistForExit
+	call_if_eq VAR_RUSTBORO_CITY_STATE, 10, RustboroCity_EventScript_PositionForLookerEvent
 	setvar VAR_PELIPPER, 37
 	end
 
@@ -59,9 +64,31 @@ RustboroCity_OnFrame:
 	map_script_2 VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_ScientistAddMatchCall
 	.2byte 0
 
+RustboroCity_EventScript_PositionForLookerEvent:
+	call RustboroCity_EventScript_MoveEngineer
+	setobjectxy LOCALID_MR_BRINEY, 34, 8
+	setobjectxyperm LOCALID_MR_BRINEY, 34, 8
+	setobjectmovementtype LOCALID_PEEKO, MOVEMENT_TYPE_FACE_LEFT
+	setobjectxy LOCALID_LOOKER, 34, 10
+	setobjectxyperm LOCALID_LOOKER, 34, 10
+	setobjectmovementtype LOCALID_LOOKER, MOVEMENT_TYPE_FACE_LEFT
+	end
+
 
 RustboroCity_EventScript_Mr_Briney::
+	goto_if_eq VAR_RUSTBORO_CITY_STATE, 10, RustboroCity_EventScript_Mr_BrineyHappy
 	msgbox RustboroCity_Text_Mr_Briney, MSGBOX_NPC
+	end
+
+
+RustboroCity_EventScript_Mr_BrineyHappy:
+	msgbox RustboroCity_Text_Mr_BrineyHappy, MSGBOX_DEFAULT
+	closemessage
+	end
+
+
+RustboroCity_EventScript_WandasBf::
+	msgbox RustboroCity_Text_Wandasbf, MSGBOX_NPC
 	end
 
 RustboroCity_EventScript_ScientistAddMatchCall::
@@ -235,6 +262,8 @@ RustboroCity_EventScript_Man1::
 
 RustboroCity_EventScript_Engineer_4::
 	goto_if_eq VAR_RUSTBORO_CITY_STATE, 4, RustboroCity_EventScript_Engineer_4_After
+	goto_if_eq VAR_RUSTBORO_CITY_STATE, 10, RustboroCity_EventScript_Engineer_4_After
+	goto_if_eq VAR_RUSTBORO_CITY_STATE, 11, RustboroCity_EventScript_Engineer_4_After
 	msgbox RustboroCity_Text_CantPass, MSGBOX_NPC
 	end
 
@@ -271,6 +300,12 @@ RustboroCity_EventScript_Boy2::
 RustboroCity_EventScript_Boy2BrineyLeftTunnel::
 	msgbox RustboroCity_Text_MrBrineyLovesPeeko, MSGBOX_DEFAULT
 	release
+	end
+
+RustboroCity_EventScript_Peeko::
+	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
+	msgbox RustboroCity_Text_PeekoCry, MSGBOX_DEFAULT
+	closemessage
 	end
 
 RustboroCity_EventScript_Twin::
@@ -428,11 +463,104 @@ RustboroCity_EventScript_StolenGoodsScene::
 
 RustboroCity_EventScript_Looker_Cutscene::
 	lock
+	goto_if_eq VAR_RUSTBORO_CITY_STATE, 10, RustboroCity_EventScript_Looker_CutsceneFinal
 	switch VAR_FACING
 	case DIR_EAST, RustboroCity_EventScript_Looker_FaceRight
 	case DIR_WEST RustboroCity_EventScript_Looker_FaceLeft
 	goto RustboroCity_EventScript_Looker_FaceAnyOther
 	end
+
+
+RustboroCity_EventScript_Looker_CutsceneFinal::
+	setvar VAR_RUSTBORO_CITY_STATE, 11
+	msgbox RustboroCity_Text_LookerTired, MSGBOX_NPC
+	msgbox RustboroCity_Text_LookerDotDotDot, MSGBOX_NPC
+	playse SE_PIN
+	applymovement LOCALID_LOOKER, Common_Movement_ExclamationMark
+	waitmovement 0
+	msgbox RustboroCity_Text_LookerISee, MSGBOX_NPC
+	playse SE_PIN
+	applymovement LOCALID_MR_BRINEY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_MR_BRINEY, Common_Movement_FaceDown
+	waitmovement 0
+	msgbox RustboroCity_Text_MrBrineyDewford, MSGBOX_NPC
+	applymovement LOCALID_LOOKER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox RustboroCity_Text_LookerVeryGood, MSGBOX_DEFAULT
+	applymovement LOCALID_LOOKER, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox RustboroCity_Text_LookerMission, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_LOOKER_THEME, FALSE
+	applymovement LOCALID_LOOKER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_FaceRight
+	waitmovement 0
+	removeobject LOCALID_LOOKER
+	setflag FLAG_REAL_LOOKER_RUSTBORO
+	playse SE_PIN
+	applymovement LOCALID_WANDAS_BF, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_WANDAS_BF, RustboroCity_Movement_DownAndRight
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	msgbox RustboroCity_Text_BoyfriendLeave, MSGBOX_NPC
+	fadedefaultbgm
+	applymovement LOCALID_WANDAS_BF, RustboroCity_Movement_BoyfriendLeave
+	waitmovement 0
+	removeobject LOCALID_WANDAS_BF
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox RustboroCity_Text_MrBrineyOffer, MSGBOX_NPC
+	closemessage
+	applymovement LOCALID_MR_BRINEY, RustboroCity_Movement_BrineyLeave
+	applymovement LOCALID_PEEKO, RustboroCity_Movement_PeekoLeave
+	waitmovement 0
+	removeobject LOCALID_MR_BRINEY
+	removeobject LOCALID_PEEKO
+	setflag FLAG_HIDE_PEEKO_EVENT
+	setflag FLAG_HIDE_MR_BRINEY_RUSTBORO
+	release
+	end
+
+
+
+
+
+
+
+
+
+
 
 RustboroCity_EventScript_Looker_FaceRight::
 	setvar VAR_0x8008, 1
@@ -504,7 +632,7 @@ RustboroCity_EventScript_StevenTime:
 	msgbox RustboroCity_Text_TheWayIsOpen, MSGBOX_NPC
 	applymovement LOCALID_STEVEN, RustboroCity_Movement_StevenLeave
 	waitmovement 0
-	removeobject LOCALID_LOOKER
+	setflag FLAG_REAL_LOOKER_RUSTBORO
 	removeobject LOCALID_STEVEN
 	release
 	end
@@ -1347,20 +1475,13 @@ RustboroCity_Text_YoureNewAroundHere:
 	.string "POKéMON TRAINER'S SCHOOL?$"
 
 RustboroCity_Text_GymLeaderIsntEasyWithFire:
-	.string "RUSTBORO CITY wasn't always this\n"
-	.string "cramped.\p"
-	.string "But when DEVON's current president,\n"
+	.string "RUSTBORO CITY wasn't always like this.\p"
+	.string "But things changed DEVON's current CEO,\n"
 	.string "ALLAN STONE, inherited the company from\l"
-	.string "his father, well…\p"
-	.string "He started going on about expanding,\n"
-	.string "expanding, building, building…\p"
+	.string "his father.\p"
 	.string "Believe it or not, when I was a young\n"
-	.string "lass, this place was almost entirely\l"
-	.string "nature!\p"
-	.string "And now that there's no more space here,\n"
-	.string "he's campaining to get permits to build\l"
-	.string "elsewhere.\p"
-	.string "Unbelievable!$"
+	.string "lass, this place was so much greener\l"
+	.string "and the water so much bluer…$"
 
 RustboroCity_Text_MrBrineyWalksInTheTunnel:
 	.string "With all of the houses that DEVON\n"
@@ -1739,3 +1860,148 @@ RustboroCity_Text_Advice:
 	.string "If you keep sticking your nose in\n"
 	.string "things too complex for you…\p"
 	.string "Well, it just might end up badly.$"
+
+RustboroCity_Text_Wandasbf:
+	.string "All's well that ends well!$"
+
+RustboroCity_Text_PeekoCry:
+	.string "PEEKO: Kyahh!$"
+
+RustboroCity_Text_Mr_BrineyHappy:
+	.string "MR. BRINEY: Oh, PEEKO!\n"
+	.string "Yer back!$"
+
+RustboroCity_Text_LookerTired:
+	.string "LOOKER: Ah… Huff…\n"
+	.string "My friend…! Puff…\p"
+	.string "Please excuse me. My breath…\n"
+	.string "Huff… Needs some catching…\p"
+	.string "… … … … … …\p"
+	.string "There! Good as a newborn baby.\p"
+	.string "But yes, I got some news as, I assume,\n"
+	.string "you do.\p"
+	.string "Good news is, I found the man we were\n"
+	.string "pursuing.\p"
+	.string "Bad news is, he has run away like the\n"
+	.string "wind.\p"
+	.string "I have never seen someone reach such\n"
+	.string "speeds!\p"
+	.string "Impressive, if I must say.\p"
+	.string "But what about you?$"
+
+RustboroCity_Text_LookerDotDotDot:
+	.string "… … … … … … …$"
+
+RustboroCity_Text_LookerISee:
+	.string "Ah! I see!\n"
+	.string "Terrific job, terrific!\p"
+	.string "And, those GOODS you've mentioned…\p"
+	.string "Would you care for me to take a look?\p"
+	.string "… … …\p"
+	.string "Ah! I see!\n"
+	.string "Well, not fully.\p
+	.string "Yes, these GOODS? Unmistakeable DEVON\n"
+	.string "make.\p"
+	.string "Machine parts of some sort, it would\n"
+	.string "seem. An engine, perhaps.\p"
+	.string "But other than this? I cannot say.\p"
+	.string "Luckily, however, I do know someone\n"
+	.string "who might know.\p"
+	.string "Unluckily, they are currently in\n"
+	.string "DEWFORD.\p"
+	.string "Quite far from here, indeed.$"
+
+RustboroCity_Text_MrBrineyDewford:
+	.string "MR. BRINEY: DEWFORD?\n"
+	.string "Why, me young fellow, I can take ye\l"
+	.string "there!\p"
+	.string "Me SPEED BOAT always welcomes friends\n"
+	.string "of PEEKO!$"
+
+RustboroCity_Text_LookerVeryGood:
+	.string "LOOKER: Ah! Very good!$"
+
+RustboroCity_Text_LookerMission:
+	.string "My friend, you have a new mission.\p"
+	.string "You must go to DEWFORD at once and meet\n"
+	.string "with my employer.\p"
+	.string "He will certainly be able to give us\n"
+	.string "some leads.\p"
+	.string "As for his identity…\n"
+	.string "Well, worry not.\p"
+	.string "I am sure that you will be able to\n"
+	.string "recognize him.\p"
+	.string "Anyway!\p"
+	.string "Your help is proving to be, I daresay,\n"
+	.string "fundamental to solving this case!\p"
+	.string "Here, however, is where we must part\n"
+	.string "ways.\p"
+	.string "Oh! Only temporarily, of course.\p"
+	.string "I am in need of doing some of my own\n"
+	.string "investigating.\p"
+	.string "But, my friend, once we meet back up,\n"
+	.string "you must tell me everything new!\p"
+	.string "Until then…\p"
+	.string "Special agent LOOKER bid his farewell!$"
+
+RustboroCity_Movement_DownAndRight:
+	delay_16
+	walk_down
+	walk_down
+	face_right
+	step_end
+
+RustboroCity_Text_BoyfriendLeave:
+	.string "What the…\n"
+	.string "Is he a secret agent for real?\p"
+	.string "Today has been a crazy day…\p"
+	.string "Speaking of which, I'm gonna go and\n"
+	.string "visit my WANDA.\p"
+	.string "If you happen to pass by VERDANTURF\n"
+	.string "feel free to stop by, eh?$"
+
+RustboroCity_Movement_BoyfriendLeave:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+RustboroCity_Text_MrBrineyOffer:
+	.string "MR. BRINEY: Time to take me leave too\n"
+	.string "then!\p"
+	.string "But if ye ever find yerself in need of\n"
+	.string "me boat…\p"
+	.string "Ye can find me in me cottage in PEARLY\n"
+	.string "SEASIDE! Gyaha!\p"
+	.string "Well then! I'm off!\n"
+	.string "Let's go, me boy!$"
+
+
+RustboroCity_Movement_BrineyLeave:
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+RustboroCity_Movement_PeekoLeave:
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end

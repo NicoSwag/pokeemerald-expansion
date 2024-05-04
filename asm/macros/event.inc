@@ -1277,6 +1277,14 @@
 	.byte \mode
 	.endm
 
+    @ Starts a battle against two trainers. Takes a trainerId and loss text for gTrainerBattleOpponent_A
+    @ and a trainerId and loss text for gTrainerBattleOpponent_B
+    .macro trainerbattle_twoopponents trainer_A:req, lose_text_A:req, trainer_B:req, lose_text_B:req
+        trainerbattle TRAINER_BATTLE_SET_TRAINER_A \trainer_A, 0, NULL \lose_text_A
+        trainerbattle TRAINER_BATTLE_SET_TRAINER_B \trainer_B, 0, NULL, \lose_text_B
+        dotrainerbattle
+    .endm
+
 	@ Fades the screen to and from black and white. Modes are FADE_(TO/FROM)_(WHITE/BLACK)
 	.macro fadescreenspeed mode:req, speed:req
 	.byte 0x98

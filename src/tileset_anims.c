@@ -50,6 +50,7 @@ static void QueueAnimTiles_General_Waterfall(u16);
 static void QueueAnimTiles_General_LandWaterEdge(u16);
 static void QueueAnimTiles_Building_TVTurnedOn(u16);
 static void QueueAnimTiles_Rustboro_WindyWater(u16, u8);
+static void QueueAnimTiles_General_WaterPolluted(u16);
 static void QueueAnimTiles_Rustboro_Fountain(u16);
 static void QueueAnimTiles_Dewford_Flag(u16);
 static void QueueAnimTiles_Slateport_Balloons(u16);
@@ -291,6 +292,16 @@ const u16 gTilesetAnims_Rustboro_WindyWater_Frame5[] = INCBIN_U16("data/tilesets
 const u16 gTilesetAnims_Rustboro_WindyWater_Frame6[] = INCBIN_U16("data/tilesets/secondary/rustboro/anim/windy_water/6.4bpp");
 const u16 gTilesetAnims_Rustboro_WindyWater_Frame7[] = INCBIN_U16("data/tilesets/secondary/rustboro/anim/windy_water/7.4bpp");
 
+
+const u16 gTilesetAnims_Rustboro_WaterPolluted_Frame0[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/anim/water_polluted/0.4bpp");
+const u16 gTilesetAnims_Rustboro_WaterPolluted_Frame1[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/anim/water_polluted/1.4bpp");
+const u16 gTilesetAnims_Rustboro_WaterPolluted_Frame2[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/anim/water_polluted/2.4bpp");
+const u16 gTilesetAnims_Rustboro_WaterPolluted_Frame3[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/anim/water_polluted/3.4bpp");
+const u16 gTilesetAnims_Rustboro_WaterPolluted_Frame4[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/anim/water_polluted/4.4bpp");
+const u16 gTilesetAnims_Rustboro_WaterPolluted_Frame5[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/anim/water_polluted/5.4bpp");
+const u16 gTilesetAnims_Rustboro_WaterPolluted_Frame6[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/anim/water_polluted/6.4bpp");
+const u16 gTilesetAnims_Rustboro_WaterPolluted_Frame7[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/anim/water_polluted/7.4bpp");
+
 u16 *const gTilesetAnims_Rustboro_WindyWater_VDests[] = {
     (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 128)),
     (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 132)),
@@ -311,6 +322,19 @@ const u16 *const gTilesetAnims_Rustboro_WindyWater[] = {
     gTilesetAnims_Rustboro_WindyWater_Frame5,
     gTilesetAnims_Rustboro_WindyWater_Frame6,
     gTilesetAnims_Rustboro_WindyWater_Frame7
+};
+
+
+
+const u16 *const gTilesetAnims_Rustboro_WaterPolluted[] = {
+    gTilesetAnims_Rustboro_WaterPolluted_Frame0,
+    gTilesetAnims_Rustboro_WaterPolluted_Frame1,
+    gTilesetAnims_Rustboro_WaterPolluted_Frame2,
+    gTilesetAnims_Rustboro_WaterPolluted_Frame3,
+    gTilesetAnims_Rustboro_WaterPolluted_Frame4,
+    gTilesetAnims_Rustboro_WaterPolluted_Frame5,
+    gTilesetAnims_Rustboro_WaterPolluted_Frame6,
+    gTilesetAnims_Rustboro_WaterPolluted_Frame7
 };
 
 const u16 gTilesetAnims_Rustboro_Fountain_Frame0[] = INCBIN_U16("data/tilesets/secondary/rustboro/anim/fountain/0.4bpp");
@@ -633,8 +657,8 @@ static void TilesetAnim_General(u16 timer)
 {
     if (timer % 16 == 0)
         QueueAnimTiles_General_Flower(timer / 16);
-    if (timer % 16 == 1)
         QueueAnimTiles_General_Water(timer / 16);
+
     if (timer % 16 == 2)
         QueueAnimTiles_General_SandWaterEdge(timer / 16);
     if (timer % 16 == 3)
@@ -841,20 +865,27 @@ static void TilesetAnim_Rustboro(u16 timer)
         QueueAnimTiles_Rustboro_WindyWater(timer / 8, 0);
         QueueAnimTiles_Rustboro_Fountain(timer / 8);
     }
-    if (timer % 8 == 1)
+    if (timer % 8 == 1){
         QueueAnimTiles_Rustboro_WindyWater(timer / 8, 1);
-    if (timer % 8 == 2)
+    }
+    if (timer % 8 == 1){
         QueueAnimTiles_Rustboro_WindyWater(timer / 8, 2);
-    if (timer % 8 == 3)
+    }
+    if (timer % 8 == 1){
         QueueAnimTiles_Rustboro_WindyWater(timer / 8, 3);
-    if (timer % 8 == 4)
+    }
+    if (timer % 8 == 1){
         QueueAnimTiles_Rustboro_WindyWater(timer / 8, 4);
-    if (timer % 8 == 5)
+    }
+    if (timer % 8 == 1){
         QueueAnimTiles_Rustboro_WindyWater(timer / 8, 5);
-    if (timer % 8 == 6)
+    }
+    if (timer % 8 == 1){
         QueueAnimTiles_Rustboro_WindyWater(timer / 8, 6);
-    if (timer % 8 == 7)
+    }
+    if (timer % 8 == 1){
         QueueAnimTiles_Rustboro_WindyWater(timer / 8, 7);
+    }
 }
 
 static void TilesetAnim_Dewford(u16 timer)
@@ -1011,6 +1042,14 @@ static void QueueAnimTiles_Rustboro_WindyWater(u16 timer_div, u8 timer_mod)
     timer_div %= ARRAY_COUNT(gTilesetAnims_Rustboro_WindyWater);
     if (gTilesetAnims_Rustboro_WindyWater[timer_div])
         AppendTilesetAnimToBuffer(gTilesetAnims_Rustboro_WindyWater[timer_div], gTilesetAnims_Rustboro_WindyWater_VDests[timer_mod], 4 * TILE_SIZE_4BPP);
+}
+
+
+static void QueueAnimTiles_General_WaterPolluted(u16 timer_div)
+{
+
+        u8 i = timer_div % ARRAY_COUNT(gTilesetAnims_Rustboro_WaterPolluted);
+        AppendTilesetAnimToBuffer(gTilesetAnims_Rustboro_WaterPolluted[timer_div], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(364)), 2 * TILE_SIZE_4BPP);
 }
 
 static void QueueAnimTiles_Rustboro_Fountain(u16 timer)

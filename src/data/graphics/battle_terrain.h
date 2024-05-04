@@ -6,6 +6,7 @@ const u32 gBattleTerrainTiles_TallGrassOvercast[] = INCBIN_U32("graphics/battle_
 const u32 gBattleTerrainPalette_TallGrassOvercast[] = INCBIN_U32("graphics/battle_terrain/overcast/palette.gbapal.lz");
 const u32 gBattleTerrainTilemap_TallGrassOvercast[] = INCBIN_U32("graphics/battle_terrain/overcast/map.bin.lz");
 
+const u32 gBattleTerrainPalette_YellowForest[] = INCBIN_U32("graphics/battle_terrain/tall_grass/yellowtrees.gbapal.lz");
 
 const u32 gBattleTerrainTiles_GymArena[] = INCBIN_U32("graphics/battle_terrain/arena/tiles.4bpp.lz");
 const u32 gBattleTerrainPalette_GymArena[] = INCBIN_U32("graphics/battle_terrain/arena/palette.gbapal.lz");
