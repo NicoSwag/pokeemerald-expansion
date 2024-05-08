@@ -27,6 +27,7 @@ enum {
     FONT_SMALL_NARROW, // Very similar to FONT_SMALL, some glyphs are narrower
     FONT_BOLD, // JP glyph set only
     FONT_BW_SUMMARY_SCREEN,
+    FONT_TRANSPARENT,
 };
 
 // Return values for font functions

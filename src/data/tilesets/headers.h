@@ -892,16 +892,6 @@ const struct Tileset gTileset_rustboro_inner =
         .callback = InitTilesetAnim_Rustboro,
 };
 
-const struct Tileset gTileset_Dewford_New =
-{
-    .isCompressed = TRUE,
-    .isSecondary = FALSE,
-    .tiles = gTilesetTiles_Dewford_New,
-    .palettes = gTilesetPalettes_Dewford_New,
-    .metatiles = gMetatiles_Dewford_New,
-    .metatileAttributes = gMetatileAttributes_Dewford_New,
-    .callback = NULL,
-};
 
 const struct Tileset gTileset_Dewford_Final =
 {

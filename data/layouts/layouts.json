@@ -4530,6 +4530,16 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/MtKirikiri_Side_area/border.bin",
       "blockdata_filepath": "data/layouts/MtKirikiri_Side_area/map.bin"
+    },
+    {
+      "id": "LAYOUT_GRANITE_CAVE_ENTRANCE",
+      "name": "GraniteCaveEntrance_Layout",
+      "width": 60,
+      "height": 34,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/GraniteCaveEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/GraniteCaveEntrance/map.bin"
     }
   ]
 }

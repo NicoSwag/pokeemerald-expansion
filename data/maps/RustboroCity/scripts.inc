@@ -1899,7 +1899,7 @@ RustboroCity_Text_LookerISee:
 	.string "Would you care for me to take a look?\p"
 	.string "… … …\p"
 	.string "Ah! I see!\n"
-	.string "Well, not fully.\p
+	.string "Well, not fully.\p"
 	.string "Yes, these GOODS? Unmistakeable DEVON\n"
 	.string "make.\p"
 	.string "Machine parts of some sort, it would\n"

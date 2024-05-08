@@ -1285,3 +1285,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/OldaleRuins/scripts.inc"
 
 	.include "data/maps/MtKirikiri_Side_area/scripts.inc"
+
+	.include "data/maps/GraniteCaveEntrance/scripts.inc"

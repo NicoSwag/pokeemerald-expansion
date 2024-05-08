@@ -22,6 +22,11 @@
       "map": "MAP_DEWFORD_TOWN",
       "offset": 64,
       "direction": "down"
+    },
+    {
+      "map": "MAP_GRANITE_CAVE_ENTRANCE",
+      "offset": 4,
+      "direction": "down"
     }
   ],
   "object_events": [

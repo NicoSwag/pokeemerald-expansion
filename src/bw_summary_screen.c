@@ -57,7 +57,7 @@ enum BWPSSPage
     PSS_PAGE_INFO,
     PSS_PAGE_SKILLS,
     PSS_PAGE_BATTLE_MOVES,
-    PSS_PAGE_CONTEST_MOVES,
+    //PSS_PAGE_CONTEST_MOVES,
     PSS_PAGE_COUNT,
     PSS_BUFFER_BATTLE_EFFECTS = PSS_PAGE_COUNT,
     PSS_BUFFER_CONTEST_EFFECTS,
@@ -752,7 +752,7 @@ static void (*const sTextPrinterFunctions[])(void) =
     [PSS_PAGE_INFO] = PrintInfoPageText,
     [PSS_PAGE_SKILLS] = PrintSkillsPageText,
     [PSS_PAGE_BATTLE_MOVES] = PrintBattleMoves,
-    [PSS_PAGE_CONTEST_MOVES] = PrintContestMoves
+    //[PSS_PAGE_CONTEST_MOVES] = PrintContestMoves
 };
 
 static void (*const sTextPrinterTasks[])(u8 taskId) =
@@ -760,7 +760,7 @@ static void (*const sTextPrinterTasks[])(u8 taskId) =
     [PSS_PAGE_INFO] = Task_PrintInfoPage,
     [PSS_PAGE_SKILLS] = Task_PrintSkillsPage,
     [PSS_PAGE_BATTLE_MOVES] = Task_PrintBattleMoves,
-    [PSS_PAGE_CONTEST_MOVES] = Task_PrintContestMoves
+    //[PSS_PAGE_CONTEST_MOVES] = Task_PrintContestMoves
 };
 
 #define TAG_MOVE_SELECTOR 30000
@@ -1651,9 +1651,9 @@ static bool8 DecompressGraphics(void)
         sMonSummaryScreen->switchCounter++;
         break;
     case 5:
-        LZDecompressWram(sSummaryPage_ContestMoves_Tilemap_BW, sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][1]);
-        sMonSummaryScreen->switchCounter++;
-        break;
+        //LZDecompressWram(sSummaryPage_ContestMoves_Tilemap_BW, sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][1]);
+        //sMonSummaryScreen->switchCounter++;
+        //break;
     case 6:
         LZDecompressWram(sSummaryPage_EffectBattle_Tilemap_BW, sMonSummaryScreen->bgTilemapBuffers[PSS_BUFFER_BATTLE_EFFECTS][0]);
         sMonSummaryScreen->switchCounter++;
@@ -1833,7 +1833,7 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
 
 static void SetSelectMoveTilemaps(void)
 {
-    SetBgTilemapBuffer(1, sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][0]);
+    //SetBgTilemapBuffer(1, sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][0]);
     SetBgTilemapBuffer(2, sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_BATTLE_MOVES][0]);
     SetBgTilemapBuffer(3, sMonSummaryScreen->bgTilemapBuffers[PSS_BUFFER_BATTLE_EFFECTS][0]);
     HideInactivePageDots();
@@ -1865,10 +1865,10 @@ static void HideInactivePageDots(void)
         sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_BATTLE_MOVES][i][TILEMAP_PAGE_DOT_1_TILE_2] = TILE_BLACK_SQUARE;
         sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_BATTLE_MOVES][i][TILEMAP_PAGE_DOT_2_TILE_1] = TILE_BLACK_SQUARE;
         sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_BATTLE_MOVES][i][TILEMAP_PAGE_DOT_2_TILE_2] = TILE_BLACK_SQUARE;
-        sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][i][TILEMAP_PAGE_DOT_1_TILE_1] = TILE_BLACK_SQUARE;
-        sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][i][TILEMAP_PAGE_DOT_1_TILE_2] = TILE_BLACK_SQUARE;
-        sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][i][TILEMAP_PAGE_DOT_2_TILE_1] = TILE_BLACK_SQUARE;
-        sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][i][TILEMAP_PAGE_DOT_2_TILE_2] = TILE_BLACK_SQUARE;
+        //sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][i][TILEMAP_PAGE_DOT_1_TILE_1] = TILE_BLACK_SQUARE;
+        //sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][i][TILEMAP_PAGE_DOT_1_TILE_2] = TILE_BLACK_SQUARE;
+        //sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][i][TILEMAP_PAGE_DOT_2_TILE_1] = TILE_BLACK_SQUARE;
+        //sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][i][TILEMAP_PAGE_DOT_2_TILE_2] = TILE_BLACK_SQUARE;
     }
 }
 
@@ -2807,12 +2807,12 @@ static void Task_HandleInputCantForgetHMsMoves(u8 taskId)
         }
         else if (JOY_NEW(DPAD_RIGHT) || GetLRKeysPressed() == MENU_R_PRESSED)
         {
-            if (sMonSummaryScreen->currPageIndex != PSS_PAGE_CONTEST_MOVES)
-            {
-                move = sMonSummaryScreen->summary.moves[sMonSummaryScreen->firstMoveIndex];
-                gTasks[taskId].func = Task_HandleReplaceMoveInput;
-                ChangePage(taskId, 1);
-            }
+            //if (sMonSummaryScreen->currPageIndex != PSS_PAGE_CONTEST_MOVES)
+            //{
+                //move = sMonSummaryScreen->summary.moves[sMonSummaryScreen->firstMoveIndex];
+                //gTasks[taskId].func = Task_HandleReplaceMoveInput;
+                //ChangePage(taskId, 1);
+            //}
         }
         else if (JOY_NEW(A_BUTTON | B_BUTTON))
         {
@@ -3405,18 +3405,18 @@ static void PutPageWindowTilemaps(u8 page)
             PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_INFO);
         }
         break;
-    case PSS_PAGE_CONTEST_MOVES:
-        PutWindowTilemap(PSS_LABEL_WINDOW_CONTEST_MOVES_TITLE);
-        if (sMonSummaryScreen->mode == BW_SUMMARY_MODE_SELECT_MOVE)
-        {
-            if (sMonSummaryScreen->newMove != MOVE_NONE || sMonSummaryScreen->firstMoveIndex != MAX_MON_MOVES)
+    //case PSS_PAGE_CONTEST_MOVES:
+        //PutWindowTilemap(PSS_LABEL_WINDOW_CONTEST_MOVES_TITLE);
+        //if (sMonSummaryScreen->mode == BW_SUMMARY_MODE_SELECT_MOVE)
+        //{
+            //if (sMonSummaryScreen->newMove != MOVE_NONE || sMonSummaryScreen->firstMoveIndex != MAX_MON_MOVES)
                 PutWindowTilemap(PSS_LABEL_WINDOW_MOVES_APPEAL_JAM);
-        }
-        else
-        {
-            PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_INFO);
-        }
-        break;
+        //}
+        //else
+        //{
+           // PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_INFO);
+        //}
+       // break;
     }
 
     for (i = 0; i < ARRAY_COUNT(sMonSummaryScreen->windowIds); i++)
@@ -3454,7 +3454,7 @@ static void ClearPageWindowTilemaps(u8 page)
             ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_INFO);
         }
         break;
-    case PSS_PAGE_CONTEST_MOVES:
+    //case PSS_PAGE_CONTEST_MOVES:
         if (sMonSummaryScreen->mode == BW_SUMMARY_MODE_SELECT_MOVE)
         {
             if (sMonSummaryScreen->newMove != MOVE_NONE || sMonSummaryScreen->firstMoveIndex != MAX_MON_MOVES)
@@ -4562,7 +4562,7 @@ static void SetTypeAndPokerusIcons(void)
         SetMoveTypeIcons();
         SetNewMoveTypeIcon();
         break;
-    case PSS_PAGE_CONTEST_MOVES:
+    //case PSS_PAGE_CONTEST_MOVES:
         SetContestMoveTypeIcons();
         SetNewMoveTypeIcon();
         break;
