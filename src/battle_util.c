@@ -4252,6 +4252,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 break;
             case WEATHER_DROUGHT:
+            case WEATHER_SCORCHING:
+            
                 if (!(gBattleWeather & B_WEATHER_SUN))
                 {
                     gBattleWeather = (B_WEATHER_SUN_PERMANENT | B_WEATHER_SUN_TEMPORARY);
@@ -5801,6 +5803,7 @@ break;
              && TARGET_TURN_DAMAGED){
             u8 moveIndex = *(gBattleStruct->chosenMovePositions + gBattlerAttacker);
                 gBattleMons[gBattlerAttacker].pp[moveIndex] = 0;
+                gBattlerTarget = gBattlerAttacker;
                 BattleScriptPush(gBattlescriptCurrInstr);
                 gBattlescriptCurrInstr = BattleScript_AncientGrudgeTakesPp;
                 BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, moveIndex + REQUEST_PPMOVE1_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].pp[moveIndex]), &gBattleMons[gBattlerAttacker].pp[moveIndex]);

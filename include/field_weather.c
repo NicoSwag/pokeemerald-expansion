@@ -97,6 +97,7 @@ static const struct WeatherCallbacks sWeatherFuncs[] =
     [WEATHER_UNDERWATER]         = {FogHorizontal_InitVars, FogHorizontal_Main, FogHorizontal_InitAll, FogHorizontal_Finish},
     [WEATHER_SHADE]              = {Shade_InitVars,         Shade_Main,         Shade_InitAll,         Shade_Finish},
     [WEATHER_DROUGHT]            = {Drought_InitVars,       Drought_Main,       Drought_InitAll,       Drought_Finish},
+    [WEATHER_SCORCHING]          = {Sunny_InitVars,         Sunny_Main,         Sunny_InitAll,         Sunny_Finish},
     [WEATHER_DOWNPOUR]           = {Downpour_InitVars,      Thunderstorm_Main,  Downpour_InitAll,      Thunderstorm_Finish},
     [WEATHER_UNDERWATER_BUBBLES] = {Bubbles_InitVars,       Bubbles_Main,       Bubbles_InitAll,       Bubbles_Finish},
     [WEATHER_POLLUTION]     = {FogHorizontal_InitVars, FogHorizontal_Main, FogHorizontal_InitAll, FogHorizontal_Finish},
@@ -1011,6 +1012,9 @@ static void SetFieldWeather(u8 weather)
         break;
     case COORD_EVENT_WEATHER_SUNNY:
         SetWeather(WEATHER_SUNNY);
+        break;
+    case COORD_EVENT_WEATHER_SCORCHING:
+        SetWeather(WEATHER_SCORCHING);
         break;
     case COORD_EVENT_WEATHER_RAIN:
         SetWeather(WEATHER_RAIN);

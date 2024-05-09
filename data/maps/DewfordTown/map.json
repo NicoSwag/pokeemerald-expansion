@@ -5,7 +5,7 @@
   "music": "MUS_DEWFORD",
   "region_map_section": "MAPSEC_DEWFORD_TOWN",
   "requires_flash": false,
-  "weather": "WEATHER_SUNNY",
+  "weather": "WEATHER_SCORCHING",
   "map_type": "MAP_TYPE_TOWN",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -137,7 +137,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 6,
-      "y": 10,
+      "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
@@ -211,6 +211,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+      "x": 8,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_ROUTE_104_RIVAL"
     }
   ],
   "warp_events": [
@@ -223,7 +236,60 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 9,
+      "elevation": 3,
+      "var": "VAR_ROUTE104_STATE",
+      "var_value": "1",
+      "script": "Route104_EventScript_RivalTrigger1"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 9,
+      "elevation": 3,
+      "var": "VAR_ROUTE104_STATE",
+      "var_value": "1",
+      "script": "Route104_EventScript_RivalTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 9,
+      "elevation": 3,
+      "var": "VAR_ROUTE104_STATE",
+      "var_value": "1",
+      "script": "Route104_EventScript_RivalTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 9,
+      "elevation": 3,
+      "var": "VAR_ROUTE104_STATE",
+      "var_value": "1",
+      "script": "Route104_EventScript_RivalTrigger1"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 9,
+      "elevation": 3,
+      "var": "VAR_ROUTE104_STATE",
+      "var_value": "1",
+      "script": "Route104_EventScript_RivalTrigger1"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 9,
+      "elevation": 3,
+      "var": "VAR_ROUTE104_STATE",
+      "var_value": "1",
+      "script": "Route104_EventScript_RivalTrigger1"
+    }
   ],
   "bg_events": [
     {

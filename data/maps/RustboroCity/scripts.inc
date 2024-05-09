@@ -549,6 +549,10 @@ RustboroCity_EventScript_Looker_CutsceneFinal::
 	removeobject LOCALID_PEEKO
 	setflag FLAG_HIDE_PEEKO_EVENT
 	setflag FLAG_HIDE_MR_BRINEY_RUSTBORO
+	setvar VAR_ROUTE104_STATE, 1
+	clearflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
+	clearflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
+	setvar VAR_BRINEY_HOUSE_STATE, 1
 	release
 	end
 
