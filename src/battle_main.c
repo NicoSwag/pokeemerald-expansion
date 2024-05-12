@@ -3541,6 +3541,7 @@ void SwitchInClearSetData(u32 battler)
     gBattleStruct->lastTakenMoveFrom[battler][2] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][3] = 0;
     gBattleStruct->lastMoveFailed &= ~(gBitTable[battler]);
+    gBattleStruct->truantLastTurn[battler] = FALSE;
     gBattleStruct->palaceFlags &= ~(gBitTable[battler]);
 
     for (i = 0; i < ARRAY_COUNT(gSideTimers); i++)
@@ -3570,6 +3571,8 @@ void SwitchInClearSetData(u32 battler)
 
     // Reset G-Max Chi Strike boosts.
     gBattleStruct->bonusCritStages[battler] = 0;
+
+    gBattleStruct->timesGotHit[GetBattlerSide(gBattlerTarget)][gBattlerPartyIndexes[gBattlerTarget]] = 0;
 
     // Reset Dynamax flags.
     UndoDynamax(battler);

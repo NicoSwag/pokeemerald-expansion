@@ -3867,7 +3867,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpAttack  = 30,
         .baseSpDefense = 65,
         .types = { TYPE_GROUND, TYPE_GHOST },
-        .abilities = { ABILITY_WANDERING_SPIRIT, ABILITY_ANCIENT_GRUDGE },
+        .abilities = { ABILITY_CURSED_BODY, ABILITY_WANDERING_SPIRIT },
         .description = COMPOUND_STRING(
             "A spirit possessing the remains\n"
             "of a shattered clay object. Touching\n"
@@ -3904,7 +3904,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_AMORPHOUS},
-        .abilities = {ABILITY_TABLETS_OF_RUIN, ABILITY_ANCIENT_GRUDGE},
+        .abilities = {ABILITY_TABLETS_OF_RUIN, ABILITY_WANDERING_SPIRIT},
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("RUNERIGUS"),
         .cryId = CRY_RUNERIGUS,

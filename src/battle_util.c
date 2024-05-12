@@ -3333,8 +3333,9 @@ gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_TRUANT: // truant
-            if (GetBattlerAbility(gBattlerAttacker) == ABILITY_TRUANT && gDisableStructs[gBattlerAttacker].truantCounter)
+            if (GetBattlerAbility(gBattlerAttacker) == ABILITY_TRUANT && (gMovesInfo[gLastMoves[gBattlerAttacker]].category != DAMAGE_CATEGORY_STATUS || gLastMoves[gBattlerAttacker] == MOVE_SLEEP_TALK) && gDisableStructs[gBattlerAttacker].isFirstTurn && gBattleStruct->truantLastTurn[gBattlerAttacker] == FALSE)
             {
+                if(gMovesInfo[gChosenMove].category != DAMAGE_CATEGORY_STATUS || gChosenMove == MOVE_SLEEP_TALK){
                 CancelMultiTurnMoves(gBattlerAttacker);
                 gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LOAFING;
@@ -3342,8 +3343,13 @@ gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
                 gBattlescriptCurrInstr = BattleScript_TruantLoafingAround;
                 gMoveResultFlags |= MOVE_RESULT_MISSED;
                 effect = 1;
+                gBattleStruct->truantLastTurn[gBattlerAttacker] = TRUE;
+                }
             }
+            else
+            gBattleStruct->truantLastTurn[gBattlerAttacker] = FALSE;
             gBattleStruct->atkCancellerTracker++;
+        
             break;
         case CANCELLER_RECHARGE: // recharge
             if (gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE)
@@ -9297,7 +9303,7 @@ case EFFECT_AURA_SPHERE:
         break;
     case EFFECT_RAGE_FIST:
         basePower += 50 * gBattleStruct->timesGotHit[GetBattlerSide(battlerAtk)][gBattlerPartyIndexes[battlerAtk]];
-        basePower = (basePower > 350) ? 350 : basePower;
+        basePower = (basePower > 200) ? 200 : basePower;
         break;
     case EFFECT_FICKLE_BEAM:
         if (RandomPercentage(RNG_FICKLE_BEAM, 30))

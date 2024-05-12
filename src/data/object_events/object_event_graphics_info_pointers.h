@@ -12,6 +12,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Courtney;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Tabitha;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Matt;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Engineer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Miner;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl2;
@@ -218,6 +219,11 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rayquaza;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Zigzagoon;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Diglett;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delibird;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rockruff;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Corphish;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Makuhita;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Slakoth;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Aron;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kadabra;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scizor;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pelipper;
@@ -283,6 +289,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_TABITHA] =                    &gObjectEventGraphicsInfo_Tabitha,
     [OBJ_EVENT_GFX_MATT] =                    &gObjectEventGraphicsInfo_Matt,
     [OBJ_EVENT_GFX_ENGINEER] =                    &gObjectEventGraphicsInfo_Engineer,
+    [OBJ_EVENT_GFX_MINER] =                    &gObjectEventGraphicsInfo_Miner,
     [OBJ_EVENT_GFX_GIRL_1] =                   &gObjectEventGraphicsInfo_Girl1,
     [OBJ_EVENT_GFX_BOY_2] =                    &gObjectEventGraphicsInfo_Boy2,
     [OBJ_EVENT_GFX_GIRL_2] =                   &gObjectEventGraphicsInfo_Girl2,
@@ -379,6 +386,11 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_ZIGZAGOON_1] =              &gObjectEventGraphicsInfo_EnemyZigzagoon,
     [OBJ_EVENT_GFX_DIGLETT] =              &gObjectEventGraphicsInfo_Diglett,
     [OBJ_EVENT_GFX_DELIBIRD] =              &gObjectEventGraphicsInfo_Delibird,
+    [OBJ_EVENT_GFX_ROCKRUFF] =              &gObjectEventGraphicsInfo_Rockruff,
+    [OBJ_EVENT_GFX_CORPHISH] =              &gObjectEventGraphicsInfo_Corphish,
+    [OBJ_EVENT_GFX_MAKUHITA] =              &gObjectEventGraphicsInfo_Makuhita,
+    [OBJ_EVENT_GFX_SLAKOTH] =              &gObjectEventGraphicsInfo_Slakoth,
+    [OBJ_EVENT_GFX_ARON] =              &gObjectEventGraphicsInfo_Aron,
     [OBJ_EVENT_GFX_KADABRA] =              &gObjectEventGraphicsInfo_Kadabra,
     [OBJ_EVENT_GFX_SCIZOR] =              &gObjectEventGraphicsInfo_Scizor,
     [OBJ_EVENT_GFX_PELIPPER] =              &gObjectEventGraphicsInfo_Pelipper,

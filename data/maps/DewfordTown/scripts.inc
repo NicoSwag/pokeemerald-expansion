@@ -87,17 +87,14 @@ DewfordTown_EventScript_OldRodFisherman::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_OLD_ROD, DewfordTown_EventScript_HowsFishing
-	msgbox DewfordTown_Text_GettingItchToFish, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, DewfordTown_EventScript_GiveOldRod
-	goto_if_eq VAR_RESULT, NO, DewfordTown_EventScript_NotGettingItchToFish
+	msgbox DewfordTown_Text_GettingItchToFish, MSGBOX_DEFAULT
+	goto DewfordTown_EventScript_GiveOldRod
 	end
 
 DewfordTown_EventScript_GiveOldRod::
-	msgbox DewfordTown_Text_GiveYouOneOfMyRods, MSGBOX_DEFAULT
-	giveitem ITEM_OLD_ROD
+	giveitem ITEM_SHELL_BELL
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_OLD_ROD
-	msgbox DewfordTown_Text_ThrowInFishingAdvice, MSGBOX_DEFAULT
 	release
 	end
 
@@ -109,10 +106,35 @@ DewfordTown_EventScript_NotGettingItchToFish::
 DewfordTown_EventScript_HowsFishing::
 	message DewfordTown_Text_HowsYourFishing
 	waitmessage
-	multichoice 20, 8, MULTI_HOWS_FISHING, TRUE
-	goto_if_eq VAR_RESULT, 0, DewfordTown_EventScript_FishingExcellent
-	goto_if_eq VAR_RESULT, 1, DewfordTown_EventScript_FishingNotSoGood
 	end
+
+
+DewfordTown_EventScript_WarehouseMiner::
+	goto_if_set FLAG_CLEARED_GRANITE_CAVE, DewfordTown_EventScript_WarehouseMinerPostCave
+	msgbox DewfordTown_Text_MinecraftPreCave, MSGBOX_NPC
+	end
+
+DewfordTown_EventScript_WarehouseMinerPostCave::
+	msgbox DewfordTown_Text_MinecraftPostCave, MSGBOX_NPC
+	end
+
+
+DewfordTown_Text_MinecraftPreCave:
+	.string "Normally you can ride a minecart\n"
+	.string "all the way to GRANITE CAVE, but…\p"
+	.string "Something is happening at the mine.\p"
+	.string "Our GYM LEADER, BRAWLY, went to\n"
+	.string "check out the situation.\p"
+	.string "Before it gets resolved, I'm afraid\n"
+	.string "that you will have to go on foot.$"
+
+
+DewfordTown_Text_MinecraftPostCave:
+	.string "The minecart is back!\p"
+	.string "You can ride it if you want to get\n"
+	.string "to GRANITE CAVE quickly.$"
+
+
 
 DewfordTown_EventScript_FishingExcellent::
 	msgbox DewfordTown_Text_GreatHaulInSomeBigOnes, MSGBOX_DEFAULT
@@ -601,13 +623,105 @@ DewfordTown_Movement_BrineyExitBoat:
 	step_end
 
 DewfordTown_EventScript_TrendyPhraseBoy::
-	lock
-	faceplayer
-	call Common_EventScript_BufferTrendyPhrase
-	msgbox DewfordTown_Text_XIsTheBiggestHappeningThingRight, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, DewfordTown_EventScript_ConfirmTrendyPhrase
-	goto_if_eq VAR_RESULT, NO, DewfordTown_EventScript_RejectTrendyPhrase
+	msgbox DewfordTown_Text_DewfordBoring, MSGBOX_NPC
 	end
+
+DewfordTown_EventScript_OldMan::
+	msgbox DewfordTown_Text_OldMan, MSGBOX_NPC
+	end
+
+
+DewfordTown_Text_OldMan:
+	.string "The sea breeze works wonders on these\n"
+	.string "old bones! Gyaha!$"
+
+
+DewfordTown_EventScript_OldWoman::
+	msgbox DewfordTown_Text_OldWoman, MSGBOX_NPC
+	end
+
+DewfordTown_EventScript_Kid::
+	lockall
+	goto_if_set FLAG_RECEIVED_SOFT_SAND, DewfordTown_EventScript_KidPostSand
+	msgbox DewfordTown_Text_KidShop, MSGBOX_NPC
+	closemessage
+	giveitem ITEM_SOFT_SAND
+	setflag FLAG_RECEIVED_SOFT_SAND
+	release
+	end
+
+
+DewfordTown_EventScript_KidPostSand:
+	msgbox DewfordTown_Text_GoodAtBusiness, MSGBOX_NPC
+	end
+
+
+DewfordTown_Text_KidShop:
+	.string "Hey, hey!\n"
+	.string "I'm running a shop!\p"
+	.string "Here, buy some sand!\p"
+	.string "The price is, uhm…\p"
+	.string "Uhm…………\p"
+	.string "Zero!!!!$"
+
+DewfordTown_Text_GoodAtBusiness:
+	.string "When I grow up I want to be a business\n"
+	.string "woman! I'm practicing for it!$"
+
+
+DewfordTown_Text_OldWoman:
+	.string "My husband used to work in SLATEPORT\n"
+	.string "back when we were young.\p"
+	.string "Well, and back before everything froze\n"
+	.string "over.\p"
+	.string "Living here is the happiest he's ever been\n"
+	.string "though.$"
+
+
+DewfordTown_EventScript_MinerTrail::
+	msgbox DewfordTown_Text_ILoveMining, MSGBOX_NPC
+	end
+
+
+DewfordTown_EventScript_GymGuide::
+	msgbox DewfordTown_Text_LookingForBrawly, MSGBOX_NPC
+	end
+
+
+DewfordTown_EventScript_Boy::
+	msgbox DewfordTown_Text_Boy, MSGBOX_NPC
+	end
+
+DewfordTown_Text_LookingForBrawly::
+	.string "Ah! Looking for our LEADER?\p"
+	.string "I'm afraid he is not here at the\n"
+	.string "moment.\p"
+	.string "He's been requested at GRANITE CAVE\n"
+	.string "to deal with some sensitive matters.\p"
+	.string "You may find him there, if you wish\n"
+	.string "to speak to him.\p"
+	.string "GRANITE CAVE is just west of here.$"
+
+DewfordTown_Text_Boy:
+	.string "Recently I've seen some people in lab\n"
+	.string "coats come here and argue with the\l"
+	.string "miners.\p"
+	.string "What's going on…?$"
+
+
+
+DewfordTown_Text_ILoveMining:
+	.string "GRANITE CAVE is full of all sorts\n"
+	.string "of things.\p"
+	.string "There's granite, of course, but you\n"
+	.string "can also find many ores and stones.\p"
+	.string "Rare POKéMON, too!\n"
+	.string "Although we try not to bother them.$"
+
+DewfordTown_Text_DewfordBoring:
+	.string "Man, this place is boring.\p"
+	.string "I'd rather leave somewhere cool, like\n"
+	.string "RUSTBORO, or SLATEPORT!$"
 
 DewfordTown_EventScript_ConfirmTrendyPhrase::
 	msgbox DewfordTown_Text_YeahDefinitionOfInRightNow, MSGBOX_DEFAULT
@@ -641,10 +755,30 @@ DewfordTown_EventScript_PhraseNotTrendyEnough::
 	release
 	end
 
+DewfordTown_EventScript_TownMiner::
+	msgbox DewfordTown_Text_TownMiner, MSGBOX_NPC
+	end
+
+
+DewfordTown_Text_TownMiner:
+	.string "The mine is our livelihood.\p"
+	.string "Recently DEVON has tried to pressure\n"
+	.string "us into selling it to them, but of\l"
+	.string "course we refused.\p"
+	.string "It's just too important for us.$"
+
+
 DewfordTown_Text_TinyIslandCommunity:
-	.string "DEWFORD is a tiny island community.\n"
-	.string "If something gets trendy here,\l"
-	.string "everyone picks up on it right away.$"
+	.string "There's a bit of a weird lady living\n"
+	.string "in the forest west of here.\p"
+	.string "She's not bad, but…\n"
+	.string "How to put it…\p"
+	.string "She's totally scary.\n"
+	.string "Super strong, too.\p"
+	.string "… … … …\p"
+	.string "I wish I could find the courage\n"
+	.string "to ask her out.$"
+
 
 DewfordTown_Text_TownSign:
 	.string "DEWFORD TOWN\n"
@@ -706,8 +840,9 @@ DewfordTown_Text_JustTellMeWhenYouNeedToSetSail:
 	.string "you need to set sail again!$"
 
 DewfordTown_Text_GettingItchToFish:
-	.string "This is a renowned fishing spot.\n"
-	.string "Are you getting the itch to fish?$"
+	.string "I found this while fishing the other\n"
+	.string "day.\p"
+	.string "I don't really need it, so here.$"
 
 DewfordTown_Text_GiveYouOneOfMyRods:
 	.string "I hear you, and I like what\n"
@@ -731,8 +866,12 @@ DewfordTown_Text_ThatsTooBadThen:
 	.string "That's too bad, then.$"
 
 DewfordTown_Text_HowsYourFishing:
-	.string "Yo!\n"
-	.string "How's your fishing?$"
+	.string "Have you heard about the power plant\n"
+	.string "that TEAM AQUA blew up to protect\l"
+	.string "the sea life?\p"
+	.string "I don't know about such extreme ends,\n"
+	.string "but…\p"
+	.string "Honestly, I get it.$"
 
 DewfordTown_Text_GreatHaulInSomeBigOnes:
 	.string "Is that right! That's great!\n"
@@ -805,7 +944,7 @@ DewfordTown_Text_YeahDefinitionOfInRightNow:
 	.string "definition of “in” right now.$"
 
 
-Route104_EventScript_RivalTrigger::
+Route104_EventScript_RivalTriggerFirst::
 	lockall
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	playse SE_PIN
