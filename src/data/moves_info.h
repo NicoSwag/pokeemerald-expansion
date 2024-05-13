@@ -585,9 +585,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "Flies up on the first turn,\n"
             "then strikes the next turn."),
         .effect = EFFECT_SEMI_INVULNERABLE,
-        .power = B_UPDATED_MOVE_DATA >= GEN_4 ? 90 : 70,
+        .power = B_UPDATED_MOVE_DATA >= GEN_4 ? 100 : 70,
         .type = TYPE_FLYING,
-        .accuracy = 95,
+        .accuracy = 100,
         .pp = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
@@ -776,6 +776,28 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .contestComboMoves = {COMBO_STARTER_MIND_READER},
     },
 
+    [MOVE_FREEFALL] =
+    {
+        .name = COMPOUND_STRING("Freefall"),
+        .description = COMPOUND_STRING(
+            "The user crash lands. Missing\n"
+            "hurts"),
+            .power = 110,
+        .effect = EFFECT_RECOIL_IF_MISS,
+        .type = TYPE_FLYING,
+        .accuracy = 95,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_5 ? 10 : 25,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .gravityBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_USER_MORE_EASILY_STARTLED,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_MIND_READER},
+    },
+
     [MOVE_ROLLING_KICK] =
     {
         .name = COMPOUND_STRING("Rolling Kick"),
@@ -948,6 +970,34 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .effect = EFFECT_HIT,
         .power = 85,
         .type = TYPE_NORMAL,
+        .accuracy = 100,
+        .pp = 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .minimizeDoubleDamage = B_UPDATED_MOVE_FLAGS >= GEN_6,
+        .skyBattleBanned = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_PARALYSIS,
+            .chance = 30,
+        }),
+        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
+        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0}
+    },
+
+
+    [MOVE_SUPLEX] =
+    {
+        .name = COMPOUND_STRING("Suplex"),
+        .description = COMPOUND_STRING(
+            "Slams the opponent on its\n"
+            "back. May paralyze."),
+        .effect = EFFECT_HIT,
+        .power = 75,
+        .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 15,
         .target = MOVE_TARGET_SELECTED,
@@ -7069,6 +7119,31 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .contestComboMoves = {COMBO_STARTER_LOCK_ON, COMBO_STARTER_MIND_READER},
     },
 
+    [MOVE_BUG_OUT] =
+    {
+        .name = COMPOUND_STRING("Bug Out"),
+        .description = COMPOUND_STRING(
+            "Boosts strength sharply,\n"
+            "but lowers abilities."),
+        .effect = EFFECT_HIT,
+        .power = 130,
+        .type = TYPE_BUG,
+        .accuracy = 100,
+        .pp = 5,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_ATK_DEF_DOWN,
+            .self = TRUE,
+        }),
+        .contestEffect = CONTEST_EFFECT_USER_MORE_EASILY_STARTLED,
+        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_LOCK_ON, COMBO_STARTER_MIND_READER},
+    },
+
     [MOVE_MAGIC_COAT] =
     {
         .name = COMPOUND_STRING("Magic Coat"),
@@ -7397,7 +7472,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "Dives underwater the first\n"
             "turn and strikes next turn."),
         .effect = EFFECT_SEMI_INVULNERABLE,
-        .power = B_UPDATED_MOVE_DATA >= GEN_4 ? 80 : 60,
+        .power = B_UPDATED_MOVE_DATA >= GEN_4 ? 100 : 60,
         .type = TYPE_WATER,
         .accuracy = 100,
         .pp = 10,
@@ -7423,7 +7498,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "Straight-arm punches that\n"
             "strike the foe 2 to 5 times."),
         .effect = EFFECT_MULTI_HIT,
-        .power = 15,
+        .power = 25,
         .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 20,
@@ -12940,6 +13015,32 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .contestComboMoves = {0}
     },
 
+    [MOVE_HONEY_PUNCH] =
+    {
+        .name = COMPOUND_STRING("Honey Punch"),
+        .description = COMPOUND_STRING(
+            "Hits the foe with honey,\n"
+            "lowering its Speed."),
+        .effect = EFFECT_HIT,
+        .power = 60,
+        .type = TYPE_GROUND,
+        .accuracy = 100,
+        .pp = 20,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .punchingMove = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_SPD_MINUS_1,
+            .chance = 100,
+        }),
+        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_PREV_MONS,
+        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0}
+    },
+
     [MOVE_FROST_BREATH] =
     {
         .name = COMPOUND_STRING("Frost Breath"),
@@ -17557,6 +17658,30 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .contestComboMoves = {0},
     },
 
+
+    [MOVE_AIR_BURST] =
+    {
+        .name = COMPOUND_STRING("Overdrive"),
+        .description = COMPOUND_STRING(
+            "The user creates a strong\n"
+            "wind current."),
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_FLYINH,
+        .accuracy = 100,
+        .pp = 10,
+        .target = MOVE_TARGET_BOTH,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .windMove = TRUE,
+        .ignoresSubstitute = B_UPDATED_MOVE_FLAGS >= GEN_6,
+        .metronomeBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_PREV_MONS,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+    },
+
     [MOVE_APPLE_ACID] =
     {
         .name = COMPOUND_STRING("Apple Acid"),
@@ -20236,7 +20361,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .name = COMPOUND_STRING("Thunderclap"),
         .description = sSuckerPunchDescription,
         .effect = EFFECT_SUCKER_PUNCH,
-        .power = 70,
+        .power = 80,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,
         .pp = 5,
@@ -20360,7 +20485,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "An electrified slam. If it\n"
             "misses, the user is hurt."),
         .effect = EFFECT_RECOIL_IF_MISS,
-        .power = 100,
+        .power = 130,
         .type = TYPE_ELECTRIC,
         .accuracy = 95,
         .pp = 15,

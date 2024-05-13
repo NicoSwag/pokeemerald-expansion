@@ -541,14 +541,7 @@ static bool32 AI_ShouldSwitchIfBadMoves(u32 battler, bool32 doubleBattle)
 
         // Consider switching if your mon with truant is bodied by Protect spam.
         // Or is using a double turn semi invulnerable move(such as Fly) and is faster.
-        if (GetBattlerAbility(battler) == ABILITY_TRUANT
-            && IsTruantMonVulnerable(battler, gBattlerTarget)
-            && gDisableStructs[battler].truantCounter
-            && gBattleMons[battler].hp >= gBattleMons[battler].maxHP / 2
-            && AI_SwitchMonIfSuitable(battler, doubleBattle))
-        {
-            return TRUE;
-        }
+
     }
     return FALSE;
 }
@@ -3209,7 +3202,11 @@ static u32 AI_CalcMoveScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(-20); // Force switch if all your attacking moves are physical and you have Natural Cure.
     }
 
-    // move effect checks
+     if (GetBattlerAbility(gBattlerAttacker) == ABILITY_TRUANT && (gMovesInfo[gLastMoves[gBattlerAttacker]].category != DAMAGE_CATEGORY_STATUS || gLastMoves[gBattlerAttacker] == MOVE_SLEEP_TALK) && gDisableStructs[gBattlerAttacker].isFirstTurn && gBattleStruct->truantLastTurn[gBattlerAttacker] == FALSE && !IS_MOVE_STATUS(move))
+            ADJUST_SCORE(-20);    // move effect checks
+    
+    
+    
     switch (moveEffect)
     {
     case EFFECT_SLEEP:
