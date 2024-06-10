@@ -118,7 +118,6 @@ enum {
     MENU_PLACE,
     MENU_SUMMARY,
     MENU_RELEASE,
-    MENU_MARK,
     MENU_JUMP,
     MENU_WALLPAPER,
     MENU_NAME,
@@ -2688,10 +2687,6 @@ static void Task_OnSelectedMon(u8 taskId)
             PlaySE(SE_SELECT);
             SetPokeStorageTask(Task_ShowMonSummary);
             break;
-        case MENU_MARK:
-            PlaySE(SE_SELECT);
-            SetPokeStorageTask(Task_ShowMarkMenu);
-            break;
         case MENU_TAKE:
             PlaySE(SE_SELECT);
             SetPokeStorageTask(Task_TakeItemForMoving);
@@ -4026,6 +4021,7 @@ static void LoadDisplayMonGfx(u16 species, u32 pid)
 
 static void PrintDisplayMonInfo(void)
 {
+
     FillWindowPixelBuffer(WIN_DISPLAY_INFO, PIXEL_FILL(1));
     if (sStorage->boxOption != OPTION_MOVE_ITEMS)
     {
@@ -4043,9 +4039,27 @@ static void PrintDisplayMonInfo(void)
     }
 
     CopyWindowToVram(WIN_DISPLAY_INFO, COPYWIN_GFX);
+    
     if (sStorage->displayMonSpecies != SPECIES_NONE)
     {
-        UpdateMonMarkingTiles(sStorage->displayMonMarkings, sStorage->markingComboTilesPtr);
+    switch (sCursorArea)
+    {
+    case CURSOR_AREA_IN_PARTY:
+        if(GetMonData(&gPlayerParty[sCursorPosition], MON_DATA_EFFORT_RIBBON, NULL) == FALSE)
+            UpdateMonMarkingTiles(0, sStorage->markingComboTilesPtr);
+        else
+            UpdateMonMarkingTiles(1, sStorage->markingComboTilesPtr);
+    break;
+    case CURSOR_AREA_IN_BOX:
+    if(GetCurrentBoxMonData(sCursorPosition, MON_DATA_EFFORT_RIBBON) == FALSE)
+            UpdateMonMarkingTiles(0, sStorage->markingComboTilesPtr);
+        else
+            UpdateMonMarkingTiles(1, sStorage->markingComboTilesPtr);
+    break;
+        
+    }
+        
+
         sStorage->markingComboSprite->invisible = FALSE;
     }
     else
@@ -7752,7 +7766,6 @@ static bool8 SetMenuTexts_Mon(void)
             SetMenuText(MENU_STORE);
     }
 
-    SetMenuText(MENU_MARK);
     SetMenuText(MENU_RELEASE);
     SetMenuText(MENU_CANCEL);
     return TRUE;
@@ -8026,7 +8039,6 @@ static const u8 *const sMenuTexts[] =
     [MENU_PLACE]      = gPCText_Place,
     [MENU_SUMMARY]    = gPCText_Summary,
     [MENU_RELEASE]    = gPCText_Release,
-    [MENU_MARK]       = gPCText_Mark,
     [MENU_JUMP]       = gPCText_Jump,
     [MENU_WALLPAPER]  = gPCText_Wallpaper,
     [MENU_NAME]       = gPCText_Name,

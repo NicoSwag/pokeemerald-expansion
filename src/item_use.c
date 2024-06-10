@@ -820,6 +820,12 @@ void ItemUseOutOfBattle_Mint(u8 taskId)
     SetUpItemUseCallback(taskId);
 }
 
+void ItemUseOutOfBattle_RibbonBox(u8 taskId)
+{
+    gItemUseCB = ItemUseCB_RibbonBox;
+    SetUpItemUseCallback(taskId);
+}
+
 void ItemUseOutOfBattle_ResetEVs(u8 taskId)
 {
     gItemUseCB = ItemUseCB_ResetEVs;

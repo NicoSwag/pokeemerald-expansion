@@ -760,6 +760,7 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_TOWN_MAP] = {gItemIcon_TownMap, gItemIconPalette_TownMap},
     [ITEM_VS_SEEKER] = {gItemIcon_VsSeeker, gItemIconPalette_VsSeeker},
     [ITEM_TM_CASE] = {gItemIcon_TMCase, gItemIconPalette_TMCase},
+    [ITEM_RIBBON_BOX] = {gItemIcon_Parcel, gItemIconPalette_Parcel},
     [ITEM_BERRY_POUCH] = {gItemIcon_BerryPouch, gItemIconPalette_BerryPouch},
     [ITEM_POKEMON_BOX_LINK] = {gItemIcon_PokemonBoxLink, gItemIconPalette_PokemonBoxLink},
     [ITEM_COIN_CASE] = {gItemIcon_CoinCase, gItemIconPalette_CoinCase},

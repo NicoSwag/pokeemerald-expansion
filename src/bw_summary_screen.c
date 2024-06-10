@@ -4822,7 +4822,7 @@ static void CreateMonMarkingsSprite(struct Pokemon *mon)
     sMonSummaryScreen->markingsSprite = sprite;
     if (sprite != NULL)
     {
-        StartSpriteAnim(sprite, GetMonData(mon, MON_DATA_MARKINGS));
+        StartSpriteAnim(sprite, GetMonData(mon, MON_DATA_EFFORT_RIBBON));
         sMonSummaryScreen->markingsSprite->x = 19;
         sMonSummaryScreen->markingsSprite->y = 102;
         sMonSummaryScreen->markingsSprite->oam.priority = 3;

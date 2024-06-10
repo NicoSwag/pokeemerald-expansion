@@ -4647,6 +4647,35 @@ void ItemUseCB_BattleChooseMove(u8 taskId, TaskFunc task)
     gTasks[taskId].func = Task_HandleWhichMoveInput;
 }
 
+void ItemUseCB_RibbonBox(u8 taskId, TaskFunc task)
+{
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    bool8 giveRibbon = TRUE;
+    bool8 takeRibbon = FALSE;
+    static const u8 canEvolve[] = _("{STR_VAR_1} can evolve again!{PAUSE_UNTIL_PRESS}");
+    static const u8 cannotEvolve[] = _("{STR_VAR_1} can no longer evolve.{PAUSE_UNTIL_PRESS}");
+    GetMonNickname(mon, gStringVar1);
+    if(GetMonData(mon, MON_DATA_EFFORT_RIBBON, NULL) == FALSE)
+    {
+        StringExpandPlaceholders(gStringVar4, cannotEvolve);
+        DisplayPartyMenuMessage(gStringVar4, 1);
+        SetMonData(mon, MON_DATA_EFFORT_RIBBON, &giveRibbon);
+    }
+    else
+    {
+    
+        StringExpandPlaceholders(gStringVar4, canEvolve);
+        DisplayPartyMenuMessage(gStringVar4, 1);
+        SetMonData(mon, MON_DATA_EFFORT_RIBBON, &takeRibbon);
+    
+    }
+    ScheduleBgCopyTilemapToVram(2);
+    gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
+        
+    
+}
+
+
 void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
 {
     u16 hp = 0;
@@ -5002,11 +5031,17 @@ void ItemUseCB_Mint(u8 taskId, TaskFunc task)
     gTasks[taskId].func = Task_Mint;
 }
 
+
 #undef tState
 #undef tMonId
 #undef tOldNature
 #undef tNewNature
 #undef tOldFunc
+
+
+
+
+
 
 static void Task_DisplayHPRestoredMessage(u8 taskId)
 {

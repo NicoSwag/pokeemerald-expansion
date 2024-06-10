@@ -651,10 +651,13 @@ DewfordTown_EventScript_Kid::
 	end
 
 
-DewfordTown_EventScript_KidPostSand:
+DewfordTown_EventScript_KidPostSand::
 	msgbox DewfordTown_Text_GoodAtBusiness, MSGBOX_NPC
 	end
 
+DewfordTown_EventScript_Ribbon::
+	special GiveLeadMonEffortRibbon
+	end
 
 DewfordTown_Text_KidShop:
 	.string "Hey, hey!\n"

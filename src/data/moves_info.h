@@ -17667,7 +17667,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "wind current."),
         .effect = EFFECT_HIT,
         .power = 80,
-        .type = TYPE_FLYINH,
+        .type = TYPE_FLYING,
         .accuracy = 100,
         .pp = 10,
         .target = MOVE_TARGET_BOTH,

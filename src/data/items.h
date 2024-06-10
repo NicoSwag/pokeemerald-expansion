@@ -7335,6 +7335,8 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
     },
 
+
+
     [ITEM_QUICK_CLAW] =
     {
         .name = _("Quick Claw"),
@@ -11087,6 +11089,21 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    },
+
+
+    [ITEM_RIBBON_BOX] =
+    {
+        .name = _("RIBBON BOX"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Gives a ribbon to a\n"
+            "POKéMON, stopping\n"
+            "it from evolving."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_RibbonBox,
     },
 
     [ITEM_VS_SEEKER] =

@@ -4189,7 +4189,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
         holdEffect = ItemId_GetHoldEffect(heldItem);
 
     // Prevent evolution with Everstone, unless we're just viewing the party menu with an evolution item
-    if (holdEffect == HOLD_EFFECT_PREVENT_EVOLVE
+    if ((holdEffect == HOLD_EFFECT_PREVENT_EVOLVE || GetMonData(mon, MON_DATA_EFFORT_RIBBON, NULL))
         && mode != EVO_MODE_ITEM_CHECK
         && (P_KADABRA_EVERSTONE < GEN_4 || species != SPECIES_KADABRA))
         return SPECIES_NONE;
