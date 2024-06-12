@@ -67,7 +67,7 @@
 #define FLAG_ITEM_RUSTURF_SKYFRAGMENT    0x36 // Unused Flag
 #define FLAG_HIDE_MR_BRINEY_RUSTBORO    0x37 // Unused Flag
 #define FLAG_CLEARED_GRANITE_CAVE    0x38 // Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
+#define FLAG_RECEIVED_TM10    0x39 // Unused Flag
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag
@@ -302,7 +302,7 @@
 #define FLAG_RECEIVED_MACHO_BRACE            0x115
 #define FLAG_RECEIVED_SOOTHE_BELL            0x116
 #define FLAG_RECEIVED_WHITE_HERB             0x117
-#define FLAG_RECEIVED_SOFT_SAND              0x118
+#define FLAG_RECEIVED_SHELL_BELL              0x118
 #define FLAG_ENABLE_PROF_BIRCH_MATCH_CALL    0x119
 #define FLAG_RECEIVED_CLEANSE_TAG            0x11A
 #define FLAG_RECEIVED_FOCUS_BAND             0x11B

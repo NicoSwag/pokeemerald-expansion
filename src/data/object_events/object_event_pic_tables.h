@@ -601,6 +601,18 @@ static const struct SpriteFrameImage sPicTable_Aron[] = {
     overworld_frame(gObjectEventPic_Aron, 4, 4, 8),
 };
 
+static const struct SpriteFrameImage sPicTable_Eevee[] = {
+    overworld_frame(gObjectEventPic_Eevee, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Eevee, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Eevee, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Eevee, 4, 4, 3),
+    overworld_frame(gObjectEventPic_Eevee, 4, 4, 4),
+    overworld_frame(gObjectEventPic_Eevee, 4, 4, 5),
+    overworld_frame(gObjectEventPic_Eevee, 4, 4, 6),
+    overworld_frame(gObjectEventPic_Eevee, 4, 4, 7),
+    overworld_frame(gObjectEventPic_Eevee, 4, 4, 8),
+};
+
 static const struct SpriteFrameImage sPicTable_Kadabra[] = {
     overworld_frame(gObjectEventPic_Kadabra, 4, 4, 0),
     overworld_frame(gObjectEventPic_Kadabra, 4, 4, 1),

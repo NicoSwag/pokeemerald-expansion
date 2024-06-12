@@ -224,6 +224,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Corphish;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Makuhita;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Slakoth;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Aron;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Eevee;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kadabra;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scizor;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pelipper;
@@ -391,6 +392,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MAKUHITA] =              &gObjectEventGraphicsInfo_Makuhita,
     [OBJ_EVENT_GFX_SLAKOTH] =              &gObjectEventGraphicsInfo_Slakoth,
     [OBJ_EVENT_GFX_ARON] =              &gObjectEventGraphicsInfo_Aron,
+    [OBJ_EVENT_GFX_EEVEE] =              &gObjectEventGraphicsInfo_Eevee,
     [OBJ_EVENT_GFX_KADABRA] =              &gObjectEventGraphicsInfo_Kadabra,
     [OBJ_EVENT_GFX_SCIZOR] =              &gObjectEventGraphicsInfo_Scizor,
     [OBJ_EVENT_GFX_PELIPPER] =              &gObjectEventGraphicsInfo_Pelipper,

@@ -655,7 +655,7 @@
       "id": "LAYOUT_DEWFORD_TOWN_HALL",
       "name": "DewfordTown_Hall_Layout",
       "width": 17,
-      "height": 9,
+      "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/DewfordTown_Hall/border.bin",

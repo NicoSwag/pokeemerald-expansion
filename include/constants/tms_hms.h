@@ -11,7 +11,7 @@
     F(FIRE_SPIN) \
     F(REVERSAL) \
     F(BULLDOZE) \
-    F(HIDDEN_POWER) \
+    F(SUBSTITUTE) \
     F(SUNNY_DAY) \
     F(TAUNT) \
     F(ICE_BEAM) \

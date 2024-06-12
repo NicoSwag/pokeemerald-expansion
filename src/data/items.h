@@ -9396,19 +9396,19 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_BULLDOZE,
     },
 
-    [ITEM_TM_HIDDEN_POWER] =
+    [ITEM_TM_SUBSTITUTE] =
     {
         .name = _("TM10"),
-        .price = 3000,
+        .price = 3400,
         .description = COMPOUND_STRING(
-            "The attack power\n"
-            "varies among\n"
-            "different Pokémon."),
+            "Creates a decoy\n"
+            "using 1/4 of\n"
+            "the user's HP."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_HIDDEN_POWER,
+        .secondaryId = MOVE_SUBSTITUTE,
     },
 
     [ITEM_TM_SUNNY_DAY] =

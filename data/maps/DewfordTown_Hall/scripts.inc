@@ -9,9 +9,6 @@ DewfordTown_Hall_MapScripts::
 DewfordTown_Hall_EventScript_Girl::
 	lock
 	faceplayer
-	call Common_EventScript_BufferTrendyPhrase
-	special IsTrendyPhraseBoring
-	goto_if_eq VAR_RESULT, TRUE, DewfordTown_Hall_EventScript_GirlBoredOfTrend
 	msgbox DewfordTown_Hall_Text_CantImagineLifeWithoutTrend, MSGBOX_DEFAULT
 	release
 	end
@@ -24,7 +21,6 @@ DewfordTown_Hall_EventScript_GirlBoredOfTrend::
 DewfordTown_Hall_EventScript_Woman::
 	lock
 	faceplayer
-	call Common_EventScript_BufferTrendyPhrase
 	msgbox DewfordTown_Hall_Text_TeachingMonAboutTrend, MSGBOX_DEFAULT
 	release
 	end
@@ -74,7 +70,6 @@ DewfordTown_Hall_EventScript_Twin::
 DewfordTown_Hall_EventScript_LittleBoy::
 	lock
 	faceplayer
-	call Common_EventScript_BufferTrendyPhrase
 	msgbox DewfordTown_Hall_Text_CollectTrendMerchandise, MSGBOX_DEFAULT
 	release
 	end
@@ -104,6 +99,16 @@ DewfordTown_Hall_EventScript_Painting::
 DewfordTown_Hall_EventScript_ScreamTitle::
 	msgbox DewfordTown_Hall_Text_TrendsScream, MSGBOX_DEFAULT
 	releaseall
+	end
+
+DewfordTown_Hall_EventScript_Gentleman::
+	goto_if_unset FLAG_RECEIVED_TM10 DewfordTown_Hall_EventScript_GentlemanTeachesDolls
+	msgbox DewfordTown_Hall_Text_ILoveDolls, MSGBOX_NPC
+	end
+
+DewfordTown_Hall_EventScript_GentlemanTeachesDolls:
+	msgbox DewfordTown_Hall_Text_GiveSubstitute, MSGBOX_NPC
+	setflag FLAG_RECEIVED_TM10
 	end
 
 DewfordTown_Hall_EventScript_SmileTitle::
@@ -242,6 +247,11 @@ DewfordTown_Hall_Movement_SchoolKidWalkInPlaceRight:
 	walk_in_place_right
 	step_end
 
+DewfordTown_Hall_EventScript_Wynaut::
+	msgbox DewfordTown_Hall_Text_Wynaut, MSGBOX_SIGN
+	end
+
+
 DewfordTown_Hall_EventScript_SludgeBombMan::
 	lock
 	faceplayer
@@ -260,10 +270,11 @@ DewfordTown_Hall_EventScript_ReceivedSludgeBomb::
 	end
 
 DewfordTown_Hall_Text_CantImagineLifeWithoutTrend:
-	.string "What's in vogue? Why, it has to be\n"
-	.string "“{STR_VAR_1}”!\p"
-	.string "I can't imagine what life would be like\n"
-	.string "without “{STR_VAR_1}”!$"
+	.string "Personally, I could not associate\n"
+	.string "with people who use ELEMENTAL STONES.\p"
+	.string "I've heard that they can make POKéMON\n"
+	.string "evolve with some kind of horrid radiation!\p"
+	.string "It's just not natural!$"
 
 DewfordTown_Hall_Text_GettingBoredOfTrend:
 	.string "What's in vogue? Why, it has to be\n"
@@ -272,10 +283,10 @@ DewfordTown_Hall_Text_GettingBoredOfTrend:
 	.string "I should look for the next big thing.$"
 
 DewfordTown_Hall_Text_TeachingMonAboutTrend:
-	.string "I'm teaching my POKéMON about\n"
-	.string "“{STR_VAR_1},”\l"
-	.string "but it's not going well.\p"
-	.string "It's a bit too much, I think.$"
+	.string "That man has a WYNAUT…\p"
+	.string "A rare, beautiful, pristine, untainted,\n"
+	.string "unevolved WYNAUT…\p"
+	.string "Ohhhh… The jealousy…$"
 
 DewfordTown_Hall_Text_DeepLinkBetweenXAndY:
 	.string "I'm studying up on the hip and trendy\n"
@@ -307,18 +318,18 @@ DewfordTown_Hall_Text_IsTrendMorePopularAcrossSea:
 	.string "even more popular?$"
 
 DewfordTown_Hall_Text_CollectTrendMerchandise:
-	.string "I collect official\n"
-	.string "“{STR_VAR_1}”\l"
-	.string "licensed merchandise.\p"
-	.string "I have official\n"
-	.string "“{STR_VAR_1}” DOLLS…\p"
-	.string "Official “{STR_VAR_1}”\n"
-	.string "brand clothing…\p"
-	.string "And officially licensed\n"
-	.string "“{STR_VAR_1}”\l"
-	.string "picture books.\p"
-	.string "Heheh, I own!\n"
-	.string "I'm not sharing anything with you!$"
+	.string "Hi! I'm the president of this\n"
+	.string "FAN CLUB!\p"
+	.string "Yeah, that's right!\p"
+	.string "Oh, the man at the end of the table?\n"
+	.string "That's just his favorite spot.\p"
+	.string "Anyway!\p"
+	.string "This club is dedicated to the beauty of\n"
+	.string "unevolved POKéMON!\p"
+	.string "They're not only cute, but they can\n"
+	.string "be strong, too!\p"
+	.string "If you can beat BRAWLY I'll show you\n"
+	.string "what I'm talking about!$"
 
 DewfordTown_Hall_Text_BooksAboutTrend:
 	.string "IDENTIFYING GOOD\n"
@@ -442,3 +453,19 @@ DewfordTown_Hall_Text_LoveSludgeBombButTrendInToo:
 	.string "But POKéMON with the move\n"
 	.string "“{STR_VAR_1}”\l"
 	.string "are in, too.$"
+
+DewfordTown_Hall_Text_Wynaut:
+	.string "Oh! A rare POKéMON!\p"
+	.string "…Actually, it's just a doll.$"
+
+DewfordTown_Hall_Text_ILoveDolls:
+	.string "I love dolls!\p"
+	.string "They're cute, they never grow up,\n"
+	.string "require no care, and never disappoint!\p"
+	.string "Unlike my son.$"
+
+DewfordTown_Hall_Text_GiveSubstitute:\
+	.string "I love dolls!\p"
+	.string "They're cute, they never grow up,\n"
+	.string "require no care, and never disappoint!\p"
+	.string "Here, let me teach you how to make them!$"

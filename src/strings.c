@@ -200,6 +200,7 @@ const u8 gText_TM06[] = _("SANDSTORM");
 const u8 gText_TM07[] = _("FIRE_SPIN");
 const u8 gText_TM08[] = _("REVERSAL");
 const u8 gText_TM09[] = _("BULLDOZE");
+const u8 gText_TM10[] = _("SUBSTITUTE");
 const u8 gMenuText_Show[] = _("SHOW");
 const u8 gText_EmptyString2[] = _("");
 const u8 gText_Cancel7[] = _("CANCEL"); // Unused

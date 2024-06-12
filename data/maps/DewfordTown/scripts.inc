@@ -642,11 +642,11 @@ DewfordTown_EventScript_OldWoman::
 
 DewfordTown_EventScript_Kid::
 	lockall
-	goto_if_set FLAG_RECEIVED_SOFT_SAND, DewfordTown_EventScript_KidPostSand
+	goto_if_set FLAG_RECEIVED_SHELL_BELL, DewfordTown_EventScript_KidPostSand
 	msgbox DewfordTown_Text_KidShop, MSGBOX_NPC
 	closemessage
 	giveitem ITEM_SOFT_SAND
-	setflag FLAG_RECEIVED_SOFT_SAND
+	setflag FLAG_RECEIVED_SHELL_BELL
 	release
 	end
 
@@ -662,7 +662,7 @@ DewfordTown_EventScript_Ribbon::
 DewfordTown_Text_KidShop:
 	.string "Hey, hey!\n"
 	.string "I'm running a shop!\p"
-	.string "Here, buy some sand!\p"
+	.string "Here, buy a seashell!\p"
 	.string "The price is, uhm…\p"
 	.string "Uhm…………\p"
 	.string "Zero!!!!$"

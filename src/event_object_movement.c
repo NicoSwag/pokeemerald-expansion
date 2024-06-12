@@ -495,6 +495,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_CORPHISH               0x1147
 #define OBJ_EVENT_PAL_TAG_MAKUHITA               0x1148
 #define OBJ_EVENT_PAL_TAG_SLAKOTH               0x1149
+#define OBJ_EVENT_PAL_TAG_EEVEE               0x1150
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -530,6 +531,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Rockruff,        OBJ_EVENT_PAL_TAG_ROCKRUFF},
     {gObjectEventPal_Corphish,        OBJ_EVENT_PAL_TAG_CORPHISH},
     {gObjectEventPal_Aron,        OBJ_EVENT_PAL_TAG_ARON},
+    {gObjectEventPal_Eevee,        OBJ_EVENT_PAL_TAG_EEVEE},
     {gObjectEventPal_Makuhita,        OBJ_EVENT_PAL_TAG_MAKUHITA},
     {gObjectEventPal_Slakoth,        OBJ_EVENT_PAL_TAG_SLAKOTH},
     {gObjectEventPal_Kadabra,        OBJ_EVENT_PAL_TAG_KADABRA},

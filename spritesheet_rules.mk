@@ -462,6 +462,9 @@ $(OBJEVENTGFXDIR)/pokemon/rockruff.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/pokemon/aron.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(OBJEVENTGFXDIR)/pokemon/eevee.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(OBJEVENTGFXDIR)/pokemon/corphish.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
