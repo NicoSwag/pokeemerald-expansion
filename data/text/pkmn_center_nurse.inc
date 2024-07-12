@@ -14,6 +14,9 @@ gText_RestoredPkmnToFullHealth::
 	.string "We've restored your POKéMON\n"
 	.string "to full health.$"
 
+gText_HeresYourHealingItems::
+	.string "…And here's your healing\n"
+	.string "items!$"
 
 gText_NoBalls::
 	.string "Sorry about prying, but…\p"

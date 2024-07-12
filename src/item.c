@@ -349,7 +349,7 @@ bool8 RemoveBagItem(u16 itemId, u16 count)
         }
 
         if (totalQuantity < count)
-            return FALSE;   // We don't have enough of the item
+            SetBagItemQuantity(&itemPocket->itemSlots[var].quantity, 0);   // We don't have enough of the item
 
         if (CurMapIsSecretBase() == TRUE)
         {

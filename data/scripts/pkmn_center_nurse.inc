@@ -3,7 +3,6 @@ Common_EventScript_PkmnCenterNurse::
 	faceplayer
 	setvar VAR_0x8004, 0
 	specialvar VAR_RESULT, CountPlayerTrainerStars
-	goto_if_eq VAR_RESULT, 4, EventScript_PkmnCenterNurse_GoldCard
 	msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_HealPkmn
 	goto_if_eq VAR_RESULT, NO, EventScript_PkmnCenterNurse_Goodbye
@@ -53,19 +52,36 @@ EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom::
 
 @ VAR_0x8004 is 1 when player has Gold Card
 EventScript_PkmnCenterNurse_ReturnPkmn::
-	goto_if_eq VAR_0x8004, 1, EventScript_PkmnCenterNurse_ReturnPkmn2
-	message gText_RestoredPkmnToFullHealth
+	msgbox gText_RestoredPkmnToFullHealth, MSGBOX_DEFAULT
 	waitmessage
-	doesplayerhavepokeball
-	call_if_eq VAR_RESULT, FALSE, EventScript_CheckMoney
+	call EventScript_PkmnCenterNurse_GiveHealingItems
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
 	message gText_WeHopeToSeeYouAgain
 	return
 
+
+
+EventScript_PkmnCenterNurse_GiveHealingItems::
+	msgbox gText_HeresYourHealingItems, MSGBOX_DEFAULT
+	removeitem ITEM_POTION, 999
+	removeitem ITEM_SUPER_POTION, 999
+	goto_if_set FLAG_BADGE01_GET, EventScript_PkmnCenterNurse_GiveHealingItemsStoneBadge
+	giveitem ITEM_POTION, 10
+	EventScript_PkmnCenterNurse_DoneGivingItems::
+	return
+
+EventScript_PkmnCenterNurse_GiveHealingItemsStoneBadge::
+	giveitem ITEM_SUPER_POTION, 10
+	goto EventScript_PkmnCenterNurse_DoneGivingItems
+
+
+
+
 EventScript_PkmnCenterNurse_ReturnPkmn2::
 	message gText_ThankYouForWaiting
 	waitmessage
+	call EventScript_PkmnCenterNurse_GiveHealingItems
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
 	message gText_WeHopeToSeeYouAgain2

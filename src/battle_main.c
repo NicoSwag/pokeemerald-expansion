@@ -2320,7 +2320,8 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             if(FlagGet(FLAG_LEVEL_SCALING) && (trainerHighestLevel - trainerScaling > enemyHighestLevel)){
                 currentEnemyLevel = trainerHighestLevel - levelDifference - trainerScaling;
             }
-              
+            
+            
             CreateMon(&party[i], partyData[i].species, currentEnemyLevel, 0, TRUE, personalityValue, otIdType, fixedOtId);
             
             
