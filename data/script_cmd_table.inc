@@ -227,11 +227,17 @@ gScriptCmdTable::
 	.4byte ScrCmd_warpwhitefade                     @ 0xe0
 	.4byte ScrCmd_buffercontestname                 @ 0xe1
 	.4byte ScrCmd_bufferitemnameplural              @ 0xe2
+<<<<<<< HEAD
 	.4byte ScrCmd_checkpartycanlearn              @ 0xe2
 	.4byte ScrCmd_showitemdesc              			@ 0xe3
 	.4byte ScrCmd_hideitemdesc              			@ 0xe4
 	.4byte ScrCmd_dynmultichoice                    @ 0xe5
 	.4byte ScrCmd_dynmultipush                      @ 0xe6
+=======
+	.4byte ScrCmd_questmenu                         @ 0xe3
+    .4byte ScrCmd_subquestmenu                      @ 0xe4
+    .4byte ScrCmd_returnqueststate                  @ 0xe5
+>>>>>>> cd904877d2c3ecba46eed866c6c813426b8b9b94
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop

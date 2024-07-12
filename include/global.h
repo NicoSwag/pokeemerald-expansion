@@ -490,8 +490,13 @@ struct RankingHall2P
     //u8 padding;
 };
 
+<<<<<<< HEAD
 #include "constants/items.h"
 #define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
+=======
+// quest menu
+#include "constants/quests.h"
+>>>>>>> cd904877d2c3ecba46eed866c6c813426b8b9b94
 
 struct SaveBlock2
 {
@@ -531,9 +536,20 @@ struct SaveBlock2
 #endif //FREE_RECORD_MIXING_HALL_RECORDS
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
     /*0x64C*/ struct BattleFrontier frontier;
+<<<<<<< HEAD
     /*0xF2C*/ bool8 autoRun;
     /*0xF2C*/ u8 itemFlags[ITEM_FLAGS_COUNT];
 }; // sizeof=0xF2C
+=======
+
+#define QUEST_FLAGS_COUNT ROUND_BITS_TO_BYTES(QUEST_COUNT)
+#define SUB_FLAGS_COUNT ROUND_BITS_TO_BYTES(SUB_QUEST_COUNT)
+#define QUEST_STATES 5 //Number of different quest states tracked in the saveblock
+
+    u8 questData[QUEST_FLAGS_COUNT * QUEST_STATES];
+    u8 subQuests[SUB_FLAGS_COUNT];
+}; 
+>>>>>>> cd904877d2c3ecba46eed866c6c813426b8b9b94
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
 
@@ -875,6 +891,7 @@ struct TrainerHillSave
 
 
 
+
 // For external event data storage. The majority of these may have never been used.
 // In Emerald, the only known used fields are the PokeCoupon and BoxRS ones, but hacking the distribution discs allows Emerald to receive events and set the others
 struct ExternalEventData
@@ -1010,6 +1027,7 @@ struct SaveBlock1
     /*0x31DC*/ struct Roamer roamer;
 #if FREE_ENIGMA_BERRY == FALSE
     /*0x31F8*/ struct EnigmaBerry enigmaBerry;
+<<<<<<< HEAD
 #endif //FREE_ENIGMA_BERRY
 #if FREE_MYSTERY_GIFT == FALSE
 #endif //FREE_MYSTERY_GIFT
@@ -1033,6 +1051,21 @@ struct SaveBlock1
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
     u8 acquiredTMs [16];
     // sizeof: 0x3???
+=======
+    /*0x322C*/ struct MysteryGiftSave mysteryGift;
+    /*0x3598*/ u8 unused_3598[0x180];
+    /*0x3718*/ u32 trainerHillTimes[NUM_TRAINER_HILL_MODES];
+    /*0x3728*/ struct RamScript ramScript;
+    /*0x3B14*/ struct RecordMixingGift recordMixingGift;
+    /*0x3B24*/ u8 seen2[NUM_DEX_FLAG_BYTES];
+    /*0x3B58*/ LilycoveLady lilycoveLady;
+    /*0x3B98*/ struct TrainerNameRecord trainerNameRecords[20];
+    /*0x3C88*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21];
+    /*0x3D5A*/ u8 unused_3D5A[10];
+    /*0x3D64*/ struct TrainerHillSave trainerHill;
+    /*0x3D70*/ struct WaldaPhrase waldaPhrase;
+    /* size = 0x3D88 */
+>>>>>>> cd904877d2c3ecba46eed866c6c813426b8b9b94
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

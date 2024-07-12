@@ -149,4 +149,8 @@
 	.include "src/faraway_island.o"
 	.include "src/trainer_hill.o"
 	.include "src/rayquaza_scene.o"
+<<<<<<< HEAD
 	.include "src/ui_main_menu.o"
+=======
+	.include "src/quests.o"
+>>>>>>> cd904877d2c3ecba46eed866c6c813426b8b9b94

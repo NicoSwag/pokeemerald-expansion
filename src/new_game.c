@@ -44,6 +44,7 @@
 #include "berry_powder.h"
 #include "mystery_gift.h"
 #include "union_room_chat.h"
+#include "quests.h"
 #include "constants/items.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
@@ -204,9 +205,13 @@ void NewGameInitData(void)
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
     ResetContestLinkResults();
+<<<<<<< HEAD
     gSaveBlock2Ptr->autoRun = FALSE;
     
     memset(&gSaveBlock2Ptr->itemFlags, 0, sizeof(gSaveBlock2Ptr->itemFlags));
+=======
+    QuestMenu_ResetMenuSaveData();
+>>>>>>> cd904877d2c3ecba46eed866c6c813426b8b9b94
 }
 
 static void ResetMiniGamesRecords(void)
