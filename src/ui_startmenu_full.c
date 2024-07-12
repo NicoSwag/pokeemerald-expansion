@@ -47,6 +47,8 @@
 #include "link.h"
 #include "frontier_pass.h"
 #include "start_menu.h"
+#include "quests.h"
+
 
 /*
     Full Screen Start Menu

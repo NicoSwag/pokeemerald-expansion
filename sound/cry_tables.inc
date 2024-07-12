@@ -2016,6 +2016,9 @@ gCryTable::
 	cry Cry_Rolycoly
 	cry Cry_Carkol
 	cry Cry_Coalossal
+	cry Cry_Emeroll
+	cry Cry_Emerail
+	cry Cry_Behemerald
 .endif @ P_FAMILY_ROLYCOLY
 .if P_FAMILY_APPLIN == TRUE
 	cry Cry_Applin
@@ -2426,6 +2429,9 @@ gCryTable::
 .if P_FAMILY_PECHARUNT == TRUE
 	cry Cry_Pecharunt
 .endif @ P_FAMILY_PECHARUNT
+	cry Cry_Shockitt
+	cry Cry_Raiger
+	cry Cry_Bolthera
 
 	.align 2
 gCryTable_Reverse::
@@ -4445,6 +4451,9 @@ gCryTable_Reverse::
 	cry_reverse Cry_Rolycoly
 	cry_reverse Cry_Carkol
 	cry_reverse Cry_Coalossal
+	cry_reverse Cry_Emeroll
+	cry_reverse Cry_Emerail
+	cry_reverse Cry_Behemerald
 .endif @ P_FAMILY_ROLYCOLY
 .if P_FAMILY_APPLIN == TRUE
 	cry_reverse Cry_Applin
@@ -4855,3 +4864,6 @@ cry_reverse Cry_Luxwan
 .if P_FAMILY_PECHARUNT == TRUE
 	cry_reverse Cry_Pecharunt
 .endif @ P_FAMILY_PECHARUNT
+	cry_reverse Cry_Shockitt
+	cry_reverse Cry_Raiger
+	cry_reverse Cry_Bolthera

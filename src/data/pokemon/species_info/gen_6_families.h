@@ -3788,7 +3788,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         #else
             .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_MINERAL},
         #endif
-        .abilities = {ABILITY_CLIMATE_CHANGE, ABILITY_SOLID_ROCK, ABILITY_SNOW_CLOAK},
+        .abilities = {ABILITY_CLIMATE_CHANGE, ABILITY_ICY_ARMOR, ABILITY_SNOW_CLOAK},
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("BERGMITE"),
         .cryId = CRY_BERGMITE,

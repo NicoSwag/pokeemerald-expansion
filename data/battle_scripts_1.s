@@ -7857,6 +7857,11 @@ BattleScript_RainDishActivates::
 	call BattleScript_AbilityHpHeal
 	end3
 
+BattleScript_InductiveActivates::
+	call BattleScript_AbilityHpHeal
+	end3
+
+
 BattleScript_HoneyGatherActivates::
 	call BattleScript_AbilityHpHealPartner
 	end3
@@ -8415,6 +8420,7 @@ BattleScript_DampStopsExplosion::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUpTarget
 	printstring STRINGID_PKMNPREVENTSUSAGE
+	tryfaintmon BS_ATTACKER
 	pause B_WAIT_TIME_LONG
 	moveendto MOVEEND_NEXT_TARGET
 	moveendcase MOVEEND_CLEAR_BITS

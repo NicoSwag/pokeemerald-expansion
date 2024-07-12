@@ -169,6 +169,7 @@ struct UCoords32
 
 struct SaveBlock3
 {
+
 };
 
 extern struct SaveBlock3 *gSaveBlock3Ptr;
@@ -539,6 +540,7 @@ struct SaveBlock2
     /*0x0F2C*/ u8 unlockedQuests[SIDE_QUEST_FLAGS_COUNT];
     /*0x????*/ u8 completedQuests[SIDE_QUEST_FLAGS_COUNT];
     /*0x????*/ u8 activeQuest;
+    
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -1040,6 +1042,7 @@ struct SaveBlock1
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
     u8 acquiredTMs [16];
     // sizeof: 0x3???
+    u8 beatTrainer[TRAINERS_COUNT];
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

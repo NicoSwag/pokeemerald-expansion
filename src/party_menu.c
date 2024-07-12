@@ -76,6 +76,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "naming_screen.h"
+#include "quests.h"
 
 #if (DECAP_ENABLED) && (DECAP_MIRRORING) && !(DECAP_PARTY_MENU)
 #define gStringVar4 (MirrorPtr(gStringVar4))
@@ -4646,6 +4647,13 @@ void ItemUseCB_BattleChooseMove(u8 taskId, TaskFunc task)
     ShowMoveSelectWindow(gPartyMenu.slotId);
     gTasks[taskId].func = Task_HandleWhichMoveInput;
 }
+
+void ItemUseCB_QuestLog(u8 taskId, TaskFunc task)
+{
+    QuestMenu_Init(0, CB2_ReturnToField);
+    gTasks[taskId].func = task;
+}
+
 
 void ItemUseCB_RibbonBox(u8 taskId, TaskFunc task)
 {

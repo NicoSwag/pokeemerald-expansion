@@ -781,7 +781,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .name = COMPOUND_STRING("Freefall"),
         .description = COMPOUND_STRING(
             "The user crash lands. Missing\n"
-            "hurts"),
+            "hurts the user."),
             .power = 110,
         .effect = EFFECT_RECOIL_IF_MISS,
         .type = TYPE_FLYING,
@@ -989,32 +989,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     },
 
 
-    [MOVE_SUPLEX] =
-    {
-        .name = COMPOUND_STRING("Suplex"),
-        .description = COMPOUND_STRING(
-            "Slams the opponent on its\n"
-            "back. May paralyze."),
-        .effect = EFFECT_HIT,
-        .power = 75,
-        .type = TYPE_FIGHTING,
-        .accuracy = 100,
-        .pp = 15,
-        .target = MOVE_TARGET_SELECTED,
-        .priority = 0,
-        .category = DAMAGE_CATEGORY_PHYSICAL,
-        .makesContact = TRUE,
-        .minimizeDoubleDamage = B_UPDATED_MOVE_FLAGS >= GEN_6,
-        .skyBattleBanned = TRUE,
-        .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_PARALYSIS,
-            .chance = 30,
-        }),
-        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
-        .contestCategory = CONTEST_CATEGORY_TOUGH,
-        .contestComboStarterId = 0,
-        .contestComboMoves = {0}
-    },
 
     [MOVE_WRAP] =
     {
@@ -4012,7 +3986,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     
     [MOVE_EMP] =
     {
-        .name = COMPOUND_STRING("Explosion"),
+        .name = COMPOUND_STRING("EMP"),
         .description = COMPOUND_STRING(
             "Sets Electric Terrain but\n"
             "makes the user faint."),
@@ -4153,9 +4127,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     {
         .name = COMPOUND_STRING("Sharpen"),
         .description = COMPOUND_STRING(
-            "Reduces the polygon count\n"
-            "and raises Attack."),
-        .effect = EFFECT_ATTACK_UP,
+            "Sharpen the user's body\n"
+            "and raises Atk and Sp. Atk."),
+        .effect = EFFECT_ATTACK_SPATK_UP,
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,
@@ -12440,6 +12414,29 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .contestComboMoves = {0}
     },
 
+    [MOVE_CLEAN_SLATE] =
+    {
+        .name = COMPOUND_STRING("Clean Slate"),
+        .description = COMPOUND_STRING(
+            "Polishes the opponent,\n"
+            "eliminating stat changes."),
+        .effect = EFFECT_HIT,
+        .power = 50,
+        .type = TYPE_ROCK,
+        .accuracy = 0,
+        .pp = 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_CLEAR_SMOG,
+        }),
+        .contestEffect = CONTEST_EFFECT_WORSEN_CONDITION_OF_PREV_MONS,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0}
+    },
+
     [MOVE_STORED_POWER] =
     {
         .name = COMPOUND_STRING("Stored Power"),
@@ -13023,7 +13020,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "lowering its Speed."),
         .effect = EFFECT_HIT,
         .power = 60,
-        .type = TYPE_GROUND,
+        .type = TYPE_BUG,
         .accuracy = 100,
         .pp = 20,
         .target = MOVE_TARGET_SELECTED,
@@ -13943,7 +13940,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_MONSOON] =
     {
-        .name = COMPOUND_STRING("MONSOONs"),
+        .name = COMPOUND_STRING("MONSOON"),
         .description = COMPOUND_STRING(
             "This attack does Flying\n"
             "and Water-type damage."),
@@ -15252,13 +15249,37 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .makesContact = TRUE,
-        .punchingMove = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SP_ATK_PLUS_1,
             .self = TRUE,
             .chance = 100,
         }),
         .contestEffect = CONTEST_EFFECT_BETTER_IF_SAME_TYPE,
+        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0}
+    },
+
+    [MOVE_SUPLEX] =
+    {
+        .name = COMPOUND_STRING("SUPLEX"),
+        .description = COMPOUND_STRING(
+            "Slams the opponent on its\n"
+            "back. May paralyze."),
+        .effect = EFFECT_HIT,
+        .power = 75,
+        .type = TYPE_FIGHTING,
+        .accuracy = 100,
+        .pp = 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_PARALYSIS,
+            .chance = 30,
+        }),
+        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = 0,
         .contestComboMoves = {0}

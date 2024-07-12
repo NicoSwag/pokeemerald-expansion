@@ -8121,6 +8121,7 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
     }
     else
     {
+        
         const struct TrainerMon *party = gTrainers[trainerId].party;
         lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
 
@@ -8139,6 +8140,8 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
     }
     if(GetCurrentMapBattleScene() == MAP_BATTLE_SCENE_GYM)
         moneyReward = 0;
+    if(gSaveBlock1Ptr->beatTrainer[trainerId]==1)
+        moneyReward = 0;
     return moneyReward;
 }
 
@@ -8149,11 +8152,16 @@ static void Cmd_getmoneyreward(void)
     u32 money;
     u8 sPartyLevel = 1;
 
+    
+
     if (gBattleOutcome == B_OUTCOME_WON)
     {
         money = GetTrainerMoneyToGive(gTrainerBattleOpponent_A);
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+        gSaveBlock1Ptr->beatTrainer[gTrainerBattleOpponent_A] = 1;
+        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS){
             money += GetTrainerMoneyToGive(gTrainerBattleOpponent_B);
+            gSaveBlock1Ptr->beatTrainer[gTrainerBattleOpponent_A] = 1;
+        }
         AddMoney(&gSaveBlock1Ptr->money, money);
     }
     else

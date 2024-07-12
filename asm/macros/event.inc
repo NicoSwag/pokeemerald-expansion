@@ -1852,7 +1852,7 @@
 	_dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, \shouldSort, \initialSelected, \callbacks, NULL
 	.endm
     .macro questmenu case:req, questId:req
-    .byte 0xe5
+    .byte 0xe6
     .byte \case
     .byte \questId
     .endm

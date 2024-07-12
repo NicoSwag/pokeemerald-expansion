@@ -1,5 +1,14 @@
 Route102_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route102_EventScript_OnTransition
 	.byte 0
+
+
+Route102_EventScript_OnTransition::
+	cleartrainerflag TRAINER_CALVIN_1
+	end
+
+
+
 
 Route102_EventScript_LittleBoy::
 	lock

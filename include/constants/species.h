@@ -1636,8 +1636,15 @@
 #define SPECIES_CALFLING_BLUE                         1529
 #define SPECIES_MILTANK_STRAWBERRY                        1530
 #define SPECIES_MILTANK_BLUEBERRY                        1531
+#define SPECIES_SHOCKITT                                1532
+#define SPECIES_RAIGER                               1533
+#define SPECIES_BOLTHERA                               1534
+#define SPECIES_EMEROLL                                 1535
+#define SPECIES_EMERAIL                                 1536
+#define SPECIES_BEHEMERALD                              1537
 
-#define SPECIES_EGG 1532
+
+#define SPECIES_EGG 1538
 
 #define NUM_SPECIES SPECIES_EGG
 

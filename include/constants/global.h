@@ -126,6 +126,7 @@
 #define FEMALE 1
 #define GENDER_COUNT 2
 
+
 #define BARD_SONG_LENGTH       6
 #define NUM_STORYTELLER_TALES  4
 #define NUM_TRADER_ITEMS       4

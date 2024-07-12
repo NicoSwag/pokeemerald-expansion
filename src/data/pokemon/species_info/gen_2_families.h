@@ -5829,6 +5829,142 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     },
 #endif //P_FAMILY_CELEBI
 
+
+
+  [SPECIES_SHOCKITT] =
+    {
+        .baseHP        = 55,
+        .baseAttack    = 60,
+        .baseDefense   = 55,
+        .baseSpeed     = 45,
+        .baseSpAttack  = 55,
+        .baseSpDefense = 45,
+        .types = { TYPE_ELECTRIC, TYPE_ELECTRIC },
+        .catchRate = 45,
+        .expYield = 65,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 15,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FAIRY },
+        .abilities = { ABILITY_STATIC, ABILITY_GALVANIZE, ABILITY_INDUCTIVE },
+        .bodyColor = BODY_COLOR_YELLOW,
+        .speciesName = _("SHOCKITT"),
+        .cryId = CRY_BEDIGUARD,
+        .categoryName = _("ELEKITTY"),
+        .height = 8,
+        .weight = 395,
+        .description = COMPOUND_STRING(
+            "It's surprisingly resilient. It can\n"
+            "able to absorb the force of almost\n"
+            "any hit, only to return it to the\n"
+            "sender with a powerful electric shock."),
+        .pokemonScale = 290,
+        .pokemonOffset = 15,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        FRONT_PIC(Shockitt, 48, 40),
+        .frontPicYOffset = 14,
+        .frontAnimFrames = sAnims_Shockitt,
+        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        BACK_PIC(Shockitt, 56, 40),
+        .backPicYOffset = 13,
+        .backAnimId = BACK_ANIM_JOLT_RIGHT,
+        PALETTES(Shockitt),
+        ICON(Shockitt, 1),
+        LEARNSETS(Shockitt),
+        .evolutions = EVOLUTION({EVO_LEVEL, 25, SPECIES_RAIGER}),
+    },            
+
+  [SPECIES_RAIGER] =
+    {
+        .baseHP        = 75,
+        .baseAttack    = 80,
+        .baseDefense   = 75,
+        .baseSpeed     = 55,
+        .baseSpAttack  = 70,
+        .baseSpDefense = 65,
+        .types = { TYPE_ELECTRIC, TYPE_ELECTRIC },
+        .catchRate = 120,
+        .expYield = 144,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 15,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FAIRY },
+        .abilities = { ABILITY_STATIC, ABILITY_GALVANIZE, ABILITY_INDUCTIVE },
+        .bodyColor = BODY_COLOR_YELLOW,
+        .speciesName = _("RAIGER"),
+        .cryId = CRY_BEDIGUARD,
+        .categoryName = _("ELETIGER"),
+        .height = 11,
+        .weight = 876,
+        .description = COMPOUND_STRING(
+            "It loves pouncing on people,\n"
+            "giving them electric shocks in.\n"
+            "the process. Despite its looks,\n"
+            "it's dangerous to keep as a pet."),
+        .pokemonScale = 290,
+        .pokemonOffset = 15,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        FRONT_PIC(Raiger, 48, 40),
+        .frontPicYOffset = 14,
+        .frontAnimFrames = sAnims_Raiger,
+        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        BACK_PIC(Raiger, 56, 40),
+        .backPicYOffset = 13,
+        .backAnimId = BACK_ANIM_JOLT_RIGHT,
+        PALETTES(Raiger),
+        ICON(Raiger, 1),
+        LEARNSETS(Raiger),
+        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_BOLTHERA}),
+    },
+
+  [SPECIES_BOLTHERA] =
+    {
+        .baseHP        = 100,
+        .baseAttack    = 95,
+        .baseDefense   = 105,
+        .baseSpeed     = 85,
+        .baseSpAttack  = 85,
+        .baseSpDefense = 80,
+        .types = { TYPE_ELECTRIC, TYPE_ELECTRIC },
+        .catchRate = 45,
+        .expYield = 239,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 15,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FAIRY },
+        .abilities = { ABILITY_STATIC, ABILITY_GALVANIZE, ABILITY_INDUCTIVE },
+        .bodyColor = BODY_COLOR_YELLOW,
+        .speciesName = _("BOLTHERA"),
+        .cryId = CRY_BEDIGUARD,
+        .categoryName = _("ELEPANTHER"),
+        .height = 11,
+        .weight = 876,
+        .description = COMPOUND_STRING(
+            "Its tusks are prized by collectors, and\n"
+            "as a result it was almost driven exctinct.\n"
+            "Recently, conservation efforts have\n"
+            "succeeded in saving the species."),
+        .pokemonScale = 290,
+        .pokemonOffset = 15,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        FRONT_PIC(Bolthera, 48, 40),
+        .frontPicYOffset = 14,
+        .frontAnimFrames = sAnims_Bolthera,
+        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        BACK_PIC(Bolthera, 56, 40),
+        .backPicYOffset = 13,
+        .backAnimId = BACK_ANIM_JOLT_RIGHT,
+        PALETTES(Bolthera),
+        ICON(Bolthera, 1),
+        LEARNSETS(Bolthera),
+    },
+
 #ifdef __INTELLISENSE__
 };
 #endif

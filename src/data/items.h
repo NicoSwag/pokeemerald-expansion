@@ -11106,6 +11106,20 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_RibbonBox,
     },
 
+    [ITEM_QUEST_LOG] =
+    {
+        .name = _("QUEST LOG"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A strange device \n"
+            "that tracks all of\n"
+            "your quests."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_QuestLog,
+    },
+
     [ITEM_VS_SEEKER] =
     {
         .name = _("Vs. Seeker"),

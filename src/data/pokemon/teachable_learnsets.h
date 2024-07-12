@@ -17315,6 +17315,30 @@ static const u16 sBediguardTeachableLearnset[] = {
 };
 #endif //P_FAMILY_COMBEE
 
+
+static const u16 sShockittTeachableLearnset[] = {
+    MOVE_PROTECT,
+    MOVE_ENDURE,
+    MOVE_SUBSTITUTE,
+    MOVE_CUT,
+    MOVE_UNAVAILABLE,
+};
+
+static const u16 sRaigerTeachableLearnset[] = {
+    MOVE_PROTECT,
+    MOVE_ENDURE,
+    MOVE_SUBSTITUTE,
+    MOVE_CUT,
+    MOVE_UNAVAILABLE,
+};
+
+static const u16 sBoltheraTeachableLearnset[] = {
+    MOVE_PROTECT,
+    MOVE_ENDURE,
+    MOVE_SUBSTITUTE,
+    MOVE_CUT,
+    MOVE_UNAVAILABLE,
+};
 #if P_FAMILY_PACHIRISU
 static const u16 sPachirisuTeachableLearnset[] = {
     MOVE_ATTRACT,
@@ -29849,6 +29873,30 @@ static const u16 sRolycolyTeachableLearnset[] = {
     MOVE_FIRE_SPIN,
     MOVE_TRAILBLAZE,
     MOVE_SANDSTORM,
+    MOVE_UNAVAILABLE,
+};
+
+static const u16 sEmerollTeachableLearnset[] = {
+    MOVE_PROTECT,
+    MOVE_ENDURE,
+    MOVE_SANDSTORM,
+    MOVE_BULLDOZE,
+    MOVE_UNAVAILABLE,
+};
+
+static const u16 sEmerailTeachableLearnset[] = {
+    MOVE_PROTECT,
+    MOVE_ENDURE,
+    MOVE_SANDSTORM,
+    MOVE_BULLDOZE,
+    MOVE_UNAVAILABLE,
+};
+
+static const u16 sBehemeraldTeachableLearnset[] = {
+    MOVE_PROTECT,
+    MOVE_ENDURE,
+    MOVE_SANDSTORM,
+    MOVE_BULLDOZE,
     MOVE_UNAVAILABLE,
 };
 

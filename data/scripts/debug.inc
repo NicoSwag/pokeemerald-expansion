@@ -139,7 +139,7 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 
-    trainerbattle_twoopponents TRAINER_ROXANNE_1, Route101_Text_HelpMe, TRAINER_BRAWLY_1, Route101_Text_HelpMe
+    openquestmenu
 	end
 
 Debug_EventScript_Script_2::

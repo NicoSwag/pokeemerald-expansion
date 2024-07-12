@@ -68,7 +68,7 @@
 #define FLAG_HIDE_MR_BRINEY_RUSTBORO    0x37 // Unused Flag
 #define FLAG_CLEARED_GRANITE_CAVE    0x38 // Unused Flag
 #define FLAG_RECEIVED_TM10    0x39 // Unused Flag
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
+#define FLAG_BEAT_CALVIN    0x3A // Unused Flag
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag
 #define FLAG_UNUSED_0x03D    0x3D // Unused Flag

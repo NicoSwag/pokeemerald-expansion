@@ -1677,7 +1677,147 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         ICON(CoalossalGigantamax, 0),
         .isGigantamax = TRUE,
     },
+
+
+    
 #endif //P_GIGANTAMAX_FORMS
+
+    [SPECIES_EMEROLL] =
+    {
+        .baseHP        = 30,
+        .baseAttack    = 40,
+        .baseDefense   = 40,
+        .baseSpeed     = 50,
+        .baseSpAttack  = 40,
+        .baseSpDefense = 40,
+        .types = { TYPE_ROCK, TYPE_BUG },
+        .catchRate = 255,
+        .expYield = 48,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 15,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
+        .abilities = { ABILITY_DAZZLING, ABILITY_MIRROR_ARMOR },
+        .bodyColor = BODY_COLOR_GREEN,
+        .speciesName = _("EMEROLL"),
+        .cryId = CRY_ROLYCOLY,
+        .categoryName = _("Gem"),
+        .height = 3,
+        .weight = 120,
+        .description = COMPOUND_STRING(
+            "Despite looking line an emerald, it is\n"
+            "actually an insect. It can retract its\n"
+            "limbs and start propelling itself by\n"
+            "spinning wildly."),
+        .pokemonScale = 530,
+        .pokemonOffset = 13,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        FRONT_PIC(Emeroll, 40, 40),
+        .frontPicYOffset = 16,
+        .frontAnimFrames = sAnims_Emeroll,
+        .frontAnimId = ANIM_H_SLIDE_SLOW,
+        BACK_PIC(Emeroll, 64, 32),
+        .backPicYOffset = 17,
+        //.backAnimId = BACK_ANIM_NONE,
+        PALETTES(Emeroll),
+        ICON(Emeroll, 1),
+        LEARNSETS(Emeroll),
+        .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_EMERAIL}),
+    },
+
+
+    [SPECIES_EMERAIL] =
+    {
+        .baseHP        = 50,
+        .baseAttack    = 70,
+        .baseDefense   = 60,
+        .baseSpeed     = 90,
+        .baseSpAttack  = 80,
+        .baseSpDefense = 60,
+        .types = { TYPE_ROCK, TYPE_BUG },
+        .catchRate = 120,
+        .expYield = 144,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 15,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
+        .abilities = { ABILITY_DAZZLING, ABILITY_MIRROR_ARMOR },
+        .bodyColor = BODY_COLOR_BLACK,
+        .speciesName = _("EMERAIL"),
+        .cryId = CRY_CARKOL,
+        .categoryName = _("GEM"),
+        .height = 11,
+        .weight = 780,
+        .description = COMPOUND_STRING(
+            "It can often be observed sliding on\n"
+            "minecart rail tracks. Despite sharing\n"
+            "similarities with a Galarian POKéMON,\n"
+            "the two species are actually unrelated."),
+        .pokemonScale = 320,
+        .pokemonOffset = 7,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        FRONT_PIC(Emerail, 48, 56),
+        .frontPicYOffset = 8,
+        .frontAnimFrames = sAnims_Emerail,
+        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        BACK_PIC(Emerail, 64, 48),
+        .backPicYOffset = 11,
+        //.backAnimId = BACK_ANIM_NONE,
+        PALETTES(Emerail),
+        ICON(Emerail, 1),
+        LEARNSETS(Emerail),
+        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_BEHEMERALD}),
+    },
+
+
+[SPECIES_BEHEMERALD] =
+    {
+        .baseHP        = 65,
+        .baseAttack    = 100,
+        .baseDefense   = 60,
+        .baseSpeed     = 115,
+        .baseSpAttack  = 110,
+        .baseSpDefense = 60,
+        .types = { TYPE_ROCK, TYPE_BUG },
+        .catchRate = 60,
+        .expYield = 255,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 15,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
+        .abilities = { ABILITY_DAZZLING, ABILITY_MIRROR_ARMOR },
+        .bodyColor = BODY_COLOR_GREEN,
+        .speciesName = _("BEHEMERALD"),
+        .cryId = CRY_CARKOL,
+        .categoryName = _("Gem"),
+        .height = 28,
+        .weight = 3105,
+        .description = COMPOUND_STRING(
+            "Many mines had to be closed due to\n"
+            "a BEHEMERALD going rampaging. However\n"
+            "it is usually a docile creature only \n"
+            "attacking when disturbed."),
+        .pokemonScale = 275,
+        .pokemonOffset = 7,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        FRONT_PIC(Behemerald, 40, 40),
+        .frontPicYOffset = 16,
+        .frontAnimFrames = sAnims_Behemerald,
+        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        BACK_PIC(Behemerald, 64, 32),
+        .backPicYOffset = 17,
+        //.backAnimId = BACK_ANIM_NONE,
+        PALETTES(Behemerald),
+        ICON(Behemerald, 1),
+        LEARNSETS(Behemerald),
+    },
+
 #endif //P_FAMILY_ROLYCOLY
 
 #if P_FAMILY_APPLIN

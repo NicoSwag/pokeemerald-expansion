@@ -228,7 +228,6 @@ static const u8 sSideQuestDifficulties[SIDE_QUEST_COUNT] =
 // Selected an incomplete quest
 static const struct MenuAction sQuestSubmenuOptions[] =
 {
-    {sText_QuestMenu_Begin,             {.void_u8 = Task_QuestMenuBeginQuest}},
     {sText_QuestMenu_Details,           {.void_u8 = Task_QuestMenuDetails}},
     {gText_Cancel,                      {.void_u8 = Task_QuestMenuCancel}},
 };
@@ -236,7 +235,6 @@ static const struct MenuAction sQuestSubmenuOptions[] =
 // Selected the active quest
 static const struct MenuAction sActiveQuestSubmenuOptions[] =
 {
-    {sText_QuestMenu_End,               {.void_u8 = Task_QuestMenuEndQuest}},
     {sText_QuestMenu_Details,           {.void_u8 = Task_QuestMenuDetails}},
     {gText_Cancel,                      {.void_u8 = Task_QuestMenuCancel}},
 };
@@ -848,10 +846,7 @@ static void QuestMenu_ItemPrintFunc(u8 windowId, u32 itemId, u8 y)
     if (itemId != LIST_CANCEL)
     {
         if (GetSetQuestFlag(itemId, FLAG_GET_COMPLETED))
-            StringCopy(gStringVar4, sText_QuestMenu_Complete);
-        else if (IsActiveQuest(itemId))
-            StringCopy(gStringVar4, sText_QuestMenu_Active);
-        else
+            StringCopy(gStringVar4, sText_QuestMenu_Complete);        else
             StringCopy(gStringVar4, sText_Empty);
         
         QuestMenu_AddTextPrinterParameterized(windowId, 0, gStringVar4, 110, y, 0, 0, 0xFF, 1);

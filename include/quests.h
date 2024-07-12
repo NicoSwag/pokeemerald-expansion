@@ -14,8 +14,9 @@ struct SideQuest
 	/*0x08*/ const u8* poc;
 	/*0x0C*/ const u8* map;
 	///*0x10*/ const u8* hint;
-	/*0x14*/ const u16* reward;
+	/*0x14*/ const u8* reward;
 }; /* size = 0x18 */
+
 
 
 extern const struct SideQuest gSideQuests[SIDE_QUEST_COUNT];

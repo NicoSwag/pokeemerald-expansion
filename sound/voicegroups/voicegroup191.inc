@@ -16,11 +16,11 @@ voicegroup191::
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_xylophone, 255, 235, 0, 204
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_tubular_bell, 255, 216, 90, 242
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_organ2, 255, 0, 255, 210
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+    voice_directsound 60, 0, DirectSoundWaveData_sc88pro_organ2, 255, 0, 255, 127
+    voice_directsound 60, 0, DirectSoundWaveData_sc88pro_organ2, 255, 0, 255, 127
+    voice_directsound 60, 0, DirectSoundWaveData_sc88pro_organ2, 255, 0, 255, 127
+    voice_directsound 60, 0, DirectSoundWaveData_sc88pro_church_organ3_low, 255, 76, 154, 188
+    voice_directsound 60, 0, DirectSoundWaveData_sc88pro_organ2, 255, 0, 255, 127
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_accordion, 255, 0, 255, 165
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -40,7 +40,7 @@ voicegroup191::
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_synth_bass, 255, 252, 0, 115
 	voice_directsound_no_resample 64, 54, DirectSoundWaveData_sc88pro_tr909_hand_clap, 255, 255, 255, 127
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_keysplit voicegroup006, KeySplitTable2
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0

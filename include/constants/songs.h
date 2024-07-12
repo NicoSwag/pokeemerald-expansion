@@ -564,7 +564,8 @@
 #define MUS_VS_HACKERS  629
 #define MUS_VS_ENEMY_SPIDER  630
 #define MUS_OLD_CHATEAU  631
-#define END_MUS                     631
+#define MUS_VS_FINAL_MAGMA  632
+#define END_MUS                     633
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
 #define MUS_NONE                    0xFFFF

@@ -352,6 +352,13 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .aiRating = 3,
     },
 
+    [ABILITY_INDUCTIVE] =
+    {
+        .name = _("Inductive"),
+        .description = COMPOUND_STRING("HP recovery in electricity."),
+        .aiRating = 3,
+    },
+
     [ABILITY_SAND_STREAM] =
     {
         .name = _("Sand Stream"),
@@ -385,6 +392,13 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Flame Body"),
         .description = COMPOUND_STRING("Burns the foe on contact."),
+        .aiRating = 4,
+    },
+
+    [ABILITY_ICY_ARMOR] =
+    {
+        .name = _("Icy Armor"),
+        .description = COMPOUND_STRING("Freezes the foe on contact."),
         .aiRating = 4,
     },
 

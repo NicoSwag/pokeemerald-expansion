@@ -5049,7 +5049,19 @@ case ABILITY_HONEY_GATHER:
                     effect++;
                 }
                 break;
-
+            case ABILITY_INDUCTIVE:
+                if (IsBattlerTerrainAffected(battler, STATUS_FIELD_ELECTRIC_TERRAIN)
+                 && !BATTLER_MAX_HP(battler)
+                 && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+                {
+                    BattleScriptPushCursorAndCallback(BattleScript_InductiveActivates);
+                    gBattleMoveDamage = GetNonDynamaxMaxHP(battler) /8;
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                    gBattleMoveDamage *= -1;
+                    effect++;
+                }
+                break;
             case ABILITY_SAND_VEIL:
                 if (IsBattlerWeatherAffected(battler, B_WEATHER_SANDSTORM)
                  && !BATTLER_MAX_HP(battler)
@@ -5794,6 +5806,24 @@ if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
              && RandomWeighted(RNG_FLAME_BODY, 2, 1))
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_BURN;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
+                gHitMarker |= HITMARKER_STATUS_ABILITY_EFFECT;
+                effect++;
+            }
+break;
+
+        case ABILITY_ICY_ARMOR:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && gBattleMons[gBattlerAttacker].hp != 0
+             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+             && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_PROTECTIVE_PADS
+             && (IsMoveMakingContact(move, gBattlerAttacker))
+             && TARGET_TURN_DAMAGED
+             && CanBeBurned(gBattlerAttacker)
+             && RandomWeighted(RNG_FLAME_BODY, 2, 1))
+            {
+                gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_FREEZE_OR_FROSTBITE;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
                 gHitMarker |= HITMARKER_STATUS_ABILITY_EFFECT;

@@ -5194,6 +5194,17 @@ Cry_Carkol::
 	.align 2
 Cry_Coalossal::
 	.incbin "sound/direct_sound_samples/cries/coalossal.bin"
+
+Cry_Emeroll::
+	.incbin "sound/direct_sound_samples/cries/rolycoly.bin"
+
+	.align 2
+Cry_Emerail::
+	.incbin "sound/direct_sound_samples/cries/carkol.bin"
+
+	.align 2
+Cry_Behemerald::
+	.incbin "sound/direct_sound_samples/cries/coalossal.bin"
 .endif @ P_FAMILY_ROLYCOLY
 
 .if P_FAMILY_APPLIN == TRUE
@@ -6162,6 +6173,17 @@ Cry_Terapagos::
 Cry_Pecharunt::
 	.incbin "sound/direct_sound_samples/cries/pecharunt.bin"
 .endif @ P_FAMILY_PECHARUNT
+
+
+.align 2
+Cry_Shockitt::
+	.incbin "sound/direct_sound_samples/cries/purrloin.bin"
+
+Cry_Raiger::
+	.incbin "sound/direct_sound_samples/cries/purugly.bin"
+
+Cry_Bolthera::
+	.incbin "sound/direct_sound_samples/cries/luxray.bin"
 
 	.align 2
 DirectSoundWaveData_register_noise::

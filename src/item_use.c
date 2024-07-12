@@ -48,6 +48,7 @@
 #include "battle_setup.h"
 #include "region_map.h"
 #include "constants/map_types.h"
+#include "quests.h"
 
 static void SetUpItemUseCallback(u8);
 static void FieldCB_UseItemOnField(void);
@@ -824,6 +825,13 @@ void ItemUseOutOfBattle_RibbonBox(u8 taskId)
 {
     gItemUseCB = ItemUseCB_RibbonBox;
     SetUpItemUseCallback(taskId);
+}
+
+
+
+void ItemUseOutOfBattle_QuestLog(u8 taskId)
+{
+    QuestMenu_Init(0, CB2_ReturnToField);
 }
 
 void ItemUseOutOfBattle_ResetEVs(u8 taskId)

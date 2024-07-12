@@ -3302,9 +3302,7 @@ static const u8 sSnowscapeDescription[] = _(
     "Summons a snowstorm that\n"
     "lasts for five turns.");
 
-static const u8 sThundersnowDescription[] = _(
-    "Summons snow and thunder\n"
-    "lasting for five turns.");
+
 
 static const u8 sPounceDescription[] = _(
     "The user pounces on the foe,\n"
@@ -4283,7 +4281,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_CHILLY_RECEPTION - 1] = sChillyReceptionDescription,
     [MOVE_TIDY_UP - 1] = sTidyUpDescription,
     [MOVE_SNOWSCAPE - 1] = sSnowscapeDescription,
-    [MOVE_THUNDERSNOW - 1] = sThundersnowDescription,
+
     [MOVE_POUNCE - 1] = sPounceDescription,
     [MOVE_TRAILBLAZE - 1] = sTrailblazeDescription,
     [MOVE_CHILLING_WATER - 1] = sChillingWaterDescription,
@@ -4312,6 +4310,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_BURNING_BULWARK - 1] = sBurningBulwarkDescription,
     [MOVE_THUNDERCLAP - 1] = sSuckerPunchDescription,
     [MOVE_MIGHTY_CLEAVE - 1] = sFeintDescription,
+    [MOVE_SUPLEX - 1] = sFeintDescription,
     [MOVE_TACHYON_CUTTER - 1] = sTachyonCutterDescription,
     [MOVE_HARD_PRESS - 1] = sWringOutDescription,
     [MOVE_DRAGON_CHEER - 1] = sDragonCheerDescription,

@@ -3643,6 +3643,10 @@ const u16 gEggMoves[] = {
         MOVE_COMBUSTION,
         MOVE_ICE_SPINNER),
 
+   egg_moves(EMEROLL,
+        MOVE_SHARPEN,
+        MOVE_CLEAN_SLATE),
+
     egg_moves(CARKOL,
         MOVE_COMBUSTION,
         MOVE_ICE_SPINNER,
@@ -3959,6 +3963,18 @@ const u16 gEggMoves[] = {
 	egg_moves(TAUROS_PALDEAN_AQUA_BREED,
 		MOVE_CURSE,
 		MOVE_ENDEAVOR),
+    
+    egg_moves(SHOCKITT,
+		MOVE_NUZZLE,
+		MOVE_ION_DELUGE),
+
+    egg_moves(RAIGER,
+		MOVE_NUZZLE,
+		MOVE_ION_DELUGE),
+
+    egg_moves(BOLTHERA,
+		MOVE_NUZZLE,
+		MOVE_ION_DELUGE),
 	
     egg_moves(CALFLING,
 		MOVE_RECYCLE,
