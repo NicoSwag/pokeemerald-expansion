@@ -6119,7 +6119,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_THUNDERSNOW] =
     {
-        .name = COMPOUND_STRING("THUNDERSNOW"),
+        .name = COMPOUND_STRING("Thundersnow"),
         .description = COMPOUND_STRING(
             "Summons both Rain and\n"
             "Electric Terrain."),
@@ -15262,7 +15262,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_SUPLEX] =
     {
-        .name = COMPOUND_STRING("SUPLEX"),
+        .name = COMPOUND_STRING("Suplex"),
         .description = COMPOUND_STRING(
             "Slams the opponent on its\n"
             "back. May paralyze."),
@@ -17682,7 +17682,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_AIR_BURST] =
     {
-        .name = COMPOUND_STRING("Overdrive"),
+        .name = COMPOUND_STRING("Air Burst"),
         .description = COMPOUND_STRING(
             "The user creates a strong\n"
             "wind current."),

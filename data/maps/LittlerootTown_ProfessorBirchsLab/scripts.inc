@@ -648,13 +648,9 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Pikachu::
 LittlerootTown_ProfessorBirchsLab_EventScript_Options::
 	multichoice 12, 0, SPECIAL_OPTIONS_MENU, FALSE
 	switch VAR_RESULT
-	case 0, LittlerootTown_ProfessorBirchsLab_EventScript_HealAfterBattle
-	case 1, LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops
-	case 2, LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps
-	case 3, LittlerootTown_ProfessorBirchsLab_EventScript_LevelScaling
-	case 4, LittlerootTown_ProfessorBirchsLab_EventScript_PermaFaint
-	case 5, LittlerootTown_ProfessorBirchsLab_EventScript_Catch
-	case 6, LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
+	case 0, LittlerootTown_ProfessorBirchsLab_EventScript_CandiesInShops
+	case 1, LittlerootTown_ProfessorBirchsLab_EventScript_LevelCaps
+	case 2, LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_CancelMenu
 	end
 	

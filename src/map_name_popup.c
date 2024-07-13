@@ -326,7 +326,8 @@ const u8 gText_Route104_Upper[] = _("Sponsored by FEEBAS PRO SHOP");
 const u8 gText_Rustboro_City[] = _("Proud home of DEVON CORP.");
 const u8 gText_Route115[] = _("A step from a cursed forest");
 const u8 gText_Brine_Cave[] = _("Mystery submerged dungeon");
-const u8 gText_Route116[] = _("Exclusive district to-be");
+const u8 gText_Route116[] = _("Heavy construction area");
+const u8 gText_DewfordTown[] = _("Secluded island paradise");
 
 static void ShowMapNamePopUpWindow(void)
 {
@@ -422,6 +423,8 @@ StringCopy(withoutPrefixPtr, mapDisplayHeaderSource);
         break;
         case MAPSEC_ROUTE_116:
             AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_Route116, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
+        case MAPSEC_DEWFORD_TOWN:
+            AddTextPrinterParameterized(secondaryPopUpWindowId, FONT_SMALL, gText_DewfordTown, mapNameX + 95, timeY, TEXT_SKIP_DRAW, NULL);
         break;
     }
     

@@ -1205,10 +1205,10 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .growthRate = GROWTH_MEDIUM_FAST,                       \
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },      \
         .bodyColor = BODY_COLOR_BROWN,                          \
-        .speciesName = _("ROCKRUFF"),                           \
+        .speciesName = _("Rockruff"),                           \
         .cryId = CRY_ROCKRUFF,                                  \
         .natDexNum = NATIONAL_DEX_ROCKRUFF,                     \
-        .categoryName = _("PUPPY"),                             \
+        .categoryName = _("Puppy"),                             \
         .height = 5,                                            \
         .weight = 92,                                           \
         .description = gRockruffPokedexText,                    \
@@ -1255,9 +1255,9 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,                  \
         .growthRate = GROWTH_MEDIUM_FAST,                   \
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },  \
-        .speciesName = _("LYCANROC"),                       \
+        .speciesName = _("Lycanroc"),                       \
         .natDexNum = NATIONAL_DEX_LYCANROC,                 \
-        .categoryName = _("WOLF"),                          \
+        .categoryName = _("Wolf"),                          \
         .weight = 250,                                      \
         .pokemonScale = 366,                                \
         .pokemonOffset = 7,                                 \
@@ -1344,7 +1344,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .description = COMPOUND_STRING(
             "These POKéMON have both calm and\n"
             "ferocious qualities. It's said that\n"
-            "this form of LYCANROC is the most\n"
+            "this form of Lycanroc is the most\n"
             "troublesome to raise."),
         FRONT_PIC(LycanrocDusk, 57, 58),
         .frontPicYOffset = 6,
@@ -1856,10 +1856,10 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS},
         .abilities = {ABILITY_ILLUMINATE, ABILITY_WONDER_SKIN, ABILITY_STENCH},
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("MORELULL"),
+        .speciesName = _("Morelull"),
         .cryId = CRY_MORELULL,
         .natDexNum = NATIONAL_DEX_MORELULL,
-        .categoryName = _("ILLUMINATE"),
+        .categoryName = _("Illuminate"),
         .height = 2,
         .weight = 15,
         .description = COMPOUND_STRING(
@@ -1905,14 +1905,14 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS},
         .abilities = {ABILITY_ILLUMINATE, ABILITY_WONDER_SKIN, ABILITY_MISTY_SURGE},
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("SHIINORIC"),
+        .speciesName = _("Shiinotic"),
         .cryId = CRY_SHIINOTIC,
         .natDexNum = NATIONAL_DEX_SHIINOTIC,
-        .categoryName = _("ILLUMINATE"),
+        .categoryName = _("Illuminate"),
         .height = 10,
         .weight = 115,
         .description = COMPOUND_STRING(
-            "Forests where SHIINOTIC live are\n"
+            "Forests where Shiinotic live are\n"
             "treacherous to enter at night.\n"
             "People confused by its strange lights\n"
             "can never find their way home again."),

@@ -1526,16 +1526,16 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE },
         .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_FLAME_BODY },
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("CHARCADET"),
+        .speciesName = _("Charcadet"),
         .cryId = CRY_CHARCADET,
         .natDexNum = NATIONAL_DEX_CHARCADET,
-        .categoryName = _("FIRE CHILD"),
+        .categoryName = _("Fire Child"),
         .height = 6,
         .weight = 105,
         .description = COMPOUND_STRING(
             "Burnt charcoal came to life and\n"
             "became a Pokémon. Possessing a fiery\n"
-            "fighting spirit, CHARCADET will\n"
+            "fighting spirit, Charcadet will\n"
             "battle even tough opponents."),
         .pokemonScale = 356,
         .pokemonOffset = 17,
@@ -1574,14 +1574,14 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE },
         .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_WEAK_ARMOR },
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("ARMAROUGE"),
+        .speciesName = _("Armarouge"),
         .cryId = CRY_ARMAROUGE,
         .natDexNum = NATIONAL_DEX_ARMAROUGE,
-        .categoryName = _("FIRE WARRIOR"),
+        .categoryName = _("Fire Warrior"),
         .height = 15,
         .weight = 850,
         .description = COMPOUND_STRING(
-            "ARMAROUGE evolved through the use\n"
+            "Armarouge evolved through the use\n"
             "of a set of armor that belonged to\n"
             "a distinguished warrior. This\n"
             "Pokémon is incredibly loyal."),
@@ -1620,10 +1620,10 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE },
         .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_WEAK_ARMOR },
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("CERULEDGE"),
+        .speciesName = _("Ceruledge"),
         .cryId = CRY_CERULEDGE,
         .natDexNum = NATIONAL_DEX_CERULEDGE,
-        .categoryName = _("FIRE BLADES"),
+        .categoryName = _("Fire Blades"),
         .height = 16,
         .weight = 620,
         .description = COMPOUND_STRING(
@@ -2591,14 +2591,14 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_FAIRY},
         .abilities = {ABILITY_MOLD_BREAKER, ABILITY_DECOMMISSIONER},
         .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("TINKATINK"),
+        .speciesName = _("Tinkating"),
         .cryId = CRY_TINKATINK,
         .natDexNum = NATIONAL_DEX_TINKATINK,
-        .categoryName = _("METALSMITH"),
+        .categoryName = _("Metalsmith"),
         .height = 4,
         .weight = 89,
         .description = COMPOUND_STRING(
-            "TINKATINK pounds iron scraps together\n"
+            "Tinkatink pounds iron scraps together\n"
             "to make a hammer. It throws pebbles at\n"
             "nearby FLYING and STEEL POKéMON\n"
             "that try to snatch its loot."),
@@ -2638,10 +2638,10 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_FAIRY},
         .abilities = {ABILITY_MOLD_BREAKER, ABILITY_DECOMMISSIONER},
         .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("TINKATUFF"),
+        .speciesName = _("Tinkatuff"),
         .cryId = CRY_TINKATUFF,
         .natDexNum = NATIONAL_DEX_TINKATUFF,
-        .categoryName = _("HAMMER"),
+        .categoryName = _("Hammer"),
         .height = 7,
         .weight = 591,
         .description = COMPOUND_STRING(
@@ -2685,10 +2685,10 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_FAIRY},
            .abilities = {ABILITY_MOLD_BREAKER, ABILITY_DECOMMISSIONER},
         .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("TINKATON"),
+        .speciesName = _("Tinkaton"),
         .cryId = CRY_TINKATON,
         .natDexNum = NATIONAL_DEX_TINKATON,
-        .categoryName = _("HAMMER"),
+        .categoryName = _("Hammer"),
         .height = 7,
         .weight = 1128,
         .description = COMPOUND_STRING(
@@ -3202,14 +3202,14 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL},
         .abilities = {ABILITY_TOXIC_DEBRIS, ABILITY_CORROSION, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("GLIMMET"),
+        .speciesName = _("Glimmet"),
         .cryId = CRY_GLIMMET,
         .natDexNum = NATIONAL_DEX_GLIMMET,
-        .categoryName = _("ORE"),
+        .categoryName = _("Ore"),
         .height = 7,
         .weight = 80,
         .description = COMPOUND_STRING(
-            "GLIMMET's toxic mineral crystals\n"
+            "Glimmet's toxic mineral crystals\n"
             "look just like flower petals. This\n"
             "Pokémon scatters poisonous powder like\n"
             "pollen to protect itself."),
@@ -3929,15 +3929,15 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .abilities = { ABILITY_GUTS, ABILITY_SHIELD_DUST, ABILITY_PROTOSYNTHESIS },
         .bodyColor = BODY_COLOR_WHITE,
         .isParadoxForm = TRUE,
-        .speciesName = _("VOLCARONA"),
+        .speciesName = _("Volcarona"),
         .cryId = CRY_SLITHER_WING,
         .natDexNum = NATIONAL_DEX_SLITHER_WING,
-        .categoryName = _("PARADOX"),
+        .categoryName = _("Slither Wing"),
         .height = 32,
         .weight = 920,
         .description = COMPOUND_STRING(
             "This creature was known in the ancient\n"
-            "past as SLITHER WING. Eventually, due to\n"
+            "past as Slither Wing. Eventually, due to\n"
             "the difficulties that it had moving, it\n"
             "evolved a pair of wings."),
         .pokemonScale = 356,
@@ -4465,7 +4465,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .friendship = STANDARD_FRIENDSHIP,                                              \
         .growthRate = GROWTH_SLOW,                                                      \
         .eggGroups = { EGG_GROUP_NO_EGGS_DISCOVERED, EGG_GROUP_NO_EGGS_DISCOVERED },    \
-        .speciesName = _("GIMMIGHOUL"),                                                 \
+        .speciesName = _("Gimmighoul"),                                                 \
         .cryId = CRY_GIMMIGHOUL,                                                        \
         .natDexNum = NATIONAL_DEX_GIMMIGHOUL,                                           \
         .frontAnimFrames = sAnims_Gimmighoul,                                           \
@@ -4487,7 +4487,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .baseSpDefense = 70,
         .abilities = { ABILITY_RATTLED, ABILITY_NONE },
         .bodyColor = BODY_COLOR_RED,
-        .categoryName = _("COIN CHEST"),
+        .categoryName = _("Coin Chest"),
         .height = 3,
         .weight = 50,
         .description = COMPOUND_STRING(
@@ -4557,15 +4557,15 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .eggGroups = { EGG_GROUP_NO_EGGS_DISCOVERED, EGG_GROUP_NO_EGGS_DISCOVERED },
         .abilities = { ABILITY_GOOD_AS_GOLD, ABILITY_NONE },
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("GHOLDENGO"),
+        .speciesName = _("Gholdengo"),
         .cryId = CRY_GHOLDENGO,
         .natDexNum = NATIONAL_DEX_GHOLDENGO,
-        .categoryName = _("COIN ENTITY"),
+        .categoryName = _("Coin Entity"),
         .height = 12,
         .weight = 300,
         .description = COMPOUND_STRING(
             "It has a sturdy body made up of\n"
-            "stacked coins. GHOLDENGO overwhelms\n"
+            "stacked coins. Gholdengo overwhelms\n"
             "its enemies by firing coin after coin\n"
             "at them in quick succession."),
         .pokemonScale = 356,

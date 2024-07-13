@@ -167,14 +167,14 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
         .abilities = {ABILITY_MAGICIAN, ABILITY_MAGIC_GUARD, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("FENNEKIN"),
+        .speciesName = _("Fennekin"),
         .cryId = CRY_FENNEKIN,
         .natDexNum = NATIONAL_DEX_FENNEKIN,
-        .categoryName = _("TRICKSTER"),
+        .categoryName = _("Trickster"),
         .height = 4,
         .weight = 94,
         .description = COMPOUND_STRING(
-            "FENNEKIN is very mischevious. it likes\n"
+            "Fennekim is very mischevious. it likes\n"
             "to steal things stealthily thanks to its\n"
             "latent magic powers, and hide them inside\n"
             "its fluffy ears."),
@@ -214,15 +214,15 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
         .abilities = {ABILITY_MAGICIAN, ABILITY_MAGIC_GUARD, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("BRAIXEN"),
+        .speciesName = _("Braixen"),
         .cryId = CRY_BRAIXEN,
         .natDexNum = NATIONAL_DEX_BRAIXEN,
-        .categoryName = _("MAGICIAN"),
+        .categoryName = _("Magician"),
         .height = 10,
         .weight = 145,
         .description = COMPOUND_STRING(
             "Thanks to the twig stuck in its tail,\n"
-            "BRAIXEN can channel its magical energy\n"
+            "Braixen can channel its magical energy\n"
             "in order to conjure powerful elemental\n"
             "spells."),
         .pokemonScale = 305,
@@ -261,14 +261,14 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
         .abilities = {ABILITY_MAGICIAN, ABILITY_MAGIC_GUARD, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
-        .speciesName = _("DELPHOX"),
+        .speciesName = _("Delphox"),
         .cryId = CRY_DELPHOX,
         .natDexNum = NATIONAL_DEX_DELPHOX,
-        .categoryName = _("WITCH"),
+        .categoryName = _("Witch"),
         .height = 15,
         .weight = 390,
         .description = COMPOUND_STRING(
-            "After a lengthy training, DELPHOX has now\n"
+            "After a lengthy training, Delphox has now\n"
             "become a master of magical arts. It happily\n"
             "shares its knowledge with all that want to\n"
             "learn, as long as their intentions are pure."),
@@ -1557,10 +1557,10 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_HUMAN_LIKE},
         .abilities = {ABILITY_IRON_FIST, ABILITY_MOLD_BREAKER, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
-        .speciesName = _("PANCHAM"),
+        .speciesName = _("Pancham"),
         .cryId = CRY_PANCHAM,
         .natDexNum = NATIONAL_DEX_PANCHAM,
-        .categoryName = _("PLAYFUL"),
+        .categoryName = _("Playful"),
         .height = 6,
         .weight = 80,
         .description = COMPOUND_STRING(
@@ -1604,15 +1604,15 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_HUMAN_LIKE},
         .abilities = {ABILITY_IRON_FIST, ABILITY_MOLD_BREAKER, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
-        .speciesName = _("PANGORO"),
+        .speciesName = _("Pangoro"),
         .cryId = CRY_PANGORO,
         .natDexNum = NATIONAL_DEX_PANGORO,
-        .categoryName = _("DAUNTING"),
+        .categoryName = _("Daunting"),
         .height = 21,
         .weight = 1360,
         .description = COMPOUND_STRING(
             "It boasts superb physical strength.\n"
-            "Those who wish to become PANGORO's\n"
+            "Those who wish to become Pangoro's\n"
             "Trainer have no choice but to converse\n"
             "with their fists."),
         .pokemonScale = 256,
@@ -2295,14 +2295,14 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_WATER_2},
         .abilities = {ABILITY_CONTRARY, ABILITY_NONE, ABILITY_INFILTRATOR},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("INKAY"),
+        .speciesName = _("Inkay"),
         .cryId = CRY_INKAY,
         .natDexNum = NATIONAL_DEX_INKAY,
-        .categoryName = _("REVOLVING"),
+        .categoryName = _("Revolving"),
         .height = 4,
         .weight = 35,
         .description = COMPOUND_STRING(
-            "INKAY are often seen trying to turn\n"
+            "Inkay are often seen trying to turn\n"
             "their body upside down, without\n"
             "much success. It is believed that\n"
             "they're instinctively trying to evolve."),
@@ -2322,6 +2322,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         ICON(Inkay, 0),
         .footprint = gMonFootprint_Inkay,
         LEARNSETS(Inkay),
+        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_MALAMAR}),
     },
 
     [SPECIES_MALAMAR] =
@@ -2342,16 +2343,16 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_WATER_2},
         .abilities = {ABILITY_CONTRARY, ABILITY_NONE, ABILITY_PSYCHIC_SURGE},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("MALAMAR"),
+        .speciesName = _("Malamar"),
         .cryId = CRY_MALAMAR,
         .natDexNum = NATIONAL_DEX_MALAMAR,
-        .categoryName = _("OVERTURNING"),
+        .categoryName = _("Overturning"),
         .height = 15,
         .weight = 470,
         .description = COMPOUND_STRING(
-            "Its brain waves are actually the opposite.\n"
-            "of what they should be. Thanks to this,\n"
-            "MALAMAR is able to easily inflict psychic\n"
+            "Its brain waves are actually the opposite\n"
+            "of the usual pattern. Thanks to this,\n"
+            "Malamar is able to easily inflict psychic\n"
             "damage to its foes."),
         .pokemonScale = 268,
         .pokemonOffset = 2,
@@ -2488,10 +2489,10 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_DRAGON},
         .abilities = {ABILITY_CORROSION, ABILITY_ADAPTABILITY, ABILITY_POISON_POINT},
         .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("SKRELP"),
+        .speciesName = _("Skrelp"),
         .cryId = CRY_SKRELP,
         .natDexNum = NATIONAL_DEX_SKRELP,
-        .categoryName = _("MOCK KELP"),
+        .categoryName = _("Mock Kelp"),
         .height = 5,
         .weight = 73,
         .description = COMPOUND_STRING(
@@ -2682,10 +2683,10 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_DRAGON },
         .abilities = { ABILITY_DRY_SKIN, ABILITY_SUN_WITHIN, ABILITY_SOLAR_POWER },
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("HELIOPTILE"),
+        .speciesName = _("Helioptile"),
         .cryId = CRY_HELIOPTILE,
         .natDexNum = NATIONAL_DEX_HELIOPTILE,
-        .categoryName = _("GENERATOR"),
+        .categoryName = _("Generator"),
         .height = 5,
         .weight = 60,
         .description = COMPOUND_STRING(
@@ -2729,10 +2730,10 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggGroups = { EGG_GROUP_MONSTER, EGG_GROUP_DRAGON },
         .abilities = { ABILITY_DRY_SKIN, ABILITY_SUN_WITHIN, ABILITY_SOLAR_POWER },
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("HELIOLISK"),
+        .speciesName = _("Heliolisk"),
         .cryId = CRY_HELIOLISK,
         .natDexNum = NATIONAL_DEX_HELIOLISK,
-        .categoryName = _("GENERATOR"),
+        .categoryName = _("Generator"),
         .height = 10,
         .weight = 210,
         .description = COMPOUND_STRING(
@@ -3074,10 +3075,10 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_MINERAL},
         .abilities = {ABILITY_CLEAR_BODY, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
-        .speciesName = _("CARBINK"),
+        .speciesName = _("Carbink"),
         .cryId = CRY_CARBINK,
         .natDexNum = NATIONAL_DEX_CARBINK,
-        .categoryName = _("JEWEL"),
+        .categoryName = _("Jewel"),
         .height = 3,
         .weight = 57,
         .description = COMPOUND_STRING(
@@ -3407,14 +3408,14 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_AMORPHOUS},
         .abilities = {ABILITY_POWER_SPOT, ABILITY_CURSED_BODY, ABILITY_FRISK},
         .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("PHANTUMP"),
+        .speciesName = _("Phantump"),
         .cryId = CRY_PHANTUMP,
         .natDexNum = NATIONAL_DEX_PHANTUMP,
-        .categoryName = _("STUMP"),
+        .categoryName = _("Stump"),
         .height = 4,
         .weight = 70,
         .description = COMPOUND_STRING(
-            "PHANTUMP embodies the spirit of the\n"
+            "Phantump embodies the spirit of the\n"
             "forest. It often plays trick on\n"
             "unaware campers, but its disposition\n"
             "is gentle and it means no harm."),
@@ -3790,10 +3791,10 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         #endif
         .abilities = {ABILITY_CLIMATE_CHANGE, ABILITY_ICY_ARMOR, ABILITY_SNOW_CLOAK},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("BERGMITE"),
+        .speciesName = _("Bergmite"),
         .cryId = CRY_BERGMITE,
         .natDexNum = NATIONAL_DEX_BERGMITE,
-        .categoryName = _("ICE CHUNK"),
+        .categoryName = _("Ice Chunk"),
         .height = 10,
         .weight = 995,
         .description = COMPOUND_STRING(
@@ -3932,15 +3933,15 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         #endif
         .abilities = { ABILITY_NO_GUARD, ABILITY_STORM_VOICE},
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("NOIBAT"),
+        .speciesName = _("Noibat"),
         .cryId = CRY_NOIBAT,
         .natDexNum = NATIONAL_DEX_NOIBAT,
-        .categoryName = _("SOUND WAVE"),
+        .categoryName = _("Sound Wave"),
         .height = 5,
         .weight = 80,
         .description = COMPOUND_STRING(
             "No wavelength of sound is beyond\n"
-            "NOIBAT's vocal range. The ultrasonic\n"
+            "Noibat's vocal range. The ultrasonic\n"
             "waves it creates can overcome even\n"
             "larger POKéMON."),
         .pokemonOffset = 13,
@@ -3984,10 +3985,10 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         #endif
         .abilities = { ABILITY_NO_GUARD, ABILITY_STORM_VOICE},
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("NOIVERN"),
+        .speciesName = _("Noivern"),
         .cryId = CRY_NOIVERN,
         .natDexNum = NATIONAL_DEX_NOIVERN,
-        .categoryName = _("SOUND WAVE"),
+        .categoryName = _("Sound Wave"),
         .height = 15,
         .weight = 850,
         .description = COMPOUND_STRING(

@@ -66,13 +66,18 @@ EventScript_PkmnCenterNurse_GiveHealingItems::
 	msgbox gText_HeresYourHealingItems, MSGBOX_DEFAULT
 	removeitem ITEM_POTION, 999
 	removeitem ITEM_SUPER_POTION, 999
+	removeitem ITEM_LAVA_COOKIE, 999
+	removeitem ITEM_REVIVE, 999
 	goto_if_set FLAG_BADGE01_GET, EventScript_PkmnCenterNurse_GiveHealingItemsStoneBadge
+	giveitem ITEM_LAVA_COOKIE, 5
 	giveitem ITEM_POTION, 10
 	EventScript_PkmnCenterNurse_DoneGivingItems::
 	return
 
 EventScript_PkmnCenterNurse_GiveHealingItemsStoneBadge::
+	giveitem ITEM_LAVA_COOKIE, 5
 	giveitem ITEM_SUPER_POTION, 10
+	giveitem ITEM_REVIVE, 1
 	goto EventScript_PkmnCenterNurse_DoneGivingItems
 
 

@@ -1700,7 +1700,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
         .abilities = { ABILITY_DAZZLING, ABILITY_MIRROR_ARMOR },
         .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("EMEROLL"),
+        .speciesName = _("Emeroll"),
         .cryId = CRY_ROLYCOLY,
         .categoryName = _("Gem"),
         .height = 3,
@@ -1746,9 +1746,9 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
         .abilities = { ABILITY_DAZZLING, ABILITY_MIRROR_ARMOR },
         .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("EMERAIL"),
+        .speciesName = _("Emerail"),
         .cryId = CRY_CARKOL,
-        .categoryName = _("GEM"),
+        .categoryName = _("Gem"),
         .height = 11,
         .weight = 780,
         .description = COMPOUND_STRING(
@@ -1792,14 +1792,14 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
         .abilities = { ABILITY_DAZZLING, ABILITY_MIRROR_ARMOR },
         .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("BEHEMERALD"),
+        .speciesName = _("Behemerald"),
         .cryId = CRY_CARKOL,
         .categoryName = _("Gem"),
         .height = 28,
         .weight = 3105,
         .description = COMPOUND_STRING(
             "Many mines had to be closed due to\n"
-            "a BEHEMERALD going rampaging. However\n"
+            "a Behemerald going rampaging. However\n"
             "it is usually a docile creature only \n"
             "attacking when disturbed."),
         .pokemonScale = 275,

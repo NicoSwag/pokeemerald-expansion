@@ -320,15 +320,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD},
         .abilities = {ABILITY_POLAR_HERITAGE, ABILITY_COMPETITIVE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("PIPLUP"),
+        .speciesName = _("Piplup"),
         .cryId = CRY_PIPLUP,
         .natDexNum = NATIONAL_DEX_PIPLUP,
-        .categoryName = _("PENGUIN"),
+        .categoryName = _("Penguin"),
         .height = 4,
         .weight = 52,
         .description = COMPOUND_STRING(
             "Cold both in disposition and in bodily\n"
-            "temperature, PIPLUP can be a hard POKéMON\n"
+            "temperature, Piplup can be a hard POKéMON\n"
             "to bond with. It likes to hide in its\n"
             "TRAINER's refrigerators."),
         .pokemonScale = 491,
@@ -367,14 +367,14 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD},
         .abilities = {ABILITY_POLAR_HERITAGE, ABILITY_COMPETITIVE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("PRINPLUP"),
+        .speciesName = _("Prinplup"),
         .cryId = CRY_PRINPLUP,
         .natDexNum = NATIONAL_DEX_PRINPLUP,
-        .categoryName = _("PENGUIN"),
+        .categoryName = _("Penguin"),
         .height = 8,
         .weight = 230,
         .description = COMPOUND_STRING(
-            "PRINPLUP is a very proud POKéMON, and\n"
+            "Prinplup is a very proud POKéMON, and\n"
             "rarely enjoys the company of others.\n"
             "But nce it considers someone an equal,\n"
             "it never leaves their side."),
@@ -414,10 +414,10 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .eggGroups = { EGG_GROUP_WATER_1, EGG_GROUP_FIELD},
         .abilities = {ABILITY_POLAR_HERITAGE, ABILITY_COMPETITIVE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("EMPOLEON"),
+        .speciesName = _("Empoleon"),
         .cryId = CRY_EMPOLEON,
         .natDexNum = NATIONAL_DEX_EMPOLEON,
-        .categoryName = _("EMPEROR"),
+        .categoryName = _("Emperor"),
         .height = 17,
         .weight = 845,
         .description = COMPOUND_STRING(
@@ -1512,16 +1512,16 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG },
         .abilities = { ABILITY_HONEY_GATHER, ABILITY_FRIEND_GUARD },
         .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("BEDIGUARD"),
+        .speciesName = _("Bediguard"),
         .cryId = CRY_BEDIGUARD,
-        .categoryName = _("PROTECTOR"),
+        .categoryName = _("Protector"),
         .height = 12,
         .weight = 385,
         .description = COMPOUND_STRING(
             "It tirelessly protect the queen\n"
             "of the hive with its very life.\n"
             "It's common to see swarms of them\n"
-            "surrounding a VESPIQUEN."),
+            "surrounding a Vespiquen."),
         .pokemonScale = 282,
         .pokemonOffset = 4,
         .trainerScale = 256,
@@ -2403,15 +2403,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
         .abilities = { ABILITY_LEVITATE, ABILITY_HEATPROOF, ABILITY_NONE },
         .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("BRONZOR"),
+        .speciesName = _("Bronzor"),
         .cryId = CRY_BRONZOR,
         .natDexNum = NATIONAL_DEX_BRONZOR,
-        .categoryName = _("MIRROR"),
+        .categoryName = _("Mirror"),
         .height = 5,
         .weight = 605,
         .description = COMPOUND_STRING(
             "If properly polished, they can become\n"
-            "reflective. However, BRONZOR dislike it.\n"
+            "reflective. However, Bronzor dislike it.\n"
             "They are believed to have been created\n"
             "by an ancient civilization."),
         .pokemonScale = 432,
@@ -2451,10 +2451,10 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL },
         .abilities = { ABILITY_LEVITATE, ABILITY_HEATPROOF},
         .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("BRONZONG"),
+        .speciesName = _("Bronzong"),
         .cryId = CRY_BRONZONG,
         .natDexNum = NATIONAL_DEX_BRONZONG,
-        .categoryName = _("BELL"),
+        .categoryName = _("Bell"),
         .height = 13,
         .weight = 1870,
         .description = COMPOUND_STRING(
@@ -2786,15 +2786,15 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .eggGroups = { EGG_GROUP_NO_EGGS_DISCOVERED, EGG_GROUP_NO_EGGS_DISCOVERED},
         .abilities = {ABILITY_PRANKSTER, ABILITY_MEGA_LAUNCHER},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("RIOLU"),
+        .speciesName = _("Riolu"),
         .cryId = CRY_RIOLU,
         .natDexNum = NATIONAL_DEX_RIOLU,
-        .categoryName = _("EMANATION"),
+        .categoryName = _("Emanation"),
         .height = 7,
         .weight = 202,
         .description = COMPOUND_STRING(
             "A weak power resides within it, growing\n"
-            "stronger as RIOLU grows older. It can\n"
+            "stronger as Riolu grows older. It can\n"
             "faintly sense its surroundings through\n"
             "the power of Aura."),
         .pokemonScale = 365,
@@ -2824,9 +2824,9 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .growthRate = GROWTH_MEDIUM_SLOW,                       \
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_HUMAN_LIKE }, \
         .bodyColor = BODY_COLOR_BLUE,                           \
-        .speciesName = _("LUCARIO"),                            \
+        .speciesName = _("Lucario"),                            \
         .natDexNum = NATIONAL_DEX_LUCARIO,                      \
-        .categoryName = _("AURA"),                              \
+        .categoryName = _("Aura"),                              \
         .footprint = gMonFootprint_Lucario,                     \
         LEARNSETS(Lucario),                                     \
         .formSpeciesIdTable = sLucarioFormSpeciesIdTable,       \
@@ -2842,12 +2842,12 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpAttack  = 115,
         .baseSpDefense = 80,
         .expYield = 184,
-        .abilities = {ABILITY_JUSTIFIED, ABILITY_MEGA_LAUNCHER},
+        .abilities = {ABILITY_FRENZY, ABILITY_MEGA_LAUNCHER},
         .cryId = CRY_LUCARIO,
         .height = 12,
         .weight = 540,
         .description = COMPOUND_STRING(
-            "LUCARIO has mastered the power of Aura.\n"
+            "Lucario has mastered the power of Aura.\n"
             "The more damage it takes during a fight,\n"
             "the more fearsome its power becomes.\n"
             "It's able to sense human emotions."),
@@ -3280,10 +3280,10 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .eggGroups = { EGG_GROUP_WATER_2, EGG_GROUP_WATER_2},
         .abilities = {ABILITY_SERENE_GRACE, ABILITY_MESMERIZE, ABILITY_SWIFT_SWIM},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("FINNEON"),
+        .speciesName = _("Finneon"),
         .cryId = CRY_FINNEON,
         .natDexNum = NATIONAL_DEX_FINNEON,
-        .categoryName = _("WING FISH"),
+        .categoryName = _("Wing Fish"),
         .height = 4,
         .weight = 70,
         .description = COMPOUND_STRING(
@@ -3329,14 +3329,14 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .eggGroups = { EGG_GROUP_WATER_2, EGG_GROUP_WATER_2},
         .abilities = {ABILITY_SERENE_GRACE, ABILITY_MESMERIZE, ABILITY_SWIFT_SWIM},
         .bodyColor = BODY_COLOR_BLUE,
-        .speciesName = _("LUMINEON"),
+        .speciesName = _("Lumineon"),
         .cryId = CRY_LUMINEON,
         .natDexNum = NATIONAL_DEX_LUMINEON,
-        .categoryName = _("NEON"),
+        .categoryName = _("Neon"),
         .height = 12,
         .weight = 240,
         .description = COMPOUND_STRING(
-            "LUMINEON swimming in the darkness\n"
+            "Lumineon swimming in the darkness\n"
             "of the deep sea look like stars shining\n"
             "in the night sky. It competes for food\n"
             "with LANTURN."),

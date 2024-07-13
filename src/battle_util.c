@@ -463,10 +463,6 @@ bool32 TryRunFromBattle(u32 battler)
         gProtectStructs[battler].fleeType = FLEE_ITEM;
         effect++;
     }
-    else if (B_GHOSTS_ESCAPE >= GEN_6 && IS_BATTLER_OF_TYPE(battler, TYPE_GHOST))
-    {
-        effect++;
-    }
     else if (GetBattlerAbility(battler) == ABILITY_RUN_AWAY)
     {
         if (InBattlePyramid())
@@ -501,19 +497,20 @@ bool32 TryRunFromBattle(u32 battler)
         if (InBattlePyramid())
         {
             pyramidMultiplier = GetPyramidRunMultiplier();
-            speedVar = (gBattleMons[battler].speed * pyramidMultiplier) / (gBattleMons[runningFromBattler].speed) + (gBattleStruct->runTries * 30);
+            speedVar = (gBattleMons[battler].speed * pyramidMultiplier) / (10 * gBattleMons[runningFromBattler].speed);
             if (speedVar > (Random() & 0xFF))
                 effect++;
         }
         else if (gBattleMons[battler].speed < gBattleMons[runningFromBattler].speed)
         {
-            speedVar = (gBattleMons[battler].speed * 128) / (gBattleMons[runningFromBattler].speed) + (gBattleStruct->runTries * 30);
+            speedVar = (gBattleMons[battler].speed * 128) / (10 * gBattleMons[runningFromBattler].speed);
             if (speedVar > (Random() & 0xFF))
                 effect++;
         }
         else // same speed or faster
         {
-            effect++;
+            if(Random() % 10 == 0)
+                effect++;
         }
 
         gBattleStruct->runTries++;
