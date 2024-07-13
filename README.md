@@ -1,4 +1,29 @@
+<<<<<<< HEAD
 # pokeemerald-expansion
+=======
+# About this branch
+This branch adds 3 new pockets to the bag based on changes to it from later generations:
+* Medicine (HP, PP and status recovery items)
+* Power-Up (Vitamins and evolution items)
+* Battle Items (X items, Pokédoll/FluffyTail and hold items with battle effects)
+
+The new order for the pockets is the following:
+* Items
+* Medicine
+* Poké Balls
+* Battle Items
+* Berries
+* Power-Up
+* TMs & HMs
+* Key Items
+
+However, it reuses the original pocket sprites until I'm able to get new ones for the new pockets.
+
+To-Do:
+* New bag sprites.
+
+# Pokémon Emerald
+>>>>>>> 96925341aba71b75aa6a067d4872551032c0237b
 
 ### Important: DO NOT use GitHub's "Download Zip" option. Using this option will not download the commit history required to update your expansion version or merge other feature branches. Instead, please read [this guide](https://github.com/Pawkkie/Team-Aquas-Asset-Repo/wiki/The-Basics-of-GitHub) to learn how to fork the repository and clone locally from there.
 
