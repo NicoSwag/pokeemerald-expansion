@@ -40,11 +40,13 @@ Route102_Text_AllenIntro:
 
 Route102_Text_AllenDefeated:
 	.string "I called you because I thought\n"
-	.string "I could beat you…$"
+	.string "I could beat you…\p"
+	.string "Allen was the Area Leader!$"
 
 Route102_Text_AllenPostBattle:
-	.string "I haven't won once yet…\n"
-	.string "I wish I would win soon…$"
+	.string "Now that you've beat me, the\n"
+	.string "Trainers of this route will stop\l"
+	.string "refighting you.$"
 
 Route102_Text_RickIntro:
 	.string "Hahah! Our eyes met!\n"
@@ -492,17 +494,16 @@ Route105_Text_JosuePostBattle:
 	.string "match than the sea.$"
 
 Route106_Text_ElliotIntro:
-	.string "Which do you prefer, fishing in the\n"
-	.string "sea or a stream?$"
+	.string "You can find cool POKéMON by fishing\n"
+	.string "in the rock pools!\p"
+	.string "Watch this!$"
 
 Route106_Text_ElliotDefeated:
-	.string "Like in deep-sea fishing, I lost\n"
-	.string "spectacularly!$"
+	.string "I said cool, not strong.$"
 
 Route106_Text_ElliotPostBattle:
-	.string "Fishing is the greatest whether it's\n"
-	.string "in the sea or a stream.\l"
-	.string "You agree with me, right?$"
+	.string "Is the fish failing me or am I\n"
+	.string "failing the fish?$"
 
 Route106_Text_ElliotRegister:
 	.string "Fishing's great, but so is battling.\n"
@@ -544,16 +545,17 @@ Route106_Text_DouglasPostBattle:
 	.string "I wouldn't lose in a swim race…$"
 
 Route106_Text_KylaIntro:
-	.string "The sea is my backyard. I'm not going\n"
-	.string "to take it easy because you're a kid!$"
+	.string "Suspicious people are scuttling\n"
+	.string "about.\p"
+	.string "Are you one of them?$"
 
 Route106_Text_KylaDefeated:
-	.string "Did you take it easy on me by any\n"
-	.string "chance?$"
+	.string "Ah, no…\p"
+	.string "You're just another kid.$"
 
 Route106_Text_KylaPostBattle:
-	.string "Drifting along with the waves…\n"
-	.string "I love it! Why don't you give it a try?$"
+	.string "Forgive me, my eyesight is poor.\n"
+	.string "I forgot my glasses home today.$"
 
 Route107_Text_DarrinIntro:
 	.string "Yawn…\p"

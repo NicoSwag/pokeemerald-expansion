@@ -2360,7 +2360,7 @@ void BufferExpansionVersion(struct ScriptContext *ctx)
 // Actions Scripts
 static void DebugAction_Util_Script_1(u8 taskId)
 {
-    QuestMenu_Init(0, CB2_ReturnToField);
+    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_Script_1);
 }
 
 static void DebugAction_Util_Script_2(u8 taskId)
@@ -4687,6 +4687,7 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_VS_ENEMY_SPIDER) \
     X(MUS_OLD_CHATEAU) \
     X(MUS_VS_FINAL_MAGMA) \
+    X(MUS_AEGIS_CAVE) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \

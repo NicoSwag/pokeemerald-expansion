@@ -122,6 +122,8 @@ Route101_Movement_EnterScene:
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
+	walk_fast_up
+	walk_fast_up
 	step_end
 
 Route101_Movement_BirchRunInCircles:
@@ -256,7 +258,7 @@ Route101_Movement_BirchApproachPlayer:
 	step_end
 
 Route101_Text_HelpMe:
-	.string "H-help me!$"
+	.string "Wahhh! Help me!$"
 
 Route101_Text_PleaseHelp:
 	.string "Hello! You over there!\n"
@@ -293,9 +295,8 @@ Route101_Text_WildPokemonInTallGrass:
 	.string "to go into the tall grass and search.$"
 
 Route101_Text_RouteSign:
-	.string "RAINTREE GROVE\n"
-	.string "{UP_ARROW} OLDALE TOWN$"
+	.string "RAINTREE GROVE$"
 
 Route101_Text_Healthcare:
-	.string "POKéMON CENTRES really are an amazing\n"
-	.string "place!$"
+	.string "POKéMON CENTRES really are amazing\n"
+	.string "places!$"

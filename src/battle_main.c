@@ -684,6 +684,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     TRAINER_CLASS(CREEPING, "CREEPING"),
     TRAINER_CLASS(ENGINEER, "BUILDER"),
     TRAINER_CLASS(SCIENTIST, "SCIENTIST"),
+    TRAINER_CLASS(MINER, "MINER"),
 };
 
 static void (* const sTurnActionsFuncsTable[])(void) =
@@ -2222,17 +2223,13 @@ u8 GetTrainerHighestLevel(void)
 {
     u8 i;
     u8 highestLevel = 0;
-    u8 partySize = 0;
 
-    for (i = 0; i < PARTY_SIZE; i++)
+    for (i = 0; i < 6; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE && (gPlayerParty[i].level > highestLevel))
-            highestLevel += gPlayerParty[i].level;
-            partySize++;
+        if (gPlayerParty[i].level > highestLevel)
+            highestLevel = gPlayerParty[i].level;
+            
     }
-    if(partySize<=0)
-        partySize = 1;
-    highestLevel = highestLevel/partySize; 
     return highestLevel;
 }
 
@@ -2317,7 +2314,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             u8 levelDifference = enemyHighestLevel - currentEnemyLevel;
 
             
-            if(FlagGet(FLAG_LEVEL_SCALING) && (trainerHighestLevel - trainerScaling > enemyHighestLevel)){
+            if(((trainerHighestLevel - trainerScaling) > enemyHighestLevel)){
                 currentEnemyLevel = trainerHighestLevel - levelDifference - trainerScaling;
             }
             
@@ -5727,6 +5724,7 @@ static void HandleEndTurn_BattleLost(void)
     }
     else
     {
+        DoSoftReset();
         gBattlescriptCurrInstr = BattleScript_LocalBattleLost;
     }
 
@@ -5877,6 +5875,7 @@ static void HandleEndTurn_FinishBattle(void)
 
 static void FreeResetData_ReturnToOvOrDoEvolutions(void)
 {
+    
     if (!gPaletteFade.active)
     {
         gIsFishingEncounter = FALSE;

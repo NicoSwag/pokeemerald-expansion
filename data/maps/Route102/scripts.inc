@@ -4,11 +4,18 @@ Route102_MapScripts::
 
 
 Route102_EventScript_OnTransition::
-	cleartrainerflag TRAINER_CALVIN_1
+	goto_if_trainerunset TRAINER_ALLEN, Route102_EventScript_ResetTrainers
+	setifnotbeaten TRAINER_CALVIN_1
+	setifnotbeaten TRAINER_RICK
+	setifnotbeaten TRAINER_TIANA
 	end
 
 
-
+Route102_EventScript_ResetTrainers::
+	cleartrainerflag TRAINER_CALVIN_1
+	cleartrainerflag TRAINER_RICK
+	cleartrainerflag TRAINER_TIANA
+	end
 
 Route102_EventScript_LittleBoy::
 	lock
@@ -210,3 +217,6 @@ Route102_Text_GoingToMakeVolbeatStrong:
 	.string "see.\p"
 	.string "We got plenty of SWINUB, but psychic-\n"
 	.string "types are more rare.$"
+
+Text_DefeatedAreaBoss:
+	.string "You defeated the Area Leader!$"

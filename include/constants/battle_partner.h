@@ -4,5 +4,11 @@
 
 #define PARTNER_NONE                0
 #define PARTNER_STEVEN              1
+#define PARTNER_BRENDAN_ROUTE_103_MUDKIP              2
+#define PARTNER_BRENDAN_ROUTE_103_TREECKO             3
+#define PARTNER_BRENDAN_ROUTE_103_TORCHIC              4
+#define PARTNER_MAY_ROUTE_103_MUDKIP              5
+#define PARTNER_MAY_ROUTE_103_TREECKO             6
+#define PARTNER_MAY_ROUTE_103_TORCHIC              7
 
 #endif  // GUARD_CONSTANTS_BATTLE_PARTNERS_H

@@ -24,9 +24,8 @@ AquaShop_EventScript_AquaClerk::
 AquaShop_Pokemart:
 	.2byte ITEM_DIVE_BALL
 	.2byte ITEM_NET_BALL
-	.2byte ITEM_FRESH_WATER
-	.2byte ITEM_PASSHO_BERRY
 	.2byte ITEM_MYSTIC_WATER
+	.2byte ITEM_PASSHO_VOUCHER
 	.2byte ITEM_NONE
 	release
 	end

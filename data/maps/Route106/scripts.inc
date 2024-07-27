@@ -15,10 +15,19 @@ Route106_EventScript_Kyla::
 	msgbox Route106_Text_KylaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+
+Route106_EventScript_Ellen::
+	trainerbattle_single TRAINER_ELLEN, Route106_Text_EllenIntro, Route106_Text_EllenDefeated
+	msgbox Route106_Text_EllenPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route106_EventScript_Christina::
+	trainerbattle_single TRAINER_CHRISTINA, Route106_Text_ChristinaIntro, Route106_Text_ChristinaDefeated
+	msgbox Route106_Text_ChristinaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
 Route106_EventScript_Elliot::
 	trainerbattle_single TRAINER_ELLIOT_1, Route106_Text_ElliotIntro, Route106_Text_ElliotDefeated, Route106_EventScript_ElliotRegisterMatchCallAfterBattle
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route106_EventScript_ElliotRematch
 	msgbox Route106_Text_ElliotPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -45,3 +54,29 @@ Route106_Text_TrainerTips:
 	.string "TRAINER TIPS\p"
 	.string "Advice on catching POKéMON with a ROD:\n"
 	.string "Press the A Button if you get a bite.$"
+
+Route106_Text_EllenIntro:
+	.string "Halt!\n"
+	.string "Who goes there?$"
+
+Route106_Text_EllenDefeated:
+	.string "Very well.\n"
+	.string "You may pass!$"
+	
+Route106_Text_EllenPostBattle:
+	.string "I'm on guard duty today.\p"
+	.string "Truth to be told it's pretty boring.\n"
+	.string "I'd rather be in the mines.$"
+
+
+Route106_Text_ChristinaIntro:
+	.string "We'll never give up our mine!$"
+
+Route106_Text_ChristinaDefeated:
+	.string "Do you yearn for the mines\n"
+	.string "that much…?"
+	
+Route106_Text_ChristinaPostBattle:
+	.string "Our mine seems to interest a lot\n"
+	.string "people recently.\p"
+	.string "Beats me why. It's just a mine!$"

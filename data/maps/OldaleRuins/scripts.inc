@@ -33,8 +33,11 @@ OldaleRuins_Text_Cave:
 	.string "The air inside is… Strange.\p"
 	.string "Hard to breathe. Makes people see\n"
 	.string "things.\p"
-	.string "I'm not going to stop you, but whatever\n"
-	.string "you do, be careful.$"
+	.string "I'm not going to stop you, but…\p"
+	.string "I'd recommend having at least three\n"
+	.string "gym badges before going too far in.\p"
+	.string "I don't want a rookie Trainer weighing\n"
+	.string "on my coscience.$"
 
 
 OldaleRuins_Text_Trees:

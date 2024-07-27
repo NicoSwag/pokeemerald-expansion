@@ -2,6 +2,7 @@
 .set LOCALID_FOOTPRINTS_MAN, 3
 .set LOCALID_RIVAL, 4
 .set LOCALID_LEDYBA, 7
+.set LOCALID_PELIPPER, 10
 
 OldaleTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, OldaleTown_OnTransition
@@ -49,7 +50,10 @@ OldaleTown_EventScript_HelpingLedyba::
 	goto_if_eq VAR_RESULT, YES, OldaleTown_EventScript_LedybaGetUp
 	release
 	end
-
+	
+OldaleTown_EventScript_Girl2::
+	msgbox OldaleTown_Text_Girl2, MSGBOX_NPC
+	end
 
 OldaleTown_EventScript_LedybaGetUp::	
 	applymovement LOCALID_LEDYBA, OldaleTown_Movement_Ledyba
@@ -76,7 +80,7 @@ OldaleTown_EventScript_BlockWestEntrance::
 	return
 
 OldaleTown_EventScript_MoveMartEmployee::
-	setobjectxyperm LOCALID_MART_EMPLOYEE, 1, 17
+	setobjectxyperm LOCALID_MART_EMPLOYEE, 4, 17
 	setobjectmovementtype LOCALID_MART_EMPLOYEE, MOVEMENT_TYPE_FACE_DOWN
 	return
 
@@ -118,7 +122,7 @@ OldaleTown_EventScript_GoToMartEast::
 
 OldaleTown_EventScript_ExplainPokemonMart::
 	msgbox OldaleTown_Text_ThisIsAPokemonMart, MSGBOX_DEFAULT
-	giveitem ITEM_POTION
+	giveitem ITEM_POKE_DOLL
 	goto_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_BagIsFull
 	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_POTION_OLDALE
@@ -448,15 +452,11 @@ OldaleTown_Movement_FootprintsRight::
 	walk_right
 	walk_down
 	walk_down
+	walk_right
+	walk_right
 	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
+	walk_right
+	walk_right
 	walk_down
 	walk_down
 	walk_down
@@ -521,9 +521,12 @@ OldaleTown_Text_ThisIsAPokemonMart:
 	.string "a promotional item.$"
 
 OldaleTown_Text_PotionExplanation:
-	.string "A POTION can be used anytime, so it's\n"
-	.string "even more useful than a POKéMON CENTER\l"
-	.string "in certain situations.$"
+	.string "Running away from wild POKéMON can be\n"
+	.string "more difficult than expected.\p"
+	.string "With a POKé DOLL, you can disengage the\n"
+	.string "enemy without fail.\p"
+	.string "Prevention is the best medicine, after\n"
+	.string "all.$"
 
 OldaleTown_Text_WaitDontComeInHere:
 	.string "Oh, hello!\n"
@@ -584,3 +587,21 @@ OldaleTown_Text_LedybaPresent:
 OldaleTown_Text_LedybaHello:
 	.string "LEDYBA is waving to you with all of\n"
 	.string "its hands.$"
+
+OldaleTown_Text_Girl2:
+	.string "Heading out?\n"
+	.string "Here's something you should know.\p"
+	.string "Each area has a LEADER.\p"
+	.string "If you leave an area without defeating\n"
+	.string "its LEADER, you will be rematched by\l"
+	.string "Trainers, even if you've beat them\l"
+	.string "before.\p"
+	.string "Also, just between me and you…\p"
+	.string "Being defeated might set you back\n"
+	.string "a lot more than expected.\p"
+	.string "As my grandpa always said:\n"
+	.string "Losing might make you end up\l"
+	.string "back to the title screen!\p"
+	.string "I don't think he was all quite there,\n"
+	.string "but I'm sure there's some good advice\l"
+	.string "in there.$"

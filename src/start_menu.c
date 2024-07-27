@@ -897,6 +897,14 @@ void SaveStartCallback_FullStartMenu(void)
     return;
 }
 
+
+void SaveStartCallback_StartMenu(void)
+{
+    InitSave();
+    CreateTask( Task_SaveFromStartMenuFull, 0);
+    return;
+}
+
 static void Task_SaveFromStartMenuFull(u8 taskId)
 {
     s16 *state = gTasks[taskId].data;

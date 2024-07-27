@@ -10,6 +10,25 @@ OldaleTown_PokemonCenter_1F_OnTransition:
 	call Common_EventScript_UpdateBrineyLocation
 	end
 
+
+
+
+OldaleTown_PokemonCenter_1F_EventScript_MasterBerry::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_ORAN_VOUCHER, OldaleTown_PokemonCenter_1F_EventScript_BerryMasterGaveVoucher
+	msgbox OldaleTown_PokemonCenter_1F_Text_GiveVoucher, MSGBOX_DEFAULT
+	giveitem ITEM_ORAN_VOUCHER
+	setflag FLAG_RECEIVED_ORAN_VOUCHER
+	msgbox OldaleTown_PokemonCenter_1F_Text_GivenVoucher, MSGBOX_DEFAULT
+	release
+	end
+
+OldaleTown_PokemonCenter_1F_EventScript_BerryMasterGaveVoucher::
+	msgbox OldaleTown_PokemonCenter_1F_Text_OneOfMany, MSGBOX_DEFAULT
+	release
+	end
+
 OldaleTown_PokemonCenter_1F_EventScript_Nurse::
 	setvar VAR_0x800B, LOCALID_NURSE
 	call Common_EventScript_PkmnCenterNurse
@@ -33,10 +52,7 @@ OldaleTown_PokemonCenter_1F_EventScript_Mart::
 
 OldaleTown_Mart_Pokemart:
 	.2byte ITEM_POKE_BALL
-	.2byte ITEM_POTION
-	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_AWAKENING
+	.2byte ITEM_POKE_DOLL
 	.2byte ITEM_NONE
 	release
 	end
@@ -47,6 +63,7 @@ OldaleTown_PokemonCenter_1F_EventScript_StillStocking:
 	msgbox OldaleTown_PokemonCenter_1F_Text_StillStocking, MSGBOX_NPC
 	release
 	end
+
 
 
 OldaleTown_PokemonCenter_1F_EventScript_Gentleman::
@@ -71,10 +88,10 @@ OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable::
 	end
 
 OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
-	.string "That PC in the corner there is\n"
-	.string "for any POKéMON TRAINER to use.\p"
-	.string "Naturally, that means you're welcome\n"
-	.string "to use it, too.$"
+	.string "When you heal your POKéMON you\n"
+	.string "also get some healing items for free.\p"
+	.string "I've heard that you can get more by\n"
+	.string "winning BADGES.$"
 
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
 	.string "I spent too much money at the MART,\n"
@@ -100,3 +117,34 @@ OldaleTown_PokemonCenter_1F_Text_StillStocking:
 	.string "I'm terribly sorry, but we're still\n"
 	.string "stocking our inventory.\p"
 	.string "Do come back in a little!$"
+
+OldaleTown_PokemonCenter_1F_Text_GiveVoucher:
+	.string "Oh oh!\n"
+	.string "Eh eh eh!\p"
+	.string "Greetings, my little friend!\n"
+	.string "I am one of the Berry Masters!\p"
+	.string "Yes, a band of most merry companions\n"
+	.string "sharing with all the joy of berries!\p"
+	.string "Take this, my little friend!\n"
+	.string "Eh eh eh!$"
+
+
+OldaleTown_PokemonCenter_1F_Text_GivenVoucher:
+	.string "Oh oh!\p"
+	.string "That is a Berry Voucher!\p"
+	.string "By presenting it at a POKéMON CENTER,\n"
+	.string "you will be given six berries of the\l"
+	.string "corresponding type!\p"
+	.string "One for each of your little friends!\n"
+	.string "Eh eh eh!\p"
+	.string "And don't worry!\n"
+	.string "You can use it as many time as you want!\p"
+	.string "Eh eh eh!$"
+
+OldaleTown_PokemonCenter_1F_Text_OneOfMany:
+	.string "Oh oh!\p"
+	.string "There are many Berry Masters other\n"
+	.string "than me!\p"
+	.string "But not all of them might be this easy\n"
+	.string "to find!\p"
+	.string "Eh eh eh!$"

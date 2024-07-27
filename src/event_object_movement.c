@@ -496,6 +496,8 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_MAKUHITA               0x1148
 #define OBJ_EVENT_PAL_TAG_SLAKOTH               0x1149
 #define OBJ_EVENT_PAL_TAG_EEVEE               0x1150
+#define OBJ_EVENT_PAL_TAG_OBSTAGOON               0x1151
+#define OBJ_EVENT_PAL_TAG_CUT_TREE              0x1152
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -539,6 +541,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Pelipper,        OBJ_EVENT_PAL_TAG_PELIPPER},
     {gObjectEventPal_Channeler,        OBJ_EVENT_PAL_TAG_CHANNELER},
     {gObjectEventPal_May,                   OBJ_EVENT_PAL_TAG_MAY},
+    {gObjectEventPal_CuttableTree,                   OBJ_EVENT_PAL_TAG_CUT_TREE},
     {gObjectEventPal_MayReflection,         OBJ_EVENT_PAL_TAG_MAY_REFLECTION},
     {gObjectEventPal_MovingBox,             OBJ_EVENT_PAL_TAG_MOVING_BOX},
     {gObjectEventPal_CableCar,              OBJ_EVENT_PAL_TAG_CABLE_CAR},
@@ -550,6 +553,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_GroudonReflection,     OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION},
     {gObjectEventPal_SubmarineShadow,       OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW},
     {gObjectEventPal_Poochyena,             OBJ_EVENT_PAL_TAG_POOCHYENA},
+    {gObjectEventPal_Obstagoon,             OBJ_EVENT_PAL_TAG_OBSTAGOON},
     {gObjectEventPal_RedLeaf,               OBJ_EVENT_PAL_TAG_RED_LEAF},
     {gObjectEventPal_Deoxys,                OBJ_EVENT_PAL_TAG_DEOXYS},
     {gObjectEventPal_BirthIslandStone,      OBJ_EVENT_PAL_TAG_BIRTH_ISLAND_STONE},

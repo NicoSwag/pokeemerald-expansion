@@ -6683,6 +6683,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     
     [MOVE_FLASH_FREEZE] =
     {
+        .name = COMPOUND_STRING("Flash Freeze"),
         .description = COMPOUND_STRING(
             "Inflicts frostbite on the foe\n"
             "with freezing cold."),

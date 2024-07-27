@@ -12,7 +12,7 @@
     F(REVERSAL) \
     F(BULLDOZE) \
     F(SUBSTITUTE) \
-    F(SUNNY_DAY) \
+    F(RETURN) \
     F(TAUNT) \
     F(ICE_BEAM) \
     F(BLIZZARD) \
@@ -28,7 +28,7 @@
     F(THUNDERBOLT) \
     F(THUNDER) \
     F(EARTHQUAKE) \
-    F(RETURN) \
+    F(SUNNY_DAY) \
     F(DIG) \
     F(PSYCHIC) \
     F(SHADOW_BALL) \

@@ -11,6 +11,8 @@ LittlerootTown_NeighborsHousr_Text_Woman:
 	.string "Mysterious shards are falling from the\n"
 	.string "sky all throughout HOENN, and no one\l"
 	.string "knows why!\p"
+	.string "I bet that, if you really looked, you\n"
+	.string "could find one in each area.\p"
 	.string "Apparently, TRAINERS are being asked to\n"
 	.string "turn them in for a reward.\p"
 	.string "Me, I couldn't care less. They're too\n"

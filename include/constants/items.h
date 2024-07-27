@@ -999,11 +999,14 @@
 #define ITEM_POKESHI_DOLL 827
 #define ITEM_RIBBON_BOX 828
 #define ITEM_QUEST_LOG 829
+#define ITEM_ORAN_VOUCHER 830
+#define ITEM_PASSHO_VOUCHER 831
+#define ITEM_CHERI_VOUCHER 832
 
 // HOPO BERRY
 // LEGEND PLATE
 
-#define ITEMS_COUNT 830
+#define ITEMS_COUNT 833
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

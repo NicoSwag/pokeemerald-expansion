@@ -5,6 +5,18 @@
 PetalburgWoods_MapScripts::
 	.byte 0
 
+PetalburgWoods_OnTransition:
+	goto_if_trainerunset TRAINER_GINA_AND_MIA_1, PetalburgWoods_EventScript_ResetTrainers
+	setifnotbeaten TRAINER_LYLE
+	setifnotbeaten TRAINER_JAMES_1
+	end
+
+
+PetalburgWoods_EventScript_ResetTrainers::
+	cleartrainerflag TRAINER_LYLE
+	cleartrainerflag TRAINER_JAMES_1
+	end
+
 PetalburgWoods_EventScript_DevonResearcherLeft::
 	lockall
 	call PetalburgWoods_EventScript_DevonResearcherIntro
@@ -13,6 +25,7 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	waitmovement 0
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou, MSGBOX_DEFAULT
 	closemessage
+	playse SE_PIN
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonLooksDown
 	waitmovement 0
 	msgbox PetalburgWoods_Text_DealIsOff, MSGBOX_DEFAULT
@@ -49,6 +62,7 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	fadedefaultbgm
 	removeobject LOCALID_LOOKER
 	setvar VAR_PETALBURG_WOODS_STATE, 1
+	special HealPlayerParty
 	releaseall
 	end
 
@@ -444,27 +458,25 @@ PetalburgWoods_Text_YouHaveToHelpMe:
 	.string "you saw, or else!$"
 
 PetalburgWoods_Text_LookerLate:
-	.string "LOOKER: At long last, I arrive!\p"
-	.string "Pardon the lateness, my friend,\n"
-	.string "but finally we are ready to catch\l"
-	.string "some criminals!\p"
+	.string "LOOKER: At long last, I arrive!\n"
+	.string "Pardon the lateness, my friend.\p"
 	.string "… … … …\p"
 	.string "Whaaaaaaat?\n"
 	.string "You say that you already dealt with\l"
 	.string "the situation?\p"
-	.string "And that, additionally, a man wearing\n"
-	.string "a suit was attempting to bestow a\l"
-	.string "package to a member of TEAM AQUA?\p"
+	.string "And that, additionally…\p"
+	.string "A suited man was attempting to bestow \n"
+	.string "a package to a member of TEAM AQUA?\p"
 	.string "Hmm…\p"
-	.string "I must say, my friend, those are some\n"
-	.string "big clues that you have unconvered!\p"
+	.string "I must say, my friend, those are\n"
+	.string "some big clues!\p"
 	.string "We already knew of TEAM AQUA, as well as\n"
-	.string "TEAM MAGMA, of course, but a mysterious\l"
-	.string "third party?\p"
+	.string "TEAM MAGMA, of course…\p"
+	.string "But a mysterious third party?\p"
 	.string "And that is to say, what if there were a\n"
 	.string "secret fourth party? Or a fifth…?\p"
 	.string "No, my friend, this is not good! We must\n"
-	.string "investigate, as quickly as we can!\p"
+	.string "investigate further!\p"
 	.string "Oh, but first…\p"
 	.string "To thank you for your outstanding work,\n"
 	.string "I have another gift for you.\p"
@@ -482,8 +494,8 @@ PetalburgWoods_Text_LookerFarewell:
 	.string "of our mysterious third party.\p"
 	.string "The operation might take some time,\n"
 	.string "however…\p"
-	.string "Ah, while I am asking around for leads,\n"
-	.string "why not challenge the GYM LEADER of\l"
+	.string "Ah, while I am asking around…\p"
+	.string "why not challenge the GYM LEADER of\n"
 	.string "RUSTBORO CITY?\p"
 	.string "That way, you will look like an ordinary\n"
 	.string "TRAINER instead of an assistant of the\l"

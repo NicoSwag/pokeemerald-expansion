@@ -31,6 +31,7 @@
 #include "palette.h"
 #include "party_menu.h"
 #include "pokemon_storage_system.h"
+#include "pokemon.h"
 #include "random.h"
 #include "overworld.h"
 #include "rotating_tile_puzzle.h"
@@ -126,6 +127,26 @@ bool8 ScrCmd_special(struct ScriptContext *ctx)
 
     gSpecials[index]();
     return FALSE;
+}
+
+void RemoveAllItem(struct ScriptContext *ctx)
+{
+    u16 itemId = VarGet(ScriptReadHalfword(ctx));
+    struct Pokemon *party;
+    party = gPlayerParty;
+    u16 heldItem = ITEM_NONE;
+    RemoveBagItem(itemId, CountTotalItemQuantityInBag(itemId));
+    for(u8 i = 0; i<6; i++){
+    if(GetMonData(&party[i], MON_DATA_HELD_ITEM) == itemId)
+        SetMonData(&party[i], MON_DATA_HELD_ITEM, &heldItem);
+   }
+}
+
+void SetIfNotBeaten(struct ScriptContext *ctx){
+    u16 index = VarGet(ScriptReadHalfword(ctx));
+    if(gSaveBlock1Ptr->beatTrainer[index]==1)
+        SetTrainerFlag(index);
+    
 }
 
 bool8 ScrCmd_specialvar(struct ScriptContext *ctx)
@@ -495,6 +516,16 @@ bool8 ScrCmd_additem(struct ScriptContext *ctx)
     u32 quantity = VarGet(ScriptReadHalfword(ctx));
 
     gSpecialVar_Result = AddBagItem(itemId, quantity);
+    return FALSE;
+}
+
+
+bool8 ScrCmd_setitem(struct ScriptContext *ctx)
+{
+    u16 itemId = VarGet(ScriptReadHalfword(ctx));
+    u32 quantity = VarGet(ScriptReadHalfword(ctx));
+
+    gSpecialVar_Result = SetBagItem(itemId, quantity);
     return FALSE;
 }
 

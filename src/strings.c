@@ -201,6 +201,7 @@ const u8 gText_TM07[] = _("FIRE_SPIN");
 const u8 gText_TM08[] = _("REVERSAL");
 const u8 gText_TM09[] = _("BULLDOZE");
 const u8 gText_TM10[] = _("SUBSTITUTE");
+const u8 gText_TM11[] = _("RETURN");
 const u8 gMenuText_Show[] = _("SHOW");
 const u8 gText_EmptyString2[] = _("");
 const u8 gText_Cancel7[] = _("CANCEL"); // Unused
@@ -1881,7 +1882,7 @@ const u8 gText_PlantBerry[] = _("PLANT BERRY");
 
 //// side quest data
 //names
-const u8 gText_SideQuestName_1[] = _("Side Quest 1");
+const u8 gText_SideQuestName_1[] = _("Zigzagoon's Day Out");
 const u8 gText_SideQuestName_2[] = _("Side Quest 2");
 const u8 gText_SideQuestName_3[] = _("Side Quest 3");
 const u8 gText_SideQuestName_4[] = _("Side Quest 4");
@@ -1912,7 +1913,7 @@ const u8 gText_SideQuestName_28[] = _("Side Quest 28");
 const u8 gText_SideQuestName_29[] = _("Side Quest 29");
 const u8 gText_SideQuestName_30[] = _("Side Quest 30");
 //descriptions
-const u8 gText_SideQuestDesc_1[] = _("Description 1");
+const u8 gText_SideQuestDesc_1[] = _("Bring your neighbor's Zigzagoon\n to see the world.$");
 const u8 gText_SideQuestDesc_2[] = _("Description 2");
 const u8 gText_SideQuestDesc_3[] = _("Description 3");
 const u8 gText_SideQuestDesc_4[] = _("Description 4");
@@ -1943,7 +1944,7 @@ const u8 gText_SideQuestDesc_28[] = _("Description 28");
 const u8 gText_SideQuestDesc_29[] = _("Description 29");
 const u8 gText_SideQuestDesc_30[] = _("Description 30");
 //point of contact
-const u8 gText_SideQuestPOC_1[] = _("POC 1");
+const u8 gText_SideQuestPOC_1[] = _("Neighbor");
 const u8 gText_SideQuestPOC_2[] = _("POC 2");
 const u8 gText_SideQuestPOC_3[] = _("POC 3");
 const u8 gText_SideQuestPOC_4[] = _("POC 4");
@@ -1974,7 +1975,7 @@ const u8 gText_SideQuestPOC_28[] = _("POC 28");
 const u8 gText_SideQuestPOC_29[] = _("POC 29");
 const u8 gText_SideQuestPOC_30[] = _("POC 30");
 //map
-const u8 gText_SideQuestMap_1[] = _("Map 1");
+const u8 gText_SideQuestMap_1[] = _("Littleroot Town");
 const u8 gText_SideQuestMap_2[] = _("Map 2");
 const u8 gText_SideQuestMap_3[] = _("Map 3");
 const u8 gText_SideQuestMap_4[] = _("Map 4");
@@ -2005,7 +2006,7 @@ const u8 gText_SideQuestMap_28[] = _("Map 28");
 const u8 gText_SideQuestMap_29[] = _("Map 29");
 const u8 gText_SideQuestMap_30[] = _("Map 30");
 //rewards
-const u8 gText_SideQuestReward_1[] = _("Reward 1");
+const u8 gText_SideQuestReward_1[] = _("TM Return");
 const u8 gText_SideQuestReward_2[] = _("Reward 2");
 const u8 gText_SideQuestReward_3[] = _("Reward 3");
 const u8 gText_SideQuestReward_4[] = _("Reward 4");

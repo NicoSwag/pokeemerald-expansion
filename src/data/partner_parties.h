@@ -24,3 +24,57 @@ static const struct TrainerMon sParty_StevenPartner[] = {
         .moves = {MOVE_THUNDER, MOVE_PROTECT, MOVE_SOLAR_BEAM, MOVE_DRAGON_CLAW},
     }
 };
+
+static const struct TrainerMon sParty_BrendanRoute103Mudkip[] = {
+    {
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 5,
+    .species = SPECIES_CHIKORITA,
+    .nature = NATURE_MODEST,
+    }
+};
+
+static const struct TrainerMon sParty_BrendanRoute103Treecko[] = {
+    {
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 5,
+    .species = SPECIES_FENNEKIN,
+    .nature = NATURE_CALM,
+    }
+};
+
+static const struct TrainerMon sParty_BrendanRoute103Torchic[] = {
+    {
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 5,
+    .species = SPECIES_PIPLUP,
+    .nature = NATURE_MODEST,
+    }
+};
+
+static const struct TrainerMon sParty_MayRoute103Mudkip[] = {
+    {
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 5,
+    .species = SPECIES_CHIKORITA,
+    .nature = NATURE_MODEST,
+    }
+};
+
+static const struct TrainerMon sParty_MayRoute103Treecko[] = {
+    {
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 5,
+    .species = SPECIES_FENNEKIN,
+    .nature = NATURE_CALM,
+    }
+};
+
+static const struct TrainerMon sParty_MayRoute103Torchic[] = {
+    {
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 5,
+    .species = SPECIES_PIPLUP,
+    .nature = NATURE_MODEST,
+    }
+};

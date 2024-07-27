@@ -585,7 +585,7 @@ const struct Item gItemsInfo[] =
     [ITEM_POTION] =
     {
         .name = _("Potion"),
-        .price = 30,
+        .price = 0,
         .holdEffectParam = 20,
         .description = COMPOUND_STRING(
             "Restores the HP of\n"
@@ -602,7 +602,7 @@ const struct Item gItemsInfo[] =
     [ITEM_SUPER_POTION] =
     {
         .name = _("SUPER POTION"),
-        .price = 50,
+        .price = 0,
         .holdEffectParam = 60,
         .description = COMPOUND_STRING(
             "Restores the HP of\n"
@@ -677,7 +677,7 @@ const struct Item gItemsInfo[] =
     [ITEM_REVIVE] =
     {
         .name = _("Revive"),
-        .price = (I_PRICE >= GEN_7) ? 2000 : 1500,
+        .price = 0,
         .description = COMPOUND_STRING(
             "Revives a fainted\n"
             "Pokémon with half\n"
@@ -1114,7 +1114,7 @@ const struct Item gItemsInfo[] =
     [ITEM_LAVA_COOKIE] =
     {
         .name = _("Lava Cookie"),
-        .price = (I_PRICE >= GEN_7) ? 350 : 200,
+        .price = 0,
         .description = COMPOUND_STRING(
             "A local specialty\n"
             "that heals all\n"
@@ -2228,7 +2228,7 @@ const struct Item gItemsInfo[] =
     [ITEM_POKE_DOLL] =
     {
         .name = _("Poké Doll"),
-        .price = (I_PRICE < GEN_7) ? 1000 : ((I_PRICE == GEN_7) ? 100 : 300),
+        .price = 100,
         .description = sPokeDollDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -2531,7 +2531,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_HEART_SCALE] =
     {
-        .name = _("Heart Scale"),
+        .name = _("Sky Fragment"),
         .price = 0,
         .description = COMPOUND_STRING(
             "A lovely scale.\n"
@@ -9399,7 +9399,7 @@ const struct Item gItemsInfo[] =
     [ITEM_TM_SUBSTITUTE] =
     {
         .name = _("TM10"),
-        .price = 3400,
+        .price = 3000,
         .description = COMPOUND_STRING(
             "Creates a decoy\n"
             "using 1/4 of\n"
@@ -9411,14 +9411,14 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_SUBSTITUTE,
     },
 
-    [ITEM_TM_SUNNY_DAY] =
+    [ITEM_TM_RETURN] =
     {
         .name = _("TM11"),
-        .price = 2000,
+        .price = 4000,
         .description = COMPOUND_STRING(
-            "Raises the power of\n"
-            "Fire-type moves\n"
-            "for 5 turns."),
+            "A Normal-type attack\n"
+            "that hits with great\n"
+            "strength."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -9659,8 +9659,8 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_EARTHQUAKE,
     },
 
-    [ITEM_TM_RETURN] =
-    {
+    [ITEM_TM_SUNNY_DAY] =
+    {   
         .name = _("TM27"),
         .price = 1000,
         .description = COMPOUND_STRING(
@@ -11335,6 +11335,48 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 1,
+    },
+
+    [ITEM_ORAN_VOUCHER] =
+    {
+        .name = _("Oran Voucher"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Used to redeem\n"
+            "Oran Berries at\n"
+            "a Pokémon Center."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    },
+
+    [ITEM_CHERI_VOUCHER] =
+    {
+        .name = _("Oran Voucher"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Used to redeem\n"
+            "Cheri Berries at\n"
+            "a Pokémon Center."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    },
+
+    [ITEM_PASSHO_VOUCHER] =
+    {
+        .name = _("Passho Voucher"),
+        .price = 3000,
+        .description = COMPOUND_STRING(
+            "Used to redeem\n"
+            "Passho Berries at\n"
+            "a Pokémon Center."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
     [ITEM_MYSTIC_TICKET] =

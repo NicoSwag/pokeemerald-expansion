@@ -1168,7 +1168,7 @@ PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon:
 	.string "I'll be looking forward to it!$"
 
 PetalburgCity_Gym_Text_WallyIdLikeAPokemon:
-	.string "Um… Hi MR. NORMAN… Cough…\n"
+	.string "???: Um… Hi MR. NORMAN… Cough…\n"
 	.string "I caught some POKéMON like you said…$"
 
 PetalburgCity_Gym_Text_DadOhYoureWallyRight:
@@ -1176,7 +1176,7 @@ PetalburgCity_Gym_Text_DadOhYoureWallyRight:
 	.string "Yeah, good job, kid!$"
 
 PetalburgCity_Gym_Text_WallyIveNeverCaughtAPokemon:
-	.string "I was thinking of starting\n"
+	.string "???: I was thinking of starting\n"
 	.string "a journey by myself.\p"
 	.string "I thought I would be lonely all on my\n"
 	.string "own, so I wanted to take a POKéMON.\p"
@@ -1196,7 +1196,7 @@ PetalburgCity_Gym_Text_IllLoanYouMyZigzagoon:
 	.string "What's your name again?$"
 
 PetalburgCity_Gym_Text_WallyThankYouAndDadGivesPokeBall:
-	.string "It's WALLY…$"
+	.string "???: It's WALLY…$"
 
 PetalburgCity_Gym_Text_WallyOhWowThankYou:
 	.string "DAD: Ah, yes, I remember!$"
@@ -1220,9 +1220,9 @@ PetalburgCity_Gym_Text_WallyThankYouBye:
 	.string "Sigh…\p"
 	.string "Everybody… Cough…\p"
 	.string "Everybody always looks down on me\n"
-	.string "because I'm weak, and sick, and all of that…\p"
-	.string "But if I become a great POKéMON trainer,\n"
-	.string "I bet people will start remembering my name…\p"
+	.string "because I'm weak…\p"
+	.string "But if I become a great trainer, I bet\n"
+	.string "people will start remembering my name…\p"
 	.string "So I'll show you, MR. NORMAN!\p"
 	.string "And you too, {PLAYER}!\p"
 	.string "I'll show you what I can do!$"
@@ -1238,8 +1238,8 @@ PetalburgCity_Gym_Text_DadGoCollectBadges:
 	.string "dad proud.\p"
 	.string "Did you know that I got first place\n"
 	.string "in a CONFERENCE, too?\p"
-	.string "Of course, that was the SILVER CONFERENCE\n"
-	.string "in JOHTO.\p"
+	.string "Of course, that was the SILVER\n"
+	.string "CONFERENCE in JOHTO.\p"
 	.string "It was how I first got noticed as a\n"
 	.string "promising rising TRAINER and, well…\p"
 	.string "Here I am now, with my own GYM!\p"

@@ -218,6 +218,17 @@ const struct Tileset gTileset_Cave =
     .callback = InitTilesetAnim_Cave,
 };
 
+const struct Tileset gTileset_GraniteCave =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_GraniteCave,
+    .palettes = gTilesetPalettes_GraniteCave,
+    .metatiles = gMetatiles_GraniteCave,
+    .metatileAttributes = gMetatileAttributes_GraniteCave,
+    .callback = InitTilesetAnim_GraniteCave,
+};
+
 const struct Tileset gTileset_PokemonSchool =
 {
     .isCompressed = TRUE,

@@ -823,6 +823,13 @@ void InitTilesetAnim_Cave(void)
     sSecondaryTilesetAnimCallback = TilesetAnim_Cave;
 }
 
+void InitTilesetAnim_GraniteCave(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_Cave;
+}
+
 void InitTilesetAnim_EliteFour(void)
 {
     sSecondaryTilesetAnimCounter = 0;

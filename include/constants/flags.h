@@ -69,15 +69,15 @@
 #define FLAG_CLEARED_GRANITE_CAVE    0x38 // Unused Flag
 #define FLAG_RECEIVED_TM10    0x39 // Unused Flag
 #define FLAG_BEAT_CALVIN    0x3A // Unused Flag
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
-#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
-#define FLAG_UNUSED_0x03E    0x3E // Unused Flag
-#define FLAG_UNUSED_0x03F    0x3F // Unused Flag
-#define FLAG_UNUSED_0x040    0x40 // Unused Flag
-#define FLAG_UNUSED_0x041    0x41 // Unused Flag
-#define FLAG_UNUSED_0x042    0x42 // Unused Flag
-#define FLAG_UNUSED_0x043    0x43 // Unused Flag
+#define FLAG_ROUTE102_BOSS    0x3B // Unused Flag
+#define FLAG_HIDE_ZIGZAGOON    0x3C // Unused Flag
+#define FLAG_REFUSED_NEIGHBOR    0x3D // Unused Flag
+#define FLAG_ACCEPTED_ZIGZAGOON    0x3E // Unused Flag
+#define FLAG_RECEIVED_TM11    0x3F // Unused Flag
+#define FLAG_SAW_GHOST    0x40 // Unused Flag
+#define FLAG_RECEIVED_ORAN_VOUCHER    0x41 // Unused Flag
+#define FLAG_GOT_THROAT_SPRAY    0x42 // Unused Flag
+#define FLAG_RECEIVED_CHERI_VOUCHER    0x43 // Unused Flag
 #define FLAG_UNUSED_0x044    0x44 // Unused Flag
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag
@@ -254,7 +254,7 @@
 #define FLAG_RECEIVED_TM_ROAR                0xE7
 #define FLAG_RECEIVED_TM_GIGA_DRAIN          0xE8
 
-#define FLAG_UNUSED_0x0E9                    0xE9 // Unused Flag
+#define FLAG_RECEIVED_SPELL_TAG                    0xE9 // Unused Flag
 
 #define FLAG_RECEIVED_TM_REST                0xEA
 #define FLAG_RECEIVED_TM_ATTRACT             0xEB

@@ -2,6 +2,7 @@
 .set LOCALID_MOM, 4
 .set LOCALID_RIVAL, 7
 .set LOCALID_BIRCH, 8
+.set LOCALID_ZIGZAGOON, 11
 
 LittlerootTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_OnTransition
@@ -267,8 +268,48 @@ LittlerootTown_EventScript_ZigzagoonNoises::
 	playmoncry SPECIES_ZIGZAGOON_GALARIAN, CRY_MODE_NORMAL
 	msgbox LittlerootTown_Text_ZigzagoonNoises, MSGBOX_NPC
 	end
+
+
 LittlerootTown_EventScript_Girl::
+	lockall
+	goto_if_set FLAG_RECEIVED_TM11, LittlerootTown_EventScript_HowIsObstagoon
+	goto_if_set FLAG_ACCEPTED_ZIGZAGOON, LittlerootTown_EventScript_HowIsZigzagoon
+	goto_if_set FLAG_REFUSED_NEIGHBOR, LittlerootTown_EventScript_Rethinking
+	goto_if_set FLAG_SYS_POKEDEX_GET, LittlerootTown_EventScript_HelpMe
 	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC
+	end
+
+
+LittlerootTown_EventScript_HelpMe::
+	setflag FLAG_REFUSED_NEIGHBOR
+	msgbox LittlerootTown_Text_CanYouTakeZigzagoon, MSGBOX_NPC
+	msgbox LittlerootTown_Text_AcceptMyRequest, MSGBOX_YESNO
+	switch VAR_RESULT
+	case YES, LittlerootTown_EventScript_ThankYouSoMuch
+	case NO, LittlerootTown_EventScript_AhOfCourse
+	end
+
+LittlerootTown_EventScript_Rethinking::
+	msgbox LittlerootTown_Text_DidYouThinkAboutIt, MSGBOX_YESNO
+	switch VAR_RESULT
+	case YES, LittlerootTown_EventScript_ThankYouSoMuch
+	case NO, LittlerootTown_EventScript_AhOfCourse
+	end
+
+LittlerootTown_EventScript_AhOfCourse::
+	msgbox LittlerootTown_Text_OfCourse, MSGBOX_NPC
+	release
+	end
+
+
+LittlerootTown_EventScript_ThankYouSoMuch::
+	msgbox LittlerootTown_Text_ThankYouSoMuch, MSGBOX_NPC
+	msgbox LittlerootTown_Text_ComeHereNow, MSGBOX_NPC
+	setflag FLAG_ACCEPTED_ZIGZAGOON
+	removeobject LOCALID_ZIGZAGOON
+	givemon SPECIES_ZIGZAGOON_GALARIAN, 5, ITEM_NONE, ITEM_CHERISH_BALL, NATURE_JOLLY, 1, MON_MALE
+	msgbox LittlerootTown_Text_ThankYou, MSGBOX_DEFAULT
+	releaseall
 	end
 
 LittlerootTown_EventScript_Boy::
@@ -284,6 +325,73 @@ LittlerootTown_EventScript_Twin::
 	msgbox LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut, MSGBOX_DEFAULT
 	release
 	end
+
+LittlerootTown_EventScript_HowIsZigzagoon::
+	msgbox LittlerootTown_Text_WhereIsMyBaby, MSGBOX_NPC
+	special ChoosePartyMon
+	waitstate
+	goto_if_ne VAR_0x8004, PARTY_NOTHING_CHOSEN, LittlerootTown_EventScript_ShowMon
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, LittlerootTown_EventScript_ShowMon_NotZiggy
+	releaseall
+	end
+
+
+LittlerootTown_EventScript_ShowMon::
+	specialvar VAR_RESULT, ScriptGetPartyMonBall
+	goto_if_eq VAR_RESULT, ITEM_CHERISH_BALL, LittlerootTown_EventScript_ShowMon_CheckFurther
+	msgbox LittlerootTown_EventScript_Text_NotMyZiggy, MSGBOX_NPC
+	releaseall
+	end
+
+
+LittlerootTown_EventScript_ShowMon_CheckFurther::
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	goto_if_eq VAR_RESULT, SPECIES_ZIGZAGOON_GALARIAN, LittlerootTown_EventScript_ShowMon_Zigzagoon
+	goto_if_eq VAR_RESULT, SPECIES_LINOONE_GALARIAN, LittlerootTown_EventScript_ShowMon_Linoone
+	goto_if_eq VAR_RESULT, SPECIES_OBSTAGOON, LittlerootTown_EventScript_ShowMon_Obstagoon
+	releaseall
+	end
+
+
+LittlerootTown_EventScript_ShowMon_Zigzagoon::
+	msgbox LittlerootTown_EventScript_Text_Zigzagoon, MSGBOX_NPC
+	releaseall
+	end
+
+LittlerootTown_EventScript_ShowMon_Linoone::
+	msgbox LittlerootTown_EventScript_Text_Linoone, MSGBOX_NPC
+	releaseall
+	end
+
+LittlerootTown_EventScript_ShowMon_Obstagoon::
+	msgbox LittlerootTown_EventScript_Text_Obstagoon, MSGBOX_NPC
+	giveitem ITEM_TM_RETURN
+	setflag FLAG_RECEIVED_TM11
+	msgbox LittlerootTown_EventScript_Text_StrongMove, MSGBOX_NPC
+	releaseall
+	end
+
+LittlerootTown_EventScript_HowIsObstagoon::
+	msgbox LittlerootTown_EventScript_Text_HowIsObstagoon, MSGBOX_NPC
+	releaseall
+	end
+
+
+LittlerootTown_EventScript_Geez::
+	msgbox LittlerootTown_EventScript_Text_Geez, MSGBOX_NPC
+	releaseall
+	end
+
+LittlerootTown_EventScript_ShowMon_HoldingItem::
+	msgbox LittlerootTown_EventScript_Text_HoldingItem, MSGBOX_NPC
+	releaseall
+	end
+
+LittlerootTown_EventScript_ShowMon_NotZiggy::
+	msgbox LittlerootTown_EventScript_Text_NotZiggy, MSGBOX_NPC
+	releaseall
+	end
+
 
 LittlerootTown_EventScript_Sunflora::
 	lock
@@ -414,6 +522,33 @@ LittlerootTown_EventScript_GoSaveBirchTrigger::
 LittlerootTown_EventScript_TownSign::
 	msgbox LittlerootTown_Text_TownSign, MSGBOX_SIGN
 	end
+
+
+LittlerootTown_EventScript_Test::
+	returntotitle
+	end
+
+
+EventScript_SaveTotem::
+	lockall
+	msgbox Text_WantToSave, MSGBOX_YESNO
+	switch VAR_RESULT
+	case NO, EventScript_SaveTotem_End
+	savegame
+	closemessage
+	releaseall
+	end
+
+EventScript_SaveTotem_End::
+	closemessage
+	releaseall
+	end
+
+
+Text_WantToSave:
+	.string "As you touch the statue, you are filled\n"
+	.string "with an ancient power.\p"
+	.string "Would you like to save the game?$"
 
 LittlerootTown_EventScript_BirchsLabSign::
 	msgbox LittlerootTown_Text_ProfBirchsLab, MSGBOX_SIGN
@@ -765,11 +900,157 @@ LittlerootTown_Text_ZigzagoonNoises:
 	.string "ZIGZAGOON: Zigza!$"
 
 LittlerootTown_Text_WalkingZigzagoon:
-	.string "See this tree?\p"
-	.string "It was planted by our ancestors\n"
-	.string "when they founded this town.\p"
-	.string "But did you know that there actually\n"
-	.string "were people living in HOENN even\l"
-	.string "before that?\p"
-	.string "I don't really know much about it,\n"
-	.string "though.$"
+	.string "Pretty cool, huh?\p"
+	.string "This is a statue left behind by an\n"
+	.string "ancient civilization.\p"
+	.string "There are loads of them all around\n"
+	.string "Hoenn.\p"
+	.string "Try touching it!\p"
+	.string "You can totally feel the spiritual\n"
+	.string "energy coming from it!\p"
+	.string "…Or something.$"
+
+LittlerootTown_Text_CanYouTakeZigzagoon:
+	.string "Oh, hey, {PLAYER}{KUN}!\n"
+	.string "I have a favor to ask you.\p"
+	.string "You see, I have always wanted my dear\n"
+	.string "ZIGZAGOON to see the world.\p"
+	.string "But, I'm afraid, I don't know much about\n"
+	.string "POKéMON battling.\p"
+	.string "And you know just how dangerous it is, to\n"
+	.string "travel without knowing how to battle.\p"
+	.string "Anyway, I've heard that PROF. BIRCH\n"
+	.string "finally gave you a POKéMON…\p"
+	.string "Which means you're going to travel the\n"
+	.string "world, right?\p"
+	.string "If so, could you take my Zigzagoon with\n"
+	.string "you?\p"
+	.string "Not forever, just…\n"
+	.string "I want my baby to grow a bit.$"
+
+LittlerootTown_Text_AcceptMyRequest:
+	.string "Would you accept my request?$"
+
+LittlerootTown_Text_OfCourse:
+	.string "Oh… Of course.\p"
+	.string "I bet you're going to be awfully busy from\n"
+	.string "now on.\p"
+	.string "Still, if you change your mind…\n"
+	.string "You'll know where to find me.$"
+
+
+LittlerootTown_Text_ThankYouSoMuch:
+	.string "Ah! Thank you so much!$"
+
+
+LittlerootTown_Text_ZigzagoonQuest:
+	.string "Quest accepted:\n"
+	.string "Zigzagoon's day out!$"
+
+
+LittlerootTown_Text_ComeHereNow:
+	.string "Now…\n"
+	.string "Come here, Zigzagoon!\p"
+	.string "{PLAYER}{KUN} is going to take you for a trip!$"
+
+
+LittlerootTown_Text_ThankYou:
+	.string "Again, thank you so much.\p"
+	.string "You can tell it's my Zigzagoon because I\n"
+	.string "put him in a special POKé BALL.\p"
+	.string "Let me know how he behaves, ok?$"
+
+
+LittlerootTown_Text_DidYouThinkAboutIt:
+	.string "Oh, hi, {PLAYER}{KUN}!\p"
+	.string "Did you decide to take along my\n"
+	.string "Zigzagoon?$"
+
+LittlerootTown_Text_WhereIsMyBaby:
+	.string "Oh, hi, {PLAYER}{KUN}!\p"
+	.string "How is my baby Zigzagoon doing?\n"
+	.string "Can I see him?\p"
+	.string "Remember, he's the one I put in a\n"
+	.string "Cherish Ball!$"
+
+
+LittlerootTown_EventScript_Text_NotZiggy:
+	.string "Oh… He's not with you?\n"
+	.string "That's okay, I understand.\p"
+	.string "Still, if next time you're here you\n"
+	.string "have him around, remember to come and\l"
+	.string "say hello, okay?$"
+
+
+LittlerootTown_EventScript_Text_NotMyZiggy:
+	.string "That's… Not my Zigzagoon.\p"
+	.string "That's okay, I understand.\p"
+	.string "Still, if next time you're here you\n"
+	.string "have him around, remember to come and say\l"
+	.string "hello, okay?$"
+
+
+LittlerootTown_EventScript_Text_Zigzagoon:
+	.string "Oh! Hello, little guy!\p"
+	.string "He seems to be doing quite well.\p"
+	.string "Feel free to carry him around for more\n"
+	.string "of your adventures, okay?$"
+
+
+
+LittlerootTown_EventScript_Text_Linoone:
+	.string "Oh! Would you look at that!\p"
+	.string "He seems… Different.\n"
+	.string "But not in a bad way!\p"
+	.string "it must be because he's travelling\n"
+	.string "with you, {PLAYER}{KUN}.$"
+
+
+LittlerootTown_EventScript_Text_Obstagoon:
+	.string "Oh! Would you look at that!\p"
+	.string "He looks very… Grown up.\n"
+	.string "Not in a bad way!\p"
+	.string "And his eyes…\p"
+	.string "You've been travelling a lot, sweetie,\n"
+	.string "haven't you?\p"
+	.string "… … … … …\p"
+	.string "Say, {PLAYER}{KUN}…\p"
+	.string "You've done an amazing job at taking\n"
+	.string "care of him.\p"
+	.string "I think he'll be happier with you than\n"
+	.string "he ever was with me.\p"
+	.string "Just… Promise you'll come and visit often\n"
+	.string "okay?\p"
+	.string "Oh, and… One more thing.\n"
+	.string "Take this.\p"
+	.string "it's nothing, really.$"
+
+
+LittlerootTown_EventScript_Text_CanIHaveItBack:
+	.string "Could I have my POKéMON back?$"
+
+LittlerootTown_EventScript_Text_HoldingItem:
+	.string "Oh, but wait.\n"
+	.string "My POKéMON is holding an item.\p"
+	.string "Make sure to take it off first, okay?$"
+
+LittlerootTown_EventScript_Text_Geez:
+	.string "Ah-…\p"
+	.string "Well… I see…\p"
+	.string "It's understandable, after all…\p"
+	.string "After traveling so much with my sweetie,\n"
+	.string "you've become this attached to him…\p"
+	.string "Well… I can't blame you, but…\p"
+	.string "If you change your mind, I'll be waiting\n"
+	.string "here, okay…?"
+
+LittlerootTown_EventScript_Text_StrongMove:
+	.string "Apparently this move is pretty strong.\p"
+	.string "Well, I wouldn't know, but I think you\n"
+	.string "might find it useful.\p"
+	.string "Well then…\n"
+	.string "Until next time, okay?$"
+
+LittlerootTown_EventScript_Text_HowIsObstagoon:
+	.string "Hi, {PLAYER}{KUN}!\n"
+	.string "How is my POKéMON doing?$"

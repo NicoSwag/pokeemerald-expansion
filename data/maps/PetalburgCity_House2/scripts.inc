@@ -16,8 +16,9 @@ PetalburgCity_House2_Text_NormanBecameGymLeader:
 	.string "somewhere far away.$"
 
 PetalburgCity_House2_Text_BattledNormanOnce:
-	.string "I battled NORMAN once, but, whew,\n"
-	.string "he was way too strong.\p"
-	.string "How would I put it?\p"
-	.string "I just got the feeling that he\n"
-	.string "lives for POKéMON.$"
+	.string "There's a strange guy around here\n"
+	.string "that really wanted to be a GYM leader.\p"
+	.string "Almost got the position, too.\p"
+	.string "Then he got busted for cheating, and\n"
+	.string "NORMAN got selected instead.\p"
+	.string "Wonder what happened to him.$"

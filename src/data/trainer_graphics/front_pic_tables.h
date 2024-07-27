@@ -78,6 +78,7 @@ const struct MonCoords gTrainerFrontPicCoords[] =
     [TRAINER_PIC_SHELLY] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_DEVON_EMPLOYEE] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_ENGINEER] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_MINER] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_SCIENTIST] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_WALLY] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_BRENDAN] = {.size = 8, .y_offset = 1},
@@ -210,6 +211,7 @@ const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
     TRAINER_SPRITE(ENGINEER, gTrainerFrontPic_Engineer, TRAINER_PIC_SIZE),
     TRAINER_SPRITE(DEVON_EMPLOYEE, gTrainerFrontPic_DevonEmployee, TRAINER_PIC_SIZE),
     TRAINER_SPRITE(SCIENTIST, gTrainerFrontPic_Scientist, TRAINER_PIC_SIZE),
+    TRAINER_SPRITE(MINER, gTrainerFrontPic_Miner, TRAINER_PIC_SIZE),
 };
 
 #define TRAINER_PAL(trainerPic, pal) [TRAINER_PIC_##trainerPic] = {pal, TRAINER_PIC_##trainerPic}
@@ -288,6 +290,7 @@ const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
     TRAINER_PAL(NINJA_BOY, gTrainerPalette_NinjaBoy),
     TRAINER_PAL(DEVON_EMPLOYEE, gTrainerPalette_Devon_Employee),
     TRAINER_PAL(ENGINEER, gTrainerPalette_Engineer),
+    TRAINER_PAL(MINER, gTrainerPalette_Miner),
     TRAINER_PAL(SCIENTIST, gTrainerPalette_Scientist),
     TRAINER_PAL(BATTLE_GIRL, gTrainerPalette_BattleGirl),
     TRAINER_PAL(PARASOL_LADY, gTrainerPalette_ParasolLady),

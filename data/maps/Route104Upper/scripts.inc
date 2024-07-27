@@ -2,6 +2,21 @@ Route104Upper_MapScripts::
 	.byte 0
 
 
+
+Route104Upper_OnTransition:
+	goto_if_trainerunset TRAINER_GINA_AND_MIA_1,Route104Upper_EventScript_ResetTrainers
+	setifnotbeaten TRAINER_WINSTON_1
+	setifnotbeaten TRAINER_HALEY_1
+	setifnotbeaten TRAINER_IVAN
+	end
+
+
+Route104Upper_EventScript_ResetTrainers::
+	cleartrainerflag TRAINER_WINSTON_1
+	cleartrainerflag TRAINER_HALEY_1
+	cleartrainerflag TRAINER_IVAN
+	end
+
 Route104Upper_EventScript_Boy::
 	lock
 	faceplayer
@@ -76,6 +91,20 @@ Route104_EventScript_RematchWinston::
 
 Route104_EventScript_ReceivedTrailblaze::
 	msgbox Route104_Text_TMsAreOneTimeUseKinda, MSGBOX_DEFAULT
+	release
+	end
+
+Route104Upper_EventScript_BerryMaster::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_CHERI_VOUCHER, Route104Upper_EventScript_BerryMaster_End
+	msgbox Route104Upper_Text_BerryMaster, MSGBOX_DEFAULT
+	setflag FLAG_RECEIVED_CHERI_VOUCHER
+	release
+	end
+
+Route104Upper_EventScript_BerryMaster_End::
+	msgbox Route104Upper_Text_BerryMaster_End, MSGBOX_NPC
 	release
 	end
 
@@ -185,11 +214,13 @@ Route104_Text_MiaIntro:
 
 Route104_Text_MiaDefeat:
 	.string "MIA: We battled together, but we\n"
-	.string "both lost…$"
+	.string "both lost…\p"
+	.string "Gina and Mia were the Area Leaders!$"
 
 Route104_Text_MiaPostBattle:
 	.string "MIA: We will train our POKéMON more\n"
-	.string "and be strong like you.$"
+	.string "and be strong like you.\p"
+	.string "Gina and Mia were the Area Leaders!$"
 
 Route104_Text_MiaNotEnoughMons:
 	.string "MIA: You want to battle with us?\p"
@@ -215,3 +246,19 @@ Route104_Text_Sign3:
 Route104_Text_Sign4:
 	.string "RUSTBORO CITY.\n"
 	.string "Home of DEVON CORP.$"
+
+
+Route104Upper_Text_BerryMaster:
+	.string "Ah, poor me!\n"
+	.string "Ah, sad me!\p"
+	.string "There used to be a beautiful field\n"
+	.string "of CHERI BERRIES here…\p"
+	.string "But, they got rid of it to build\n"
+	.string "this hideous structure.\p"
+	.string "Here. Take this!\p"
+	.string "So you may know how much you missed\n"
+	.string "out!$"
+
+Route104Upper_Text_BerryMaster_End:	
+	.string "Ah, sad times!\n"
+	.string "Sad times, indeed!$"

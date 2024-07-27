@@ -653,6 +653,11 @@ static const struct SpriteFrameImage sPicTable_Poochyena[] = {
     overworld_ascending_frames(gObjectEventPic_Poochyena, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Obstagoon[] = {
+    overworld_ascending_frames(gObjectEventPic_Obstagoon, 4, 4),
+};
+
+
 static const struct SpriteFrameImage sPicTable_Artist[] = {
     overworld_ascending_frames(gObjectEventPic_Artist, 2, 4),
 };

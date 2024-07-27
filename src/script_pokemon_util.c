@@ -401,7 +401,7 @@ u32 ScriptGiveMonParameterized(u16 species, u8 level, u16 item, u8 ball, u8 natu
     SetMonData(&mon, MON_DATA_ABILITY_NUM, &abilityNum);
 
     // ball
-    if (ball >= POKEBALL_COUNT)
+    if (ball > POKEBALL_COUNT)
         ball = ITEM_POKE_BALL;
     SetMonData(&mon, MON_DATA_POKEBALL, &ball);
 
@@ -553,3 +553,4 @@ void Script_SetStatus1(struct ScriptContext *ctx)
         SetMonData(&gPlayerParty[slot], MON_DATA_STATUS, &status1);
     }
 }
+

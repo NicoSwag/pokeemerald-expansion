@@ -265,7 +265,7 @@
     {
       "type": "sign",
       "x": 14,
-      "y": 32,
+      "y": 34,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "PetalburgWoods_EventScript_Sign1"
@@ -309,6 +309,14 @@
       "elevation": 0,
       "item": "ITEM_EXPERT_BELT",
       "flag": "FLAG_HIDDEN_ITEM_PETALBURG_WOODS_POTION"
+    },
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 35,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EventScript_SaveTotem"
     }
   ]
 }

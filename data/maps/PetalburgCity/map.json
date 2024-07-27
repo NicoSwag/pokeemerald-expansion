@@ -20,7 +20,7 @@
     },
     {
       "map": "MAP_ROUTE102",
-      "offset": 10,
+      "offset": 8,
       "direction": "right"
     }
   ],
@@ -170,7 +170,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LOTAD",
-      "x": 16,
+      "x": 15,
       "y": 23,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -287,8 +287,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN",
-      "x": 25,
-      "y": 6,
+      "x": 13,
+      "y": 14,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -300,8 +300,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PELIPPER",
-      "x": 27,
-      "y": 6,
+      "x": 10,
+      "y": 15,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN",
       "movement_range_x": 0,
@@ -416,8 +416,8 @@
     },
     {
       "type": "sign",
-      "x": 23,
-      "y": 20,
+      "x": 24,
+      "y": 19,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "PetalburgCity_EventScript_CitySign"
@@ -429,6 +429,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "PetalburgCity_EventScript_WallyHouseSign"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 13,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EventScript_SaveTotem"
     }
   ]
 }

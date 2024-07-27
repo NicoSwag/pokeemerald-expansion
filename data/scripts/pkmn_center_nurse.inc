@@ -63,24 +63,45 @@ EventScript_PkmnCenterNurse_ReturnPkmn::
 
 
 EventScript_PkmnCenterNurse_GiveHealingItems::
+	removeallitem ITEM_POTION
+	removeallitem ITEM_LAVA_COOKIE
+	removeallitem ITEM_REVIVE
+	removeallitem ITEM_SUPER_POTION
+	removeallitem ITEM_REVIVE
+	removeallitem ITEM_ORAN_BERRY
+	removeallitem ITEM_PASSHO_BERRY
+	removeallitem ITEM_CHERI_BERRY
 	msgbox gText_HeresYourHealingItems, MSGBOX_DEFAULT
-	removeitem ITEM_POTION, 999
-	removeitem ITEM_SUPER_POTION, 999
-	removeitem ITEM_LAVA_COOKIE, 999
-	removeitem ITEM_REVIVE, 999
 	goto_if_set FLAG_BADGE01_GET, EventScript_PkmnCenterNurse_GiveHealingItemsStoneBadge
-	giveitem ITEM_LAVA_COOKIE, 5
-	giveitem ITEM_POTION, 10
-	EventScript_PkmnCenterNurse_DoneGivingItems::
+	additem ITEM_LAVA_COOKIE, 5
+	additem ITEM_POTION, 10
+	additem ITEM_REVIVE, 1
+	EventScript_PkmnCenterNurse_DoneGivingMainItems::
+	checkitem ITEM_ORAN_VOUCHER
+	call_if_eq VAR_RESULT, TRUE, EventScript_PkmnCenterNurse_GiveOranBerries
+	checkitem ITEM_CHERI_VOUCHER
+	call_if_eq VAR_RESULT, TRUE, EventScript_PkmnCenterNurse_GiveCheriBerries
+	checkitem ITEM_PASSHO_VOUCHER
+	call_if_eq VAR_RESULT, TRUE, EventScript_PkmnCenterNurse_GivePasshoBerries
 	return
 
 EventScript_PkmnCenterNurse_GiveHealingItemsStoneBadge::
-	giveitem ITEM_LAVA_COOKIE, 5
-	giveitem ITEM_SUPER_POTION, 10
-	giveitem ITEM_REVIVE, 1
-	goto EventScript_PkmnCenterNurse_DoneGivingItems
+	additem ITEM_LAVA_COOKIE, 5
+	additem ITEM_SUPER_POTION, 10
+	additem ITEM_REVIVE, 1
+	goto EventScript_PkmnCenterNurse_DoneGivingMainItems
 
+EventScript_PkmnCenterNurse_GiveOranBerries::
+	additem ITEM_ORAN_BERRY, 6
+	return
 
+EventScript_PkmnCenterNurse_GiveCheriBerries::
+	additem ITEM_CHERI_BERRY, 6
+	return
+
+EventScript_PkmnCenterNurse_GivePasshoBerries::
+	additem ITEM_PASSHO_BERRY, 6
+	return
 
 
 EventScript_PkmnCenterNurse_ReturnPkmn2::

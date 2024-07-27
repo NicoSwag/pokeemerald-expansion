@@ -717,14 +717,9 @@ static bool32 IsMonNotEmpty(u32 partyIndex)
 
 static u32 GetHPEggCyclePercent(u32 partyIndex)
 {
-
     struct Pokemon *mon = &gPlayerParty[partyIndex];
-
-    u16 currLevelExp = gExperienceTables[gSpeciesInfo[GetMonData(mon,MON_DATA_SPECIES)].growthRate][GetMonData(mon, MON_DATA_LEVEL)];
-    
-
     if (!GetMonData(mon, MON_DATA_IS_EGG))
-        return (((GetMonData(mon, MON_DATA_EXP)) - currLevelExp) * 100 / (gExperienceTables[gSpeciesInfo[GetMonData(mon,MON_DATA_SPECIES)].growthRate][GetMonData(mon, MON_DATA_LEVEL) + 1] - currLevelExp));
+        return ((GetMonData(mon, MON_DATA_HP)) * 100 / (GetMonData(mon,MON_DATA_MAX_HP)));
     else
         return ((GetMonData(mon, MON_DATA_FRIENDSHIP)) * 100 / (gSpeciesInfo[GetMonData(mon,MON_DATA_SPECIES)].eggCycles));
 }
@@ -1489,11 +1484,11 @@ static void Task_StartMenuFullMain(u8 taskId)
         }
     }
 
-    if(JOY_NEW(START_BUTTON)) // If start button pressed go to Save Confirmation Control Task
-    {
-        PrintSaveConfirmToWindow();
-        gTasks[taskId].func = Task_HandleSaveConfirmation;
-    }
+    //if(JOY_NEW(START_BUTTON)) // If start button pressed go to Save Confirmation Control Task
+    //{
+        //PrintSaveConfirmToWindow();
+        //gTasks[taskId].func = Task_HandleSaveConfirmation;
+    //}
 
 #if (FLAG_CLOCK_MODE != 0)
     if (JOY_NEW(SELECT_BUTTON)) // switch between clock modes

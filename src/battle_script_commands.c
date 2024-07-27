@@ -4742,7 +4742,7 @@ static void Cmd_getexp(void)
                 calculatedExp /= 7;
 
             if (B_TRAINER_EXP_MULTIPLIER <= GEN_7 && gBattleTypeFlags & BATTLE_TYPE_TRAINER)
-                calculatedExp = (calculatedExp * 150) / 100;
+                calculatedExp = (calculatedExp * 100) / 150;
 
             if (B_SPLIT_EXP < GEN_6)
             {
@@ -4814,22 +4814,31 @@ static void Cmd_getexp(void)
                 
                 if (IsValidForBattle(&gPlayerParty[*expMonId]))
                 {
-                    double expMultiplier = GetPkmnExpMultiplier(gPlayerParty[gBattleStruct->expGetterMonId].level);
                     if (wasSentOut)
-                        gBattleMoveDamage = gBattleStruct->expValue * expMultiplier;
-                        if(FlagGet(FLAG_LEVEL_CAPS) == TRUE && gPlayerParty[gBattleStruct->expGetterMonId].level >=GetCurrentLevelCap())
-                            gBattleMoveDamage = 1;
+                        gBattleMoveDamage = GetSoftLevelCapExpValue(gPlayerParty[*expMonId].level, gBattleStruct->expValue);
                     else
                         gBattleMoveDamage = 0;
 
                     if ((holdEffect == HOLD_EFFECT_EXP_SHARE || IsGen6ExpShareEnabled())
                         && (B_SPLIT_EXP < GEN_6 || gBattleMoveDamage == 0)) // only give exp share bonus in later gens if the mon wasn't sent out
                     {
-                        double expMultiplier = GetPkmnExpMultiplier(gPlayerParty[gBattleStruct->expGetterMonId].level);
-                        gBattleMoveDamage += gBattleStruct->expShareExpValue * expMultiplier;
-                        if(FlagGet(FLAG_LEVEL_CAPS) == TRUE && gPlayerParty[gBattleStruct->expGetterMonId].level >=GetCurrentLevelCap())
-                            gBattleMoveDamage = 1;
+                        gBattleMoveDamage += GetSoftLevelCapExpValue(gPlayerParty[*expMonId].level, gBattleStruct->expShareExpValue);;
                     }
+
+                    ApplyExperienceMultipliers(&gBattleMoveDamage, *expMonId, gBattlerFainted);
+                    
+                    if (B_EXP_CAP_TYPE == EXP_CAP_HARD && gBattleMoveDamage != 0)
+                    {
+                        u32 growthRate = gSpeciesInfo[GetMonData(&gPlayerParty[*expMonId], MON_DATA_SPECIES)].growthRate;
+                        u32 currentExp = GetMonData(&gPlayerParty[*expMonId], MON_DATA_EXP);
+                        u32 levelCap = GetCurrentLevelCap();
+
+                        if (GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) >= levelCap)
+                            gBattleMoveDamage = 0;
+                        else if (gExperienceTables[growthRate][levelCap] < currentExp + gBattleMoveDamage)
+                            gBattleMoveDamage = gExperienceTables[growthRate][levelCap] - currentExp;
+                    }
+
                     if (IsTradedMon(&gPlayerParty[*expMonId]))
                     {
                         // check if the Pokémon doesn't belong to the player
@@ -8063,9 +8072,10 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_RICH_BOY, 25},
     {TRAINER_CLASS_POKEMANIAC, 15},
     {TRAINER_CLASS_SWIMMER_M, 2},
-    {TRAINER_CLASS_BLACK_BELT, 8},
+    {TRAINER_CLASS_BLACK_BELT, 7},
     {TRAINER_CLASS_DEVON_EMPLOYEE, 20},
-    {TRAINER_CLASS_ENGINEER, 8},
+    {TRAINER_CLASS_ENGINEER, 9},
+    {TRAINER_CLASS_MINER, 8},
     {TRAINER_CLASS_SCIENTIST, 10},
     {TRAINER_CLASS_GUITARIST, 8},
     {TRAINER_CLASS_KINDLER, 8},

@@ -526,6 +526,27 @@
 	.2byte \quantity
 	.endm
 
+
+	.macro setitem itemId:req, quantity=1
+	.byte 0x44
+	.2byte \itemId
+	.2byte \quantity
+	.endm
+
+
+	.macro removeallitem itemId:req
+	callnative RemoveAllItem
+	.2byte \itemId
+	.endm
+
+	.macro savegame
+	callnative SaveStartCallback_StartMenu
+	.endm
+
+	.macro returntotitle
+	callnative DoSoftReset
+	.endm 
+
 	@ Removes quantity of the specified item from the player's Bag. If the player has fewer than 'quantity' in their bag
 	@ then none will be removed and VAR_RESULT will be set to FALSE. Otherwise it will be set to TRUE.
 	.macro removeitem itemId:req, quantity=1
@@ -1869,8 +1890,18 @@
 	goto_if FALSE, \dest
 	.endm
 
+	.macro goto_if_trainerunset flag:req, dest:req
+	checktrainerflag \flag
+	goto_if FALSE, \dest
+	.endm
+
 	.macro goto_if_set flag:req, dest:req
 	checkflag \flag
+	goto_if TRUE, \dest
+	.endm
+
+	.macro goto_if_trainerset flag:req, dest:req
+	checktrainerflag \flag
 	goto_if TRUE, \dest
 	.endm
 
@@ -2223,4 +2254,9 @@
 	callnative Script_SetStatus1
 	.2byte \status1
 	.2byte \slot
+	.endm
+
+	.macro setifnotbeaten trainer:req
+	callnative SetIfNotBeaten
+	.2byte \trainer
 	.endm

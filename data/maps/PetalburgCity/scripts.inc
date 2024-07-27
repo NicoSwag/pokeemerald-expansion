@@ -129,9 +129,22 @@ PetalburgCity_EventScript_Boy_TM::
 	end
 
 PetalburgCity_EventScript_WallysMom::
+	goto_if_set FLAG_GOT_THROAT_SPRAY, PetalburgCity_EventScript_WallysMomPostItem
 	msgbox PetalburgCity_Text_WhereIsWally, MSGBOX_NPC
+	checkpartymove MOVE_AROMATHERAPY
+	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_WallyMomEnd
+	setflag FLAG_GOT_THROAT_SPRAY
+	msgbox PetalburgCity_Text_GiveThroatSpray, MSGBOX_NPC
+	giveitem ITEM_THROAT_SPRAY
 	end
 
+PetalburgCity_EventScript_WallysMomPostItem::
+	msgbox PetalburgCity_Text_WallySick, MSGBOX_NPC
+	end
+
+
+EventScript_WallyMomEnd::
+	end
 PetalburgCity_Movement_WalkToWallyHousePlayer:
 	delay_8
 	walk_down
@@ -776,15 +789,12 @@ PetalburgCity_EventScript_GymBoy::
 	end
 
 PetalburgCity_Text_WhereIsWally:
-	.string "Our WALLY has always been a\n"
-	.string "sick boy.\p"
-	.string "And now he's made up his mind\n"
-	.string "to journey the region…\p"
-	.string "Maybe some activity would do him\n"
-	.string "good, but I'm still worried.\p"
-	.string "I hate to ask, but if you happen\n"
-	.string "to come across him, please do check\l"
-	.string "up on how he's doing.$"
+	.string "Our WALLY has been very sick recently.\p"
+	.string "We've tried many things to make\n"
+	.string "him feel better, but to no avail.\p"
+	.string "Say, you're a trainer, right?\p"
+	.string "If you happened to find a POKéMON that\n"
+	.string "knows Aromatherapy, could you show me?$"
 
 
 PetalburgCity_Text_AreYouRookieTrainer:
@@ -923,3 +933,21 @@ PetalburgCity_Text_Looker2:
 	.string "PETALBURG FOREST.\p"
 	.string "And remember, if anyone asks of me,\n"
 	.string "I am like a ghost: invisible!$"
+
+PetalburgCity_Text_GiveThroatSpray:
+	.string "…Oh, you have one with you?\n"
+	.string "Wonderful!\p"
+	.string "Now, let me just…\p"
+	.string "… … …\n"
+	.string "… … …\p"
+	.string "There! I made a little remedy.\n"
+	.string "You can have a sample, of course.$"
+
+PetalburgCity_Text_WallySick:
+	.string "You know, we used to live in VERDANTURF,\n"
+	.string "next to MAUVILLE.\p"
+	.string "Then the incident with the power plant\n"
+	.string "happened, and…\p"
+	.string "Well, that's when WALLY started being\n"
+	.string "sick.\p"
+	.string "We moved here to get some fresh air.$"

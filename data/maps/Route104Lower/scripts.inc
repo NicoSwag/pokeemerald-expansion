@@ -11,13 +11,26 @@ Route104_OnFrame:
 	map_script_2 VAR_BOARD_BRINEY_BOAT_STATE, 1, Route104_EventScript_StartSailToDewford
 	.2byte 0
 
+Route104_OnTransition:
+	goto_if_trainerunset TRAINER_GINA_AND_MIA_1, Route104_EventScript_ResetTrainers
+	setifnotbeaten TRAINER_DARIAN
+	setifnotbeaten TRAINER_BILLY
+	setifnotbeaten TRAINER_CINDY_1
+	end
+
+
+Route104_EventScript_ResetTrainers::
+	cleartrainerflag TRAINER_DARIAN
+	cleartrainerflag TRAINER_BILLY
+	cleartrainerflag TRAINER_CINDY_1
+	end
+
+
 Route104_EventScript_StartSailToDewford::
 	lockall
 	goto Route104_EventScript_SailToDewford
 	end
 
-Route104_OnTransition:
-	end
 
 Route104_EventScript_ShowOrHideWhiteHerbFlorist::
 	goto_if_unset FLAG_MET_PRETTY_PETAL_SHOP_OWNER, Route104_EventScript_HideWhiteHerbFlorist
@@ -747,11 +760,10 @@ Route104_Text_OnlyThrowBallAtWildPokemon:
 	.string "wild POKéMON.$"
 
 Route104_Text_ImNotATrainer:
-	.string "Oh, no, I'm not a TRAINER.\p"
-	.string "But that's right, if TRAINERS lock eyes,\n"
-	.string "it's a challenge to battle.\p"
-	.string "If you don't want to battle, stay out\n"
-	.string "of their sight.$"
+	.string "You can only get prize money from\n"
+	.string "beating a Trainer once.\p"
+	.string "Your Pokémon will still gain experience,\n"
+	.string "though.$"
 
 Route104_Text_LikeFillingMouthWithSeedsTakeThis:
 	.string "I like filling my mouth with seeds,\n"

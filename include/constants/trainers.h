@@ -117,6 +117,7 @@
 #define TRAINER_PIC_DEVON_EMPLOYEE          99
 #define TRAINER_PIC_ENGINEER          100
 #define TRAINER_PIC_SCIENTIST          101
+#define TRAINER_PIC_MINER                 102
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -363,7 +364,8 @@
 #define TRAINER_CLASS_DEVON_EMPLOYEE       0x43
 #define TRAINER_CLASS_ENGINEER       0x44
 #define TRAINER_CLASS_SCIENTIST       0x45
-#define TRAINER_CLASS_COUNT          0x46
+#define TRAINER_CLASS_MINER       0x46
+#define TRAINER_CLASS_COUNT          0x47
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

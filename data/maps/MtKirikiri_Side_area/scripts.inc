@@ -34,6 +34,7 @@ EventScript_KirikiriMountain_ShadowAppears::
 	delay 2
 	setvar VAR_KIRIKIRI_MOUNTAIN_STATE, 2
 	removeobject LOCALID_SHADOW
+	setflag FLAG_SAW_GHOST
 	release
 	end
 

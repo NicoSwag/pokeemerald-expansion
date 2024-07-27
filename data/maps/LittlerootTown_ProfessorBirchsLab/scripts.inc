@@ -1088,7 +1088,7 @@ LittlerootTown_ProfessorBirchsLab_Text_MayWhereShouldIGoNext:
 	.string "for POKéMON next?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese:
-	.string "BRENDAN: EVER GRANDE CONFERENCE…\p"
+	.string "BRENDAN: The EVER GRANDE CONFERENCE…\p"
 	.string "To participate, you're gonna need\n"
 	.string "to defeat the eight GYM LEADERS.\p"
 	.string "You're gonna need a strong team for\n"

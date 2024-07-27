@@ -153,50 +153,32 @@ Route103_Movement_North::
 	step_end
 
 Route103_EventScript_StartMayBattleTreecko::
-multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Enemy1DefeatText, TRAINER_ROUTE_103_MAGMAF, Enemy2DefeatText, TRAINER_MAY_ROUTE_103_TREECKO, TRAINER_BACK_PIC_MAY
-    specialvar VAR_RESULT, GetBattleOutcome
-    compare VAR_RESULT, B_OUTCOME_LOST
-    goto_if_eq script_PlayerLostTheFight
+	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Magma1DefeatText, TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, PARTNER_MAY_ROUTE_103_TREECKO
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartMayBattleTorchic::
-multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Enemy1DefeatText, TRAINER_ROUTE_103_MAGMAF, Enemy2DefeatText, TRAINER_MAY_ROUTE_103_TORCHIC, TRAINER_BACK_PIC_MAY
-	specialvar VAR_RESULT, GetBattleOutcome
-    compare VAR_RESULT, B_OUTCOME_LOST
-    goto_if_eq script_PlayerLostTheFight
+	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Magma1DefeatText, TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, PARTNER_MAY_ROUTE_103_TORCHIC
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartMayBattleMudkip::
-multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Enemy1DefeatText, TRAINER_ROUTE_103_MAGMAF, Enemy2DefeatText, TRAINER_MAY_ROUTE_103_MUDKIP, TRAINER_BACK_PIC_MAY
-	specialvar VAR_RESULT, GetBattleOutcome
-    compare VAR_RESULT, B_OUTCOME_LOST
-    goto_if_eq script_PlayerLostTheFight
+	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Magma1DefeatText, TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, PARTNER_MAY_ROUTE_103_MUDKIP
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartBrendanBattleTreecko::
-multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Enemy1DefeatText, TRAINER_ROUTE_103_MAGMAF, Enemy2DefeatText, TRAINER_BRENDAN_ROUTE_103_TREECKO, TRAINER_BACK_PIC_BRENDAN
-    specialvar VAR_RESULT, GetBattleOutcome
-    compare VAR_RESULT, B_OUTCOME_LOST
-    goto_if_eq script_PlayerLostTheFight	
+	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Magma1DefeatText, TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, PARTNER_BRENDAN_ROUTE_103_TREECKO
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_StartBrendanBattleTorchic::
-    specialvar VAR_RESULT, GetBattleOutcome
-    compare VAR_RESULT, B_OUTCOME_LOST
-    goto_if_eq script_PlayerLostTheFight	
-	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Enemy1DefeatText, TRAINER_ROUTE_103_MAGMAF, Enemy2DefeatText, TRAINER_BRENDAN_ROUTE_103_TORCHIC, TRAINER_BACK_PIC_BRENDAN
+	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Magma1DefeatText, TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, PARTNER_BRENDAN_ROUTE_103_TORCHIC
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_StartBrendanBattleMudkip::
-    specialvar VAR_RESULT, GetBattleOutcome
-    compare VAR_RESULT, B_OUTCOME_LOST
-    goto_if_eq script_PlayerLostTheFight	
-	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Enemy1DefeatText, TRAINER_ROUTE_103_MAGMAF, Enemy2DefeatText, TRAINER_BRENDAN_ROUTE_103_MUDKIP, TRAINER_BACK_PIC_BRENDAN
+	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Magma1DefeatText, TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, PARTNER_BRENDAN_ROUTE_103_MUDKIP
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
@@ -274,15 +256,14 @@ Route103_Text_Revenge::
 	.string "We're TEAM MAGMA. An organization\n"
 	.string "dedicated to the betterement of the\l"
 	.string "world, at any cost.\p"
-	.string "You're either with us, or against us.\n"
-	.string "We won't let anyone stand in the way of\l"
+	.string "We won't let anyone stand in the way of\n"
 	.string "our goals.\p"
 	.string "So you better remember it!$"
 
-Enemy1DefeatText::
+Magma1DefeatText::
 	.string "U… Unbelievable…$"
 
-Enemy2DefeatText::
+Magma2DefeatText::
 	.string "COURTNEY: No! This isn't how it was\n"
 	.string "supposed to go!$"
 
@@ -572,8 +553,9 @@ Route103_Text_BrendanTimeToHeadBack:
 	.string "Don't trip over yourself.$"
 
 Route103_Text_ShouldHaveBroughtPotion:
-	.string "If only I had the CUT, I could get\n"
-	.string "into the ruins…$"
+	.string "I'm waiting for my lover on the other\n"
+	.string "side of the lake to build a bridge.\p"
+	.string "What's taking so long?$"
 
 Route103_Text_ShortcutToOldale:
 	.string "If you cross the sea from here,\n"
