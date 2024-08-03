@@ -33,7 +33,8 @@ enum MapPopUp_Themes
 static void Task_MapNamePopUpWindow(u8 taskId);
 static void ShowMapNamePopUpWindow(void);
 static void LoadMapNamePopUpWindowBgs(void);
-
+static EWRAM_DATA u8 sPrimaryPopupWindowId = 0;
+static EWRAM_DATA u8 sSecondaryPopupWindowId = 0;
 // add additional themes here
 static const u8 sMapPopUpTilesPrimary_Black[] = INCBIN_U8("graphics/map_popup/black_primary.4bpp");
 static const u8 sMapPopUpTilesSecondary_Black[] = INCBIN_U8("graphics/map_popup/black_secondary.4bpp");
@@ -195,6 +196,9 @@ enum {
 #define tIncomingPopUp data[3]
 #define tPrintTimer    data[4]
 
+
+
+
 void ShowMapNamePopup(void)
 {
     if (FlagGet(FLAG_HIDE_MAP_NAME_POPUP) != TRUE)
@@ -203,9 +207,6 @@ void ShowMapNamePopup(void)
         {
             // New pop up window
             gPopupTaskId = CreateTask(Task_MapNamePopUpWindow, 100);
-
-            if (MAPPOPUP_ALPHA_BLEND)
-                SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_TGT2_ALL | BLDCNT_EFFECT_BLEND);
 
             gTasks[gPopupTaskId].tState = STATE_PRINT;
             gTasks[gPopupTaskId].tYOffset = POPUP_OFFSCREEN_Y;
@@ -218,6 +219,35 @@ void ShowMapNamePopup(void)
                 gTasks[gPopupTaskId].tState = STATE_SLIDE_OUT;
             gTasks[gPopupTaskId].tIncomingPopUp = TRUE;
         }
+    }
+}
+
+u16 AddWindowParameterized(u8 bg, u8 left, u8 top, u8 width, u8 height, u8 paletteNum, u16 baseBlock)
+{
+    struct WindowTemplate template;
+    SetWindowTemplateFields(&template, bg, left, top, width, height, paletteNum, baseBlock);
+    return AddWindow(&template);
+}
+
+
+u8 AddPrimaryPopUpWindow(void)
+{
+    if (sPrimaryPopupWindowId == WINDOW_NONE)
+        sPrimaryPopupWindowId = AddWindowParameterized(0, 0, 0, 30, 3, 14, 0x107);
+    return sPrimaryPopupWindowId;
+}
+
+u8 GetPrimaryPopUpWindowId(void)
+{
+    return sPrimaryPopupWindowId;
+}
+
+void RemovePrimaryPopUpWindow(void)
+{
+    if (sPrimaryPopupWindowId   != WINDOW_NONE)
+    {
+        RemoveWindow(sPrimaryPopupWindowId);
+        sPrimaryPopupWindowId = WINDOW_NONE;
     }
 }
 
@@ -300,12 +330,6 @@ void HideMapNamePopUpWindow(void)
         SetHBlankCallback(NULL);
         SetGpuReg_ForcedBlank(REG_OFFSET_BG0VOFS, 0);
 
-        if (MAPPOPUP_ALPHA_BLEND)
-        {
-            SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_BG_ALL | WININ_WIN0_OBJ | WININ_WIN1_BG_ALL | WININ_WIN1_OBJ);
-            SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT2_BG1 | BLDCNT_TGT2_BG2 | BLDCNT_TGT2_BG3 | BLDCNT_TGT2_OBJ | BLDCNT_EFFECT_BLEND);
-            SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(8, 10));
-        }
 
         DestroyTask(gPopupTaskId);
     }
@@ -341,8 +365,6 @@ static void ShowMapNamePopUpWindow(void)
     timeX = 10;
     timeY = 8;
 
-    if (MAPPOPUP_ALPHA_BLEND)
-        SetGpuRegBits(REG_OFFSET_WININ, WININ_WIN0_CLR);
 
     primaryPopUpWindowId = AddPrimaryPopUpWindow();
     secondaryPopUpWindowId = AddSecondaryPopUpWindow();

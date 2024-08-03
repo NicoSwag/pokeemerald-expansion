@@ -66,7 +66,6 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hiker;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CyclingTriathleteM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CyclingTriathleteF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nurse;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ItemBall;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BerryTree;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BerryTreeEarlyStages;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BerryTreeLateStages;
@@ -211,32 +210,32 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Fossil;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Regirock;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Regice;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Registeel;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Skitty;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kecleon;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SkittyOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KecleonOld;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KyogreAsleep;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GroudonAsleep;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rayquaza;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Zigzagoon;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Diglett;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Delibird;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rockruff;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Corphish;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Makuhita;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Slakoth;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Aron;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Eevee;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kadabra;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scizor;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pelipper;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hoothoot;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Smartchu;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ledyba;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunflora;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lotad;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Taillow;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Pikachu;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Azumarill;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wingull;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RayquazaOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ZigzagoonOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DiglettOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DelibirdOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RockruffOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CorphishOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MakuhitaOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SlakothOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AronOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EeveeOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KadabraOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ScizorOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PelipperOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoothootOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SmartchuOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LedybaOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SunfloraOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LotadOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TaillowOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PikachuOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AzumarillOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_WingullOld;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KecleonBridgeShadow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TuberMSwimming;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Azurill;
@@ -245,16 +244,16 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LinkBrendan
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LinkMay;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Juan;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scott;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Poochyena;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Obstagoon;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PoochyenaOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ObstagoonOld;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KyogreSide;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GroudonSide;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rhydon;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RhydonOld;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MysteryEventDeliveryman;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Statue;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kirlia;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Dusclops;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Slugma;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KirliaOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DusclopsOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SlugmaOld;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnionRoomAttendant;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sudowoodo;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mew;
@@ -267,6 +266,10 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphir
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireMay;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lugia;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoOh;
+// Begin pokemon event objects
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Follower;
+ 
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bard;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hipster;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Trader;
@@ -274,7 +277,6 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Storyteller
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Giddy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
-
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
@@ -345,7 +347,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M] =     &gObjectEventGraphicsInfo_CyclingTriathleteM,
     [OBJ_EVENT_GFX_CYCLING_TRIATHLETE_F] =     &gObjectEventGraphicsInfo_CyclingTriathleteF,
     [OBJ_EVENT_GFX_NURSE] =                    &gObjectEventGraphicsInfo_Nurse,
-    [OBJ_EVENT_GFX_ITEM_BALL] =                &gObjectEventGraphicsInfo_ItemBall,
+    [OBJ_EVENT_GFX_ITEM_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_BERRY_TREE] =               &gObjectEventGraphicsInfo_BerryTree,
     [OBJ_EVENT_GFX_BERRY_TREE_EARLY_STAGES] =  &gObjectEventGraphicsInfo_BerryTreeEarlyStages,
     [OBJ_EVENT_GFX_BERRY_TREE_LATE_STAGES] =   &gObjectEventGraphicsInfo_BerryTreeLateStages,
@@ -386,17 +388,17 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_VIGOROTH_FACING_AWAY] =     &gObjectEventGraphicsInfo_VigorothFacingAway,
     [OBJ_EVENT_GFX_BIRCHS_BAG] =               &gObjectEventGraphicsInfo_BirchsBag,
     [OBJ_EVENT_GFX_ZIGZAGOON_1] =              &gObjectEventGraphicsInfo_EnemyZigzagoon,
-    [OBJ_EVENT_GFX_DIGLETT] =              &gObjectEventGraphicsInfo_Diglett,
-    [OBJ_EVENT_GFX_DELIBIRD] =              &gObjectEventGraphicsInfo_Delibird,
-    [OBJ_EVENT_GFX_ROCKRUFF] =              &gObjectEventGraphicsInfo_Rockruff,
-    [OBJ_EVENT_GFX_CORPHISH] =              &gObjectEventGraphicsInfo_Corphish,
-    [OBJ_EVENT_GFX_MAKUHITA] =              &gObjectEventGraphicsInfo_Makuhita,
-    [OBJ_EVENT_GFX_SLAKOTH] =              &gObjectEventGraphicsInfo_Slakoth,
-    [OBJ_EVENT_GFX_ARON] =              &gObjectEventGraphicsInfo_Aron,
-    [OBJ_EVENT_GFX_EEVEE] =              &gObjectEventGraphicsInfo_Eevee,
-    [OBJ_EVENT_GFX_KADABRA] =              &gObjectEventGraphicsInfo_Kadabra,
-    [OBJ_EVENT_GFX_SCIZOR] =              &gObjectEventGraphicsInfo_Scizor,
-    [OBJ_EVENT_GFX_PELIPPER] =              &gObjectEventGraphicsInfo_Pelipper,
+    [OBJ_EVENT_GFX_DIGLETT] =              &gObjectEventGraphicsInfo_DiglettOld,
+    [OBJ_EVENT_GFX_DELIBIRD] =              &gObjectEventGraphicsInfo_DelibirdOld,
+    [OBJ_EVENT_GFX_ROCKRUFF] =              &gObjectEventGraphicsInfo_RockruffOld,
+    [OBJ_EVENT_GFX_CORPHISH] =              &gObjectEventGraphicsInfo_CorphishOld,
+    [OBJ_EVENT_GFX_MAKUHITA] =              &gObjectEventGraphicsInfo_MakuhitaOld,
+    [OBJ_EVENT_GFX_SLAKOTH] =              &gObjectEventGraphicsInfo_SlakothOld,
+    [OBJ_EVENT_GFX_ARON] =              &gObjectEventGraphicsInfo_AronOld,
+    [OBJ_EVENT_GFX_EEVEE] =              &gObjectEventGraphicsInfo_EeveeOld,
+    [OBJ_EVENT_GFX_KADABRA] =              &gObjectEventGraphicsInfo_KadabraOld,
+    [OBJ_EVENT_GFX_SCIZOR] =              &gObjectEventGraphicsInfo_ScizorOld,
+    [OBJ_EVENT_GFX_PELIPPER] =              &gObjectEventGraphicsInfo_PelipperOld,
     [OBJ_EVENT_GFX_ARTIST] =                   &gObjectEventGraphicsInfo_Artist,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL] =     &gObjectEventGraphicsInfo_RivalBrendanNormal,
     [OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE] =  &gObjectEventGraphicsInfo_RivalBrendanMachBike,
@@ -464,8 +466,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SWABLU_DOLL] =              &gObjectEventGraphicsInfo_SwabluDoll,
     [OBJ_EVENT_GFX_GULPIN_DOLL] =              &gObjectEventGraphicsInfo_GulpinDoll,
     [OBJ_EVENT_GFX_LOTAD_DOLL] =               &gObjectEventGraphicsInfo_LotadDoll,
-    [OBJ_EVENT_GFX_LOTAD] =               &gObjectEventGraphicsInfo_Lotad,
-    [OBJ_EVENT_GFX_TAILLOW] =               &gObjectEventGraphicsInfo_Taillow,
+    [OBJ_EVENT_GFX_LOTAD] =               &gObjectEventGraphicsInfo_LotadOld,
+    [OBJ_EVENT_GFX_TAILLOW] =               &gObjectEventGraphicsInfo_TaillowOld,
     [OBJ_EVENT_GFX_SEEDOT_DOLL] =              &gObjectEventGraphicsInfo_SeedotDoll,
     [OBJ_EVENT_GFX_PIKA_CUSHION] =             &gObjectEventGraphicsInfo_PikaCushion,
     [OBJ_EVENT_GFX_ROUND_CUSHION] =            &gObjectEventGraphicsInfo_RoundCushion,
@@ -503,19 +505,19 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_REGIROCK] =                 &gObjectEventGraphicsInfo_Regirock,
     [OBJ_EVENT_GFX_REGICE] =                   &gObjectEventGraphicsInfo_Regice,
     [OBJ_EVENT_GFX_REGISTEEL] =                &gObjectEventGraphicsInfo_Registeel,
-    [OBJ_EVENT_GFX_SKITTY] =                   &gObjectEventGraphicsInfo_Skitty,
-    [OBJ_EVENT_GFX_KECLEON] =                  &gObjectEventGraphicsInfo_Kecleon,
+    [OBJ_EVENT_GFX_SKITTY] =                   &gObjectEventGraphicsInfo_SkittyOld,
+    [OBJ_EVENT_GFX_KECLEON] =                  &gObjectEventGraphicsInfo_KecleonOld,
     [OBJ_EVENT_GFX_KYOGRE_ASLEEP] =            &gObjectEventGraphicsInfo_KyogreAsleep,
     [OBJ_EVENT_GFX_GROUDON_ASLEEP] =           &gObjectEventGraphicsInfo_GroudonAsleep,
-    [OBJ_EVENT_GFX_RAYQUAZA] =                 &gObjectEventGraphicsInfo_Rayquaza,
-    [OBJ_EVENT_GFX_ZIGZAGOON_2] =              &gObjectEventGraphicsInfo_Zigzagoon,
-    [OBJ_EVENT_GFX_HOOTHOOT] =                 &gObjectEventGraphicsInfo_Hoothoot,
-    [OBJ_EVENT_GFX_SMARTCHU] =                 &gObjectEventGraphicsInfo_Smartchu,
-    [OBJ_EVENT_GFX_LEDYBA] =                 &gObjectEventGraphicsInfo_Ledyba,
-    [OBJ_EVENT_GFX_SUNFLORA] =                 &gObjectEventGraphicsInfo_Sunflora,
-    [OBJ_EVENT_GFX_PIKACHU] =                  &gObjectEventGraphicsInfo_Pikachu,
-    [OBJ_EVENT_GFX_AZUMARILL] =                &gObjectEventGraphicsInfo_Azumarill,
-    [OBJ_EVENT_GFX_WINGULL] =                  &gObjectEventGraphicsInfo_Wingull,
+    [OBJ_EVENT_GFX_RAYQUAZA] =                 &gObjectEventGraphicsInfo_RayquazaOld,
+    [OBJ_EVENT_GFX_ZIGZAGOON_2] =              &gObjectEventGraphicsInfo_ZigzagoonOld,
+    [OBJ_EVENT_GFX_HOOTHOOT] =                 &gObjectEventGraphicsInfo_HoothootOld,
+    [OBJ_EVENT_GFX_SMARTCHU] =                 &gObjectEventGraphicsInfo_SmartchuOld,
+    [OBJ_EVENT_GFX_LEDYBA] =                 &gObjectEventGraphicsInfo_LedybaOld,
+    [OBJ_EVENT_GFX_SUNFLORA] =                 &gObjectEventGraphicsInfo_SunfloraOld,
+    [OBJ_EVENT_GFX_PIKACHU] =                  &gObjectEventGraphicsInfo_PikachuOld,
+    [OBJ_EVENT_GFX_AZUMARILL] =                &gObjectEventGraphicsInfo_AzumarillOld,
+    [OBJ_EVENT_GFX_WINGULL] =                  &gObjectEventGraphicsInfo_WingullOld,
     [OBJ_EVENT_GFX_KECLEON_BRIDGE_SHADOW] =    &gObjectEventGraphicsInfo_KecleonBridgeShadow,
     [OBJ_EVENT_GFX_TUBER_M_SWIMMING] =         &gObjectEventGraphicsInfo_TuberMSwimming,
     [OBJ_EVENT_GFX_AZURILL] =                  &gObjectEventGraphicsInfo_Azurill,
@@ -524,16 +526,16 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LINK_MAY] =                 &gObjectEventGraphicsInfo_LinkMay,
     [OBJ_EVENT_GFX_JUAN] =                     &gObjectEventGraphicsInfo_Juan,
     [OBJ_EVENT_GFX_SCOTT] =                    &gObjectEventGraphicsInfo_Scott,
-    [OBJ_EVENT_GFX_POOCHYENA] =                &gObjectEventGraphicsInfo_Poochyena,
-    [OBJ_EVENT_GFX_OBSTAGOON] =                &gObjectEventGraphicsInfo_Obstagoon,
+    [OBJ_EVENT_GFX_POOCHYENA] =                &gObjectEventGraphicsInfo_PoochyenaOld,
+    [OBJ_EVENT_GFX_OBSTAGOON] =                &gObjectEventGraphicsInfo_ObstagoonOld,
     [OBJ_EVENT_GFX_KYOGRE_SIDE] =              &gObjectEventGraphicsInfo_KyogreSide,
     [OBJ_EVENT_GFX_GROUDON_SIDE] =             &gObjectEventGraphicsInfo_GroudonSide,
-    [OBJ_EVENT_GFX_RHYDON] =             &gObjectEventGraphicsInfo_Rhydon,
+    [OBJ_EVENT_GFX_RHYDON] =             &gObjectEventGraphicsInfo_RhydonOld,
     [OBJ_EVENT_GFX_MYSTERY_GIFT_MAN] =         &gObjectEventGraphicsInfo_MysteryEventDeliveryman,
     [OBJ_EVENT_GFX_TRICK_HOUSE_STATUE] =       &gObjectEventGraphicsInfo_Statue,
-    [OBJ_EVENT_GFX_KIRLIA] =                   &gObjectEventGraphicsInfo_Kirlia,
-    [OBJ_EVENT_GFX_DUSCLOPS] =                 &gObjectEventGraphicsInfo_Dusclops,
-    [OBJ_EVENT_GFX_SLUGMA] =                   &gObjectEventGraphicsInfo_Slugma,
+    [OBJ_EVENT_GFX_KIRLIA] =                   &gObjectEventGraphicsInfo_KirliaOld,
+    [OBJ_EVENT_GFX_DUSCLOPS] =                 &gObjectEventGraphicsInfo_DusclopsOld,
+    [OBJ_EVENT_GFX_SLUGMA] =                   &gObjectEventGraphicsInfo_SlugmaOld,
     [OBJ_EVENT_GFX_UNION_ROOM_NURSE] =         &gObjectEventGraphicsInfo_UnionRoomAttendant,
     [OBJ_EVENT_GFX_SUDOWOODO] =                &gObjectEventGraphicsInfo_Sudowoodo,
     [OBJ_EVENT_GFX_MEW] =                      &gObjectEventGraphicsInfo_Mew,
@@ -546,6 +548,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LINK_RS_MAY] =              &gObjectEventGraphicsInfo_RubySapphireMay,
     [OBJ_EVENT_GFX_LUGIA] =                    &gObjectEventGraphicsInfo_Lugia,
     [OBJ_EVENT_GFX_HOOH] =                     &gObjectEventGraphicsInfo_HoOh,
+    [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
+    [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

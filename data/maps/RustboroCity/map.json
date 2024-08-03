@@ -291,7 +291,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_DIGLETT",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DIGLETT)",
       "x": 22,
       "y": 52,
       "elevation": 0,
@@ -330,7 +330,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_RHYDON",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RHYDON)",
       "x": 29,
       "y": 31,
       "elevation": 0,
@@ -343,7 +343,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SUNFLORA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SUNFLORA)",
       "x": 18,
       "y": 34,
       "elevation": 0,
@@ -356,7 +356,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SUNFLORA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SUNFLORA)",
       "x": 23,
       "y": 35,
       "elevation": 0,
@@ -369,7 +369,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SUNFLORA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SUNFLORA)",
       "x": 17,
       "y": 30,
       "elevation": 0,
@@ -382,7 +382,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_DELIBIRD",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DELIBIRD)",
       "x": 9,
       "y": 40,
       "elevation": 0,
@@ -499,7 +499,7 @@
       "flag": "FLAG_STEVEN_RUSTBORO"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_PELIPPER",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PELIPPER)",
       "x": 19,
       "y": 46,
       "elevation": 0,
@@ -512,7 +512,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SUNFLORA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SUNFLORA)",
       "x": 16,
       "y": 35,
       "elevation": 0,

@@ -4127,7 +4127,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .cryId = CRY_GIRATINA,                                                          \
         .natDexNum = NATIONAL_DEX_GIRATINA,                                             \
         .categoryName = _("Renegade"),                                                  \
-        .footprint = gMonFootprint_Giratina,                                            \
         LEARNSETS(Giratina),                                                            \
         .formSpeciesIdTable = sGiratinaFormSpeciesIdTable,                              \
         .formChangeTable = sGiratinaFormChangeTable,                                    \
@@ -4534,7 +4533,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .backPicYOffset = 3,                                                            \
         .backAnimId = BACK_ANIM_GROW_STUTTER,                                           \
         PALETTES(Arceus ##typeName),                                                    \
-        ICON(Arceus, 1),                                                                \
         .footprint = gMonFootprint_Arceus,                                              \
         LEARNSETS(Arceus),                                                              \
         .formSpeciesIdTable = sArceusFormSpeciesIdTable,                                \

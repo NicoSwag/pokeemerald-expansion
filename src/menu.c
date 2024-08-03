@@ -4,6 +4,7 @@
 #include "blit.h"
 #include "dma3.h"
 #include "event_data.h"
+#include "field_weather.h"
 #include "graphics.h"
 #include "main.h"
 #include "map_name_popup.h"
@@ -19,8 +20,10 @@
 #include "task.h"
 #include "text_window.h"
 #include "window.h"
+#include "config/overworld.h"
 #include "constants/songs.h"
-
+#include "constants/weather.h"
+EWRAM_DATA u8 gPopupTaskId = 0;
 #define DLG_WINDOW_PALETTE_NUM 15
 #define DLG_WINDOW_BASE_TILE_NUM 0x200
 #define STD_WINDOW_PALETTE_NUM 14
@@ -61,10 +64,8 @@ static void WindowFunc_DrawStdFrameWithCustomTileAndPalette(u8, u8, u8, u8, u8, 
 static void WindowFunc_ClearStdWindowAndFrameToTransparent(u8, u8, u8, u8, u8, u8);
 static void task_free_buf_after_copying_tile_data_to_vram(u8 taskId);
 
-EWRAM_DATA u8 gPopupTaskId = 0;
-
 static EWRAM_DATA u8 sStartMenuWindowId = 0;
-static EWRAM_DATA u8 sPrimaryPopupWindowId = 0;
+static EWRAM_DATA u8 sMapNamePopupWindowId = 0;
 static EWRAM_DATA u8 sSecondaryPopupWindowId = 0;
 static EWRAM_DATA struct Menu sMenu = {0};
 static EWRAM_DATA u16 sTileNum = 0;
@@ -116,6 +117,7 @@ static const u8 sTextColors[] = { TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_WHITE, TEXT_C
 static const struct MenuInfoIcon sMenuInfoIcons[] =
 {   // { width, height, offset }
     { 12, 12, 0x00 },  // Unused
+    [TYPE_NONE + 1]     = { 32, 12, 0xA4 }, // Copy of TYPE_MYSTERY's
     [TYPE_NORMAL + 1]   = { 32, 12, 0x20 },
     [TYPE_FIGHTING + 1] = { 32, 12, 0x64 },
     [TYPE_FLYING + 1]   = { 32, 12, 0x60 },
@@ -148,8 +150,9 @@ void InitStandardTextBoxWindows(void)
 {
     InitWindows(sStandardTextBox_WindowTemplates);
     sStartMenuWindowId = WINDOW_NONE;
-    sPrimaryPopupWindowId = WINDOW_NONE;
-    sSecondaryPopupWindowId = WINDOW_NONE;
+    sMapNamePopupWindowId = WINDOW_NONE;
+    if (OW_POPUP_GENERATION == GEN_5)
+        sSecondaryPopupWindowId = WINDOW_NONE;
 }
 
 void FreeAllOverworldWindowBuffers(void)
@@ -523,24 +526,29 @@ static u16 UNUSED GetStandardFrameBaseTileNum(void)
     return STD_WINDOW_BASE_TILE_NUM;
 }
 
-u8 AddPrimaryPopUpWindow(void)
+u8 AddMapNamePopUpWindow(void)
 {
-    if (sPrimaryPopupWindowId == WINDOW_NONE)
-        sPrimaryPopupWindowId = AddWindowParameterized(0, 0, 0, 30, 3, 14, 0x107);
-    return sPrimaryPopupWindowId;
-}
-
-u8 GetPrimaryPopUpWindowId(void)
-{
-    return sPrimaryPopupWindowId;
-}
-
-void RemovePrimaryPopUpWindow(void)
-{
-    if (sPrimaryPopupWindowId   != WINDOW_NONE)
+    if (sMapNamePopupWindowId == WINDOW_NONE)
     {
-        RemoveWindow(sPrimaryPopupWindowId);
-        sPrimaryPopupWindowId = WINDOW_NONE;
+        if (OW_POPUP_GENERATION == GEN_5)
+            sMapNamePopupWindowId = AddWindowParameterized(0, 0, 0, 30, 3, 14, 0x107);
+        else
+            sMapNamePopupWindowId = AddWindowParameterized(0, 1, 1, 10, 3, 14, 0x107);
+    }
+    return sMapNamePopupWindowId;
+}
+
+u8 GetMapNamePopUpWindowId(void)
+{
+    return sMapNamePopupWindowId;
+}
+
+void RemoveMapNamePopUpWindow(void)
+{
+    if (sMapNamePopupWindowId != WINDOW_NONE)
+    {
+        RemoveWindow(sMapNamePopupWindowId);
+        sMapNamePopupWindowId = WINDOW_NONE;
     }
 }
 
@@ -2151,7 +2159,7 @@ void BufferSaveMenuText(u8 textId, u8 *dest, u8 color)
     }
 }
 
-// BSBob map pop-ups
+// BW map pop-ups
 u8 AddSecondaryPopUpWindow(void)
 {
     if (sSecondaryPopupWindowId == WINDOW_NONE)
@@ -2173,6 +2181,15 @@ void RemoveSecondaryPopUpWindow(void)
     }
 }
 
+bool32 IsWeatherAlphaBlend(void)
+{
+    return (gWeatherPtr->currWeather == WEATHER_FOG_HORIZONTAL
+         || gWeatherPtr->currWeather == WEATHER_FOG_DIAGONAL
+         || gWeatherPtr->currWeather == WEATHER_UNDERWATER_BUBBLES
+         || gWeatherPtr->currWeather == WEATHER_UNDERWATER);
+}
+
+
 void HBlankCB_DoublePopupWindow(void)
 {
     u16 offset = gTasks[gPopupTaskId].data[2];
@@ -2181,7 +2198,7 @@ void HBlankCB_DoublePopupWindow(void)
     if (scanline < 80 || scanline > 160)
     {
         REG_BG0VOFS = offset;
-        if(MAPPOPUP_ALPHA_BLEND)
+        if(OW_POPUP_BW_ALPHA_BLEND && !IsWeatherAlphaBlend())
             REG_BLDALPHA = BLDALPHA_BLEND(15, 5);
     }
     else

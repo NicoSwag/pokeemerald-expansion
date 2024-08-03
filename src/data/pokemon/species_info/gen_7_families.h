@@ -1235,6 +1235,14 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .backAnimId = BACK_ANIM_V_STRETCH,
         .evolutions = EVOLUTION({EVO_LEVEL_DAY, 25, SPECIES_LYCANROC_MIDDAY},
                                 {EVO_LEVEL_NIGHT, 25, SPECIES_LYCANROC_MIDNIGHT}),
+                                        OVERWORLD(
+            sPicTable_Rockruff,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Rockruff,
+            gShinyOverworldPalette_Rockruff
+        )
     },
 
     [SPECIES_ROCKRUFF_OWN_TEMPO] =
@@ -1295,6 +1303,14 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         PALETTES(LycanrocMidday),
         ICON(LycanrocMidday, 2),
         LEARNSETS(LycanrocMidday),
+        OVERWORLD(
+            sPicTable_LycanrocMidday,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_LycanrocMidday,
+            gShinyOverworldPalette_LycanrocMidday
+        )
     },
 
     [SPECIES_LYCANROC_MIDNIGHT] =
@@ -1325,6 +1341,15 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         PALETTES(LycanrocMidnight),
         ICON(LycanrocMidnight, 0),
         LEARNSETS(LycanrocMidnight),
+                OVERWORLD(
+            sPicTable_LycanrocMidnight,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_LycanrocMidnight,
+            gShinyOverworldPalette_LycanrocMidnight
+        )
+        
     },
 
     [SPECIES_LYCANROC_DUSK] =
@@ -1355,6 +1380,14 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         PALETTES(LycanrocDusk),
         ICON(LycanrocDusk, 0),
         LEARNSETS(LycanrocDusk),
+                OVERWORLD(
+            sPicTable_LycanrocDusk,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_LycanrocDusk,
+            gShinyOverworldPalette_LycanrocDusk
+        )
     },
 #endif //P_FAMILY_ROCKRUFF
 
@@ -3454,7 +3487,6 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         //.backAnimId = BACK_ANIM_NONE,
         PALETTES(TapuKoko),
         ICON(TapuKoko, 0),
-        .footprint = gMonFootprint_Tapu_Koko,
         LEARNSETS(TapuKoko),
     },
 #endif //P_FAMILY_TAPU_KOKO
@@ -3505,7 +3537,6 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         //.backAnimId = BACK_ANIM_NONE,
         PALETTES(TapuLele),
         ICON(TapuLele, 0),
-        .footprint = gMonFootprint_Tapu_Lele,
         LEARNSETS(TapuLele),
     },
 #endif //P_FAMILY_TAPU_LELE
@@ -3556,7 +3587,6 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         //.backAnimId = BACK_ANIM_NONE,
         PALETTES(TapuBulu),
         ICON(TapuBulu, 2),
-        .footprint = gMonFootprint_Tapu_Bulu,
         LEARNSETS(TapuBulu),
     },
 #endif //P_FAMILY_TAPU_BULU
@@ -3608,7 +3638,6 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         //.backAnimId = BACK_ANIM_NONE,
         PALETTES(TapuFini),
         ICON(TapuFini, 0),
-        .footprint = gMonFootprint_Tapu_Fini,
         LEARNSETS(TapuFini),
     },
 #endif //P_FAMILY_TAPU_FINI

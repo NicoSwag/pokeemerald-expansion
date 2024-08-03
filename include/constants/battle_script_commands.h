@@ -63,8 +63,8 @@
 #define BS_EFFECT_BATTLER           2
 #define BS_FAINTED                  3
 #define BS_ATTACKER_WITH_PARTNER    4 // for Cmd_updatestatusicon
-#define BS_FAINTED_LINK_MULTIPLE_1  5 // for openpartyscreen
-#define BS_FAINTED_LINK_MULTIPLE_2  6 // for openpartyscreen
+#define BS_FAINTED_MULTIPLE_1       5 // for openpartyscreen
+#define BS_FAINTED_MULTIPLE_2       6 // for openpartyscreen
 #define BS_BATTLER_0                7
 #define BS_ATTACKER_SIDE            8 // for Cmd_jumpifability
 #define BS_TARGET_SIDE              9 // for Cmd_jumpifability
@@ -248,8 +248,7 @@
 #define DMG_FULL_ATTACKER_HP       4
 #define DMG_CURR_ATTACKER_HP       5
 #define DMG_BIG_ROOT               6
-#define DMG_1_2_ATTACKER_HP        7
-#define DMG_RECOIL_FROM_IMMUNE     8 // Used to calculate recoil for the Gen 4 version of Jump Kick
+#define DMG_RECOIL_FROM_IMMUNE     7 // Used to calculate recoil for the Gen 4 version of Jump Kick
 
 // Cmd_jumpifcantswitch
 #define SWITCH_IGNORE_ESCAPE_PREVENTION   (1 << 7)

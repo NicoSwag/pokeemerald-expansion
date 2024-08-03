@@ -1,5 +1,6 @@
 	.align 2
 gCryTable::
+.if P_CRIES_ENABLED == TRUE
 .if P_FAMILY_BULBASAUR == TRUE
 	cry Cry_Bulbasaur
 	cry Cry_Ivysaur
@@ -1787,7 +1788,7 @@ gCryTable::
 .endif @ P_FAMILY_CRABRAWLER
 .if P_FAMILY_ORICORIO == TRUE
 	cry Cry_OricorioBaile
-	cry Cry_OricorioPomPom
+	cry_uncomp Cry_OricorioPomPom @ Cannot be heard unless we use cry_uncomp here.
 	cry Cry_OricorioPau
 	cry Cry_OricorioSensu
 .endif @ P_FAMILY_ORICORIO
@@ -2432,9 +2433,11 @@ gCryTable::
 	cry Cry_Shockitt
 	cry Cry_Raiger
 	cry Cry_Bolthera
+.endif @ P_CRIES_ENABLED
 
 	.align 2
 gCryTable_Reverse::
+.if P_CRIES_ENABLED == TRUE
 .if P_FAMILY_BULBASAUR == TRUE
 	cry_reverse Cry_Bulbasaur
 	cry_reverse Cry_Ivysaur
@@ -4222,7 +4225,7 @@ gCryTable_Reverse::
 .endif @ P_FAMILY_CRABRAWLER
 .if P_FAMILY_ORICORIO == TRUE
 	cry_reverse Cry_OricorioBaile
-	cry_reverse Cry_OricorioPomPom
+	cry_reverse_uncomp Cry_OricorioPomPom @ Cannot be heard unless we use cry_reverse_uncomp here.
 	cry_reverse Cry_OricorioPau
 	cry_reverse Cry_OricorioSensu
 .endif @ P_FAMILY_ORICORIO
@@ -4867,3 +4870,4 @@ cry_reverse Cry_Luxwan
 	cry_reverse Cry_Shockitt
 	cry_reverse Cry_Raiger
 	cry_reverse Cry_Bolthera
+.endif @ P_CRIES_ENABLED

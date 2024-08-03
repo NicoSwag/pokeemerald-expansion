@@ -1118,8 +1118,3 @@ void ResetPreservedPalettesInWeather(void)
     sPaletteColorMapTypes = sBasePaletteColorMapTypes;
 }
 
-void UpdatePaletteGammaType(u8 index, u8 gammaType)
-{
-    if (index != 0xFF)
-        sPaletteColorMapTypes[index + 16] = gammaType;
-}

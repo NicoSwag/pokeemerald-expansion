@@ -1717,6 +1717,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         PALETTES(Pichu),
         ICON(Pichu, 1),
         .evolutions = EVOLUTION({EVO_FRIENDSHIP, 0, SPECIES_PIKACHU}),
+                               OVERWORLD(
+            sPicTable_Pichu,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Pichu,
+            gShinyOverworldPalette_Pichu,
+        )
     },
 
     [SPECIES_PICHU_SPIKY_EARED] =
@@ -1792,6 +1800,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .formChangeTable = sPikachuFormChangeTable,
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_RAICHU},
                             {EVO_ITEM, ITEM_STRANGE_SOUVENIR, SPECIES_GOROCHU}),
+                                                   OVERWORLD(
+            sPicTable_Pikachu,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Pikachu,
+            gShinyOverworldPalette_Pikachu,
+        )
     },
 
 #if P_COSPLAY_PIKACHU_FORMS
@@ -2135,6 +2151,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         PALETTES(Raichu),
         ICON(Raichu, 0),
         LEARNSETS(Raichu),
+                               OVERWORLD(
+            sPicTable_Raichu,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Raichu,
+            gShinyOverworldPalette_Raichu,
+        )
     },
 
 #if P_ALOLAN_FORMS
@@ -3762,6 +3786,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         ICON(Diglett, 2),
         LEARNSETS(Diglett),
         .evolutions = EVOLUTION({EVO_LEVEL, 26, SPECIES_DUGTRIO}),
+                OVERWORLD(
+            sPicTable_Diglett,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Diglett,
+            gShinyOverworldPalette_Diglett
+        )
     },
 
     [SPECIES_DUGTRIO] =
@@ -3792,6 +3824,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         PALETTES(Dugtrio),
         ICON(Dugtrio, 2),
         LEARNSETS(Dugtrio),
+                OVERWORLD(
+            sPicTable_Dugtrio,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Dugtrio,
+            gShinyOverworldPalette_Dugtrio
+        )
     },
 
 #if P_ALOLAN_FORMS
@@ -4849,6 +4889,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .footprint = gMonFootprint_Abra,
         LEARNSETS(Abra),
         .evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_KADABRA}),
+                OVERWORLD(
+            sPicTable_Abra,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Abra,
+            gShinyOverworldPalette_Abra
+        )
     },
 
     [SPECIES_KADABRA] =
@@ -4899,6 +4947,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         LEARNSETS(Kadabra),
         .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_ALAKAZAM},
                                 {EVO_ITEM, ITEM_LINKING_CORD, SPECIES_ALAKAZAM}),
+                                        OVERWORLD(
+            sPicTable_Kadabra,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Kadabra,
+            gShinyOverworldPalette_Kadabra
+        )
     },
 
 #define ALAKAZAM_SP_DEF (P_UPDATED_STATS >= GEN_6 ? 95 : 85)
@@ -4951,6 +5007,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .backAnimId = BACK_ANIM_GROW_STUTTER,
         PALETTES(Alakazam),
         ICON(Alakazam, 2),
+                OVERWORLD(
+            sPicTable_Alakazam,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Alakazam,
+            gShinyOverworldPalette_Alakazam
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -8461,6 +8525,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .footprint = gMonFootprint_Rhyhorn,
         LEARNSETS(Rhyhorn),
         .evolutions = EVOLUTION({EVO_LEVEL, 42, SPECIES_RHYDON}),
+                OVERWORLD(
+            sPicTable_Rhyhorn,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Rhyhorn,
+            gShinyOverworldPalette_Rhyhorn
+        )
     },
 
     [SPECIES_RHYDON] =
@@ -8512,6 +8584,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         LEARNSETS(Rhydon),
         .evolutions = EVOLUTION({EVO_TRADE_ITEM, ITEM_PROTECTOR, SPECIES_RHYPERIOR},
                                 {EVO_ITEM, ITEM_PROTECTOR, SPECIES_RHYPERIOR}),
+                                        OVERWORLD(
+            sPicTable_Rhydon,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Rhydon,
+            gShinyOverworldPalette_Rhydon
+        )
     },
 
 #if P_GEN_4_CROSS_EVOS
@@ -8562,6 +8642,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         ICON(Rhyperior, 0),
         .footprint = gMonFootprint_Rhyperior,
         LEARNSETS(Rhyperior),
+                OVERWORLD(
+            sPicTable_Rhyperior,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Rhyperior,
+            gShinyOverworldPalette_Rhyperior
+        )
     },
 #endif //P_GEN_4_CROSS_EVOS
 #endif //P_FAMILY_RHYHORN
@@ -9514,6 +9602,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .evolutions = EVOLUTION({EVO_TRADE_ITEM, ITEM_METAL_COAT, SPECIES_SCIZOR},
                                 {EVO_ITEM, ITEM_BLACK_AUGURITE, SPECIES_KLEAVOR},
                                 {EVO_ITEM, ITEM_METAL_COAT, SPECIES_SCIZOR}),
+                                        OVERWORLD(
+            sPicTable_Scyther,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Scyther,
+            gShinyOverworldPalette_Scyther
+        )
     },
 
 #if P_GEN_2_CROSS_EVOS
@@ -9569,6 +9665,14 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .backAnimId = BACK_ANIM_JOLT_RIGHT,
         PALETTES(Scizor),
         ICON(Scizor, 0),
+                OVERWORLD(
+            sPicTable_Scizor,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Scizor,
+            gShinyOverworldPalette_Scizor
+        )
     },
 
 #if P_MEGA_EVOLUTIONS

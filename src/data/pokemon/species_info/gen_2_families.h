@@ -631,6 +631,14 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .footprint = gMonFootprint_Hoothoot,
         LEARNSETS(Hoothoot),
         .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_NOCTOWL}),
+        OVERWORLD(
+            sPicTable_Hoothoot,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Hoothoot,
+            gShinyOverworldPalette_Hoothoot
+        )
     },
 
     [SPECIES_NOCTOWL] =
@@ -733,6 +741,14 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .footprint = gMonFootprint_Ledyba,
         LEARNSETS(Ledyba),
         .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_LEDIAN}),
+        OVERWORLD(
+            sPicTable_Ledyba,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Ledyba,
+            gShinyOverworldPalette_Ledyba
+        )
     },
 
     [SPECIES_LEDIAN] =
@@ -1982,6 +1998,14 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .footprint = gMonFootprint_Sunkern,
         LEARNSETS(Sunkern),
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_SUN_STONE, SPECIES_SUNFLORA}),
+                       OVERWORLD(
+            sPicTable_Sunkern,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Sunkern,
+            gShinyOverworldPalette_Sunkern
+        )
     },
 
     [SPECIES_SUNFLORA] =
@@ -2028,6 +2052,14 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         ICON(Sunflora, 1),
         .footprint = gMonFootprint_Sunflora,
         LEARNSETS(Sunflora),
+                OVERWORLD(
+            sPicTable_Sunflora,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Sunflora,
+            gShinyOverworldPalette_Sunflora,
+        )
     },
 #endif //P_FAMILY_SUNKERN
 
@@ -4149,6 +4181,14 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .footprint = gMonFootprint_Slugma,
         LEARNSETS(Slugma),
         .evolutions = EVOLUTION({EVO_LEVEL, 25, SPECIES_MAGCARGO}),
+        OVERWORLD(
+            sPicTable_Slugma,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Slugma,
+            gShinyOverworldPalette_Slugma,
+        )
     },
 
     [SPECIES_MAGCARGO] =
@@ -4201,6 +4241,14 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         ICON(Magcargo, 0),
         .footprint = gMonFootprint_Magcargo,
         LEARNSETS(Magcargo),
+                               OVERWORLD(
+            sPicTable_Magcargo,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Magcargo,
+            gShinyOverworldPalette_Magcargo,
+        )
     },
 #endif //P_FAMILY_SLUGMA
 
@@ -4637,6 +4685,14 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         ICON(Delibird, 1),
         .footprint = gMonFootprint_Delibird,
         LEARNSETS(Delibird),
+                OVERWORLD(
+            sPicTable_Delibird,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Delibird,
+            gShinyOverworldPalette_Delibird
+        )
     },
 #endif //P_FAMILY_DELIBIRD
 

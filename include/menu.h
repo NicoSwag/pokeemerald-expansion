@@ -21,7 +21,7 @@
 #define MENU_INFO_ICON_EFFECT    (NUMBER_OF_MON_TYPES + 5)
 #define MENU_INFO_ICON_BALL_RED  (NUMBER_OF_MON_TYPES + 6)
 #define MENU_INFO_ICON_BALL_BLUE (NUMBER_OF_MON_TYPES + 7)
-
+extern EWRAM_DATA u8 gPopupTaskId;
 enum
 {
     SAVE_MENU_NAME,
@@ -41,7 +41,7 @@ struct MenuAction
 };
 
 extern const u16 gStandardMenuPalette[];
-extern EWRAM_DATA u8 gPopupTaskId;
+
 
 void FreeAllOverworldWindowBuffers(void);
 void InitStandardTextBoxWindows(void);
@@ -104,9 +104,9 @@ void AddTextPrinterForMessage_2(bool8 allowSkippingDelayWithButtonPress);
 void RemoveStartMenuWindow(void);
 void DisplayYesNoMenuWithDefault(u8 initialCursorPos);
 void BufferSaveMenuText(u8 textId, u8 *dest, u8 color);
-void RemovePrimaryPopUpWindow(void);
-u8 GetPrimaryPopUpWindowId(void);
-u8 AddPrimaryPopUpWindow(void);
+void RemoveMapNamePopUpWindow(void);
+u8 GetMapNamePopUpWindowId(void);
+u8 AddMapNamePopUpWindow(void);
 void AddTextPrinterParameterized5(u8 windowId, u8 fontId, const u8 *str, u8 left, u8 top, u8 speed, void (*callback)(struct TextPrinterTemplate *, u16), u8 letterSpacing, u8 lineSpacing);
 void SetBgTilemapPalette(u8 bgId, u8 left, u8 top, u8 width, u8 height, u8 palette);
 void AddValToTilemapBuffer(void *ptr, int delta, int width, int height, bool32 is8BPP);
@@ -129,5 +129,8 @@ u8 AddSecondaryPopUpWindow(void);
 u8 GetSecondaryPopUpWindowId(void);
 void RemoveSecondaryPopUpWindow(void);
 void HBlankCB_DoublePopupWindow(void);
+void RemovePrimaryPopUpWindow(void);
+u8 GetPrimaryPopUpWindowId(void);
+u8 AddPrimaryPopUpWindow(void);
 
 #endif // GUARD_MENU_H

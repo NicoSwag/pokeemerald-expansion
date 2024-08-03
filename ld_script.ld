@@ -123,6 +123,7 @@ SECTIONS {
         src/field_door.o(.text);
         src/field_player_avatar.o(.text);
         src/event_object_movement.o(.text);
+        src/follower_helper.o(.text);
         src/field_message_box.o(.text);
         src/event_object_lock.o(.text);
         src/text_window.o(.text);
@@ -343,6 +344,8 @@ SECTIONS {
         src/international_string_util.o(.text);
         src/ui_main_menu.o(.text);
         src/quests.o(.text);
+        src/pokemon_sprite_visualizer.o(.text);
+        src/expansion_intro.o(.text);
     } > ROM =0
 
     script_data :
@@ -510,6 +513,7 @@ SECTIONS {
         src/field_door.o(.rodata);
         src/field_player_avatar.o(.rodata);
         src/event_object_movement.o(.rodata);
+        src/follower_helper.o(.rodata);
         src/text_window.o(.rodata);
         src/scrcmd.o(.rodata);
         src/field_control_avatar.o(.rodata);
@@ -707,6 +711,8 @@ SECTIONS {
         data/sound_data.o(.rodata);
         src/ui_main_menu.o(.rodata);
         src/quests.o(.rodata);
+        src/pokemon_sprite_visualizer.o(.rodata);
+        src/expansion_intro.o(.rodata);
     } > ROM =0
 
     song_data :
