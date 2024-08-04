@@ -21,7 +21,7 @@
 #define MENU_INFO_ICON_EFFECT    (NUMBER_OF_MON_TYPES + 5)
 #define MENU_INFO_ICON_BALL_RED  (NUMBER_OF_MON_TYPES + 6)
 #define MENU_INFO_ICON_BALL_BLUE (NUMBER_OF_MON_TYPES + 7)
-extern EWRAM_DATA u8 gPopupTaskId;
+
 enum
 {
     SAVE_MENU_NAME,
@@ -41,7 +41,7 @@ struct MenuAction
 };
 
 extern const u16 gStandardMenuPalette[];
-
+extern EWRAM_DATA u8 gPopupTaskId;
 
 void FreeAllOverworldWindowBuffers(void);
 void InitStandardTextBoxWindows(void);
@@ -129,8 +129,5 @@ u8 AddSecondaryPopUpWindow(void);
 u8 GetSecondaryPopUpWindowId(void);
 void RemoveSecondaryPopUpWindow(void);
 void HBlankCB_DoublePopupWindow(void);
-void RemovePrimaryPopUpWindow(void);
-u8 GetPrimaryPopUpWindowId(void);
-u8 AddPrimaryPopUpWindow(void);
 
 #endif // GUARD_MENU_H

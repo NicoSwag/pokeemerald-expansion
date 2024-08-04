@@ -63,6 +63,86 @@ RustboroCity_PokemonSchool_EventScript_StudentNotebook::
 	msgbox RustboroCity_PokemonSchool_Text_StudentsNotes, MSGBOX_SIGN
 	end
 
+RustboroCity_PokemonSchool_EventScript_Assistant::
+	lock
+	faceplayer
+	goto_if_set FLAG_QUIZ_COMPLETED, RustboroCity_PokemonSchool_EventScript_AssistantAfter
+	msgbox RustboroCity_PokemonSchool_Text_Assistant, MSGBOX_DEFAULT
+	msgbox RustboroCity_PokemonSchool_Text_Rock, MSGBOX_YESNO
+	switch VAR_RESULT
+	case YES, RustboroCity_PokemonSchool_EventScript_Assistant_Fail
+	msgbox RustboroCity_PokemonSchool_Text_Correct, MSGBOX_DEFAULT
+	msgbox RustboroCity_PokemonSchool_Text_Field, MSGBOX_YESNO
+	switch VAR_RESULT
+	case YES, RustboroCity_PokemonSchool_EventScript_Assistant_Fail
+	msgbox RustboroCity_PokemonSchool_Text_Correct, MSGBOX_DEFAULT
+	msgbox RustboroCity_PokemonSchool_Text_Paralysis, MSGBOX_YESNO
+	switch VAR_RESULT
+	case NO, RustboroCity_PokemonSchool_EventScript_Assistant_Fail
+	msgbox RustboroCity_PokemonSchool_Text_GotIt, MSGBOX_DEFAULT
+	giveitem ITEM_HEART_SCALE
+	setflag FLAG_QUIZ_COMPLETED
+	release
+	end
+
+RustboroCity_PokemonSchool_EventScript_Assistant_Fail::
+	msgbox RustboroCity_PokemonSchool_Text_Wrong, MSGBOX_DEFAULT
+	release
+	end
+
+RustboroCity_PokemonSchool_EventScript_AssistantAfter::
+	msgbox RustboroCity_PokemonSchool_Text_NewDiscoveries, MSGBOX_DEFAULT
+	release
+	end
+
+RustboroCity_PokemonSchool_Text_NewDiscoveries:
+	.string "It's almost strange how many new things\n"
+	.string "we are still discovering about Pokémon…\p"
+	.string "Notions we thought certain are being\n"
+	.string "called into question.\p"
+	.string "That's the scientific method for you.$"
+
+
+RustboroCity_PokemonSchool_Text_GotIt:
+	.string "Correct!\p"
+	.string "Looks like you have a good base of\n"
+	.string "knowledge.\p"
+	.string "Or did you just guess?\p"
+	.string "Either way, make sure to review the\n"
+	.string "theory if you aren't sure.\p"
+	.string "But as promised, here is your prize.$"
+
+RustboroCity_PokemonSchool_Text_Correct:
+	.string "Correct!\p"
+	.string "Now, the next question.$"
+
+RustboroCity_PokemonSchool_Text_Assistant:
+	.string "I have a pop quiz for you.\p"
+	.string "Answer all the questions and you'll\n"
+	.string "get a reward!\p"
+	.string "Well then, let's begin.$"
+
+RustboroCity_PokemonSchool_Text_Rock:
+	.string "Is rock weak to ground?$"
+
+RustboroCity_PokemonSchool_Text_Wrong:
+	.string "Sorry, you got it wrong.\p"
+	.string "Even if you think you know everything,\n"
+	.string "there are always many new discoveries.\p"
+	.string "That's why I would recommend refreshing\n"
+	.string "up a bit on the theory.$"
+
+RustboroCity_PokemonSchool_Text_Field:
+	.string "Let's say that, during a battle, you\n"
+	.string "switch in your Pelipper with Drizzle.\p"
+	.string "Naturally, it will start raining.\p"
+	.string "But will it keep raining if you switch it\n"
+	.string "out right away?$"
+
+RustboroCity_PokemonSchool_Text_Paralysis:	
+	.string "In the absence of other ailments, can a\n"
+	.string "paralyzed POKéMON always act?$"
+
 RustboroCity_PokemonSchool_EventScript_Teacher::
 	lock
 	faceplayer
@@ -218,7 +298,7 @@ RustboroCity_PokemonSchool_Text_ExplainField_Changes:
 	.string "through moves, in which case the effect\l"
 	.string "lasts five to eight turns.\p"
 	.string "Some POKéMON are able to provoke such\n"
-	.string "such changes with their ABILITY\p"
+	.string "such changes with their ABILITY.\p"
 	.string "In this case, the alteration will last\n"
 	.string "until the timer ends or the POKéMON\l"
 	.string "leaves the field for any reason.$"
@@ -250,14 +330,17 @@ RustboroCity_PokemonSchool_Text_ExplainQuickClaw:
 	.string "A POKéMON holding the DRAGON FANG\n"
 	.string "will have its own DRAGON-TYPE moves\l"
 	.string "empowered.\p"
-	.string "There are many other items that are\n"
-	.string "meant to be held by POKéMON.\p"
-	.string "Just those alone will give you many\n"
-	.string "topics to study!$"
+	.string "I found it in the OLDALE RUINS during\n"
+	.string "a field trip with my students.\p"
+	.string "Too bad the location is closed for visitors.\p"
+	.string "At least I got a souvenir I can threaten my\n"
+	.string "students with. Ha ha!$"
 
 RustboroCity_PokemonSchool_Text_TradingRightNow:
-	.string "I'm trading POKéMON with my friend\n"
-	.string "right now.$"
+	.string "I'm trading CAPUMON with my friend\n"
+	.string "right now.\p"
+	.string "Heard of it?\n"
+	.string "It's the hot new game!$"
 
 RustboroCity_PokemonSchool_Text_AlwaysWantedSeedot:
 	.string "Trade evolutions are so annoying…\n"

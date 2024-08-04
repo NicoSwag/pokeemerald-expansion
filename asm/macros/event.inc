@@ -1168,6 +1168,12 @@
 	.2byte \move
 	.endm
 
+
+	.macro checkpartymoveold move:req
+	.byte 0xe8
+	.2byte \move
+	.endm
+
 	@ Converts STR_VAR_1, STR_VAR_2, or STR_VAR_3 to its corresponding index into sScriptStringVars (0, 1, or 2).
 	@ If given anything else it will output it directly.
 	@ Note: Because the STR_VAR_# arguments given to this macro are not part of a processed string they are not

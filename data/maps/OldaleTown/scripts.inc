@@ -14,7 +14,6 @@ OldaleTown_OnTransition:
 	call_if_unset FLAG_RECEIVED_EEVEE, OldaleTown_EventScript_BlockWestEntrance
 	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
-	call_if_set FLAG_HELPED_LEDYBA, OldaleTown_EventScript_LedybaFlip
 	setvar VAR_PELIPPER, 10
 	end
 
@@ -29,9 +28,6 @@ OldaleTown_EventScript_Slugma::
 	release
 	end
 
-OldaleTown_EventScript_LedybaFlip::
-	setobjectmovementtype LOCALID_LEDYBA, MOVEMENT_TYPE_FACE_DOWN
-	return
 
 OldaleTown_Text_Slugma:
 	.string "SLUGMA: Bwshsh!$"
@@ -56,8 +52,6 @@ OldaleTown_EventScript_Girl2::
 	end
 
 OldaleTown_EventScript_LedybaGetUp::	
-	applymovement LOCALID_LEDYBA, OldaleTown_Movement_Ledyba
-	waitmovement 0
 	applymovement LOCALID_LEDYBA, Common_Movement_ExclamationMark
 	waitmovement 0
 	msgbox OldaleTown_Text_LedybaPresent, MSGBOX_NPC
@@ -572,14 +566,14 @@ OldaleTown_Text_TownSign:
 	.string "OLDALE TOWN$"
 
 OldaleTown_Text_WantToHelpLedyba:
-	.string "An upside down LEDYBA is lying on\n"
-	.string "the grass…$"
+	.string "This Ledyba looks like it's offering\n"
+	.string "you a handshake.$"
 
 OldaleTown_Text_YesOrNoLedyba:
-	.string "Do you want to help it get back up?$"
+	.string "Do you grab its hand!$"
 
 OldaleTown_Text_LedybaPresent:
-	.string "LEDYBA looks grateful.\p"
+	.string "LEDYBA looks happy.\p"
 	.string "Oh, but what's this?\n"
 	.string "It seems like LEDYBA is offering you\l"
 	.string "a gift!$"

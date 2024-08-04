@@ -107,11 +107,7 @@ Petalburg_PokemonCenter_1F_EventScript_Mart::
 		.align 2
 	Petalburg_Mart_Pokemart:
 	.2byte ITEM_POKE_BALL
-	.2byte ITEM_POTION
-	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_AWAKENING
-	.2byte ITEM_ESCAPE_ROPE
+	.2byte ITEM_POKE_DOLL
 	.2byte ITEM_NONE
 	release
 	end

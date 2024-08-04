@@ -401,7 +401,7 @@ AbnormalWeather_Underwater_SetupEscapeWarpRoute105South::
 	return
 
 AbnormalWeather_Underwater_SetupEscapeWarpRoute125West::
-	setescapewarp MAP_ROUTE125, 9, 17
+	setescapewarp MAP_ROUTE125, 6, 17
 	return
 
 AbnormalWeather_Underwater_SetupEscapeWarpRoute125East::

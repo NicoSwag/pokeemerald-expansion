@@ -22,12 +22,13 @@ RustboroCity_Flat2_2F_EventScript_GavePremierBall::
 	end
 
 RustboroCity_Flat2_2F_Text_DevonWasTinyInOldDays:
-	.string "It is said that DEVON existed even\n"
-	.string "way back when people started to\l"
-	.string "settle in HOENN.\p"
-	.string "Of course, I wasn't even born back\n"
-	.string "then. Haha!$"
-
+	.string "Devon's histories goes back centuries.\p"
+	.string "Truly an old world company, they are.\p"
+	.string "Even before I was born, Devon existed.\p"
+	.string "Hell, even before people settled in Hoenn,\n"
+	.string "Devon existed.\p"
+	.string "Truly a marvelous company.$"
+	
 RustboroCity_Flat2_2F_Text_MyDaddyMadeThisYouCanHaveIt:
 	.string "My daddy's working at the CORPORATION.\p"
 	.string "One day, while he wasn't looking, I\n"

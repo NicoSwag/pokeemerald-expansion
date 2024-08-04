@@ -23,7 +23,7 @@
 #include "config/overworld.h"
 #include "constants/songs.h"
 #include "constants/weather.h"
-EWRAM_DATA u8 gPopupTaskId = 0;
+
 #define DLG_WINDOW_PALETTE_NUM 15
 #define DLG_WINDOW_BASE_TILE_NUM 0x200
 #define STD_WINDOW_PALETTE_NUM 14
@@ -2181,15 +2181,6 @@ void RemoveSecondaryPopUpWindow(void)
     }
 }
 
-bool32 IsWeatherAlphaBlend(void)
-{
-    return (gWeatherPtr->currWeather == WEATHER_FOG_HORIZONTAL
-         || gWeatherPtr->currWeather == WEATHER_FOG_DIAGONAL
-         || gWeatherPtr->currWeather == WEATHER_UNDERWATER_BUBBLES
-         || gWeatherPtr->currWeather == WEATHER_UNDERWATER);
-}
-
-
 void HBlankCB_DoublePopupWindow(void)
 {
     u16 offset = gTasks[gPopupTaskId].data[2];
@@ -2198,8 +2189,6 @@ void HBlankCB_DoublePopupWindow(void)
     if (scanline < 80 || scanline > 160)
     {
         REG_BG0VOFS = offset;
-        if(OW_POPUP_BW_ALPHA_BLEND && !IsWeatherAlphaBlend())
-            REG_BLDALPHA = BLDALPHA_BLEND(15, 5);
     }
     else
     {

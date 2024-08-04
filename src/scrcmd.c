@@ -1912,6 +1912,28 @@ bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
 }
 
 
+bool8 ScrCmd_checkpartymoveOld(struct ScriptContext *ctx)
+{
+    u8 i;
+    u16 moveId = ScriptReadHalfword(ctx);
+
+    gSpecialVar_Result = PARTY_SIZE;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
+        if (!species)
+            break;
+        if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && MonKnowsMove(&gPlayerParty[i], moveId) == TRUE)
+        {
+            gSpecialVar_Result = i;
+            gSpecialVar_0x8004 = species;
+            break;
+        }
+    }
+    return FALSE;
+}
+
+
 bool8 ScrCmd_checkpartycanlearn(struct ScriptContext *ctx)
 {
     u8 i;
@@ -2250,6 +2272,15 @@ void PlayFirstMonCry(struct ScriptContext *ctx)
 {
     PlayCry_Script(GetMonData(GetFirstLiveMon(), MON_DATA_SPECIES), CRY_MODE_NORMAL);
 }
+
+
+void ShowFollower(struct ScriptContext *ctx){
+    struct ObjectEvent *followerObject = GetFollowerObject();
+    if (followerObject)
+            ObjectEventClearHeldMovementIfFinished(followerObject);
+}
+
+
 
 bool8 ScrCmd_waitmoncry(struct ScriptContext *ctx)
 {

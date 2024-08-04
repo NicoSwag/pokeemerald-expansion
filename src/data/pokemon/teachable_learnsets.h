@@ -8135,6 +8135,7 @@ static const u16 sFurretTeachableLearnset[] = {
 static const u16 sHoothootTeachableLearnset[] = {
     MOVE_TRICK,
     MOVE_PROTECT,
+    MOVE_ROCK_CLIMB,
     MOVE_UNAVAILABLE,
 };
 

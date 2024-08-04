@@ -12,6 +12,7 @@
 .set LOCALID_WANDAS_BF, 41
 .set LOCALID_PEEKO, 42
 .set LOCALID_MR_BRINEY, 33
+.set LOCALID_SILPH_SCIENTIST, 43
 
 RustboroCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_OnTransition
@@ -140,6 +141,101 @@ RustboroCity_EventScript_OldMan::
 	msgbox Rustborocity_Text_OldMan, MSGBOX_NPC
 	end
 
+RustboroCity_EventScript_Scientist::
+	lock
+	goto_if_set FLAG_SILPH_SCIENTIST, RustboroCity_EventScript_ScientistHelped
+	msgbox RustboroCity_Text_ScientistWondering, MSGBOX_DEFAULT
+	checkitem ITEM_BOOSTER_ENERGY
+	goto_if_eq VAR_RESULT, TRUE, RustboroCity_EventScript_Scientist_BoosterEnergy
+	release
+	end
+
+RustboroCity_EventScript_Scientist_BoosterEnergy::
+	playse SE_PIN
+	applymovement LOCALID_SILPH_SCIENTIST, Common_Movement_ExclamationMark
+	waitmovement 0
+	faceplayer
+	msgbox RustboroCity_Text_BoosterEnergy, MSGBOX_DEFAULT
+	givemon SPECIES_PORYGON, 10
+	msgbox RustboroCity_Text_Porygon, MSGBOX_DEFAULT
+	setflag FLAG_SILPH_SCIENTIST
+	release
+	end
+
+
+RustboroCity_EventScript_ScientistHelped::
+	msgbox RustboroCity_Text_WordOfAdvice, MSGBOX_DEFAULT
+	release
+	end
+
+RustboroCity_Text_WordOfAdvice:
+	.string "We are friends now, yes…?\p"
+	.string "So, I have word of advice for you.\n"
+	.string "Come back to Kanto.\p"
+	.string "Do not get me wrong.\p"
+	.string "I am not saying this due to some inane\n"
+	.string "patriotism.\p"
+	.string "But, Devon…\p"
+	.string "Meddling with some dangerous forces,\n"
+	.string "they are.\p"
+	.string "I do not mean to alarm you, but that\n"
+	.string "Booster Energy you got…\p"
+	.string "It could be a bona fide portable nuclear\n"
+	.string "reactor if completed.\p"
+	.string "Do not worry… Yours is inactive.\p"
+	.string "But… You have heard of the Mauville\n"
+	.string "Disaster…?\p"
+	.string "In the near future, similar tragedies\n"
+	.string "could be commonplace.\p"
+	.string "I need to investigate further…$"
+
+
+RustboroCity_Text_ScientistWondering:
+	.string "These Devon crooks…\n"
+	.string "I know they're hiding something…\p"
+	.string "I need to find out what…\n"
+	.string "But… How…$"
+
+
+RustboroCity_Text_BoosterEnergy:
+	.string "You…\p"
+	.string "My energy detector, which of course I\n"
+	.string "always carry with me, is going bananas…\p"
+	.string "You have some strange technology,\n"
+	.string "don't you…?\p"
+	.string "Oh, please… Do not worry…\n"
+	.string "I only intend to take a look at it…\p"
+	.string "… … … … …\p"
+	.string "Ah, this… Booster Energy…?\n"
+	.string "This is top secret Devon technology…\p"
+	.string "How in the world did you…?\p"
+	.string "Well then, I will be introducing myself.\p"
+	.string "I am a scientist from the cutting edge\n"
+	.string "company Silph Co., from Kanto…\p"
+	.string "…Ah, you are from Kanto yourself?\n"
+	.string "Splendid…\p"
+	.string "You see, we think that the Devon crooks\n"
+	.string "are close to a major breakthrough…\p"
+	.string "And this Booster Energy… Intriguing.\p"
+	.string "Oh, you can keep it.\n"
+	.string "At the present state, it is useless.\p"
+	.string "But… Such concentrated energy…\n"
+	.string "Yes, I think I see…\p"
+	.string "I will need more confirmation, but…\p"
+	.string "Oh… Do not tell a single soul about me.\n"
+	.string "I am here in a covert mission, you see…\p"
+	.string "Here, I have a gift for you…\n"
+	.string "As long as you stay quiet…$"
+
+RustboroCity_Text_Porygon:
+	.string "This is Porygon, the digital Pokémon…\p"
+	.string "A Silph Co. creation, replicated by Devon\n"
+	.string "without our permission…\p"
+	.string "Is it not fair, then, that we appropriate\n"
+	.string "their research in turn…?\p"
+	.string "Yes, of course it is.\n"
+	.string "Now, once again: you did not see me.$"
+
 RustboroCity_EventScript_MatchCallTutorial::
 	setflag FLAG_ADDED_MATCH_CALL_TO_POKENAV
 	special ScriptMenu_CreateStartMenuForPokenavTutorial
@@ -228,9 +324,38 @@ RustboroCity_EventScript_BoyProtest::
 
 RustboroCity_EventScript_Engineer_3::
 	lock
-	msgbox RustboroCity_Text_Engineer_3, MSGBOX_DEFAULT
+	faceplayer
+	msgbox RustboroCity_Text_Engineer_3, MSGBOX_YESNO
+	switch VAR_RESULT
+	case NO, RustboroCity_EventScript_Engineer_3_No
+	case YES, RustboroCity_EventScript_Engineer_3_Yes
 	release
 	end
+
+RustboroCity_EventScript_Engineer_3_No::
+	msgbox RustboroCity_Text_Engineer_3_Scram, MSGBOX_NPC
+	release
+	end
+
+RustboroCity_EventScript_Engineer_3_Yes::
+	msgbox RustboroCity_Text_Engineer_3_Fight, MSGBOX_NPC
+	release
+	end
+
+
+RustboroCity_Text_Engineer_3_Scram:
+	.string "Yeah, that's right.\n"
+	.string "Now scram!$"
+
+
+RustboroCity_Text_Engineer_3_Fight:
+	.string "Oh, trust me kid, I would love to\n"
+	.string "teach you a lesson.\p"
+	.string "Fortunately for you, the developer hasn't \n"
+	.string "gotten around to coding this event\l"
+	.string "quite yet.\p"
+	.string "But one day, kid.\n"
+	.string "One day.$"
 
 RustboroCity_EventScript_GirlProtest::
 	lock
@@ -1787,8 +1912,8 @@ RustboroCity_Text_GirlProtest:
 	.string "Stop the construction!$"
 
 RustboroCity_Text_Engineer_3:
-	.string "C'mon, kids…\p"
-	.string "I'm just trying to do my job.$"
+	.string "What's wrong, huh?\n"
+	.string "You got some problem?$"
 
 RustboroCity_Text_Rhydon:
 	.string "RHYDON: Gwraaaaaaa!$"

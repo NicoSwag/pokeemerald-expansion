@@ -4043,6 +4043,9 @@ static void Task_UseRockClimb(u8 taskId)
     while (sRockClimbFieldEffectFuncs[gTasks[taskId].tState](&gTasks[taskId], &gObjectEvents[gPlayerAvatar.objectEventId]));
 }
 
+
+
+
 static bool8 RockClimb_Init(struct Task *task, struct ObjectEvent *objectEvent)
 {
     ScriptContext_Enable();
@@ -4054,7 +4057,6 @@ static bool8 RockClimb_Init(struct Task *task, struct ObjectEvent *objectEvent)
     task->tState++;
     return FALSE;
 }
-
 static bool8 RockClimb_FieldMovePose(struct Task *task, struct ObjectEvent *objectEvent)
 {
     if (!ObjectEventIsMovementOverridden(objectEvent) || ObjectEventClearHeldMovementIfFinished(objectEvent))

@@ -78,10 +78,10 @@
 #define FLAG_RECEIVED_ORAN_VOUCHER    0x41 // Unused Flag
 #define FLAG_GOT_THROAT_SPRAY    0x42 // Unused Flag
 #define FLAG_RECEIVED_CHERI_VOUCHER    0x43 // Unused Flag
-#define FLAG_UNUSED_0x044    0x44 // Unused Flag
-#define FLAG_UNUSED_0x045    0x45 // Unused Flag
-#define FLAG_UNUSED_0x046    0x46 // Unused Flag
-#define FLAG_UNUSED_0x047    0x47 // Unused Flag
+#define FLAG_FOUGHT_CONSTRUCTION_GUY    0x44 // Unused Flag
+#define FLAG_SILPH_SCIENTIST    0x45 // Unused Flag
+#define FLAG_QUIZ_COMPLETED    0x46 // Unused Flag
+#define FLAG_RECEIVED_ROCK_CLIMB    0x47 // Unused Flag
 #define FLAG_UNUSED_0x048    0x48 // Unused Flag
 #define FLAG_UNUSED_0x049    0x49 // Unused Flag
 #define FLAG_UNUSED_0x04A    0x4A // Unused Flag
@@ -1588,7 +1588,7 @@
 #define FLAG_UNUSED_0x933                           (DAILY_FLAGS_START + 0x13) // Unused Flag
 #define FLAG_DAILY_APPRENTICE_LEAVES                (DAILY_FLAGS_START + 0x14)
 
-#define FLAG_UNUSED_0x935                           (DAILY_FLAGS_START + 0x15) // Unused Flag
+#define FLAG_PERM_HIDE_FOLLOWER                          (DAILY_FLAGS_START + 0x15) // Unused Flag
 #define FLAG_UNUSED_0x936                           (DAILY_FLAGS_START + 0x16) // Unused Flag
 #define FLAG_UNUSED_0x937                           (DAILY_FLAGS_START + 0x17) // Unused Flag
 #define FLAG_UNUSED_0x938                           (DAILY_FLAGS_START + 0x18) // Unused Flag

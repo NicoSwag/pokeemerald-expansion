@@ -131,7 +131,7 @@ PetalburgCity_EventScript_Boy_TM::
 PetalburgCity_EventScript_WallysMom::
 	goto_if_set FLAG_GOT_THROAT_SPRAY, PetalburgCity_EventScript_WallysMomPostItem
 	msgbox PetalburgCity_Text_WhereIsWally, MSGBOX_NPC
-	checkpartymove MOVE_AROMATHERAPY
+	checkpartymoveold MOVE_AROMATHERAPY
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_WallyMomEnd
 	setflag FLAG_GOT_THROAT_SPRAY
 	msgbox PetalburgCity_Text_GiveThroatSpray, MSGBOX_NPC

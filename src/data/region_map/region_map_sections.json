@@ -2,7 +2,7 @@
   "map_sections": [
     {
       "map_section": "MAPSEC_LITTLEROOT_TOWN",
-      "name": "LITTLEROOT TOWN",
+      "name": "Littleroot Town",
       "x": 4,
       "y": 11,
       "width": 1,
@@ -10,7 +10,7 @@
     },
     {
       "map_section": "MAPSEC_OLDALE_TOWN",
-      "name": "OLDALE TOWN",
+      "name": "Oldale Town",
       "x": 4,
       "y": 9,
       "width": 1,
@@ -18,7 +18,7 @@
     },
     {
       "map_section": "MAPSEC_OLDALE_RUINS",
-      "name": "OLDALE RUINS",
+      "name": "Oldale Ruins",
       "x": 4,
       "y": 8,
       "width": 1,
@@ -26,7 +26,7 @@
     },
     {
       "map_section": "MAPSEC_DEWFORD_TOWN",
-      "name": "DEWFORD TOWN",
+      "name": "Dewford Town",
       "x": 2,
       "y": 14,
       "width": 1,
@@ -34,7 +34,7 @@
     },
     {
       "map_section": "MAPSEC_LAVARIDGE_TOWN",
-      "name": "LAVARIDGE TOWN",
+      "name": "Lavaridge Town",
       "x": 5,
       "y": 3,
       "width": 1,
@@ -42,7 +42,7 @@
     },
     {
       "map_section": "MAPSEC_FALLARBOR_TOWN",
-      "name": "FALLARBOR TOWN",
+      "name": "Fallarbor Town",
       "x": 3,
       "y": 0,
       "width": 1,
@@ -50,7 +50,7 @@
     },
     {
       "map_section": "MAPSEC_VERDANTURF_TOWN",
-      "name": "VERDANTURF TOWN",
+      "name": "Verdantuf Town",
       "x": 4,
       "y": 6,
       "width": 1,
@@ -58,7 +58,7 @@
     },
     {
       "map_section": "MAPSEC_PACIFIDLOG_TOWN",
-      "name": "PACIFIDLOG TOWN",
+      "name": "Pacifidlog Town",
       "x": 17,
       "y": 10,
       "width": 1,
@@ -66,7 +66,7 @@
     },
     {
       "map_section": "MAPSEC_PETALBURG_CITY",
-      "name": "PETALBURG CITY",
+      "name": "Petalburg City",
       "x": 1,
       "y": 9,
       "width": 1,
@@ -74,7 +74,7 @@
     },
     {
       "map_section": "MAPSEC_SLATEPORT_CITY",
-      "name": "SLATEPORT CITY",
+      "name": "Slateport City",
       "x": 8,
       "y": 10,
       "width": 1,
@@ -82,7 +82,7 @@
     },
     {
       "map_section": "MAPSEC_MAUVILLE_CITY",
-      "name": "MAUVILLE CITY",
+      "name": "Mauville City",
       "x": 8,
       "y": 6,
       "width": 2,
@@ -90,7 +90,7 @@
     },
     {
       "map_section": "MAPSEC_RUSTBORO_CITY",
-      "name": "RUSTBORO CITY",
+      "name": "Rustboro City",
       "x": 0,
       "y": 5,
       "width": 1,
@@ -98,7 +98,7 @@
     },
     {
       "map_section": "MAPSEC_FORTREE_CITY",
-      "name": "FORTREE CITY",
+      "name": "Fortree City",
       "x": 12,
       "y": 0,
       "width": 1,
@@ -106,7 +106,7 @@
     },
     {
       "map_section": "MAPSEC_LILYCOVE_CITY",
-      "name": "LILYCOVE CITY",
+      "name": "Lilycove City",
       "x": 18,
       "y": 3,
       "width": 2,
@@ -114,7 +114,7 @@
     },
     {
       "map_section": "MAPSEC_MOSSDEEP_CITY",
-      "name": "MOSSDEEP CITY",
+      "name": "Mossdeep City",
       "x": 24,
       "y": 5,
       "width": 2,
@@ -122,7 +122,7 @@
     },
     {
       "map_section": "MAPSEC_SOOTOPOLIS_CITY",
-      "name": "SOOTOPOLIS CITY",
+      "name": "Sootopolis City",
       "x": 21,
       "y": 7,
       "width": 1,
@@ -130,7 +130,7 @@
     },
     {
       "map_section": "MAPSEC_EVER_GRANDE_CITY",
-      "name": "EVER GRANDE CITY",
+      "name": "Ever Grande City",
       "x": 27,
       "y": 8,
       "width": 1,
@@ -138,7 +138,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_101",
-      "name": "RAINTREE GROVE",
+      "name": "Raintree Grove",
       "x": 4,
       "y": 10,
       "width": 1,
@@ -146,7 +146,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_102",
-      "name": "SEVIPER RIVER",
+      "name": "Seviper River",
       "x": 2,
       "y": 9,
       "width": 2,
@@ -154,7 +154,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_103",
-      "name": "PILGRIM'S PASSAGE",
+      "name": "Pilgrim's Passage",
       "x": 5,
       "y": 8,
       "width": 3,
@@ -162,7 +162,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_104",
-      "name": "ORAN LAKE",
+      "name": "Oran Lake",
       "x": 0,
       "y": 7,
       "width": 1,
@@ -250,7 +250,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_115",
-      "name": "ENIGMA SHORE",
+      "name": "Enigma Shore",
       "x": 0,
       "y": 2,
       "width": 1,
@@ -258,7 +258,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_116",
-      "name": "RUSTBORO HILLS",
+      "name": "Rustboro Hills",
       "x": 1,
       "y": 5,
       "width": 4,
@@ -482,7 +482,7 @@
     },
     {
       "map_section": "MAPSEC_PETALBURG_WOODS",
-      "name": "PETALBURG WOODS",
+      "name": "Petalburg Woods",
       "x": 0,
       "y": 8,
       "width": 1,
@@ -490,7 +490,7 @@
     },
     {
       "map_section": "MAPSEC_RUSTURF_TUNNEL",
-      "name": "RUSTURF TUNNEL",
+      "name": "Rusturf Tunnel",
       "x": 2,
       "y": 5,
       "width": 1,
@@ -1706,7 +1706,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_104_LOWER",
-      "name": "PEARLY SEASIDE",
+      "name": "Pearly Seaside",
       "x": 0,
       "y": 9,
       "width": 1,
@@ -1714,7 +1714,7 @@
     },
     {
       "map_section": "MAPSEC_BRINE_CAVE",
-      "name": "BRINE CAVE",
+      "name": "Brine Cave",
       "x": 0,
       "y": 4,
       "width": 1,
@@ -1722,7 +1722,7 @@
     },
     {
       "map_section": "MAPSEC_MT_KIRIKIRI",
-      "name": "MOUNT KIRIKIRI",
+      "name": "Mt. Kirikiri",
       "x": 4,
       "y": 7,
       "width": 1,

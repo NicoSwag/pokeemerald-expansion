@@ -413,11 +413,14 @@ EventScript_UseRockClimb::
 	checkpartymove MOVE_ROCK_CLIMB
 	compare VAR_RESULT, PARTY_SIZE
 	goto_if_eq EventScript_CantRockClimb
+	goto_if_unset FLAG_RECEIVED_ROCK_CLIMB, EventScript_CantRockClimb
 	bufferpartymonnick 0, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
 	msgbox Text_WantToRockClimb, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq EventScript_EndRockClimb
+	setflag FLAG_PERM_HIDE_FOLLOWER
+	callnative UpdateFollowingPokemon
 	msgbox Text_MonUsedRockClimb, MSGBOX_DEFAULT
 	closemessage
 	dofieldeffect FLDEFF_USE_ROCK_CLIMB
@@ -427,8 +430,10 @@ EventScript_UseRockClimb::
 EventScript_CantRockClimb::
 	msgbox Text_CantRockClimb, MSGBOX_DEFAULT
 	
-EventScript_EndRockClimb::
+EventScript_EndRockClimb::	
 	releaseall
+	clearflag FLAG_PERM_HIDE_FOLLOWER
+	callnative UpdateFollowingPokemon
 	end
 	
 Text_WantToRockClimb:
