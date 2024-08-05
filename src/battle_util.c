@@ -11072,6 +11072,8 @@ if(GetBattlerAbility(battlerDef) == ABILITY_CLIMATE_CHANGE){
             mod = UQ_4_12(2.0);
         else if (mod == UQ_4_12(0.25))
             mod = UQ_4_12(4.0);
+        else if (mod == UQ_4_12(0.0))
+            mod = UQ_4_12(2.0);
     }
     *modifier = uq4_12_multiply(*modifier, mod);
 }
