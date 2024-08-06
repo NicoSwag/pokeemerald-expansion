@@ -1,6 +1,11 @@
 static const u32 sDamageNumbers[] = INCBIN_U32("graphics/battle_interface/damage_numbers.4bpp");
 
 static const u16 sDamageNumber_NormalPalette[] = INCBIN_U16("graphics/battle_interface/damage_num_normal.gbapal");
+static const u16 sDamageNumber_HealPalette[] = INCBIN_U16("graphics/battle_interface/damage_num_heal.gbapal");
+static const u16 sDamageNumber_SEPalette[] = INCBIN_U16("graphics/battle_interface/damage_num_se.gbapal");
+static const u16 sDamageNumber_NVEPalette[] = INCBIN_U16("graphics/battle_interface/damage_num_nve.gbapal");
+
+
 
 // This image table contains all 10 digits, repeated multiple times with different colors.
 // This is the solution I came up with to be able to assign a context-sensitive color (e.g. restoring HP = green)
