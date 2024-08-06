@@ -419,7 +419,6 @@ EventScript_UseRockClimb::
 	msgbox Text_WantToRockClimb, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq EventScript_EndRockClimb
-	setflag FLAG_PERM_HIDE_FOLLOWER
 	callnative UpdateFollowingPokemon
 	msgbox Text_MonUsedRockClimb, MSGBOX_DEFAULT
 	closemessage
@@ -432,7 +431,6 @@ EventScript_CantRockClimb::
 	
 EventScript_EndRockClimb::	
 	releaseall
-	clearflag FLAG_PERM_HIDE_FOLLOWER
 	callnative UpdateFollowingPokemon
 	end
 	

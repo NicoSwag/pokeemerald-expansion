@@ -4048,6 +4048,7 @@ static void Task_UseRockClimb(u8 taskId)
 
 static bool8 RockClimb_Init(struct Task *task, struct ObjectEvent *objectEvent)
 {
+    HideFollowerForFieldEffect();
     ScriptContext_Enable();
     FreezeObjectEvents();
     gPlayerAvatar.preventStep = TRUE;

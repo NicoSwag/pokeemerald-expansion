@@ -495,18 +495,18 @@ void HideMapNamePopUpWindow(void)
 }
 
 const u8 gText_Null[] = _("No description yet");
-const u8 gText_Oldale_Town[] = _("Built on rocky foundations");
-const u8 gText_Route101[] = _("The road to new adventures");
-const u8 gText_Littleroot_Town[] = _("A town ever shaded by hue");
-const u8 gText_Route103[] = _("A watery crossroads beyond");
+const u8 gText_Oldale_Town[] = _("Built on rocky grounds");
+const u8 gText_Route101[] = _("The road to adventures");
+const u8 gText_Littleroot_Town[] = _("A town shaded by hue");
+const u8 gText_Route103[] = _("The watery crossroads");
 const u8 gText_Oldale_Ruins[] = _("Past and present joined");
-const u8 gText_Mt_Kirikiri[] = _("The dormant supervolcano");
-const u8 gText_Route102[] = _("A quiet stroll by the water");
+const u8 gText_Mt_Kirikiri[] = _("The dormant volcano");
+const u8 gText_Route102[] = _("The serpentine river");
 const u8 gText_Petalburg_City[] = _("As quaint as it is rainy");
 const u8 gText_Route104_Lower[] = _("Where river and sea meet");
-const u8 gText_Petalburg_Woods[] = _("A swamp brimming with life");
+const u8 gText_Petalburg_Woods[] = _("A swamp full of life");
 const u8 gText_Route104_Upper[] = _("Sponsored by Feebas Pro Shop");
-const u8 gText_Rustboro_City[] = _("Proud home of Devon Corp.");
+const u8 gText_Rustboro_City[] = _("Home of Devon Corp.");
 const u8 gText_Route115[] = _("A step from a cursed forest");
 const u8 gText_Brine_Cave[] = _("Mystery submerged dungeon");
 const u8 gText_Route116[] = _("Heavy construction area");
