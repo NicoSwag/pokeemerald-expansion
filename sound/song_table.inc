@@ -635,6 +635,7 @@ gSongTable::
 	song mus_old_chateau, 0, 0
 	song mus_vs_final_magma, 0, 0
 	song mus_aegis_cave, 0, 0
+	song mus_hidden_highlands, 0, 0
 	.align 2
 dummy_song_header:
 	.byte 0, 0, 0, 0

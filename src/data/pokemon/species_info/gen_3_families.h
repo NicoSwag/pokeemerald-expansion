@@ -49,6 +49,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Treecko, 1),
         .footprint = gMonFootprint_Treecko,
         LEARNSETS(Treecko),
+        OVERWORLD(
+            sPicTable_Treecko,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Treecko,
+            gShinyOverworldPalette_Treecko
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_GROVYLE}),
     },
 
@@ -97,6 +105,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Grovyle, 1),
         .footprint = gMonFootprint_Grovyle,
         LEARNSETS(Grovyle),
+        OVERWORLD(
+            sPicTable_Grovyle,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Grovyle,
+            gShinyOverworldPalette_Grovyle
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_SCEPTILE}),
     },
 
@@ -150,6 +166,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_V_SHAKE,
         PALETTES(Sceptile),
         ICON(Sceptile, 1),
+        OVERWORLD(
+            sPicTable_Sceptile,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Sceptile,
+            gShinyOverworldPalette_Sceptile
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -238,6 +262,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Torchic, 0),
         .footprint = gMonFootprint_Torchic,
         LEARNSETS(Torchic),
+        OVERWORLD(
+            sPicTable_Torchic,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Torchic,
+            gShinyOverworldPalette_Torchic
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_COMBUSKEN}),
     },
 
@@ -289,6 +321,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Combusken, 0),
         .footprint = gMonFootprint_Combusken,
         LEARNSETS(Combusken),
+        OVERWORLD(
+            sPicTable_Combusken,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Combusken,
+            gShinyOverworldPalette_Combusken
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_BLAZIKEN}),
     },
 
@@ -344,6 +384,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
         PALETTES(Blaziken),
         ICON(Blaziken, 0),
+        OVERWORLD(
+            sPicTable_Blaziken,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Blaziken,
+            gShinyOverworldPalette_Blaziken
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -424,6 +472,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Mudkip, 0),
         .footprint = gMonFootprint_Mudkip,
         LEARNSETS(Mudkip),
+        OVERWORLD(
+            sPicTable_Mudkip,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Mudkip,
+            gShinyOverworldPalette_Mudkip
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_MARSHTOMP}),
     },
 
@@ -472,6 +528,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Marshtomp, 0),
         .footprint = gMonFootprint_Marshtomp,
         LEARNSETS(Marshtomp),
+        OVERWORLD(
+            sPicTable_Marshtomp,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Marshtomp,
+            gShinyOverworldPalette_Marshtomp
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_SWAMPERT}),
     },
 
@@ -525,6 +589,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_SHAKE_GLOW_BLUE,
         PALETTES(Swampert),
         ICON(Swampert, 0),
+        OVERWORLD(
+            sPicTable_Swampert,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Swampert,
+            gShinyOverworldPalette_Swampert
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -758,6 +830,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         PALETTES(Zigzagoon),
         ICON(Zigzagoon, 2),
         LEARNSETS(Zigzagoon),
+        OVERWORLD(
+            sPicTable_Zigzagoon,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Zigzagoon,
+            gShinyOverworldPalette_Zigzagoon
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_LINOONE}),
         .formSpeciesIdTable = sZigzagoonFormSpeciesIdTable,
     },
@@ -783,6 +863,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         PALETTES(Linoone),
         ICON(Linoone, 2),
         LEARNSETS(Linoone),
+        OVERWORLD(
+            sPicTable_Linoone,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Linoone,
+            gShinyOverworldPalette_Linoone
+        )
     },
 
 #if P_GALARIAN_FORMS
@@ -887,6 +975,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         PALETTES(LinooneGalarian),
         ICON(LinooneGalarian, 0),
         LEARNSETS(LinooneGalarian),
+        OVERWORLD(
+            sPicTable_LinooneGalarian,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_LinooneGalarian,
+            gShinyOverworldPalette_LinooneGalarian
+        )
         .isGalarianForm = TRUE,
         .evolutions = EVOLUTION({EVO_LEVEL_NIGHT, 35, SPECIES_OBSTAGOON}),
     },
@@ -935,6 +1031,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Obstagoon, 0),
         .footprint = gMonFootprint_Obstagoon,
         LEARNSETS(Obstagoon),
+         OVERWORLD(
+            sPicTable_Obstagoon,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Obstagoon,
+            gShinyOverworldPalette_Obstagoon
+        )
     },
 #endif //P_GALARIAN_FORMS
 
@@ -984,6 +1088,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Wurmple, 0),
         .footprint = gMonFootprint_Wurmple,
         LEARNSETS(Wurmple),
+         OVERWORLD(
+            sPicTable_Wurmple,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_BUG,
+            gOverworldPalette_Wurmple,
+            gShinyOverworldPalette_Wurmple
+        )
         .evolutions = EVOLUTION({EVO_LEVEL_SILCOON, 7, SPECIES_SILCOON},
                                 {EVO_LEVEL_CASCOON, 7, SPECIES_CASCOON}),
     },
@@ -1033,6 +1145,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Silcoon, 2),
         .footprint = gMonFootprint_Silcoon,
         LEARNSETS(Silcoon),
+        OVERWORLD(
+            sPicTable_Silcoon,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_BUG,
+            gOverworldPalette_Silcoon,
+            gShinyOverworldPalette_Silcoon
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 10, SPECIES_BEAUTIFLY}),
     },
 
@@ -1084,6 +1204,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Beautifly, 0),
         .footprint = gMonFootprint_Beautifly,
         LEARNSETS(Beautifly),
+        OVERWORLD(
+            sPicTable_Beautifly,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Beautifly,
+            gShinyOverworldPalette_Beautifly
+        )
     },
 
     [SPECIES_CASCOON] =
@@ -1131,6 +1259,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Cascoon, 2),
         .footprint = gMonFootprint_Cascoon,
         LEARNSETS(Cascoon),
+        OVERWORLD(
+            sPicTable_Cascoon,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_BUG,
+            gOverworldPalette_Cascoon,
+            gShinyOverworldPalette_Cascoon
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 10, SPECIES_DUSTOX}),
     },
 
@@ -1182,6 +1318,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Dustox, 5),
         .footprint = gMonFootprint_Dustox,
         LEARNSETS(Dustox),
+        OVERWORLD(
+            sPicTable_Dustox,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Dustox,
+            gShinyOverworldPalette_Dustox
+        )
     },
 #endif //P_FAMILY_WURMPLE
 
@@ -1231,6 +1375,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Lotad, 4),
         .footprint = gMonFootprint_Lotad,
         LEARNSETS(Lotad),
+        OVERWORLD(
+            sPicTable_Lotad,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Lotad,
+            gShinyOverworldPalette_Lotad
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 14, SPECIES_LOMBRE}),
     },
 
@@ -1278,6 +1430,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Lombre, 1),
         .footprint = gMonFootprint_Lombre,
         LEARNSETS(Lombre),
+        OVERWORLD(
+            sPicTable_Lombre,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Lombre,
+            gShinyOverworldPalette_Lombre
+        )
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_WATER_STONE, SPECIES_LUDICOLO}),
     },
 
@@ -1327,6 +1487,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Ludicolo, 1),
         .footprint = gMonFootprint_Ludicolo,
         LEARNSETS(Ludicolo),
+        OVERWORLD(
+            sPicTable_Ludicolo,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Ludicolo,
+            gShinyOverworldPalette_Ludicolo
+        )
     },
 #endif //P_FAMILY_LOTAD
 
@@ -1377,6 +1545,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Seedot, 2),
         .footprint = gMonFootprint_Seedot,
         LEARNSETS(Seedot),
+        OVERWORLD(
+            sPicTable_Seedot,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Seedot,
+            gShinyOverworldPalette_Seedot
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 14, SPECIES_NUZLEAF}),
     },
 
@@ -1428,6 +1604,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Nuzleaf, 1),
         .footprint = gMonFootprint_Nuzleaf,
         LEARNSETS(Nuzleaf),
+        OVERWORLD(
+            sPicTable_Nuzleaf,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Nuzleaf,
+            gShinyOverworldPalette_Nuzleaf
+        )
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_LEAF_STONE, SPECIES_SHIFTRY}),
     },
 
@@ -1483,6 +1667,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Shiftry, 5),
         .footprint = gMonFootprint_Shiftry,
         LEARNSETS(Shiftry),
+        OVERWORLD(
+            sPicTable_Shiftry,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Shiftry,
+            gShinyOverworldPalette_Shiftry
+        )
     },
 #endif //P_FAMILY_SEEDOT
 
@@ -2094,7 +2286,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             sPicTable_Surskit,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             gOverworldPalette_Surskit,
             gShinyOverworldPalette_Surskit
         )
@@ -2155,7 +2347,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             sPicTable_Masquerain,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             gOverworldPalette_Masquerain,
             gShinyOverworldPalette_Masquerain
         )
@@ -2209,6 +2401,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Shroomish, 1),
         .footprint = gMonFootprint_Shroomish,
         LEARNSETS(Shroomish),
+         OVERWORLD(
+            sPicTable_Shroomish,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Shroomish,
+            gShinyOverworldPalette_Shroomish
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 23, SPECIES_BRELOOM}),
     },
 
@@ -2256,6 +2456,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Breloom, 1),
         .footprint = gMonFootprint_Breloom,
         LEARNSETS(Breloom),
+        OVERWORLD(
+            sPicTable_Breloom,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Breloom,
+            gShinyOverworldPalette_Breloom
+        )
     },
 #endif //P_FAMILY_SHROOMISH
 
@@ -2305,6 +2513,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Slakoth, 2),
         .footprint = gMonFootprint_Slakoth,
         LEARNSETS(Slakoth),
+        OVERWORLD(
+            sPicTable_Slakoth,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Slakoth,
+            gShinyOverworldPalette_Slakoth
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_VIGOROTH}),
     },
 
@@ -2353,6 +2569,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Vigoroth, 2),
         .footprint = gMonFootprint_Vigoroth,
         LEARNSETS(Vigoroth),
+        OVERWORLD(
+            sPicTable_Vigoroth,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Vigoroth,
+            gShinyOverworldPalette_Vigoroth
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_SLAKING}),
     },
 
@@ -2401,6 +2625,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Slaking, 2),
         .footprint = gMonFootprint_Slaking,
         LEARNSETS(Slaking),
+        OVERWORLD(
+            sPicTable_Slaking,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Slaking,
+            gShinyOverworldPalette_Slaking
+        )
     },
 #endif //P_FAMILY_SLAKOTH
 
@@ -2450,6 +2682,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Nincada, 1),
         .footprint = gMonFootprint_Nincada,
         LEARNSETS(Nincada),
+        OVERWORLD(
+            sPicTable_Nincada,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_BUG,
+            gOverworldPalette_Nincada,
+            gShinyOverworldPalette_Nincada
+        )
         .evolutions = EVOLUTION({EVO_LEVEL_NINJASK, 20, SPECIES_NINJASK},
                                 {EVO_LEVEL_SHEDINJA, 20, SPECIES_SHEDINJA}),
     },
@@ -2500,6 +2740,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Ninjask, 1),
         .footprint = gMonFootprint_Ninjask,
         LEARNSETS(Ninjask),
+        OVERWORLD(
+            sPicTable_Ninjask,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Ninjask,
+            gShinyOverworldPalette_Ninjask
+        )
     },
 
     [SPECIES_SHEDINJA] =
@@ -2547,6 +2795,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Shedinja, 1),
         .footprint = gMonFootprint_Shedinja,
         LEARNSETS(Shedinja),
+         OVERWORLD(
+            sPicTable_Shedinja,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Shedinja,
+            gShinyOverworldPalette_Shedinja
+        )
     },
 #endif //P_FAMILY_NINCADA
 
@@ -2595,6 +2851,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Whismur, 1),
         .footprint = gMonFootprint_Whismur,
         LEARNSETS(Whismur),
+        OVERWORLD(
+            sPicTable_Whismur,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Whismur,
+            gShinyOverworldPalette_Whismur
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_LOUDRED}),
     },
 
@@ -2641,6 +2905,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Loudred, 2),
         .footprint = gMonFootprint_Loudred,
         LEARNSETS(Loudred),
+        OVERWORLD(
+            sPicTable_Loudred,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Loudred,
+            gShinyOverworldPalette_Loudred
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_EXPLOUD}),
     },
 
@@ -2688,6 +2960,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Exploud, 2),
         .footprint = gMonFootprint_Exploud,
         LEARNSETS(Exploud),
+        OVERWORLD(
+            sPicTable_Exploud,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Exploud,
+            gShinyOverworldPalette_Exploud
+        )
     },
 #endif //P_FAMILY_WHISMUR
 
@@ -2849,6 +3129,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Nosepass, 0),
         .footprint = gMonFootprint_Nosepass,
         LEARNSETS(Nosepass),
+        OVERWORLD(
+            sPicTable_Nosepass,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Nosepass,
+            gShinyOverworldPalette_Nosepass
+        )
         .evolutions = EVOLUTION({EVO_MAPSEC, MAPSEC_NEW_MAUVILLE, SPECIES_PROBOPASS},
                                 {EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_PROBOPASS}),
     },
@@ -2899,6 +3187,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Probopass, 0),
         .footprint = gMonFootprint_Probopass,
         LEARNSETS(Probopass),
+        OVERWORLD(
+            sPicTable_Probopass,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Probopass,
+            gShinyOverworldPalette_Probopass
+        )
     },
 #endif //P_GEN_4_CROSS_EVOS
 #endif //P_FAMILY_NOSEPASS
@@ -3069,6 +3365,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_H_VIBRATE,
         PALETTES(Sableye),
         ICON(Sableye, 2),
+        OVERWORLD(
+            sPicTable_Sableye,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Sableye,
+            gShinyOverworldPalette_Sableye
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -3164,6 +3468,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_V_SHAKE,
         PALETTES(Mawile),
         ICON(Mawile, 2),
+        OVERWORLD(
+            sPicTable_Mawile,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Mawile,
+            gShinyOverworldPalette_Mawile
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -3461,6 +3773,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Meditite, 0),
         .footprint = gMonFootprint_Meditite,
         LEARNSETS(Meditite),
+        OVERWORLD(
+            sPicTable_Meditite,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Meditite,
+            gShinyOverworldPalette_Meditite
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 37, SPECIES_MEDICHAM}),
     },
 
@@ -3515,6 +3835,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_SHRINK_GROW_VIBRATE,
         PALETTES(Medicham),
         ICON(Medicham, 0),
+        OVERWORLD(
+            sPicTable_Medicham,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Medicham,
+            gShinyOverworldPalette_Medicham
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -3595,6 +3923,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Electrike, 1),
         .footprint = gMonFootprint_Electrike,
         LEARNSETS(Electrike),
+        OVERWORLD(
+            sPicTable_Electrike,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Electrike,
+            gShinyOverworldPalette_Electrike
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 26, SPECIES_MANECTRIC}),
     },
 
@@ -3648,6 +3984,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_V_SHAKE,
         PALETTES(Manectric),
         ICON(Manectric, 0),
+        OVERWORLD(
+            sPicTable_Manectric,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Manectric,
+            gShinyOverworldPalette_Manectric
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -3732,6 +4076,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Plusle, 0),
         .footprint = gMonFootprint_Plusle,
         LEARNSETS(Plusle),
+        OVERWORLD(
+            sPicTable_Plusle,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Plusle,
+            gShinyOverworldPalette_Plusle
+        )
     },
 #endif //P_FAMILY_PLUSLE
 
@@ -3780,6 +4132,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Minun, 0),
         .footprint = gMonFootprint_Minun,
         LEARNSETS(Minun),
+        OVERWORLD(
+            sPicTable_Minun,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Minun,
+            gShinyOverworldPalette_Minun
+        )
     },
 #endif //P_FAMILY_MINUN
 
@@ -3835,6 +4195,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Volbeat, 0),
         .footprint = gMonFootprint_Volbeat,
         LEARNSETS(Volbeat),
+        OVERWORLD(
+            sPicTable_Volbeat,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Volbeat,
+            gShinyOverworldPalette_Volbeat
+        )
     },
 
     [SPECIES_ILLUMISE] =
@@ -3888,6 +4256,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Illumise, 2),
         .footprint = gMonFootprint_Illumise,
         LEARNSETS(Illumise),
+        OVERWORLD(
+            sPicTable_Illumise,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Illumise,
+            gShinyOverworldPalette_Illumise
+        )
     },
 #endif //P_FAMILY_VOLBEAT_ILLUMISE
 
@@ -3938,6 +4314,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Budew, 1),
         .footprint = gMonFootprint_Budew,
         LEARNSETS(Budew),
+        OVERWORLD(
+            sPicTable_Budew,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Budew,
+            gShinyOverworldPalette_Budew
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 12, SPECIES_ROSELIA}),
     },
 #endif //P_GEN_4_CROSS_EVOS
@@ -3993,7 +4377,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Roselia, 4),
         .footprint = gMonFootprint_Roselia,
         LEARNSETS(Roselia),
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_SHINY_STONE, SPECIES_ROSERADE}),
+        OVERWORLD(
+            sPicTable_Roselia,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Roselia,
+            gShinyOverworldPalette_Roselia
+        )        .evolutions = EVOLUTION({EVO_ITEM, ITEM_SHINY_STONE, SPECIES_ROSERADE}),
     },
 
 #if P_GEN_4_CROSS_EVOS
@@ -4048,6 +4439,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Roserade, 0),
         .footprint = gMonFootprint_Roserade,
         LEARNSETS(Roserade),
+        OVERWORLD(
+            sPicTable_Roserade,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Roserade,
+            gShinyOverworldPalette_Roserade
+        )
     },
 #endif //P_GEN_4_CROSS_EVOS
 #endif //P_FAMILY_ROSELIA
@@ -4102,6 +4501,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Gulpin, 1),
         .footprint = gMonFootprint_Gulpin,
         LEARNSETS(Gulpin),
+        OVERWORLD(
+            sPicTable_Gulpin,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Gulpin,
+            gShinyOverworldPalette_Gulpin
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 26, SPECIES_SWALOT}),
     },
 
@@ -4154,6 +4561,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Swalot, 2),
         .footprint = gMonFootprint_Swalot,
         LEARNSETS(Swalot),
+        OVERWORLD(
+            sPicTable_Swalot,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SLITHER,
+            gOverworldPalette_Swalot,
+            gShinyOverworldPalette_Swalot
+        )
     },
 #endif //P_FAMILY_GULPIN
 
@@ -4202,6 +4617,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Carvanha, 0),
         .footprint = gMonFootprint_Carvanha,
         LEARNSETS(Carvanha),
+        OVERWORLD(
+            sPicTable_Carvanha,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Carvanha,
+            gShinyOverworldPalette_Carvanha
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_SHARPEDO}),
     },
 
@@ -4267,6 +4690,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_JOLT_RIGHT,
         PALETTES(Sharpedo),
         ICON(Sharpedo, 0),
+        OVERWORLD(
+            sPicTable_Sharpedo,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Sharpedo,
+            gShinyOverworldPalette_Sharpedo
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -4354,6 +4785,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Wailmer, 2),
         .footprint = gMonFootprint_Wailmer,
         LEARNSETS(Wailmer),
+        OVERWORLD(
+            sPicTable_Wailmer,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Wailmer,
+            gShinyOverworldPalette_Wailmer
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_WAILORD}),
     },
 
@@ -4403,6 +4842,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Wailord, 0),
         .footprint = gMonFootprint_Wailord,
         LEARNSETS(Wailord),
+        OVERWORLD(
+            sPicTable_Wailord,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Wailord,
+            gShinyOverworldPalette_Wailord
+        )
     },
 #endif //P_FAMILY_WAILMER
 
@@ -4454,6 +4901,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Numel, 1),
         .footprint = gMonFootprint_Numel,
         LEARNSETS(Numel),
+        OVERWORLD(
+            sPicTable_Numel,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Numel,
+            gShinyOverworldPalette_Numel
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 33, SPECIES_CAMERUPT}),
     },
 
@@ -4510,6 +4965,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
         PALETTES(Camerupt),
         ICON(Camerupt, 0),
+        OVERWORLD(
+            sPicTable_Camerupt,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Camerupt,
+            gShinyOverworldPalette_Camerupt
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -4597,6 +5060,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Torkoal, 2),
         .footprint = gMonFootprint_Torkoal,
         LEARNSETS(Torkoal),
+        OVERWORLD(
+            sPicTable_Torkoal,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Torkoal,
+            gShinyOverworldPalette_Torkoal
+        )
     },
 #endif //P_FAMILY_TORKOAL
 
@@ -4646,6 +5117,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Spoink, 0),
         .footprint = gMonFootprint_Spoink,
         LEARNSETS(Spoink),
+        OVERWORLD(
+            sPicTable_Spoink,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Spoink,
+            gShinyOverworldPalette_Spoink
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 32, SPECIES_GRUMPIG}),
     },
 
@@ -4695,6 +5174,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Grumpig, 2),
         .footprint = gMonFootprint_Grumpig,
         LEARNSETS(Grumpig),
+        OVERWORLD(
+            sPicTable_Grumpig,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Grumpig,
+            gShinyOverworldPalette_Grumpig
+        )
     },
 #endif //P_FAMILY_SPOINK
 
@@ -4745,6 +5232,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Spinda, 1),
         .footprint = gMonFootprint_Spinda,
         LEARNSETS(Spinda),
+        OVERWORLD(
+            sPicTable_Spinda,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Spinda,
+            gShinyOverworldPalette_Spinda
+        )
     },
 #endif //P_FAMILY_SPINDA
 
@@ -4799,6 +5294,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Trapinch, 0),
         .footprint = gMonFootprint_Trapinch,
         LEARNSETS(Trapinch),
+        OVERWORLD(
+            sPicTable_Trapinch,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Trapinch,
+            gShinyOverworldPalette_Trapinch
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_VIBRAVA}),
     },
 
@@ -4852,6 +5355,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Vibrava, 1),
         .footprint = gMonFootprint_Vibrava,
         LEARNSETS(Vibrava),
+        OVERWORLD(
+            sPicTable_Vibrava,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Vibrava,
+            gShinyOverworldPalette_Vibrava
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 45, SPECIES_FLYGON}),
     },
 
@@ -4906,6 +5417,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Flygon, 1),
         .footprint = gMonFootprint_Flygon,
         LEARNSETS(Flygon),
+        OVERWORLD(
+            sPicTable_Flygon,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Flygon,
+            gShinyOverworldPalette_Flygon
+        )
     },
 #endif //P_FAMILY_TRAPINCH
 
@@ -4956,6 +5475,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Cacnea, 1),
         .footprint = gMonFootprint_Cacnea,
         LEARNSETS(Cacnea),
+        OVERWORLD(
+            sPicTable_Cacnea,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Cacnea,
+            gShinyOverworldPalette_Cacnea
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 32, SPECIES_CACTURNE}),
     },
 
@@ -5007,6 +5534,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Cacturne, 1),
         .footprint = gMonFootprint_Cacturne,
         LEARNSETS(Cacturne),
+        OVERWORLD(
+            sPicTable_Cacturne,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Cacturne,
+            gShinyOverworldPalette_Cacturne
+        )
     },
 #endif //P_FAMILY_CACNEA
 
@@ -5056,6 +5591,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Swablu, 0),
         .footprint = gMonFootprint_Swablu,
         LEARNSETS(Swablu),
+        OVERWORLD(
+            sPicTable_Swablu,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Swablu,
+            gShinyOverworldPalette_Swablu
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_ALTARIA}),
     },
 
@@ -5108,6 +5651,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
         PALETTES(Altaria),
         ICON(Altaria, 0),
+        OVERWORLD(
+            sPicTable_Altaria,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Altaria,
+            gShinyOverworldPalette_Altaria
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -5198,6 +5749,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Zangoose, 0),
         .footprint = gMonFootprint_Zangoose,
         LEARNSETS(Zangoose),
+        OVERWORLD(
+            sPicTable_Zangoose,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Zangoose,
+            gShinyOverworldPalette_Zangoose
+        )
     },
 #endif //P_FAMILY_ZANGOOSE
 
@@ -5250,6 +5809,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Seviper, 2),
         .footprint = gMonFootprint_Seviper,
         LEARNSETS(Seviper),
+        OVERWORLD(
+            sPicTable_Seviper,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_BIKE_TIRE,
+            gOverworldPalette_Seviper,
+            gShinyOverworldPalette_Seviper
+        )
     },
 #endif //P_FAMILY_SEVIPER
 
@@ -5302,6 +5869,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Lunatone, 1),
         .footprint = gMonFootprint_Lunatone,
         LEARNSETS(Lunatone),
+        OVERWORLD(
+            sPicTable_Lunatone,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Lunatone,
+            gShinyOverworldPalette_Lunatone
+        )
     },
 #endif //P_FAMILY_LUNATONE
 
@@ -5354,6 +5929,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Solrock, 0),
         .footprint = gMonFootprint_Solrock,
         LEARNSETS(Solrock),
+        OVERWORLD(
+            sPicTable_Solrock,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Solrock,
+            gShinyOverworldPalette_Solrock
+        )
     },
 #endif //P_FAMILY_SOLROCK
 
@@ -5404,6 +5987,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Barboach, 0),
         .footprint = gMonFootprint_Barboach,
         LEARNSETS(Barboach),
+        OVERWORLD(
+            sPicTable_Barboach,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Barboach,
+            gShinyOverworldPalette_Barboach
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_WHISCASH}),
     },
 
@@ -5452,6 +6043,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Whiscash, 0),
         .footprint = gMonFootprint_Whiscash,
         LEARNSETS(Whiscash),
+        OVERWORLD(
+            sPicTable_Whiscash,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Whiscash,
+            gShinyOverworldPalette_Whiscash
+        )
     },
 #endif //P_FAMILY_BARBOACH
 
@@ -5614,6 +6213,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Baltoy, 2),
         .footprint = gMonFootprint_Baltoy,
         LEARNSETS(Baltoy),
+        OVERWORLD(
+            sPicTable_Baltoy,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Baltoy,
+            gShinyOverworldPalette_Baltoy
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_CLAYDOL}),
     },
 
@@ -5662,6 +6269,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Claydol, 0),
         .footprint = gMonFootprint_Claydol,
         LEARNSETS(Claydol),
+        OVERWORLD(
+            sPicTable_Claydol,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Claydol,
+            gShinyOverworldPalette_Claydol
+        )
     },
 #endif //P_FAMILY_BALTOY
 
@@ -5712,6 +6327,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Lileep, 2),
         .footprint = gMonFootprint_Lileep,
         LEARNSETS(Lileep),
+        OVERWORLD(
+            sPicTable_Lileep,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SLITHER,
+            gOverworldPalette_Lileep,
+            gShinyOverworldPalette_Lileep
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_CRADILY}),
     },
 
@@ -5761,6 +6384,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Cradily, 1),
         .footprint = gMonFootprint_Cradily,
         LEARNSETS(Cradily),
+        OVERWORLD(
+            sPicTable_Cradily,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SLITHER,
+            gOverworldPalette_Cradily,
+            gShinyOverworldPalette_Cradily
+        )
     },
 #endif //P_FAMILY_LILEEP
 
@@ -5810,6 +6441,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Anorith, 0),
         .footprint = gMonFootprint_Anorith,
         LEARNSETS(Anorith),
+        OVERWORLD(
+            sPicTable_Anorith,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_BUG,
+            gOverworldPalette_Anorith,
+            gShinyOverworldPalette_Anorith
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_ARMALDO}),
     },
 
@@ -5858,6 +6497,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Armaldo, 2),
         .footprint = gMonFootprint_Armaldo,
         LEARNSETS(Armaldo),
+        OVERWORLD(
+            sPicTable_Armaldo,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Armaldo,
+            gShinyOverworldPalette_Armaldo
+        )
     },
 #endif //P_FAMILY_ANORITH
 
@@ -5907,6 +6554,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Feebas, 2),
         .footprint = gMonFootprint_Feebas,
         LEARNSETS(Feebas),
+        OVERWORLD(
+            sPicTable_Feebas,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Feebas,
+            gShinyOverworldPalette_Feebas
+        )
         .evolutions = EVOLUTION({EVO_BEAUTY, 170, SPECIES_MILOTIC},
                                 {EVO_TRADE_ITEM, ITEM_PRISM_SCALE, SPECIES_MILOTIC},
                                 {EVO_ITEM, ITEM_PRISM_SCALE, SPECIES_MILOTIC}),
@@ -5959,7 +6614,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Milotic, 2),
         .footprint = gMonFootprint_Milotic,
         LEARNSETS(Milotic),
-    },
+        OVERWORLD(
+            sPicTable_Milotic,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SLITHER,
+            gOverworldPalette_Milotic,
+            gShinyOverworldPalette_Milotic
+        )    },
 #endif //P_FAMILY_FEEBAS
 
 #if P_FAMILY_CASTFORM
@@ -6016,6 +6678,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
         PALETTES(CastformNormal),
         ICON(CastformNormal, 0),
+        OVERWORLD(
+            sPicTable_CastformNormal,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_CastformNormal,
+            gShinyOverworldPalette_CastformNormal
+        )
     },
 
     [SPECIES_CASTFORM_SUNNY] =
@@ -6038,6 +6708,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
         PALETTES(CastformSunny),
         ICON(CastformSunny, 0),
+        OVERWORLD(
+            sPicTable_CastformSunny,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_CastformSunny,
+            gShinyOverworldPalette_CastformSunny
+        )
     },
 
     [SPECIES_CASTFORM_RAINY] =
@@ -6060,6 +6738,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_SHRINK_GROW_VIBRATE,
         PALETTES(CastformRainy),
         ICON(CastformRainy, 0),
+        OVERWORLD(
+            sPicTable_CastformRainy,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_CastformRainy,
+            gShinyOverworldPalette_CastformRainy
+        )
     },
 
     [SPECIES_CASTFORM_SNOWY] =
@@ -6082,6 +6768,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_TRIANGLE_DOWN,
         PALETTES(CastformSnowy),
         ICON(CastformSnowy, 0),
+        OVERWORLD(
+            sPicTable_CastformSnowy,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_CastformSnowy,
+            gShinyOverworldPalette_CastformSnowy
+        )
     },
 #endif //P_FAMILY_CASTFORM
 
@@ -6131,6 +6825,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Kecleon, 1),
         .footprint = gMonFootprint_Kecleon,
         LEARNSETS(Kecleon),
+        OVERWORLD(
+            sPicTable_Kecleon,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Kecleon,
+            gShinyOverworldPalette_Kecleon
+        )
     },
 #endif //P_FAMILY_KECLEON
 
@@ -6182,6 +6884,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Shuppet, 0),
         .footprint = gMonFootprint_Shuppet,
         LEARNSETS(Shuppet),
+        OVERWORLD(
+            sPicTable_Shuppet,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Shuppet,
+            gShinyOverworldPalette_Shuppet
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 37, SPECIES_BANETTE}),
     },
 
@@ -6236,6 +6946,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_H_VIBRATE,
         PALETTES(Banette),
         ICON(Banette, 0),
+        OVERWORLD(
+            sPicTable_Banette,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Banette,
+            gShinyOverworldPalette_Banette
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -6324,6 +7042,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Duskull, 0),
         .footprint = gMonFootprint_Duskull,
         LEARNSETS(Duskull),
+        OVERWORLD(
+            sPicTable_Duskull,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Duskull,
+            gShinyOverworldPalette_Duskull
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 37, SPECIES_DUSCLOPS}),
     },
 
@@ -6375,6 +7101,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Dusclops, 0),
         .footprint = gMonFootprint_Dusclops,
         LEARNSETS(Dusclops),
+        OVERWORLD(
+            sPicTable_Dusclops,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Dusclops,
+            gShinyOverworldPalette_Dusclops
+        )
         .evolutions = EVOLUTION({EVO_TRADE_ITEM, ITEM_REAPER_CLOTH, SPECIES_DUSKNOIR},
                                 {EVO_ITEM, ITEM_REAPER_CLOTH, SPECIES_DUSKNOIR}),
     },
@@ -6428,6 +7162,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Dusknoir, 2),
         .footprint = gMonFootprint_Dusknoir,
         LEARNSETS(Dusknoir),
+        OVERWORLD(
+            sPicTable_Dusknoir,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Dusknoir,
+            gShinyOverworldPalette_Dusknoir
+        )
     },
 #endif //P_GEN_4_CROSS_EVOS
 #endif //P_FAMILY_DUSKULL
@@ -6478,6 +7220,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Tropius, 1),
         .footprint = gMonFootprint_Tropius,
         LEARNSETS(Tropius),
+        OVERWORLD(
+            sPicTable_Tropius,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Tropius,
+            gShinyOverworldPalette_Tropius
+        )
     },
 #endif //P_FAMILY_TROPIUS
 
@@ -6529,6 +7279,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Chingling, 1),
         .footprint = gMonFootprint_Chingling,
         LEARNSETS(Chingling),
+        OVERWORLD(
+            sPicTable_Chingling,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Chingling,
+            gShinyOverworldPalette_Chingling
+        )
         .evolutions = EVOLUTION({EVO_FRIENDSHIP_NIGHT, 0, SPECIES_CHIMECHO}),
     },
 #endif //P_GEN_4_CROSS_EVOS
@@ -6587,6 +7345,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Chimecho, 0),
         .footprint = gMonFootprint_Chimecho,
         LEARNSETS(Chimecho),
+        OVERWORLD(
+            sPicTable_Chimecho,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Chimecho,
+            gShinyOverworldPalette_Chimecho
+        )
     },
 #endif //P_FAMILY_CHIMECHO
 
@@ -6643,6 +7409,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_SHRINK_GROW_VIBRATE,
         PALETTES(Absol),
         ICON(Absol, 0),
+        OVERWORLD(
+            sPicTable_Absol,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Absol,
+            gShinyOverworldPalette_Absol
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -6726,6 +7500,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Snorunt, 2),
         .footprint = gMonFootprint_Snorunt,
         LEARNSETS(Snorunt),
+        OVERWORLD(
+            sPicTable_Snorunt,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Snorunt,
+            gShinyOverworldPalette_Snorunt
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 42, SPECIES_GLALIE},
                                 {EVO_ITEM_FEMALE, ITEM_DAWN_STONE, SPECIES_FROSLASS}),
     },
@@ -6781,6 +7563,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_TRIANGLE_DOWN,
         PALETTES(Glalie),
         ICON(Glalie, 0),
+        OVERWORLD(
+            sPicTable_Glalie,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Glalie,
+            gShinyOverworldPalette_Glalie
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -6867,6 +7657,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Froslass, 0),
         .footprint = gMonFootprint_Froslass,
         LEARNSETS(Froslass),
+        OVERWORLD(
+            sPicTable_Froslass,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Froslass,
+            gShinyOverworldPalette_Froslass
+        )
     },
 #endif //P_GEN_4_CROSS_EVOS
 #endif //P_FAMILY_SNORUNT
@@ -6918,6 +7716,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Spheal, 2),
         .footprint = gMonFootprint_Spheal,
         LEARNSETS(Spheal),
+        OVERWORLD(
+            sPicTable_Spheal,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Spheal,
+            gShinyOverworldPalette_Spheal
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 32, SPECIES_SEALEO}),
     },
 
@@ -6966,6 +7772,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Sealeo, 2),
         .footprint = gMonFootprint_Sealeo,
         LEARNSETS(Sealeo),
+        OVERWORLD(
+            sPicTable_Sealeo,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Sealeo,
+            gShinyOverworldPalette_Sealeo
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 44, SPECIES_WALREIN}),
     },
 
@@ -7014,6 +7828,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Walrein, 0),
         .footprint = gMonFootprint_Walrein,
         LEARNSETS(Walrein),
+        OVERWORLD(
+            sPicTable_Walrein,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Walrein,
+            gShinyOverworldPalette_Walrein
+        )
     },
 #endif //P_FAMILY_SPHEAL
 
@@ -7063,6 +7885,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Clamperl, 0),
         .footprint = gMonFootprint_Clamperl,
         LEARNSETS(Clamperl),
+        OVERWORLD(
+            sPicTable_Clamperl,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Clamperl,
+            gShinyOverworldPalette_Clamperl
+        )
         .evolutions = EVOLUTION({EVO_TRADE_ITEM, ITEM_DEEP_SEA_TOOTH, SPECIES_HUNTAIL},
                                 {EVO_TRADE_ITEM, ITEM_DEEP_SEA_SCALE, SPECIES_GOREBYSS},
                                 {EVO_ITEM, ITEM_DEEP_SEA_TOOTH, SPECIES_HUNTAIL},
@@ -7113,6 +7943,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Huntail, 0),
         .footprint = gMonFootprint_Huntail,
         LEARNSETS(Huntail),
+        OVERWORLD(
+            sPicTable_Huntail,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SLITHER,
+            gOverworldPalette_Huntail,
+            gShinyOverworldPalette_Huntail
+        )
     },
 
     [SPECIES_GOREBYSS] =
@@ -7160,6 +7998,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Gorebyss, 0),
         .footprint = gMonFootprint_Gorebyss,
         LEARNSETS(Gorebyss),
+        OVERWORLD(
+            sPicTable_Gorebyss,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SLITHER,
+            gOverworldPalette_Gorebyss,
+            gShinyOverworldPalette_Gorebyss
+        )
     },
 #endif //P_FAMILY_CLAMPERL
 
@@ -7213,6 +8059,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Relicanth, 2),
         .footprint = gMonFootprint_Relicanth,
         LEARNSETS(Relicanth),
+        OVERWORLD(
+            sPicTable_Relicanth,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Relicanth,
+            gShinyOverworldPalette_Relicanth
+        )
     },
 #endif //P_FAMILY_RELICANTH
 
@@ -7263,6 +8117,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Luvdisc, 0),
         .footprint = gMonFootprint_Luvdisc,
         LEARNSETS(Luvdisc),
+        OVERWORLD(
+            sPicTable_Luvdisc,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Luvdisc,
+            gShinyOverworldPalette_Luvdisc
+        )
     },
 #endif //P_FAMILY_LUVDISC
 
@@ -7311,6 +8173,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Bagon, 0),
         .footprint = gMonFootprint_Bagon,
         LEARNSETS(Bagon),
+        OVERWORLD(
+            sPicTable_Bagon,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Bagon,
+            gShinyOverworldPalette_Bagon
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_SHELGON}),
     },
 
@@ -7358,6 +8228,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Shelgon, 2),
         .footprint = gMonFootprint_Shelgon,
         LEARNSETS(Shelgon),
+        OVERWORLD(
+            sPicTable_Shelgon,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Shelgon,
+            gShinyOverworldPalette_Shelgon
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 50, SPECIES_SALAMENCE}),
     },
 
@@ -7412,6 +8290,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_H_SHAKE,
         PALETTES(Salamence),
         ICON(Salamence, 0),
+        OVERWORLD(
+            sPicTable_Salamence,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Salamence,
+            gShinyOverworldPalette_Salamence
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -7499,6 +8385,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Beldum, 0),
         .footprint = gMonFootprint_Beldum,
         LEARNSETS(Beldum),
+        OVERWORLD(
+            sPicTable_Beldum,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Beldum,
+            gShinyOverworldPalette_Beldum
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_METANG}),
     },
 
@@ -7546,6 +8440,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Metang, 0),
         .footprint = gMonFootprint_Metang,
         LEARNSETS(Metang),
+        OVERWORLD(
+            sPicTable_Metang,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Metang,
+            gShinyOverworldPalette_Metang
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 45, SPECIES_METAGROSS}),
     },
 
@@ -7599,6 +8501,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_V_SHAKE,
         PALETTES(Metagross),
         ICON(Metagross, 0),
+        OVERWORLD(
+            sPicTable_Metagross,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Metagross,
+            gShinyOverworldPalette_Metagross
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -7687,6 +8597,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Regirock, 2),
         .footprint = gMonFootprint_Regirock,
         LEARNSETS(Regirock),
+        OVERWORLD(
+            sPicTable_Regirock,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Regirock,
+            gShinyOverworldPalette_Regirock
+        )
     },
 #endif //P_FAMILY_REGIROCK
 
@@ -7737,6 +8655,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Regice, 0),
         .footprint = gMonFootprint_Regice,
         LEARNSETS(Regice),
+        OVERWORLD(
+            sPicTable_Regice,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Regice,
+            gShinyOverworldPalette_Regice
+        )
     },
 #endif //P_FAMILY_REGICE
 
@@ -7788,6 +8714,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Registeel, 2),
         .footprint = gMonFootprint_Registeel,
         LEARNSETS(Registeel),
+        OVERWORLD(
+            sPicTable_Registeel,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Registeel,
+            gShinyOverworldPalette_Registeel
+        )
     },
 #endif //P_FAMILY_REGISTEEL
 
@@ -7844,6 +8778,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_H_VIBRATE,
         PALETTES(Latias),
         ICON(Latias, 0),
+        OVERWORLD(
+            sPicTable_Latias,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Latias,
+            gShinyOverworldPalette_Latias
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -7939,6 +8881,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_H_VIBRATE,
         PALETTES(Latios),
         ICON(Latios, 0),
+        OVERWORLD(
+            sPicTable_Latios,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Latios,
+            gShinyOverworldPalette_Latios
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -8034,6 +8984,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_SHAKE_GLOW_BLUE,
         PALETTES(Kyogre),
         ICON(Kyogre, 2),
+        OVERWORLD(
+            sPicTable_Kyogre,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Kyogre,
+            gShinyOverworldPalette_Kyogre
+        )
     },
 #if P_PRIMAL_REVERSIONS
     [SPECIES_KYOGRE_PRIMAL] =
@@ -8124,6 +9082,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
         PALETTES(Groudon),
         ICON(Groudon, 0),
+        OVERWORLD(
+            sPicTable_Groudon,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Groudon,
+            gShinyOverworldPalette_Groudon
+        )
     },
 
 #if P_PRIMAL_REVERSIONS
@@ -8219,6 +9185,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .backAnimId = BACK_ANIM_GROW_STUTTER,
         PALETTES(Rayquaza),
         ICON(Rayquaza, 1),
+        OVERWORLD(
+            sPicTable_Rayquaza,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Rayquaza,
+            gShinyOverworldPalette_Rayquaza
+        )
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -8308,6 +9282,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         ICON(Jirachi, 0),
         .footprint = gMonFootprint_Jirachi,
         LEARNSETS(Jirachi),
+        OVERWORLD(
+            sPicTable_Jirachi,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            gOverworldPalette_Jirachi,
+            gShinyOverworldPalette_Jirachi
+        )
     },
 #endif //P_FAMILY_JIRACHI
 
@@ -8360,6 +9342,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         PALETTES(DeoxysNormal),
         ICON(DeoxysNormal, 0),
         LEARNSETS(DeoxysNormal),
+        OVERWORLD(
+            sPicTable_DeoxysNormal,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_DeoxysNormal,
+            gShinyOverworldPalette_DeoxysNormal
+        )
     },
 
     [SPECIES_DEOXYS_ATTACK] =
@@ -8383,6 +9373,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         PALETTES(DeoxysAttack),
         ICON(DeoxysAttack, 0),
         LEARNSETS(DeoxysAttack),
+        OVERWORLD(
+            sPicTable_DeoxysAttack,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_DeoxysAttack,
+            gShinyOverworldPalette_DeoxysAttack
+        )
     },
 
     [SPECIES_DEOXYS_DEFENSE] =
@@ -8406,6 +9404,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         PALETTES(DeoxysDefense),
         ICON(DeoxysDefense, 0),
         LEARNSETS(DeoxysDefense),
+        OVERWORLD(
+            sPicTable_DeoxysDefense,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_DeoxysDefense,
+            gShinyOverworldPalette_DeoxysDefense
+        )
     },
 
     [SPECIES_DEOXYS_SPEED] =
@@ -8429,6 +9435,14 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         PALETTES(DeoxysSpeed),
         ICON(DeoxysSpeed, 0),
         LEARNSETS(DeoxysSpeed),
+        OVERWORLD(
+            sPicTable_DeoxysSpeed,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_DeoxysSpeed,
+            gShinyOverworldPalette_DeoxysSpeed
+        )
     },
 #endif //P_FAMILY_DEOXYS
 

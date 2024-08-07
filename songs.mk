@@ -1337,3 +1337,7 @@ $(MID_SUBDIR)/mus_aegis_cave.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
 
 
+$(MID_SUBDIR)/mus_hidden_highlands.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+
