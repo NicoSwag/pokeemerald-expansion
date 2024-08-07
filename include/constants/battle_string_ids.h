@@ -670,6 +670,7 @@
 #define STRINGID_CURRENTMOVECANTSELECT                668
 #define STRINGID_TARGETISBEINGSALTCURED               669
 #define STRINGID_TARGETISHURTBYSALTCURE               670
+<<<<<<< HEAD
 #define STRINGID_OPPORTUNISTCOPIED                    671
 #define STRINGID_TARGETCOVEREDINSTICKYCANDYSYRUP      672
 #define STRINGID_SHARPSTEELFLOATS                     673
@@ -728,6 +729,52 @@
 #define STRINGID_SHAREDHONEY                       715
 
 #define BATTLESTRINGS_COUNT                           716
+=======
+#define STRINGID_TARGETCOVEREDINSTICKYCANDYSYRUP      671
+#define STRINGID_SHARPSTEELFLOATS                     672
+#define STRINGID_SHARPSTEELDMG                        673
+#define STRINGID_PKMNBLEWAWAYSHARPSTEEL               674
+#define STRINGID_SHARPSTEELDISAPPEAREDFROMTEAM        675
+#define STRINGID_TEAMTRAPPEDWITHVINES                 676
+#define STRINGID_PKMNHURTBYVINES                      677
+#define STRINGID_TEAMCAUGHTINVORTEX                   678
+#define STRINGID_PKMNHURTBYVORTEX                     679
+#define STRINGID_TEAMSURROUNDEDBYFIRE                 680
+#define STRINGID_PKMNBURNINGUP                        681
+#define STRINGID_TEAMSURROUNDEDBYROCKS                682
+#define STRINGID_PKMNHURTBYROCKSTHROWN                683
+#define STRINGID_MOVEBLOCKEDBYDYNAMAX                 684
+#define STRINGID_ZEROTOHEROTRANSFORMATION             685
+#define STRINGID_THETWOMOVESBECOMEONE                 686
+#define STRINGID_ARAINBOWAPPEAREDONSIDE               687
+#define STRINGID_THERAINBOWDISAPPEARED                688
+#define STRINGID_WAITINGFORPARTNERSMOVE               689
+#define STRINGID_SEAOFFIREENVELOPEDSIDE               690
+#define STRINGID_HURTBYTHESEAOFFIRE                   691
+#define STRINGID_THESEAOFFIREDISAPPEARED              692
+#define STRINGID_SWAMPENVELOPEDSIDE                   693
+#define STRINGID_THESWAMPDISAPPEARED                  694
+#define STRINGID_PKMNTELLCHILLINGRECEPTIONJOKE        695
+#define STRINGID_HOSPITALITYRESTORATION               696
+#define STRINGID_ELECTROSHOTCHARGING                  697
+#define STRINGID_ITEMWASUSEDUP                        698
+#define STRINGID_ATTACKERLOSTITSTYPE                  699
+#define STRINGID_SHEDITSTAIL                          700
+#define STRINGID_CLOAKEDINAHARSHLIGHT                 701
+#define STRINGID_SUPERSWEETAROMAWAFTS                 702
+#define STRINGID_DIMENSIONSWERETWISTED                703
+#define STRINGID_BIZARREARENACREATED                  704
+#define STRINGID_BIZARREAREACREATED                   705
+#define STRINGID_TIDYINGUPCOMPLETE                    706
+#define STRINGID_PKMNTERASTALLIZEDINTO                707
+#define STRINGID_BOOSTERENERGYACTIVATES               708
+#define STRINGID_FOGCREPTUP                           709
+#define STRINGID_FOGISDEEP                            710
+#define STRINGID_FOGLIFTED                            711
+#define STRINGID_PKMNMADESHELLGLEAM                   712
+
+#define BATTLESTRINGS_COUNT                           713
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -779,8 +826,22 @@
 #define B_MSG_STARTED_SUNLIGHT  4
 #define B_MSG_STARTED_HAIL      5
 #define B_MSG_STARTED_SNOW      6
+<<<<<<< HEAD
 #define B_MSG_STARTED_POLLUTION 7
 #define B_MSG_AIR_CLEARED       8
+=======
+#define B_MSG_STARTED_FOG       7
+
+// gWeatherEndsStringIds
+#define B_MSG_WEATHER_END_RAIN         0
+#define B_MSG_WEATHER_END_SANDSTORM    1
+#define B_MSG_WEATHER_END_SUN          2
+#define B_MSG_WEATHER_END_HAIL         3
+#define B_MSG_WEATHER_END_STRONG_WINDS 4
+#define B_MSG_WEATHER_END_SNOW         5
+#define B_MSG_WEATHER_END_FOG          6
+#define B_MSG_WEATHER_END_COUNT        7
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 
 // gRainContinuesStringIds
 #define B_MSG_RAIN_CONTINUES     0

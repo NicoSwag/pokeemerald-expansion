@@ -21,8 +21,13 @@
 
 	.macro object_event index:req, gfx:req, x:req, y:req, elevation:req, movement_type:req, x_radius:req, y_radius:req, trainer_type:req, sight_radius_tree_etc:req, script:req, event_flag:req
 	.byte \index
+<<<<<<< HEAD
 	.byte OBJ_KIND_NORMAL
 	.2byte \gfx
+=======
+	.2byte \gfx
+	.byte OBJ_KIND_NORMAL
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 	.2byte \x, \y
 	.byte \elevation
 	.byte \movement_type

@@ -123,6 +123,7 @@ SECTIONS {
         src/field_door.o(.text);
         src/field_player_avatar.o(.text);
         src/event_object_movement.o(.text);
+        src/follower_helper.o(.text);
         src/field_message_box.o(.text);
         src/event_object_lock.o(.text);
         src/text_window.o(.text);
@@ -342,10 +343,15 @@ SECTIONS {
         src/battle_transition_frontier.o(.text);
         src/international_string_util.o(.text);
 <<<<<<< HEAD
+<<<<<<< HEAD
         src/ui_main_menu.o(.text);
 =======
         src/quests.o(.text);
 >>>>>>> cd904877d2c3ecba46eed866c6c813426b8b9b94
+=======
+        src/pokemon_sprite_visualizer.o(.text);
+        src/expansion_intro.o(.text);
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
     } > ROM =0
 
     script_data :
@@ -513,6 +519,7 @@ SECTIONS {
         src/field_door.o(.rodata);
         src/field_player_avatar.o(.rodata);
         src/event_object_movement.o(.rodata);
+        src/follower_helper.o(.rodata);
         src/text_window.o(.rodata);
         src/scrcmd.o(.rodata);
         src/field_control_avatar.o(.rodata);
@@ -709,10 +716,15 @@ SECTIONS {
         src/m4a_tables.o(.rodata);
         data/sound_data.o(.rodata);
 <<<<<<< HEAD
+<<<<<<< HEAD
         src/ui_main_menu.o(.rodata);
 =======
         src/quests.o(.rodata);
 >>>>>>> cd904877d2c3ecba46eed866c6c813426b8b9b94
+=======
+        src/pokemon_sprite_visualizer.o(.rodata);
+        src/expansion_intro.o(.rodata);
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
     } > ROM =0
 
     song_data :

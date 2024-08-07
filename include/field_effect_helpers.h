@@ -20,8 +20,14 @@ void SetSurfBlob_PlayerOffset(u8 spriteId, bool8 hasOffset, s16 offset);
 bool8 UpdateRevealDisguise(struct ObjectEvent *);
 void StartRevealDisguise(struct ObjectEvent *);
 void StartAshFieldEffect(s16, s16, u16, s16);
+<<<<<<< HEAD
 void SetUpReflection(struct ObjectEvent*, struct Sprite*, u8);
 u32 StartFieldEffectForObjectEvent(u8, struct ObjectEvent*);
+=======
+void SetUpReflection(struct ObjectEvent *, struct Sprite *, u8);
+void SetUpShadow(struct ObjectEvent *, struct Sprite *);
+u32 StartFieldEffectForObjectEvent(u8, struct ObjectEvent *);
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 u8 FindTallGrassFieldEffectSpriteId(u8 localId, u8 mapNum, u8 mapGroup, s16 x, s16 y);
 void UpdateRayquazaSpotlightEffect(struct Sprite*);
 void UpdateShadowFieldEffect(struct Sprite*);

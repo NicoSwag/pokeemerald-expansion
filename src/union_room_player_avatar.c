@@ -24,7 +24,11 @@ static u32 IsUnionRoomPlayerInvisible(u32, u32);
 static void SetUnionRoomObjectFacingDirection(s32, s32, u8);
 
 // Graphics ids should correspond with the classes in gUnionRoomFacilityClasses
+<<<<<<< HEAD
 static const u16 sUnionRoomObjGfxIds[GENDER_COUNT][MAX_UNION_ROOM_LEADERS + 2] = {
+=======
+static const u16 sUnionRoomObjGfxIds[GENDER_COUNT][NUM_UNION_ROOM_CLASSES] = {
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
     [MALE] = {
         OBJ_EVENT_GFX_MAN_3,
         OBJ_EVENT_GFX_BLACK_BELT,

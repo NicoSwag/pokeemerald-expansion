@@ -405,6 +405,13 @@
 #define ANIM_TAG_SYRUP_SHELL_YELLOW         (ANIM_SPRITES_START + 391)
 #define ANIM_TAG_SYRUP_SPLAT_RED            (ANIM_SPRITES_START + 392)
 #define ANIM_TAG_SYRUP_SPLAT_YELLOW         (ANIM_SPRITES_START + 393)
+#define ANIM_TAG_IVY_CUDGEL_GRASS           (ANIM_SPRITES_START + 394)
+#define ANIM_TAG_IVY_CUDGEL_FIRE            (ANIM_SPRITES_START + 395)
+#define ANIM_TAG_IVY_CUDGEL_ROCK            (ANIM_SPRITES_START + 396)
+#define ANIM_TAG_IVY_CUDGEL_WATER           (ANIM_SPRITES_START + 397)
+#define ANIM_TAG_TERA_CRYSTAL               (ANIM_SPRITES_START + 398)
+#define ANIM_TAG_TERA_SHATTER               (ANIM_SPRITES_START + 399)
+#define ANIM_TAG_DREEPY_SHINY               (ANIM_SPRITES_START + 400)
 
 // battlers
 #define ANIM_ATTACKER         0
@@ -555,6 +562,7 @@
 #define B_ANIM_ZMOVE_ACTIVATE           34 // Using Z Moves
 #define B_ANIM_AFFECTION_HANGED_ON      35
 #define B_ANIM_SNOW_CONTINUES           36
+<<<<<<< HEAD
 #define B_ANIM_GRAVITY                  37
 #define B_ANIM_POLLUTION_CONTINUES      38
 #define B_ANIM_TRICK_ROOM               39
@@ -569,6 +577,24 @@
 #define B_ANIM_WONDER_ROOM              48
 #define B_ANIM_MAGIC_ROOM               49
 #define B_ANIM_TAILWIND                 50
+=======
+#define B_ANIM_ULTRA_BURST              37
+#define B_ANIM_SALT_CURE_DAMAGE         38
+#define B_ANIM_DYNAMAX_GROWTH           39
+#define B_ANIM_MAX_SET_WEATHER          40
+#define B_ANIM_SYRUP_BOMB_SPEED_DROP    41
+#define B_ANIM_RAINBOW                  42
+#define B_ANIM_SEA_OF_FIRE              43
+#define B_ANIM_SWAMP                    44
+#define B_ANIM_TRICK_ROOM               45
+#define B_ANIM_WONDER_ROOM              46
+#define B_ANIM_MAGIC_ROOM               47
+#define B_ANIM_TAILWIND                 48
+#define B_ANIM_FOG_CONTINUES            49
+#define B_ANIM_TERA_CHARGE              50
+#define B_ANIM_TERA_ACTIVATE            51
+#define B_ANIM_SIMPLE_HEAL              52
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0
@@ -618,7 +644,11 @@
 #define ANIM_WEATHER_SANDSTORM 3
 #define ANIM_WEATHER_HAIL 4
 #define ANIM_WEATHER_SNOW 5
+<<<<<<< HEAD
 #define ANIM_WEATHER_POLLUTION 6
+=======
+#define ANIM_WEATHER_FOG 6
+>>>>>>> a2685d0d087acd9e90fd9195b4bc398627dd4371
 
 // horseshoe/fist frames
 #define ANIM_RIGHT_FIST  0
