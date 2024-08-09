@@ -5,14 +5,12 @@
 #include "pokemon.h"
 
 
-u32 GetCurrentLevelCap(void)
-{
-    static const u32 sLevelCapFlagMap[][2] =
+static const u32 sLevelCapFlagMap[][2] =
     {
-        {FLAG_BADGE01_GET, 15},
-        {FLAG_BADGE02_GET, 24},
-        {FLAG_BADGE03_GET, 30},
-        {FLAG_BADGE04_GET, 29},
+        {FLAG_BADGE01_GET, 10},
+        {FLAG_BADGE02_GET, 15},
+        {FLAG_BADGE03_GET, 24},
+        {FLAG_BADGE04_GET, 30},
         {FLAG_BADGE05_GET, 31},
         {FLAG_BADGE06_GET, 33},
         {FLAG_BADGE07_GET, 42},
@@ -20,6 +18,11 @@ u32 GetCurrentLevelCap(void)
         {FLAG_IS_CHAMPION, 58},
     };
 
+
+u32 GetLevelCeiling(void)
+{
+
+    
     u32 i;
 
         for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
@@ -32,13 +35,47 @@ u32 GetCurrentLevelCap(void)
     return MAX_LEVEL;
 }
 
+
+
+u32 GetLevelFloor(void)
+{
+
+    u32 i;
+
+        for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
+        {
+            if (!FlagGet(sLevelCapFlagMap[i][0]))
+                if(i==0)
+                    return 0;
+                else return sLevelCapFlagMap[i-1][1];
+        }
+
+
+    return MAX_LEVEL;
+}
+
+
+
+u32 GetClosestLevelCapToLevel(u8 monLevel)
+{
+    u32 i;
+
+        for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
+        {
+            if ((s8) monLevel - (s8) sLevelCapFlagMap[i][1] <= 0) 
+                return sLevelCapFlagMap[i][1];
+                
+        }
+    return MAX_LEVEL;
+}
+
 u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
 {
     static const u32 sExpScalingDown[5] = { 4, 8, 16, 32, 64 };
     static const u32 sExpScalingUp[5]   = { 16, 8, 4, 2, 1 };
 
     u32 levelDifference;
-    u32 currentLevelCap = GetCurrentLevelCap();
+    u32 currentLevelCap = GetLevelCeiling();
 
     if (B_EXP_CAP_TYPE == EXP_CAP_NONE)
         return expValue;

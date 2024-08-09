@@ -89,10 +89,10 @@ struct Trainer
     /*0x13*/ u8 trainerName[TRAINER_NAME_LENGTH + 1];
     /*0x1E*/ bool8 doubleBattle:1;
              bool8 mugshotEnabled:1;
+             bool8 notScale:1;
              u8 startingStatus:6;    // this trainer starts a battle with a given status. see include/constants/battle.h for values
     /*0x1F*/ u8 mugshotColor;
     /*0x20*/ u8 partySize;
-             u8 scalingDiff;
 };
 
 struct TrainerClass
@@ -233,14 +233,15 @@ static inline const u8 GetTrainerPartySizeFromId(u16 trainerId)
 }
 
 
-static inline const u8 GetTrainerScalingFromId(u16 trainerId)
-{
-    return gTrainers[SanitizeTrainerId(trainerId)].scalingDiff;
-}
-
 static inline const bool32 DoesTrainerHaveMugshot(u16 trainerId)
 {
     return gTrainers[SanitizeTrainerId(trainerId)].mugshotEnabled;
+}
+
+
+static inline const bool32 DoesTrainerNotScale(u16 trainerId)
+{
+    return gTrainers[SanitizeTrainerId(trainerId)].notScale;
 }
 
 static inline const u8 GetTrainerMugshotColorFromId(u16 trainerId)

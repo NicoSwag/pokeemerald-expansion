@@ -70,6 +70,7 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "cable_club.h"
+#include "level_caps.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
@@ -2011,23 +2012,27 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 otIdType = OT_ID_PRESET;
                 fixedOtId = HIHALF(personalityValue) ^ LOHALF(personalityValue);
             }
+
+            u8 scalingFactor = !DoesTrainerHaveMugshot(gTrainerBattleOpponent_A) * 3;
             
-            u8 trainerHighestLevel = GetTrainerHighestLevel();
-            u8 enemyHighestLevel = GetEnemyHighestLevel(trainer);
+            
             u8 currentEnemyLevel = partyData[i].lvl;
-            u8 trainerScaling = GetTrainerScalingFromId(gTrainerBattleOpponent_A);
-            u8 levelDifference = enemyHighestLevel - currentEnemyLevel;
+            u8 levelCapDifference = GetClosestLevelCapToLevel(currentEnemyLevel) - currentEnemyLevel;
 
             
-            if(((trainerHighestLevel - trainerScaling) > enemyHighestLevel)){
-                currentEnemyLevel = trainerHighestLevel - levelDifference - trainerScaling;
+            if(currentEnemyLevel < GetLevelCeiling() && !DoesTrainerNotScale(gTrainerBattleOpponent_A) && GetLevelFloor()!=0)
+            {
+                float levelPercent;
+                float levelRange;
+                levelPercent = (float) currentEnemyLevel / (float) GetLevelCeiling();
+                levelRange = GetLevelCeiling() - GetLevelFloor();
+                currentEnemyLevel = (u8) (levelRange * levelPercent) + GetLevelFloor();
             }
+                
             
-            
+                    
             CreateMon(&party[i], partyData[i].species, currentEnemyLevel, 0, TRUE, personalityValue, otIdType, fixedOtId);
             
-            
-                
                 
             
             

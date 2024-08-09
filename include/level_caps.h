@@ -14,7 +14,9 @@
 #endif
 #endif
 
-u32 GetCurrentLevelCap(void);
+u32 GetLevelCeiling(void);
+u32 GetLevelFloor(void);
+u32 GetClosestLevelCapToLevel(u8);
 u32 GetSoftLevelCapExpValue(u32 level, u32 expValue);
 
 #endif /* GUARD_LEVEL_CAP_H */
