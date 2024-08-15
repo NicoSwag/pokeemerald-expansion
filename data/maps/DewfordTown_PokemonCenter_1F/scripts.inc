@@ -27,12 +27,23 @@ DewfordTown_PokemonCenter_1F_EventScript_Man::
 	end
 
 DewfordTown_PokemonCenter_1F_Text_StoneCavern:
-	.string "There's a stone cavern at the edge\n"
+	.string "There's an emerald mine at the edge\n"
 	.string "of town.\p"
-	.string "I've heard you can find rare stones\n"
-	.string "there.$"
+	.string "I've heard you can find all sort of\n"
+	.string "stones there.$"
 
 DewfordTown_PokemonCenter_1F_Text_FaintedMonCanUseHM:
-	.string "Even if a POKéMON faints and can't\n"
-	.string "battle, it can still use a move learned\l"
-	.string "from a HIDDEN MACHINE (HM).$"
+	.string "POKéMON can Hidden Machines on the field\n"
+	.string "without having to know the move.\p"
+	.string "Handy!$"
+
+
+DewfordTown_PokemonCenter_1F_EventScript_Hiker::
+	msgbox DewfordTown_PokemonCenter_1F_Text_Hiker, MSGBOX_NPC
+	end
+
+DewfordTown_PokemonCenter_1F_Text_Hiker:
+	.string "I'm doing a sightseeing tour of Hoenn.\p"
+	.string "I've heard there are all sorts of islands in\n"
+	.string "the North-Eastern part of the region.\p"
+	.string "I wonder how different they are from Dewford!$"

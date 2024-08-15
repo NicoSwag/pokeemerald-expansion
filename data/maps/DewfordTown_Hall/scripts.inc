@@ -46,14 +46,7 @@ DewfordTown_Hall_EventScript_RejectTrendLink::
 	end
 
 DewfordTown_Hall_EventScript_ExpertM::
-	lock
-	faceplayer
-	call Common_EventScript_BufferTrendyPhrase
 	msgbox DewfordTown_Hall_Text_TVShowAboutTrend, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_EXPERT_M, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	release
 	end
 
 DewfordTown_Hall_EventScript_Twin::
@@ -70,9 +63,20 @@ DewfordTown_Hall_EventScript_Twin::
 DewfordTown_Hall_EventScript_LittleBoy::
 	lock
 	faceplayer
+	goto_if_set FLAG_RECEIVED_RIBBON_BOX, DewfordTown_Hall_EventScript_LittleBoyGaveRibbon
 	msgbox DewfordTown_Hall_Text_CollectTrendMerchandise, MSGBOX_DEFAULT
+	setflag FLAG_RECEIVED_RIBBON_BOX
+	giveitem ITEM_RIBBON_BOX
+	msgbox DewfordTown_Hall_Text_RibbonBox, MSGBOX_DEFAULT
 	release
 	end
+
+
+DewfordTown_Hall_EventScript_LittleBoyGaveRibbon::
+	msgbox DewfordTown_Hall_Text_RibbonBox, MSGBOX_DEFAULT
+	release
+	end
+
 
 DewfordTown_Hall_EventScript_Bookshelf::
 	lockall
@@ -109,6 +113,7 @@ DewfordTown_Hall_EventScript_Gentleman::
 DewfordTown_Hall_EventScript_GentlemanTeachesDolls:
 	msgbox DewfordTown_Hall_Text_GiveSubstitute, MSGBOX_NPC
 	setflag FLAG_RECEIVED_TM10
+	giveitem ITEM_TM_SUBSTITUTE
 	end
 
 DewfordTown_Hall_EventScript_SmileTitle::
@@ -133,9 +138,7 @@ DewfordTown_Hall_EventScript_SchoolKidM::
 	end
 
 DewfordTown_Hall_EventScript_PsychicM::
-	lockall
-	setvar VAR_0x8008, 1
-	goto DewfordTown_Hall_EventScript_DoTrendDebate
+	msgbox DewfordTown_Hall_Text_Unevolved, MSGBOX_NPC
 	end
 
 DewfordTown_Hall_EventScript_DoTrendDebate::
@@ -159,6 +162,42 @@ DewfordTown_Hall_EventScript_TrendDebate1::
 	msgbox DewfordTown_Hall_Text_AllegedTrendNotAuthentic, MSGBOX_DEFAULT
 	releaseall
 	end
+
+
+DewfordTown_EventScript_DewfordBerryMaster::
+	goto_if_set FLAG_SHOWN_EMEROLL, DewfordTown_EventScript_DewfordBerryMasterAfter
+	msgbox DewfordTown_Text_ShowMeEmeroll, MSGBOX_NPC
+	special ChoosePartyMon
+	waitstate
+	goto_if_ne VAR_0x8004, PARTY_NOTHING_CHOSEN, DewfordTown_EventScript_CheckPokemon
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, DewfordTown_EventScript_NotAPokemon
+	end
+
+
+DewfordTown_EventScript_DewfordBerryMasterAfter::
+	msgbox DewfordTown_Text_Intriguing, MSGBOX_NPC
+	end
+
+
+DewfordTown_EventScript_NotAPokemon::
+	msgbox DewfordTown_Text_DoNotHaveIt, MSGBOX_NPC
+	end
+
+DewfordTown_EventScript_CheckPokemon::
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	goto_if_eq VAR_RESULT, SPECIES_EMERAIL, DewfordTown_EventScript_IsRightMon
+	goto_if_eq VAR_RESULT, SPECIES_EMEROLL, DewfordTown_EventScript_IsRightMon
+	goto_if_eq VAR_RESULT, SPECIES_BEHEMERALD, DewfordTown_EventScript_IsRightMon
+	goto DewfordTown_EventScript_NotAPokemon
+	end
+
+
+DewfordTown_EventScript_IsRightMon::
+	msgbox DewfordTown_Text_PokemonShown, MSGBOX_NPC
+	setflag FLAG_SHOWN_EMEROLL
+	giveitem ITEM_CHOPLE_VOUCHER
+	end
+
 
 DewfordTown_Hall_EventScript_TrendDebate2::
 	call DewfordTown_Hall_EventScript_DebateReact1
@@ -253,21 +292,67 @@ DewfordTown_Hall_EventScript_Wynaut::
 
 
 DewfordTown_Hall_EventScript_SludgeBombMan::
-	lock
-	faceplayer
-	call Common_EventScript_BufferTrendyPhrase
-	goto_if_set FLAG_RECEIVED_TM_SLUDGE_BOMB, DewfordTown_Hall_EventScript_ReceivedSludgeBomb
-	msgbox DewfordTown_Hall_Text_GiveYouSludgeBomb, MSGBOX_DEFAULT
-	giveitem ITEM_TM_SLUDGE_BOMB
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_TM_SLUDGE_BOMB
+	goto_if_set FLAG_RECEIVED_PLAY_ROUGH, DewfordTown_Hall_EventScript_ReceivedPlayRough
+	msgbox DewfordTown_Hall_Text_LoveSludgeBombButTrendInToo, MSGBOX_DEFAULT
+	checkitem ITEM_EVIOLITE
+	goto_if_eq VAR_RESULT, TRUE, DewfordTown_Hall_EventScript_Eviolite
 	release
 	end
 
-DewfordTown_Hall_EventScript_ReceivedSludgeBomb::
-	msgbox DewfordTown_Hall_Text_LoveSludgeBombButTrendInToo, MSGBOX_DEFAULT
+
+DewfordTown_Hall_EventScript_ReceivedPlayRough::
+	msgbox DewfordTown_Hall_Text_PlayRough, MSGBOX_DEFAULT
 	release
 	end
+
+
+DewfordTown_Hall_EventScript_Eviolite::
+	msgbox DewfordTown_Hall_Text_Eviolite, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, DewfordTown_Hall_EventScript_GetPlayRough
+	msgbox DewfordTown_Hall_Text_Tch, MSGBOX_DEFAULT
+	release
+	end
+
+
+DewfordTown_Hall_EventScript_GetPlayRough::
+	setflag FLAG_RECEIVED_PLAY_ROUGH
+	removeitem ITEM_EVIOLITE, 1
+	msgbox DewfordTown_Hall_Text_BlessYou, MSGBOX_DEFAULT
+	giveitem ITEM_TM_PLAY_ROUGH
+	msgbox DewfordTown_Hall_Text_PlayRough, MSGBOX_DEFAULT
+	release
+	end
+
+
+DewfordTown_Hall_Text_BlessYou:
+	.string "…Ah, bless you.\n"
+	.string "Bless, you, my friend.\p"
+	.string "I will treasure this item.\p"
+	.string "Now, as promised.$"
+
+DewfordTown_Hall_Text_PlayRough:
+	.string "Play Rough is an extremely powerful\n"
+	.string "move.\p"
+	.string "I am sure that a Trainer as wise as you\n"
+	.string "will be able to master it.$"
+
+DewfordTown_Hall_Text_Tch:
+	.string "…Tch.\p"
+	.string "A million curses on your, and your\n"
+	.string "family, and your children, for a hundred\l"
+	.string "generation henceforth.$"
+
+DewfordTown_Hall_Text_Eviolite:
+	.string "…But that…!\p"
+	.string "Could it be? Could it truly be?\p"
+	.string "It is! An Eviolite!\p"
+	.string "Oh, I feel so blessed!\p"
+	.string "…Say.\p"
+	.string "Give it to me, and in return I will give\n"
+	.string "you the TM for Play Rough.\p"
+	.string "It's a powerful move… You would\n"
+	.string "not regret it.$"
+
 
 DewfordTown_Hall_Text_CantImagineLifeWithoutTrend:
 	.string "Personally, I could not associate\n"
@@ -308,9 +393,8 @@ DewfordTown_Hall_Text_NotEasyToKeepUp:
 	.string "me to keep up with trends!$"
 
 DewfordTown_Hall_Text_TVShowAboutTrend:
-	.string "This whole business about\n"
-	.string "“{STR_VAR_1}”…\l"
-	.string "Isn't there a TV show on it?$"
+	.string "This new television thing…\p"
+	.string "So entertaining…$"
 
 DewfordTown_Hall_Text_IsTrendMorePopularAcrossSea:
 	.string "Across the sea…\p"
@@ -328,8 +412,7 @@ DewfordTown_Hall_Text_CollectTrendMerchandise:
 	.string "unevolved POKéMON!\p"
 	.string "They're not only cute, but they can\n"
 	.string "be strong, too!\p"
-	.string "If you can beat BRAWLY I'll show you\n"
-	.string "what I'm talking about!$"
+	.string "Here's a gift to celebrate our meeting!$"
 
 DewfordTown_Hall_Text_BooksAboutTrend:
 	.string "IDENTIFYING GOOD\n"
@@ -449,10 +532,12 @@ DewfordTown_Hall_Text_GiveYouSludgeBomb:
 	.string "I'll give you one.$"
 
 DewfordTown_Hall_Text_LoveSludgeBombButTrendInToo:
-	.string "I love SLUDGE BOMB.\p"
-	.string "But POKéMON with the move\n"
-	.string "“{STR_VAR_1}”\l"
-	.string "are in, too.$"
+	.string "Have you heard about a legendary item\n"
+	.string "called Eviolite?\p"
+	.string "Allegedly, it makes unevolved Pokémon\n"
+	.string "super strong.\p"
+	.string "Such power… I can only dream about even\n"
+	.string "touching a potent artefact like that…$"
 
 DewfordTown_Hall_Text_Wynaut:
 	.string "Oh! A rare POKéMON!\p"
@@ -464,8 +549,73 @@ DewfordTown_Hall_Text_ILoveDolls:
 	.string "require no care, and never disappoint!\p"
 	.string "Unlike my son.$"
 
-DewfordTown_Hall_Text_GiveSubstitute:\
+DewfordTown_Hall_Text_GiveSubstitute:
 	.string "I love dolls!\p"
 	.string "They're cute, they never grow up,\n"
 	.string "require no care, and never disappoint!\p"
 	.string "Here, let me teach you how to make them!$"
+
+	DewfordTown_Hall_Text_RibbonBox:
+	.string "That's a Ribbon Box.\p"
+	.string "If you give your Pokémon a Ribbon, they\n"
+	.string "will never evolve.\p"
+	.string "…Unless you give them an evolutionary item,\n"
+	.string "that is, but why would you do that?$"
+
+DewfordTown_Hall_Text_Unevolved:
+	.string "Some of the members of this club are a bit…\n"
+	.string "Extra.\p"
+	.string "However, it is true that some unevolved\n"
+	.string "Pokémon can be as strong as their evolution,\l"
+	.string "if not more.\p"
+	.string "Scyther, Vigoroth, or Magneton, for example…\n"
+	.string "Are all good choices.\p"
+	.string "There are other cases too, of course.$"
+
+DewfordTown_Text_ShowMeEmeroll:
+	.string "Hmmmmmmmm…\p"
+	.string "I may not look like it, but…\n"
+	.string "I come from the Galar region.\p"
+	.string "Very far away, yes. Very far.\p"
+	.string "I have settled here, and I am now\n"
+	.string "a Berry Master, yes.\p"
+	.string "You see, there is something I am curious\n"
+	.string "about.\p"
+	.string "Those emerald-looking Pokémon in the mines,\n"
+	.string "they look similar to ones in my region.\p"
+	.string "I would like to see one, yes.\n"
+	.string "I will reward you, if you will help.$"
+
+
+DewfordTown_Text_DoNotHaveIt:
+	.string "Hmmmmmmmm…\p"
+	.string "You do not have it?\n"
+	.string "I see.\p"
+	.string "But no prize for you.$"
+
+DewfordTown_Text_PokemonShown:
+	.string "Hmmmmmmmm…\p"
+	.string "I see, I see…\n"
+	.string "Very curious.\p"
+	.string "This Pokémon is very similar to a\n"
+	.string "species found in Galar, but…\p"
+	.string "It also seems to diverge significantly…\p"
+	.string "Hmmmmmmmm…\p"
+	.string "I will have to ponder on this.\p"
+	.string "In the mean time, you have more than\n"
+	.string "earned your prize.\p"
+	.string "Here it is, for you.$"
+
+
+DewfordTown_Text_Intriguing:
+	.string "Hmmmmmmmm…\p"
+	.string "Some Pokémon can adapt to regions where\n"
+	.string "they are not originally native.\p"
+	.string "Those are called Regional Forms.\p"
+	.string "Some happen to look like other Pokémon,\n"
+	.string "but are actually unrelated.\p"
+	.string "Those are called Convergent Forms.\p"
+	.string "I suppose the one you have shown me is closer\n"
+	.string "to the latter…\p"
+	.string "Or perhaps, it is something else entirely.\p"
+	.string "Oh, well. It does not really matter.$"

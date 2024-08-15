@@ -10591,22 +10591,22 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_SUNNY_DAY,
+        .secondaryId = MOVE_RETURN,
     },
 
-    [ITEM_TM_TAUNT] =
+    [ITEM_TM_PLAY_ROUGH] =
     {
         .name = _("TM12"),
-        .price = 3000,
+        .price = 5000,
         .description = COMPOUND_STRING(
-            "Enrages the foe so\n"
-            "it can only use\n"
-            "attack moves."),
+            "Play roughs with\n"
+            "the foe. May lower\n"
+            "attack."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_TAUNT,
+        .secondaryId = MOVE_PLAY_ROUGH,
     },
 
     [ITEM_TM_ICE_BEAM] =
@@ -12509,7 +12509,7 @@ const struct Item gItemsInfo[] =
         .description = COMPOUND_STRING(
             "A sweet-sounding\n"
             "flute that awakens\n"
-            "Pokémon."),
+            "Pokémon…?"),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -12592,6 +12592,23 @@ const struct Item gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Used to redeem\n"
             "Oran Berries at\n"
+            "a Pokémon Center."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .iconPic = gItemIcon_BikeVoucher,
+        .iconPalette = gItemIconPalette_BikeVoucher,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    },
+
+
+    [ITEM_CHOPLE_VOUCHER] =
+    {
+        .name = _("Chople Voucher"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Used to redeem\n"
+            "Chople Berries at\n"
             "a Pokémon Center."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,

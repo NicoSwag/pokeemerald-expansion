@@ -26667,7 +26667,7 @@ Move_AURA_SPHERE::
 	goto Move_FOCUS_BLAST
 
 Move_NUMBING_KISS::
-	goto Move_DRAINING_KISS
+	goto Move_SWEET_KISS
 
 Move_ACID_RAIN::
 	goto Move_RAIN_DANCE

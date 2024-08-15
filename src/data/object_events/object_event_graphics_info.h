@@ -2162,7 +2162,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SlakothOld = {
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     
-    .tracks = TRACKS_FOOT,
+    .tracks = TRACKS_NONE,
     .oam = &gObjectEventBaseOam_32x32,
     .subspriteTables = sOamTables_32x32,
     .anims = sAnimTable_Standard,

@@ -2526,8 +2526,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
 
     [SPECIES_VIGOROTH] =
     {
-        .baseHP        = 80,
-        .baseAttack    = 80,
+        .baseHP        = 90,
+        .baseAttack    = 90,
         .baseDefense   = 80,
         .baseSpeed     = 90,
         .baseSpAttack  = 55,
@@ -2541,7 +2541,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_VITAL_SPIRIT, ABILITY_NONE },
+        .abilities = { ABILITY_SPEED_BOOST, ABILITY_NONE },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Vigoroth"),
         .cryId = CRY_VIGOROTH,

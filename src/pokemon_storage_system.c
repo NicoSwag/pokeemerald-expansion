@@ -17,6 +17,7 @@
 #include "item.h"
 #include "item_icon.h"
 #include "item_menu.h"
+#include "item_use.h"
 #include "mail.h"
 #include "main.h"
 #include "menu.h"
@@ -2299,7 +2300,7 @@ static void Task_PokeStorageMain(u8 taskId)
         case INPUT_HIDE_PARTY:
             if (sStorage->boxOption == OPTION_MOVE_MONS)
             {
-                if (IsMonBeingMoved() && ItemIsMail(sStorage->displayMonItemId))
+                if (IsMonBeingMoved() && (ItemIsMail(sStorage->displayMonItemId) || ItemId_GetFieldFunc(sStorage->displayMonItemId) == ItemUseOutOfBattle_Medicine || ItemId_GetPocket(sStorage->displayMonItemId) == POCKET_BERRIES))
                     sStorage->state = MSTATE_ERROR_HAS_MAIL;
                 else
                     SetPokeStorageTask(Task_HidePartyPokemon);
@@ -2357,7 +2358,7 @@ static void Task_PokeStorageMain(u8 taskId)
         case INPUT_DEPOSIT:
             if (!IsRemovingLastPartyMon())
             {
-                if (ItemIsMail(sStorage->displayMonItemId))
+                if (ItemIsMail(sStorage->displayMonItemId) || ItemId_GetFieldFunc(sStorage->displayMonItemId) == ItemUseOutOfBattle_Medicine || ItemId_GetPocket(sStorage->displayMonItemId) == POCKET_BERRIES)
                 {
                     sStorage->state = MSTATE_ERROR_HAS_MAIL;
                 }

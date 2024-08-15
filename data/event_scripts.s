@@ -1290,3 +1290,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/MtKirikiri_Side_area/scripts.inc"
 
 	.include "data/maps/GraniteCaveEntrance/scripts.inc"
+
+	.include "data/maps/DewfordTown_House3/scripts.inc"
+
+	.include "data/maps/Foundry/scripts.inc"

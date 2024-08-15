@@ -72,6 +72,7 @@ EventScript_PkmnCenterNurse_GiveHealingItems::
 	removeallitem ITEM_ORAN_BERRY
 	removeallitem ITEM_PASSHO_BERRY
 	removeallitem ITEM_CHERI_BERRY
+	removeallitem ITEM_CHOPLE_BERRY
 	msgbox gText_HeresYourHealingItems, MSGBOX_DEFAULT
 	goto_if_set FLAG_BADGE01_GET, EventScript_PkmnCenterNurse_GiveHealingItemsStoneBadge
 	additem ITEM_LAVA_COOKIE, 5
@@ -84,6 +85,8 @@ EventScript_PkmnCenterNurse_GiveHealingItems::
 	call_if_eq VAR_RESULT, TRUE, EventScript_PkmnCenterNurse_GiveCheriBerries
 	checkitem ITEM_PASSHO_VOUCHER
 	call_if_eq VAR_RESULT, TRUE, EventScript_PkmnCenterNurse_GivePasshoBerries
+	checkitem ITEM_CHOPLE_VOUCHER
+	call_if_eq VAR_RESULT, TRUE, EventScript_PkmnCenterNurse_GiveChopleBerries
 	return
 
 EventScript_PkmnCenterNurse_GiveHealingItemsStoneBadge::
@@ -102,6 +105,10 @@ EventScript_PkmnCenterNurse_GiveCheriBerries::
 
 EventScript_PkmnCenterNurse_GivePasshoBerries::
 	additem ITEM_PASSHO_BERRY, 6
+	return
+
+EventScript_PkmnCenterNurse_GiveChopleBerries::
+	additem ITEM_CHOPLE_BERRY, 6
 	return
 
 

@@ -2323,7 +2323,7 @@ static void TryDepositItem(u8 taskId)
     s16 *data = gTasks[taskId].data;
 
     FillWindowPixelBuffer(WIN_DESCRIPTION, PIXEL_FILL(0));
-    if (ItemId_GetImportance(gSpecialVar_ItemId))
+    if (ItemId_GetImportance(gSpecialVar_ItemId) || ItemId_GetFieldFunc(gSpecialVar_ItemId) == ItemUseOutOfBattle_Medicine || ItemId_GetPocket(gSpecialVar_ItemId) == POCKET_BERRIES)
     {
         // Can't deposit important items
         BagMenu_Print(WIN_DESCRIPTION, FONT_NORMAL, gText_CantStoreImportantItems, 3, 1, 0, 0, 0, COLORID_NORMAL);

@@ -82,11 +82,11 @@
 #define FLAG_SILPH_SCIENTIST    0x45 // Unused Flag
 #define FLAG_QUIZ_COMPLETED    0x46 // Unused Flag
 #define FLAG_RECEIVED_ROCK_CLIMB    0x47 // Unused Flag
-#define FLAG_UNUSED_0x048    0x48 // Unused Flag
-#define FLAG_UNUSED_0x049    0x49 // Unused Flag
-#define FLAG_UNUSED_0x04A    0x4A // Unused Flag
-#define FLAG_UNUSED_0x04B    0x4B // Unused Flag
-#define FLAG_UNUSED_0x04C    0x4C // Unused Flag
+#define FLAG_HIDE_MAGNEZONE    0x48 // Unused Flag
+#define FLAG_HIDE_SLAKOTH    0x49 // Unused Flag
+#define FLAG_RECEIVED_RIBBON_BOX    0x4A // Unused Flag
+#define FLAG_RECEIVED_PLAY_ROUGH    0x4B // Unused Flag
+#define FLAG_SHOWN_EMEROLL    0x4C // Unused Flag
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_UNUSED_0x04E    0x4E // Unused Flag
 #define FLAG_UNUSED_0x04F    0x4F // Unused Flag

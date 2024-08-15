@@ -13,7 +13,7 @@
     F(BULLDOZE) \
     F(SUBSTITUTE) \
     F(RETURN) \
-    F(TAUNT) \
+    F(PLAY_ROUGH) \
     F(ICE_BEAM) \
     F(BLIZZARD) \
     F(HYPER_BEAM) \

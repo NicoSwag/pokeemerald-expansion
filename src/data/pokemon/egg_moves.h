@@ -1536,17 +1536,8 @@ const u16 gEggMoves[] = {
         MOVE_FOCUS_PUNCH),
 
     egg_moves(SLAKOTH,
-        MOVE_PURSUIT,
-        MOVE_SLASH,
-        MOVE_BODY_SLAM,
-        MOVE_SNORE,
-        MOVE_CRUSH_CLAW,
         MOVE_CURSE,
-        MOVE_SLEEP_TALK,
-        MOVE_HAMMER_ARM,
-        MOVE_NIGHT_SLASH,
-        MOVE_AFTER_YOU,
-        MOVE_TICKLE),
+        MOVE_STOMPING_TANTRUM),
 
     egg_moves(NINCADA,
         MOVE_SKITTER_SMACK,

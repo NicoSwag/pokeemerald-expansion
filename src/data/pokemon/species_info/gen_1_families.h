@@ -7183,7 +7183,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             sPicTable_Magnezone,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             gOverworldPalette_Magnezone,
             gShinyOverworldPalette_Magnezone
         )

@@ -11,6 +11,9 @@
 .equ LOCALID_BRINEY_R104, 12
 
 .set LOCALID_RIVAL, 15
+.set LOCALID_MAGNEZONE, 27
+.set LOCALID_SLAKOTH, 24
+.set LOCALID_YOUNGSTER, 28
 
 DewfordTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, DewfordTown_OnTransition
@@ -20,6 +23,121 @@ DewfordTown_OnTransition:
 	setflag FLAG_VISITED_DEWFORD_TOWN
 	call Common_EventScript_SetupRivalGfxId
 	end
+
+
+DewfordTown_EventScript_Slakoth::
+	lock
+	msgbox DewfordTown_Text_SlakothSleeping, MSGBOX_DEFAULT
+	checkitem ITEM_POKE_FLUTE
+	goto_if_eq VAR_RESULT, TRUE, DewfordTown_EventScript_UseFlute
+	release
+	end
+
+DewfordTown_EventScript_UseFlute::
+	msgbox DewfortTown_Text_WantToUseFlute, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, DewfordTown_EventScript_Abduction
+	release
+	end
+
+DewfortTown_Text_WantToUseFlute:
+	.string "Play the Poké Flute?$"
+
+DewfordTown_EventScript_Abduction::
+	closemessage
+	clearflag FLAG_HIDE_MAGNEZONE
+	addobject LOCALID_MAGNEZONE
+	setobjectxy LOCALID_MAGNEZONE, 12, 12
+	playfanfare MUS_RG_POKE_FLUTE
+	waitfanfare
+	playbgm MUS_SAILING, FALSE
+	applymovement LOCALID_MAGNEZONE, DewfordTown_Movement_StartMoving
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement LOCALID_YOUNGSTER, Common_Movement_FaceUp
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkInPlaceDown
+	applymovement LOCALID_SLAKOTH, Common_Movement_WalkUp
+	playse SE_M_NIGHTMARE
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkInPlaceDown
+	applymovement LOCALID_SLAKOTH, Common_Movement_WalkUp
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkInPlaceDown
+	applymovement LOCALID_SLAKOTH, Common_Movement_WalkUp
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	applymovement LOCALID_SLAKOTH, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	applymovement LOCALID_SLAKOTH, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	applymovement LOCALID_SLAKOTH, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	applymovement LOCALID_SLAKOTH, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	applymovement LOCALID_SLAKOTH, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	applymovement LOCALID_SLAKOTH, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	applymovement LOCALID_SLAKOTH, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	fadedefaultbgm
+	removeobject LOCALID_MAGNEZONE
+	removeobject LOCALID_SLAKOTH
+	setflag FLAG_HIDE_MAGNEZONE
+	setflag FLAG_HIDE_SLAKOTH
+	release
+	end 
+
+
+DewfordTown_Text_SlakothSleeping:
+	.string "An oversized Slakoth is sleeping\n"
+	.string "on the beach.$"
+
+
+DewfordTown_Movement_StartMoving:
+	lock_facing_direction
+	walk_left
+	step_end
 
 DewfordTown_EventScript_Briney::
 	lock
@@ -121,18 +239,18 @@ DewfordTown_EventScript_WarehouseMinerPostCave::
 
 DewfordTown_Text_MinecraftPreCave:
 	.string "Normally you can ride a minecart\n"
-	.string "all the way to GRANITE CAVE, but…\p"
-	.string "Something is happening at the mine.\p"
-	.string "Our GYM LEADER, BRAWLY, went to\n"
+	.string "all the way to the mines, but…\p"
+	.string "Something odd is happening there.\p"
+	.string "Our Gym Leader, Brawly, went to\n"
 	.string "check out the situation.\p"
-	.string "Before it gets resolved, I'm afraid\n"
+	.string "Until it gets resolved, I'm afraid\n"
 	.string "that you will have to go on foot.$"
 
 
 DewfordTown_Text_MinecraftPostCave:
 	.string "The minecart is back!\p"
 	.string "You can ride it if you want to get\n"
-	.string "to GRANITE CAVE quickly.$"
+	.string "to the Emerald Mines quickly.$"
 
 
 
@@ -690,6 +808,10 @@ DewfordTown_EventScript_GymGuide::
 	msgbox DewfordTown_Text_LookingForBrawly, MSGBOX_NPC
 	end
 
+DewfordTown_EventScript_FanClub::
+	msgbox DewfordTown_Text_FanClub, MSGBOX_SIGN
+	end
+
 
 DewfordTown_EventScript_Boy::
 	msgbox DewfordTown_Text_Boy, MSGBOX_NPC
@@ -945,6 +1067,10 @@ DewfordTown_Text_YeahDefinitionOfInRightNow:
 	.string "Yeah, absolutely right!\p"
 	.string "“{STR_VAR_1}” is the\n"
 	.string "definition of “in” right now.$"
+
+
+DewfordTown_Text_FanClub:
+	.string "“UNEVOLVED POKéMON FAN CLUB”$"
 
 
 Route104_EventScript_RivalTriggerFirst::

@@ -47,3 +47,27 @@ RustboroCity_PokemonCenter_1F_Text_HMCutNextDoor:
 	.string "to give people HMs, but now he's\l"
 	.string "stopped doing that.\p"
 	.string "I wonder why.$"
+
+DewfordTown_Mart_EventScript_Clerk::
+	lock
+	faceplayer
+	message gText_HowMayIServeYou
+	waitmessage
+	goto DewfordTown_Mart_EventScript_PokemartBasic
+	end
+
+DewfordTown_Mart_EventScript_PokemartBasic::
+	pokemart DewfordTown_Mart_Pokemart_Basic
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+
+	.align 2
+DewfordTown_Mart_Pokemart_Basic:
+	.2byte ITEM_POKE_BALL
+	.2byte ITEM_GREAT_BALL
+	.2byte ITEM_POKE_DOLL
+	.2byte ITEM_NONE
+	release
+	end

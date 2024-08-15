@@ -1956,7 +1956,18 @@ u8 GetEnemyHighestLevel(const struct Trainer *trainer)
 }
 
 
+u8 getLevelScaled(u8 monLevel, u8 levelCap, u8 previousLevelCap)
+{
+    if (previousLevelCap == 0 || monLevel >= levelCap || DoesTrainerNotScale(gTrainerBattleOpponent_A)) 
+        return monLevel;
 
+    u16 levelPercent;
+    u16 levelRange;
+        
+    levelPercent = ((u16) monLevel << 8) / (u16) levelCap;
+    levelRange = levelCap - previousLevelCap;
+    return (u8) (levelRange * levelPercent >> 8) + previousLevelCap;
+ }
 
 
 u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer *trainer, bool32 firstTrainer, u32 battleTypeFlags)
@@ -2020,16 +2031,8 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             u8 levelCapDifference = GetClosestLevelCapToLevel(currentEnemyLevel) - currentEnemyLevel;
 
             
-            if(currentEnemyLevel < GetLevelCeiling() && !DoesTrainerNotScale(gTrainerBattleOpponent_A) && GetLevelFloor()!=0)
-            {
-                float levelPercent;
-                float levelRange;
-                levelPercent = (float) currentEnemyLevel / (float) GetLevelCeiling();
-                levelRange = GetLevelCeiling() - GetLevelFloor();
-                currentEnemyLevel = (u8) (levelRange * levelPercent) + GetLevelFloor();
-            }
-                
-            
+            currentEnemyLevel = getLevelScaled(currentEnemyLevel, GetLevelCeiling(), GetLevelFloor()),
+ 
                     
             CreateMon(&party[i], partyData[i].species, currentEnemyLevel, 0, TRUE, personalityValue, otIdType, fixedOtId);
             

@@ -2709,6 +2709,14 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         ICON(Helioptile, 2),
         .footprint = gMonFootprint_Helioptile,
         LEARNSETS(Helioptile),
+                OVERWORLD(
+            sPicTable_Helioptile,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Helioptile,
+            gShinyOverworldPalette_Helioptile
+        )
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_SUN_STONE, SPECIES_HELIOLISK}),
     },
 
@@ -2754,6 +2762,14 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .backAnimId = BACK_ANIM_SHAKE_FLASH_YELLOW,
         PALETTES(Heliolisk),
         ICON(Heliolisk, 2),
+        OVERWORLD(
+            sPicTable_Heliolisk,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Heliolisk,
+            gShinyOverworldPalette_Heliolisk
+        )
         .footprint = gMonFootprint_Heliolisk,
         LEARNSETS(Heliolisk),
     },
@@ -3100,6 +3116,14 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .backAnimId = BACK_ANIM_H_VIBRATE,
         PALETTES(Carbink),
         ICON(Carbink, 2),
+                OVERWORLD(
+            sPicTable_Carbink,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            gOverworldPalette_Carbink,
+            gShinyOverworldPalette_Carbink
+        )
         .footprint = gMonFootprint_Carbink,
         LEARNSETS(Carbink),
     },
