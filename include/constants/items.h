@@ -1003,11 +1003,12 @@
 #define ITEM_PASSHO_VOUCHER 831
 #define ITEM_CHERI_VOUCHER 832
 #define ITEM_CHOPLE_VOUCHER 833
+#define ITEM_RAINBOW_ORE 834
 
 // HOPO BERRY
 // LEGEND PLATE
 
-#define ITEMS_COUNT 834
+#define ITEMS_COUNT 835
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

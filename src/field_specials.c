@@ -1581,10 +1581,23 @@ u16 ScriptGetPartyMonSpecies(void)
 }
 
 
+u16 ScriptIsPartyMonFireType(void)
+{
+    if(gSpeciesInfo[GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES_OR_EGG, NULL)].types[0] == TYPE_FIRE 
+    || gSpeciesInfo[GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES_OR_EGG, NULL)].types[1] == TYPE_FIRE)
+
+        return TRUE;
+    
+    else return FALSE;
+}
+
+
 u16 ScriptGetPartyMonBall(void)
 {
     return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_POKEBALL, NULL);
 }
+
+
 
 u16 ScriptGetPartyMonItem(void)
 {

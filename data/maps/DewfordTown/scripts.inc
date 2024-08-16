@@ -14,6 +14,8 @@
 .set LOCALID_MAGNEZONE, 27
 .set LOCALID_SLAKOTH, 24
 .set LOCALID_YOUNGSTER, 28
+.set LOCALID_ARON, 21
+.set LOCALID_MINER, 25
 
 DewfordTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, DewfordTown_OnTransition
@@ -22,8 +24,87 @@ DewfordTown_MapScripts::
 DewfordTown_OnTransition:
 	setflag FLAG_VISITED_DEWFORD_TOWN
 	call Common_EventScript_SetupRivalGfxId
+	setvar VAR_PELIPPER, 13
+	call_if_set FLAG_GAVE_IRON_BALL, DewfordTown_EventScript_SetAron
 	end
 
+
+DewfordTown_EventScript_SetAron::
+	setobjectmovementtype LOCALID_ARON, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN
+	setobjectxyperm LOCALID_ARON, 18, 33
+	return
+
+
+DewfordTown_EventScript_WarehouseMiner2::
+	lockall
+	goto_if_set FLAG_GAVE_IRON_BALL, DewfordTown_EventScript_WarehouseMiner2AfterEvent
+	msgbox DewfordTown_Text_Aron, MSGBOX_NPC
+	checkitem ITEM_IRON_BALL
+	goto_if_eq VAR_RESULT, TRUE, DewfordTown_EventScript_AskForIronBall
+	releaseall
+	end
+
+
+DewfordTown_EventScript_WarehouseMiner2AfterEvent::
+	msgbox DewfordTown_Text_ThanksForTheHelp, MSGBOX_NPC
+	releaseall
+	end
+
+
+
+DewfordTown_EventScript_AskForIronBall::
+	msgbox DewfordTown_Text_IronBall, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, TRUE, DewfordTown_EventScript_GiveIronBall
+	msgbox DewfordTown_Text_ISee, MSGBOX_DEFAULT
+	releaseall
+	end
+
+
+DewfordTown_EventScript_GiveIronBall::
+	removeitem ITEM_IRON_BALL, 1
+	setflag FLAG_GAVE_IRON_BALL
+	msgbox DewfordTown_Text_GaveIronBall, MSGBOX_NPC
+	specialvar VAR_RESULT, GetPlayerFacingDirection
+	goto_if_eq VAR_RESULT, DIR_NORTH, DewfordTown_EventScript_PlayerMove
+	goto DewfordTown_EventScript_MinerMove
+	end
+
+
+
+DewfordTown_EventScript_PlayerMove::
+	applymovement OBJ_EVENT_ID_PLAYER, DewfordTown_Movement_PlayerMove
+	waitmovement 0
+	goto DewfordTown_EventScript_MinerMove
+	end
+
+DewfordTown_EventScript_MinerMove::
+	applymovement LOCALID_MINER, DewfordTown_Movement_MinerMove
+	waitmovement 0
+	applymovement LOCALID_ARON, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_ARON, Common_Movement_QuestionMark
+	playse SE_PIN
+	waitmovement 0
+	delay 16
+	applymovement LOCALID_MINER, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
+	delay 16
+	applymovement LOCALID_ARON, Common_Movement_ExclamationMark
+	playse SE_PIN
+	waitmovement 0
+	delay 16
+	applymovement LOCALID_ARON, Common_Movement_AronMoves
+	waitmovement 0
+	setobjectmovementtype LOCALID_ARON, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN
+	setobjectxyperm LOCALID_ARON, 18, 33
+	setflag FLAG_GAVE_IRON_BALL
+	applymovement LOCALID_MINER, DewfordTown_Movement_MinerGoesUp
+	waitmovement 0
+	faceplayer
+	msgbox DewfordTown_Text_ItWorked, MSGBOX_NPC
+	giveitem ITEM_HEART_SCALE
+	releaseall
+	end
 
 DewfordTown_EventScript_Slakoth::
 	lock
@@ -252,6 +333,10 @@ DewfordTown_Text_MinecraftPostCave:
 	.string "You can ride it if you want to get\n"
 	.string "to the Emerald Mines quickly.$"
 
+DewfordTown_Sign_Foundry::
+	msgbox DewfordTown_Text_FoundrySign, MSGBOX_SIGN
+	release
+	end
 
 
 DewfordTown_EventScript_FishingExcellent::
@@ -1398,3 +1483,70 @@ Route104_Movement_RivalGoesAway:
 	walk_up
 	walk_up
 	step_end
+
+DewfordTown_Text_Aron:
+	.string "This Aron here is very hungry.\n"
+	.string "It keeps trying to eat our emeralds.\p"
+	.string "Maybe if I had an Iron Ball, I could\n"
+	.string "get it to stop.$"
+
+
+DewfordTown_Text_IronBall:
+	.string "Hey, you got one, don't you?\n"
+	.string "Any chance I could have it?$"
+
+
+DewfordTown_Text_GaveIronBall:
+	.string "Thanks!\n"
+	.string "Let's see if it works.$"
+
+
+DewfordTown_Text_ISee:
+	.string "I see.\n"
+	.string "That's ok. I understand!\p"
+	.string "Not everyone is ready to part with\n"
+	.string "their iron balls.$"
+
+
+DewfordTown_Movement_PlayerMove:
+	walk_right
+	face_left
+	step_end
+
+DewfordTown_Movement_MinerMove:
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+
+Common_Movement_AronMoves:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+
+DewfordTown_Movement_MinerGoesUp:
+	walk_up
+	step_end
+
+
+DewfordTown_Text_ItWorked:
+	.string "It worked!\p"
+	.string "That Iron Ball is going to keep Aron\n"
+	.string "busy for a while.\p"
+	.string "Thank you for your help!\p"
+	.string "I'd like you to have this, as a token\n"
+	.string "of my gratitude.$"
+
+
+DewfordTown_Text_ThanksForTheHelp:
+	.string "Thanks again for the help, friend!\p"
+	.string "If you have any ore to smelt, feel free\n"
+	.string "to stop by at our Foundry.$"
+
+DewfordTown_Text_FoundrySign:
+	.string "Dewford Foundry$"

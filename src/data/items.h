@@ -4294,6 +4294,23 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_OvalStone,
     },
 
+
+    [ITEM_RAINBOW_ORE] =
+    {
+        .name = _("Rainbow Ore"),
+        .price = 10000,
+        .description = COMPOUND_STRING(
+            "Can turn into many\n"
+            "different stones if\n"
+            "smelted properly."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_OvalStone,
+        .iconPalette = gItemIconPalette_OvalStone,
+    },
+
     [ITEM_STRAWBERRY_SWEET] =
     {
         .name = HANDLE_EXPANDED_ITEM_NAME("StrwbrySweet", "Strawberry Sweet"),
@@ -12262,7 +12279,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_SUPER_ROD] =
     {
-        .name = _("FISHING ROD"),
+        .name = _("Fishing Rod"),
         .price = 0,
         .description = COMPOUND_STRING(
             "The best fishing\n"
@@ -12295,7 +12312,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_TOWN_MAP] =
     {
-        .name = _("TOWN MAP"),
+        .name = _("Town Map"),
         .price = 0,
         .description = COMPOUND_STRING(
             "Can be viewed\n"
@@ -12312,7 +12329,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_RIBBON_BOX] =
     {
-        .name = _("RIBBON BOX"),
+        .name = _("Ribbon Box"),
         .price = 0,
         .description = COMPOUND_STRING(
             "Gives a ribbon to a\n"

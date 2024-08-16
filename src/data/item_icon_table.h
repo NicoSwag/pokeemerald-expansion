@@ -257,6 +257,7 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_WHIPPED_DREAM] = {gItemIcon_WhippedDream, gItemIconPalette_WhippedDream},
     [ITEM_SACHET] = {gItemIcon_Sachet, gItemIconPalette_Sachet},
     [ITEM_OVAL_STONE] = {gItemIcon_OvalStone, gItemIconPalette_OvalStone},
+    [ITEM_RAINBOW_ORE] = {gItemIcon_OvalStone, gItemIconPalette_OvalStone},
     [ITEM_STRAWBERRY_SWEET] = {gItemIcon_StrawberrySweet, gItemIconPalette_StrawberrySweet},
     [ITEM_LOVE_SWEET] = {gItemIcon_LoveSweet, gItemIconPalette_LoveSweet},
     [ITEM_BERRY_SWEET] = {gItemIcon_BerrySweet, gItemIconPalette_BerrySweet},

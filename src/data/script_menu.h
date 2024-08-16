@@ -274,6 +274,22 @@ static const struct MenuAction MultichoiceList_SpecialOptionsMenu[] =
     {gText_Exit},
 };
 
+
+static const struct MenuAction MultichoiceList_EvoStones[] =
+{
+    {gText_FireStone},
+    {gText_WaterStone},
+    {gText_ThunderStone},
+    {gText_LeafStone},
+    {gText_MoonStone},
+    {gText_SunStone},
+    {gText_ShinyStone},
+    {gText_DuskStone},
+    {gText_DawnStone},
+    {gText_IceStone},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_GameCornerTMs[] =
 {
     {gText_TM32AndPrice},
@@ -840,7 +856,6 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_MECHADOLL5_Q1]              = MULTICHOICE(MultichoiceList_Mechadoll5_Q1),
     [MULTI_MECHADOLL5_Q2]              = MULTICHOICE(MultichoiceList_Mechadoll5_Q2),
     [MULTI_MECHADOLL5_Q3]              = MULTICHOICE(MultichoiceList_Mechadoll5_Q3),
-    [MULTI_UNUSED_40]                  = MULTICHOICE(MultichoiceList_Exit),
     [MULTI_UNUSED_41]                  = MULTICHOICE(MultichoiceList_Exit),
     [MULTI_VENDING_MACHINE]            = MULTICHOICE(MultichoiceList_VendingMachine),
     [MULTI_MACH_BIKE_INFO]             = MULTICHOICE(MultichoiceList_MachBikeInfo),
@@ -850,6 +865,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_UNUSED_ASH_VENDOR]          = MULTICHOICE(MultichoiceList_UnusedAshVendor),
     [MULTI_GAME_CORNER_DOLLS]          = MULTICHOICE(MultichoiceList_GameCornerDolls),
     [SPECIAL_OPTIONS_MENU]             = MULTICHOICE(MultichoiceList_SpecialOptionsMenu),
+    [EVO_STONES]             = MULTICHOICE(MultichoiceList_EvoStones),
     [MULTI_GAME_CORNER_COINS]          = MULTICHOICE(MultichoiceList_GameCornerCoins),
     [MULTI_HOWS_FISHING]               = MULTICHOICE(MultichoiceList_HowsFishing),
     [MULTI_UNUSED_51]                  = MULTICHOICE(MultichoiceList_Exit),

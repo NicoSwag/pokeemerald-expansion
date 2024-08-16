@@ -341,6 +341,7 @@ gSpecials::
 	def_special SetRoute123Weather
 	def_special GetContestMultiplayerId
 	def_special ScriptGetPartyMonSpecies
+	def_special ScriptIsPartyMonFireType
 	def_special ScriptGetPartyMonBall
 	def_special ScriptGetPartyMonItem
 	def_special IsSelectedMonEgg
