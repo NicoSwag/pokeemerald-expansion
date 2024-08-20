@@ -4191,6 +4191,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
     return retVal;
 }
 
+
 bool8 HealStatusConditions(struct Pokemon *mon, u32 healMask, u8 battlerId)
 {
     u32 status = GetMonData(mon, MON_DATA_STATUS, 0);
@@ -5319,7 +5320,7 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
 
         evs[i] += evIncrease;
         totalEVs += evIncrease;
-        //SetMonData(mon, MON_DATA_HP_EV + i, &evs[i]);
+        SetMonData(mon, MON_DATA_HP_EV + i, &evs[i]);
     }
 }
 

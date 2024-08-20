@@ -1294,3 +1294,9 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DewfordTown_House3/scripts.inc"
 
 	.include "data/maps/Foundry/scripts.inc"
+
+	.include "data/maps/Rustboro_FillerWest/scripts.inc"
+
+	.include "data/maps/RustboroCity_GymInterior/scripts.inc"
+
+	.include "data/maps/PetalburgCity_GymInterior/scripts.inc"

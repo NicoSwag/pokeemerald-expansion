@@ -278,11 +278,219 @@ const u8 gItemEffect_HpMochi[11] = {
     [10] = 0,
 };
 
+
+const u8 gItemEffect_HPBagXL[11] = {
+    [4] = ITEM4_EV_HP,
+    [6] = ITEM6_ADD_XL_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_HPBagL[11] = {
+    [4] = ITEM4_EV_HP,
+    [6] = ITEM6_ADD_L_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_HPBagM[11] = {
+    [4] = ITEM4_EV_HP,
+    [6] = ITEM6_ADD_M_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_HPBagS[11] = {
+    [4] = ITEM4_EV_HP,
+    [6] = ITEM6_ADD_S_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_HPBagXS[11] = {
+    [4] = ITEM4_EV_HP,
+    [6] = ITEM6_ADD_XS_EV,
+    [10] = 0,
+};
+
+const u8 gItemEffect_ATKBagXL[11] = {
+    [4] = ITEM4_EV_ATK,
+    [6] = ITEM6_ADD_XL_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_ATKBagL[11] = {
+    [4] = ITEM4_EV_ATK,
+    [6] = ITEM6_ADD_L_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_ATKBagM[11] = {
+    [4] = ITEM4_EV_ATK,
+    [6] = ITEM6_ADD_M_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_ATKBagS[11] = {
+    [4] = ITEM4_EV_ATK,
+    [6] = ITEM6_ADD_S_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_ATKBagXS[11] = {
+    [4] = ITEM4_EV_ATK,
+    [6] = ITEM6_ADD_XS_EV,
+    [10] = 0,
+};
+
+const u8 gItemEffect_SPATKBagXL[11] = {
+    [5] = ITEM5_EV_SPATK,
+    [6] = ITEM6_ADD_XL_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_SPATKBagL[11] = {
+    [5] = ITEM5_EV_SPATK,
+    [6] = ITEM6_ADD_L_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_SPATKBagM[11] = {
+    [5] = ITEM5_EV_SPATK,
+    [6] = ITEM6_ADD_M_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_SPATKBagS[11] = {
+    [5] = ITEM5_EV_SPATK,
+    [6] = ITEM6_ADD_S_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_SPATKBagXS[11] = {
+    [5] = ITEM5_EV_SPATK,
+    [6] = ITEM6_ADD_XS_EV,
+    [10] = 0,
+};
+
+const u8 gItemEffect_DEFBagXL[11] = {
+    [5] = ITEM5_EV_DEF,
+    [6] = ITEM6_ADD_XL_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_DEFBagL[11] = {
+    [5] = ITEM5_EV_DEF,
+    [6] = ITEM6_ADD_L_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_DEFBagM[11] = {
+    [5] = ITEM5_EV_DEF,
+    [6] = ITEM6_ADD_M_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_DEFBagS[11] = {
+    [5] = ITEM5_EV_DEF,
+    [6] = ITEM6_ADD_S_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_DEFBagXS[11] = {
+    [5] = ITEM5_EV_DEF,
+    [6] = ITEM6_ADD_XS_EV,
+    [10] = 0,
+};
+
+const u8 gItemEffect_SPDEFBagXL[11] = {
+    [5] = ITEM5_EV_SPDEF,
+    [6] = ITEM6_ADD_XL_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_SPDEFBagL[11] = {
+    [5] = ITEM5_EV_SPDEF,
+    [6] = ITEM6_ADD_L_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_SPDEFBagM[11] = {
+    [5] = ITEM5_EV_SPDEF,
+    [6] = ITEM6_ADD_M_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_SPDEFBagS[11] = {
+    [5] = ITEM5_EV_SPDEF,
+    [6] = ITEM6_ADD_S_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_SPDEFBagXS[11] = {
+    [5] = ITEM5_EV_SPDEF,
+    [6] = ITEM6_ADD_XS_EV,
+    [10] = 0,
+};
+
+const u8 gItemEffect_SPEEDBagXL[11] = {
+    [5] = ITEM5_EV_SPEED,
+    [6] = ITEM6_ADD_XL_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_SPEEDBagL[11] = {
+    [5] = ITEM5_EV_SPEED,
+    [6] = ITEM6_ADD_L_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_SPEEDBagM[11] = {
+    [5] = ITEM5_EV_SPEED,
+    [6] = ITEM6_ADD_M_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_SPEEDBagS[11] = {
+    [5] = ITEM5_EV_SPEED,
+    [6] = ITEM6_ADD_S_EV,
+    [10] = 0,
+};
+
+
+const u8 gItemEffect_SPEEDBagXS[11] = {
+    [5] = ITEM5_EV_SPEED,
+    [6] = ITEM6_ADD_XS_EV,
+    [10] = 0,
+};
+
+
+
 const u8 gItemEffect_AtkMochi[11] = {
     [4] = ITEM4_EV_ATK,
     [6] = ITEM6_ADD_EV,
     [10] = 0,
 };
+
 
 const u8 gItemEffect_DefMochi[11] = {
     [5] = ITEM5_EV_DEF,
@@ -307,6 +515,9 @@ const u8 gItemEffect_SpdefMochi[11] = {
     [6] = ITEM6_ADD_EV,
     [10] = 0,
 };
+
+
+
 
 const u8 gItemEffect_ResetMochi[11] = {
     [4] = ITEM4_EV_HP | ITEM4_EV_ATK,
@@ -426,36 +637,30 @@ const u8 gItemEffect_PomegBerry[10] = {
     [4] = ITEM4_EV_HP,
     [5] = ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_SUBTRACT_EV,
-    EV_BERRY_FRIENDSHIP_CHANGE,
 };
 
 const u8 gItemEffect_KelpsyBerry[10] = {
     [4] = ITEM4_EV_ATK,
     [5] = ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_SUBTRACT_EV,
-    EV_BERRY_FRIENDSHIP_CHANGE,
 };
 
 const u8 gItemEffect_QualotBerry[10] = {
     [5] = ITEM5_EV_DEF | ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_SUBTRACT_EV,
-    EV_BERRY_FRIENDSHIP_CHANGE,
 };
 
 const u8 gItemEffect_HondewBerry[10] = {
     [5] = ITEM5_EV_SPATK | ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_SUBTRACT_EV,
-    EV_BERRY_FRIENDSHIP_CHANGE,
 };
 
 const u8 gItemEffect_GrepaBerry[10] = {
     [5] = ITEM5_EV_SPDEF | ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_SUBTRACT_EV,
-    EV_BERRY_FRIENDSHIP_CHANGE,
 };
 
 const u8 gItemEffect_TamatoBerry[10] = {
     [5] = ITEM5_EV_SPEED | ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_SUBTRACT_EV,
-    EV_BERRY_FRIENDSHIP_CHANGE,
 };

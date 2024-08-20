@@ -1733,8 +1733,6 @@ bool32 ShouldLowerStat(u32 battler, u32 battlerAbility, u32 stat)
         {
             case STAT_ATK:
                 return !(battlerAbility == ABILITY_HYPER_CUTTER);
-            case STAT_DEF:
-                return !(battlerAbility == ABILITY_BIG_PECKS);
             case STAT_SPEED:
                 // If AI is faster and doesn't have any mons left, lowering speed doesn't give any
                 return !(AI_IsFaster(sBattler_AI, battler, AI_THINKING_STRUCT->moveConsidered)
@@ -1836,7 +1834,6 @@ bool32 ShouldLowerDefense(u32 battlerAtk, u32 battlerDef, u32 defAbility)
       && defAbility != ABILITY_CLEAR_BODY
       && defAbility != ABILITY_WHITE_SMOKE
       && defAbility != ABILITY_FULL_METAL_BODY
-      && defAbility != ABILITY_BIG_PECKS
       && AI_DATA->holdEffects[battlerDef] != HOLD_EFFECT_CLEAR_AMULET)
         return TRUE;
     return FALSE;

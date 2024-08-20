@@ -1918,6 +1918,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         PICHU_MISC_INFO,
         FRONT_PIC(Pichu, 32, 40),
         .frontPicYOffset = 14,
+        .evYield_Speed = 1,
         .frontAnimFrames = sAnims_Pichu,
         .frontAnimId = ANIM_V_JUMPS_BIG,
         BACK_PIC(Pichu, 48, 56),
@@ -2001,6 +2002,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FAIRY },
         .description = gPikachuPokedexText,
         FRONT_PIC(Pikachu, 48, 48),
+        .evYield_Speed = 2,
         FRONT_PIC_FEMALE(Pikachu, 48, 48),
         .frontPicYOffset = 9,
         .frontAnimFrames = sAnims_Pikachu,
@@ -2358,6 +2360,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .pokemonOffset = 13,
         .trainerScale = 256,
         .trainerOffset = 0,
+        .evYield_Speed = 3,
         FRONT_PIC(Raichu, 64, 64),
         FRONT_PIC_FEMALE(Raichu, 64, 64),
         .frontPicYOffset = 3,
@@ -3555,6 +3558,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .expYield = 49,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
+        .evYield_Speed = 1,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_FLYING},
@@ -3611,6 +3615,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_POISON, TYPE_FLYING },
         .catchRate = 90,
         .expYield = 159,
+        .evYield_Speed = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -3670,6 +3675,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_POISON, TYPE_FLYING },
         .catchRate = 90,
         .expYield = 241,
+        .evYield_Speed = 3,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -3963,7 +3969,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_BUG, TYPE_GRASS },
         .catchRate = 190,
         .expYield = 57,
-        .evYield_Attack    = 0,
+        .evYield_Attack    = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -4020,7 +4026,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_BUG, TYPE_GHOST },
         .catchRate = 75,
         .expYield = 142,
-        .evYield_Attack    = 0,
+        .evYield_Attack    = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -5487,6 +5493,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_PSYCHIC, TYPE_PSYCHIC },
         .catchRate = 200,
         .expYield = 62,
+        .evYield_SpAttack = 1,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
@@ -5542,6 +5549,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .catchRate = 100,
         .expYield = 140,
         .eggCycles = 20,
+        .evYield_SpAttack = 2,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE },
@@ -5617,6 +5625,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .abilities = { ABILITY_SHADOW_BOXING, ABILITY_NO_GUARD, ABILITY_PSYCHIC_SHIELD },
         .cryId = CRY_ALAKAZAM,
         .height = 15,
+        .evYield_SpAttack = 3,
         .weight = 480,
         .description = COMPOUND_STRING(
             "It has complete control over its brain, but\n"
@@ -6364,7 +6373,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     {
         ALOLAN_GEODUDE_FAMILY_INFO,
         GEODUDE_MISC_INFO,
-        .itemRare = ITEM_CELL_BATTERY,
         .weight = 203,
         .description = COMPOUND_STRING(
             "Its body is a magnetic stone. Iron sand\n"
@@ -6374,6 +6382,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         FRONT_PIC(GeodudeAlolan, 48, 32),
         .frontPicYOffset = 17,
         .frontAnimFrames = sAnims_GeodudeAlolan,
+        .evYield_Defense = 1,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         OVERWORLD(
             sPicTable_GeodudeAlolan,
@@ -6414,6 +6423,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             .abilities = { ABILITY_MAGNET_PULL, ABILITY_STURDY, ABILITY_GALVANIZE },
         PALETTES(GravelerAlolan),
         ICON(GravelerAlolan, 2),
+        .evYield_Defense = 2,
         LEARNSETS(GravelerAlolan),
         OVERWORLD(
             sPicTable_GravelerAlolan,
@@ -6431,7 +6441,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     {
         ALOLAN_GEODUDE_FAMILY_INFO,
         GOLEM_MISC_INFO,
-        .itemCommon = ITEM_CELL_BATTERY,
         .height = 17,
         .weight = 3160,
         .description = COMPOUND_STRING(
@@ -7031,6 +7040,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseSpDefense = 55,
         .types = { TYPE_ELECTRIC, TYPE_STEEL },
         .catchRate = 190,
+        .evYield_SpAttack = 1,
         .expYield = 65,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 20,
@@ -7088,6 +7098,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_ELECTRIC, TYPE_STEEL },
         .catchRate = 60,
         .expYield = 163,
+        .evYield_SpAttack = 2,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7144,6 +7155,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseSpDefense = 90,
         .types = { TYPE_ELECTRIC, TYPE_STEEL },
         .catchRate = 30,
+        .evYield_SpAttack = 3,
         .expYield = 241,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 20,
@@ -7267,6 +7279,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .abilities = {ABILITY_SCRAPPY, ABILITY_STAMINA},
         .height = 8,
         .weight = 420,
+        .evYield_Attack = 1,
         .description = COMPOUND_STRING(
             "It is always seen with a stick from a plant.\n"
             "Apparently, there are good sticks and bad\n"
@@ -7369,6 +7382,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_NORMAL, TYPE_FLYING},
         .catchRate = 45,
         .expYield = 177,
+        .evYield_Attack = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7700,6 +7714,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .pokemonOffset = 10,
         .trainerScale = 256,
         .trainerOffset = 0,
+        .evYield_HP = 1,
         FRONT_PIC(Grimer, 48, 48),
         .frontPicYOffset = 9,
         .frontAnimFrames = sAnims_Grimer,
@@ -7735,6 +7750,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             "their numbers have been increasing."),
         .pokemonScale = 256,
         .pokemonOffset = 2,
+        .evYield_HP = 1,
+        .evYield_Attack = 1,
         .trainerScale = 256,
         .trainerOffset = 0,
         FRONT_PIC(Muk, 64, 56),
@@ -8221,6 +8238,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_ROCK, TYPE_GROUND },
         .catchRate = 45,
         .expYield = 77,
+        .evYield_Defense = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 25,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8297,6 +8315,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .abilities = {ABILITY_SOLID_ROCK, ABILITY_SAND_SPIT, ABILITY_SAND_VEIL},
         .cryId = CRY_STEELIX,
         .height = 92,
+        .evYield_Defense = 2,
         .weight = 4000,
         .description = COMPOUND_STRING(
             "STEELIX live even further underground\n"
@@ -8674,6 +8693,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .expYield = 172,                                        \
         .speciesName = _("Electrode"),                          \
         .cryId = CRY_ELECTRODE,                                 \
+        .evYield_Speed = 3,                                 \
         .natDexNum = NATIONAL_DEX_ELECTRODE,                    \
         .height = 12,                                           \
         .pokemonScale = 256,                                    \
@@ -8827,6 +8847,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_GRASS, TYPE_PSYCHIC },
         .catchRate = 90,
         .expYield = 65,
+        .evYield_Defense = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8910,6 +8931,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             "often be found in a cranky mood."),
         .pokemonScale = 256,
         .pokemonOffset = 0,
+        .evYield_SpAttack = 2,
         .trainerScale = 309,
         .trainerOffset = 5,
         FRONT_PIC(Exeggutor, 64, 64),
@@ -11678,6 +11700,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .pokemonOffset = 0,                                 \
         .trainerScale = 256,                                \
         .trainerOffset = 0,                                 \
+        .evYield_Attack = 1,    \
+        .evYield_Speed = 1, \
         .footprint = gMonFootprint_Tauros,                  \
         .formSpeciesIdTable = sTaurosFormSpeciesIdTable
 
@@ -11691,8 +11715,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseSpAttack  = 40,
         .baseSpDefense = 70,
         .types = { TYPE_NORMAL, TYPE_NORMAL },
-        .evYield_Attack = 1,
-        .evYield_Speed = 1,
         .abilities = { ABILITY_INTIMIDATE, ABILITY_ANGER_POINT, ABILITY_SHEER_FORCE },
         .bodyColor = BODY_COLOR_BROWN,
         .weight = 884,
@@ -11811,6 +11833,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseSpDefense = 65,
         .types = { TYPE_NORMAL, TYPE_FIGHTING},
         .catchRate = 100,
+        .evYield_HP = 1,
         .expYield = 150,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 5,
@@ -11858,6 +11881,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .expYield = 150,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 5,
+        .evYield_HP = 1,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
@@ -11901,6 +11925,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .expYield = 150,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 5,
+        .evYield_HP = 1,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
@@ -11958,6 +11983,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .natDexNum = NATIONAL_DEX_MAGIKARP,
         .categoryName = _("Splashing"),
         .height = 12,
+        .evYield_Speed = 1,
         .weight = 200,
         .description = COMPOUND_STRING(
             "Once upon a time, it is said that a Magikarp\n"
@@ -12368,6 +12394,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             "and requires very little maintenance."),
         .pokemonScale = 316,
         .pokemonOffset = 8,
+        .evYield_HP = 2,
         .trainerScale = 256,
         .trainerOffset = 0,
         FRONT_PIC(Vaporeon, 48, 48),
@@ -12414,6 +12441,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .natDexNum = NATIONAL_DEX_JOLTEON,
         .categoryName = _("Lightning"),
         .height = 8,
+        .evYield_Speed = 2,
         .weight = 245,
         .description = COMPOUND_STRING(
             "Its cells generate weak power that is\n"
@@ -12458,6 +12486,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .expYield = 184,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 35,
+        .evYield_Attack = 2,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
@@ -12520,6 +12549,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Espeon"),
         .cryId = CRY_ESPEON,
+        .evYield_SpAttack = 2,
         .natDexNum = NATIONAL_DEX_ESPEON,
         .categoryName = _("Dawn"),
         .height = 9,
@@ -12578,6 +12608,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .categoryName = _("Moonlight"),
         .height = 10,
         .weight = 270,
+        .evYield_SpDefense = 2,
         .description = COMPOUND_STRING(
             "Umbreon is primarily nocturnal, but can be\n"
             "trained to be awake during the day, albeit\n"
@@ -12621,6 +12652,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .types = { TYPE_GRASS, TYPE_GRASS},
         .catchRate = 45,
         .expYield = 184,
+        .evYield_Defense = 2,
         .eggCycles = 35,
         .friendship = 35,
         .growthRate = GROWTH_MEDIUM_FAST,
@@ -12671,6 +12703,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseSpeed     = 95,
         .baseSpAttack  = 130,
         .baseSpDefense = 65,
+        .evYield_SpAttack = 2,
         .types = { TYPE_ICE, TYPE_ICE },
         .catchRate = 45,
         .expYield = 184,
@@ -12730,6 +12763,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .catchRate = 45,
         .expYield = 184,
         .eggCycles = 35,
+        .evYield_SpDefense = 2,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
@@ -13290,6 +13324,7 @@ OVERWORLD(
         .baseSpDefense = 85,
         .types = { TYPE_NORMAL, TYPE_NORMAL },
         .catchRate = 50,
+        .evYield_HP = 1,
         .expYield = 78,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 40,
@@ -13371,6 +13406,7 @@ OVERWORLD(
             "a docile Pokémon that there are children\n"
             "who use its big belly as a place to play."),
         .pokemonScale = 256,
+        .evYield_HP = 2,
         .pokemonOffset = 4,
         .trainerScale = 423,
         .trainerOffset = 11,

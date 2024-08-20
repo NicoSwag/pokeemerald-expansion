@@ -2417,7 +2417,7 @@
       "width": 58,
       "height": 26,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "0",
+      "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/UnusedOutdoorArea/border.bin",
       "blockdata_filepath": "data/layouts/UnusedOutdoorArea/map.bin"
     },
@@ -4560,6 +4560,36 @@
       "secondary_tileset": "gTileset_Foundry",
       "border_filepath": "data/layouts/Foundry/border.bin",
       "blockdata_filepath": "data/layouts/Foundry/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUSTBORO_FILLER_WEST",
+      "name": "Rustboro_FillerWest_Layout",
+      "width": 20,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_rustboro_inner",
+      "border_filepath": "data/layouts/Rustboro_FillerWest/border.bin",
+      "blockdata_filepath": "data/layouts/Rustboro_FillerWest/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUSTBORO_CITY_GYM_ENTRANCE",
+      "name": "RustboroCity_GymInterior_Layout",
+      "width": 21,
+      "height": 16,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleArena",
+      "border_filepath": "data/layouts/RustboroCity_GymInterior/border.bin",
+      "blockdata_filepath": "data/layouts/RustboroCity_GymInterior/map.bin"
+    },
+    {
+      "id": "LAYOUT_PETALBURG_CITY_GYM_INTERIOR",
+      "name": "PetalburgCity_GymInterior_Layout",
+      "width": 21,
+      "height": 16,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleArena",
+      "border_filepath": "data/layouts/PetalburgCity_GymInterior/border.bin",
+      "blockdata_filepath": "data/layouts/PetalburgCity_GymInterior/map.bin"
     }
   ]
 }

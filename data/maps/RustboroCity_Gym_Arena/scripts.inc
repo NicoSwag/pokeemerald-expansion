@@ -66,20 +66,14 @@ RustboroCity_Gym_EventScript_RoxannePostBattle::
 	call Common_EventScript_PlayGymBadgeFanfare	
 	msgbox RustboroCity_Gym_Text_StoneBadge, MSGBOX_DEFAULT
 	call Common_EventScript_SetGymTrainers
-	goto RustboroCity_Gym_EventScript_GiveVitamins
+	goto RustboroCity_Gym_EventScript_GivePrizes
 	end
 
-RustboroCity_Gym_EventScript_GiveVitamins::
-	
-	playfanfare MUS_OBTAIN_ITEM
-	msgbox RustboroCity_Gym_Text_Vitamins, MSGBOX_DEFAULT
-	waitfanfare
-	msgbox RustboroCity_Gym_Text_ExplainVitamins, MSGBOX_DEFAULT
+RustboroCity_Gym_EventScript_GivePrizes::
 	giveitem ITEM_TM_SANDSTORM
 	call_if_eq VAR_RESULT, FALSE, RustboroGym_EventScript_BagIsFull
 	setflag FLAG_RECEIVED_TM06
 	goto RustboroGym_EventScript_PostRoxanneContinue
-	hideitemdesc
 	end
 
 RustboroGym_EventScript_BagIsFull::
@@ -89,7 +83,6 @@ RustboroGym_EventScript_BagIsFull::
 	end
 
 RustboroGym_EventScript_PostRoxanneContinue::
-	hideitemdesc
 	msgbox RustboroCity_Gym_Text_ExplainSandstorm, MSGBOX_DEFAULT
 	additem ITEM_HP_UP, 2
 	additem ITEM_PROTEIN, 2
@@ -140,10 +133,10 @@ RustboroCity_Gym_Movement_PlayerFacesSouth:
 RustboroCity_Gym_Text_RoxanneStart:
 	.string "Very well then…\p"
 	.string "Would you kindly demonstrate how you\n"
-	.string "battle, and with which POKéMON?$"
+	.string "battle, and with which Pokémon?$"
 
 RustboroCity_Gym_Text_WelcomeRoxanne:
-	.string "ROXANNE: Welcome, my dear student.\n"
+	.string "Roxanne: Welcome, my dear student.\n"
 	.string "I'm very happy to see you.\p"
 	.string "Did you enjoy your little lesson\n"
 	.string "from earlier?\p"
@@ -166,43 +159,32 @@ RustboroCity_Gym_Text_DropTheAct:
 	.string "And for that…$"
 
 RustboroCity_Gym_Text_StoneBadge:
-	.string "This STONE BADGE certifies that\n"
+	.string "This Stone Badge certifies that\n"
 	.string "you have succesfully passed the\l"
-	.string "RUSTBORO CITY GYM CHALLENGE.\p"
-	.string "It's one of the eight BADGES you're\n"
+	.string "Rustboro City Gym Challenge.\p"
+	.string "It's one of the eight Badges you're\n"
 	.string "going to need if you want to sign up\l"
-	.string "for the EVER GRANDE CONFERENCE.\p"
+	.string "for the Ever Grande Conference.\p"
 	.string "Of course, as I explained, that won't\n"
-	.string "be the only prize you get.\p"
-	.string "First off: VITAMINS!$"
+	.string "be the only prize you get.$"
 
-RustboroCity_Gym_Text_ExplainVitamins:
-	.string "VITAMINS are items you can give\n"
-	.string "your POKéMON to increase their\l"
-	.string "STATS.\p"
-	.string "For example, giving a PROTEIN to\n"
-	.string "a POKéMON will increase their ATTACK.\p"
-	.string "Of course, there are some limits to\n"
-	.string "how much a POKéMON can grow.\p"
-	.string "VITAMINS are pretty hard to come by,\n"
-	.string "so make sure to use them strategically!\p"
-	.string "And now, for your next prize…$"
 
 RustboroCity_Gym_Text_ExplainSandstorm:
-	.string "SANDSTORM is a very powerful tool.\p"
+	.string "Sandstorm is a very powerful tool.\p"
 	.string "It can be used, as the name implies,\n"
-	.string "to summon a SANDSTORM that damages\l"
-	.string "any non ROCK, GROUND or STEEL-type\l"
-	.string "POKéMON.\p"
+	.string "to summon a Sandstorm that damages\l"
+	.string "any non Rock, Ground or Steel-type\l"
+	.string "Pokémon.\p"
 	.string "It also increases the defenses of\n"
 	.string "ROCK-type POKéMON.\p"
-	.string "Oh, before you go…\n"
+	.string "Well, that's all!\p"
+	.string "Oh, but before you go…\n"
 	.string "May I ask for a favor?\p"
-	.string "I'm sure you have noticed the…\n"
+	.string "Surely you must have noticed the…\n"
 	.string "Distressing state of the city.\p"
 	.string "I wish I could do something about it,\n"
-	.string "but DEVON has too much support in\n"
-	.string "HOENN to be easily stopped.\p"
+	.string "but Devon has too much support in\n"
+	.string "Hoenn to be easily opposed.\p"
 	.string "If we want to do something, we must act\n"
 	.string "cautiously to avoid a big scandal.\p"
 	.string "But I'm digressing…\p"
@@ -213,12 +195,9 @@ RustboroCity_Gym_Text_ExplainSandstorm:
 	.string "if left unattended.\p"
 	.string "You can show him the badge, and tell him\n"
 	.string "that I sent you: he will trust me.\p"
-	.string "Thanks in advance, TRAINER.$"
-	.string "ROXANNE: Good luck in your adventure,\n"
-	.string "TRAINER!$"
+	.string "Thanks in advance, Trainer.$"
 
 RustboroCity_Gym_Text_GoodLuckRoxanne:
 	.string "Good luck in your adventure,\n"
-	.string "TRAINER!$"
-RustboroCity_Gym_Text_Vitamins:
-	.string "Received VITAMINS!$"
+	.string "Trainer!$"
+

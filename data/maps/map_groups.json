@@ -99,7 +99,8 @@
     "LowerRoute115",
     "BrineCave",
     "OldaleRuins",
-    "GraniteCaveEntrance"
+    "GraniteCaveEntrance",
+    "Rustboro_FillerWest"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -175,7 +176,8 @@
     "PetalburgCity_House2",
     "PetalburgCity_PokemonCenter_1F",
     "PetalburgCity_PokemonCenter_2F",
-    "PetalburgCity_Mart"
+    "PetalburgCity_Mart",
+    "PetalburgCity_GymInterior"
   ],
   "gMapGroup_IndoorSlateport": [
     "SlateportCity_SternsShipyard_1F",
@@ -221,7 +223,8 @@
     "RustboroCity_Flat2_2F",
     "RustboroCity_Flat2_3F",
     "RustboroCity_House3",
-    "RustboroCity_Gym_Arena"
+    "RustboroCity_Gym_Arena",
+    "RustboroCity_GymInterior"
   ],
   "gMapGroup_IndoorFortree": [
     "FortreeCity_House1",

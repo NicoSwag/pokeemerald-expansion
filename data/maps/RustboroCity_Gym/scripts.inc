@@ -91,10 +91,9 @@ RustboroCity_Gym_EventScript_DefeatAll::
 	end
 
 RustboroCity_Gym_Text_LassMovingAway:
-	.string "Hi! I'm ROXANNE's assistant.\p"
-	.string "It looks like you defeated every\n"
-	.string "TRAINER in this GYM!\p"
-	.string "Proceed, then!$"
+	.string "Hi! I'm the Gym Leader's assistant.\p"
+	.string "Miss Roxanne will be seeing you soon.\p"
+	.string "This way, if you please.$"
 
 RustboroCity_Gym_Text_GoodJob:
 	.string "Outstanding work!\p"
@@ -118,30 +117,28 @@ RustboroCity_Gym_Text_WaitHere:
 	.string "Now wait here, please.$"
 
 RustboroCity_Gym_Text_ClassStarting:
-	.string "ROXANNE: Good day, class!\p"
+	.string "Roxanne: Good day, class!\p"
 	.string "Today we'll be covering…\n"
-	.string "GYM challenges!$"
+	.string "Gym challenges!$"
 
 RustboroCity_Gym_Text_GymBattles:
-	.string "GYM challenges are special\n"
-	.string "battles designed by GYM LEADERS.\p"
+	.string "Gym challenges are special\n"
+	.string "battles designed by Gym Leaders.\p"
 	.string "Their purpose is to make sure\n"
-	.string "that TRAINERS that want to sign\l"
-	.string "up to the EVER GRANDE CONFERENCE\l"
+	.string "that Trainers that want to sign\l"
+	.string "up to the Ever Grande Conference\l"
 	.string "are up to standards.$"
 
 RustboroCity_Gym_Text_DifferentChallenges:
-	.string "Each GYM LEADER usually\n"
+	.string "Each Gym Leaders usually\n"
 	.string "specializes in a single type,\l"
-	.string "but TRAINERS must be prepared\l"
+	.string "but Trainers must be prepared\l"
 	.string "to face unexpected matchups.$"
 
 RustboroCity_Gym_Text_SeeMeAfterClass:
 	.string "Finally, the reward for passing\n"
-	.string "a GYM challenge is a cash prize,\l"
-	.string "a TECHNICAL MACHINE, several\l"
-	.string "VITAMINS for your POKEMON and a\l"
-	.string "badge.\p"
+	.string "a Gym challenge is a cash prize,\l"
+	.string "a Technical Machine, and a badge\p"
 	.string "Did you get all of that?\n"
 	.string "Well, either way…\p"
 	.string "I'll be expecting you after class.$"
@@ -316,76 +313,71 @@ RustboroCity_Gym_EventScript_RegisterRoxanne::
 	end
 
 RustboroCity_Gym_Text_GymGuideAdvice:
-	.string "Yo, how's it going?\p"
-	.string "Listen, my friend!\n"
-	.string "Would you like to take on the EVER-\l"
-	.string "GRANDE CONFERENCE?\p"
-	.string "I'm no TRAINER, not me, but I can\n"
-	.string "sure give you winning advice.\p"
-	.string "That's settled, then! We'll aim for the\n"
-	.string "victory together!\p"
-	.string "It's your goal as a TRAINER to collect\n"
-	.string "GYM BADGES, am I right?\p"
-	.string "But GYM LEADERS aren't pushovers!\p"
-	.string "And that's where I come in!\n"
+	.string "Well met, young trainer!\n"
+	.string "If you hope to challenge the Ever Grande\l"
+	.string "Conference, you better heed my advice.\p"
+	.string "It's your goal as a Trainer to collect\n"
+	.string "Gym Badges, am I right?\p"
+	.string "But Gym Leaders aren't pushovers!\p"
+	.string "And that's where I come in.\n"
 	.string "I'm here to provide expert advice!\p"
-	.string "ROXANNE, the GYM LEADER, is a user\n"
-	.string "of ROCK-type POKéMON.\p"
+	.string "Gyms challenges are gauntlet designed to\n"
+	.string "certify the skill level of Trainers.\p"
+	.string "Once you go enter, there is no way out\n"
+	.string "until you defeat the Gym Leader.\p"
+	.string "So make sure to bring your best team!\p"
+	.string "Each fight is designed to test your skills\n"
+	.string "and knowledge.\p"
+	.string "Therefore, even regular Trainers will provide\n"
+	.string "much more of a challenge.\p"
+	.string "On the flip side, your team will be healed after\n"
+	.string "every battle, so feel free to go all out.\p"
+	.string "Now, about the Gym Leader.\p"
+	.string "ROXANNE is a user of ROCK-type POKéMON.\p"
 	.string "The ROCK type is very durable, but\n"
 	.string "it can't stand WATER-type and\l"
 	.string "GRASS-type moves.\p"
-	.string "Come see me afterwards, if you beat\n"
-	.string "the GYM LEADER.\p"
-	.string "Oh, and one final word of advice…\p"
-	.string "It doesn't matter how many TRAINERS\n"
-	.string "you've defeated: if you step out of\l"
-	.string "here, you'll have to fight them all over\l"
-	.string "again.\p"
-	.string "In other words: make sure to bring a\n"
-	.string "team that can overcome any challenge.\p"
 	.string "Well, go for it!$"
 
 RustboroCity_Gym_Text_GymGuidePostVictory:
 	.string "Whoa! What a breathtaking victory!\n"
-	.string "My cheering must've worked!\p"
-	.string "Great!\n"
-	.string "Check your TRAINER CARD.\p"
-	.string "The STONE BADGE you got should be\n"
+	.string "I knew you could do it!\p"
+	.string "Check your Trainer Card.\p"
+	.string "The Stome Badge you got should be\n"
 	.string "properly recorded on it.\p"
 	.string "In other words…\p"
 	.string "You've climbed the first step on\n"
-	.string "the stairs to glory!\p"
-	.string "That's got to feel awesome!$"
+	.string "the stairs to glory!$"
 
 RustboroCity_Gym_Text_JoshIntro:
-	.string "Don't take us GYM TRAINERS lightly!\n"
+	.string "Don't take us Gym Trainers lightly!\n"
 	.string "I'll show you why we're better!$"
 
 RustboroCity_Gym_Text_JoshDefeat:
 	.string "You were too good for me…$"
 
 RustboroCity_Gym_Text_JoshPostBattle:
-	.string "ROXANNE uses four different\n"
-	.string "POKéMON, so you better be ready!$"
+	.string "Roxanne uses four different\n"
+	.string "Pokémon, so you better be ready!$"
 
 RustboroCity_Gym_Text_TommyIntro:
 	.string "If you can't beat me, you won't stand\n"
-	.string "a chance against ROXANNE!$"
+	.string "a chance against Roxanne!$"
 
 RustboroCity_Gym_Text_TommyDefeat:
 	.string "Wow! You've got some potential!$"
 
 RustboroCity_Gym_Text_TommyPostBattle:
-	.string "Watch out for ROXANNE's fearsome\n"
-	.string "SANDSTORM.\p"
-	.string "If you aren't prepared, her ONIX\n"
+	.string "Watch out for Roxanne's fearsome\n"
+	.string "Sandstorm.\p"
+	.string "If you aren't prepared, her Onix\n"
 	.string "will crush you with overwhelming\l"
 	.string "speed and power!$"
 
 RustboroCity_Gym_Text_MarcIntro:
 	.string "We might be in the middle of a museum,\n"
 	.string "but so what?\p"
-	.string "My ROCK POKéMON need room to\n"
+	.string "My Rock Pokémon need room to\n"
 	.string "rampage!$"
 
 RustboroCity_Gym_Text_MarcDefeat:
@@ -393,17 +385,17 @@ RustboroCity_Gym_Text_MarcDefeat:
 	.string "Our challenger is one feisty customer!$"
 
 RustboroCity_Gym_Text_MarcPostBattle:
-	.string "A hint to defeat ROXANNE?\n"
+	.string "A hint to defeat Roxanne?\n"
 	.string "Sure, you've earned it.\p"
-	.string "The secondary types of her POKéMON\n"
-	.string "are FLYING, STEEL, WATER and GROUND,\l"
+	.string "The secondary types of her Pokémon\n"
+	.string "are Flying, Steel, Water and Ground,\l"
 	.string "in this order.\p"
 	.string "If you need a refresher on types,\n"
-	.string "you should go to RUSTBORO'S TRAINER\l"
-	.string "SCHOOL.$"
+	.string "you should go to Rustboro's Trainer\l"
+	.string "School.$"
 
 RustboroCity_Gym_Text_RoxanneIntro:
-	.string "Hello, I am ROXANNE, the RUSTBORO\n"
+	.string "Hello, I am Roxanne, the Rustboro\n"
 	.string "POKéMON GYM LEADER.\p"
 	.string "I became a GYM LEADER so that I might\n"
 	.string "apply what I learned at the POKéMON\l"

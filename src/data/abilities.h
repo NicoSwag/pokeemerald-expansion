@@ -1110,9 +1110,8 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_BIG_PECKS] =
     {
         .name = _("Big Pecks"),
-        .description = COMPOUND_STRING("Prevents Defense loss."),
+        .description = COMPOUND_STRING("Lowered stats up Defense."),
         .aiRating = 1,
-        .breakable = TRUE,
     },
 
     [ABILITY_SAND_RUSH] =

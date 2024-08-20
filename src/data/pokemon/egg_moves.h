@@ -1477,17 +1477,14 @@ const u16 gEggMoves[] = {
         MOVE_HURRICANE),
 
     egg_moves(WINGULL,
-        MOVE_MIST,
-        MOVE_TWISTER,
-        MOVE_AGILITY,
-        MOVE_GUST,
-        MOVE_WATER_SPORT,
-        MOVE_AQUA_RING,
-        MOVE_KNOCK_OFF,
-        MOVE_BRINE,
-        MOVE_ROOST,
         MOVE_SOAK,
         MOVE_WIDE_GUARD),
+
+    egg_moves(PELIPPER,
+        MOVE_SOAK,
+        MOVE_WIDE_GUARD,
+        MOVE_GARGLE,
+        MOVE_BODY_PRESS),
 
     egg_moves(RALTS,
         MOVE_SYNCHRONOISE,

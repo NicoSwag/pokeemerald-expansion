@@ -70,6 +70,7 @@
 #define MAP_BRINE_CAVE            (61 | (0 << 8))
 #define MAP_OLDALE_RUINS          (62 | (0 << 8))
 #define MAP_GRANITE_CAVE_ENTRANCE (63 | (0 << 8))
+#define MAP_RUSTBORO_FILLER_WEST  (64 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))
@@ -146,6 +147,7 @@
 #define MAP_PETALBURG_CITY_POKEMON_CENTER_1F (4 | (8 << 8))
 #define MAP_PETALBURG_CITY_POKEMON_CENTER_2F (5 | (8 << 8))
 #define MAP_PETALBURG_CITY_MART              (6 | (8 << 8))
+#define MAP_PETALBURG_CITY_GYM_INTERIOR      (7 | (8 << 8))
 
 // gMapGroup_IndoorSlateport
 #define MAP_SLATEPORT_CITY_STERNS_SHIPYARD_1F      (0 | (9 << 8))
@@ -192,6 +194,7 @@
 #define MAP_RUSTBORO_CITY_FLAT2_3F          (15 | (11 << 8))
 #define MAP_RUSTBORO_CITY_HOUSE3            (16 | (11 << 8))
 #define MAP_RUSTBORO_CITY_GYM_ARENA         (17 | (11 << 8))
+#define MAP_RUSTBORO_CITY_GYM_INTERIOR      (18 | (11 << 8))
 
 // gMapGroup_IndoorFortree
 #define MAP_FORTREE_CITY_HOUSE1            (0 | (12 << 8))

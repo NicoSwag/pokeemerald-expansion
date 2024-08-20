@@ -65,12 +65,14 @@
 #include "constants/hold_effects.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "constants/map_types.h"
 #include "constants/party_menu.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "cable_club.h"
 #include "level_caps.h"
+#include "overworld.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
@@ -5707,7 +5709,7 @@ static void WaitForEvoSceneToFinish(void)
 }
 
 static void ReturnFromBattleToOverworld(void)
-{   if(FlagGet(FLAG_HEAL_AFTER_BATTLE) == TRUE)
+{   if(GetCurrentMapBattleScene() == MAP_BATTLE_SCENE_GYM)
             HealPlayerParty();
     if (!(gBattleTypeFlags & BATTLE_TYPE_LINK))
     {

@@ -3474,6 +3474,35 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .battleAnimScript = Move_WATERFALL,
     },
 
+
+    [MOVE_STORM_SURGE] =
+    {
+        .name = COMPOUND_STRING("Storm Surge"),
+        .description = COMPOUND_STRING(
+            "Charges the foe with speed\n"
+            "that can make it flinch."),
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_FLYING,
+        .accuracy = 100,
+        .pp = 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        #if B_UPDATED_MOVE_DATA >= GEN_4
+            .additionalEffects = ADDITIONAL_EFFECTS({
+                .moveEffect = MOVE_EFFECT_FLINCH,
+                .chance = 20,
+            }),
+        #endif
+        .contestEffect = CONTEST_EFFECT_BETTER_IF_LAST,
+        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_RAIN_DANCE},
+        .battleAnimScript = Move_SKY_DROP,
+    },
+
     [MOVE_CLAMP] =
     {
         .name = COMPOUND_STRING("Clamp"),

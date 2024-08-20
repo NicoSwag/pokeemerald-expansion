@@ -495,12 +495,12 @@ OldaleTown_Movement_Ledyba:
 	
 
 OldaleTown_Text_SavingMyProgress:
-	.string "I've heard that the best way\n"
-	.string "of making a POKEMON stronger is\l"
-	.string "to feed it VITAMINS.\p"
-	.string "Supposedly, they're distributed by\n"
-	.string "the POKEMON LEAGUE to particularly\l"
-	.string "strong trainers.$"
+	.string "There are many ways to make a\n"
+	.string "Pokémon stronger.\p"
+	.string "Defeating enemies is one, but it\n"
+	.string "won't always cut it.\p"
+	.string "I've heard that Gyms sell items that\n"
+	.string "can improve the power of your Pokémon.$"
 
 OldaleTown_Text_IWorkAtPokemonMart:
 	.string "Hi!\n"

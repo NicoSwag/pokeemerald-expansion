@@ -64,6 +64,11 @@
 
 // Amount of EV modified by ITEM4_EV_HP, ITEM4_EV_ATK, ITEM5_EV_DEF, ITEM5_EV_SPEED, ITEM5_EV_SPDEF and ITEM5_EV_SPATK
 #define ITEM6_ADD_EV       10
+#define ITEM6_ADD_XS_EV       4
+#define ITEM6_ADD_S_EV       16
+#define ITEM6_ADD_M_EV       32
+#define ITEM6_ADD_L_EV       128
+#define ITEM6_ADD_XL_EV       252
 #define ITEM6_SUBTRACT_EV -10
 #define ITEM6_ADD_ONE_EV    1
 #define ITEM6_RESET_EV      0

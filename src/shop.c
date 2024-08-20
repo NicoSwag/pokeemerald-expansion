@@ -568,8 +568,8 @@ static void BuyMenuBuildListMenuTemplate(void)
     u16 i;
     u16 added_TMs = 0;
     i=0;
-    if(gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP))
-    added_TMs = FlagGet(FLAG_CANDY_IN_SHOPS) + FlagGet(FLAG_HELPED_LEDYBA) + FlagGet(FLAG_RECEIVED_TM02) + FlagGet(FLAG_ITEM_PETALBURG_WOODS_QUASH) + FlagGet(FLAG_RECEIVED_TM04) + FlagGet(FLAG_RECEIVED_TM05) + FlagGet(FLAG_RECEIVED_TM06) + FlagGet(FLAG_ITEM_RUSTBORO_CITY_X_DEFEND) + FlagGet(FLAG_RECEIVED_TM08) + FlagGet(FLAG_RECEIVED_TM09)
+    if(gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR))
+    added_TMs = FlagGet(FLAG_HELPED_LEDYBA) + FlagGet(FLAG_RECEIVED_TM02) + FlagGet(FLAG_ITEM_PETALBURG_WOODS_QUASH) + FlagGet(FLAG_RECEIVED_TM04) + FlagGet(FLAG_RECEIVED_TM05) + FlagGet(FLAG_RECEIVED_TM06) + FlagGet(FLAG_ITEM_RUSTBORO_CITY_X_DEFEND) + FlagGet(FLAG_RECEIVED_TM08) + FlagGet(FLAG_RECEIVED_TM09)
     + FlagGet(FLAG_RECEIVED_TM10)
     + FlagGet(FLAG_RECEIVED_TM11)
     + FlagGet(FLAG_RECEIVED_PLAY_ROUGH);
@@ -579,29 +579,27 @@ static void BuyMenuBuildListMenuTemplate(void)
         BuyMenuSetListEntry(&sListMenuItems[i], sMartInfo.itemList[i], sItemNames[i]);
 
     
-    if((FlagGet(FLAG_CANDY_IN_SHOPS) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
-    StringCopy(sItemNames[i], gText_RareCandy);
-    sListMenuItems[i].name = sItemNames[i];
-    sListMenuItems[i].id = ITEM_RARE_CANDY;
-    i++;
-    }
+
     
     
-    if((FlagGet(FLAG_HELPED_LEDYBA) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    if((FlagGet(FLAG_HELPED_LEDYBA) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM01);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM01;
     i++;
     }
 
-    if((FlagGet(FLAG_RECEIVED_TM02) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    if((FlagGet(FLAG_RECEIVED_TM02) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM02);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM02;
     i++;
     }
 
-    if((FlagGet(FLAG_ITEM_PETALBURG_WOODS_QUASH) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    if((FlagGet(FLAG_ITEM_PETALBURG_WOODS_QUASH) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM03);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM03;
@@ -609,56 +607,64 @@ static void BuyMenuBuildListMenuTemplate(void)
 
     }
 
-    if((FlagGet(FLAG_RECEIVED_TM04) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    if((FlagGet(FLAG_RECEIVED_TM04) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM04);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM04;
     i++;
     }
 
-    if((FlagGet(FLAG_RECEIVED_TM05) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    if((FlagGet(FLAG_RECEIVED_TM05) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM05);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM05;
     i++;
     }
 
-    if((FlagGet(FLAG_RECEIVED_TM06) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    if((FlagGet(FLAG_RECEIVED_TM06) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM06);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM06;
     i++;
     }
 
-    if((FlagGet(FLAG_ITEM_RUSTBORO_CITY_X_DEFEND) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    if((FlagGet(FLAG_ITEM_RUSTBORO_CITY_X_DEFEND) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM07);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM07;
     i++;
 
     }
-    if((FlagGet(FLAG_RECEIVED_TM08) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    if((FlagGet(FLAG_RECEIVED_TM08) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM08);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM08;
     i++;
     }
 
-    if((FlagGet(FLAG_RECEIVED_TM09) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    if((FlagGet(FLAG_RECEIVED_TM09) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM09);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM09;
     i++;
     }
     
-    if((FlagGet(FLAG_RECEIVED_TM10) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    if((FlagGet(FLAG_RECEIVED_TM10) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM10);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM10;
     i++;
     }
 
-    if((FlagGet(FLAG_RECEIVED_TM11) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    if((FlagGet(FLAG_RECEIVED_TM11) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM11);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM11;
@@ -666,7 +672,8 @@ static void BuyMenuBuildListMenuTemplate(void)
     }
 
 
-    if((FlagGet(FLAG_RECEIVED_PLAY_ROUGH) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP)){
+    if((FlagGet(FLAG_RECEIVED_PLAY_ROUGH) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_ENTRANCE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM12);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM12;

@@ -30,6 +30,13 @@ RustboroCity_EventScript_ResetGymTrainers::
 	end
 
 
+RustboroCity_EventScript_GameBoy::
+	msgbox  RustboroCity_Text_Gameboy, MSGBOX_NPC
+	release
+	end
+
+
+
 RustboroCity_OnTransition:
 	setflag FLAG_VISITED_RUSTBORO_CITY
 	call Common_EventScript_SetupRivalGfxId
@@ -506,7 +513,7 @@ RustboroCity_EventScript_LittleGirl::
 	end
 
 RustboroCity_EventScript_Bodyguards::
-	msgbox RustboroCity_Text_Bodyguards, MSGBOX_DEFAULT
+	msgbox RustboroCity_Text_Bodyguards, MSGBOX_NPC
 	release
 	closemessage
 	end
@@ -2134,3 +2141,34 @@ RustboroCity_Movement_PeekoLeave:
 	walk_left
 	walk_left
 	step_end
+
+RustboroCity_Text_Gameboy:
+	.string "Sometimes I can hear voices from the\n"
+	.string "sewers.\p"
+	.string "Isn't that scary?\p"
+	.string "I tried sneaking in from the manholes,\n"
+	.string "but I wasn't strong enough.\p"
+	.string "If only I had a Pokémon…$"
+
+RustboroCity_EventScript_SewerBar::
+	msgbox RustboroCity_Text_SewerBar, MSGBOX_SIGN
+	closemessage
+	end
+
+
+RustboroCity_Text_SewerBar:
+	.string "A locked gate.\p"
+	.string "It's too strong to force it\n"
+	.string "open.$"
+
+
+RustboroCity_EventScript_ManHole::
+	msgbox RustboroCity_Text_Manhole,MSGBOX_SIGN
+	closemessage
+	end
+
+
+RustboroCity_Text_Manhole:
+	.string "A suspicuous manhole.\p"
+	.string "A Pokémon might be strong enough to\n"
+	.string "force it open.$"

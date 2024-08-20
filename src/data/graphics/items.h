@@ -2034,6 +2034,8 @@ const u32 gItemIconPalette_StellarTeraShard[] = INCBIN_U32("graphics/items/icon_
 // Mochi
 
 const u32 gItemIcon_Mochi[] = INCBIN_U32("graphics/items/icons/mochi.4bpp.lz");
+const u32 gItemIcon_PunchingBag[] = INCBIN_U32("graphics/items/icons/punching_bag.4bpp.lz");
+const u32 gItemIconPalette_PunchingBag[] = INCBIN_U32("graphics/items/icon_palettes/punching_bag.gbapal.lz");
 const u32 gItemIconPalette_HealthMochi[] = INCBIN_U32("graphics/items/icon_palettes/health_mochi.gbapal.lz");
 const u32 gItemIconPalette_MuscleMochi[] = INCBIN_U32("graphics/items/icon_palettes/muscle_mochi.gbapal.lz");
 const u32 gItemIconPalette_ResistMochi[] = INCBIN_U32("graphics/items/icon_palettes/resist_mochi.gbapal.lz");
@@ -2041,6 +2043,12 @@ const u32 gItemIconPalette_GeniusMochi[] = INCBIN_U32("graphics/items/icon_palet
 const u32 gItemIconPalette_CleverMochi[] = INCBIN_U32("graphics/items/icon_palettes/clever_mochi.gbapal.lz");
 const u32 gItemIconPalette_SwiftMochi[] = INCBIN_U32("graphics/items/icon_palettes/swift_mochi.gbapal.lz");
 const u32 gItemIconPalette_FreshStartMochi[] = INCBIN_U32("graphics/items/icon_palettes/fresh_start_mochi.gbapal.lz");
+const u32 gItemIconPalette_PomegSmoothie[] = INCBIN_U32("graphics/items/icon_palettes/pomeg_smoothie.gbapal.lz");
+const u32 gItemIconPalette_KelpsySmoothie[] = INCBIN_U32("graphics/items/icon_palettes/kelpsy_smoothie.gbapal.lz");
+const u32 gItemIconPalette_QualotSmoothie[] = INCBIN_U32("graphics/items/icon_palettes/qualot_smoothie.gbapal.lz");
+const u32 gItemIconPalette_HondewSmoothie[] = INCBIN_U32("graphics/items/icon_palettes/hondew_smoothie.gbapal.lz");
+const u32 gItemIconPalette_GrepaSmoothie[] = INCBIN_U32("graphics/items/icon_palettes/grepa_smoothie.gbapal.lz");
+const u32 gItemIconPalette_TamatoSmoothie[] = INCBIN_U32("graphics/items/icon_palettes/tamato_smoothie.gbapal.lz");
 
 // Ogerpon masks
 

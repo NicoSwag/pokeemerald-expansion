@@ -1341,3 +1341,7 @@ $(MID_SUBDIR)/mus_hidden_highlands.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
 
 
+$(MID_SUBDIR)/mus_black_city.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+

@@ -370,10 +370,11 @@ PlayersHouse_1F_Text_Vigoroth2:
 	.string "Huggoh, uggo uggo…$"
 
 PlayersHouse_1F_Text_ReportFromPetalburgGym:
-	.string "INTERVIEWER: …And how do you respond\n"
-	.string "to the allegations of item abuse\l"
-	.string "taking place in your GYM?\p"
-	.string "DAD: Oops! I just remembered!\n"
+	.string "Interviewer: …One last question:\n"
+	.string "what would be your advice to young\l"
+	.string "Trainers seeking to become stronger?\p"
+	.string "Dad: Well, you see…\p"
+	.string "Oops! I just remembered!\n"
 	.string "I have a very important meeting!\p"
 	.string "Sorry, gotta go!$"
 

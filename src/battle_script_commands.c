@@ -4832,7 +4832,7 @@ static void Cmd_getexp(void)
                     PlayBGM(MUS_VICTORY_WILD);
                     gBattleStruct->wildVictorySong++;
                 }
-                
+
                 if (IsValidForBattle(&gPlayerParty[*expMonId]))
                 {
                     if (wasSentOut)
@@ -4908,7 +4908,6 @@ static void Cmd_getexp(void)
 
                     MonGainEVs(&gPlayerParty[*expMonId], gBattleMons[gBattlerFainted].species);
                 }
-                
                 gBattleScripting.getexpState++;
             }
         }
@@ -5027,6 +5026,8 @@ bool32 NoAliveMonsForPlayer(void)
 
     return (HP_count == 0);
 }
+
+
 
 static bool32 NoAliveMonsForOpponent(void)
 {
@@ -5717,8 +5718,7 @@ static void Cmd_playstatchangeanimation(void)
                         && ability != ABILITY_WHITE_SMOKE
                         && !((ability == ABILITY_KEEN_EYE || ability == ABILITY_MINDS_EYE) && currStat == STAT_ACC)
                         && !(B_ILLUMINATE_EFFECT >= GEN_9 && ability == ABILITY_ILLUMINATE && currStat == STAT_ACC)
-                        && !(ability == ABILITY_HYPER_CUTTER && currStat == STAT_ATK)
-                        && !(ability == ABILITY_BIG_PECKS && currStat == STAT_DEF))
+                        && !(ability == ABILITY_HYPER_CUTTER && currStat == STAT_ATK))
                 {
                     if (gBattleMons[battler].statStages[currStat] > MIN_STAT_STAGE)
                     {
@@ -8227,8 +8227,8 @@ struct TrainerMoney
 
 const struct TrainerMoney gTrainerMoneyTable[] =
 {
-    {TRAINER_CLASS_TEAM_AQUA, 5},
-    {TRAINER_CLASS_AQUA_ADMIN, 15},
+    {TRAINER_CLASS_TEAM_AQUA, 10},
+    {TRAINER_CLASS_AQUA_ADMIN, 20},
     {TRAINER_CLASS_AQUA_LEADER, 20},
     {TRAINER_CLASS_AROMA_LADY, 10},
     {TRAINER_CLASS_RUIN_MANIAC, 15},
@@ -8239,15 +8239,15 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_COOLTRAINER, 12},
     {TRAINER_CLASS_HEX_MANIAC, 6},
     {TRAINER_CLASS_LADY, 10},
-    {TRAINER_CLASS_BEAUTY, 20},
-    {TRAINER_CLASS_RICH_BOY, 25},
+    {TRAINER_CLASS_BEAUTY, 8},
+    {TRAINER_CLASS_RICH_BOY, 30},
     {TRAINER_CLASS_POKEMANIAC, 15},
     {TRAINER_CLASS_SWIMMER_M, 2},
-    {TRAINER_CLASS_BLACK_BELT, 7},
-    {TRAINER_CLASS_DEVON_EMPLOYEE, 20},
-    {TRAINER_CLASS_ENGINEER, 9},
+    {TRAINER_CLASS_BLACK_BELT, 8},
+    {TRAINER_CLASS_DEVON_EMPLOYEE, 25},
+    {TRAINER_CLASS_ENGINEER, 10},
     {TRAINER_CLASS_MINER, 8},
-    {TRAINER_CLASS_SCIENTIST, 10},
+    {TRAINER_CLASS_SCIENTIST, 15},
     {TRAINER_CLASS_GUITARIST, 8},
     {TRAINER_CLASS_KINDLER, 8},
     {TRAINER_CLASS_CAMPER, 4},
@@ -8256,34 +8256,34 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_PSYCHIC, 6},
     {TRAINER_CLASS_GENTLEMAN, 20},
     {TRAINER_CLASS_ELITE_FOUR, 25},
-    {TRAINER_CLASS_LEADER, 30},
+    {TRAINER_CLASS_LEADER, 50},
     {TRAINER_CLASS_SCHOOL_KID, 5},
     {TRAINER_CLASS_SR_AND_JR, 4},
     {TRAINER_CLASS_POKEFAN, 20},
     {TRAINER_CLASS_EXPERT, 10},
-    {TRAINER_CLASS_YOUNGSTER, 5},
+    {TRAINER_CLASS_YOUNGSTER, 4},
     {TRAINER_CLASS_CHAMPION, 50},
-    {TRAINER_CLASS_FISHERMAN, 5},
+    {TRAINER_CLASS_FISHERMAN, 6},
     {TRAINER_CLASS_TRIATHLETE, 10},
     {TRAINER_CLASS_CREEPING, 0},
     {TRAINER_CLASS_DRAGON_TAMER, 12},
     {TRAINER_CLASS_BIRD_KEEPER, 8},
     {TRAINER_CLASS_NINJA_BOY, 3},
-    {TRAINER_CLASS_BATTLE_GIRL, 6},
+    {TRAINER_CLASS_BATTLE_GIRL, 8},
     {TRAINER_CLASS_PARASOL_LADY, 10},
     {TRAINER_CLASS_SWIMMER_F, 2},
     {TRAINER_CLASS_PICNICKER, 4},
-    {TRAINER_CLASS_TWINS, 3},
+    {TRAINER_CLASS_TWINS, 9},
     {TRAINER_CLASS_SAILOR, 8},
     {TRAINER_CLASS_COLLECTOR, 15},
     {TRAINER_CLASS_RIVAL, 20},
     {TRAINER_CLASS_PKMN_BREEDER, 10},
     {TRAINER_CLASS_PKMN_RANGER, 12},
     {TRAINER_CLASS_TEAM_MAGMA, 10},
-    {TRAINER_CLASS_MAGMA_ADMIN, 10},
+    {TRAINER_CLASS_MAGMA_ADMIN, 20},
     {TRAINER_CLASS_MAGMA_LEADER, 20},
-    {TRAINER_CLASS_LASS, 5},
-    {TRAINER_CLASS_BUG_CATCHER, 4},
+    {TRAINER_CLASS_LASS, 7},
+    {TRAINER_CLASS_BUG_CATCHER, 5},
     {TRAINER_CLASS_HIKER, 10},
     {TRAINER_CLASS_YOUNG_COUPLE, 8},
     {TRAINER_CLASS_WINSTRATE, 10},
@@ -8319,8 +8319,6 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
         else
             moneyReward = gTrainerMoneyTable[i].money * 100;
     }
-    if(GetCurrentMapBattleScene() == MAP_BATTLE_SCENE_GYM)
-        moneyReward = 0;
     if(gSaveBlock1Ptr->beatTrainer[trainerId]==1)
         moneyReward = 0;
     return moneyReward;
@@ -12377,8 +12375,7 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
         else if (!certain
                 && (((battlerAbility == ABILITY_KEEN_EYE || battlerAbility == ABILITY_MINDS_EYE) && statId == STAT_ACC)
                 || (B_ILLUMINATE_EFFECT >= GEN_9 && battlerAbility == ABILITY_ILLUMINATE && statId == STAT_ACC)
-                || (battlerAbility == ABILITY_HYPER_CUTTER && statId == STAT_ATK)
-                || (battlerAbility == ABILITY_BIG_PECKS && statId == STAT_DEF)))
+                || (battlerAbility == ABILITY_HYPER_CUTTER && statId == STAT_ATK)))
         {
             if (flags == STAT_CHANGE_ALLOW_PTR)
             {

@@ -1719,6 +1719,8 @@ extern const u32 gItemIcon_FairyFeather[];
 extern const u32 gItemIconPalette_FairyFeather[];
 
 extern const u32 gItemIcon_Mochi[];
+extern const u32 gItemIcon_PunchingBag[];
+extern const u32 gItemIconPalette_PunchingBag[];
 extern const u32 gItemIconPalette_HealthMochi[];
 extern const u32 gItemIconPalette_MuscleMochi[];
 extern const u32 gItemIconPalette_ResistMochi[];
@@ -1726,6 +1728,12 @@ extern const u32 gItemIconPalette_GeniusMochi[];
 extern const u32 gItemIconPalette_CleverMochi[];
 extern const u32 gItemIconPalette_SwiftMochi[];
 extern const u32 gItemIconPalette_FreshStartMochi[];
+extern const u32 gItemIconPalette_PomegSmoothie[];
+extern const u32 gItemIconPalette_KelpsySmoothie[];
+extern const u32 gItemIconPalette_QualotSmoothie[];
+extern const u32 gItemIconPalette_HondewSmoothie[];
+extern const u32 gItemIconPalette_GrepaSmoothie[];
+extern const u32 gItemIconPalette_TamatoSmoothie[];
 
 extern const u32 gItemIcon_WellspringMask[];
 extern const u32 gItemIconPalette_WellspringMask[];

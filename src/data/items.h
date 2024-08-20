@@ -83,24 +83,24 @@ static const u8 sHealthFeatherDesc[]  = _("An item that raises\n"
                                           "the base HP of\n"
                                           "a Pokémon.");
 
-static const u8 sMuscleFeatherDesc[]  = _("An item that raises\n"
-                                          "the base Attack of\n"
+static const u8 sMuscleFeatherDesc[]  = _("Raises the Attack\n"
+                                          "Effort Values of\n"
                                           "a Pokémon.");
 
-static const u8 sResistFeatherDesc[]  = _("An item that raises\n"
-                                          "the base Defense\n"
-                                          "of a Pokémon.");
+static const u8 sResistFeatherDesc[]  = _("Raises the Defense\n"
+                                          "Effort Values of\n"
+                                          "a Pokémon.");
 
-static const u8 sGeniusFeatherDesc[]  = _("An item that raises\n"
-                                          "the base Sp. Atk.\n"
-                                          "of a Pokémon.");
+static const u8 sGeniusFeatherDesc[]  = _("Raises the Sp.Atk.\n"
+                                          "Effort Values of\n"
+                                          "a Pokémon.");
 
-static const u8 sCleverFeatherDesc[]  = _("An item that raises\n"
-                                          "the base Sp. Def.\n"
-                                          "of a Pokémon.");
+static const u8 sCleverFeatherDesc[]  = _("Raises the Sp.Def..\n"
+                                          "Effort Values of\n"
+                                          "a Pokémon.");
 
-static const u8 sSwiftFeatherDesc[]   = _("An item that raises\n"
-                                          "the base Speed of\n"
+static const u8 sSwiftFeatherDesc[]   = _("Raises the Speed\n"
+                                          "Effort Values of\n"
                                           "a Pokémon.");
 
 static const u8 sBigMushroomDesc[]    = _("A rare mushroom\n"
@@ -1967,9 +1967,9 @@ const struct Item gItemsInfo[] =
 
     [ITEM_EXP_CANDY_XS] =
     {
-        .name = HANDLE_EXPANDED_ITEM_NAME("Exp.Candy XS", "Exp. Candy XS"),
-        .pluralName = HANDLE_EXPANDED_ITEM_NAME("Exp.Candies XS", "Exp. Candies XS"),
-        .price = 20,
+        .name = _("ChocoSmoothie XS"),
+        .pluralName = _("ChocoSmoothies XS"),
+        .price = 300,
         .holdEffectParam = EXP_100,
         .description = COMPOUND_STRING(
             "Gives a very small\n"
@@ -1986,9 +1986,9 @@ const struct Item gItemsInfo[] =
 
     [ITEM_EXP_CANDY_S] =
     {
-        .name = HANDLE_EXPANDED_ITEM_NAME("Exp.Candy S", "Exp. Candy S"),
-        .pluralName = HANDLE_EXPANDED_ITEM_NAME("Exp.Candies S", "Exp. Candies S"),
-        .price = 240,
+        .name = _("ChocoSmoothie S"),
+        .pluralName = _("ChocoSmoothies S"),
+        .price = 800,
         .holdEffectParam = EXP_800,
         .description = COMPOUND_STRING(
             "Gives a small\n"
@@ -2005,9 +2005,9 @@ const struct Item gItemsInfo[] =
 
     [ITEM_EXP_CANDY_M] =
     {
-        .name = HANDLE_EXPANDED_ITEM_NAME("Exp.Candy M", "Exp. Candy M"),
-        .pluralName = HANDLE_EXPANDED_ITEM_NAME("Exp.Candies M", "Exp. Candies M"),
-        .price = 1000,
+        .name = _("ChocoSmoothie M"),
+        .pluralName = _("ChocoSmoothies M"),
+        .price = 1500,
         .holdEffectParam = EXP_3000,
         .description = COMPOUND_STRING(
             "Gives a moderate\n"
@@ -2024,8 +2024,8 @@ const struct Item gItemsInfo[] =
 
     [ITEM_EXP_CANDY_L] =
     {
-        .name = HANDLE_EXPANDED_ITEM_NAME("Exp.Candy L", "Exp. Candy L"),
-        .pluralName = HANDLE_EXPANDED_ITEM_NAME("Exp.Candies L", "Exp. Candies L"),
+        .name = _("ChocoSmoothie L"),
+        .pluralName = _("ChocoSmoothies L"),
         .price = 3000,
         .holdEffectParam = EXP_10000,
         .description = COMPOUND_STRING(
@@ -2043,9 +2043,9 @@ const struct Item gItemsInfo[] =
 
     [ITEM_EXP_CANDY_XL] =
     {
-        .name = HANDLE_EXPANDED_ITEM_NAME("Exp.Candy XL", "Exp. Candy XL"),
-        .pluralName = HANDLE_EXPANDED_ITEM_NAME("Exp.Candies XL", "Exp. Candies XL"),
-        .price = 10000,
+        .name = _("ChocoSmoothie XL"),
+        .pluralName = _("ChocoSmoothies M"),
+        .price = 5000,
         .holdEffectParam = EXP_30000,
         .description = COMPOUND_STRING(
             "Gives a very large\n"
@@ -13862,6 +13862,466 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_HealthMochi,
     },
 
+
+    [ITEM_HP_BAG_XS] =
+    {
+        .name = _("Hp Bag XS"),
+        .pluralName = _("Hp Bags XS"),
+        .price = 500,
+        .description = sHealthFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_HPBagXS,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_HP_BAG_S] =
+    {
+        .name = _("Hp Bag S"),
+        .pluralName = _("Hp Bags S"),
+        .price = 3000,
+        .description = sHealthFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_HPBagS,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_HP_BAG_M] =
+    {
+        .name = _("Hp Bag M"),
+        .pluralName = _("Hp Bags M"),
+        .price = 5000,
+        .description = sHealthFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_HPBagM,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_HP_BAG_L] =
+    {
+        .name = _("Hp Bag L"),
+        .pluralName = _("Hp Bags L"),
+        .price = 10000,
+        .description = sHealthFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_HPBagL,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+
+    [ITEM_HP_BAG_XL] =
+    {
+        .name = _("Hp Bag XL"),
+        .pluralName = _("Hp Bags XL"),
+        .price = 20000,
+        .description = sHealthFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_HPBagXL,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+
+    [ITEM_ATK_BAG_XS] =
+    {
+        .name = _("Atk. Bag XS"),
+        .pluralName = _("Atk. Bags XS"),
+        .price = 500,
+        .description = sMuscleFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_ATKBagXS,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_ATK_BAG_S] =
+    {
+        .name = _("Atk. Bag S"),
+        .pluralName = _("Atk. Bags S"),
+        .price = 3000,
+        .description = sMuscleFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_ATKBagS,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_ATK_BAG_M] =
+    {
+        .name = _("Atk. Bag M"),
+        .pluralName = _("Atk. Bags M"),
+        .price = 5000,
+        .description = sMuscleFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_ATKBagM,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_ATK_BAG_L] =
+    {
+        .name = _("Atk. Bag L"),
+        .pluralName = _("Atk. Bags L"),
+        .price = 10000,
+        .description = sMuscleFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_ATKBagL,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+
+    [ITEM_ATK_BAG_XL] =
+    {
+        .name = _("Atk. Bag XL"),
+        .pluralName = _("Atk. Bags XL"),
+        .price = 20000,
+        .description = sMuscleFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_ATKBagXL,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_SPATK_BAG_XS] =
+    {
+        .name = _("Sp.Atk.Bag XS"),
+        .pluralName = _("Sp.Atk.Bags XS"),
+        .price = 500,
+        .description = sGeniusFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPATKBagXS,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_SPATK_BAG_S] =
+    {
+        .name = _("Sp.Atk.Bag S"),
+        .pluralName = _("Sp.Atk.Bags S"),
+        .price = 3000,
+        .description = sGeniusFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPATKBagS,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_SPATK_BAG_M] =
+    {
+        .name = _("Sp.Atk.Bag M"),
+        .pluralName = _("Sp.Atk.Bags M"),
+        .price = 5000,
+        .description = sGeniusFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPATKBagM,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_SPATK_BAG_L] =
+    {
+        .name = _("Sp.Atk.Bag L"),
+        .pluralName = _("Sp.Atk.Bags L"),
+        .price = 10000,
+        .description = sGeniusFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPATKBagL,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+
+    [ITEM_SPATK_BAG_XL] =
+    {
+        .name = _("Sp.Atk.Bag XL"),
+        .pluralName = _("Sp.Atk.Bags XL"),
+        .price = 20000,
+        .description = sGeniusFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPATKBagXL,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_DEF_BAG_XS] =
+    {
+        .name = _("Def. Bag XS"),
+        .pluralName = _("Def. Bags XS"),
+        .price = 500,
+        .description = sResistFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_DEFBagXS,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_DEF_BAG_S] =
+    {
+        .name = _("Def. Bag S"),
+        .pluralName = _("Def. Bags S"),
+        .price = 3000,
+        .description = sResistFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_DEFBagS,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_DEF_BAG_M] =
+    {
+        .name = _("Def. Bag M"),
+        .pluralName = _("Def. Bags M"),
+        .price = 5000,
+        .description = sResistFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_DEFBagM,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_DEF_BAG_L] =
+    {
+        .name = _("Def. Bag L"),
+        .pluralName = _("Def. Bags L"),
+        .price = 10000,
+        .description = sResistFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_DEFBagL,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+
+    [ITEM_DEF_BAG_XL] =
+    {
+        .name = _("Def. Bag XL"),
+        .pluralName = _("Def. Bags XL"),
+        .price = 20000,
+        .description = sResistFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_DEFBagXL,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_SPDEF_BAG_XS] =
+    {
+        .name = _("Sp.Def. Bag XS"),
+        .pluralName = _("Sp.Def. Bags XS"),
+        .price = 500,
+        .description = sCleverFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPDEFBagXS,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_SPDEF_BAG_S] =
+    {
+        .name = _("Sp.Def. Bag S"),
+        .pluralName = _("Sp.Def. Bags S"),
+        .price = 3000,
+        .description = sCleverFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPDEFBagS,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_SPDEF_BAG_M] =
+    {
+        .name = _("Sp.Def. Bag M"),
+        .pluralName = _("Sp.Def. Bags M"),
+        .price = 5000,
+        .description = sCleverFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPDEFBagM,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_SPDEF_BAG_L] =
+    {
+        .name = _("Sp.Def. Bag L"),
+        .pluralName = _("Sp.Def. Bags L"),
+        .price = 10000,
+        .description = sCleverFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPDEFBagL,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+
+    [ITEM_SPDEF_BAG_XL] =
+    {
+        .name = _("Sp.Def. Bag XL"),
+        .pluralName = _("Sp.Def. Bags XL"),
+        .price = 20000,
+        .description = sCleverFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPDEFBagXL,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_SPEED_BAG_XS] =
+    {
+        .name = _("Speed Bag XS"),
+        .pluralName = _("Speed Bags XS"),
+        .price = 500,
+        .description = sSwiftFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPEEDBagXS,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_SPEED_BAG_S] =
+    {
+        .name = _("Speed Bag S"),
+        .pluralName = _("Speed Bags S"),
+        .price = 3000,
+        .description = sSwiftFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPEEDBagS,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_SPEED_BAG_M] =
+    {
+        .name = _("Speed Bag M"),
+        .pluralName = _("Speed Bags M"),
+        .price = 5000,
+        .description = sSwiftFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPEEDBagM,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+    [ITEM_SPEED_BAG_L] =
+    {
+        .name = _("Speed Bag L"),
+        .pluralName = _("Speed Bags L"),
+        .price = 10000,
+        .description = sSwiftFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPEEDBagL,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+
+    [ITEM_SPEED_BAG_XL] =
+    {
+        .name = _("Speed Bag XL"),
+        .pluralName = _("Speed Bags XL"),
+        .price = 20000,
+        .description = sSwiftFeatherDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SPEEDBagXL,
+        .flingPower = 30,
+        .iconPic = gItemIcon_PunchingBag,
+        .iconPalette = gItemIconPalette_PunchingBag,
+    },
+
+
+
     [ITEM_MUSCLE_MOCHI] =
     {
         .name = _("Muscle Mochi"),
@@ -13939,9 +14399,9 @@ const struct Item gItemsInfo[] =
 
     [ITEM_FRESH_START_MOCHI] =
     {
-        .name = HANDLE_EXPANDED_ITEM_NAME("FrshStrtMochi", "Fresh Start Mochi"),
-        .pluralName = HANDLE_EXPANDED_ITEM_NAME("FrshStrtMochi", "Fresh Start Mochi"),
-        .price = 300,
+        .name = _("Kale Smoothie"),
+        .pluralName = _("Kale Smoothies"),
+        .price = 1000,
         .description = COMPOUND_STRING(
             "An item that resets\n"
             "all base points of\n"
@@ -13954,6 +14414,121 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_Mochi,
         .iconPalette = gItemIconPalette_FreshStartMochi,
     },
+
+    [ITEM_POMEG_SMOOTHIE] =
+    {
+        .name = _("Pomeg Smoothie"),
+        .pluralName = _("Pomeg Smoothies"),
+        .price = 300,
+        .description = COMPOUND_STRING(
+            "Decreases the\n"
+            "HP Effort Values\n"
+            "by 10."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
+        .effect = gItemEffect_PomegBerry,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Mochi,
+        .iconPalette = gItemIconPalette_PomegSmoothie,
+    },
+
+
+    [ITEM_KELPSY_SMOOTHIE] =
+    {
+        .name = _("Kelpsy Smoothie"),
+        .pluralName = _("Kelpsy Smoothies"),
+        .price = 300,
+        .description = COMPOUND_STRING(
+            "Decreases the\n"
+            "Atk. Effort Values\n"
+            "by 10."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
+        .effect = gItemEffect_KelpsyBerry,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Mochi,
+        .iconPalette = gItemIconPalette_KelpsySmoothie,
+    },
+
+
+    [ITEM_QUALOT_SMOOTHIE] =
+    {
+        .name = _("Qualot Smoothie"),
+        .pluralName = _("Qualot Smoothies"),
+        .price = 300,
+        .description = COMPOUND_STRING(
+            "Decreases the\n"
+            "Def. Effort Values\n"
+            "by 10."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
+        .effect = gItemEffect_QualotBerry,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Mochi,
+        .iconPalette = gItemIconPalette_QualotSmoothie,
+    },
+
+
+    [ITEM_HONDEW_SMOOTHIE] =
+    {
+        .name = _("Hondew Smoothie"),
+        .pluralName = _("Hondew Smoothies"),
+        .price = 300,
+        .description = COMPOUND_STRING(
+            "Decreases the\n"
+            "Sp.Atk, Effort Values\n"
+            "by 10."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
+        .effect = gItemEffect_HondewBerry,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Mochi,
+        .iconPalette = gItemIconPalette_HondewSmoothie,
+    },
+
+
+    [ITEM_GREPA_SMOOTHIE] =
+    {
+        .name = _("Grepa Smoothie"),
+        .pluralName = _("Grepa Smoothies"),
+        .price = 300,
+        .description = COMPOUND_STRING(
+            "Decreases the\n"
+            "Sp.Def. Effort Values\n"
+            "by 10."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
+        .effect = gItemEffect_GrepaBerry,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Mochi,
+        .iconPalette = gItemIconPalette_GrepaSmoothie,
+    },
+
+
+    [ITEM_TAMATO_SMOOTHIE] =
+    {
+        .name = _("Tamato Smoothie"),
+        .pluralName = _("Tamato Smoothies"),
+        .price = 300,
+        .description = COMPOUND_STRING(
+            "Decreases the\n"
+            "Speed Effort Values\n"
+            "by 10."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
+        .effect = gItemEffect_TamatoBerry,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Mochi,
+        .iconPalette = gItemIconPalette_TamatoSmoothie,
+    },
+        
+        
 
     [ITEM_GLIMMERING_CHARM] =
     {

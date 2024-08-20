@@ -331,7 +331,7 @@
       "x": 16,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_PETALBURG_CITY_GYM",
+      "dest_map": "MAP_PETALBURG_CITY_GYM_INTERIOR",
       "dest_warp_id": "0"
     },
     {
