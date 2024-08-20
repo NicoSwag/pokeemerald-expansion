@@ -598,4 +598,4 @@ OldaleTown_Text_Girl2:
 	.string "back to the title screen!\p"
 	.string "I don't think he was all quite there,\n"
 	.string "but I'm sure there's some good advice\l"
-	.string "in there.$"
+	.string "in what he said.$"

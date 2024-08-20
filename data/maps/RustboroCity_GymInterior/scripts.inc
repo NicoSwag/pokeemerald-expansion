@@ -76,7 +76,7 @@ RustboroGym_Text_Boy:
 	.string "base stats, like Attack or Speed, right?\p"
 	.string "That's the easy part.\p"
 	.string "But each individual Pokémon has\n"
-	.string "something called Effort Values, or EVs.
+	.string "something called Effort Values, or EVs.\p"
 	.string "To put it simply, gaining EVs in a stat\n"
 	.string "makes it stronger.\p"
 	.string "Each Pokémon can only have a maximum of\n"

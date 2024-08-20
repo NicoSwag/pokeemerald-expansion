@@ -318,8 +318,9 @@ PlayersHouse_1F_Text_MaybeDadWillBeOn:
 	.string "Maybe DAD will be on!$"
 
 PlayersHouse_1F_Text_ItsOverWeMissedHim:
-	.string "MOM: Oh… It's over.\p"
-	.string "DAD is such a hardworker, isn't he?$"
+	.string "Mom: Oh… It cut out.\p"
+	.string "Your Dad always know what to say,\n"
+	.string "doesn't he?$"
 
 PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor:
 	.string "Oh, yes.\n"
@@ -370,13 +371,15 @@ PlayersHouse_1F_Text_Vigoroth2:
 	.string "Huggoh, uggo uggo…$"
 
 PlayersHouse_1F_Text_ReportFromPetalburgGym:
-	.string "Interviewer: …One last question:\n"
-	.string "what would be your advice to young\l"
-	.string "Trainers seeking to become stronger?\p"
-	.string "Dad: Well, you see…\p"
-	.string "Oops! I just remembered!\n"
+	.string "Interviewer: …And lastly, any\n"
+	.string "words of advice to aspiring young\l"
+	.string "Trainersr?\p"
+	.string "Dad: Well, as I always say…\p"
+	.string "…Oops! I just remembered!\n"
 	.string "I have a very important meeting!\p"
-	.string "Sorry, gotta go!$"
+	.string "Sorry, gotta go!\p"
+	.string "Interviewer: Wait, don't step on\n"
+	.string "the ca-$"
 
 PlayersHouse_1F_Text_TheresAMovieOnTV:
 	.string "There is a movie on TV.\p"

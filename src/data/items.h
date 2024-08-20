@@ -79,8 +79,8 @@ static const u8 sMaxReviveDesc[]      = _("Revives a fainted\n"
                                           "Pokémon with all\n"
                                           "its HP.");
 
-static const u8 sHealthFeatherDesc[]  = _("An item that raises\n"
-                                          "the base HP of\n"
+static const u8 sHealthFeatherDesc[]  = _("Raises the HP\n"
+                                          "Effort Values of\n"
                                           "a Pokémon.");
 
 static const u8 sMuscleFeatherDesc[]  = _("Raises the Attack\n"
@@ -95,7 +95,7 @@ static const u8 sGeniusFeatherDesc[]  = _("Raises the Sp.Atk.\n"
                                           "Effort Values of\n"
                                           "a Pokémon.");
 
-static const u8 sCleverFeatherDesc[]  = _("Raises the Sp.Def..\n"
+static const u8 sCleverFeatherDesc[]  = _("Raises the Sp.Def.\n"
                                           "Effort Values of\n"
                                           "a Pokémon.");
 
@@ -14018,8 +14018,8 @@ const struct Item gItemsInfo[] =
 
     [ITEM_SPATK_BAG_XS] =
     {
-        .name = _("Sp.Atk.Bag XS"),
-        .pluralName = _("Sp.Atk.Bags XS"),
+        .name = _("Sp.Atk. Bag XS"),
+        .pluralName = _("Sp.Atk. Bags XS"),
         .price = 500,
         .description = sGeniusFeatherDesc,
         .pocket = POCKET_ITEMS,
@@ -14033,8 +14033,8 @@ const struct Item gItemsInfo[] =
 
     [ITEM_SPATK_BAG_S] =
     {
-        .name = _("Sp.Atk.Bag S"),
-        .pluralName = _("Sp.Atk.Bags S"),
+        .name = _("Sp.Atk. Bag S"),
+        .pluralName = _("Sp.Atk. Bags S"),
         .price = 3000,
         .description = sGeniusFeatherDesc,
         .pocket = POCKET_ITEMS,
@@ -14048,8 +14048,8 @@ const struct Item gItemsInfo[] =
 
     [ITEM_SPATK_BAG_M] =
     {
-        .name = _("Sp.Atk.Bag M"),
-        .pluralName = _("Sp.Atk.Bags M"),
+        .name = _("Sp.Atk. Bag M"),
+        .pluralName = _("Sp.Atk. Bags M"),
         .price = 5000,
         .description = sGeniusFeatherDesc,
         .pocket = POCKET_ITEMS,
@@ -14063,8 +14063,8 @@ const struct Item gItemsInfo[] =
 
     [ITEM_SPATK_BAG_L] =
     {
-        .name = _("Sp.Atk.Bag L"),
-        .pluralName = _("Sp.Atk.Bags L"),
+        .name = _("Sp.Atk. Bag L"),
+        .pluralName = _("Sp.Atk. Bags L"),
         .price = 10000,
         .description = sGeniusFeatherDesc,
         .pocket = POCKET_ITEMS,
@@ -14079,8 +14079,8 @@ const struct Item gItemsInfo[] =
 
     [ITEM_SPATK_BAG_XL] =
     {
-        .name = _("Sp.Atk.Bag XL"),
-        .pluralName = _("Sp.Atk.Bags XL"),
+        .name = _("Sp.Atk. Bag XL"),
+        .pluralName = _("Sp.Atk. Bags XL"),
         .price = 20000,
         .description = sGeniusFeatherDesc,
         .pocket = POCKET_ITEMS,
@@ -14403,9 +14403,9 @@ const struct Item gItemsInfo[] =
         .pluralName = _("Kale Smoothies"),
         .price = 1000,
         .description = COMPOUND_STRING(
-            "An item that resets\n"
-            "all base points of\n"
-            "a Pokémon."),
+            "Lowers all Effort\n"
+            "Values of a Pokémon\n"
+            "to 0."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_ResetEVs,
@@ -14421,9 +14421,9 @@ const struct Item gItemsInfo[] =
         .pluralName = _("Pomeg Smoothies"),
         .price = 300,
         .description = COMPOUND_STRING(
-            "Decreases the\n"
-            "HP Effort Values\n"
-            "by 10."),
+            "Lowers the HP\n"
+            "Effort Values of\n"
+            "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
@@ -14440,9 +14440,9 @@ const struct Item gItemsInfo[] =
         .pluralName = _("Kelpsy Smoothies"),
         .price = 300,
         .description = COMPOUND_STRING(
-            "Decreases the\n"
-            "Atk. Effort Values\n"
-            "by 10."),
+            "Lowers the Attack\n"
+            "Effort Values of\n"
+            "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
@@ -14459,9 +14459,9 @@ const struct Item gItemsInfo[] =
         .pluralName = _("Qualot Smoothies"),
         .price = 300,
         .description = COMPOUND_STRING(
-            "Decreases the\n"
-            "Def. Effort Values\n"
-            "by 10."),
+            "Lowers the Defense\n"
+            "Effort Values of\n"
+            "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
@@ -14478,9 +14478,9 @@ const struct Item gItemsInfo[] =
         .pluralName = _("Hondew Smoothies"),
         .price = 300,
         .description = COMPOUND_STRING(
-            "Decreases the\n"
-            "Sp.Atk, Effort Values\n"
-            "by 10."),
+            "Lowers the Sp.Atk.\n"
+            "Effort Values of\n"
+            "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
@@ -14497,9 +14497,9 @@ const struct Item gItemsInfo[] =
         .pluralName = _("Grepa Smoothies"),
         .price = 300,
         .description = COMPOUND_STRING(
-            "Decreases the\n"
-            "Sp.Def. Effort Values\n"
-            "by 10."),
+            "Lowers the Sp.Def.\n"
+            "Effort Values of\n"
+            "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
@@ -14516,9 +14516,9 @@ const struct Item gItemsInfo[] =
         .pluralName = _("Tamato Smoothies"),
         .price = 300,
         .description = COMPOUND_STRING(
-            "Decreases the\n"
-            "Speed Effort Values\n"
-            "by 10."),
+            "Lowers the Speed\n"
+            "Effort Values of\n"
+            "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,

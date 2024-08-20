@@ -568,7 +568,8 @@
 #define MUS_AEGIS_CAVE 633
 #define MUS_HIDDEN_HIGHLANDS 634
 #define MUS_BLACK_CITY 635
-#define END_MUS                     635
+#define MUS_PYRITE_TOWN 636
+#define END_MUS                     636
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
 #define MUS_NONE                    0xFFFF

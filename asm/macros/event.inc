@@ -2291,6 +2291,7 @@
 	.2byte \slot
 	.endm
 
+
 	@ Toggles the Gigantamax Factor for a Pokemon.
 	@ Fails for Melmetal (vanilla behavior).
 	@ Sets VAR_RESULT to TRUE if it succeeds, and FALSE otherwise.
@@ -2399,6 +2400,8 @@
 	.macro setwilddoubleflag
 	callnative ScriptSetDoubleBattleFlag
 	.endm
+
+
 
 	@ When OW_USE_FAKE_RTC and OW_FLAG_PAUSE_TIME is assigned, this macro will stop the flow of time.
 	.macro pausefakertc

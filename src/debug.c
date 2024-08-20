@@ -4702,6 +4702,7 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_AEGIS_CAVE) \
     X(MUS_HIDDEN_HIGHLANDS) \
     X(MUS_BLACK_CITY) \
+    X(MUS_PYRITE_TOWN) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \

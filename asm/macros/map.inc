@@ -156,3 +156,4 @@
 	.macro map_header_flags allow_cycling:req, allow_escaping:req, allow_running:req, show_map_name:req
 	.byte ((\show_map_name & 1) << 3) | ((\allow_running & 1) << 2) | ((\allow_escaping & 1) << 1) | \allow_cycling
 	.endm
+

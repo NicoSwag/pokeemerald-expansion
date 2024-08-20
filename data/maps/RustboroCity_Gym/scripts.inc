@@ -1,8 +1,8 @@
 .set LOCALID_ROXANNE, 1
-.set LOCALID_LASS, 6
-
+.set LOCALID_LASS, 4
 RustboroCity_Gym_MapScripts::
 map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_Gym_OnTransition
+map_script MAP_SCRIPT_ON_LOAD, RustboroCity_Gym_OnLoad
 	.byte 0
 
 RustboroCity_Gym_EventScript_Roxanne::
@@ -19,13 +19,27 @@ RustboroCity_Gym_OnTransition:
 	goto_if_set FLAG_SAW_ROXANNE_CUTSCENE, RustboroCity_Gym_MoveLassRight
 	end
 
+RustboroCity_Gym_OnLoad:
+	goto_if_set FLAG_BADGE01_GET, RustboroCity_Gym_UnlockDoors
+	end
 
-RustboroCity_Gym_MoveLass:
+
+RustboroCity_Gym_TurnPlayerUp::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	return
+
+
+RustboroCity_Gym_UnlockDoors::
+	setmetatile 5, 23, METATILE_RustboroGym_RealDoorRustboro, FALSE
+	special DrawWholeMapView
+	end
+
+RustboroCity_Gym_MoveLass::
 	setobjectxyperm LOCALID_LASS, 4, 6
 	removeobject LOCALID_ROXANNE
 	end
 
-RustboroCity_Gym_MoveLassRight:
+RustboroCity_Gym_MoveLassRight::
 	removeobject LOCALID_LASS
 	removeobject LOCALID_ROXANNE
 	addobject LOCALID_LASS

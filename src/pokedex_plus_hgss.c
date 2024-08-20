@@ -5471,7 +5471,6 @@ static void PrintStatsScreen_Left(u8 taskId)
     u8 strBase[14];
     u8 EVs[6] = {sPokedexView->sPokemonStats.evYield_HP, sPokedexView->sPokemonStats.evYield_Speed, sPokedexView->sPokemonStats.evYield_Attack, sPokedexView->sPokemonStats.evYield_SpAttack, sPokedexView->sPokemonStats.evYield_Defense, sPokedexView->sPokemonStats.evYield_SpDefense};
     u8 differentEVs = 0;
-    u16 total = sPokedexView->sPokemonStats.baseHP + sPokedexView->sPokemonStats.baseSpeed + sPokedexView->sPokemonStats.baseSpAttack + sPokedexView->sPokemonStats.baseDefense + sPokedexView->sPokemonStats.baseSpDefense;
 
     //Base stats
     if (gTasks[taskId].data[5] == 0)
@@ -5502,9 +5501,6 @@ static void PrintStatsScreen_Left(u8 taskId)
         ConvertIntToDecimalStringN(strBase, sPokedexView->sPokemonStats.baseSpDefense, STR_CONV_MODE_RIGHT_ALIGN, 3);
         PrintStatsScreenTextSmall(WIN_STATS_LEFT, strBase, base_x+base_x_offset, base_y + base_y_offset*base_i);
         base_i++;
-        PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_StatsBst, base_x, base_y + base_y_offset*base_i);
-        ConvertIntToDecimalStringN(strBase, total, STR_CONV_MODE_RIGHT_ALIGN, 3);
-        PrintStatsScreenTextSmall(WIN_STATS_LEFT, strBase, base_x+base_x_first_row, base_y + base_y_offset*base_i);
     }
     else //EV increases
     {
@@ -5641,7 +5637,240 @@ static void PrintStatsScreen_Left(u8 taskId)
     }
 
     //TOGGLE--------------------------------------
+    if (gTasks[taskId].data[5] == 0)
+    {
+        u32 catchRate = sPokedexView->sPokemonStats.catchRate;
+        u32 growthRate = sPokedexView->sPokemonStats.growthRate;
 
+        //Catch rate
+        PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_CatchRate, base_x, base_y + base_y_offset*base_i);
+        if (catchRate <= 10)
+            PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_CatchRate_Legend, base_x + x_offset_column, base_y + base_y_offset*base_i);
+        else if (catchRate <= 70)
+            PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_CatchRate_VeryHard, base_x + x_offset_column, base_y + base_y_offset*base_i);
+        else if (catchRate <= 100)
+            PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_CatchRate_Difficult, base_x + x_offset_column, base_y + base_y_offset*base_i);
+        else if (catchRate <= 150)
+            PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_CatchRate_Medium, base_x + x_offset_column, base_y + base_y_offset*base_i);
+        else if (catchRate <= 200)
+            PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_CatchRate_Relaxed, base_x + x_offset_column, base_y + base_y_offset*base_i);
+        else
+            PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_CatchRate_Easy, base_x + x_offset_column, base_y + base_y_offset*base_i);
+        base_i++;
+
+        //Growth rate
+        PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_Growthrate, base_x, base_y + base_y_offset*base_i);
+        switch (growthRate)
+        {
+        case GROWTH_MEDIUM_FAST:
+            StringCopy(strEV, sText_Stats_MEDIUM_FAST);
+            break;
+        case GROWTH_ERRATIC:
+            StringCopy(strEV, sText_Stats_ERRATIC);
+            break;
+        case GROWTH_FLUCTUATING:
+            StringCopy(strEV, sText_Stats_FLUCTUATING);
+            break;
+        case GROWTH_MEDIUM_SLOW:
+            StringCopy(strEV, sText_Stats_MEDIUM_SLOW);
+            break;
+        case GROWTH_FAST:
+            StringCopy(strEV, sText_Stats_FAST);
+            break;
+        case GROWTH_SLOW:
+            StringCopy(strEV, sText_Stats_SLOW);
+            break;
+        default:
+            break;
+        }
+        align_x = GetStringRightAlignXOffset(0, strEV, total_x);
+        PrintStatsScreenTextSmall(WIN_STATS_LEFT, strEV, align_x, base_y + base_y_offset*base_i);
+    }
+    else
+    {
+        //Exp Yield
+        PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_ExpYield, base_x, base_y + base_y_offset*base_i);
+        ConvertIntToDecimalStringN(gStringVar1, sPokedexView->sPokemonStats.expYield, STR_CONV_MODE_RIGHT_ALIGN, 3);
+        PrintStatsScreenTextSmall(WIN_STATS_LEFT, gStringVar1, base_x + base_x_offset, base_y + base_y_offset*base_i);
+        base_i++;
+
+        //Friendship
+        PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_Friendship, base_x, base_y + base_y_offset*base_i);
+        switch (sPokedexView->sPokemonStats.friendship)
+        {
+        case 35:
+            StringCopy(strEV, sText_Stats_Friendship_BigAnger);
+            break;
+        case 70:
+            StringCopy(strEV, sText_Stats_Friendship_Neutral);
+            break;
+        case 90:
+            StringCopy(strEV, sText_Stats_Friendship_Happy);
+            break;
+        case 100:
+            StringCopy(strEV, sText_Stats_Friendship_Happy);
+            break;
+        case 140:
+            StringCopy(strEV, sText_Stats_Friendship_BigSmile);
+            break;
+        default:
+            ConvertIntToDecimalStringN(strEV, sPokedexView->sPokemonStats.friendship, STR_CONV_MODE_RIGHT_ALIGN, 3);
+            break;
+        }
+        align_x = GetStringRightAlignXOffset(0, strEV, total_x);
+        PrintStatsScreenTextSmall(WIN_STATS_LEFT, strEV, align_x, base_y + base_y_offset*base_i);
+        base_i++;
+
+        //Egg cycles
+        if (sPokedexView->sPokemonStats.eggGroup1 == EGG_GROUP_NO_EGGS_DISCOVERED || sPokedexView->sPokemonStats.eggGroup2 == EGG_GROUP_NO_EGGS_DISCOVERED) //Species without eggs (legendaries etc)
+        {
+            PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_EggCycles, base_x, base_y + base_y_offset*base_i);
+            PrintStatsScreenTextSmall(WIN_STATS_LEFT, gText_ThreeDashes, 78, base_y + base_y_offset*base_i);
+        }
+        else
+        {
+            PrintStatsScreenTextSmall(WIN_STATS_LEFT, sText_Stats_EggCycles, base_x, base_y + base_y_offset*base_i);
+            if (sPokedexView->sPokemonStats.eggCycles <= 10)
+            {
+                StringCopy(strEV, sText_Stats_EggCycles_VeryFast);
+                align_x = 76;
+            }
+            else if (sPokedexView->sPokemonStats.eggCycles <= 20)
+            {
+                StringCopy(strEV, sText_Stats_EggCycles_Fast);
+                align_x = 85;
+            }
+            else if (sPokedexView->sPokemonStats.eggCycles <= 30)
+            {
+                StringCopy(strEV, sText_Stats_EggCycles_Normal);
+                align_x = 76;
+            }
+            else
+            {
+                StringCopy(strEV, sText_Stats_EggCycles_Slow);
+                align_x = 67;
+            }
+            PrintStatsScreenTextSmall(WIN_STATS_LEFT, strEV, align_x, base_y + base_y_offset*base_i);
+        }
+        base_i++;
+
+        //Egg group 1
+        switch (sPokedexView->sPokemonStats.eggGroup1)
+        {
+        case EGG_GROUP_MONSTER:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_MONSTER);
+            break;
+        case EGG_GROUP_WATER_1:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_WATER_1);
+            break;
+        case EGG_GROUP_BUG:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_BUG);
+            break;
+        case EGG_GROUP_FLYING:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_FLYING);
+            break;
+        case EGG_GROUP_FIELD:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_FIELD);
+            break;
+        case EGG_GROUP_FAIRY:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_FAIRY);
+            break;
+        case EGG_GROUP_GRASS:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_GRASS);
+            break;
+        case EGG_GROUP_HUMAN_LIKE:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_HUMAN_LIKE);
+            break;
+        case EGG_GROUP_WATER_3:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_WATER_3);
+            break;
+        case EGG_GROUP_MINERAL:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_MINERAL);
+            break;
+        case EGG_GROUP_AMORPHOUS:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_AMORPHOUS);
+            break;
+        case EGG_GROUP_WATER_2:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_WATER_2);
+            break;
+        case EGG_GROUP_DITTO:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_DITTO);
+            break;
+        case EGG_GROUP_DRAGON:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_DRAGON);
+            break;
+        case EGG_GROUP_NO_EGGS_DISCOVERED:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_NO_EGGS_DISCOVERED);
+            break;
+        default:
+            StringCopy(gStringVar1, sText_Stats_eggGroup_UNKNOWN);
+            break;
+        }
+        //Egg group 2
+        if (sPokedexView->sPokemonStats.eggGroup1 != sPokedexView->sPokemonStats.eggGroup2)
+        {
+            switch (sPokedexView->sPokemonStats.eggGroup2)
+            {
+            case EGG_GROUP_MONSTER:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_MONSTER);
+                break;
+            case EGG_GROUP_WATER_1:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_WATER_1);
+                break;
+            case EGG_GROUP_BUG:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_BUG);
+                break;
+            case EGG_GROUP_FLYING:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_FLYING);
+                break;
+            case EGG_GROUP_FIELD:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_FIELD);
+                break;
+            case EGG_GROUP_FAIRY:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_FAIRY);
+                break;
+            case EGG_GROUP_GRASS:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_GRASS);
+                break;
+            case EGG_GROUP_HUMAN_LIKE:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_HUMAN_LIKE);
+                break;
+            case EGG_GROUP_WATER_3:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_WATER_3);
+                break;
+            case EGG_GROUP_MINERAL:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_MINERAL);
+                break;
+            case EGG_GROUP_AMORPHOUS:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_AMORPHOUS);
+                break;
+            case EGG_GROUP_WATER_2:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_WATER_2);
+                break;
+            case EGG_GROUP_DITTO:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_DITTO);
+                break;
+            case EGG_GROUP_DRAGON:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_DRAGON);
+                break;
+            case EGG_GROUP_NO_EGGS_DISCOVERED:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_NO_EGGS_DISCOVERED);
+                break;
+            default:
+                StringCopy(gStringVar2, sText_Stats_eggGroup_UNKNOWN);
+                break;
+            }
+            StringExpandPlaceholders(gStringVar3, sText_Stats_eggGroup_Groups);
+            align_x = GetStringRightAlignXOffset(0, gStringVar3, total_x);
+            PrintStatsScreenTextSmall(WIN_STATS_LEFT, gStringVar3, base_x, base_y + base_y_offset*base_i);
+        }
+        else
+        {
+            align_x = GetStringRightAlignXOffset(0, gStringVar1, total_x);
+            PrintStatsScreenTextSmall(WIN_STATS_LEFT, gStringVar1, base_x, base_y + base_y_offset*base_i);
+        }
+        base_i++;
+    }
 }
 
 static void PrintStatsScreen_Abilities(u8 taskId)

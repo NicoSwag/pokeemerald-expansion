@@ -4572,7 +4572,7 @@
       "blockdata_filepath": "data/layouts/Rustboro_FillerWest/map.bin"
     },
     {
-      "id": "LAYOUT_RUSTBORO_CITY_GYM_ENTRANCE",
+      "id": "LAYOUT_RUSTBORO_CITY_GYM_INTERIOR",
       "name": "RustboroCity_GymInterior_Layout",
       "width": 21,
       "height": 16,

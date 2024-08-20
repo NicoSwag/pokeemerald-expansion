@@ -1,7 +1,7 @@
 {
-  "id": "MAP_RUSTBORO_CITY_GYM_ENTRANCE",
+  "id": "MAP_RUSTBORO_CITY_GYM_INTERIOR",
   "name": "RustboroCity_GymInterior",
-  "layout": "LAYOUT_RUSTBORO_CITY_GYM_ENTRANCE",
+  "layout": "LAYOUT_RUSTBORO_CITY_GYM_INTERIOR",
   "music": "MUS_GYM",
   "region_map_section": "MAPSEC_RUSTBORO_CITY",
   "requires_flash": false,
