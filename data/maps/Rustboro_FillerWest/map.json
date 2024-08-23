@@ -2,7 +2,7 @@
   "id": "MAP_RUSTBORO_FILLER_WEST",
   "name": "Rustboro_FillerWest",
   "layout": "LAYOUT_RUSTBORO_FILLER_WEST",
-  "music": "MUS_RUSTBORO",
+  "music": "MUS_PYRITE_TOWN",
   "region_map_section": "MAPSEC_RUSTBORO_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

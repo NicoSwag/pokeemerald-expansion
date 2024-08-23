@@ -1898,11 +1898,10 @@ RustboroCity_Text_LookerDisguise:
 	.string "know, yes!$"
 
 RustboroCity_Text_Bodyguards:
-	.string "We! Are PRESIDENT STONE's private!\n"
-	.string "security!\p"
-	.string "And you! Are trespassing on private\n"
-	.string "property!\p"
-	.string "Get outta here, kid!$"
+	.string "Hm, yes?\n"
+	.string "What is your business?\p"
+	.string "This is private property.\p"
+	.string "Get ouf of here.$"
 
 RustboroCity_Text_MagmaProtest:
 	.string "What are you staring at?\p"
@@ -1989,7 +1988,7 @@ RustboroCity_Text_TheWayIsOpen:
 
 RustboroCity_Text_Advice:
 	.string "You seem to have some powerful\n"
-	.string "friends, kid.\p"
+	.string "friends.\p"
 	.string "Can't really disobey those orders.\p"
 	.string "But let me give you a piece of\n"
 	.string "advice.\p"

@@ -638,6 +638,7 @@ gSongTable::
 	song mus_hidden_highlands, 0, 0
 	song mus_black_city, 0, 0
 	song mus_pyrite_town, 0, 0
+		song mus_waterfall_colosseum, 0, 0
 	.align 2
 dummy_song_header:
 	.byte 0, 0, 0, 0

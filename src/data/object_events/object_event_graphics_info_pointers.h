@@ -9,6 +9,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Looker;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Shelly;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Courtney;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cop;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Tabitha;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Matt;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Engineer;
@@ -290,6 +291,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LOOKER] =                    &gObjectEventGraphicsInfo_Looker,
     [OBJ_EVENT_GFX_SHELLY] =                    &gObjectEventGraphicsInfo_Shelly,
     [OBJ_EVENT_GFX_COURTNEY] =                    &gObjectEventGraphicsInfo_Courtney,
+    [OBJ_EVENT_GFX_COP] =                    &gObjectEventGraphicsInfo_Cop,
     [OBJ_EVENT_GFX_TABITHA] =                    &gObjectEventGraphicsInfo_Tabitha,
     [OBJ_EVENT_GFX_MATT] =                    &gObjectEventGraphicsInfo_Matt,
     [OBJ_EVENT_GFX_ENGINEER] =                    &gObjectEventGraphicsInfo_Engineer,

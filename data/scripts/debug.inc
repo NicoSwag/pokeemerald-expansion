@@ -142,7 +142,7 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
-	release
+	trainerbattle_no_intro TRAINER_BOBBY, Route104_Text_MayDefeat
 	end
 
 Debug_EventScript_Script_3::

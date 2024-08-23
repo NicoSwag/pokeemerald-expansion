@@ -237,6 +237,9 @@ const u32 gTrainerPalette_Matt[] = INCBIN_U32("graphics/trainers/palettes/matt.g
 const u32 gTrainerFrontPic_Courtney[] = INCBIN_U32("graphics/trainers/front_pics/courtney.4bpp.lz");
 const u32 gTrainerPalette_Courtney[] = INCBIN_U32("graphics/trainers/front_pics/courtney.gbapal.lz");
 
+const u32 gTrainerFrontPic_Cop[] = INCBIN_U32("graphics/trainers/front_pics/cop.4bpp.lz");
+const u32 gTrainerPalette_Cop[] = INCBIN_U32("graphics/trainers/front_pics/cop.gbapal.lz");
+
 const u32 gTrainerFrontPic_Shelly[] = INCBIN_U32("graphics/trainers/front_pics/shelly.4bpp.lz");
 const u32 gTrainerPalette_Shelly[] = INCBIN_U32("graphics/trainers/palettes/shelly.gbapal.lz");
 
@@ -435,6 +438,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(SCIENTIST, Scientist),
     TRAINER_SPRITE(DEVON_EMPLOYEE, DevonEmployee),
     TRAINER_SPRITE(COURTNEY, Courtney),
+    TRAINER_SPRITE(COP, Cop),
     TRAINER_SPRITE(SHELLY, Shelly),
     TRAINER_SPRITE(MATT, Matt),
     TRAINER_SPRITE(TABITHA, Tabitha),

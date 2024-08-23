@@ -14968,7 +14968,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .pp = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .category = DAMAGE_CATEGORY_SPECIAL,
         .argument = 75, // restores 75% HP instead of 50% HP
         .makesContact = TRUE,
         .healingMove = B_HEAL_BLOCKING >= GEN_6,

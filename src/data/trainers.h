@@ -5362,6 +5362,19 @@
     },
 
 
+    [TRAINER_BOBBY] =
+    {
+        .trainerClass = TRAINER_CLASS_COP,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
+        .trainerPic = TRAINER_PIC_COP,
+        .trainerName = _("BOBBY"),
+        .items = {},
+        .doubleBattle = TRUE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
+        .party = TRAINER_PARTY(sParty_Kyla),
+    },
+
+
 
     [TRAINER_ELLEN] =
     {

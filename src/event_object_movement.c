@@ -537,6 +537,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_EEVEE               0x1150
 #define OBJ_EVENT_PAL_TAG_OBSTAGOON               0x1151
 #define OBJ_EVENT_PAL_TAG_CUT_TREE              0x1152
+#define OBJ_EVENT_PAL_TAG_COP              0x1153
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -612,6 +613,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
    {gObjectEventPal_PitchBlack,              OBJ_EVENT_PAL_TAG_PITCH_BLACK},
     {gObjectEventPal_Aqua,              OBJ_EVENT_PAL_TAG_AQUA},
     {gObjectEventPal_Courtney,              OBJ_EVENT_PAL_TAG_COURTNEY},
+    {gObjectEventPal_Cop,              OBJ_EVENT_PAL_TAG_COP},
     {gObjectEventPal_Tabitha,              OBJ_EVENT_PAL_TAG_TABITHA},
     {gObjectEventPal_Matt,              OBJ_EVENT_PAL_TAG_MATT},
     {gObjectEventPal_Maxie,              OBJ_EVENT_PAL_TAG_MAXIE},
