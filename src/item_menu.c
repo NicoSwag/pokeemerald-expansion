@@ -587,7 +587,7 @@ void ResetBagScrollPositions(void)
 
 void CB2_BagMenuFromStartMenu(void)
 {
-    GoToBagMenu(ITEMMENULOCATION_FIELD, POCKETS_COUNT, CB2_ReturnToFullScreenStartMenu);
+    GoToBagMenu(ITEMMENULOCATION_FIELD, POCKETS_COUNT, CB2_ReturnToFieldWithOpenMenu);
 }
 
 void CB2_BagMenuFromBattle(void)
@@ -2859,6 +2859,7 @@ static const u16 sItemsByType[ITEMS_COUNT] =
     [ITEM_DRAGON_FANG] = ITEM_TYPE_HELD_ITEM,
     [ITEM_SILK_SCARF] = ITEM_TYPE_HELD_ITEM,
     [ITEM_SHELL_BELL] = ITEM_TYPE_HELD_ITEM,
+    [ITEM_SEASHELL] = ITEM_TYPE_HELD_ITEM,
     [ITEM_LUCKY_PUNCH] = ITEM_TYPE_HELD_ITEM,
     [ITEM_METAL_POWDER] = ITEM_TYPE_HELD_ITEM,
     [ITEM_THICK_CLUB] = ITEM_TYPE_HELD_ITEM,

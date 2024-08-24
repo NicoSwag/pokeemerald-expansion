@@ -554,7 +554,7 @@ Route106_Text_KylaDefeated:
 	.string "You're just another kid.$"
 
 Route106_Text_KylaPostBattle:
-	.string "Forgive me, my eyesight is poor.\n"
+	.string "Apologies, I can't see very well.\n"
 	.string "I forgot my glasses home today.$"
 
 Route107_Text_DarrinIntro:

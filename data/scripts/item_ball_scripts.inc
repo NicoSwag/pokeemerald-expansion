@@ -10,6 +10,9 @@ Route102_EventScript_ItemMuscleBand::
 	finditem ITEM_MUSCLE_BAND
 	end
 
+Common_EventScript_ItemSkyFragment::
+	finditem ITEM_HEART_SCALE
+	end
 
 Route103_EventScript_ItemGuardSpec::
 	finditem ITEM_GUARD_SPEC
@@ -70,8 +73,25 @@ Route105_EventScript_ItemIron::
 	finditem ITEM_IRON
 	end
 
-Route106_EventScript_ItemProtein::
-	finditem ITEM_PROTEIN
+Route106_EventScript_ItemRockyHelmet::
+	finditem ITEM_ROCKY_HELMET
+	end
+
+Route106_EventScript_ItemSeashell::
+	finditem ITEM_SEASHELL
+	end
+
+Route106_EventScript_ItemSeashell2::
+	finditem ITEM_SEASHELL
+	end
+
+Route106_EventScript_ItemSeashell3::
+	finditem ITEM_SEASHELL
+	end
+
+
+Route106_EventScript_ItemKingsRock::
+	finditem ITEM_KINGS_ROCK
 	end
 
 Route108_EventScript_ItemStarPiece::

@@ -2758,6 +2758,14 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .backPicYOffset = 14,
         //.backAnimId = BACK_ANIM_NONE,
         PALETTES(Clobbopus),
+           OVERWORLD(
+            sPicTable_Clobbopus,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Clobbopus,
+            gShinyOverworldPalette_Clobbopus
+        )
         ICON(Clobbopus, 0),
         .footprint = gMonFootprint_Clobbopus,
         LEARNSETS(Clobbopus),

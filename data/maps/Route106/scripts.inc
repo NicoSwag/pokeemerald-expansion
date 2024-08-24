@@ -1,5 +1,10 @@
 Route106_MapScripts::
+map_script MAP_SCRIPT_ON_TRANSITION, Route106_EventScript_OnTransition
 	.byte 0
+
+Route106_EventScript_OnTransition::
+	setifnotbeaten TRAINER_KYLA
+	end
 
 Route106_EventScript_TrainerTipsSign::
 	msgbox Route106_Text_TrainerTips, MSGBOX_SIGN
@@ -65,7 +70,7 @@ Route106_Text_EllenDefeated:
 	
 Route106_Text_EllenPostBattle:
 	.string "I'm on guard duty today.\p"
-	.string "Truth to be told it's pretty boring.\n"
+	.string "Truth to be told, it's pretty boring.\n"
 	.string "I'd rather be in the mines.$"
 
 
@@ -74,7 +79,7 @@ Route106_Text_ChristinaIntro:
 
 Route106_Text_ChristinaDefeated:
 	.string "Do you yearn for the mines\n"
-	.string "that much…?"
+	.string "that much…?$"
 	
 Route106_Text_ChristinaPostBattle:
 	.string "Our mine seems to interest a lot\n"

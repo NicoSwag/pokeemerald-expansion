@@ -660,7 +660,6 @@ bool8 ScrCmd_settorcheffect(struct ScriptContext *ctx)
     s32 centerY = VarGet(ScriptReadHalfword(ctx));
     s32 radius = VarGet(ScriptReadHalfword(ctx));
     
-    SetTorchEffect(centerX, centerY, radius);
     return FALSE;
 }
 

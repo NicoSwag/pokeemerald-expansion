@@ -1373,7 +1373,6 @@ void Task_HandleSaveConfirmation(u8 taskId)
         PlaySE(SE_SELECT);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_ReturnToFieldOnSave;
-        gFieldCallback = SaveStartCallback_FullStartMenu;
         return;
     }
     if(JOY_NEW(B_BUTTON)) // back to normal Menu Control

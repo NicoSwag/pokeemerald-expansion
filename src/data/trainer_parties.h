@@ -5871,7 +5871,7 @@ static const struct TrainerMon sParty_Ellen[] = {
     .species = SPECIES_JOLTEON,
     .moves = {MOVE_QUICK_ATTACK, MOVE_SHOCK_WAVE, MOVE_HELPING_HAND, MOVE_SWIFT},
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
-    .lvl = 17,
+    .lvl = 16,
     .ball = ITEM_DUSK_BALL,
     .ability = ABILITY_LIGHTNING_ROD,
     .nature = NATURE_RASH,
@@ -5907,16 +5907,6 @@ static const struct TrainerMon sParty_Christina[] = {
     .ball = ITEM_DUSK_BALL,
     .ability = ABILITY_MIRROR_ARMOR,
     .nature = NATURE_BOLD,
-    },
-    {
-    .species = SPECIES_SHOCKITT,
-    .moves = {MOVE_QUICK_ATTACK, MOVE_NUZZLE, MOVE_TRAILBLAZE, MOVE_GROWL},
-    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
-    .lvl = 16,
-    .heldItem = ITEM_MAGNET,
-    .ball = ITEM_DUSK_BALL,
-    .ability = ABILITY_GALVANIZE,
-    .nature = NATURE_LAX,
     }
 };
 

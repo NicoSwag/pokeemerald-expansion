@@ -513,6 +513,7 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_SCOPE_LENS] = {gItemIcon_ScopeLens, gItemIconPalette_ScopeLens},
     [ITEM_LEFTOVERS] = {gItemIcon_Leftovers, gItemIconPalette_Leftovers},
     [ITEM_SHELL_BELL] = {gItemIcon_ShellBell, gItemIconPalette_Shell},
+    [ITEM_SEASHELL] = {gItemIcon_ShellBell, gItemIconPalette_Shell},
     [ITEM_WIDE_LENS] = {gItemIcon_WideLens, gItemIconPalette_WideLens},
     [ITEM_MUSCLE_BAND] = {gItemIcon_MuscleBand, gItemIconPalette_MuscleBand},
     [ITEM_WISE_GLASSES] = {gItemIcon_WiseGlasses, gItemIconPalette_WiseGlasses},

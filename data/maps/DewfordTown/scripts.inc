@@ -283,11 +283,7 @@ DewfordTown_EventScript_HallSign::
 	end
 
 DewfordTown_EventScript_OldRodFisherman::
-	lock
-	faceplayer
-	goto_if_set FLAG_RECEIVED_OLD_ROD, DewfordTown_EventScript_HowsFishing
-	msgbox DewfordTown_Text_GettingItchToFish, MSGBOX_DEFAULT
-	goto DewfordTown_EventScript_GiveOldRod
+	goto DewfordTown_EventScript_HowsFishing
 	end
 
 DewfordTown_EventScript_GiveOldRod::

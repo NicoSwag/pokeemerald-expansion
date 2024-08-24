@@ -46,7 +46,7 @@ DewfordTown_Hall_EventScript_RejectTrendLink::
 	end
 
 DewfordTown_Hall_EventScript_ExpertM::
-	msgbox DewfordTown_Hall_Text_TVShowAboutTrend, MSGBOX_DEFAULT
+	msgbox DewfordTown_Hall_Text_TVShowAboutTrend, MSGBOX_NPC
 	end
 
 DewfordTown_Hall_EventScript_Twin::
@@ -356,9 +356,9 @@ DewfordTown_Hall_Text_Eviolite:
 
 DewfordTown_Hall_Text_CantImagineLifeWithoutTrend:
 	.string "Personally, I could not associate\n"
-	.string "with people who use ELEMENTAL STONES.\p"
+	.string "with people who use Elemental Stone.\p"
 	.string "I've heard that they can make POKéMON\n"
-	.string "evolve with some kind of horrid radiation!\p"
+	.string "evolve with some horrid radiation!\p"
 	.string "It's just not natural!$"
 
 DewfordTown_Hall_Text_GettingBoredOfTrend:
@@ -368,9 +368,9 @@ DewfordTown_Hall_Text_GettingBoredOfTrend:
 	.string "I should look for the next big thing.$"
 
 DewfordTown_Hall_Text_TeachingMonAboutTrend:
-	.string "That man has a WYNAUT…\p"
+	.string "That man has a Wynaut\p"
 	.string "A rare, beautiful, pristine, untainted,\n"
-	.string "unevolved WYNAUT…\p"
+	.string "unevolved Wynaut\p"
 	.string "Ohhhh… The jealousy…$"
 
 DewfordTown_Hall_Text_DeepLinkBetweenXAndY:
@@ -559,16 +559,16 @@ DewfordTown_Hall_Text_GiveSubstitute:
 	.string "That's a Ribbon Box.\p"
 	.string "If you give your Pokémon a Ribbon, they\n"
 	.string "will never evolve.\p"
-	.string "…Unless you give them an evolutionary item,\n"
-	.string "that is, but why would you do that?$"
+	.string "…Unless you give them an evolutionary\n"
+	.string "item, but why would you do that?$"
 
 DewfordTown_Hall_Text_Unevolved:
-	.string "Some of the members of this club are a bit…\n"
+	.string "Some of the club members are a bit…\n"
 	.string "Extra.\p"
 	.string "However, it is true that some unevolved\n"
-	.string "Pokémon can be as strong as their evolution,\l"
-	.string "if not more.\p"
-	.string "Scyther, Vigoroth, or Magneton, for example…\n"
+	.string "Pokémon can be as strong as their\l"
+	.string "evolution, if not more.\p"
+	.string "Scyther, Vigoroth, or Magneton…\n"
 	.string "Are all good choices.\p"
 	.string "There are other cases too, of course.$"
 

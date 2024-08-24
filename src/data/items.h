@@ -663,7 +663,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_SUPER_POTION] =
     {
-        .name = _("SUPER POTION"),
+        .name = _("Super Potion"),
         .price = 0,
         .holdEffectParam = 60,
         .description = COMPOUND_STRING(
@@ -8491,6 +8491,22 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_Shell,
     },
 
+
+    [ITEM_SEASHELL] =
+    {
+        .name = _("Seashell"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Just a regular\n"
+            "seashell. Does\n"
+            "nothing special."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 30,
+        .iconPic = gItemIcon_ShellBell,
+        .iconPalette = gItemIconPalette_Shell,
+    },
     [ITEM_WIDE_LENS] =
     {
         .name = _("Wide Lens"),
