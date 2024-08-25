@@ -262,6 +262,7 @@ const u32 gObjectEventPic_HoothootOld[] = INCBIN_U32("graphics/object_events/pic
 const u16 gObjectEventPal_Hoothoot[] = INCBIN_U16("graphics/object_events/pics/pokemon_old/hoothoot.4bpp");
 const u32 gObjectEventPic_SmartchuOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/smartchu.4bpp");
 const u16 gObjectEventPal_Smartchu[] = INCBIN_U16("graphics/object_events/palettes/smartchu.gbapal");
+const u16 gObjectEventPal_Wally[] = INCBIN_U16("graphics/object_events/palettes/wally.gbapal");
 const u16 gObjectEventPal_Looker[] = INCBIN_U16("graphics/object_events/palettes/looker.gbapal");
 const u16 gObjectEventPal_Shelly[] = INCBIN_U16("graphics/object_events/palettes/shelly.gbapal");
 const u16 gObjectEventPal_Hiker[] = INCBIN_U16("graphics/object_events/palettes/hiker.gbapal");

@@ -1300,3 +1300,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/RustboroCity_GymInterior/scripts.inc"
 
 	.include "data/maps/PetalburgCity_GymInterior/scripts.inc"
+
+	.include "data/maps/GraniteCottage/scripts.inc"

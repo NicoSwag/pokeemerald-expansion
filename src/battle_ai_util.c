@@ -445,6 +445,10 @@ bool32 IsDamageMoveUnusable(u32 move, u32 battlerAtk, u32 battlerDef)
         if (gMovesInfo[move].ballisticMove)
             return TRUE;
         break;
+        case ABILITY_MAGMA_ARMOR:
+        if (moveType == TYPE_ICE)
+            return TRUE;
+        break;
     case ABILITY_SAP_SIPPER:
         if (moveType == TYPE_GRASS)
             return TRUE;
@@ -3291,6 +3295,7 @@ bool32 IsMoveEffectWeather(u32 move)
      && (gMovesInfo[move].effect == EFFECT_SUNNY_DAY
       || gMovesInfo[move].effect == EFFECT_RAIN_DANCE
       || gMovesInfo[move].effect == EFFECT_SANDSTORM
+    || gMovesInfo[move].effect == EFFECT_ACID_RAIN
       || gMovesInfo[move].effect == EFFECT_HAIL
 || gMovesInfo[move].effect == EFFECT_THUNDERSNOW
       || gMovesInfo[move].effect == EFFECT_SNOWSCAPE))

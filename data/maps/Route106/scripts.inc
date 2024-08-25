@@ -3,7 +3,6 @@ map_script MAP_SCRIPT_ON_TRANSITION, Route106_EventScript_OnTransition
 	.byte 0
 
 Route106_EventScript_OnTransition::
-	setifnotbeaten TRAINER_KYLA
 	end
 
 Route106_EventScript_TrainerTipsSign::

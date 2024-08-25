@@ -1732,6 +1732,7 @@ case EFFECT_THUNDERSNOW:
             if (aiData->abilities[battlerDef] == ABILITY_LEVITATE)
                 ADJUST_SCORE(-10);
             break;
+        
         case EFFECT_PARTING_SHOT:
             if (CountUsablePartyMons(battlerAtk) == 0)
                 ADJUST_SCORE(-10);
@@ -2789,6 +2790,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_SNOWSCAPE:
         case EFFECT_RAIN_DANCE:
         case EFFECT_SANDSTORM:
+        case EFFECT_ACID_RAIN:
             if (IsMoveEffectWeather(move))
                 ADJUST_SCORE(-10);
             break;
@@ -2870,6 +2872,13 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     case EFFECT_SNOWSCAPE:
         if (IsBattlerAlive(battlerAtkPartner)
          && ShouldSetSnow(battlerAtkPartner, atkPartnerAbility, atkPartnerHoldEffect))
+        {
+            RETURN_SCORE_PLUS(DECENT_EFFECT);   // our partner benefits from snow
+        }
+        break;
+        case EFFECT_ACID_RAIN:
+        if (IsBattlerAlive(battlerAtkPartner)
+         && ShouldSetPollution(battlerAtkPartner, atkPartnerAbility, atkPartnerHoldEffect))
         {
             RETURN_SCORE_PLUS(DECENT_EFFECT);   // our partner benefits from snow
         }
@@ -4903,6 +4912,7 @@ case EFFECT_FLASH_FREEZE:
     case EFFECT_RAIN_DANCE:
     case EFFECT_SUNNY_DAY:
     case EFFECT_SANDSTORM:
+    case EFFECT_ACID_RAIN:
     case EFFECT_HAIL:
     case EFFECT_SNOWSCAPE:
     case EFFECT_GEOMANCY:
@@ -5177,6 +5187,7 @@ case EFFECT_EMP:
             case EFFECT_TICKLE:
             case EFFECT_SUNNY_DAY:
             case EFFECT_SANDSTORM:
+                    case EFFECT_ACID_RAIN:
             case EFFECT_HAIL:
             case EFFECT_SNOWSCAPE:
 case EFFECT_THUNDERSNOW:
@@ -5334,6 +5345,10 @@ static s32 AI_PowerfulStatus(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         break;
     case EFFECT_SANDSTORM:
         if (!(AI_GetWeather(AI_DATA) & (B_WEATHER_SANDSTORM | B_WEATHER_PRIMAL_ANY)))
+            ADJUST_SCORE(POWERFUL_STATUS_MOVE);
+        break;
+        case EFFECT_ACID_RAIN:
+        if (!(AI_GetWeather(AI_DATA) & (B_WEATHER_POLLUTION | B_WEATHER_PRIMAL_ANY)))
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
         break;
     case EFFECT_SUNNY_DAY:

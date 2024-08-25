@@ -456,8 +456,8 @@
 #define FLAG_REMATCH_DRAKE                   0x1A8
 #define FLAG_REMATCH_WALLACE                 0x1A9
 
-#define FLAG_UNUSED_0x1AA                    0x1AA // Unused Flag
-#define FLAG_UNUSED_0x1AB                    0x1AB // Unused Flag
+#define FLAG_RECEIVED_SOFT_SAND                    0x1AA // Unused Flag
+#define FLAG_ROUTE_106_NUGGET                    0x1AB // Unused Flag
 
 #define FLAG_DEFEATED_DEOXYS                 0x1AC
 #define FLAG_BATTLED_DEOXYS                  0x1AD
@@ -506,7 +506,7 @@
 #define FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL 0x1D8
 #define FLAG_ENABLE_JUAN_MATCH_CALL          0x1D9
 
-#define FLAG_UNUSED_0x1DA                    0x1DA // Unused Flag
+#define FLAG_SEASHELL_4                   0x1DA // Unused Flag
 
 #define FLAG_SHOWN_MYSTIC_TICKET             0x1DB
 #define FLAG_DEFEATED_HO_OH                  0x1DC
@@ -517,7 +517,7 @@
 #define FLAG_RECEIVED_HARD_STONE                    0x1E0 // Unused Flag
 #define FLAG_RECEIVED_EVIOLITE                   0x1E1 // Unused Flag
 #define FLAG_RECEIVED_TM09                     0x1E2 // Unused Flag
-#define FLAG_UNUSED_0x1E3                    0x1E3 // Unused Flag
+#define FLAG_SEASHELL_5                    0x1E3 // Unused Flag
 
 // Mystery Gift Flags (Unknown)
 #define FLAG_MYSTERY_GIFT_DONE               0x1E4
@@ -667,7 +667,7 @@
 #define FLAG_ITEM_ROUTE115_SKY_FRAGMENT  0x270 // Unused Flag
 #define FLAG_OLDALE_ODD_INSCRIPTION  0x271 // Unused Flag
 #define FLAG_QUEST_MENU_ACTIVE  0x272 // Unused Flag
-#define FLAG_UNUSED_0x273  0x273 // Unused Flag
+#define FLAG_HIDE_WALLY_106  0x273 // Unused Flag
 #define FLAG_UNUSED_0x274  0x274 // Unused Flag
 #define FLAG_UNUSED_0x275  0x275 // Unused Flag
 #define FLAG_UNUSED_0x276  0x276 // Unused Flag

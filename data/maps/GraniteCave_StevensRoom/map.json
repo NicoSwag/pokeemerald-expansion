@@ -31,7 +31,7 @@
   "warp_events": [
     {
       "x": 7,
-      "y": 3,
+      "y": 11,
       "elevation": 3,
       "dest_map": "MAP_GRANITE_CAVE_1F",
       "dest_warp_id": "3"

@@ -14,6 +14,14 @@ Common_EventScript_ItemSkyFragment::
 	finditem ITEM_HEART_SCALE
 	end
 
+Common_EventScript_ItemNugget::
+	finditem ITEM_NUGGET
+	end
+
+Common_EventScript_ItemSoftSand::
+	finditem ITEM_SOFT_SAND
+	end
+
 Route103_EventScript_ItemGuardSpec::
 	finditem ITEM_GUARD_SPEC
 	end
@@ -89,6 +97,13 @@ Route106_EventScript_ItemSeashell3::
 	finditem ITEM_SEASHELL
 	end
 
+Route106_EventScript_ItemSeashell4::
+	finditem ITEM_SEASHELL
+	end
+
+Route106_EventScript_ItemSeashell5::
+	finditem ITEM_SEASHELL
+	end
 
 Route106_EventScript_ItemKingsRock::
 	finditem ITEM_KINGS_ROCK

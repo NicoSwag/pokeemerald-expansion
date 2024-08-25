@@ -2130,6 +2130,7 @@ case ENDTURN_POLLUTION:
                 
             }
             gBattleStruct->turnCountersTracker++;
+            break;
         case ENDTURN_FOG:
             if (gBattleWeather & B_WEATHER_FOG)
             {
@@ -2483,6 +2484,21 @@ u8 DoBattlerEndTurnEffects(void)
                   && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_STEEL)
                   && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
                   && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
+            {
+                gBattleScripting.battler = battler;
+                gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 16;
+                BattleScriptExecute(BattleScript_DamagingWeather);
+                effect++;
+            }
+                    else if (gBattleWeather & B_WEATHER_POLLUTION
+                  && ability != ABILITY_FOUL_RUSH
+                  && ability != ABILITY_POISON_HEAL
+                  && ability != ABILITY_MIASMA_FORCE
+                  && ability != ABILITY_OVERCOAT
+                  && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_POISON)
+                  && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_DARK)
+                  && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST)
+                  && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER)))
             {
                 gBattleScripting.battler = battler;
                 gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 16;
@@ -5449,6 +5465,10 @@ case ABILITY_OVERCHARGE:
                 break;
             case ABILITY_BULLETPROOF:
                 if (gMovesInfo[move].ballisticMove)
+                    effect = 1;
+                break;
+            case ABILITY_MAGMA_ARMOR:
+                if (gMovesInfo[move].type == TYPE_ICE)
                     effect = 1;
                 break;
             case ABILITY_DAZZLING:
@@ -10196,8 +10216,11 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
     switch (atkAbility)
     {
     case ABILITY_HUGE_POWER:
-    case ABILITY_PURE_POWER:
         if (IS_MOVE_PHYSICAL(move))
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
+        break;
+    case ABILITY_PURE_POWER:
+        if (IS_MOVE_SPECIAL(move))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case ABILITY_SLOW_START:

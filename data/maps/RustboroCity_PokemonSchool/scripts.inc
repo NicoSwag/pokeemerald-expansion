@@ -287,6 +287,7 @@ RustboroCity_PokemonSchool_Text_ExplainTypes:
 	.string "effects.\p"
 	.string "ROCK types take neutral damage from GROUND\n"
 	.string "attacks.\p"
+	.string "DRAGON types resist FAIRY.\p"
 	.string "Finally, FIGHTING is completely immune\n"
 	.string "to GHOST.\p"  
 

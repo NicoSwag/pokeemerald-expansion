@@ -4590,6 +4590,16 @@
       "secondary_tileset": "gTileset_BattleArena",
       "border_filepath": "data/layouts/PetalburgCity_GymInterior/border.bin",
       "blockdata_filepath": "data/layouts/PetalburgCity_GymInterior/map.bin"
+    },
+    {
+      "id": "LAYOUT_GRANITE_COTTAGE",
+      "name": "GraniteCottage_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/GraniteCottage/border.bin",
+      "blockdata_filepath": "data/layouts/GraniteCottage/map.bin"
     }
   ]
 }

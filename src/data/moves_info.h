@@ -6427,7 +6427,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_ACID_RAIN] =
     {
-        .name = COMPOUND_STRING("ACID RAIN"),
+        .name = COMPOUND_STRING("Acid Rain"),
         .description = COMPOUND_STRING(
             "Summons pollution for\n"
             "5 turns."),
@@ -6446,7 +6446,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .contestCategory = CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = COMBO_STARTER_RAIN_DANCE,
         .contestComboMoves = {0},
-        .battleAnimScript = Move_ACID_RAIN,
+        .battleAnimScript = Move_RAIN_DANCE,
     },
 
     [MOVE_SUNNY_DAY] =
@@ -15201,7 +15201,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_PIERCING_WAIL] =
     {
-        .name = COMPOUND_STRING("PIERCING WAIL"),
+        .name = COMPOUND_STRING("Piercing Wail"),
         .description = COMPOUND_STRING(
             "A cry that makes the weather\n"
             "disappear"),

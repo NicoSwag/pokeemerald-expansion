@@ -4481,11 +4481,11 @@ static const struct TrainerMon sParty_Allen[] = {
     .nature = NATURE_DOCILE,
     },
     {
-    .species = SPECIES_ZUBAT,
-    .moves = {MOVE_ASTONISH, MOVE_WING_ATTACK, MOVE_JAW_LOCK, MOVE_NONE},
+    .species = SPECIES_NOIBAT,
+    .moves = {MOVE_GUST, MOVE_SUPERSONIC, MOVE_ABSORB, MOVE_NONE},
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 5,
-    .ability = ABILITY_SHARPNESS,
+    .ability = ABILITY_SOUNDPROOF,
     .nature = NATURE_RASH,
     },
 
@@ -8174,17 +8174,54 @@ static const struct TrainerMon sParty_Vivi[] = {
     }
 };
 
-static const struct TrainerMon sParty_Haley2[] = {
+static const struct TrainerMon sParty_Wally2[] = {
     {
-    .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-    .lvl = 26,
-    .species = SPECIES_LOMBRE,
+    .species = SPECIES_ROSELIA,
+    .heldItem = ITEM_ORAN_BERRY,
+    .moves = {MOVE_LIFE_DEW, MOVE_BULLET_SEED, MOVE_LEECH_SEED, MOVE_STUN_SPORE},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 17,
+    .ability = ABILITY_TECHNICIAN,
+    .nature = NATURE_TIMID,
     },
     {
-    .iv = TRAINER_PARTY_IVS(1, 1, 1, 1, 1, 1),
-    .lvl = 26,
-    .species = SPECIES_SHROOMISH,
+    .species = SPECIES_CHARCADET,
+    .heldItem = ITEM_PASSHO_BERRY,
+    .moves = {MOVE_HELPING_HAND, MOVE_FIRE_SPIN, MOVE_NIGHT_SHADE, MOVE_CLEAR_SMOG},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 17,
+    .ability = ABILITY_FLAME_BODY,
+    .nature = NATURE_ADAMANT,
+    },
+    {
+    .species = SPECIES_SKITTY,
+    .heldItem = ITEM_SILK_SCARF,
+    .moves = {MOVE_FAKE_OUT, MOVE_ROLLOUT, MOVE_SING, MOVE_WISH},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 18,
+    .ability = ABILITY_PRANKSTER,
+    .nature = NATURE_HASTY,
+    },
+    {
+    .species = SPECIES_HELIOPTILE,
+    .heldItem = ITEM_ORAN_BERRY,
+    .moves = {MOVE_THUNDERSHOCK, MOVE_EMBER, MOVE_GLARE, MOVE_MUD_SLAP},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 18,
+    .ability = ABILITY_SOLAR_POWER,
+    .nature = NATURE_NAIVE,
+    },
+    {
+    .species = SPECIES_KIRLIA,
+    .heldItem = ITEM_LUM_BERRY,
+    .moves = {MOVE_PSYBEAM, MOVE_DRAINING_KISS, MOVE_CHARM, MOVE_ALLY_SWITCH},
+    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .lvl = 20,
+    .isShiny = TRUE,
+    .ability = ABILITY_TRACE,
+    .nature = NATURE_MODEST,
     }
+
 };
 
 static const struct TrainerMon sParty_Haley3[] = {

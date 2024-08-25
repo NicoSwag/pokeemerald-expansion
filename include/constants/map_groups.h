@@ -99,6 +99,7 @@
 #define MAP_DEWFORD_TOWN_HOUSE2            (5 | (3 << 8))
 #define MAP_DEWFORD_TOWN_HOUSE3            (6 | (3 << 8))
 #define MAP_FOUNDRY                        (7 | (3 << 8))
+#define MAP_GRANITE_COTTAGE                (8 | (3 << 8))
 
 // gMapGroup_IndoorLavaridge
 #define MAP_LAVARIDGE_TOWN_HERB_SHOP         (0 | (4 << 8))

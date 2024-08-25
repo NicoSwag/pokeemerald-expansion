@@ -600,6 +600,13 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .encourageEncore = TRUE,
     },
 
+    [EFFECT_ACID_RAIN] =
+    {
+        .battleScript = BattleScript_EffectAcidRain,
+        .battleTvScore = 4,
+        .encourageEncore = TRUE,
+    },
+
     [EFFECT_ENDURE] =
     {
         .battleScript = BattleScript_EffectEndure,
