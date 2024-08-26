@@ -1802,6 +1802,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         PALETTES(Drilbur),
         ICON(Drilbur, 0),
         .footprint = gMonFootprint_Drilbur,
+                OVERWORLD(
+            sPicTable_Drilbur,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Drilbur,
+            gShinyOverworldPalette_Drilbur
+        )
         LEARNSETS(Drilbur),
         .evolutions = EVOLUTION({EVO_LEVEL, 31, SPECIES_EXCADRILL}),
     },

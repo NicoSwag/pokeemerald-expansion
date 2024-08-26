@@ -4274,8 +4274,8 @@ static const struct TrainerMon sParty_Josh[] = {
     .nature = NATURE_NAUGHTY,
     },
     {
-    .species = SPECIES_GEODUDE_ALOLAN,
-    .moves = {MOVE_TACKLE, MOVE_EMP, MOVE_ROCK_THROW, MOVE_NONE},
+    .species = SPECIES_ROCKRUFF,
+    .moves = {MOVE_HOWL, MOVE_FIRE_FANG, MOVE_ROCK_THROW, MOVE_NONE},
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 12,
     .ball = ITEM_POKE_BALL,
@@ -4287,13 +4287,12 @@ static const struct TrainerMon sParty_Josh[] = {
 
 static const struct TrainerMon sParty_Tommy[] = {
     {
-    .species = SPECIES_GEODUDE_ALOLAN,
-    .moves = {MOVE_GRAVEL_ROCK, MOVE_ROLLOUT, MOVE_DEFENSE_CURL, MOVE_NONE},
+    .species = SPECIES_LARVITAR,
+    .moves = {MOVE_DRAGON_DANCE, MOVE_ROCK_SLIDE, MOVE_BULLDOZE, MOVE_NONE},
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 12,
     .heldItem = ITEM_FOCUS_SASH,
-    .ball = ITEM_GREAT_BALL,
-    .ability = ABILITY_ROCK_HEAD,
+    .ball = ITEM_GREAT_BATTLE_ARMOR,
     .nature = NATURE_ADAMANT,
     },
     {
@@ -4481,11 +4480,11 @@ static const struct TrainerMon sParty_Allen[] = {
     .nature = NATURE_DOCILE,
     },
     {
-    .species = SPECIES_NOIBAT,
-    .moves = {MOVE_GUST, MOVE_SUPERSONIC, MOVE_ABSORB, MOVE_NONE},
+    .species = SPECIES_PICHU,
+    .moves = {MOVE_THUNDERSHOCK, MOVE_TAIL_WHIP, MOVE_CHARM, MOVE_NONE},
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 5,
-    .ability = ABILITY_SOUNDPROOF,
+    .ability = ABILITY_LIGHTNING_ROD,
     .nature = NATURE_RASH,
     },
 
@@ -8344,8 +8343,8 @@ static const struct TrainerMon sParty_Lyle[] = {
     .ball = ITEM_NET_BALL
     },
     {
-    .species = SPECIES_JOLTIK,
-    .moves = {MOVE_ELECTROWEB, MOVE_SCREECH, MOVE_FURY_CUTTER, MOVE_NONE},
+    .species = SPECIES_SURSKIT,
+    .moves = {MOVE_WATER_GUN, MOVE_QUICK_ATTACK, MOVE_FURY_CUTTER, MOVE_NONE},
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 7,
     .ability = ABILITY_SWARM,

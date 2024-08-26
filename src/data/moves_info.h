@@ -5486,8 +5486,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     {
         .name = COMPOUND_STRING("Rollout"),
         .description = COMPOUND_STRING(
-            "An attack lasting 5 turns\n"
-            "with rising intensity."),
+            "An attack that intensifies\n"
+            "on each successive hit."),
         .effect = EFFECT_FURY_CUTTER,
         .power = 40,
         .type = TYPE_ROCK,
@@ -8033,8 +8033,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     {
         .name = COMPOUND_STRING("Ice Ball"),
         .description = COMPOUND_STRING(
-            "A 5-turn attack that gains\n"
-            "power on successive hits."),
+            "An attack that intensifies\n"
+            "on each successive hit."),
         .effect = EFFECT_FURY_CUTTER,
         .power = 40,
         .type = TYPE_ICE,

@@ -14,10 +14,10 @@
     F(SUBSTITUTE) \
     F(RETURN) \
     F(PLAY_ROUGH) \
-    F(ICE_BEAM) \
-    F(BLIZZARD) \
-    F(HYPER_BEAM) \
-    F(LIGHT_SCREEN) \
+    F(CHARGE_BEAM) \
+    F(GYRO_BALL) \
+    F(SUNNY_DAY) \
+    F(FURY_CUTTER) \
     F(ROAR) \
     F(RAIN_DANCE) \
     F(GIGA_DRAIN) \
@@ -28,7 +28,6 @@
     F(THUNDERBOLT) \
     F(THUNDER) \
     F(EARTHQUAKE) \
-    F(SUNNY_DAY) \
     F(DIG) \
     F(PSYCHIC) \
     F(SHADOW_BALL) \

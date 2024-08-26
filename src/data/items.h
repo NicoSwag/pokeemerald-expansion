@@ -10642,74 +10642,64 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_PLAY_ROUGH,
     },
 
-    [ITEM_TM_ICE_BEAM] =
+    [ITEM_TM_CHARGE_BEAM] =
     {
         .name = _("TM13"),
-        .price = 3000,
+        .price = 2000,
         .description = COMPOUND_STRING(
-            "Fires an icy cold\n"
+            "Fires an electric\n"
             "beam that may\n"
-        #if B_USE_FROSTBITE == TRUE
-            "inflict frostbite."),
-        #else
-            "freeze the foe."),
-        #endif
+            "raise Sp.Atk."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_ICE_BEAM,
+        .secondaryId = MOVE_CHARGE_BEAM,
     },
 
-    [ITEM_TM_BLIZZARD] =
+    [ITEM_TM_GYRO_BALL] =
     {
         .name = _("TM14"),
-        .price = 5500,
+        .price = 3000,
         .description = COMPOUND_STRING(
-        #if B_USE_FROSTBITE == TRUE
-            "A snow-and-wind\n"
-            "attack that may\n"
-            "inflict frostbite."),
-        #else
-            "A brutal snow-and-\n"
-            "wind attack that\n"
-            "may freeze the foe."),
-        #endif
+            "A spin that does\n"
+            "more damage to\n"
+            "faster foes."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_BLIZZARD,
+        .secondaryId = MOVE_GYRO_BALL,
     },
 
-    [ITEM_TM_HYPER_BEAM] =
+    [ITEM_TM_SUNNY_DAY] =
     {
         .name = _("TM15"),
-        .price = 7500,
+        .price = 5000,
         .description = COMPOUND_STRING(
-            "Powerful, but needs\n"
-            "recharging the\n"
-            "next turn."),
+            "Causes a drought\n"
+            "that strenghtens\n"
+            "the power of fire."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_HYPER_BEAM,
+        .secondaryId = MOVE_SUNNY_DAY,
     },
 
-    [ITEM_TM_LIGHT_SCREEN] =
+    [ITEM_TM_FURY_CUTTER] =
     {
         .name = _("TM16"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Creates a wall of\n"
-            "light that lowers\n"
-            "Sp. Atk damage."),
+            "An attack that\n"
+            "intensifies on\n"
+            "consecutive hits."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_LIGHT_SCREEN,
+        .secondaryId = MOVE_FURY_CUTTER,
     },
 
     [ITEM_TM_ROAR] =
@@ -10862,20 +10852,6 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_EARTHQUAKE,
     },
 
-    [ITEM_TM_SUNNY_DAY] =
-    {   
-        .name = _("TM27"),
-        .price = 1000,
-        .description = COMPOUND_STRING(
-            "The more the user\n"
-            "likes you, the more\n"
-            "powerful this move."),
-        .importance = I_REUSABLE_TMS,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_RETURN,
-    },
 
     [ITEM_TM_DIG] =
     {

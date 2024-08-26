@@ -569,10 +569,13 @@ static void BuyMenuBuildListMenuTemplate(void)
     u16 added_TMs = 0;
     i=0;
     if(gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_INTERIOR) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR))
-    added_TMs = FlagGet(FLAG_HELPED_LEDYBA) + FlagGet(FLAG_RECEIVED_TM02) + FlagGet(FLAG_ITEM_PETALBURG_WOODS_QUASH) + FlagGet(FLAG_RECEIVED_TM04) + FlagGet(FLAG_RECEIVED_TM05) + FlagGet(FLAG_RECEIVED_TM06) + FlagGet(FLAG_ITEM_RUSTBORO_CITY_X_DEFEND) + FlagGet(FLAG_RECEIVED_TM08) + FlagGet(FLAG_RECEIVED_TM09)
+    added_TMs = FlagGet(FLAG_HELPED_LEDYBA) + FlagGet(FLAG_RECEIVED_TM02) + FlagGet(FLAG_ITEM_QUASH) + FlagGet(FLAG_RECEIVED_TM04) + FlagGet(FLAG_RECEIVED_TM05) + FlagGet(FLAG_RECEIVED_TM06) + FlagGet(FLAG_ITEM_FIRE_SPIN) + FlagGet(FLAG_RECEIVED_TM08) + FlagGet(FLAG_RECEIVED_TM09)
     + FlagGet(FLAG_RECEIVED_TM10)
     + FlagGet(FLAG_RECEIVED_TM11)
-    + FlagGet(FLAG_RECEIVED_PLAY_ROUGH);
+    + FlagGet(FLAG_RECEIVED_PLAY_ROUGH)
+    + FlagGet(FLAG_RECEIVED_FURY_CUTTER)
+    + FlagGet(FLAG_RECEIVED_GYRO_BALL)
+    + FlagGet(FLAG_RECEIVED_CHARGE_BEAM);
     sListMenuItems = Alloc((sMartInfo.itemCount + 1 + added_TMs) * sizeof(*sListMenuItems));
     sItemNames = Alloc((sMartInfo.itemCount + 1 + added_TMs) * sizeof(*sItemNames));
     for (i; i < sMartInfo.itemCount; i++)
@@ -598,7 +601,7 @@ static void BuyMenuBuildListMenuTemplate(void)
     i++;
     }
 
-    if((FlagGet(FLAG_ITEM_PETALBURG_WOODS_QUASH) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    if((FlagGet(FLAG_ITEM_QUASH) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
     && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_INTERIOR) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM03);
     sListMenuItems[i].name = sItemNames[i];
@@ -631,7 +634,7 @@ static void BuyMenuBuildListMenuTemplate(void)
     i++;
     }
 
-    if((FlagGet(FLAG_ITEM_RUSTBORO_CITY_X_DEFEND) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    if((FlagGet(FLAG_ITEM_FIRE_SPIN) == TRUE) &&  gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
     && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_INTERIOR) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM07);
     sListMenuItems[i].name = sItemNames[i];
@@ -677,6 +680,30 @@ static void BuyMenuBuildListMenuTemplate(void)
     StringCopy(sItemNames[i], gText_TM12);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM12;
+    i++;
+    }
+
+    if((FlagGet(FLAG_RECEIVED_CHARGE_BEAM) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_INTERIOR) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
+    StringCopy(sItemNames[i], gText_TM13);
+    sListMenuItems[i].name = sItemNames[i];
+    sListMenuItems[i].id = ITEM_TM13;
+    i++;
+    }
+
+    if((FlagGet(FLAG_RECEIVED_GYRO_BALL) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_INTERIOR) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
+    StringCopy(sItemNames[i], gText_TM14);
+    sListMenuItems[i].name = sItemNames[i];
+    sListMenuItems[i].id = ITEM_TM14;
+    i++;
+    }
+
+    if((FlagGet(FLAG_RECEIVED_FURY_CUTTER) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_INTERIOR) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
+    StringCopy(sItemNames[i], gText_TM16);
+    sListMenuItems[i].name = sItemNames[i];
+    sListMenuItems[i].id = ITEM_TM16;
     i++;
     }
 

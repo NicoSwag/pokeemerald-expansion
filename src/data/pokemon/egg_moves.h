@@ -3879,7 +3879,7 @@ const u16 gEggMoves[] = {
 		MOVE_ACID_SPRAY,
 		MOVE_AMNESIA),
 
-    egg_moves(CLODSIRE
+    egg_moves(CLODSIRE,
 		MOVE_ACID_SPRAY,
 		MOVE_AMNESIA,
         MOVE_RECOVER,

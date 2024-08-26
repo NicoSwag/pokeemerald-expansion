@@ -39,8 +39,8 @@ MtKirikiri_SideArea_EventScript_ItemSkyFragment::
 	finditem ITEM_HEART_SCALE
 	end
 
-MtKirikiri_SideArea_EventScript_ItemReversal::
-	finditem ITEM_TM_REVERSAL
+MtKirikiri_SideArea_EventScript_ItemGyroBall::
+	finditem ITEM_TM_GYRO_BALL
 	end
 
 
@@ -421,8 +421,8 @@ PetalburgWoods_EventScript_ItemEther::
 	finditem ITEM_HEART_SCALE
 	end
 
-PetalburgWoods_EventScript_ItemQuash::
-	finditem ITEM_TM_QUASH
+PetalburgWoods_EventScript_ItemFuryCutter::
+	finditem ITEM_TM_FURY_CUTTER
 	end
 	
 Route104Upper_EventScript_HeartScale2::
@@ -521,7 +521,6 @@ AbandonedShip_Rooms2_B1F_EventScript_ItemDiveBall::
 	end
 
 AbandonedShip_Room_B1F_EventScript_ItemTMIceBeam::
-	finditem ITEM_TM_ICE_BEAM
 	end
 
 AbandonedShip_Rooms2_1F_EventScript_ItemRevive::

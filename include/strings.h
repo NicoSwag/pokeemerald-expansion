@@ -3212,6 +3212,10 @@ extern const u8 gText_TM09[];
 extern const u8 gText_TM10[];
 extern const u8 gText_TM11[];
 extern const u8 gText_TM12[];
+extern const u8 gText_TM13[];
+extern const u8 gText_TM14[];
+extern const u8 gText_TM15[];
+extern const u8 gText_TM16[];
 
 // Exp. Share
 extern const u8 gText_ExpShareOn[];
