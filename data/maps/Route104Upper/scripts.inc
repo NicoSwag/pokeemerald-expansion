@@ -3,19 +3,25 @@ Route104Upper_MapScripts::
 
 
 
-Route104Upper_OnTransition:
-	goto_if_trainerunset TRAINER_GINA_AND_MIA_1,Route104Upper_EventScript_ResetTrainers
-	setifnotbeaten TRAINER_WINSTON_1
-	setifnotbeaten TRAINER_HALEY_1
-	setifnotbeaten TRAINER_IVAN
-	end
+Route104Upper_HandleTrainers::
+	call_if_trainerunset TRAINER_GINA_AND_MIA_1,Route104Upper_EventScript_ResetTrainers
+	call_if_trainerset TRAINER_GINA_AND_MIA_1,Route104Upper_EventScript_SetTrainers
+	return
 
 
 Route104Upper_EventScript_ResetTrainers::
 	cleartrainerflag TRAINER_WINSTON_1
 	cleartrainerflag TRAINER_HALEY_1
 	cleartrainerflag TRAINER_IVAN
-	end
+	return
+
+
+
+Route104Upper_EventScript_SetTrainers::
+	setifnotbeaten TRAINER_WINSTON_1
+	setifnotbeaten TRAINER_HALEY_1
+	setifnotbeaten TRAINER_IVAN
+	return
 
 Route104Upper_EventScript_Boy::
 	lock

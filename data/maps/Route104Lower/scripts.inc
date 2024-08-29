@@ -4,27 +4,30 @@
 
 Route104Lower_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
-	map_script MAP_SCRIPT_ON_TRANSITION, Route104_OnTransition
 	.byte 0
 
 Route104_OnFrame:
 	map_script_2 VAR_BOARD_BRINEY_BOAT_STATE, 1, Route104_EventScript_StartSailToDewford
 	.2byte 0
 
-Route104_OnTransition:
-	goto_if_trainerunset TRAINER_GINA_AND_MIA_1, Route104_EventScript_ResetTrainers
-	setifnotbeaten TRAINER_DARIAN
-	setifnotbeaten TRAINER_BILLY
-	setifnotbeaten TRAINER_CINDY_1
-	end
+Route104_HandleTrainers::
+
+	call_if_trainerunset TRAINER_GINA_AND_MIA_1, Route104_EventScript_ResetTrainers
+	call_if_trainerset TRAINER_GINA_AND_MIA_1, Route104_EventScript_SetTrainers
+	return
 
 
 Route104_EventScript_ResetTrainers::
 	cleartrainerflag TRAINER_DARIAN
 	cleartrainerflag TRAINER_BILLY
 	cleartrainerflag TRAINER_CINDY_1
-	end
+	return
 
+Route104_EventScript_SetTrainers::
+	setifnotbeaten TRAINER_DARIAN
+	setifnotbeaten TRAINER_BILLY
+	setifnotbeaten TRAINER_CINDY_1
+	return
 
 Route104_EventScript_StartSailToDewford::
 	lockall

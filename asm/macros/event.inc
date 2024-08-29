@@ -1967,9 +1967,14 @@
 	goto_if FALSE, \dest
 	.endm
 
-	.macro goto_if_trainerunset flag:req, dest:req
+	.macro call_if_trainerunset flag:req, dest:req
 	checktrainerflag \flag
-	goto_if FALSE, \dest
+	call_if FALSE, \dest
+	.endm
+
+	.macro call_if_trainerset flag:req, dest:req
+	checktrainerflag \flag
+	call_if TRUE, \dest
 	.endm
 
 	.macro goto_if_set flag:req, dest:req

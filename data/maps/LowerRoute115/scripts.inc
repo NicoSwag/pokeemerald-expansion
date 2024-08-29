@@ -2,6 +2,12 @@ LowerRoute115_MapScripts::
 	.byte 0
 
 
+Route115_HandleTrainers::
+	settrainerflag TRAINER_HECTOR
+	return
+
+
+
 Route115_EventScript_Barrier::
 	msgbox Route115_Text_Barrier, MSGBOX_DEFAULT
 	closemessage

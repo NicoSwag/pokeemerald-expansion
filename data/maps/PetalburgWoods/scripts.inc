@@ -5,17 +5,21 @@
 PetalburgWoods_MapScripts::
 	.byte 0
 
-PetalburgWoods_OnTransition:
-	goto_if_trainerunset TRAINER_GINA_AND_MIA_1, PetalburgWoods_EventScript_ResetTrainers
-	setifnotbeaten TRAINER_LYLE
-	setifnotbeaten TRAINER_JAMES_1
-	end
+PetalburgWoods_HandleTrainers::
+	call_if_trainerunset TRAINER_GINA_AND_MIA_1, PetalburgWoods_EventScript_ResetTrainers
+	call_if_trainerset TRAINER_GINA_AND_MIA_1, PetalburgWoods_EventScript_SetTrainers
+	return
 
 
 PetalburgWoods_EventScript_ResetTrainers::
 	cleartrainerflag TRAINER_LYLE
 	cleartrainerflag TRAINER_JAMES_1
-	end
+	return
+
+PetalburgWoods_EventScript_SetTrainers::
+	setifnotbeaten TRAINER_LYLE
+	setifnotbeaten TRAINER_JAMES_1
+	return
 
 PetalburgWoods_EventScript_DevonResearcherLeft::
 	lockall

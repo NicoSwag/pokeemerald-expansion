@@ -14,6 +14,35 @@ Route116_OnTransition:
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_SOUTH, AbnormalWeather_StartGroudonWeather
 	end
 
+
+Route116_HandleTrainers::
+	call_if_trainerunset TRAINER_DEVON_MANAGER_1, Route116_EventScript_ResetTrainers
+	call_if_trainerset TRAINER_DEVON_MANAGER_1, Route116_EventScript_SetTrainers
+	return
+
+
+Route116_EventScript_ResetTrainers::
+	cleartrainerflag TRAINER_WYLL
+	cleartrainerflag TRAINER_JOSE
+	cleartrainerflag TRAINER_JOHNSON
+	cleartrainerflag TRAINER_CLARK
+	cleartrainerflag TRAINER_KAREN_1
+	cleartrainerflag TRAINER_DEVAN
+	cleartrainerflag TRAINER_JERRY_1
+	cleartrainerflag TRAINER_JOEY
+	return
+
+Route116_EventScript_SetTrainers::
+	setifnotbeaten TRAINER_WYLL
+	setifnotbeaten TRAINER_JOSE
+	setifnotbeaten TRAINER_JOHNSON
+	setifnotbeaten TRAINER_CLARK
+	setifnotbeaten TRAINER_KAREN_1
+	setifnotbeaten TRAINER_DEVAN
+	setifnotbeaten TRAINER_JERRY_1
+	setifnotbeaten TRAINER_JOEY
+	return
+
 Route116_EventScript_SetWandasBoyfriendPos::
 	setobjectxyperm LOCALID_WANDAS_BF_OUTSIDE, 38, 10
 	return

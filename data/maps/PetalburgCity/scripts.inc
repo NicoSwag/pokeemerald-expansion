@@ -11,6 +11,8 @@ PetalburgCity_MapScripts::
 	.byte 0
 
 PetalburgCity_OnTransition:
+	call PetalburgToRustboroHandleTrainers
+	
 	setflag FLAG_VISITED_PETALBURG_CITY
 	call_if_eq VAR_PETALBURG_CITY_STATE, 0, PetalburgCity_EventScript_MoveGymBoyToWestEntrance
 	call_if_eq VAR_PETALBURG_CITY_STATE, 2, PetalburgCity_EventScript_DisableMapNameAndMusic
@@ -18,6 +20,14 @@ PetalburgCity_OnTransition:
 	call_if_eq VAR_PETALBURG_GYM_STATE, 8, PetalburgCity_EventScript_SetGymDoorsUnlocked
 	setvar VAR_PELIPPER, 22
 	end
+
+
+PetalburgToRustboroHandleTrainers::
+	call Route104_HandleTrainers
+	call PetalburgWoods_HandleTrainers
+	call Route104Upper_HandleTrainers
+	return
+
 
 PetalburgCity_EventScript_MoveGymBoyToWestEntrance::
 	setobjectxyperm LOCALID_GYM_BOY, 5, 10

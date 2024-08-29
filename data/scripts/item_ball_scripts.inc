@@ -77,6 +77,15 @@ Route104_EventScript_ItemPotion::
 	finditem ITEM_POTION
 	end
 
+GraniteCave_EventScript_ItemKingsRock::
+	finditem ITEM_KINGS_ROCK
+	end
+
+GraniteCave_EventScript_ItemGyroBall::
+	finditem ITEM_TM_GYRO_BALL
+	end
+
+
 Route105_EventScript_ItemIron::
 	finditem ITEM_IRON
 	end

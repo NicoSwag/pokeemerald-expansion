@@ -9383,7 +9383,7 @@ Golbat
 Level: 40
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_EDWIN_2 ===
+=== TRAINER_GRANITE_GRUNT_1 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector
@@ -9400,7 +9400,7 @@ Nuzleaf
 Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_EDWIN_3 ===
+=== TRAINER_GRANITE_GRUNT_2 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector
@@ -9417,7 +9417,7 @@ Nuzleaf
 Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_EDWIN_4 ===
+=== TRAINER_GRANITE_GRUNT_3 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector
@@ -9434,7 +9434,7 @@ Nuzleaf
 Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_EDWIN_5 ===
+=== TRAINER_GRANITE_GRUNT_4 ===
 Name: EDWIN
 Class: Collector
 Pic: Collector
@@ -9902,7 +9902,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Light Screen
 - Shadow Ball
 
-=== TRAINER_ISAAC_2 ===
+=== TRAINER_GRANITE_GRUNT_5 ===
 Name: ISAAC
 Class: Pkmn Breeder
 Pic: Pokemon Breeder M
@@ -9935,7 +9935,7 @@ Makuhita
 Level: 22
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
-=== TRAINER_ISAAC_3 ===
+=== TRAINER_GRANITE_GRUNT_6 ===
 Name: ISAAC
 Class: Pkmn Breeder
 Pic: Pokemon Breeder M
@@ -10001,7 +10001,7 @@ Hariyama
 Level: 28
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
-=== TRAINER_ISAAC_5 ===
+=== TRAINER_GRANITE_GRUNT_8 ===
 Name: ISAAC
 Class: Pkmn Breeder
 Pic: Pokemon Breeder M
