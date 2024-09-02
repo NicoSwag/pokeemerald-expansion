@@ -157,23 +157,6 @@ GraniteCave_Text_Magma8Post:
 	.string "likes rocks, too.\p"
 	.string "Maybe he isn't such a bad guy.$"
 
-GraniteCave_EventScript_Magma8::
-	trainerbattle_single TRAINER_GRANITE_GRUNT_8, GraniteCave_Text_Magma8Intro, GraniteCave_Text_Magma8Defeated
-	msgbox GraniteCave_Text_Magma8Post, MSGBOX_AUTOCLOSE
-	end
-
-
-GraniteCave_Text_Magma8Intro:
-	.string "So many rocks… I love this place!$"
-
-
-GraniteCave_Text_Magma8Defeated:
-	.string "…Can I stay here a bit more?$"
-
-GraniteCave_Text_Magma8Post:
-	.string "I've heard that Devon's president\n"
-	.string "likes rocks, too.\p"
-	.string "Maybe he isn't such a bad guy.$"
 
 GraniteCave_EventScript_Magma9::
 	trainerbattle_single TRAINER_GRANITE_GRUNT_9, GraniteCave_Text_Magma9Intro, GraniteCave_Text_Magma9Defeated
@@ -187,10 +170,10 @@ GraniteCave_Text_Magma9Intro:
 	.string "I won't let you interrupt him!$"
 
 
-GraniteCave_Text_Magma8Defeated:
+GraniteCave_Text_Magma9Defeated:
 	.string "Kyahaha!$"
 
-GraniteCave_Text_Magma8Post:
+GraniteCave_Text_Magma9Post:
 	.string "Sure, go ahead.\n"
 	.string "Our Admin, Tabitha, is super strong.\p"
 	.string "You won't stand a single chance.$"
