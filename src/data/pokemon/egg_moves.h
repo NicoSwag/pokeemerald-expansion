@@ -2672,7 +2672,7 @@ const u16 gEggMoves[] = {
         MOVE_QUICK_GUARD,
         MOVE_WIDE_GUARD,
         MOVE_SALT_CURE,
-        MOVE_UPPER_HAND),
+        MOVE_FORCE_PALM),
 
     egg_moves(SANDILE,
         MOVE_DOUBLE_EDGE,

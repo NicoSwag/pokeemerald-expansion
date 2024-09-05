@@ -108,16 +108,16 @@ Route106_EventScript_Wally::
 	msgbox Route106_Text_Wally, MSGBOX_NPC
 	speakername Common_Name_Wally
 	trainerbattle_no_intro TRAINER_WALLY_2, Route106_Text_WallyDefeat
+	addobject LOCALID_RIVAL
 	speakername Common_Name_Wally
+	clearflag FLAG_HIDE_GRANITE_RIVAL
 	msgbox Route106_Text_DontUnderstand, MSGBOX_NPC
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
 	applymovement LOCALID_WALLY, Route106_Movement_WalkDown2Normal
-	clearflag FLAG_HIDE_GRANITE_RIVAL
-	addobject LOCALID_RIVAL
-	applymovement LOCALID_RIVAL, Route106_Movement_WalkUp3Fast
+	applymovement LOCALID_RIVAL, Route106_Movement_WalkUp4Fast
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -128,6 +128,8 @@ Route106_EventScript_Wally::
 	removeobject LOCALID_WALLY
 	setflag FLAG_HIDE_WALLY_106
 	applymovement LOCALID_RIVAL, Common_Movement_WalkUp
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
 	call Common_Set_Name_Rival
 	msgbox Route106_Text_WhoWasThat, MSGBOX_NPC
@@ -144,7 +146,8 @@ Route106_Movement_WalkDown2Normal:
 	walk_down
 	step_end
 
-Route106_Movement_WalkUp3Fast:
+Route106_Movement_WalkUp4Fast:
+	walk_fast_up
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
@@ -366,7 +369,7 @@ Common_Name_Brawly:
 
 
 Route106_Text_WhoWasThat:
-	.string "Hey, {PLAYER}, wasn't that…\n"
+	.string "Hey, {PLAYER}, that was…\n"
 	.string "Wally, right?\p"
 	.string "I know he lives in Petalburg, but I've\n"
 	.string "never really spoken to him before.\p"
@@ -383,8 +386,8 @@ Route106_Text_WhoWasThat:
 	.string "… … …\p"
 	.string "You know, I came here to find the Gym\n"
 	.string "Leader but…\p"
-	.string "Having a friendly sparring match with\n"
-	.string "that Wally sounds more fun.\p"
+	.string "Having a sparring match with that Wally\n"
+	.string "sounds more fun.\p"
 	.string "You know, to teach him the ropes!\p"
 	.string "Oh, but don't worry!\n"
 	.string "I won't beat him too hard.\p"

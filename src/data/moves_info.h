@@ -10359,7 +10359,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "A shock wave attack that\n"
             "may paralyze the foe."),
         .effect = EFFECT_SHELL_SIDE_ARM,
-        .power = 60,
+        .power = 80,
         .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 10,
