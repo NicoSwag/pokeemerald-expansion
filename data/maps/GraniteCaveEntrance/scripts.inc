@@ -5,6 +5,7 @@
 .set LOCALID_CLOBBOPUS, 10
 .set LOCALID_POOCHYENA, 11
 .set LOCALID_WALLY, 15
+.set LOCALID_RIVAL, 21
 
 GraniteCaveEntrance_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, GraniteCaveEntrance_MapScripts_OnTransition
@@ -113,15 +114,46 @@ Route106_EventScript_Wally::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement 0
-	applymovement LOCALID_WALLY, Common_Movement_WalkDown6
+	applymovement LOCALID_WALLY, Route106_Movement_WalkDown2Normal
+	clearflag FLAG_HIDE_GRANITE_RIVAL
+	addobject LOCALID_RIVAL
+	applymovement LOCALID_RIVAL, Route106_Movement_WalkUp3Fast
 	waitmovement 0
-	applymovement LOCALID_WALLY, Common_Movement_WalkDown
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_RIVAL, Route106_Movement_LetWallyPass
+	waitmovement 0
+	applymovement LOCALID_WALLY, Common_Movement_WalkDown6
 	waitmovement 0
 	removeobject LOCALID_WALLY
 	setflag FLAG_HIDE_WALLY_106
+	applymovement LOCALID_RIVAL, Common_Movement_WalkUp
+	waitmovement 0
+	call Common_Set_Name_Rival
+	msgbox Route106_Text_WhoWasThat, MSGBOX_NPC
+	applymovement LOCALID_RIVAL, Route106_Movement_RunAfterWally
+	waitmovement 0
+	removeobject LOCALID_RIVAL
+	setflag FLAG_HIDE_GRANITE_RIVAL
 	release
 	end
 
+
+Route106_Movement_WalkDown2Normal:
+	walk_down
+	walk_down
+	step_end
+
+Route106_Movement_WalkUp3Fast:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+Route106_Movement_LetWallyPass:
+	walk_left
+	face_right
+	step_end
 
 Route106_Text_GoClobbopus:
 	.string "Go, Clobbopus!\n"
@@ -331,3 +363,41 @@ Route106_Text_DontUnderstand:
 
 Common_Name_Brawly:
 	.string "Brawly$"
+
+
+Route106_Text_WhoWasThat:
+	.string "Hey, {PLAYER}, wasn't that…\n"
+	.string "Wally, right?\p"
+	.string "I know he lives in Petalburg, but I've\n"
+	.string "never really spoken to him before.\p"
+	.string "Not that I haven't tried!\n"
+	.string "But he's always been a bit of a weirdo.\p"
+	.string "Good thing you've moved here, or I would\n"
+	.string "have eventually died of boredom, ha!\p"
+	.string "Anyway, what was he doing here?\p"
+	.string "… … …\p"
+	.string "Whaaaaat?\n"
+	.string "He's a Pokémon Trainer now?\p"
+	.string "Him, of all people?\n"
+	.string "That's a bit of a shock.\p"
+	.string "… … …\p"
+	.string "You know, I came here to find the Gym\n"
+	.string "Leader but…\p"
+	.string "Having a friendly sparring match with\n"
+	.string "that Wally sounds more fun.\p"
+	.string "You know, to teach him the ropes!\p"
+	.string "Oh, but don't worry!\n"
+	.string "I won't beat him too hard.\p"
+	.string "Well, I better run after him before he\n"
+	.string "decides to run off the island.\p"
+	.string "See ya around!$"
+
+
+Route106_Movement_RunAfterWally:
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	step_end
