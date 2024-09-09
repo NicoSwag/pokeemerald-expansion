@@ -1344,7 +1344,7 @@
     {
       "id": "LAYOUT_PETALBURG_WOODS",
       "name": "PetalburgWoods_Layout",
-      "width": 48,
+      "width": 64,
       "height": 44,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
@@ -4600,6 +4600,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/GraniteCottage/border.bin",
       "blockdata_filepath": "data/layouts/GraniteCottage/map.bin"
+    },
+    {
+      "id": "LAYOUT_PETALBURG_BOG",
+      "name": "Petalburg_Bog_Layout",
+      "width": 54,
+      "height": 44,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Petalburg_Bog/border.bin",
+      "blockdata_filepath": "data/layouts/Petalburg_Bog/map.bin"
     }
   ]
 }

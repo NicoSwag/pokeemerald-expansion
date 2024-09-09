@@ -3,7 +3,7 @@ voicegroup191::
 	voice_keysplit voicegroup005, KeySplitTable1
 	voice_keysplit_all voicegroup001
 	voice_keysplit_all voicegroup002
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, DirectSoundWaveData_steinway_b_piano, 128, 204, 51, 242
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -26,9 +26,9 @@ voicegroup191::
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_nylon_str_guitar, 255, 249, 25, 76
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound_no_resample 64, 39, DirectSoundWaveData_sd90_open_triangle, 255, 242, 103, 188
+	voice_directsound_no_resample 64, 79, DirectSoundWaveData_sd90_open_triangle, 255, 242, 103, 188
+	voice_directsound_no_resample 64, 39, DirectSoundWaveData_sd90_open_triangle, 255, 165, 103, 188
 	voice_directsound 60, 0, DirectSoundWaveData_sd90_classical_overdrive_guitar, 255, 0, 255, 127
 	voice_directsound 60, 0, DirectSoundWaveData_sd90_classical_distortion_guitar_high, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0

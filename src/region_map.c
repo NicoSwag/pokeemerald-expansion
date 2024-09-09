@@ -151,6 +151,7 @@ static const u16 sRegionMap_SpecialPlaceLocations[][2] =
     {MAPSEC_MAGMA_HIDEOUT,              MAPSEC_ROUTE_112},
     {MAPSEC_UNDERWATER_SEALED_CHAMBER,  MAPSEC_ROUTE_134},
     {MAPSEC_PETALBURG_WOODS,            MAPSEC_ROUTE_104},
+    {MAPSEC_PETALBURG_BOG,            MAPSEC_ROUTE_104},
     {MAPSEC_BRINE_CAVE,            MAPSEC_ROUTE_115},
     {MAPSEC_JAGGED_PASS,                MAPSEC_ROUTE_112},
     {MAPSEC_MT_PYRE,                    MAPSEC_ROUTE_122},

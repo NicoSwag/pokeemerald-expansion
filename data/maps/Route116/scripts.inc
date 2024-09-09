@@ -557,8 +557,6 @@ Route116_Text_FriendlyBlackBelt:
 	.string "A-a-are you the inspector?\p"
 	.string "I've been doing my job, sir, I\n"
 	.string "swear it!\p"
-	.string "Please don't put me in the hole\n"
-	.string "of shame again…\p"
 	.string "Oh, wait.\n"
 	.string "You're just some kid.\p"
 	.string "Buzz of, will ya?$"

@@ -489,6 +489,14 @@
       "height": 1
     },
     {
+      "map_section": "MAPSEC_PETALBURG_BOG",
+      "name": "Petalburg Bog",
+      "x": 0,
+      "y": 8,
+      "width": 1,
+      "height": 1
+    },
+    {
       "map_section": "MAPSEC_RUSTURF_TUNNEL",
       "name": "Rusturf Tunnel",
       "x": 2,
