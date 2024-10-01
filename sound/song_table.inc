@@ -641,6 +641,8 @@ gSongTable::
 	song mus_waterfall_colosseum, 0, 0
 	song mus_dark_forest, 0, 0
 	song mus_tournament, 0, 0
+	song mus_battle_b2, 0, 0
+	song mus_humans_demons_and, 0, 0
 	.align 2
 dummy_song_header:
 	.byte 0, 0, 0, 0

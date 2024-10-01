@@ -101,7 +101,7 @@ static const struct WeatherCallbacks sWeatherFuncs[] =
     [WEATHER_DROUGHT]            = {Drought_InitVars,       Drought_Main,       Drought_InitAll,       Drought_Finish},
     [WEATHER_DOWNPOUR]           = {Downpour_InitVars,      Thunderstorm_Main,  Downpour_InitAll,      Thunderstorm_Finish},
     [WEATHER_UNDERWATER_BUBBLES] = {Bubbles_InitVars,       Bubbles_Main,       Bubbles_InitAll,       Bubbles_Finish},
-    [WEATHER_POLLUTION]     = {FogHorizontal_InitVars, FogHorizontal_Main, FogHorizontal_InitAll, FogHorizontal_Finish},
+    [WEATHER_POLLUTION]     = {Pollution_InitVars,          Pollution_Main,          Pollution_InitAll,          Pollution_Finish},
 };
 
 void (*const gWeatherPalStateFuncs[])(void) =
@@ -153,6 +153,7 @@ static const u8 ALIGNED(2) sBasePaletteColorMapTypes[32] =
 };
 
 const u16 ALIGNED(4) gFogPalette[] = INCBIN_U16("graphics/weather/fog.gbapal");
+const u16 ALIGNED(4) gAshPalette[] = INCBIN_U16("graphics/weather/ash_palette.gbapal");
 
 void StartWeather(void)
 {
@@ -400,6 +401,7 @@ static void FadeInScreenWithWeather(void)
     case WEATHER_RAIN:
     case WEATHER_RAIN_THUNDERSTORM:
     case WEATHER_DOWNPOUR:
+    case WEATHER_POLLUTION:
     case WEATHER_SHADE:
         if (FadeInScreen_RainShowShade() == FALSE)
         {
@@ -414,7 +416,6 @@ static void FadeInScreenWithWeather(void)
             gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
         }
         break;
-    case WEATHER_POLLUTION:
     case WEATHER_FOG_HORIZONTAL:
         if (FadeInScreen_FogHorizontal() == FALSE)
         {
@@ -796,6 +797,7 @@ void FadeScreen(u8 mode, s8 delay)
     case WEATHER_DOWNPOUR:
     case WEATHER_FOG_HORIZONTAL:
     case WEATHER_SHADE:
+    case WEATHER_POLLUTION:
     case WEATHER_DROUGHT:
         useWeatherPal = TRUE;
         break;

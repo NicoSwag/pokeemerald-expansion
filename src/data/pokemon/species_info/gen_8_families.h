@@ -1647,6 +1647,14 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         BACK_PIC(Coalossal, 64, 48),
         .backPicYOffset = 11,
         //.backAnimId = BACK_ANIM_NONE,
+                       OVERWORLD(
+            sPicTable_Coalossal,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_BUG,
+            gOverworldPalette_Coalossal,
+            gShinyOverworldPalette_Coalossal
+        )
         PALETTES(Coalossal),
         ICON(Coalossal, 0),
     },
@@ -1819,6 +1827,14 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         PALETTES(Behemerald),
         ICON(Behemerald, 1),
         LEARNSETS(Behemerald),
+               OVERWORLD(
+            sPicTable_Behemerald,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_BUG,
+            gOverworldPalette_Behemerald,
+            gShinyOverworldPalette_Behemerald
+        )
     },
 
 #endif //P_FAMILY_ROLYCOLY

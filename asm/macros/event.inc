@@ -533,6 +533,16 @@
 	.2byte \itemId
 	.endm
 
+	.macro startclimbing
+	callnative StartClimbing
+	.endm
+
+	.macro stopclimbing
+	callnative StopClimbing
+	.endm
+
+
+
 	.macro savegame
 	callnative SaveStartCallback_StartMenu
 	.endm

@@ -89,7 +89,7 @@
   "warp_events": [
     {
       "x": 24,
-      "y": 13,
+      "y": 11,
       "elevation": 0,
       "dest_map": "MAP_MT_KIRIKIRI_SIDE_AREA",
       "dest_warp_id": "0"

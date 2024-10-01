@@ -471,7 +471,7 @@ PetalburgWoods_Text_DealIsOff:
 
 
 PetalburgWoods_Text_HandOverThosePapers:
-	.string "You!\p"
+	.string "Oh, great.\p"
 	.string "Thanks to you, that guy's run\n"
 	.string "off with the Goods!\p"
 	.string "Do you even have any idea of who\n"
@@ -480,7 +480,7 @@ PetalburgWoods_Text_HandOverThosePapers:
 	.string "Team Aqua's second-in-command!$"
 
 PetalburgWoods_Text_YouHaveToHelpMe:
-	.string "Listen!\p"
+	.string "Umpf!\p"
 	.string "You only got off easy because\n"
 	.string "I wasn't expecting any fight!\p"
 	.string "Next time we meet, you'll get it!\p"

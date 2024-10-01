@@ -1047,7 +1047,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "Oh, hi, {PLAYER}{KUN}!\p"
 	.string "I heard you and {RIVAL} faced off\n"
-	.string "against some TEAM MAGMA goons.\p"
+	.string "against some Team Magma goons.\p"
 	.string "They're a strange group that showed\n"
 	.string "up very recently to stir up trouble.\p"
 	.string "No one knows what their goals are,\n"
@@ -1056,7 +1056,7 @@ LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "and I suppose that's admirable, but…\p"
 	.string "It's no excuse to go around stealing\n"
 	.string "rocks!\p"
-	.string "Don't they know that HOENN has special\n"
+	.string "Don't they know that Hoenn has special\n"
 	.string "laws for the preservation of the\l"
 	.string "environment?\p"
 	.string "You need a license for that, good\n"

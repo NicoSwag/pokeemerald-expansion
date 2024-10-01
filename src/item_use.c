@@ -1117,7 +1117,7 @@ void ItemUseOutOfBattle_EvolutionStone(u8 taskId)
 
 static u32 GetBallThrowableState(void)
 {
-    if (gNuzlockeCannotCatch == 1){
+    if (FlagGet(FLAG_CANNOT_USE_BALLS)){
         return BALL_THROW_UNABLE_DISABLED_FLAG;
     }
     if (IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT))

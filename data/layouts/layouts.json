@@ -4610,6 +4610,26 @@
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/Petalburg_Bog/border.bin",
       "blockdata_filepath": "data/layouts/Petalburg_Bog/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_MAP1",
+      "name": "NewMap1_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RustboroGym",
+      "border_filepath": "data/layouts/NewMap1/border.bin",
+      "blockdata_filepath": "data/layouts/NewMap1/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_GYM_TEST",
+      "name": "DewfordGymTest_Layout",
+      "width": 35,
+      "height": 40,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_DewfordGym",
+      "border_filepath": "data/layouts/DewfordGymTest/border.bin",
+      "blockdata_filepath": "data/layouts/DewfordGymTest/map.bin"
     }
   ]
 }

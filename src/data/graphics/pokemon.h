@@ -108,6 +108,7 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #endif //P_FOOTPRINTS
 #if OW_POKEMON_OBJECT_EVENTS
     const u32 gObjectEventPic_Charmander[] = INCBIN_COMP("graphics/pokemon/charmander/overworld.4bpp");
+    const u32 gObjectEventPic_Behemerald[] = INCBIN_COMP("graphics/pokemon/behemerald/overworld.4bpp");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
     const u32 gOverworldPalette_Charmander[] = INCBIN_U32("graphics/pokemon/charmander/overworld_normal.gbapal.lz");
     const u32 gShinyOverworldPalette_Charmander[] = INCBIN_U32("graphics/pokemon/charmander/overworld_shiny.gbapal.lz");

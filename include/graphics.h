@@ -232,6 +232,7 @@ extern const u32 gBattleTerrainPalette_TallGrass[];
 extern const u32 gBattleTerrainPalette_YellowForest[];
 extern const u32 gBattleTerrainPalette_TallGrassOvercast[];
 extern const u32 gBattleTerrainPalette_CaveRust[];
+extern const u32 gBattleTerrainPalette_CaveGranite[];
 extern const u32 gBattleTerrainPalette_GymArena[];
 extern const u32 gBattleTerrainPalette_Forest[];
 extern const u32 gBattleTerrainTiles_LongGrass[];

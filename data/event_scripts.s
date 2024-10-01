@@ -1304,3 +1304,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/GraniteCottage/scripts.inc"
 
 	.include "data/maps/Petalburg_Bog/scripts.inc"
+
+	.include "data/maps/NewMap1/scripts.inc"
+
+	.include "data/maps/DewfordGymTest/scripts.inc"

@@ -152,6 +152,7 @@ EWRAM_DATA u8 ALIGNED(2) sBasePaletteColorMapTypes[32] =
 };
 
 const u16 ALIGNED(2) gFogPalette[] = INCBIN_U16("graphics/weather/fog.gbapal");
+const u16 ALIGNED(2) gAshPalette[] = INCBIN_U16("graphics/weather/ash_palette.gbapal");
 
 void StartWeather(void)
 {
@@ -399,8 +400,9 @@ static void FadeInScreenWithWeather(void)
             gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
         }
         break;
-    case WEATHER_POLLUTION:
+    
     case WEATHER_FOG_HORIZONTAL:
+    case WEATHER_POLLUTION:
         if (FadeInScreen_FogHorizontal() == FALSE)
         {
             gWeatherPtr->colorMapIndex = 0;
@@ -779,6 +781,7 @@ void FadeScreen(u8 mode, s8 delay)
     case WEATHER_DOWNPOUR:
     case WEATHER_SNOW:
     case WEATHER_FOG_HORIZONTAL:
+    case WEATHER_POLLUTION:
     case WEATHER_SHADE:
     case WEATHER_DROUGHT:
         useWeatherPal = TRUE;
@@ -827,7 +830,7 @@ void UpdateSpritePaletteWithWeather(u8 spritePaletteIndex)
     case WEATHER_PAL_STATE_SCREEN_FADING_IN:
         if (gWeatherPtr->fadeInFirstFrame)
         {
-            if (gWeatherPtr->currWeather == WEATHER_FOG_HORIZONTAL)
+            if (gWeatherPtr->currWeather == WEATHER_FOG_HORIZONTAL || gWeatherPtr->currWeather == WEATHER_POLLUTION)
                 MarkFogSpritePalToLighten(paletteIndex);
             paletteIndex = PLTT_ID(paletteIndex);
             for (i = 0; i < 16; i++)
@@ -842,7 +845,7 @@ void UpdateSpritePaletteWithWeather(u8 spritePaletteIndex)
     // WEATHER_PAL_STATE_CHANGING_WEATHER
     // WEATHER_PAL_STATE_CHANGING_IDLE
     default:
-        if (gWeatherPtr->currWeather != WEATHER_FOG_HORIZONTAL)
+        if (gWeatherPtr->currWeather != WEATHER_FOG_HORIZONTAL || gWeatherPtr->currWeather != WEATHER_POLLUTION)
         {
             ApplyColorMap(paletteIndex, 1, gWeatherPtr->colorMapIndex);
         }
@@ -1026,7 +1029,7 @@ static void SetFieldWeather(u8 weather)
         SetWeather(WEATHER_RAIN_THUNDERSTORM);
         break;
     case COORD_EVENT_WEATHER_FOG_HORIZONTAL:
-        SetWeather(WEATHER_POLLUTION);
+        SetWeather(WEATHER_FOG_HORIZONTAL);
         break;
     case COORD_EVENT_WEATHER_FOG_DIAGONAL:
         SetWeather(WEATHER_FOG_DIAGONAL);
@@ -1039,6 +1042,9 @@ static void SetFieldWeather(u8 weather)
         break;
     case COORD_EVENT_WEATHER_SHADE:
         SetWeather(WEATHER_SHADE);
+        break;
+    case COORD_EVENT_WEATHER_POLLUTION:
+        SetWeather(WEATHER_POLLUTION);
         break;
     }
 }

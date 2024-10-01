@@ -8611,6 +8611,13 @@ BattleScript_DebrisShield::
 	waitmessage B_WAIT_TIME_LONG
 	end
 
+BattleScript_AvoidedMove::
+	call BattleScript_AbilityPopUpTarget
+	printstring STRINGID_AVOIDEDMOVE
+	waitmessage B_WAIT_TIME_LONG
+	end
+
+
 BattleScript_DazzlingProtected::
 	attackstring
 	ppreduce

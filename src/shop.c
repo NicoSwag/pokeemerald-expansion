@@ -699,6 +699,14 @@ static void BuyMenuBuildListMenuTemplate(void)
     i++;
     }
 
+    if((FlagGet(FLAG_RECEIVED_SUNNY_DAY) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
+    && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_INTERIOR) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
+    StringCopy(sItemNames[i], gText_TM15);
+    sListMenuItems[i].name = sItemNames[i];
+    sListMenuItems[i].id = ITEM_TM15;
+    i++;
+    }
+
     if((FlagGet(FLAG_RECEIVED_FURY_CUTTER) == TRUE) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ROUTE104_PRETTY_PETAL_FLOWER_SHOP) 
     && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(RUSTBORO_CITY_GYM_INTERIOR) && gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(PETALBURG_CITY_GYM_INTERIOR)){
     StringCopy(sItemNames[i], gText_TM16);

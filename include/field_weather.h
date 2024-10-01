@@ -140,6 +140,7 @@ struct Weather
 extern struct Weather gWeather;
 extern struct Weather *const gWeatherPtr;
 extern const u16 gFogPalette[];
+extern const u16 gAshPalette[];
 
 enum
 {

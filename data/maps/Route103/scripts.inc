@@ -257,13 +257,13 @@ Route_103_Magmaf_Exit::
 	step_end
 
 Route103_Text_Revenge::
-	.string "COURTNEY: MAXIE will have our head on\n"
+	.string "Maxie will have our head on\n"
 	.string "a platter…\p"
 	.string "First we can't get to the ruins…\p"
 	.string "Then a couple of kids show up and\n"
 	.string "attack us!\p"
 	.string "Do you even know who we are?\p"
-	.string "We're TEAM MAGMA. An organization\n"
+	.string "We're Team Magma. An organization\n"
 	.string "dedicated to the betterement of the\l"
 	.string "world, at any cost.\p"
 	.string "We won't let anyone stand in the way of\n"

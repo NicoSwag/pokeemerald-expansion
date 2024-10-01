@@ -2579,7 +2579,7 @@ static void PrintAbilityOnAbilityPopUp(u32 ability, u8 spriteId1, u8 spriteId2)
                         (void*)(OBJ_VRAM0) + (gSprites[spriteId2].oam.tileNum * 32) + 256,
                         5, 12,
                         4,
-                        6, 9, 1);
+                        7, 9, 1);
 }
 
 #define PIXEL_COORDS_TO_OFFSET(x, y)(            \

@@ -29,6 +29,10 @@ static const struct SpriteFrameImage sPicTable_Venusaur[] = {
 static const struct SpriteFrameImage sPicTable_Charmander[] = {
     overworld_ascending_frames(gObjectEventPic_Charmander, 4, 4),
 };
+
+static const struct SpriteFrameImage sPicTable_Behemerald[] = {
+    overworld_ascending_frames(gObjectEventPic_Behemerald, 4, 4),
+};
 static const struct SpriteFrameImage sPicTable_Charmeleon[] = {
     overworld_ascending_frames(gObjectEventPic_Charmeleon, 4, 4),
 };

@@ -506,6 +506,7 @@ extern const u8 BattleScript_EarthEaterActivates[];
 extern const u8 BattleScript_MimicryActivates_End3[];
 extern const u8 BattleScript_IceFaceNullsDamage[];
 extern const u8 BattleScript_DebrisShield[];
+extern const u8 BattleScript_AvoidedMove[];
 extern const u8 BattleScript_BattlerFormChangeWithStringEnd3[];
 extern const u8 BattleScript_ShieldRestored[];
 extern const u8 BattleScript_DampPreventsAftermath[];

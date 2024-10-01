@@ -2902,6 +2902,23 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_OddKeystone,
     },
 
+    [ITEM_ODD_CARVING] =
+    {
+        .name = _("Odd Carvings"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A transcription of\n"
+            "some strange\n"
+            "carvings."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 0,
+        .iconPic = gItemIcon_IciclePlate,
+        .iconPalette = gItemIconPalette_IciclePlate,
+    },
+
     [ITEM_PRETTY_FEATHER] =
     {
         .name = HANDLE_EXPANDED_ITEM_NAME("PrettyFeather", "Pretty Feather"),
@@ -11858,20 +11875,6 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_STRENGTH,
     },
 
-    [ITEM_HM_FLASH] =
-    {
-        .name = _("HM05"),
-        .price = 0,
-        .description = COMPOUND_STRING(
-            "Looses a powerful\n"
-            "blast of light that\n"
-            "reduces accuracy."),
-        .importance = 1,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_FLASH,
-    },
 
     [ITEM_HM_ROCK_SMASH] =
     {
@@ -11916,6 +11919,21 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
         .secondaryId = MOVE_DIVE,
+    },
+
+    [ITEM_HM_ROCK_CLIMB] =
+    {
+        .name = _("HM05"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A charging attack\n"
+            "that may confuse\n"
+            "the foe."),
+        .importance = 1,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+        .secondaryId = MOVE_ROCK_CLIMB,
     },
 
 

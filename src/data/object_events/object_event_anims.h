@@ -1358,6 +1358,33 @@ static const union AnimCmd *const sAnimTable_BrendanMayNormal[] = {
     [ANIM_RUN_EAST] = sAnim_RunEast,
 };
 
+static const union AnimCmd *const sAnimTable_BrendanMayClimbing[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_FaceNorth,
+    [ANIM_STD_FACE_NORTH] = sAnim_FaceNorth,
+    [ANIM_STD_FACE_WEST] = sAnim_FaceNorth,
+    [ANIM_STD_FACE_EAST] = sAnim_FaceNorth,
+    [ANIM_STD_GO_SOUTH] = sAnim_GoNorth,
+    [ANIM_STD_GO_NORTH] = sAnim_GoNorth,
+    [ANIM_STD_GO_WEST] = sAnim_GoNorth,
+    [ANIM_STD_GO_EAST] = sAnim_GoNorth,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_GoFastNorth,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_GoFastNorth,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_GoFastNorth,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_GoFastNorth,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_GoFasterNorth,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_GoFasterNorth,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_GoFasterNorth,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_GoFasterNorth,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_GoFastestNorth,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_GoFastestNorth,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_GoFastestNorth,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_GoFastestNorth,
+    [ANIM_RUN_SOUTH] = sAnim_RunNorth,
+    [ANIM_RUN_NORTH] = sAnim_RunNorth,
+    [ANIM_RUN_WEST] = sAnim_RunNorth,
+    [ANIM_RUN_EAST] = sAnim_RunNorth,
+};
+
 static const union AnimCmd *const sAnimTable_AcroBike[] = {
     [ANIM_STD_FACE_SOUTH] = sAnim_FaceSouth,
     [ANIM_STD_FACE_NORTH] = sAnim_FaceNorth,
@@ -1516,6 +1543,10 @@ static const struct StepAnimTable sStepAnimTables[] = {
     },
     {
         .anims = sAnimTable_BrendanMayNormal,
+        .animPos = {1, 3, 0, 2},
+    },
+    {
+        .anims = sAnimTable_BrendanMayClimbing,
         .animPos = {1, 3, 0, 2},
     },
     {

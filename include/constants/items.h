@@ -1041,11 +1041,12 @@
 #define ITEM_GREPA_SMOOTHIE 869
 #define ITEM_TAMATO_SMOOTHIE 870
 #define ITEM_SEASHELL 871
+#define ITEM_ODD_CARVING 872
 
 // HOPO BERRY
 // LEGEND PLATE
 
-#define ITEMS_COUNT 872
+#define ITEMS_COUNT 873
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

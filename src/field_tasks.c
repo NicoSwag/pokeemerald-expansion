@@ -196,6 +196,7 @@ void SetUpFieldTasks(void)
 void ActivatePerStepCallback(u8 callbackId)
 {
     u8 taskId = FindTaskIdByFunc(Task_RunPerStepCallback);
+
     if (taskId != TASK_NONE)
     {
         s32 i;
@@ -698,7 +699,6 @@ static void SootopolisGymIcePerStepCallback(u8 taskId)
             tIceX = x;
             tIceY = y;
         }
-        break;
     case 2:
         if (tDelay != 0)
         {
@@ -758,6 +758,7 @@ static void AshGrassPerStepCallback(u8 taskId)
 
     tPrevX = x;
     tPrevY = y;
+    
     if (MetatileBehavior_IsAshGrass(MapGridGetMetatileBehaviorAt(x, y)))
     {
         // Remove ash from grass
@@ -821,6 +822,8 @@ static void CrackedFloorPerStepCallback(u8 taskId)
 
     tPrevX = x;
     tPrevY = y;
+
+
     if (MetatileBehavior_IsCrackedFloor(behavior))
     {
         if (GetPlayerSpeed() != PLAYER_SPEED_FASTEST)

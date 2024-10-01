@@ -143,6 +143,10 @@
 #define METATILE_Dewford_Door              0x225
 #define METATILE_Dewford_Door_BattleTower  0x25D
 
+// gTileset_DewfordGym
+#define METATILE_DewfordGym_NonSlipperyWall  0x268
+#define METATILE_DewfordGym_SlipperyWall     0x24D
+
 // gTileset_EliteFour
 #define METATILE_EliteFour_EntryDoor_ClosedBottom    0x20E
 #define METATILE_EliteFour_EntryDoor_ClosedTop       0x206
@@ -250,19 +254,25 @@
 #define METATILE_GenericBuilding_TrickHouse_Stairs_Down  0x219
 
 // gTileset_GraniteCave
-#define METATILE_GraniteCave_BridgeDown         0x3C9
-#define METATILE_GraniteCave_BridgeMiddle       0x3C1
-#define METATILE_GraniteCave_BridgeUp           0x3B9
-#define METATILE_GraniteCave_Floor              0x321
-#define METATILE_GraniteCave_GateRailLeft       0x2E5
-#define METATILE_GraniteCave_GateRailMiddle     0x2E6
-#define METATILE_GraniteCave_GateRailRight      0x2E7
-#define METATILE_GraniteCave_NormalGate         0x37A
-#define METATILE_GraniteCave_RailLeft           0x2B8
-#define METATILE_GraniteCave_RailMiddle         0x3F1
-#define METATILE_GraniteCave_RailRight          0x2BA
-#define METATILE_GraniteCave_RightEdgeOverVoid  0x3B7
-#define METATILE_GraniteCave_Void               0x3C0
+#define METATILE_GraniteCave_BridgeDown             0x3C9
+#define METATILE_GraniteCave_BridgeMiddle           0x3C1
+#define METATILE_GraniteCave_BridgeUp               0x3B9
+#define METATILE_GraniteCave_Bridge_Blocked_Bottom  0x348
+#define METATILE_GraniteCave_Bridge_Blocked_Middle  0x349
+#define METATILE_GraniteCave_Bridge_Blocked_Top     0x34A
+#define METATILE_GraniteCave_Floor                  0x321
+#define METATILE_GraniteCave_GateRailLeft           0x2E5
+#define METATILE_GraniteCave_GateRailMiddle         0x2E6
+#define METATILE_GraniteCave_GateRailRight          0x2E7
+#define METATILE_GraniteCave_NormalGate             0x37A
+#define METATILE_GraniteCave_RailLeft               0x2B8
+#define METATILE_GraniteCave_RailMiddle             0x3F1
+#define METATILE_GraniteCave_RailRight              0x2BA
+#define METATILE_GraniteCave_Rail_Blocked_Left      0x371
+#define METATILE_GraniteCave_Rail_Blocked_Middle    0x373
+#define METATILE_GraniteCave_Rail_Blocked_Right     0x372
+#define METATILE_GraniteCave_RightEdgeOverVoid      0x3B7
+#define METATILE_GraniteCave_Void                   0x3C0
 
 // gTileset_InsideOfTruck
 #define METATILE_InsideOfTruck_DoorClosedFloor_Bottom  0x21D

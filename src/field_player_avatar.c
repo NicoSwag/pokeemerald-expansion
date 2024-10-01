@@ -64,6 +64,7 @@ static bool8 ForcedMovement_SlideEast(void);
 static bool8 ForcedMovement_MatJump(void);
 static bool8 ForcedMovement_MatSpin(void);
 static bool8 ForcedMovement_MuddySlope(void);
+static bool8 ForcedMovement_Climbing(void);
 
 static void MovePlayerNotOnBike(u8, u16);
 static u8 CheckMovementInputNotOnBike(u8);
@@ -86,7 +87,8 @@ static void PlayerAvatarTransition_AcroBike(struct ObjectEvent *);
 static void PlayerAvatarTransition_Surfing(struct ObjectEvent *);
 static void PlayerAvatarTransition_Underwater(struct ObjectEvent *);
 static void PlayerAvatarTransition_ReturnToField(struct ObjectEvent *);
-
+static void PlayerAvatarTransition_Climbing(struct ObjectEvent *);
+static u8 CanPlayerFaceDirOnMetatile(u8, u8);
 static bool8 PlayerAnimIsMultiFrameStationary(void);
 static bool8 PlayerAnimIsMultiFrameStationaryAndStateNotTurning(void);
 static bool8 PlayerIsAnimActive(void);
@@ -236,6 +238,7 @@ static void (*const sPlayerAvatarTransitionFuncs[])(struct ObjectEvent *) =
     [PLAYER_AVATAR_STATE_FIELD_MOVE] = PlayerAvatarTransition_ReturnToField,
     [PLAYER_AVATAR_STATE_FISHING]    = PlayerAvatarTransition_Dummy,
     [PLAYER_AVATAR_STATE_WATERING]   = PlayerAvatarTransition_Dummy,
+    [PLAYER_AVATAR_STATE_CLIMBING]   = PlayerAvatarTransition_Climbing,
 };
 
 static bool8 (*const sArrowWarpMetatileBehaviorChecks[])(u8) =
@@ -257,6 +260,7 @@ static const u16 sRivalAvatarGfxIds[][2] =
     [PLAYER_AVATAR_STATE_FISHING]    = {OBJ_EVENT_GFX_BRENDAN_FISHING,          OBJ_EVENT_GFX_MAY_FISHING},
     [PLAYER_AVATAR_STATE_WATERING]   = {OBJ_EVENT_GFX_BRENDAN_WATERING,         OBJ_EVENT_GFX_MAY_WATERING},
     [PLAYER_AVATAR_STATE_VSSEEKER]   = {OBJ_EVENT_GFX_RIVAL_BRENDAN_FIELD_MOVE, OBJ_EVENT_GFX_RIVAL_MAY_FIELD_MOVE},
+    [PLAYER_AVATAR_STATE_CLIMBING]     = {OBJ_EVENT_GFX_RIVAL_BRENDAN_CLIMBING,     OBJ_EVENT_GFX_RIVAL_MAY_CLIMBING},
 };
 
 static const u16 sPlayerAvatarGfxIds[][2] =
@@ -270,6 +274,7 @@ static const u16 sPlayerAvatarGfxIds[][2] =
     [PLAYER_AVATAR_STATE_FISHING]    = {OBJ_EVENT_GFX_BRENDAN_FISHING,    OBJ_EVENT_GFX_MAY_FISHING},
     [PLAYER_AVATAR_STATE_WATERING]   = {OBJ_EVENT_GFX_BRENDAN_WATERING,   OBJ_EVENT_GFX_MAY_WATERING},
     [PLAYER_AVATAR_STATE_VSSEEKER]   = {OBJ_EVENT_GFX_BRENDAN_FIELD_MOVE, OBJ_EVENT_GFX_MAY_FIELD_MOVE},
+    [PLAYER_AVATAR_STATE_CLIMBING]     = {OBJ_EVENT_GFX_BRENDAN_CLIMBING,     OBJ_EVENT_GFX_MAY_CLIMBING},
 };
 
 static const u16 sFRLGAvatarGfxIds[GENDER_COUNT] =
@@ -459,10 +464,8 @@ static bool8 ForcedMovement_None(void)
     if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED_MOVE)
     {
         struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-
         playerObjEvent->facingDirectionLocked = FALSE;
         playerObjEvent->enableAnim = TRUE;
-        SetObjectEventDirection(playerObjEvent, playerObjEvent->facingDirection);
         gPlayerAvatar.flags &= ~PLAYER_AVATAR_FLAG_FORCED_MOVE;
     }
     return FALSE;
@@ -472,6 +475,7 @@ static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
 {
     struct PlayerAvatar *playerAvatar = &gPlayerAvatar;
     u8 collision = CheckForPlayerAvatarCollision(direction);
+    struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
 
     playerAvatar->flags |= PLAYER_AVATAR_FLAG_FORCED_MOVE;
     if (collision)
@@ -554,7 +558,8 @@ static bool8 ForcedMovement_PushedEastByCurrent(void)
 static bool8 ForcedMovement_Slide(u8 direction, void (*moveFunc)(u8))
 {
     struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-
+    if (VarGet(VAR_CLIMBING) == 1)
+        SetObjectEventDirection(playerObjEvent, DIR_NORTH);
     playerObjEvent->disableAnim = TRUE;
     playerObjEvent->facingDirectionLocked = TRUE;
     return DoForcedMovement(direction, moveFunc);
@@ -589,6 +594,13 @@ static bool8 ForcedMovement_MatJump(void)
 static bool8 ForcedMovement_MatSpin(void)
 {
     DoPlayerMatSpin();
+    return TRUE;
+}
+
+
+static bool8 ForcedMovement_Climbing(void)
+{
+    SetPlayerAvatarClimbing();
     return TRUE;
 }
 
@@ -630,12 +642,15 @@ static void PlayerNotOnBikeNotMoving(u8 direction, u16 heldKeys)
 
 static void PlayerNotOnBikeTurningInPlace(u8 direction, u16 heldKeys)
 {
+    struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+    if (CanPlayerFaceDirOnMetatile(direction, playerObjEvent->currentMetatileBehavior) == 1)
     PlayerTurnInPlace(direction);
 }
 
 static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
 {
     u8 collision = CheckForPlayerAvatarCollision(direction);
+    struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
 
     if (collision)
     {
@@ -653,6 +668,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         {
             u8 adjustedCollision = collision - COLLISION_STOP_SURFING;
             if (adjustedCollision > 3)
+            if (CanPlayerFaceDirOnMetatile(direction, playerObjEvent->currentMetatileBehavior) == 1)
                 PlayerNotOnBikeCollide(direction);
             return;
         }
@@ -670,17 +686,26 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
     {
         if (heldKeys & B_BUTTON && gSaveBlock2Ptr->autoRun == TRUE)
         {
+                
+        if (CanPlayerFaceDirOnMetatile(direction, playerObjEvent->currentMetatileBehavior) == 1)
             PlayerWalkNormal(direction);
         }
         else
         {
-            PlayerRun(direction);
-            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+            if (!MetatileBehavior_IsClimbingTile(playerObjEvent->currentMetatileBehavior)
+            && !MetatileBehavior_IsClimbingBottomTile(playerObjEvent->currentMetatileBehavior))
+            {PlayerRun(direction);
+            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;}
+            else{
+            PlayerWalkNormal(direction);
         }
+        }
+        
         return;
     }
     else
     {
+        if (CanPlayerFaceDirOnMetatile(direction, playerObjEvent->currentMetatileBehavior) == 1)
         PlayerWalkNormal(direction);
     }
 }
@@ -887,6 +912,12 @@ static void PlayerAvatarTransition_AcroBike(struct ObjectEvent *objEvent)
     Bike_HandleBumpySlopeJump();
 }
 
+static void PlayerAvatarTransition_Climbing(struct ObjectEvent *objEvent)
+{
+    ObjectEventSetGraphicsId(objEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_CLIMBING));
+    ObjectEventTurn(objEvent, objEvent->movementDirection);
+}
+
 static void PlayerAvatarTransition_Surfing(struct ObjectEvent *objEvent)
 {
     u8 spriteId;
@@ -1038,7 +1069,8 @@ static void PlayerNotOnBikeCollideWithFarawayIslandMew(u8 direction)
 
 void PlayerFaceDirection(u8 direction)
 {
-    PlayerSetAnimId(GetFaceDirectionMovementAction(direction), COPY_MOVE_FACE);
+    
+        PlayerSetAnimId(GetFaceDirectionMovementAction(direction), COPY_MOVE_FACE);
 }
 
 void PlayerTurnInPlace(u8 direction)
@@ -1421,6 +1453,26 @@ void SetPlayerAvatarFieldMove(void)
     ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_FIELD_MOVE));
     StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], ANIM_FIELD_MOVE);
 }
+
+void SetPlayerAvatarClimbing(void)
+{
+        if (!FlagGet(FLAG_CLIMBING))
+        {
+            ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_CLIMBING));
+            FlagSet(FLAG_CLIMBING);
+        }
+}
+
+void SetPlayerAvatarNormal(void)
+{
+        if (FlagGet(FLAG_CLIMBING))
+        {
+            ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_NORMAL));
+            FlagClear(FLAG_CLIMBING);
+        }
+
+}
+
 
 static void SetPlayerAvatarFishing(u8 direction)
 {
@@ -2443,4 +2495,22 @@ static u8 TrySpinPlayerForWarp(struct ObjectEvent *object, s16 *delayTimer)
     ObjectEventForceSetHeldMovement(object, GetFaceDirectionMovementAction(sSpinDirections[object->facingDirection]));
     *delayTimer = 0;
     return sSpinDirections[object->facingDirection];
+}
+
+static bool8 CanPlayerFaceDirOnMetatile(u8 direction, u8 tile)
+{
+
+    if (direction == DIR_NORTH)
+    {
+        // Bike cannot face north or south on a horizontal rail
+        if (MetatileBehavior_IsClimbingBottomTile(tile))
+            return FALSE;
+    }
+    if (direction == DIR_SOUTH)
+    {
+        // Bike cannot face east or west on a vertical rail
+        if (MetatileBehavior_IsClimbingTile(tile) || MetatileBehavior_IsClimbingBottomTile(tile))
+            return FALSE;
+    }
+    return TRUE;
 }

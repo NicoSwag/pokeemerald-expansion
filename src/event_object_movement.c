@@ -53,6 +53,7 @@
 #include "constants/union_room.h"
 #include "constants/weather.h"
 
+
 // this file was known as evobjmv.c in Game Freak's original source
 
 enum {
@@ -2769,6 +2770,15 @@ static void ResetObjectEventFldEffData(struct ObjectEvent *objectEvent)
     ObjectEventClearHeldMovement(objectEvent);
 }
 
+bool8 IsObjectEventPaletteIndex(u8 paletteIndex)
+{
+        if (FindObjectEventPaletteIndexByTag(GetSpritePaletteTagByPaletteNum(paletteIndex - 16)) != 0xFF)
+            return TRUE;
+
+
+    return FALSE;
+}
+
 static void SetPlayerAvatarObjectEventIdAndObjectId(u8 objectEventId, u8 spriteId)
 {
     gPlayerAvatar.objectEventId = objectEventId;
@@ -3074,6 +3084,7 @@ void PatchObjectPaletteRange(const u16 *paletteTags, u8 minSlot, u8 maxSlot)
     while (minSlot < maxSlot)
     {
         PatchObjectPalette(*paletteTags, minSlot);
+        UpdateSpritePaletteWithWeather(FindObjectEventPaletteIndexByTag(*paletteTags));
         paletteTags++;
         minSlot++;
     }
@@ -9016,6 +9027,7 @@ static void GetAllGroundEffectFlags_OnBeginStep(struct ObjectEvent *objEvent, u3
     GetGroundEffectFlags_Puddle(objEvent, flags);
     GetGroundEffectFlags_ShortGrass(objEvent, flags);
     GetGroundEffectFlags_HotSprings(objEvent, flags);
+
 }
 
 static void GetAllGroundEffectFlags_OnFinishStep(struct ObjectEvent *objEvent, u32 *flags)

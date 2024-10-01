@@ -144,6 +144,20 @@ void RemoveAllItem(struct ScriptContext *ctx)
    }
 }
 
+
+
+void StartClimbing(struct ScriptContext *ctx)
+{
+    SetPlayerAvatarClimbing();
+    
+}
+
+
+void StopClimbing(struct ScriptContext *ctx)
+{
+    SetPlayerAvatarNormal();
+}
+
 void SetIfNotBeaten(struct ScriptContext *ctx){
     u16 index = VarGet(ScriptReadHalfword(ctx));
     if(gSaveBlock1Ptr->beatTrainer[index]==1)

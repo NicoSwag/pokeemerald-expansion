@@ -273,6 +273,11 @@
 #define OBJ_EVENT_GFX_POKE_BALL                  269
 #define OBJ_EVENT_GFX_COP                  270
 #define OBJ_EVENT_GFX_OW_MON                     271
+#define OBJ_EVENT_GFX_BRENDAN_CLIMBING               272
+#define OBJ_EVENT_GFX_MAY_CLIMBING               273
+#define OBJ_EVENT_GFX_RIVAL_BRENDAN_CLIMBING               274
+#define OBJ_EVENT_GFX_RIVAL_MAY_CLIMBING               275
+
 
 // NOTE: By default, the max value for NUM_OBJ_EVENT_GFX is 239.
 //
@@ -283,7 +288,7 @@
 // object graphics that can be removed. If more graphics are needed, anything that
 // stores graphics ids will need to be increased in size. See wiki entry below:
 // https://github.com/pret/pokeemerald/wiki/Feature-Branches#overworld-expansion
-#define NUM_OBJ_EVENT_GFX                        272
+#define NUM_OBJ_EVENT_GFX                        276
 
 
 // These are dynamic object gfx ids.

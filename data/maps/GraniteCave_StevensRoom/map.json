@@ -2,7 +2,7 @@
   "id": "MAP_GRANITE_CAVE_STEVENS_ROOM",
   "name": "GraniteCave_StevensRoom",
   "layout": "LAYOUT_GRANITE_CAVE_STEVENS_ROOM",
-  "music": "MUS_AEGIS_CAVE",
+  "music": "MUS_CAVE_OF_ORIGIN",
   "region_map_section": "MAPSEC_GRANITE_CAVE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -10,16 +10,16 @@
   "allow_cycling": true,
   "allow_escaping": true,
   "allow_running": true,
-  "show_map_name": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": 0,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_STEVEN",
       "x": 7,
-      "y": 8,
+      "y": 3,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -41,6 +41,13 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "GraniteCave_Sign_Carvings"
+    }
   ]
 }

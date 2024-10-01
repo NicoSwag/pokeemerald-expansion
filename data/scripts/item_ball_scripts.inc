@@ -48,6 +48,19 @@ MtKirikiri_SideArea_EventScript_ItemHardStone::
 	finditem ITEM_HARD_STONE
 	end
 
+GraniteCave_EventScript_ItemRainbowOre::
+	finditem ITEM_RAINBOW_ORE
+	end
+
+GraniteCave_EventScript_ItemSunnyDay::
+	finditem ITEM_TM_SUNNY_DAY
+	end
+
+GraniteCave_EventScript_ItemFloatStone::
+	finditem ITEM_FLOAT_STONE
+	end
+
+
 
 MtKirikiri_SideArea_EventScript_ItemEviolite::
 	finditem ITEM_EVIOLITE
@@ -77,16 +90,32 @@ Route104_EventScript_ItemPotion::
 	finditem ITEM_POTION
 	end
 
+GraniteCave_EventScript_ItemSunStone::
+	finditem ITEM_SUN_STONE
+	end
+
+GraniteCave_EventScript_ItemNugget::
+	finditem ITEM_NUGGET
+	end
+
 GraniteCave_EventScript_ItemKingsRock::
 	finditem ITEM_KINGS_ROCK
+	end
+
+GraniteCave_EventScript_ItemSkyFragment::
+	finditem ITEM_HEART_SCALE
 	end
 
 GraniteCave_EventScript_ItemGyroBall::
 	finditem ITEM_TM_GYRO_BALL
 	end
 
-GraniteCave_EventScript_ItemNugget::
-	finditem ITEM_NUGGET
+GraniteCave_EventScript_ItemRockyHelmet::
+	finditem ITEM_ROCKY_HELMET
+	end
+
+GraniteCave_EventScript_ItemMetalPowder::
+	finditem ITEM_METAL_POWDER
 	end
 
 

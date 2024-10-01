@@ -1305,7 +1305,7 @@
               {
                 "min_level": 11,
                 "max_level": 14,
-                "species": "SPECIES_NINCADA"
+                "species": "SPECIES_SCRAGGY"
               },
               {
                 "min_level": 11,
@@ -11868,7 +11868,7 @@
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_NINCADA"
+                "species": "SPECIES_SCRAGGY"
               },
               {
                 "min_level": 5,

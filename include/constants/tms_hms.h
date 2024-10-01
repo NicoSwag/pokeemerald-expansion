@@ -57,7 +57,7 @@
     F(FLY) \
     F(SURF) \
     F(STRENGTH) \
-    F(FLASH) \
+    F(ROCK_CLIMB) \
     F(ROCK_SMASH) \
     F(WATERFALL) \
     F(DIVE)

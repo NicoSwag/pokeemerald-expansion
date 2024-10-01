@@ -129,7 +129,8 @@
     "DewfordTown_House2",
     "DewfordTown_House3",
     "Foundry",
-    "GraniteCottage"
+    "GraniteCottage",
+    "DewfordGymTest"
   ],
   "gMapGroup_IndoorLavaridge": [
     "LavaridgeTown_HerbShop",
@@ -225,7 +226,8 @@
     "RustboroCity_Flat2_3F",
     "RustboroCity_House3",
     "RustboroCity_Gym_Arena",
-    "RustboroCity_GymInterior"
+    "RustboroCity_GymInterior",
+    "NewMap1"
   ],
   "gMapGroup_IndoorFortree": [
     "FortreeCity_House1",

@@ -100,6 +100,7 @@
 #define MAP_DEWFORD_TOWN_HOUSE3            (6 | (3 << 8))
 #define MAP_FOUNDRY                        (7 | (3 << 8))
 #define MAP_GRANITE_COTTAGE                (8 | (3 << 8))
+#define MAP_DEWFORD_GYM_TEST               (9 | (3 << 8))
 
 // gMapGroup_IndoorLavaridge
 #define MAP_LAVARIDGE_TOWN_HERB_SHOP         (0 | (4 << 8))
@@ -196,6 +197,7 @@
 #define MAP_RUSTBORO_CITY_HOUSE3            (16 | (11 << 8))
 #define MAP_RUSTBORO_CITY_GYM_ARENA         (17 | (11 << 8))
 #define MAP_RUSTBORO_CITY_GYM_INTERIOR      (18 | (11 << 8))
+#define MAP_NEW_MAP1                        (19 | (11 << 8))
 
 // gMapGroup_IndoorFortree
 #define MAP_FORTREE_CITY_HOUSE1            (0 | (12 << 8))

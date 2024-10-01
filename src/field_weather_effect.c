@@ -26,12 +26,16 @@ const u8 gWeatherFogHorizontalTiles[] = INCBIN_U8("graphics/weather/fog_horizont
 const u8 gWeatherCloudTiles[] = INCBIN_U8("graphics/weather/cloud.4bpp");
 const u8 gWeatherSnow1Tiles[] = INCBIN_U8("graphics/weather/snow0.4bpp");
 const u8 gWeatherSnow2Tiles[] = INCBIN_U8("graphics/weather/snow1.4bpp");
+const u8 gWeatherPollution1Tiles[] = INCBIN_U8("graphics/weather/pollution.4bpp");
+const u8 gWeatherPollution2Tiles[] = INCBIN_U8("graphics/weather/pollution1.4bpp");
 const u8 gWeatherBubbleTiles[] = INCBIN_U8("graphics/weather/bubble.4bpp");
 const u8 gWeatherAshTiles[] = INCBIN_U8("graphics/weather/ash.4bpp");
+const u8 gWeatherPollutionTiles[] = INCBIN_U8("graphics/weather/pollution_layer.4bpp");
 const u8 gWeatherRainTiles[] = INCBIN_U8("graphics/weather/rain.4bpp");
 const u8 gWeatherSandstormTiles[] = INCBIN_U8("graphics/weather/sandstorm.4bpp");
 
 const struct SpritePalette sFogSpritePalette = {gFogPalette, 0x1201};
+const struct SpritePalette sAshSpritePalette = {gAshPalette, 0x1201};
 const struct SpritePalette sCloudsSpritePalette = {gCloudsWeatherPalette, 0x1207};
 const struct SpritePalette sSandstormSpritePalette = {gSandstormWeatherPalette, 0x1204};
 
@@ -767,9 +771,19 @@ static void DestroyRainSprites(void)
 
 static void UpdateSnowflakeSprite(struct Sprite *);
 static bool8 UpdateVisibleSnowflakeSprites(void);
+static bool8 UpdateVisiblePollutionSprites(void);
 static bool8 CreateSnowflakeSprite(void);
 static bool8 DestroySnowflakeSprite(void);
+static bool8 DestroyPollutionSprite(void);
+static bool8 CreatePollutionSprite(void);
+static bool8 DestroyPollutionSprite(void);
+static bool8 CreateAshSprite(void);
+static bool8 DestroyAshSprite(void);
+static void LoadPollutionSpriteSheet(void);
+static void CreateAshSprites(void);
 static void InitSnowflakeSpriteMovement(struct Sprite *);
+static void InitPollutionSpriteMovement(struct Sprite *);
+static void DestroyAshSprites(void);
 
 void Snow_InitVars(void)
 {
@@ -824,6 +838,56 @@ bool8 Snow_Finish(void)
     return FALSE;
 }
 
+
+
+void Pollution_InitVars(void)
+{
+    gWeatherPtr->initStep = 0;
+    gWeatherPtr->targetColorMapIndex = 3;
+    gWeatherPtr->colorMapStepDelay = 20;
+    gWeatherPtr->ashUnused = 20; // Never read
+    gWeatherPtr->targetSnowflakeSpriteCount = 26;
+    gWeatherPtr->snowflakeVisibleCounter = 32;
+}
+
+void Pollution_InitAll(void)
+{
+    Pollution_InitVars();
+    while (gWeatherPtr->weatherGfxLoaded == FALSE)
+        Pollution_Main();
+}
+
+
+void Pollution_Main(void)
+{
+    if (gWeatherPtr->initStep == 0 && !UpdateVisiblePollutionSprites())
+    {
+        gWeatherPtr->weatherGfxLoaded = TRUE;
+        gWeatherPtr->initStep++;
+    }
+}
+
+bool8 Pollution_Finish(void)
+{
+    switch (gWeatherPtr->finishStep)
+    {
+    case 0:
+        gWeatherPtr->targetSnowflakeSpriteCount = 0;
+        gWeatherPtr->snowflakeVisibleCounter = 0;
+        gWeatherPtr->finishStep++;
+        // fall through
+    case 1:
+        if (!UpdateVisibleSnowflakeSprites())
+        {
+            gWeatherPtr->finishStep++;
+            return FALSE;
+        }
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 static bool8 UpdateVisibleSnowflakeSprites(void)
 {
     if (gWeatherPtr->snowflakeSpriteCount == gWeatherPtr->targetSnowflakeSpriteCount)
@@ -840,6 +904,28 @@ static bool8 UpdateVisibleSnowflakeSprites(void)
 
     return gWeatherPtr->snowflakeSpriteCount != gWeatherPtr->targetSnowflakeSpriteCount;
 }
+
+
+static bool8 UpdateVisiblePollutionSprites(void)
+{
+    if (gWeatherPtr->snowflakeSpriteCount == gWeatherPtr->targetSnowflakeSpriteCount)
+        return FALSE;
+
+    if (++gWeatherPtr->snowflakeVisibleCounter > 36)
+    {
+        gWeatherPtr->snowflakeVisibleCounter = 0;
+        if (gWeatherPtr->snowflakeSpriteCount < gWeatherPtr->targetSnowflakeSpriteCount)
+            CreatePollutionSprite();
+        else
+            DestroySnowflakeSprite();
+
+
+
+    }
+
+    return gWeatherPtr->snowflakeSpriteCount != gWeatherPtr->targetSnowflakeSpriteCount;
+}
+
 
 static const struct OamData sSnowflakeSpriteOamData =
 {
@@ -863,6 +949,14 @@ static const struct SpriteFrameImage sSnowflakeSpriteImages[] =
     {gWeatherSnow1Tiles, sizeof(gWeatherSnow1Tiles)},
     {gWeatherSnow2Tiles, sizeof(gWeatherSnow2Tiles)},
 };
+
+
+static const struct SpriteFrameImage sPollutionSpriteImages[] =
+{
+    {gWeatherPollution1Tiles, sizeof(gWeatherPollution1Tiles)},
+    {gWeatherPollution2Tiles, sizeof(gWeatherPollution2Tiles)},
+};
+
 
 static const union AnimCmd sSnowflakeAnimCmd0[] =
 {
@@ -893,6 +987,19 @@ static const struct SpriteTemplate sSnowflakeSpriteTemplate =
     .callback = UpdateSnowflakeSprite,
 };
 
+
+
+static const struct SpriteTemplate sPollutionSpriteTemplate =
+{
+    .tileTag = TAG_NONE,
+    .paletteTag = PALTAG_WEATHER,
+    .oam = &sSnowflakeSpriteOamData,
+    .anims = sSnowflakeAnimCmds,
+    .images = sPollutionSpriteImages,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateSnowflakeSprite,
+};
+
 #define tPosY         data[0]
 #define tDeltaY       data[1]
 #define tWaveDelta    data[2]
@@ -913,6 +1020,30 @@ static bool8 CreateSnowflakeSprite(void)
     gSprites[spriteId].coordOffsetEnabled = TRUE;
     gWeatherPtr->sprites.s1.snowflakeSprites[gWeatherPtr->snowflakeSpriteCount++] = &gSprites[spriteId];
     return TRUE;
+}
+
+static bool8 CreatePollutionSprite(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sPollutionSpriteTemplate, 0, 0, 78);
+    if (spriteId == MAX_SPRITES)
+        return FALSE;
+
+    gSprites[spriteId].tSnowflakeId = gWeatherPtr->snowflakeSpriteCount;
+    InitPollutionSpriteMovement(&gSprites[spriteId]);
+    gSprites[spriteId].coordOffsetEnabled = TRUE;
+    gWeatherPtr->sprites.s1.snowflakeSprites[gWeatherPtr->snowflakeSpriteCount++] = &gSprites[spriteId];
+    return TRUE;
+}
+
+
+static bool8 DestroyPollutionSprite(void)
+{
+    u8 i;
+    for (i = 0; i < gWeatherPtr->snowflakeSpriteCount; i++)
+    {
+        if (gWeatherPtr->sprites.s1.snowflakeSprites[i] != NULL)
+            DestroySprite(gWeatherPtr->sprites.s1.snowflakeSprites[i]);
+    }
 }
 
 static bool8 DestroySnowflakeSprite(void)
@@ -940,6 +1071,22 @@ static void InitSnowflakeSpriteMovement(struct Sprite *sprite)
     sprite->tDeltaY2 = sprite->tDeltaY;
     StartSpriteAnim(sprite, (rand & 1) ? 0 : 1);
     sprite->tWaveIndex = 0;
+    sprite->tWaveDelta = ((rand & 3) == 0) ? 2 : 1;
+    sprite->tFallDuration = (rand & 0x1F) + 210;
+    sprite->tFallCounter = 0;
+}
+
+static void InitPollutionSpriteMovement(struct Sprite *sprite)
+{
+    u16 rand;
+    u16 x = ((sprite->tSnowflakeId * 5) & 7) * 30 + (Random() % 30);
+    u16 y = ((sprite->tSnowflakeId * 5) & 7) * 100 + (Random() % 100);
+    rand = Random();
+    sprite->y = y - (gSpriteCoordOffsetY + sprite->centerToCornerVecY);
+    sprite->x = x - (gSpriteCoordOffsetX + sprite->centerToCornerVecX);
+    sprite->tPosY = sprite->y * 128;
+    sprite->x2 = 0;
+    StartSpriteAnim(sprite, (rand & 1) ? 0 : 1);
     sprite->tWaveDelta = ((rand & 3) == 0) ? 2 : 1;
     sprite->tFallDuration = (rand & 0x1F) + 210;
     sprite->tFallCounter = 0;
@@ -1380,7 +1527,7 @@ void FogHorizontal_Main(void)
     {
     case 0:
         CreateFogHorizontalSprites();
-        if (gWeatherPtr->currWeather == WEATHER_FOG_HORIZONTAL)
+        if (gWeatherPtr->currWeather == WEATHER_FOG_HORIZONTAL || gWeatherPtr->currWeather == WEATHER_POLLUTION)
         {
             Weather_SetTargetBlendCoeffs(12, 8, 3);
         }
@@ -1388,7 +1535,7 @@ void FogHorizontal_Main(void)
         {
             Weather_SetTargetBlendCoeffs(4, 16, 0);
         }
-        gWeatherPtr->initStep++;        
+        gWeatherPtr->initStep++;  
         break;
     case 1:
         if (Weather_UpdateBlend())
@@ -1502,8 +1649,9 @@ static void DestroyFogHorizontalSprites(void)
 //------------------------------------------------------------------------------
 
 static void LoadAshSpriteSheet(void);
-static void CreateAshSprites(void);
-static void DestroyAshSprites(void);
+
+
+
 static void UpdateAshSprite(struct Sprite *);
 
 void Ash_InitVars(void)
@@ -1591,9 +1739,21 @@ static const struct SpriteSheet sAshSpriteSheet =
     .tag = GFXTAG_ASH,
 };
 
+static const struct SpriteSheet sPollutionSpriteSheet =
+{
+    .data = gWeatherPollutionTiles,
+    .size = sizeof(gWeatherPollutionTiles),
+    .tag = GFXTAG_ASH,
+};
+
 static void LoadAshSpriteSheet(void)
 {
     LoadSpriteSheet(&sAshSpriteSheet);
+}
+
+static void LoadPollutionSpriteSheet(void)
+{
+    LoadSpriteSheet(&sPollutionSpriteSheet);
 }
 
 static const struct OamData sAshSpriteOamData =
@@ -1646,7 +1806,7 @@ static void CreateAshSprites(void)
 
     if (!gWeatherPtr->ashSpritesCreated)
     {
-        LoadCustomWeatherSpritePalette(&sFogSpritePalette);
+        LoadCustomWeatherSpritePalette(&sAshSpritePalette);
         for (i = 0; i < NUM_ASH_SPRITES; i++)
         {
             spriteId = CreateSpriteAtEnd(&sAshSpriteTemplate, 0, 0, 0x4E);

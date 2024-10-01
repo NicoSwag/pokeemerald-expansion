@@ -997,6 +997,7 @@ static const u16 sNaturePowerMoves[BATTLE_TERRAIN_COUNT] =
     [BATTLE_TERRAIN_MOUNTAIN]   = MOVE_EARTH_POWER,
     [BATTLE_TERRAIN_CAVE]       = MOVE_EARTH_POWER,
     [BATTLE_TERRAIN_CAVERUST]       = MOVE_EARTH_POWER,
+    [BATTLE_TERRAIN_CAVEGRANITE]       = MOVE_EARTH_POWER,
     [BATTLE_TERRAIN_BUILDING]   = MOVE_TRI_ATTACK,
     [BATTLE_TERRAIN_GYM_ARENA]   = MOVE_TRI_ATTACK,
     [BATTLE_TERRAIN_PLAIN]      = MOVE_TRI_ATTACK,
@@ -2323,6 +2324,19 @@ static void Cmd_adjustdamage(void)
         goto END;
     }
 
+
+    if (gDisableStructs[gBattlerTarget].isFirstTurn == 2 && GetBattlerAbility(gBattlerTarget) == ABILITY_ANTICIPATION && (gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE) && !(gBattleResources->flags->flags[gBattlerTarget] & RESOURCE_FLAG_SHUDDERED))
+    {
+        // Damage deals typeless 0 HP.
+        gMoveResultFlags &= ~(MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE);
+        gBattleMoveDamage = 0;
+        RecordAbilityBattle(gBattlerTarget, ABILITY_ANTICIPATION);
+        gBattleResources->flags->flags[gBattlerTarget] |= RESOURCE_FLAG_SHUDDERED;
+        // Form change will be done after attack animation in Cmd_resultmessage.
+        goto END;
+    }
+
+
     if (GetBattlerAbility(gBattlerTarget) == ABILITY_DEBRIS_SHIELD && IS_MOVE_PHYSICAL(gCurrentMove) && !(gBattleResources->flags->flags[gBattlerTarget] & RESOURCE_FLAG_DEBRIS_SHIELD))
     {
         // Damage deals typeless 0 HP.
@@ -2831,6 +2845,16 @@ static void Cmd_resultmessage(void)
         gBattleScripting.battler = gBattlerTarget; // For STRINGID_PKMNTRANSFORMED
         BattleScriptPushCursor();
         gBattlescriptCurrInstr = BattleScript_IceFaceNullsDamage;
+        return;
+    }
+
+
+    if ((gBattleResources->flags->flags[gBattlerTarget] & RESOURCE_FLAG_SHUDDERED) && gDisableStructs[gBattlerTarget].isFirstTurn == 2)
+    {
+        gBattleResources->flags->flags[gBattlerTarget] &= ~(RESOURCE_FLAG_SHUDDERED);
+        gBattleScripting.battler = gBattlerTarget; // For STRINGID_PKMNTRANSFORMED
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_AvoidedMove;
         return;
     }
 
@@ -4109,6 +4133,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                         break;
                     case BATTLE_TERRAIN_CAVE:
                     case BATTLE_TERRAIN_CAVERUST:
+                    case BATTLE_TERRAIN_CAVEGRANITE:
                     case BATTLE_TERRAIN_YELLOW_FOREST:
                     case BATTLE_TERRAIN_BURIAL_GROUND:
                     case BATTLE_TERRAIN_SPACE:
@@ -11021,6 +11046,7 @@ static void Cmd_various(void)
         gBattleMons[gBattlerTarget].status2 &= ~(STATUS2_BIDE);
         gDisableStructs[gBattlerTarget].rolloutTimer = 0;
         gDisableStructs[gBattlerTarget].furyCutterCounter = 0;
+
 
         // End any Follow Me/Rage Powder effects caused by the target
         if (gSideTimers[GetBattlerSide(gBattlerTarget)].followmeTimer != 0 && gSideTimers[GetBattlerSide(gBattlerTarget)].followmeTarget == gBattlerTarget)

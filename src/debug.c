@@ -4706,6 +4706,8 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_WATERFALL_COLOSSEUM) \
     X(MUS_DARK_FOREST) \
     X(MUS_TOURNAMENT) \
+    X(MUS_BATTLE_B2) \
+    X(MUS_HUMANS_DEMONS_AND) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \

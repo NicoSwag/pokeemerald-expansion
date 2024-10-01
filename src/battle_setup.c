@@ -591,7 +591,7 @@ void BattleSetup_StartScriptedDoubleWildBattle(void)
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_DOUBLE;
-    CreateBattleStartTask(GetWildBattleTransition(), 0);
+    CreateBattleStartTask(GetWildBattleTransition(), MUS_VS_INTENSE);
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
     IncrementGameStat(GAME_STAT_WILD_BATTLES);
     IncrementDailyWildBattles();
@@ -776,6 +776,8 @@ u8 BattleSetup_GetTerrainId(void)
             return BATTLE_TERRAIN_POND;
         if (GetCurrentRegionMapSectionId() == MAPSEC_RUSTURF_TUNNEL)
             return BATTLE_TERRAIN_CAVERUST;
+        if (GetCurrentRegionMapSectionId() == MAPSEC_GRANITE_CAVE)
+            return BATTLE_TERRAIN_CAVEGRANITE;
         return BATTLE_TERRAIN_CAVE;
     case MAP_TYPE_INDOOR:
     case MAP_TYPE_SECRET_BASE:

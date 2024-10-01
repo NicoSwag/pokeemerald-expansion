@@ -141,6 +141,7 @@ struct Weather
 extern struct Weather gWeather;
 extern struct Weather *const gWeatherPtr;
 extern const u16 gFogPalette[];
+extern const u16 gAshPalette[];
 
 enum
 {
@@ -197,6 +198,10 @@ void Snow_InitVars(void);
 void Snow_Main(void);
 void Snow_InitAll(void);
 bool8 Snow_Finish(void);
+void Pollution_InitVars(void);
+void Pollution_Main(void);
+void Pollution_InitAll(void);
+bool8 Pollution_Finish(void);
 void Thunderstorm_InitVars(void);
 void Thunderstorm_Main(void);
 void Thunderstorm_InitAll(void);

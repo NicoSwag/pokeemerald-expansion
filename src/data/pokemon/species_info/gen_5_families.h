@@ -3670,6 +3670,14 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         ICON(Scraggy, 2),
         .footprint = gMonFootprint_Scraggy,
         LEARNSETS(Scraggy),
+                 OVERWORLD(
+            sPicTable_Scraggy,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_Scraggy,
+            gShinyOverworldPalette_Scraggy
+        )
         .evolutions = EVOLUTION({EVO_LEVEL, 39, SPECIES_SCRAFTY}),
     },
 

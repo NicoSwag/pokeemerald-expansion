@@ -778,6 +778,14 @@ const struct BattleBackground sBattleTerrainTable[] =
         .entryTilemap = gBattleTerrainAnimTilemap_Cave,
         .palette = gBattleTerrainPalette_CaveRust,
     },
+    [BATTLE_TERRAIN_CAVEGRANITE] =
+    {
+        .tileset = gBattleTerrainTiles_Cave,
+        .tilemap = gBattleTerrainTilemap_Cave,
+        .entryTileset = gBattleTerrainAnimTiles_Cave,
+        .entryTilemap = gBattleTerrainAnimTilemap_Cave,
+        .palette = gBattleTerrainPalette_CaveGranite,
+    },
 
     [BATTLE_TERRAIN_BUILDING] =
     {
@@ -1778,8 +1786,14 @@ case MAP_BATTLE_SCENE_GYM:
                     else switch (gBattleTerrain)
                     {
                         case MAP_TYPE_UNDERGROUND:
-                        if (GetCurrentRegionMapSectionId() == MAPSEC_RUSTURF_TUNNEL)
+                        if (GetCurrentRegionMapSectionId() == MAPSEC_RUSTURF_TUNNEL){
                             LoadCompressedPalette(gBattleTerrainPalette_CaveRust, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+                            break;
+                            }
+                        else if (GetCurrentRegionMapSectionId() == MAPSEC_GRANITE_CAVE){
+                            LoadCompressedPalette(gBattleTerrainPalette_CaveGranite, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+                            break;
+                            }
                         else
                          LoadCompressedPalette(gBattleTerrainPalette_Cave, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
                         break;

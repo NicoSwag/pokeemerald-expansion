@@ -22,7 +22,16 @@ EventScript_MtKirikiri_Shadow_1::
 	end
 
 EventScript_MtKirikiri_StrangeWall:
+	goto_if_set FLAG_OLDALE_ODD_INSCRIPTION, EventScript_MtKirikiri_StrangeWall2
 	msgbox Text_MtKirikiri_StrangeWall, MSGBOX_SIGN
+	giveitem ITEM_ODD_CARVING
+	setflag FLAG_OLDALE_ODD_INSCRIPTION
+	release
+	end
+
+EventScript_MtKirikiri_StrangeWall2::
+	msgbox Text_MtKirikiri_StrangeWall2, MSGBOX_SIGN
+	release
 	end
 
 EventScript_KirikiriMountain_ShadowAppears::
@@ -94,7 +103,14 @@ Kirikiri_Text_DotDotDot::
 
 
 Text_MtKirikiri_StrangeWall::
-	.string "The wall is decorated by undecipherable\n"
-	.string "carvings.\p"
-	.string "You can hear a faint wooshing noise\n"
-	.string "coming from behind it.$"
+	.string "You examine the strange symbols on\n"
+	.string "the cave wall.\p"
+	.string "For some reason, it's as if you're\n"
+	.string "drawn to them.\p"
+	.string "You decide to write them down.$"
+
+Text_MtKirikiri_StrangeWall2::
+	.string "You examine the strange symbols on\n"
+	.string "the cave wall.\p"
+	.string "For some reason, it's as if you're\n"
+	.string "drawn to them.$"
