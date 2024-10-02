@@ -1630,8 +1630,8 @@ RustboroCity_Text_YoureNewAroundHere:
 RustboroCity_Text_GymLeaderIsntEasyWithFire:
 	.string "Rustboro City wasn't always like this.\p"
 	.string "But things changed Devon's current CEO,\n"
-	.string "Allan Stone, inherited the company from\l"
-	.string "his father.\p"
+	.string "Joseph Stone, inherited the company from\l"
+	.string "his grandfather.\p"
 	.string "Believe it or not, when I was a young\n"
 	.string "lass, this place was so much greener\l"
 	.string "and the water so much bluer…$"
