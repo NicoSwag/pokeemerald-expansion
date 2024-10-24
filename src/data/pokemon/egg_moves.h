@@ -3621,12 +3621,8 @@ const u16 gEggMoves[] = {
         MOVE_DEFENSE_CURL),
 
     egg_moves(CLOBBOPUS,
-        MOVE_PAIN_SPLIT,
-        MOVE_SOAK,
-        MOVE_SUCKER_PUNCH,
-        MOVE_CIRCLE_THROW,
-        MOVE_SEISMIC_TOSS,
-        MOVE_POWER_UP_PUNCH),
+        MOVE_STORM_THROW,
+        MOVE_BULK_UP),
 
     egg_moves(HATENNA,
         MOVE_AROMATIC_MIST,

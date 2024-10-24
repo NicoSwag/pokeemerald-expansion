@@ -451,7 +451,8 @@
     "AlteringCave",
     "MeteorFalls_StevensCave",
     "MtKirikiri_Side_area",
-    "Petalburg_Bog"
+    "Petalburg_Bog",
+    "GraniteCave_GeneratorRoom"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

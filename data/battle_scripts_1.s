@@ -35,11 +35,9 @@ BattleScript_EffectFickleBeam::
 	attackstring
 	ppreduce
 	accuracycheck BattleScript_MoveMissedPause, ACC_CURR_MOVE
-	ficklebeamdamagecalculation
 	goto BattleScript_HitFromCritCalc
 BattleScript_FickleBeamDoubled::
 	pause B_WAIT_TIME_SHORTEST
-	printstring STRINGID_FICKLEBEAMDOUBLED
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_HitFromCritCalc
 
@@ -8615,6 +8613,45 @@ BattleScript_GrassyTerrainHeals::
 	call BattleScript_GrassyTerrainHeals_Ret
 	end2
 
+BattleScript_ElectricTerrainContinues::
+	setbyte gBattleCommunication, 0
+	copyarraywithindex gBattlerAttacker, gBattlerByTurnOrder, gBattleCommunication, 1
+	printstring STRINGID_ELECTRICITYCRACKLES
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	addbyte gBattleCommunication, 1
+	bicword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	jumpifword CMP_COMMON_BITS, gFieldStatuses, STATUS_FIELD_TERRAIN_PERMANENT, BattleScript_ElectricTerrainEnd
+	BattleScript_ElectricTerrainEnd:
+	playanimation BS_ATTACKER, B_ANIM_ELECTRIC_TERRAIN
+	end2
+
+BattleScript_PsychicTerrainContinues::
+	setbyte gBattleCommunication, 0
+	copyarraywithindex gBattlerAttacker, gBattlerByTurnOrder, gBattleCommunication, 1
+	printstring STRINGID_PSYCHICENERGY
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	addbyte gBattleCommunication, 1
+	bicword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	jumpifword CMP_COMMON_BITS, gFieldStatuses, STATUS_FIELD_TERRAIN_PERMANENT, BattleScript_PsychicTerrainEnd
+BattleScript_PsychicTerrainEnd:
+	playanimation BS_ATTACKER, B_ANIM_PSYCHIC_TERRAIN
+	end2
+
+BattleScript_MistyTerrainContinues::
+	setbyte gBattleCommunication, 0
+	copyarraywithindex gBattlerAttacker, gBattlerByTurnOrder, gBattleCommunication, 1
+	printstring STRINGID_MISTSWIRLS
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	addbyte gBattleCommunication, 1
+	bicword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	jumpifword CMP_COMMON_BITS, gFieldStatuses, STATUS_FIELD_TERRAIN_PERMANENT, BattleScript_MistyTerrainEnd
+BattleScript_MistyTerrainEnd:
+	playanimation BS_ATTACKER, B_ANIM_MISTY_TERRAIN
+	end2
+
 BattleScript_GrassyTerrainHeals_Ret::
 	setbyte gBattleCommunication, 0
 BattleScript_GrassyTerrainLoop:
@@ -8631,6 +8668,7 @@ BattleScript_GrassyTerrainLoopIncrement::
 	bicword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	jumpifword CMP_COMMON_BITS, gFieldStatuses, STATUS_FIELD_TERRAIN_PERMANENT, BattleScript_GrassyTerrainHealEnd
 BattleScript_GrassyTerrainHealEnd:
+playanimation BS_ATTACKER, B_ANIM_GRASSY_TERRAIN
 	return
 
 BattleScript_AbilityNoSpecificStatLoss::
@@ -10553,6 +10591,7 @@ BattleScript_EffectPiercingWail::
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_NoReliefFromHeavyRain
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
 	removeweather
+	printfromtable gWeatherEndsStringIds
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_ActivateWeatherAbilities
 	goto BattleScript_MoveEnd

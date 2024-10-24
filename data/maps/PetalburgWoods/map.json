@@ -216,15 +216,15 @@
       "x": 36,
       "y": 38,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE104",
-      "dest_warp_id": "6"
+      "dest_map": "MAP_ROUTE104LOWER",
+      "dest_warp_id": "3"
     },
     {
       "x": 37,
       "y": 38,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE104",
-      "dest_warp_id": "7"
+      "dest_map": "MAP_ROUTE104LOWER",
+      "dest_warp_id": "4"
     },
     {
       "x": 14,

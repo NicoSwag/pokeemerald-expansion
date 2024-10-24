@@ -915,7 +915,7 @@ static const uq4_12_t sTypeEffectivenessTable[NUMBER_OF_MON_TYPES][NUMBER_OF_MON
 //   normal  fight   flying  poison  ground  rock    bug     ghost   steel   mystery fire    water   grass  electric psychic ice     dragon  dark    fairy
     {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // normal
     {X(2.0), X(1.0), X(0.5), X(0.5), X(1.0), X(2.0), X(0.5), X(0.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(0.5)}, // fight
-    {X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // flying
+    {X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0)}, // flying
     {X(1.0), X(1.0), X(1.0), X(0.5), X(0.5), X(0.5), X(1.0), X(0.5), X(0.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0)}, // poison
     {X(1.0), X(1.0), X(0.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // ground
     {X(1.0), X(0.5), X(2.0), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0)}, // rock
@@ -924,7 +924,7 @@ static const uq4_12_t sTypeEffectivenessTable[NUMBER_OF_MON_TYPES][NUMBER_OF_MON
     {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(1.0), X(1.0), X(0.5), X(1.0), X(0.5), X(0.5), X(1.0), X(0.5), X(1.0), X(2.0), X(1.0), X(1.0), X(2.0)}, // steel
     {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0)}, // mystery
     {X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(2.0), X(1.0), X(2.0), X(1.0), X(0.5), X(0.5), X(2.0), X(1.0), X(1.0), X(2.0), X(0.5), X(1.0), X(1.0)}, // fire
-    {X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // water
+    {X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(0.5), X(0.5), X(1.0), X(1.0)}, // water
     {X(1.0), X(1.0), X(0.5), X(0.5), X(2.0), X(2.0), X(0.5), X(1.0), X(0.5), X(1.0), X(0.5), X(2.0), X(0.5), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // grass
     {X(1.0), X(1.0), X(2.0), X(1.0), X(0.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(2.0), X(0.5), X(0.5), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0)}, // electric
     {X(1.0), X(2.0), X(1.0), X(2.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(1.0), X(1.0), X(1.0), X(0.5), X(1.0), X(1.0), X(0.0), X(1.0)}, // psychic
@@ -1722,6 +1722,15 @@ static bool32 EndTurnTerrain(u32 terrainFlag, u32 stringTableId)
     {
         if (terrainFlag & STATUS_FIELD_GRASSY_TERRAIN)
             BattleScriptExecute(BattleScript_GrassyTerrainHeals);
+        
+        else if (terrainFlag & STATUS_FIELD_ELECTRIC_TERRAIN)
+            BattleScriptExecute(BattleScript_ElectricTerrainContinues);
+        
+        else if (terrainFlag & STATUS_FIELD_PSYCHIC_TERRAIN)
+            BattleScriptExecute(BattleScript_PsychicTerrainContinues);
+        
+        else if (terrainFlag & STATUS_FIELD_MISTY_TERRAIN)
+            BattleScriptExecute(BattleScript_MistyTerrainContinues);
         if (!(gFieldStatuses & STATUS_FIELD_TERRAIN_PERMANENT) && --gFieldTimers.terrainTimer == 0)
         {
             gFieldStatuses &= ~terrainFlag;
@@ -1734,6 +1743,7 @@ static bool32 EndTurnTerrain(u32 terrainFlag, u32 stringTableId)
             return TRUE;
         }
     }
+
     return FALSE;
 }
 
@@ -2927,9 +2937,9 @@ u8 DoBattlerEndTurnEffects(void)
                     else
                     {
                         if (B_SLEEP_TURNS >= GEN_5)
-                            gBattleMons[battler].status1 |= ((Random() % 3) + 2);
+                            gBattleMons[battler].status1 |= STATUS1_SLEEP_TURN(0 + RandomUniform(RNG_SLEEP_TURNS, 1, 3));
                         else
-                            gBattleMons[battler].status1 |= ((Random() % 4) + 3);
+                            gBattleMons[battler].status1 |= STATUS1_SLEEP_TURN(0 + RandomUniform(RNG_SLEEP_TURNS, 1, 3));
 
                         BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
                         MarkBattlerForControllerExec(battler);
@@ -3051,7 +3061,7 @@ u8 DoBattlerEndTurnEffects(void)
 case ENDTURN_SNAP_TRAP:
             if(gStatuses4[battler] & STATUS4_SNAP_TRAPPED){
                 MAGIC_GUARD_CHECK;
-                if((gBattleMons[battler].type1 == TYPE_BUG) || (gBattleMons[battler].type1 == TYPE_FAIRY) ||(gBattleMons[battler].type2 == TYPE_BUG) || (gBattleMons[battler].type2 == TYPE_FAIRY))
+                if((gBattleMons[battler].types[0] == TYPE_BUG) || (gBattleMons[battler].types[0] == TYPE_FAIRY) ||(gBattleMons[battler].types[1] == TYPE_BUG) || (gBattleMons[battler].types[1] == TYPE_FAIRY))
                     gBattleMoveDamage = gBattleMons[battler].maxHP / 4;
                 else
                     gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
@@ -4048,7 +4058,7 @@ bool32 TryChangeBattleWeather(u32 battler, u32 weatherEnumId, bool32 viaAbility)
     {
         return FALSE;
     }
-    else if (B_ABILITY_WEATHER < GEN_6 && viaAbility && !(gBattleWeather & sWeatherFlagsInfo[weatherEnumId][1]))
+    else if (B_ABILITY_WEATHER < GEN_6 && viaAbility)
     {
         gBattleWeather = (sWeatherFlagsInfo[weatherEnumId][0] | sWeatherFlagsInfo[weatherEnumId][1]);
         ShouldChangeFormInWeather(battler);
@@ -4058,7 +4068,7 @@ bool32 TryChangeBattleWeather(u32 battler, u32 weatherEnumId, bool32 viaAbility)
     {
         gBattleWeather = (sWeatherFlagsInfo[weatherEnumId][0]);
         if (GetBattlerHoldEffect(battler, TRUE) == sWeatherFlagsInfo[weatherEnumId][2])
-            gWishFutureKnock.weatherDuration = 8;
+            gBattleWeather = (sWeatherFlagsInfo[weatherEnumId][1]);
         else
             gWishFutureKnock.weatherDuration = 5;
         ShouldChangeFormInWeather(battler);
@@ -4067,7 +4077,7 @@ bool32 TryChangeBattleWeather(u32 battler, u32 weatherEnumId, bool32 viaAbility)
     return FALSE;
 }
 
-static bool32 TryChangeBattleTerrain(u32 battler, u32 statusFlag, u8 *timer)
+static bool32 TryChangeBattleTerrain(u32 battler, u32 statusFlag, u8 *timer, bool8 viaAbility)
 {
     if ((!(gFieldStatuses & statusFlag) && (!gBattleStruct->isSkyBattle)))
     {
@@ -4075,8 +4085,8 @@ static bool32 TryChangeBattleTerrain(u32 battler, u32 statusFlag, u8 *timer)
         gFieldStatuses |= statusFlag;
         gDisableStructs[battler].terrainAbilityDone = FALSE;
 
-        if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERRAIN_EXTENDER)
-            *timer = 8;
+        if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERRAIN_EXTENDER || viaAbility)
+            gFieldStatuses |= STATUS_FIELD_TERRAIN_PERMANENT;
         else
             *timer = 5;
 
@@ -4479,7 +4489,7 @@ case WEATHER_POLLUTION:
 
                 if (effect != 0)
                 {
-                    BattleScriptPushCursorAndCallback(BattleScript_TraceActivatesEnd3);
+                    BattleScriptPushCursorAndCallback(BattleScript_TraceActivates);
                     gBattleResources->flags->flags[battler] &= ~RESOURCE_FLAG_TRACED;
                     gBattleStruct->tracedAbility[battler] = gLastUsedAbility = gBattleMons[chosenTarget].ability;
                     RecordAbilityBattle(chosenTarget, gLastUsedAbility); // Record the opposing battler has this ability
@@ -4744,7 +4754,7 @@ gBattleMons[battler].canWeatherChange = TRUE;
 case ABILITY_PLUS:
             if(gBattleMons[BATTLE_PARTNER(battler)].ability == ABILITY_MINUS)
             {
-            if (TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN, &gFieldTimers.terrainTimer))
+            if (TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN, &gFieldTimers.terrainTimer, FALSE) )
             {
                 BattleScriptPushCursorAndCallback(BattleScript_ElectricSurgeActivates);
                 effect++;
@@ -4755,7 +4765,7 @@ case ABILITY_PLUS:
             case ABILITY_MINUS:
             if(gBattleMons[BATTLE_PARTNER(battler)].ability == ABILITY_PLUS)
             {
-                 if (TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN, &gFieldTimers.terrainTimer))
+                 if (TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN, &gFieldTimers.terrainTimer, FALSE))
             {
                 BattleScriptPushCursorAndCallback(BattleScript_ElectricSurgeActivates);
                 effect++;
@@ -4870,7 +4880,7 @@ gBattleMons[battler].canWeatherChange = TRUE;
 if(gFieldStatuses == STATUS_FIELD_ELECTRIC_TERRAIN && !gSpecialStatuses[battler].switchInAbilityDone){
             gSpecialStatuses[battler].switchInAbilityDone = TRUE;
             gBattleMons[battler].canTerrainChange = FALSE;}
-            if (TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN, &gFieldTimers.terrainTimer))
+            if (TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN, &gFieldTimers.terrainTimer, TRUE))
             {
 gBattleMons[battler].canTerrainChange = TRUE;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
@@ -4882,7 +4892,7 @@ gBattleMons[battler].canTerrainChange = TRUE;
 if(gFieldStatuses == STATUS_FIELD_GRASSY_TERRAIN && !gSpecialStatuses[battler].switchInAbilityDone){
             gSpecialStatuses[battler].switchInAbilityDone = TRUE;
             gBattleMons[battler].canTerrainChange = FALSE;}
-            if (TryChangeBattleTerrain(battler, STATUS_FIELD_GRASSY_TERRAIN, &gFieldTimers.terrainTimer))
+            if (TryChangeBattleTerrain(battler, STATUS_FIELD_GRASSY_TERRAIN, &gFieldTimers.terrainTimer, TRUE))
             {
 gBattleMons[battler].canTerrainChange = TRUE;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
@@ -4901,7 +4911,7 @@ case ABILITY_PYROMANIAC:
 if(gFieldStatuses == STATUS_FIELD_MISTY_TERRAIN && !gSpecialStatuses[battler].switchInAbilityDone){
             gSpecialStatuses[battler].switchInAbilityDone = TRUE;
             gBattleMons[battler].canTerrainChange = FALSE;}
-            if (TryChangeBattleTerrain(battler, STATUS_FIELD_MISTY_TERRAIN, &gFieldTimers.terrainTimer))
+            if (TryChangeBattleTerrain(battler, STATUS_FIELD_MISTY_TERRAIN, &gFieldTimers.terrainTimer, TRUE))
             {
 gBattleMons[battler].canTerrainChange = TRUE;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
@@ -4913,7 +4923,7 @@ gBattleMons[battler].canTerrainChange = TRUE;
 if(gFieldStatuses == STATUS_FIELD_PSYCHIC_TERRAIN && !gSpecialStatuses[battler].switchInAbilityDone){
             gSpecialStatuses[battler].switchInAbilityDone = TRUE;
             gBattleMons[battler].canTerrainChange = FALSE;}
-            if (TryChangeBattleTerrain(battler, STATUS_FIELD_PSYCHIC_TERRAIN, &gFieldTimers.terrainTimer))
+            if (TryChangeBattleTerrain(battler, STATUS_FIELD_PSYCHIC_TERRAIN, &gFieldTimers.terrainTimer, TRUE))
             {
 gBattleMons[battler].canTerrainChange = TRUE;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
@@ -6196,7 +6206,7 @@ break;
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && TARGET_TURN_DAMAGED
              && IsBattlerAlive(gBattlerTarget)
-             && TryChangeBattleTerrain(gBattlerTarget, STATUS_FIELD_GRASSY_TERRAIN, &gFieldTimers.terrainTimer))
+             && TryChangeBattleTerrain(gBattlerTarget, STATUS_FIELD_GRASSY_TERRAIN, &gFieldTimers.terrainTimer, FALSE))
             {
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_SeedSowerActivates;
@@ -6335,7 +6345,7 @@ if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
             if(!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
              && gBattleMons[gBattlerTarget].hp != 0
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
-             && (gBattleMons[gBattlerTarget].type1 == TYPE_STEEL || gBattleMons[gBattlerTarget].type2 == TYPE_STEEL)
+             && (gBattleMons[gBattlerTarget].types[0] == TYPE_STEEL || gBattleMons[gBattlerTarget].types[1] == TYPE_STEEL)
              && gMovesInfo[move].type == TYPE_POISON){
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
@@ -7133,8 +7143,8 @@ bool32 CanBeConfused(u32 battler)
     if (GetBattlerAbility(battler) == ABILITY_OWN_TEMPO
       || gBattleMons[battler].status2 & STATUS2_CONFUSION
       || IsBattlerTerrainAffected(battler, STATUS_FIELD_MISTY_TERRAIN
-      || gBattleMons[battler].type1 == TYPE_BUG
-      || gBattleMons[battler].type2 == TYPE_BUG))
+      || gBattleMons[battler].types[0] == TYPE_BUG
+      || gBattleMons[battler].types[1] == TYPE_BUG))
         return FALSE;
     return TRUE;
 }
@@ -11327,8 +11337,8 @@ s32 GetStealthHazardDamageByTypesAndHP(u8 hazardType, u8 type1, u8 type2, u32 ma
 
 s32 GetStealthHazardDamage(u8 hazardType, u32 battler)
 {
-    u8 type1 = gBattleMons[battler].type1;
-    u8 type2 = gBattleMons[battler].type2;
+    u8 type1 = gBattleMons[battler].types[0];
+    u8 type2 = gBattleMons[battler].types[1];
     u32 maxHp = gBattleMons[battler].maxHP;
 
     return GetStealthHazardDamageByTypesAndHP(hazardType, type1, type2, maxHp);
@@ -12244,9 +12254,9 @@ void CopyMonLevelAndBaseStatsToBattleMon(u32 battler, struct Pokemon *mon)
 void CopyMonAbilityAndTypesToBattleMon(u32 battler, struct Pokemon *mon)
 {
     gBattleMons[battler].ability = GetMonAbility(mon);
-    gBattleMons[battler].type1 = gSpeciesInfo[gBattleMons[battler].species].types[0];
-    gBattleMons[battler].type2 = gSpeciesInfo[gBattleMons[battler].species].types[1];
-    gBattleMons[battler].type3 = TYPE_MYSTERY;
+    gBattleMons[battler].types[0] = gSpeciesInfo[gBattleMons[battler].species].types[0];
+    gBattleMons[battler].types[1] = gSpeciesInfo[gBattleMons[battler].species].types[1];
+    gBattleMons[battler].types[2] = TYPE_MYSTERY;
 }
 
 void RecalcBattlerStats(u32 battler, struct Pokemon *mon)
@@ -12451,9 +12461,9 @@ u8 GetBattlerType(u32 battler, u8 typeIndex, bool32 ignoreTera)
 {
     u32 teraType = GetBattlerTeraType(battler);
     u16 types[3] = {0};
-    types[0] = gBattleMons[battler].type1;
-    types[1] = gBattleMons[battler].type2;
-    types[2] = gBattleMons[battler].type3;
+    types[0] = gBattleMons[battler].types[0];
+    types[1] = gBattleMons[battler].types[1];
+    types[2] = gBattleMons[battler].types[2];
 
     // Handle Terastallization
     if (GetActiveGimmick(battler) == GIMMICK_TERA && teraType != TYPE_STELLAR && !ignoreTera)
@@ -12482,8 +12492,8 @@ void RemoveBattlerType(u32 battler, u8 type)
         return;
     for (i = 0; i < 3; i++)
     {
-        if (*(u8 *)(&gBattleMons[battler].type1 + i) == type)
-            *(u8 *)(&gBattleMons[battler].type1 + i) = TYPE_MYSTERY;
+        if (*(u8 *)(&gBattleMons[battler].types[0] + i) == type)
+            *(u8 *)(&gBattleMons[battler].types[0] + i) = TYPE_MYSTERY;
     }
 }
 

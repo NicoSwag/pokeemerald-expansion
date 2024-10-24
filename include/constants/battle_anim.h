@@ -584,6 +584,10 @@
 #define B_ANIM_TERA_CHARGE              52
 #define B_ANIM_TERA_ACTIVATE            53
 #define B_ANIM_SIMPLE_HEAL              54
+#define B_ANIM_ELECTRIC_TERRAIN         55
+#define B_ANIM_GRASSY_TERRAIN           56
+#define B_ANIM_PSYCHIC_TERRAIN          57
+#define B_ANIM_MISTY_TERRAIN            58
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

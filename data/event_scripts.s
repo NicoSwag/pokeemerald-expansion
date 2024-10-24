@@ -1308,3 +1308,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/NewMap1/scripts.inc"
 
 	.include "data/maps/DewfordGymTest/scripts.inc"
+
+	.include "data/maps/GraniteCave_GeneratorRoom/scripts.inc"

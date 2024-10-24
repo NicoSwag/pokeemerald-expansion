@@ -19,8 +19,13 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_DRIZZLE] =
     {
         .name = _("Drizzle"),
+        .cantBeCopied = TRUE,
+        .cantBeSwapped = TRUE,
+        .cantBeTraced = TRUE,
+        .cantBeSuppressed = TRUE,
+        .cantBeOverwritten = TRUE,
         .description = COMPOUND_STRING("Summons rain in battle."),
-        .aiRating = 9,
+        .aiRating = 10,
     },
 
     [ABILITY_SPEED_BOOST] =
@@ -363,7 +368,12 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Sand Stream"),
         .description = COMPOUND_STRING("Summons a sandstorm."),
-        .aiRating = 9,
+        .cantBeCopied = TRUE,
+        .cantBeSwapped = TRUE,
+        .cantBeTraced = TRUE,
+        .cantBeSuppressed = TRUE,
+        .cantBeOverwritten = TRUE,
+        .aiRating = 10,
     },
 
     [ABILITY_PRESSURE] =
@@ -553,7 +563,12 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Drought"),
         .description = COMPOUND_STRING("Summons sunlight in battle."),
-        .aiRating = 9,
+        .cantBeCopied = TRUE,
+        .cantBeSwapped = TRUE,
+        .cantBeTraced = TRUE,
+        .cantBeSuppressed = TRUE,
+        .cantBeOverwritten = TRUE,
+        .aiRating = 10,
     },
 
     [ABILITY_ARENA_TRAP] =
@@ -895,12 +910,17 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_SNOW_WARNING] =
     {
         .name = _("Snow Warning"),
+        .cantBeCopied = TRUE,
+        .cantBeSwapped = TRUE,
+        .cantBeTraced = TRUE,
+        .cantBeSuppressed = TRUE,
+        .cantBeOverwritten = TRUE,
     #if B_SNOW_WARNING >= GEN_9
         .description = COMPOUND_STRING("Summons snow in battle."),
     #else
         .description = COMPOUND_STRING("Summons hail in battle."),
     #endif
-        .aiRating = 8,
+        .aiRating = 10,
     },
 
     [ABILITY_HONEY_GATHER] =
@@ -1785,13 +1805,18 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
 
     [ABILITY_ELECTRIC_SURGE] =
     {
+        .cantBeCopied = TRUE,
+        .cantBeSwapped = TRUE,
+        .cantBeTraced = TRUE,
+        .cantBeSuppressed = TRUE,
+        .cantBeOverwritten = TRUE,
     #if B_EXPANDED_ABILITY_NAMES == TRUE
         .name = _("Electric Surge"),
     #else
         .name = _("ElectrcSurge"),
     #endif
         .description = COMPOUND_STRING("Field becomes Electric."),
-        .aiRating = 8,
+        .aiRating = 10,
     },
 
     [ABILITY_PSYCHIC_SURGE] =
@@ -1802,21 +1827,36 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("PsychicSurge"),
     #endif
         .description = COMPOUND_STRING("Field becomes weird."),
-        .aiRating = 8,
+        .aiRating = 10,
+        .cantBeCopied = TRUE,
+        .cantBeSwapped = TRUE,
+        .cantBeTraced = TRUE,
+        .cantBeSuppressed = TRUE,
+        .cantBeOverwritten = TRUE,
     },
 
     [ABILITY_MISTY_SURGE] =
     {
         .name = _("Misty Surge"),
         .description = COMPOUND_STRING("Field becomes misty."),
-        .aiRating = 8,
+        .aiRating = 10,
+        .cantBeCopied = TRUE,
+        .cantBeSwapped = TRUE,
+        .cantBeTraced = TRUE,
+        .cantBeSuppressed = TRUE,
+        .cantBeOverwritten = TRUE,
     },
 
     [ABILITY_GRASSY_SURGE] =
     {
         .name = _("Grassy Surge"),
         .description = COMPOUND_STRING("Field becomes grassy."),
-        .aiRating = 8,
+        .aiRating = 10,
+        .cantBeCopied = TRUE,
+        .cantBeSwapped = TRUE,
+        .cantBeTraced = TRUE,
+        .cantBeSuppressed = TRUE,
+        .cantBeOverwritten = TRUE,
     },
 
     [ABILITY_FULL_METAL_BODY] =
@@ -2694,6 +2734,11 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_NOXIOUS_FUMES] =
     {
         .name = _("Noxious Fumes"),
+        .cantBeCopied = TRUE,
+        .cantBeSwapped = TRUE,
+        .cantBeTraced = TRUE,
+        .cantBeSuppressed = TRUE,
+        .cantBeOverwritten = TRUE,
         .description = COMPOUND_STRING("Summons Pollution on entry."),
         .aiRating = 10,
     },

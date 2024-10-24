@@ -98,6 +98,10 @@ GraniteCave_EventScript_ItemNugget::
 	finditem ITEM_NUGGET
 	end
 
+GraniteCave_EventScript_ItemMagnet::
+	finditem ITEM_MAGNET
+	end
+
 GraniteCave_EventScript_ItemKingsRock::
 	finditem ITEM_KINGS_ROCK
 	end
@@ -110,8 +114,8 @@ GraniteCave_EventScript_ItemGyroBall::
 	finditem ITEM_TM_GYRO_BALL
 	end
 
-GraniteCave_EventScript_ItemRockyHelmet::
-	finditem ITEM_ROCKY_HELMET
+GraniteCave_EventScript_ItemHeavyDutyBoots::
+	finditem ITEM_HEAVY_DUTY_BOOTS
 	end
 
 GraniteCave_EventScript_ItemMetalPowder::

@@ -467,6 +467,15 @@ $(OBJEVENTGFXDIR)/pokemon_old/rockruff.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/pokemon_old/aron.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(OBJEVENTGFXDIR)/misc/minecart.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/misc/minecart_brendan.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4	
+
+$(OBJEVENTGFXDIR)/misc/minecart_may.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4	
+
 $(OBJEVENTGFXDIR)/pokemon_old/eevee.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 

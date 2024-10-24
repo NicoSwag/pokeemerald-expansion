@@ -706,6 +706,11 @@
 	.byte 0x5a
 	.endm
 
+   .macro removeobjectbyflag flag:req
+    callnative ScrCmd_removeobjectbyflag
+    .2byte \flag
+    .endm
+
 	@ Turns the specified object in the specified direction.
 	.macro turnobject localId:req, direction:req
 	.byte 0x5b

@@ -541,6 +541,8 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_CUT_TREE              0x1152
 #define OBJ_EVENT_PAL_TAG_COP              0x1153
 #define OBJ_EVENT_PAL_TAG_WALLY              0x1154
+#define OBJ_EVENT_PAL_TAG_MINECART            0x1155
+#define OBJ_EVENT_PAL_TAG_MINECART_MAY            0x1156
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -577,6 +579,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Rockruff,        OBJ_EVENT_PAL_TAG_ROCKRUFF},
     {gObjectEventPal_Corphish,        OBJ_EVENT_PAL_TAG_CORPHISH},
     {gObjectEventPal_Aron,        OBJ_EVENT_PAL_TAG_ARON},
+    {gObjectEventPal_Minecart,        OBJ_EVENT_PAL_TAG_MINECART},
+    {gObjectEventPal_Minecart_May,        OBJ_EVENT_PAL_TAG_MINECART_MAY},
     {gObjectEventPal_Eevee,        OBJ_EVENT_PAL_TAG_EEVEE},
     {gObjectEventPal_Makuhita,        OBJ_EVENT_PAL_TAG_MAKUHITA},
     {gObjectEventPal_Slakoth,        OBJ_EVENT_PAL_TAG_SLAKOTH},

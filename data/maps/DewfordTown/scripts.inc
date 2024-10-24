@@ -16,6 +16,9 @@
 .set LOCALID_YOUNGSTER, 28
 .set LOCALID_ARON, 21
 .set LOCALID_MINER, 25
+.set LOCALID_MINECART_DEWFORD, 29
+.set LOCALID_MINECART_BRENDAN_DEWFORD, 30
+.set LOCALID_MINECART_MAY_DEWFORD, 31
 
 DewfordTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, DewfordTown_OnTransition
@@ -25,15 +28,207 @@ DewfordTown_OnTransition:
 	setflag FLAG_VISITED_DEWFORD_TOWN
 	call Common_EventScript_SetupRivalGfxId
 	setvar VAR_PELIPPER, 13
+	call_if_unset FLAG_HIDE_MINECART_DEWFORD, DewfordTown_EventScript_SetMinecart
 	call_if_set FLAG_GAVE_IRON_BALL, DewfordTown_EventScript_SetAron
 	end
 
+DewfordTown_EventScript_MinecartInteract::
+	lockall
+	goto_if_set FLAG_HIDE_MINECART_DEWFORD, Route106_EventScript_DoNothing
+	msgbox DewfordTown_Text_RideMinecart, MSGBOX_YESNO
+	closemessage
+	goto_if_eq VAR_RESULT, NO, Route106_EventScript_DoNothing
+	checkplayergender
+	call_if_eq VAR_FACING, DIR_SOUTH, Route106_EventScript_MinecartInteractFromSouth
+	call_if_eq VAR_FACING, DIR_EAST, Route106_EventScript_MinecartInteractFromEast
+	call_if_eq VAR_FACING, DIR_NORTH, Route106_EventScript_MinecartInteractFromNorth
+	call_if_eq VAR_FACING, DIR_WEST, Route106_EventScript_MinecartInteractFromWest
+	hideobjectat OBJ_EVENT_ID_PLAYER, MAP_DEWFORD_TOWN
+	setflag FLAG_DONT_TRANSITION_MUSIC
+	playbgm MUS_SAILING, FALSE
+	removeobject LOCALID_MINECART_DEWFORD
+	checkplayergender
+	call_if_eq VAR_RESULT, MALE, DewfordTown_EventScript_MinecartInteractBrendan
+	call_if_eq VAR_RESULT, FEMALE, DewfordTown_EventScript_MinecartInteractMay
+	clearflag FLAG_HIDE_MINECART_GRANITE
+	clearflag FLAG_DONT_TRANSITION_MUSIC
+	warp MAP_GRANITE_COTTAGE, 4, 5
+	releaseall
+	end
+
+
+DewfordTown_EventScript_MinecartInteractBrendan::
+	
+	clearflag FLAG_HIDE_BRENDAN_MINECART_DEWFORD
+	addobject LOCALID_MINECART_BRENDAN_DEWFORD
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, DewfordTown_Movement_MinecartToGranite
+	applymovement LOCALID_MINECART_BRENDAN_DEWFORD, DewfordTown_Movement_MinecartToGranite
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
+	waitmovement 0
+	fadedefaultbgm
+	setflag FLAG_HIDE_BRENDAN_MINECART_DEWFORD
+	return
+
+
+DewfordTown_EventScript_MinecartInteractMay::
+	clearflag FLAG_HIDE_MAY_MINECART_DEWFORD
+	addobject LOCALID_MINECART_MAY_DEWFORD
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, DewfordTown_Movement_MinecartToGranite
+	applymovement LOCALID_MINECART_MAY_DEWFORD, DewfordTown_Movement_MinecartToGranite
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
+	waitmovement 0
+	fadedefaultbgm
+	setflag FLAG_HIDE_MAY_MINECART_DEWFORD
+	return
+
+DewfordTown_Movement_MinecartToGranite:
+	walk_left
+	walk_fast_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_fast_left
+	walk_fast_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_fast_up
+	walk_up
+	walk_fast_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_fast_up
+	walk_fast_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_fast_left
+	walk_fast_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_fast_up
+	walk_up
+	walk_fast_up
+	walk_fast_left
+	walk_faster_left
+	walk_faster_left
+	walk_fast_left
+	walk_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_fast_left
+	walk_fast_down
+	walk_fast_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_fast_left
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down
+	walk_fast_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_fast_left
+	walk_left
+	walk_fast_left
+	walk_fast_down
+	walk_fast_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_fast_left
+	walk_fast_down
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_fast_left
+	walk_left
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down
+	walk_faster_down
+	walk_faster_down
+	walk_fast_down
+	walk_down
+	walk_fast_down
+	walk_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_right
+	step_end
 
 DewfordTown_EventScript_SetAron::
 	setobjectmovementtype LOCALID_ARON, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN
 	setobjectxyperm LOCALID_ARON, 18, 33
 	return
 
+DewfordTown_EventScript_SetMinecart::
+	addobject LOCALID_MINECART_DEWFORD
+	return
 
 DewfordTown_EventScript_WarehouseMiner2::
 	lockall
@@ -127,7 +322,6 @@ DewfordTown_EventScript_Abduction::
 	closemessage
 	clearflag FLAG_HIDE_MAGNEZONE
 	addobject LOCALID_MAGNEZONE
-	setobjectxy LOCALID_MAGNEZONE, 12, 12
 	playfanfare MUS_RG_POKE_FLUTE
 	waitfanfare
 	playbgm MUS_SAILING, FALSE
@@ -172,6 +366,14 @@ DewfordTown_EventScript_Abduction::
 	waitmovement 0
 	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkInPlaceDown
 	applymovement LOCALID_SLAKOTH, Common_Movement_WalkUp
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	applymovement LOCALID_SLAKOTH, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
+	waitmovement 0
+	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
+	applymovement LOCALID_SLAKOTH, Common_Movement_WalkLeft
+	playse SE_M_TAKE_DOWN
 	waitmovement 0
 	applymovement LOCALID_MAGNEZONE, Common_Movement_WalkLeft
 	applymovement LOCALID_SLAKOTH, Common_Movement_WalkLeft
@@ -1495,7 +1697,9 @@ Route104_Text_BrendanPostBattle:
 	.string "Like MR. BRINEY, it's important to\n"
 	.string "become friends with your POKéMON.$"
 
-
+DewfordTown_Text_RideMinecart:
+	.string "Ride the minecart to Granite\n"
+	.string "Cave?$"
 
 Route104_Movement_RivalGoesAway:
 	walk_left

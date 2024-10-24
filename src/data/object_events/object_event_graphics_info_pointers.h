@@ -224,6 +224,9 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CorphishOld
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MakuhitaOld;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SlakothOld;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AronOld;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Minecart;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Minecart_Brendan;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Minecart_May;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EeveeOld;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KadabraOld;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ScizorOld;
@@ -401,6 +404,9 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MAKUHITA] =              &gObjectEventGraphicsInfo_MakuhitaOld,
     [OBJ_EVENT_GFX_SLAKOTH] =              &gObjectEventGraphicsInfo_SlakothOld,
     [OBJ_EVENT_GFX_ARON] =              &gObjectEventGraphicsInfo_AronOld,
+    [OBJ_EVENT_GFX_MINECART] =              &gObjectEventGraphicsInfo_Minecart,
+    [OBJ_EVENT_GFX_MINECART_BRENDAN] =              &gObjectEventGraphicsInfo_Minecart_Brendan,
+    [OBJ_EVENT_GFX_MINECART_MAY] =              &gObjectEventGraphicsInfo_Minecart_May,
     [OBJ_EVENT_GFX_EEVEE] =              &gObjectEventGraphicsInfo_EeveeOld,
     [OBJ_EVENT_GFX_KADABRA] =              &gObjectEventGraphicsInfo_KadabraOld,
     [OBJ_EVENT_GFX_SCIZOR] =              &gObjectEventGraphicsInfo_ScizorOld,

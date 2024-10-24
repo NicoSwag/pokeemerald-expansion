@@ -1,21 +1,90 @@
 .set LOCALID_BRAWLY, 5
-.set LOCALID_MAGMA, 12
-.set LOCALID_MINER_LEFT, 13
-.set LOCALID_MINER_RIGHT, 14
+.set LOCALID_MAGMA, 11
+.set LOCALID_MINER_LEFT, 12
+.set LOCALID_MINER_RIGHT, 13
 .set LOCALID_CLOBBOPUS, 10
 .set LOCALID_POOCHYENA, 11
-.set LOCALID_WALLY, 15
-.set LOCALID_RIVAL, 21
+.set LOCALID_WALLY, 14
+.set LOCALID_RIVAL, 20
+.set LOCALID_MINECART, 21
+.set LOCALID_MINECART_BRENDAN, 22
+.set LOCALID_MINECART_MAY, 23
 
 GraniteCaveEntrance_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, GraniteCaveEntrance_MapScripts_OnTransition
 	.byte 0
 
 GraniteCaveEntrance_MapScripts_OnTransition:
-	goto_if_eq VAR_ROUTE106_STATE, 1, Route106_EventScript_MoveEveryone
+	call_if_eq VAR_ROUTE106_STATE, 1, Route106_EventScript_MoveEveryone
+	goto_if_set FLAG_HIDE_BRAWLY_GRANITE, GraniteCaveEntrance_MapScripts_End
+	call_if_set FLAG_HIDE_TABITHA_CAVE, Route106_EventScript_MoveBrawly
+	GraniteCaveEntrance_MapScripts_End::
 	end 
 
+Route106_EventScript_MoveBrawly::
+	setobjectxyperm LOCALID_BRAWLY, 17, 10
+	setobjectmovementtype LOCALID_BRAWLY, MOVEMENT_TYPE_LOOK_AROUND
+	setvar VAR_TEMP_A, 1
+	return
 
+
+Route106_EventScript_MinecartInteract::
+	lockall
+	goto_if_set FLAG_HIDE_MINECART_GRANITE, Route106_EventScript_DoNothing
+	msgbox Route106_Text_RideMinecart, MSGBOX_YESNO
+	closemessage
+	goto_if_eq VAR_RESULT, NO, Route106_EventScript_DoNothing
+	checkplayergender
+	call_if_eq VAR_FACING, DIR_SOUTH, Route106_EventScript_MinecartInteractFromSouth
+	call_if_eq VAR_FACING, DIR_EAST, Route106_EventScript_MinecartInteractFromEast
+	call_if_eq VAR_FACING, DIR_NORTH, Route106_EventScript_MinecartInteractFromNorth
+	call_if_eq VAR_FACING, DIR_WEST, Route106_EventScript_MinecartInteractFromWest
+	hideobjectat OBJ_EVENT_ID_PLAYER, MAP_GRANITE_CAVE_ENTRANCE
+	setflag FLAG_DONT_TRANSITION_MUSIC
+	playbgm MUS_SAILING, FALSE
+	removeobject LOCALID_MINECART
+	checkplayergender
+	call_if_eq VAR_RESULT, MALE, Route106_EventScript_MinecartInteractBrendan
+	call_if_eq VAR_RESULT, FEMALE, Route106_EventScript_MinecartInteractMay
+	clearflag FLAG_HIDE_MINECART_DEWFORD
+	clearflag FLAG_DONT_TRANSITION_MUSIC
+	warp MAP_FOUNDRY, 10, 12
+	releaseall
+	end
+
+Route106_EventScript_MinecartInteractBrendan::
+	
+	clearflag FLAG_HIDE_BRENDAN_MINECART_GRANITE
+	addobject LOCALID_MINECART_BRENDAN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Route106_Movement_MinecartToDewford
+	applymovement LOCALID_MINECART_BRENDAN, Route106_Movement_MinecartToDewford
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
+	waitmovement 0
+	fadedefaultbgm
+	setflag FLAG_HIDE_BRENDAN_MINECART_GRANITE
+	return
+
+
+Route106_EventScript_MinecartInteractMay::
+	clearflag FLAG_HIDE_MAY_MINECART_GRANITE
+	addobject LOCALID_MINECART_MAY
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Route106_Movement_MinecartToDewford
+	applymovement LOCALID_MINECART_MAY, Route106_Movement_MinecartToDewford
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
+	waitmovement 0
+	fadedefaultbgm
+	setflag FLAG_HIDE_MAY_MINECART_GRANITE
+	return
+
+Route106_EventScript_DoNothing::
+	releaseall
+	end
 
 Route106_EventScript_MoveEveryone::
 	setobjectxyperm LOCALID_MINER_LEFT, 23, 11
@@ -23,11 +92,24 @@ Route106_EventScript_MoveEveryone::
 	setobjectxyperm LOCALID_MINER_RIGHT, 25, 11
 	setobjectmovementtype LOCALID_MINER_LEFT, MOVEMENT_TYPE_FACE_DOWN
 	setobjectmovementtype LOCALID_MINER_RIGHT, MOVEMENT_TYPE_FACE_DOWN
-	setobjectmovementtype LOCALID_GRUNT, MOVEMENT_TYPE_FACE_DOWN
+	setobjectmovementtype LOCALID_MAGMA, MOVEMENT_TYPE_FACE_DOWN
 	setobjectxyperm LOCALID_BRAWLY, 9, 16
 	setobjectmovementtype LOCALID_BRAWLY, MOVEMENT_TYPE_FACE_LEFT
-	end
+	return
 
+Route106_EventScript_BrawlyGoesToGym::
+	applymovement LOCALID_BRAWLY, Route106_Movement_BrawlyGoesToYou
+	waitmovement 0
+	speakername Common_Name_Brawly
+	msgbox Route106_Text_BrawlyCongrats, MSGBOX_NPC
+	closemessage
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkDown6
+	waitmovement 0
+	removeobject LOCALID_BRAWLY
+	setflag FLAG_HIDE_BRAWLY_GRANITE
+	setvar VAR_TEMP_A, 0
+	release
+	return
 
 Route106_EventScript_BrawlyEvent::
 	lock
@@ -251,24 +333,46 @@ Route106_Movement_LookAround:
 
 
 Route106_EventScript_BrawlyDialogue::
+	speakername Common_Name_Brawly
 	msgbox Route106_Text_MineLivelihood, MSGBOX_NPC
 	end
 
 Route106_EventScript_MinerLeft::
+	goto_if_set FLAG_HIDE_TABITHA_CAVE, Route106_EventScript_MinerLeft_Post
 	msgbox Route106_Text_MinerLeft, MSGBOX_NPC
 	end
 
+Route106_EventScript_MinerLeft_Post::
+	msgbox Route106_Text_MinerLeft_Post, MSGBOX_NPC
+	end
+
 Route106_EventScript_MinerRight::
+	goto_if_set FLAG_HIDE_TABITHA_CAVE, Route106_EventScript_MinerRight_Post
 	msgbox Route106_Text_MinerRight, MSGBOX_NPC
 	end
 
+Route106_EventScript_MinerRight_Post::
+	msgbox Route106_Text_MinerRight_Post, MSGBOX_NPC
+	end
+
 Route106_EventScript_MinerMiddle::
+	goto_if_set FLAG_HIDE_TABITHA_CAVE, Route106_EventScript_MinerMiddle_Post
 	msgbox Route106_Text_MinerMiddle, MSGBOX_NPC
 	end
 
+Route106_EventScript_MinerMiddle_Post::
+	msgbox Route106_Text_MinerMiddle_Post, MSGBOX_NPC
+	end
+
 Route106_EventScript_MinerBottom::
+	goto_if_set FLAG_HIDE_TABITHA_CAVE, Route106_EventScript_MinerBottom_Post
 	msgbox Route106_Text_MinerBottom, MSGBOX_NPC
 	end
+
+Route106_EventScript_MinerBottom_Post::
+	msgbox Route106_Text_MinerBottom_Post, MSGBOX_NPC
+	end
+
 
 Route106_EventScript_Magma::
 	msgbox Route106_Text_Magma, MSGBOX_NPC
@@ -287,15 +391,22 @@ Route106_EventScript_MinerCastle::
 	end
 
 Route106_Text_MineLivelihood:
-	.string "If they wanted to steal the emeralds,\n"
-	.string "wouldn't it have been easier to attack\l"
-	.string "the forge?\p"
-	.string "…Eh, what do I know about crime anyway.$"
+	.string "You know, I was thinking…\n"
+	.string "If this Team Magma just wanted to\l"
+	.string "steal the emeralds…\p"
+	.string "Wouldn't it have been easier to\n"
+	.string "just raid the forge?\p"
+	.string "…I guess the mind of a criminal\n"
+	.string "just works in strange ways.$"
 
 
 Route106_Text_MinerLeft:
 	.string "…What an annoyance.$"
 
+Route106_Text_MinerLeft_Post:
+	.string "Yeah, we had to let this guy go.\p"
+	.string "It's not like we have a place to\n"
+	.string "keep him.$"
 
 Route106_Text_MinerRight:
 	.string "I'm not a Trainer, but I can still\n"
@@ -303,13 +414,20 @@ Route106_Text_MinerRight:
 	.string "No one will steal the mine from us\n"
 	.string "on my watch.$"
 
+Route106_Text_MinerRight_Post:
+	.string "You're on fire, man!\p"
+	.string "You really sent Team Magma packing!$"
 
 Route106_Text_MinerMiddle:
 	.string "Most of us aren't Trainers.\p"
-	.string "Those that are got sent to the north\n"
+	.string "Those that are got sent to the north,\n"
 	.string "to watch out for Team Magma.\p"
-	.string "But you saw how it ended up.$"
+	.string "But…\n"
+	.string "You saw how it ended up.$"
 
+Route106_Text_MinerMiddle_Post:
+	.string "Even with Team Magma gone, we should\n"
+	.string "still keep watch for other threats.$"
 
 Route106_Text_MinerBottom:
 	.string "I saw a Trainer rush into the mine\n"
@@ -318,9 +436,15 @@ Route106_Text_MinerBottom:
 	.string "even turn around.\p"
 	.string "I hope they're ok.$"
 
+Route106_Text_MinerBottom_Post:
+	.string "The Trainer that went in the cave…\n"
+	.string "Was Steven Stone?\p"
+	.string "Like, THE, Steven Stone?\p"
+	.string "I'm so jealous you got to meet him.\p"
+	.string "I really wanted to ask for an autograph.$"
 
 Route106_Text_Magma:
-	.string "Unhand me, you criminals!\n"
+	.string "Unhand me, you ruffians!\n"
 	.string "I have done nothing wrong!$"
 
 
@@ -333,7 +457,9 @@ Route106_Text_MinerGate:
 
 Route106_Text_MinerHouse:
 	.string "Feel free to rest up inside,\n"
-	.string "if you need it.$"
+	.string "if you need it.\p"
+	.string "You can also take the minecart\n"
+	.string "back to Dewford.$"
 
 Route106_Text_MinerCastle:
 	.string "Across the water from here, there's\n"
@@ -363,6 +489,18 @@ Route106_Text_DontUnderstand:
 	.string "Cough…\p"
 	.string "Just you wait for me…!$"
 
+Route106_Text_BrawlyCongrats:
+	.string "Dude, you did it!\p"
+	.string "A swarm of Magma Grunts just ran\n"
+	.string "out of the mines!\p"
+	.string "They all climbed in their little boat\n"
+	.string "and went off somewhere.\p"
+	.string "And no one was hurt so, you know,\n"
+	.string "I think we can call this a victory.\p"
+	.string "Ahh, now I'm itching to face off with\n"
+	.string "our new hero!\p"
+	.string "Very well, then!\n"
+	.string "Meet ya at the gym, yeah?$"
 
 Common_Name_Brawly:
 	.string "Brawly$"
@@ -396,6 +534,9 @@ Route106_Text_WhoWasThat:
 	.string "See ya around!$"
 
 
+Route106_Text_RideMinecart:
+	.string "Ride the minecart to Dewford?$"
+
 Route106_Movement_RunAfterWally:
 	walk_fast_right
 	walk_fast_down
@@ -404,3 +545,177 @@ Route106_Movement_RunAfterWally:
 	walk_fast_down
 	walk_fast_down
 	step_end
+
+
+Route106_EventScript_MinecartInteractFromSouth:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
+	waitmovement 0
+	return
+
+Route106_EventScript_MinecartInteractFromEast:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
+	waitmovement 0
+	return
+
+
+Route106_EventScript_MinecartInteractFromNorth:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	waitmovement 0
+	return
+
+Route106_EventScript_MinecartInteractFromWest:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
+	waitmovement 0
+	return
+
+Route106_Movement_MinecartToDewford:
+	walk_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_up
+	walk_fast_up
+	walk_up
+	walk_fast_up
+	walk_faster_up
+	walk_faster_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_up
+	walk_right
+	walk_fast_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_fast_up
+	walk_fast_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_right
+	walk_right
+	walk_fast_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_right
+	walk_fast_up
+	walk_fast_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_right
+	walk_fast_right
+	walk_faster_right
+	walk_faster_right
+	walk_fast_right
+	walk_fast_down
+	walk_down
+	walk_fast_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_fast_down
+	walk_fast_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_fast_right
+	walk_fast_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_fast_down
+	walk_down
+	walk_fast_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_faster_down
+	walk_fast_down
+	walk_fast_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_faster_right
+	walk_fast_right
+	walk_right
+	step_end
+
+
+
+Route106_Movement_BrawlyGoesToYou:
+	face_down
+	delay_16
+	face_right
+	delay_16
+	face_left
+	delay_16
+	face_up
+	delay_16
+	emote_exclamation_mark
+	delay_16
+	walk_up
+	walk_up
+	step_end
+

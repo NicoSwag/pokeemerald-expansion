@@ -610,6 +610,42 @@ static const struct SpriteFrameImage sPicTable_AronOld[] = {
     overworld_frame(gObjectEventPic_AronOld, 4, 4, 8),
 };
 
+static const struct SpriteFrameImage sPicTable_Minecart[] = {
+    overworld_frame(gObjectEventPic_Minecart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Minecart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Minecart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Minecart, 4, 4, 3),
+    overworld_frame(gObjectEventPic_Minecart, 4, 4, 4),
+    overworld_frame(gObjectEventPic_Minecart, 4, 4, 5),
+    overworld_frame(gObjectEventPic_Minecart, 4, 4, 6),
+    overworld_frame(gObjectEventPic_Minecart, 4, 4, 7),
+    overworld_frame(gObjectEventPic_Minecart, 4, 4, 8),
+};
+
+static const struct SpriteFrameImage sPicTable_Minecart_Brendan[] = {
+    overworld_frame(gObjectEventPic_Minecart_Brendan, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Minecart_Brendan, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Minecart_Brendan, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Minecart_Brendan, 4, 4, 3),
+    overworld_frame(gObjectEventPic_Minecart_Brendan, 4, 4, 4),
+    overworld_frame(gObjectEventPic_Minecart_Brendan, 4, 4, 5),
+    overworld_frame(gObjectEventPic_Minecart_Brendan, 4, 4, 6),
+    overworld_frame(gObjectEventPic_Minecart_Brendan, 4, 4, 7),
+    overworld_frame(gObjectEventPic_Minecart_Brendan, 4, 4, 8),
+};
+
+static const struct SpriteFrameImage sPicTable_Minecart_May[] = {
+    overworld_frame(gObjectEventPic_Minecart_May, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Minecart_May, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Minecart_May, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Minecart_May, 4, 4, 3),
+    overworld_frame(gObjectEventPic_Minecart_May, 4, 4, 4),
+    overworld_frame(gObjectEventPic_Minecart_May, 4, 4, 5),
+    overworld_frame(gObjectEventPic_Minecart_May, 4, 4, 6),
+    overworld_frame(gObjectEventPic_Minecart_May, 4, 4, 7),
+    overworld_frame(gObjectEventPic_Minecart_May, 4, 4, 8),
+};
+
 static const struct SpriteFrameImage sPicTable_EeveeOld[] = {
     overworld_frame(gObjectEventPic_EeveeOld, 4, 4, 0),
     overworld_frame(gObjectEventPic_EeveeOld, 4, 4, 1),

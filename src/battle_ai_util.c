@@ -2934,8 +2934,8 @@ bool32 AI_CanBeConfused(u32 battlerAtk, u32 battlerDef, u32 move, u32 ability)
     if ((gBattleMons[battlerDef].status2 & STATUS2_CONFUSION)
      || (ability == ABILITY_OWN_TEMPO && !DoesBattlerIgnoreAbilityChecks(AI_DATA->abilities[battlerAtk], move))
      || (IsBattlerGrounded(battlerDef) && (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN))
-           || gBattleMons[battlerDef].type1 == TYPE_BUG
-      || gBattleMons[battlerDef].type2 == TYPE_BUG
+           || gBattleMons[battlerDef].types[0] == TYPE_BUG
+      || gBattleMons[battlerDef].types[1] == TYPE_BUG
      || gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_SAFEGUARD
      || DoesSubstituteBlockMove(battlerAtk, battlerDef, move))
         return FALSE;
@@ -3024,8 +3024,8 @@ u32 ShouldTryToFlinch(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbi
       || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER
-              || gBattleMons[battlerDef].type1 == TYPE_PSYCHIC
-        || gBattleMons[battlerDef].type2 == TYPE_PSYCHIC)) // Opponent goes first) // Opponent goes first
+              || gBattleMons[battlerDef].types[0] == TYPE_PSYCHIC
+        || gBattleMons[battlerDef].types[1] == TYPE_PSYCHIC)) // Opponent goes first) // Opponent goes first
     {
         return 0;
     }

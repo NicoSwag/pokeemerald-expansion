@@ -7906,7 +7906,7 @@ static const struct LevelUpMove sShedinjaLevelUpLearnset[] = {
 
 #if P_FAMILY_WHISMUR
 static const struct LevelUpMove sWhismurLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_POUND),
+    LEVEL_UP_MOVE( 1, MOVE_UPROAR),
     LEVEL_UP_MOVE( 4, MOVE_ECHOED_VOICE),
     LEVEL_UP_MOVE( 8, MOVE_ASTONISH),
     LEVEL_UP_MOVE(11, MOVE_HOWL),
@@ -8864,7 +8864,7 @@ static const struct LevelUpMove sSwabluLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_GROWL),
     LEVEL_UP_MOVE( 4, MOVE_DISARMING_VOICE),
     LEVEL_UP_MOVE( 6, MOVE_SING),
-    LEVEL_UP_MOVE( 8, MOVE_TWISTER),
+    LEVEL_UP_MOVE( 8, MOVE_GUST),
     LEVEL_UP_MOVE( 12, MOVE_FURY_ATTACK),
     LEVEL_UP_MOVE(15, MOVE_DRAGON_BREATH),
     LEVEL_UP_MOVE(17, MOVE_COTTON_GUARD),
@@ -20042,7 +20042,7 @@ static const struct LevelUpMove sClobbopusLevelUpLearnset[] = {
     LEVEL_UP_MOVE(10, MOVE_CLAMP),
     LEVEL_UP_MOVE(15, MOVE_DETECT),
     LEVEL_UP_MOVE(20, MOVE_MACH_PUNCH),
-    LEVEL_UP_MOVE(25, MOVE_AQUA_JET),
+    LEVEL_UP_MOVE(24, MOVE_AQUA_JET),
     LEVEL_UP_MOVE(30, MOVE_SUBMISSION),
     LEVEL_UP_MOVE(35, MOVE_TAUNT),
     LEVEL_UP_MOVE(40, MOVE_REVERSAL),

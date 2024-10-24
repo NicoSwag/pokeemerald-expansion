@@ -89,7 +89,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GraniteCave_EventScript_ItemRockyHelmet",
+      "script": "GraniteCave_EventScript_ItemHeavyDutyBoots",
       "flag": "FLAG_RECEIVED_ROCKY_HELMET"
     },
     {
@@ -173,6 +173,13 @@
       "elevation": 0,
       "dest_map": "MAP_GRANITE_CAVE_1F",
       "dest_warp_id": "2"
+    },
+    {
+      "x": 50,
+      "y": 29,
+      "elevation": 0,
+      "dest_map": "MAP_GRANITE_CAVE_GENERATOR_ROOM",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

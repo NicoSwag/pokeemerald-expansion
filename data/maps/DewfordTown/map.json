@@ -236,7 +236,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "DewfordTown_EventScript_GymGuide",
-      "flag": "FLAG_CLEARED_GRANITE_CAVE"
+      "flag": "FLAG_HIDE_BRAWLY_GRANITE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ROCKRUFF)",
@@ -393,6 +393,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "DewfordTown_EventScript_TrendyPhraseBoy",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MINECART",
+      "x": 25,
+      "y": 35,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_MINECART_DEWFORD"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MINECART_BRENDAN",
+      "x": 25,
+      "y": 35,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_BRENDAN_MINECART_DEWFORD"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MINECART_MAY",
+      "x": 25,
+      "y": 35,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_MAY_MINECART_DEWFORD"
     }
   ],
   "warp_events": [
@@ -542,6 +581,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "DewfordTown_Sign_Foundry"
+    },
+    {
+      "type": "sign",
+      "x": 25,
+      "y": 35,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DewfordTown_EventScript_MinecartInteract"
     }
   ]
 }

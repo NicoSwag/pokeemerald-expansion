@@ -95,6 +95,34 @@ static s32 (*const sBattleAiFuncTable[])(u32, u32, u32, s32) =
     [31] = AI_FirstBattle,          // AI_FLAG_FIRST_BATTLE
 };
 
+s32 GetWhichBattlerFasterOrTies(u32 battler1, u32 battler2, bool32 ignoreChosenMoves)
+{
+    s32 priority1 = 0, priority2 = 0;
+    u32 ability1 = GetBattlerAbility(battler1);
+    u32 speedBattler1 = GetBattlerTotalSpeedStat(battler1);
+    u32 holdEffectBattler1 = GetBattlerHoldEffect(battler1, TRUE);
+    u32 speedBattler2 = GetBattlerTotalSpeedStat(battler2);
+    u32 holdEffectBattler2 = GetBattlerHoldEffect(battler2, TRUE);
+    u32 ability2 = GetBattlerAbility(battler2);
+
+    if (!ignoreChosenMoves)
+    {
+        if (gChosenActionByBattler[battler1] == B_ACTION_USE_MOVE)
+            priority1 = GetChosenMovePriority(battler1);
+        if (gChosenActionByBattler[battler2] == B_ACTION_USE_MOVE)
+            priority2 = GetChosenMovePriority(battler2);
+    }
+
+    return GetWhichBattlerFasterArgs(
+        battler1, battler2,
+        ignoreChosenMoves,
+        ability1, ability2,
+        holdEffectBattler1, holdEffectBattler2,
+        speedBattler1, speedBattler2,
+        priority1, priority2
+    );
+}
+
 // Functions
 void BattleAI_SetupItems(void)
 {
@@ -1791,7 +1819,7 @@ case EFFECT_ESCAPE_HEAL:
         case EFFECT_TORMENT:
             if (gBattleMons[battlerDef].status2 & STATUS2_TORMENT
               || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove)
-              || gBattleMons[battlerDef].type1 == TYPE_PSYCHIC || gBattleMons[battlerDef].type2 == TYPE_PSYCHIC)
+              || gBattleMons[battlerDef].types[0] == TYPE_FIGHTING || gBattleMons[battlerDef].types[1] == TYPE_FIGHTING)
             {
                 ADJUST_SCORE(-10);
                 break;
@@ -2158,7 +2186,7 @@ case EFFECT_FLASH_FREEZE:
         case EFFECT_TAUNT:
             if (gDisableStructs[battlerDef].tauntTimer > 0
               || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove)
-              || gBattleMons[battlerDef].type1 == TYPE_PSYCHIC || gBattleMons[battlerDef].type2 == TYPE_PSYCHIC)
+              || gBattleMons[battlerDef].types[0] == TYPE_FIGHTING || gBattleMons[battlerDef].types[1] == TYPE_FIGHTING)
                 ADJUST_SCORE(-10);
             break;
         case EFFECT_BESTOW:

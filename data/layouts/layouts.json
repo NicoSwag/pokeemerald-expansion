@@ -4630,6 +4630,16 @@
       "secondary_tileset": "gTileset_DewfordGym",
       "border_filepath": "data/layouts/DewfordGymTest/border.bin",
       "blockdata_filepath": "data/layouts/DewfordGymTest/map.bin"
+    },
+    {
+      "id": "LAYOUT_GRANITE_CAVE_GENERATOR_ROOM",
+      "name": "GraniteCave_GeneratorRoom_Layout",
+      "width": 22,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_GraniteCave",
+      "border_filepath": "data/layouts/GraniteCave_GeneratorRoom/border.bin",
+      "blockdata_filepath": "data/layouts/GraniteCave_GeneratorRoom/map.bin"
     }
   ]
 }

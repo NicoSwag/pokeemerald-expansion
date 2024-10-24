@@ -88,6 +88,10 @@ gBattleAnims_General::
 	.4byte General_TeraCharge               @ B_ANIM_TERA_CHARGE
 	.4byte General_TeraActivate             @ B_ANIM_TERA_ACTIVATE
 	.4byte General_SimpleHeal               @ B_ANIM_SIMPLE_HEAL
+	.4byte General_ElectricTerrain          @ B_ANIM_ELECTRIC_TERRAIN
+	.4byte General_GrassyTerrain          	@ B_ANIM_GRASSY_TERRAIN
+	.4byte General_PsychicTerrain          	@ B_ANIM_PSYCHIC_TERRAIN
+	.4byte General_MistyTerrain          	@ B_ANIM_MISTY_TERRAIN
 
 	.align 2
 gBattleAnims_Special::
@@ -9044,6 +9048,10 @@ Move_ELECTRIC_TERRAIN::
 	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 3, 4, 0, RGB(28, 28, 0)
 	waitforvisualfinish
 	end
+
+
+
+
 
 Move_DAZZLING_GLEAM::
 	loadspritegfx ANIM_TAG_SPARKLE_2
@@ -28198,6 +28206,47 @@ General_SimpleHeal:
 	waitforvisualfinish
 	end
 
+General_ElectricTerrain:
+	loopsewithpan SE_M_THUNDERBOLT2, SOUND_PAN_TARGET, 0x16, 0x3
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 3, 0, 4, RGB(28, 28, 0)
+	delay 52
+	waitforvisualfinish
+	delay 2
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 3, 4, 0, RGB(28, 28, 0)
+	waitforvisualfinish
+	end
+
+
+General_GrassyTerrain:
+	panse_adjustnone SE_M_PETAL_DANCE, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +1, 0x0
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 3, 0, 4, RGB(11, 26, 11)
+	delay 52
+	waitforvisualfinish
+	delay 4
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 3, 4, 0, RGB(31, 24, 31)
+	waitforvisualfinish
+	end
+
+General_PsychicTerrain:
+	playsewithpan SE_M_ATTRACT, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 3, 0, 4, RGB(27, 0, 13)
+	delay 52
+	waitforvisualfinish
+	delay 4
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 3, 4, 0, RGB(27, 0, 13)
+	waitforvisualfinish
+	end
+
+General_MistyTerrain:
+	playse SE_M_COSMIC_POWER
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 3, 0, 7, RGB(31, 24, 31)
+	delay 52
+	waitforvisualfinish
+	delay 4
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 3, 7, 0, RGB(31, 24, 31)
+	waitforvisualfinish
+	end
+
 General_IllusionOff:
 	monbg ANIM_TARGET
 	createvisualtask AnimTask_TransformMon, 2, 1, 0
@@ -28467,42 +28516,6 @@ General_PrimalReversion_Omega:
 	blendoff
 	end
 
-General_UltraBurst::
-	loadspritegfx ANIM_TAG_ULTRA_BURST_SYMBOL
-	loadspritegfx ANIM_TAG_SPARK_2 @spark
-	loadspritegfx ANIM_TAG_LEAF @green
-	loadspritegfx ANIM_TAG_ELECTRIC_ORBS @charge particles
-	loadspritegfx ANIM_TAG_CIRCLE_OF_LIGHT @psycho boost
-	monbg ANIM_ATTACKER
-	setalpha 12, 8
-	createvisualtask AnimTask_BlendBattleAnimPal, 0xa, (F_PAL_BG | F_PAL_ADJACENT), 0x2, 0x0, 0xF, 0x0000
-	waitforvisualfinish
-	createvisualtask AnimTask_ElectricChargingParticles, 2, ANIM_ATTACKER, 60, 2, 12 	@ charge particles to attacker
-	delay 0x1e
-	loopsewithpan SE_M_CHARGE, SOUND_PAN_ATTACKER, 0xe, 0xa
-	createsprite gSuperpowerOrbSpriteTemplate, ANIM_TARGET, 3, 0x0
-	call LightThatBurnsTheSkyGreenSparks
-	call LightThatBurnsTheSkyGreenSparks
-	call LightThatBurnsTheSkyGreenSparks
-	call LightThatBurnsTheSkyGreenSparks
-	call LightThatBurnsTheSkyGreenSparks
-	call LightThatBurnsTheSkyGreenSparks
-	call LightThatBurnsTheSkyGreenSparks
-	call LightThatBurnsTheSkyGreenSparks
-	call LightThatBurnsTheSkyGreenSparks
-	delay 20
-	createvisualtask AnimTask_BlendBattleAnimPalExclude, 5, 5, 2, 0, 16, RGB_WHITEALPHA
-	createvisualtask AnimTask_HideSwapSprite, 2, 1, 0
-	createsprite gUltraBurstSymbolSpriteTemplate, ANIM_ATTACKER, 0x0, 0x0, 0x0, 0x0, 0x0
-	waitforvisualfinish
-	createvisualtask AnimTask_BlendBattleAnimPalExclude, 5, 5, 2, 16, 0, RGB_WHITEALPHA
-	createvisualtask AnimTask_HorizontalShake, 5, ANIM_TARGET, 5, 14
-	waitforvisualfinish
-	createvisualtask SoundTask_PlayNormalCry, 0
-	waitforvisualfinish
-	clearmonbg ANIM_ATK_PARTNER
-	blendoff
-	end
 
 General_AffectionHangedOn::
 	loadspritegfx ANIM_TAG_RED_HEART

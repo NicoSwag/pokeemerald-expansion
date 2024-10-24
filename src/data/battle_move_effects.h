@@ -1614,6 +1614,12 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .encourageEncore = TRUE,
     },
 
+    [EFFECT_REMOVE_WEATHER] =
+    {
+        .battleScript = BattleScript_EffectPiercingWail,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+
     [EFFECT_HIT_ENEMY_HEAL_ALLY] =
     {
         .battleScript = BattleScript_EffectHitEnemyHealAlly,
