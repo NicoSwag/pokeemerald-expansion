@@ -1310,3 +1310,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DewfordGymTest/scripts.inc"
 
 	.include "data/maps/GraniteCave_GeneratorRoom/scripts.inc"
+
+	.include "data/maps/RustboroFactory/scripts.inc"
+
+	.include "data/maps/RustboroFactoryTop/scripts.inc"

@@ -574,7 +574,8 @@
 #define MUS_TOURNAMENT 639
 #define MUS_BATTLE_B2 640
 #define MUS_HUMANS_DEMONS_AND 641
-#define END_MUS                     641
+#define MUS_FACTORY_INSPECTION 642
+#define END_MUS                     642
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
 #define MUS_NONE                    0xFFFF

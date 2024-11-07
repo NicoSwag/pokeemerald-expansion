@@ -32,6 +32,11 @@
       "map": "MAP_RUSTBORO_FILLER_WEST",
       "offset": -26,
       "direction": "left"
+    },
+    {
+      "map": "MAP_RUSTBORO_FACTORY",
+      "offset": 27,
+      "direction": "right"
     }
   ],
   "object_events": [

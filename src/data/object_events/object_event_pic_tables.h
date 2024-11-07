@@ -482,6 +482,10 @@ static const struct SpriteFrameImage sPicTable_Truck[] = {
     obj_frame_tiles(gObjectEventPic_Truck),
 };
 
+static const struct SpriteFrameImage sPicTable_Truck_Right[] = {
+    obj_frame_tiles(gObjectEventPic_Truck_Right),
+};
+
 static const struct SpriteFrameImage sPicTable_Bulldozer[] = {
     obj_frame_tiles(gObjectEventPic_Bulldozer),
 };

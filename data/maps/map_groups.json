@@ -100,7 +100,9 @@
     "BrineCave",
     "OldaleRuins",
     "GraniteCaveEntrance",
-    "Rustboro_FillerWest"
+    "Rustboro_FillerWest",
+    "RustboroFactory",
+    "RustboroFactoryTop"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

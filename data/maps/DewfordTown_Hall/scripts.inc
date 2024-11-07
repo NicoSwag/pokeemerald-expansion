@@ -46,7 +46,10 @@ DewfordTown_Hall_EventScript_RejectTrendLink::
 	end
 
 DewfordTown_Hall_EventScript_ExpertM::
-	msgbox DewfordTown_Hall_Text_TVShowAboutTrend, MSGBOX_NPC
+	lockall
+	msgbox DewfordTown_Hall_Text_TVShowAboutTrend, MSGBOX_DEFAULT
+	closemessage
+	release
 	end
 
 DewfordTown_Hall_EventScript_Twin::
@@ -293,7 +296,7 @@ DewfordTown_Hall_EventScript_Wynaut::
 
 DewfordTown_Hall_EventScript_SludgeBombMan::
 	goto_if_set FLAG_RECEIVED_PLAY_ROUGH, DewfordTown_Hall_EventScript_ReceivedPlayRough
-	msgbox DewfordTown_Hall_Text_LoveSludgeBombButTrendInToo, MSGBOX_DEFAULT
+	msgbox DewfordTown_Hall_Text_LoveSludgeBombButTrendInToo, MSGBOX_NPC
 	checkitem ITEM_EVIOLITE
 	goto_if_eq VAR_RESULT, TRUE, DewfordTown_Hall_EventScript_Eviolite
 	release
@@ -356,7 +359,7 @@ DewfordTown_Hall_Text_Eviolite:
 
 DewfordTown_Hall_Text_CantImagineLifeWithoutTrend:
 	.string "Personally, I could not associate\n"
-	.string "with people who use Elemental Stone.\p"
+	.string "with people who use elemental stones.\p"
 	.string "I've heard that they can make POKéMON\n"
 	.string "evolve with some horrid radiation!\p"
 	.string "It's just not natural!$"
@@ -368,9 +371,9 @@ DewfordTown_Hall_Text_GettingBoredOfTrend:
 	.string "I should look for the next big thing.$"
 
 DewfordTown_Hall_Text_TeachingMonAboutTrend:
-	.string "That man has a Wynaut\p"
+	.string "That man has a Wynaut…\p"
 	.string "A rare, beautiful, pristine, untainted,\n"
-	.string "unevolved Wynaut\p"
+	.string "unevolved Wynaut…\p"
 	.string "Ohhhh… The jealousy…$"
 
 DewfordTown_Hall_Text_DeepLinkBetweenXAndY:

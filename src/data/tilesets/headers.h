@@ -901,7 +901,7 @@ const struct Tileset gTileset_RustboroSurroundings =
     .palettes = gTilesetPalettes_RustboroSurroundings,
     .metatiles = gMetatiles_RustboroSurroundings,
     .metatileAttributes = gMetatileAttributes_RustboroSurroundings,
-        .callback = InitTilesetAnim_Rustboro,
+    .callback = InitTilesetAnim_Rustboro,
 };
 
 const struct Tileset gTileset_rustboro_inner =

@@ -4640,6 +4640,26 @@
       "secondary_tileset": "gTileset_GraniteCave",
       "border_filepath": "data/layouts/GraniteCave_GeneratorRoom/border.bin",
       "blockdata_filepath": "data/layouts/GraniteCave_GeneratorRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUSTBORO_FACTORY",
+      "name": "RustboroFactory_Layout",
+      "width": 30,
+      "height": 28,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_rustboro_inner",
+      "border_filepath": "data/layouts/RustboroFactory/border.bin",
+      "blockdata_filepath": "data/layouts/RustboroFactory/map.bin"
+    },
+    {
+      "id": "LAYOUT_RUSTBORO_FACTORY_TOP",
+      "name": "RustboroFactoryTop_Layout",
+      "width": 30,
+      "height": 6,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_RustboroSurroundings",
+      "border_filepath": "data/layouts/RustboroFactoryTop/border.bin",
+      "blockdata_filepath": "data/layouts/RustboroFactoryTop/map.bin"
     }
   ]
 }

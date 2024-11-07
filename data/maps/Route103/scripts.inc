@@ -1,6 +1,6 @@
 .set LOCALID_RIVAL, 2
-.set LOCALID_MAGMAM, 20
-.set LOCALID_MAGMAF, 21
+.set LOCALID_MAGMAM, 18
+.set LOCALID_MAGMAF, 19
 
 Route103_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route103_OnTransition
@@ -20,6 +20,11 @@ Route103_EventScript_OpenAlteringCave::
 	setmetatile 45, 5, METATILE_General_CaveEntrance_Top, TRUE
 	setmetatile 45, 6, METATILE_General_CaveEntrance_Bottom, FALSE
 	return
+
+Route103_EventScript_Pickle::
+	msgbox Route103_Message_Pickle, MSGBOX_NPC
+	release
+	end
 
 Route103_EventScript_Rival::
 	lockall
@@ -588,3 +593,12 @@ Route103_Text_Complaining:
 
 Common_Name_Courtney:
 	.string "Courtney$"
+
+
+Route103_Message_Pickle:
+	.string "Well, is is a bit of a pickle.\p"
+	.string "This bridge wasn't broken the last\n"
+	.string "time I passed through here.\p"
+	.string "If I don't deliver my cargo to Slateport\n"
+	.string "in time, I'm never going to hear the end\l"
+	.string "of it!$"

@@ -255,6 +255,7 @@ const u32 gObjectEventPic_Fossil[] = INCBIN_U32("graphics/object_events/pics/mis
 const u32 gObjectEventPic_SubmarineShadow[] = INCBIN_U32("graphics/object_events/pics/misc/submarine_shadow.4bpp");
 const u16 gObjectEventPal_SubmarineShadow[] = INCBIN_U16("graphics/object_events/palettes/submarine_shadow.gbapal");
 const u32 gObjectEventPic_Truck[] = INCBIN_U32("graphics/object_events/pics/misc/truck.4bpp");
+const u32 gObjectEventPic_Truck_Right[] = INCBIN_U32("graphics/object_events/pics/misc/truck_right.4bpp");
 const u32 gObjectEventPic_Bulldozer[] = INCBIN_U32("graphics/object_events/pics/misc/bull_dozer.4bpp");
 const u16 gObjectEventPal_Truck[] = INCBIN_U16("graphics/object_events/palettes/truck.gbapal");
 const u16 gObjectEventPal_Bulldozer[] = INCBIN_U16("graphics/object_events/palettes/bulldozer.gbapal");

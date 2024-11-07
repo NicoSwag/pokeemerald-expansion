@@ -1361,3 +1361,6 @@ $(MID_SUBDIR)/mus_battle_b2.s: %.s: %.mid
 
 $(MID_SUBDIR)/mus_humans_demons_and.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v120 -P5
+
+$(MID_SUBDIR)/mus_factory_inspection.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5

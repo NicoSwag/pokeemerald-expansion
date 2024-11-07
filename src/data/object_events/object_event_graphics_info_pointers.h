@@ -101,6 +101,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayAcroBike
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MaySurfing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayFieldMove;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Truck;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Truck_Right;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bulldozer;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Crane;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VigorothCarryingBox;
@@ -391,6 +392,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MAY_SURFING] =              &gObjectEventGraphicsInfo_MaySurfing,
     [OBJ_EVENT_GFX_MAY_FIELD_MOVE] =           &gObjectEventGraphicsInfo_MayFieldMove,
     [OBJ_EVENT_GFX_TRUCK] =                    &gObjectEventGraphicsInfo_Truck,
+    [OBJ_EVENT_GFX_TRUCK_RIGHT] =                    &gObjectEventGraphicsInfo_Truck_Right,
     [OBJ_EVENT_GFX_BULLDOZER] =                    &gObjectEventGraphicsInfo_Bulldozer,
     [OBJ_EVENT_GFX_CRANE] =                    &gObjectEventGraphicsInfo_Crane,
     [OBJ_EVENT_GFX_VIGOROTH_CARRYING_BOX] =    &gObjectEventGraphicsInfo_VigorothCarryingBox,
