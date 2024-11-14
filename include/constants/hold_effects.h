@@ -162,6 +162,7 @@
 #define HOLD_EFFECT_LOADED_DICE         180
 #define HOLD_EFFECT_BOOSTER_ENERGY      181
 #define HOLD_EFFECT_OGERPON_MASK        182
+#define HOLD_EFFECT_DUBIOUS_ROCK        183
 
 // Gen2 hold effect
 #define HOLD_EFFECT_BERSERK_GENE        184

@@ -36,7 +36,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
       "x": 9,
-      "y": 8,
+      "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
@@ -152,10 +152,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZIGZAGOON_GALARIAN)",
-      "x": 3,
-      "y": 16,
+      "x": 4,
+      "y": 19,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -166,8 +166,8 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
       "x": 5,
-      "y": 15,
-      "elevation": 3,
+      "y": 18,
+      "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 2,
       "movement_range_y": 1,
@@ -179,7 +179,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PICHU)",
       "x": 16,
-      "y": 23,
+      "y": 25,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,

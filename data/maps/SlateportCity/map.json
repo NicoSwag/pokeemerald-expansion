@@ -24,8 +24,13 @@
       "direction": "down"
     },
     {
+      "map": "MAP_SLATEPORT_CITY_ISLAND",
+      "offset": 34,
+      "direction": "right"
+    },
+    {
       "map": "MAP_ROUTE134",
-      "offset": 0,
+      "offset": -6,
       "direction": "right"
     }
   ],

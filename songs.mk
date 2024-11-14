@@ -1364,3 +1364,6 @@ $(MID_SUBDIR)/mus_humans_demons_and.s: %.s: %.mid
 
 $(MID_SUBDIR)/mus_factory_inspection.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_ramanas_major.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5

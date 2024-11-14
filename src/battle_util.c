@@ -2505,6 +2505,7 @@ u8 DoBattlerEndTurnEffects(void)
                   && ability != ABILITY_POISON_HEAL
                   && ability != ABILITY_MIASMA_FORCE
                   && ability != ABILITY_OVERCOAT
+                && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_UTILITY_UMBRELLA
                   && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_POISON)
                   && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_DARK)
                   && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST)
@@ -4029,7 +4030,7 @@ static const u16 sWeatherFlagsInfo[][3] =
     [ENUM_WEATHER_HAIL] = {B_WEATHER_HAIL_TEMPORARY, B_WEATHER_HAIL_PERMANENT, HOLD_EFFECT_ICY_ROCK},
     [ENUM_WEATHER_STRONG_WINDS] = {B_WEATHER_STRONG_WINDS, B_WEATHER_STRONG_WINDS, HOLD_EFFECT_NONE},
     [ENUM_WEATHER_SNOW] = {B_WEATHER_SNOW_TEMPORARY, B_WEATHER_SNOW_PERMANENT, HOLD_EFFECT_ICY_ROCK},
-    [ENUM_WEATHER_POLLUTION] = {B_WEATHER_POLLUTION_TEMPORARY, B_WEATHER_POLLUTION_PERMANENT, HOLD_EFFECT_IRON_BALL},
+    [ENUM_WEATHER_POLLUTION] = {B_WEATHER_POLLUTION_TEMPORARY, B_WEATHER_POLLUTION_PERMANENT, HOLD_EFFECT_DUBIOUS_ROCK},
     [ENUM_WEATHER_FOG] = {B_WEATHER_POLLUTION_TEMPORARY, B_WEATHER_POLLUTION_PERMANENT, HOLD_EFFECT_IRON_BALL},
 };
 
@@ -12192,7 +12193,7 @@ bool32 IsBattlerWeatherAffected(u32 battler, u32 weatherFlags)
     if (gBattleWeather & weatherFlags && WEATHER_HAS_EFFECT)
     {
         // given weather is active -> check if its sun, rain against utility umbrella ( since only 1 weather can be active at once)
-        if (gBattleWeather & (B_WEATHER_SUN | B_WEATHER_RAIN) && GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_UTILITY_UMBRELLA)
+        if (gBattleWeather & (B_WEATHER_SUN | B_WEATHER_RAIN | B_WEATHER_POLLUTION) && GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_UTILITY_UMBRELLA)
             return FALSE; // utility umbrella blocks sun, rain effects
 
         return TRUE;

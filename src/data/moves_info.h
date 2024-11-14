@@ -12489,7 +12489,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .description = sStormThrowDescription,
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 60 : 40,
-        .type = TYPE_FIGHTING,
+        .type = TYPE_WATER,
         .accuracy = 100,
         .pp = 10,
         .target = MOVE_TARGET_SELECTED,

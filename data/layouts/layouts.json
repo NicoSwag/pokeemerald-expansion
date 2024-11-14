@@ -14,7 +14,7 @@
     {
       "id": "LAYOUT_SLATEPORT_CITY",
       "name": "SlateportCity_Layout",
-      "width": 40,
+      "width": 50,
       "height": 60,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Slateport",
@@ -494,10 +494,10 @@
     {
       "id": "LAYOUT_ROUTE134",
       "name": "Route134_Layout",
-      "width": 80,
+      "width": 65,
       "height": 40,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Pacifidlog",
+      "secondary_tileset": "gTileset_Slateport",
       "border_filepath": "data/layouts/Route134/border.bin",
       "blockdata_filepath": "data/layouts/Route134/map.bin"
     },
@@ -4660,6 +4660,16 @@
       "secondary_tileset": "gTileset_RustboroSurroundings",
       "border_filepath": "data/layouts/RustboroFactoryTop/border.bin",
       "blockdata_filepath": "data/layouts/RustboroFactoryTop/map.bin"
+    },
+    {
+      "id": "LAYOUT_SLATEPORT_CITY_ISLAND",
+      "name": "SlateportCity_Island_Layout",
+      "width": 30,
+      "height": 38,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/SlateportCity_Island/border.bin",
+      "blockdata_filepath": "data/layouts/SlateportCity_Island/map.bin"
     }
   ]
 }

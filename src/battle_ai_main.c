@@ -3932,6 +3932,16 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 ADJUST_SCORE(WEAK_EFFECT);
         }
         break;
+        case EFFECT_ACID_RAIN:
+        if (ShouldSetPollution(battlerAtk, aiData->abilities[battlerAtk], aiData->holdEffects[battlerAtk]))
+        {
+            ADJUST_SCORE(DECENT_EFFECT);
+            if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_DUBIOUS_ROCK)
+                ADJUST_SCORE(WEAK_EFFECT);
+            if (HasMoveEffect(battlerDef, EFFECT_DOUBLE_POWER_ON_ARG_STATUS))
+                ADJUST_SCORE(WEAK_EFFECT);
+        }
+        break;
     case EFFECT_FELL_STINGER:
         if (gBattleMons[battlerAtk].statStages[STAT_ATK] < MAX_STAT_STAGE
         && aiData->abilities[battlerAtk] != ABILITY_CONTRARY

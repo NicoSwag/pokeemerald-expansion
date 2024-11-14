@@ -8033,6 +8033,23 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_DampRock,
     },
 
+    [ITEM_DUBIOUS_ROCK] =
+    {
+        .name = _("Dubious Rock"),
+        .price = (I_PRICE >= GEN_9) ? 8000 : ((I_PRICE >= GEN_7) ? 4000 : 200),
+        .holdEffect = HOLD_EFFECT_DUBIOUS_ROCK,
+        .description = COMPOUND_STRING(
+            "Extends the length\n"
+            "of Acid Rain if\n"
+            "used by the holder."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 60,
+        .iconPic = gItemIcon_DampRock,
+        .iconPalette = gItemIconPalette_DampRock,
+    },
+
     [ITEM_HEAT_ROCK] =
     {
         .name = _("Heat Rock"),

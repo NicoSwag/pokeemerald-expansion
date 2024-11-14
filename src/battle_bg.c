@@ -682,10 +682,10 @@ const struct BattleBackground sBattleTerrainTable[] =
 
     [BATTLE_TERRAIN_OVERCAST] =
     {
-        .tileset = gBattleTerrainTiles_TallGrassOvercast,
-        .tilemap = gBattleTerrainTilemap_TallGrassOvercast,
-        .entryTileset = gBattleTerrainAnimTiles_TallGrassOvercast,
-        .entryTilemap = gBattleTerrainAnimTilemap_TallGrassOvercast,
+        .tileset = gBattleTerrainTiles_TallGrass,
+        .tilemap = gBattleTerrainTilemap_TallGrass,
+        .entryTileset = gBattleTerrainAnimTiles_TallGrass,
+        .entryTilemap = gBattleTerrainAnimTilemap_TallGrass,
         .palette = gBattleTerrainPalette_TallGrassOvercast,
     },
 

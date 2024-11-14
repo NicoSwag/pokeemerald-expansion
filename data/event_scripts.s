@@ -1314,3 +1314,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/RustboroFactory/scripts.inc"
 
 	.include "data/maps/RustboroFactoryTop/scripts.inc"
+
+	.include "data/maps/SlateportCity_Island/scripts.inc"
