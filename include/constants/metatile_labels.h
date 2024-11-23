@@ -748,6 +748,8 @@
 // gTileset_Slateport
 #define METATILE_Slateport_Door             0x2DC
 #define METATILE_Slateport_Door_BattleTent  0x393
+#define METATILE_Slateport_NormalGrass      0x3EB
+#define METATILE_Slateport_SnowGrass        0x3FA
 
 // gTileset_Sootopolis
 #define METATILE_Sootopolis_Door             0x21E

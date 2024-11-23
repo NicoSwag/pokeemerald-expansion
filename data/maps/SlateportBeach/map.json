@@ -1,0 +1,44 @@
+{
+  "id": "MAP_SLATEPORT_BEACH",
+  "name": "SlateportBeach",
+  "layout": "LAYOUT_SLATEPORT_BEACH",
+  "music": "MUS_SLATEPORT",
+  "region_map_section": "MAPSEC_SLATEPORT_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_SNOW",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_SLATEPORT_CITY",
+      "offset": -10,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE109",
+      "offset": 20,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_SLATEPORT_BEACH_SOUTH",
+      "offset": 0,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

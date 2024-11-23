@@ -73,6 +73,8 @@
 #define MAP_RUSTBORO_FILLER_WEST  (64 | (0 << 8))
 #define MAP_RUSTBORO_FACTORY      (65 | (0 << 8))
 #define MAP_RUSTBORO_FACTORY_TOP  (66 | (0 << 8))
+#define MAP_SLATEPORT_BEACH       (67 | (0 << 8))
+#define MAP_SLATEPORT_BEACH_SOUTH (68 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))

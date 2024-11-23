@@ -645,6 +645,7 @@ gSongTable::
 	song mus_humans_demons_and, 0, 0
 	song mus_factory_inspection, 0, 0
 	song mus_ramanas_major, 0, 0
+	song mus_route_238, 0, 0
 	.align 2
 dummy_song_header:
 	.byte 0, 0, 0, 0

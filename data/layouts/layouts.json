@@ -4670,6 +4670,26 @@
       "secondary_tileset": "gTileset_Slateport",
       "border_filepath": "data/layouts/SlateportCity_Island/border.bin",
       "blockdata_filepath": "data/layouts/SlateportCity_Island/map.bin"
+    },
+    {
+      "id": "LAYOUT_SLATEPORT_BEACH",
+      "name": "SlateportBeach_Layout",
+      "width": 20,
+      "height": 50,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/SlateportBeach/border.bin",
+      "blockdata_filepath": "data/layouts/SlateportBeach/map.bin"
+    },
+    {
+      "id": "LAYOUT_SLATEPORT_BEACH_SOUTH",
+      "name": "SlateportBeachSouth_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/SlateportBeachSouth/border.bin",
+      "blockdata_filepath": "data/layouts/SlateportBeachSouth/map.bin"
     }
   ]
 }

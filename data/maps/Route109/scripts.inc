@@ -2,6 +2,7 @@
 @  These are labeled in DewfordTown/scripts.inc
 
 Route109_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, SlateportCity_OnResume
 	.byte 0
 
 Route109_EventScript_StartDepartForDewford::

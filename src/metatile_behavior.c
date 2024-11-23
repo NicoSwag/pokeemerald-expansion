@@ -40,6 +40,7 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_SEAWEED]                         = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_UNUSED_23]                       = TILE_FLAG_UNUSED,
     [MB_ASHGRASS]                        = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
+    [MB_SNOWGRASS]                        = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_FOOTPRINTS]                      = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_THIN_ICE]                        = TILE_FLAG_UNUSED,
     [MB_CRACKED_ICE]                     = TILE_FLAG_UNUSED,
@@ -758,6 +759,14 @@ bool8 MetatileBehavior_IsBerryTreeSoil(u8 metatileBehavior)
 bool8 MetatileBehavior_IsAshGrass(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_ASHGRASS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsSnowGrass(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SNOWGRASS)
         return TRUE;
     else
         return FALSE;

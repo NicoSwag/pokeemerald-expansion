@@ -122,6 +122,7 @@
 #define FLDEFFOBJ_TRACKS_SLITHER        40
 #define FLDEFFOBJ_TRACKS_SPOT           41
 #define FLDEFFOBJ_TRACKS_BUG            42
+#define FLDEFFOBJ_SNOW                  43
 
 #define FLDEFF_PAL_TAG_CUT_GRASS          0x1000
 #define FLDEFF_PAL_TAG_SECRET_POWER_TREE  0x1003
@@ -138,5 +139,6 @@
 #define FLDEFF_PAL_TAG_GENERAL_3          0x1012
 #define FLDEFF_PAL_TAG_UNKNOWN            0x1013
 #define FLDEFF_PAL_TAG_DUST_CLOUD         0x1014
+#define FLDEFF_PAL_TAG_GENERAL_4          0x1015
 
 #endif // GUARD_FIELD_EFFECT_CONSTANTS_H

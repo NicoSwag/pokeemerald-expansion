@@ -111,7 +111,7 @@ gFieldEffectScript_FieldMoveShowMon::
 	field_eff_end
 
 gFieldEffectScript_Ash::
-	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_Ash
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect4, FldEff_Ash
 	field_eff_end
 
 gFieldEffectScript_SurfBlob::

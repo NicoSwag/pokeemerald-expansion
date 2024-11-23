@@ -24,7 +24,15 @@
 SlateportCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, SlateportCity_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, SlateportCity_OnFrame
+	map_script MAP_SCRIPT_ON_RESUME, SlateportCity_OnResume
 	.byte 0
+
+
+
+SlateportCity_OnResume:
+	setstepcallback STEP_CB_ASH
+	end
+
 
 SlateportCity_OnTransition:
 	setvar VAR_SLATEPORT_MUSEUM_1F_STATE, 0

@@ -2,6 +2,7 @@ const struct SpritePalette gSpritePalette_GeneralFieldEffect0 = {gFieldEffectObj
 const struct SpritePalette gSpritePalette_GeneralFieldEffect1 = {gFieldEffectObjectPalette1, FLDEFF_PAL_TAG_GENERAL_1};
 const struct SpritePalette gSpritePalette_GeneralFieldEffect2 = {gFieldEffectObjectPalette2, FLDEFF_PAL_TAG_GENERAL_2};
 const struct SpritePalette gSpritePalette_GeneralFieldEffect3 = {gFieldEffectObjectPalette2, FLDEFF_PAL_TAG_GENERAL_3};
+const struct SpritePalette gSpritePalette_GeneralFieldEffect4 = {gFieldEffectObjectPalette4, FLDEFF_PAL_TAG_GENERAL_4};
 
 
 static const union AnimCmd sAnim_Shadow[] =
@@ -166,6 +167,14 @@ static const struct SpriteFrameImage sPicTable_Ash[] = {
     overworld_frame(gFieldEffectObjectPic_Ash, 2, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Snow[] = {
+    overworld_frame(gFieldEffectObjectPic_Snow, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_Snow, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_Snow, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_Snow, 2, 2, 3),
+    overworld_frame(gFieldEffectObjectPic_Snow, 2, 2, 4),
+};
+
 static const union AnimCmd sAnim_Ash[] =
 {
     ANIMCMD_FRAME(0, 12),
@@ -181,12 +190,40 @@ static const union AnimCmd *const sAnimTable_Ash[] =
     sAnim_Ash,
 };
 
+
+
+static const union AnimCmd sAnim_Snow[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 12),
+    ANIMCMD_FRAME(2, 8),
+    ANIMCMD_FRAME(3, 12),
+    ANIMCMD_FRAME(4, 12),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_Snow[] =
+{
+    sAnim_Ash,
+};
+
+
 const struct SpriteTemplate gFieldEffectObjectTemplate_Ash = {
     .tileTag = TAG_NONE,
-    .paletteTag = FLDEFF_PAL_TAG_GENERAL_1,
+    .paletteTag = FLDEFF_PAL_TAG_GENERAL_4,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_Ash,
     .images = sPicTable_Ash,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateAshFieldEffect,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_Snow = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_GENERAL_4,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_Ash,
+    .images = sPicTable_Snow,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = UpdateAshFieldEffect,
 };

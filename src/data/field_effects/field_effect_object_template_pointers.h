@@ -6,6 +6,7 @@ extern const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrass;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrassYellow;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_Ripple;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_Ash;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_Snow;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_SurfBlob;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_Arrow;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_GroundImpactDust;
@@ -51,6 +52,7 @@ const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[] = {
     [FLDEFFOBJ_TALL_GRASS_YELLOW]            = &gFieldEffectObjectTemplate_TallGrassYellow,
     [FLDEFFOBJ_RIPPLE]                = &gFieldEffectObjectTemplate_Ripple,
     [FLDEFFOBJ_ASH]                   = &gFieldEffectObjectTemplate_Ash,
+    [FLDEFFOBJ_SNOW]                   = &gFieldEffectObjectTemplate_Snow,
     [FLDEFFOBJ_SURF_BLOB]             = &gFieldEffectObjectTemplate_SurfBlob,
     [FLDEFFOBJ_ARROW]                 = &gFieldEffectObjectTemplate_Arrow,
     [FLDEFFOBJ_GROUND_IMPACT_DUST]    = &gFieldEffectObjectTemplate_GroundImpactDust,

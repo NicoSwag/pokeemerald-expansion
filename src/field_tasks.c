@@ -759,13 +759,22 @@ static void AshGrassPerStepCallback(u8 taskId)
     tPrevX = x;
     tPrevY = y;
     
+
+
+    if (MetatileBehavior_IsSnowGrass(MapGridGetMetatileBehaviorAt(x, y)))
+    {
+       if (MapGridGetMetatileIdAt(x, y) == METATILE_Slateport_SnowGrass)     
+            StartAshFieldEffect(x, y, METATILE_Slateport_NormalGrass, 4, TRUE);  
+    }
+
     if (MetatileBehavior_IsAshGrass(MapGridGetMetatileBehaviorAt(x, y)))
     {
         // Remove ash from grass
         if (MapGridGetMetatileIdAt(x, y) == METATILE_Fallarbor_AshGrass)
-            StartAshFieldEffect(x, y, METATILE_Fallarbor_NormalGrass, 4);
-        else
-            StartAshFieldEffect(x, y, METATILE_Lavaridge_NormalGrass, 4);
+            StartAshFieldEffect(x, y, METATILE_Fallarbor_NormalGrass, 4, FALSE);
+            
+        else 
+            StartAshFieldEffect(x, y, METATILE_Lavaridge_NormalGrass, 4, FALSE);
 
         // Try to gather ash
         if (CheckBagHasItem(ITEM_SOOT_SACK, 1))
@@ -775,6 +784,8 @@ static void AshGrassPerStepCallback(u8 taskId)
                 (*ashGatherCount)++;
         }
     }
+    
+    
 }
 
 #undef tPrevX

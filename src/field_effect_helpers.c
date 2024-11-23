@@ -1091,8 +1091,9 @@ u32 FldEff_WaterSurfacing(void)
 #define sY          data[2]
 #define sMetatileId data[3]
 #define sDelay      data[4]
+#define sSnow       data[5]
 
-void StartAshFieldEffect(s16 x, s16 y, u16 metatileId, s16 delay)
+void StartAshFieldEffect(s16 x, s16 y, u16 metatileId, s16 delay, bool8 snow)
 {
     gFieldEffectArguments[0] = x;
     gFieldEffectArguments[1] = y;
@@ -1100,6 +1101,7 @@ void StartAshFieldEffect(s16 x, s16 y, u16 metatileId, s16 delay)
     gFieldEffectArguments[3] = 1; // priority
     gFieldEffectArguments[4] = metatileId;
     gFieldEffectArguments[5] = delay;
+    gFieldEffectArguments[6] = snow;
     FieldEffectStart(FLDEFF_ASH);
 }
 
@@ -1109,8 +1111,13 @@ u32 FldEff_Ash(void)
 
     s16 x = gFieldEffectArguments[0];
     s16 y = gFieldEffectArguments[1];
+    bool8 snow = gFieldEffectArguments[6];
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_ASH], x, y, gFieldEffectArguments[2]);
+    if(!snow)
+        spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_ASH], x, y, gFieldEffectArguments[2]);
+    else
+        spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_SNOW], x, y, gFieldEffectArguments[2]);
+    
     if (spriteId != MAX_SPRITES)
     {
         struct Sprite *sprite = &gSprites[spriteId];

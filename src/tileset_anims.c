@@ -57,6 +57,10 @@ static void QueueAnimTiles_General_WaterPolluted(u16);
 static void QueueAnimTiles_Rustboro_Fountain(u16);
 static void QueueAnimTiles_Rustboro_Smoke(u16);
 static void QueueAnimTiles_Dewford_Flag(u16);
+static void QueueAnimTiles_Slateport_Torch(u16);
+static void QueueAnimTiles_Slateport_Lights(u16);
+static void QueueAnimTiles_Slateport_Tree(u16);
+static void QueueAnimTiles_Slateport_Casino(u16);
 static void QueueAnimTiles_Slateport_Balloons(u16);
 static void QueueAnimTiles_Mauville_Flowers(u16, u8);
 static void QueueAnimTiles_BikeShop_BlinkingLights(u16);
@@ -622,6 +626,15 @@ const u16 *const gTilesetAnims_Sootopolis_StormyWater[] = {
 const u16 gTilesetAnims_BattlePyramid_Torch_Frame0[] = INCBIN_U16("data/tilesets/secondary/battle_pyramid/anim/torch/0.4bpp");
 const u16 gTilesetAnims_BattlePyramid_Torch_Frame1[] = INCBIN_U16("data/tilesets/secondary/battle_pyramid/anim/torch/1.4bpp");
 const u16 gTilesetAnims_BattlePyramid_Torch_Frame2[] = INCBIN_U16("data/tilesets/secondary/battle_pyramid/anim/torch/2.4bpp");
+const u16 gTilesetAnims_Slateport_Lights_Frame1[] = INCBIN_U16("data/tilesets/secondary/slateport/anim/lights/1.4bpp");
+const u16 gTilesetAnims_Slateport_Lights_Frame0[] = INCBIN_U16("data/tilesets/secondary/slateport/anim/lights/0.4bpp");
+const u16 gTilesetAnims_Slateport_Tree_Frame0[] = INCBIN_U16("data/tilesets/secondary/slateport/anim/tree/0.4bpp");
+const u16 gTilesetAnims_Slateport_Tree_Frame1[] = INCBIN_U16("data/tilesets/secondary/slateport/anim/tree/1.4bpp");
+const u16 gTilesetAnims_Slateport_Casino_Frame0[] = INCBIN_U16("data/tilesets/secondary/slateport/anim/casino/0.4bpp");
+const u16 gTilesetAnims_Slateport_Casino_Frame1[] = INCBIN_U16("data/tilesets/secondary/slateport/anim/casino/1.4bpp");
+const u16 gTilesetAnims_Slateport_Torch_Frame0[] = INCBIN_U16("data/tilesets/secondary/slateport/anim/torch/0.4bpp");
+const u16 gTilesetAnims_Slateport_Torch_Frame1[] = INCBIN_U16("data/tilesets/secondary/slateport/anim/torch/1.4bpp");
+const u16 gTilesetAnims_Slateport_Torch_Frame2[] = INCBIN_U16("data/tilesets/secondary/slateport/anim/torch/2.4bpp");
 const u16 tileset_anims_space_9[16] = {};
 
 const u16 gTilesetAnims_BattlePyramid_StatueShadow_Frame0[] = INCBIN_U16("data/tilesets/secondary/battle_pyramid/anim/statue_shadow/0.4bpp");
@@ -658,6 +671,35 @@ static void ResetTilesetAnimBuffer(void)
     sTilesetDMA3TransferBufferSize = 0;
     CpuFill32(0, sTilesetDMA3TransferBuffer, sizeof sTilesetDMA3TransferBuffer);
 }
+
+const u16 *const gTilesetAnims_Slateport_Torch[] = {
+    gTilesetAnims_Slateport_Torch_Frame0,
+    gTilesetAnims_Slateport_Torch_Frame1,
+    gTilesetAnims_Slateport_Torch_Frame2
+};
+
+const u16 *const gTilesetAnims_Slateport_Tree[] = {
+    gTilesetAnims_Slateport_Tree_Frame0,
+    gTilesetAnims_Slateport_Tree_Frame0,
+    gTilesetAnims_Slateport_Tree_Frame1,
+    gTilesetAnims_Slateport_Tree_Frame1,
+};
+
+const u16 *const gTilesetAnims_Slateport_Casino[] = {
+    gTilesetAnims_Slateport_Casino_Frame0,
+    gTilesetAnims_Slateport_Casino_Frame0,
+    gTilesetAnims_Slateport_Casino_Frame1,
+    gTilesetAnims_Slateport_Casino_Frame1,
+};
+
+const u16 *const gTilesetAnims_Slateport_Lights[] = {
+    gTilesetAnims_Slateport_Lights_Frame0,
+    gTilesetAnims_Slateport_Lights_Frame0,
+    gTilesetAnims_Slateport_Lights_Frame1,
+    gTilesetAnims_Slateport_Lights_Frame1,
+};
+
+
 
 static void AppendTilesetAnimToBuffer(const u16 *src, u16 *dest, u16 size)
 {
@@ -994,11 +1036,43 @@ static void TilesetAnim_Dewford(u16 timer)
         QueueAnimTiles_Dewford_Flag(timer / 8);
 }
 
+
+
 static void TilesetAnim_Slateport(u16 timer)
 {
-    if (timer % 16 == 0)
-        QueueAnimTiles_Slateport_Balloons(timer / 16);
+    if (timer % 8 == 0)
+    {
+        QueueAnimTiles_Slateport_Torch(timer / 8);
+        QueueAnimTiles_Slateport_Tree(timer / 8);
+        QueueAnimTiles_Slateport_Lights(timer / 8);
+        QueueAnimTiles_Slateport_Casino(timer / 8);
+    }
 }
+
+static void QueueAnimTiles_Slateport_Torch(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Slateport_Torch);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Slateport_Torch[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(870)), 8 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_Slateport_Tree(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Slateport_Tree);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Slateport_Tree[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(768)), 8 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_Slateport_Casino(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Slateport_Casino);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Slateport_Casino[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(648)), 7 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_Slateport_Lights(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Slateport_Lights);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Slateport_Lights[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(957)), 2 * TILE_SIZE_4BPP);
+}
+
 
 static void TilesetAnim_Mauville(u16 timer)
 {
@@ -1194,6 +1268,9 @@ static void QueueAnimTiles_Dewford_Flag(u16 timer)
     u16 i = timer % ARRAY_COUNT(gTilesetAnims_Dewford_Flag);
     AppendTilesetAnimToBuffer(gTilesetAnims_Dewford_Flag[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 170)), 6 * TILE_SIZE_4BPP);
 }
+
+
+
 
 static void QueueAnimTiles_BattleFrontierOutsideWest_Flag(u16 timer)
 {
