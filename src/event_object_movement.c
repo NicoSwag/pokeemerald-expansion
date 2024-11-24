@@ -5637,6 +5637,7 @@ bool8 FollowablePlayerMovement_Step(struct ObjectEvent *objectEvent, struct Spri
     {
         // InitJumpRegular will set the proper speed
         ObjectEventSetSingleMovement(objectEvent, sprite, GetJump2MovementAction(direction));
+    }
     else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH))
     {
         // Set follow speed according to player's speed
@@ -6190,13 +6191,6 @@ u8 GetSidewaysStairsCollision(struct ObjectEvent *objectEvent, u8 dir, u8 curren
 
 static u8 GetVanillaCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, u8 direction)
 {
-    u8 direction = dir;
-
-#if OW_FLAG_NO_COLLISION != 0
-    if (FlagGet(OW_FLAG_NO_COLLISION))
-        return COLLISION_NONE;
-#endif
-
     if (IsCoordOutsideObjectEventMovementRange(objectEvent, x, y))
         return COLLISION_OUTSIDE_RANGE;
     else if (MapGridGetCollisionAt(x, y) || GetMapBorderIdAt(x, y) == CONNECTION_INVALID || IsMetatileDirectionallyImpassable(objectEvent, x, y, direction))
@@ -6290,6 +6284,7 @@ u8 GetCollisionAtCoords(struct ObjectEvent *objectEvent, s16 x, s16 y, u32 dir)
     
     return collision;
 }
+
 
 u8 GetCollisionFlagsAtCoords(struct ObjectEvent *objectEvent, s16 x, s16 y, u8 direction)
 {
