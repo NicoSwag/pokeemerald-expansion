@@ -414,11 +414,15 @@
 #define METATILE_Pacifidlog_SubmergedLogs_VerticalTop          0x25A
 
 // gTileset_Petalburg
+#define METATILE_Petalburg_BottomToTop      0x2FD
 #define METATILE_Petalburg_Door_BirchsLab   0x249
 #define METATILE_Petalburg_Door_Gym         0x374
 #define METATILE_Petalburg_Door_Littleroot  0x248
 #define METATILE_Petalburg_Door_Oldale      0x287
+#define METATILE_Petalburg_LeftToRight      0x2ED
 #define METATILE_Petalburg_LongGrass        0x2AA
+#define METATILE_Petalburg_RightToLeft      0x2E5
+#define METATILE_Petalburg_TopToBottom      0x2F5
 
 // gTileset_PetalburgGym
 #define METATILE_PetalburgGym_Door                0x224

@@ -173,7 +173,7 @@ static void LoadObjectRegularReflectionPalette(struct ObjectEvent *objectEvent, 
         u16 filteredData[16];
         struct SpritePalette filteredPal = {.tag = paletteTag, .data = filteredData};
         if (sprite->sIsStillReflection == FALSE)
-            ApplyPondFilter(mainSprite->oam.paletteNum, filteredData);
+        ApplyPondFilter(mainSprite->oam.paletteNum, filteredData);
         else
             ApplyIceFilter(mainSprite->oam.paletteNum, filteredData);
         paletteNum = LoadSpritePalette(&filteredPal);
@@ -223,7 +223,7 @@ static void UpdateObjectReflectionSprite(struct Sprite *reflectionSprite)
             FieldEffectFreePaletteIfUnused(reflectionSprite->oam.paletteNum);
             reflectionSprite->inUse = TRUE;
             if (reflectionSprite->sIsStillReflection == FALSE)
-                ApplyPondFilter(mainSprite->oam.paletteNum, filteredData);
+            ApplyPondFilter(mainSprite->oam.paletteNum, filteredData);
             else
                 ApplyIceFilter(mainSprite->oam.paletteNum, filteredData);
             paletteNum = LoadSpritePalette(&filteredPal);

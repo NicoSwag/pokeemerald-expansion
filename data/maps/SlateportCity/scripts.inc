@@ -8,16 +8,19 @@
 .set LOCALID_TY, 9
 .set LOCALID_GABBY, 10
 .set LOCALID_CAPT_STERN, 11
+.set LOCALID_DRAKE, 26
+.set LOCALID_ENGINEER, 29
 .set LOCALID_GRUNT_2, 18
 .set LOCALID_GRUNT_3, 19
 .set LOCALID_GRUNT_4, 26
-.set LOCALID_GRUNT_5, 27
-.set LOCALID_GRUNT_6, 28
+.set LOCALID_GRUNT_5, 36
+.set LOCALID_GRUNT_6, 35
 .set LOCALID_GRUNT_7, 29
 .set LOCALID_GRUNT_8, 30
 .set LOCALID_GRUNT_9, 31
 .set LOCALID_GRUNT_11, 33
-.set LOCALID_SCOTT, 35
+.set LOCALID_SCOTT, 34
+
 
 @ Note: LOCALID_SLATEPORT_ENERGY_GURU is a local id for this map used elsewhere. It's defined in event_objects.h
 
@@ -27,6 +30,237 @@ SlateportCity_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, SlateportCity_OnResume
 	.byte 0
 
+SlateportCity_OnFrame:
+	map_script_2 VAR_GAME_INTRO_STATE, 1, SlateportCity_EventScript_Cutscene
+	.2byte 0
+
+SlateportCity_EventScript_WrongWay::
+	msgbox SlateportCity_Text_Areyoulost, MSGBOX_NPC
+	end
+
+SlateportCity_EventScript_Cutscene:
+	lock
+	setobjectmovementtype OBJ_EVENT_ID_PLAYER, MOVEMENT_TYPE_PLAYER
+	setvar VAR_GAME_INTRO_STATE, 2
+	release
+	end
+
+Slateport_CutsceneDrake_Top::
+	setvar VAR_GAME_INTRO_STATE, 3
+	playse SE_PIN
+	applymovement LOCALID_DRAKE, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_DRAKE, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_DRAKE, Common_Movement_FaceLeft
+	waitmovement 0
+	speakername Common_Name_Drake
+	msgbox SlateportCity_Text_Drake, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Slateport_Movement_GoToDrakeTop
+	waitmovement 0
+	goto Slateport_Cutscene_DrakeCont
+
+Slateport_CutsceneDrake_Bottom::
+	setvar VAR_GAME_INTRO_STATE, 3
+	playse SE_PIN
+	applymovement LOCALID_DRAKE, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_DRAKE, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_DRAKE, Common_Movement_FaceLeft
+	waitmovement 0
+	speakername Common_Name_Drake
+	msgbox SlateportCity_Text_Drake, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Slateport_Movement_GoToDrakeBottom
+	waitmovement 0
+	goto Slateport_Cutscene_DrakeCont
+
+
+	
+Slateport_Cutscene_DrakeCont::
+	speakername Common_Name_Drake
+	msgbox SlateportCity_Text_Parents, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_ENGINEER, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ENGINEER, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_ENGINEER, Slateport_Movement_ApproachPlayer
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox SlateportCity_Text_WorkerCutscene, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_DRAKE, Common_Movement_FaceUp
+	waitmovement 0
+	speakername Common_Name_Drake
+	msgbox SlateportCity_Text_ISuppose, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_ENGINEER, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ENGINEER, Common_Movement_Delay48
+	waitmovement 0
+	msgbox SlateportCity_Text_Hey, MSGBOX_DEFAULT
+	closemessage
+	speakername Common_Name_Drake
+	msgbox SlateportCity_Text_JustAJoke, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_ENGINEER Common_Movement_QuestionMark
+	waitmovement 0
+	msgbox SlateportCity_Text_ThePresident, MSGBOX_DEFAULT
+	closemessage
+	speakername Common_Name_Drake
+	applymovement LOCALID_DRAKE, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
+	speakername Common_Name_Drake
+	msgbox SlateportCity_Text_GotARide, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_ENGINEER, Slateport_Movement_EngineerToTruck
+	applymovement OBJ_EVENT_ID_PLAYER, Slateport_Movement_PlayerToTruck
+	applymovement LOCALID_DRAKE, Common_Movement_FaceUp
+	waitmovement 0
+	setflag FLAG_HIDE_SLATEPORT_CUTSCENE
+	special SetUpTruckSequence
+	warp MAP_INSIDE_OF_TRUCK, 2, 2
+	release
+	end
+
+
+
+Slateport_Movement_GoToDrakeTop:
+	walk_right
+	walk_right
+	step_end
+
+Slateport_Movement_GoToDrakeBottom:
+	walk_right
+	walk_right
+	walk_up
+	face_right
+	step_end
+
+Slateport_Movement_EngineerToTruck:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	step_end
+
+
+Slateport_Movement_PlayerToTruck:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	delay_16
+	step_end
+
+Slateport_Movement_ApproachPlayer:
+	walk_down
+	walk_down
+	step_end
+
+SlateportCity_Text_Drake:
+	.string "Hey, there, kid!\p"
+	.string "You're the last one to have gotten\n"
+	.string "off the ship.\p"
+	.string "Well, c'mere!$"
+
+SlateportCity_Text_Parents:
+	.string "Say, where are your parents?\p"
+	.string "… … …\p"
+	.string "What?!\p"
+	.string "They made you do the trip by yourself,\n"
+	.string "and they're waiting for you in\l"
+	.string "Littleroot Town?\p"
+	.string "I swear, parents these days…\p"
+	.string "Well now, we have to find a way to ship\n"
+	.string "you all the way to Littleroot, don't we?\p"
+	.string "Hmmm…$"
+
+SlateportCity_Text_WorkerCutscene:
+	.string "Littleroot, you said?\p"
+	.string "I'm about to depart for a delivery in\n"
+	.string "Rustboro, and I'll be passing by near\l"
+	.string "Littleroot.\p"
+	.string "It won't be comfortable, but you could\n"
+	.string "ride on the back of my truck!$"
+
+SlateportCity_Text_ISuppose:
+	.string "Ah…\p"
+	.string "You work for Devon Corp., don't you?\p"
+	.string "Hm…\p"
+	.string "Well, yes, I suppose that would be the\n"
+	.string "quickest way.\p"
+	.string "Don't worry, kid, I deal with Devon all\n"
+	.string "the time.\p"
+	.string "They ain't the most agreeable, that's for\n"
+	.string "sure, but they ain't gonna kindap you or\l"
+	.string "anything.$"
+
+SlateportCity_Text_Hey:
+	.string "But of course not!\p"
+	.string "Devon is Hoenn's most beloved company,\n"
+	.string "with a spotless track record for\l"
+	.string "customer service!$"
+
+SlateportCity_Text_JustAJoke:
+	.string "'Tis just a joke.\n"
+	.string "No need to get all fired up.\p"
+	.string "By the way, youngster…\p"
+	.string "If you happen to see the President…\p"
+	.string "Would you mind letting him know\n"
+	.string "that I say hello?$"
+
+SlateportCity_Text_ThePresident:
+	.string "The President?\n"
+	.string "Are you referring to Mr. Stone?\p"
+	.string "I'm afraid I can't really do that, sir.\p"
+	.string "But if you wish, I could pass on the\n"
+	.string "message to a subordinate of his."
+
+
+SlateportCity_Text_ScratchThat:
+	.string "…Eh, it's fine.\n"
+	.string "It's not like he ever bothers to visit.$"
+
+SlateportCity_Text_GotARide:
+	.string "Well, kid, looks like you got your\n"
+	.string "ride.\p"
+	.string "Have a safe travel, aye?\n"
+	.string "Maybe we'll see each other around.\p"
+	.string "Unless I kick the bucket first!\n"
+	.string "Gyah ah ah!\p"
+	.string "'Tis a joke, don't worry.\n"
+	.string "Enjoy the trip!$"
+
+SlatePortCity_Movement_GotoDrake:
+	delay_16
+	delay_16
+	delay_16
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	face_left
+	step_end
+
+Common_Movement_Set_Visible:
+	set_visible
+	step_end
+
+Common_Movement_Set_Invisible:
+	set_invisible
+	step_end
 
 
 SlateportCity_OnResume:
@@ -77,9 +311,6 @@ SlateportCity_EventScript_MoveScottLeft::
 	setobjectmovementtype LOCALID_SCOTT, MOVEMENT_TYPE_FACE_RIGHT
 	return
 
-SlateportCity_OnFrame:
-	map_script_2 VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1, SlateportCity_EventScript_ScottScene
-	.2byte 0
 
 SlateportCity_EventScript_ScottScene::
 	lockall
@@ -1390,3 +1621,8 @@ SlateportCity_Text_TakingBattleTentChallenge:
 	.string "After all, a tough TRAINER is\n"
 	.string "the perfect fit for the BATTLE TENT!\p"
 	.string "Give it your best effort!$"
+
+SlateportCity_Text_Areyoulost:
+	.string "The exit's on top.\n"
+	.string "This is the cargo handling area.\p"
+	.string "Now, move it.$"

@@ -1320,3 +1320,11 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SlateportBeach/scripts.inc"
 
 	.include "data/maps/SlateportBeachSouth/scripts.inc"
+
+	.include "data/maps/Route109RightSide/scripts.inc"
+
+	.include "data/maps/DewfordTown_GymEntrance/scripts.inc"
+
+	.include "data/maps/DewfordTown_GymArena/scripts.inc"
+
+	.include "data/maps/BoatCutscene/scripts.inc"

@@ -2938,9 +2938,9 @@ u8 DoBattlerEndTurnEffects(void)
                     else
                     {
                         if (B_SLEEP_TURNS >= GEN_5)
-                            gBattleMons[battler].status1 |= STATUS1_SLEEP_TURN(0 + RandomUniform(RNG_SLEEP_TURNS, 1, 3));
-                        else
-                            gBattleMons[battler].status1 |= STATUS1_SLEEP_TURN(0 + RandomUniform(RNG_SLEEP_TURNS, 1, 3));
+                    gBattleMons[gBattlerTarget].status1 |=  STATUS1_SLEEP_TURN((Random() % 3) + 2);
+                else
+                    gBattleMons[gBattlerTarget].status1 |=  STATUS1_SLEEP_TURN((Random() % 4) + 3);
 
                         BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
                         MarkBattlerForControllerExec(battler);

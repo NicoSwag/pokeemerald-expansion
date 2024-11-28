@@ -553,7 +553,7 @@ PetalburgCity_EventScript_Scott0::
 	lockall
 	addobject LOCALID_SCOTT
 	setvar VAR_0x8008, 0
-	setobjectxy LOCALID_SCOTT, 9, 11
+	setobjectxy LOCALID_SCOTT, 8, 11
 	goto PetalburgCity_EventScript_Scott
 	end
 
@@ -561,7 +561,7 @@ PetalburgCity_EventScript_Scott1::
 	lockall
 	addobject LOCALID_SCOTT
 	setvar VAR_0x8008, 1
-	setobjectxy LOCALID_SCOTT, 9, 12
+	setobjectxy LOCALID_SCOTT, 8, 12
 	goto PetalburgCity_EventScript_Scott
 	end
 
@@ -569,7 +569,7 @@ PetalburgCity_EventScript_Scott2::
 	lockall
 	addobject LOCALID_SCOTT
 	setvar VAR_0x8008, 2
-	setobjectxy LOCALID_SCOTT, 9, 13
+	setobjectxy LOCALID_SCOTT, 8, 13
 	goto PetalburgCity_EventScript_Scott
 	end
 

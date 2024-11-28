@@ -2843,6 +2843,9 @@ void ShowNatureGirlMessage(void)
     ShowFieldMessage(gNaturesInfo[nature].natureGirlMessage);
 }
 
+
+
+
 void UpdateFrontierGambler(u16 daysSince)
 {
     u16 *var = GetVarPointer(VAR_FRONTIER_GAMBLER_CHALLENGE);

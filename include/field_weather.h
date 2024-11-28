@@ -140,15 +140,6 @@ struct Weather
 extern struct Weather gWeather;
 extern struct Weather *const gWeatherPtr;
 extern const u16 gFogPalette[];
-extern const u16 gAshPalette[];
-
-enum
-{
-    GAMMA_NONE,
-    GAMMA_NORMAL,
-    GAMMA_ALT,
-};
-
 
 // field_weather_effect.c
 extern const u8 gWeatherFogHorizontalTiles[];
@@ -163,7 +154,7 @@ void FadeScreen(u8 mode, s8 delay);
 bool8 IsWeatherNotFadingIn(void);
 void UpdateSpritePaletteWithWeather(u8 spritePaletteIndex);
 void ApplyWeatherColorMapToPal(u8 paletteIndex);
-void LoadCustomWeatherSpritePalette(const struct SpritePalette *palette);
+void LoadCustomWeatherSpritePalette(const u16 *palette);
 void ResetDroughtWeatherPaletteLoading(void);
 bool8 LoadDroughtWeatherPalettes(void);
 void DroughtStateInit(void);
@@ -232,6 +223,10 @@ void Bubbles_InitVars(void);
 void Bubbles_Main(void);
 void Bubbles_InitAll(void);
 bool8 Bubbles_Finish(void);
+void Pollution_InitVars(void);
+void Pollution_Main(void);
+void Pollution_InitAll(void);
+bool8 Pollution_Finish(void);
 
 u8 GetSavedWeather(void);
 void SetSavedWeather(u32 weather);

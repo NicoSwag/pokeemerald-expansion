@@ -27,12 +27,6 @@ gText_SmoothieShop::
 	.align 2
 RustboroGym_Smoothies_Shop:
 	.2byte ITEM_EXP_CANDY_XS
-	.2byte ITEM_POMEG_SMOOTHIE
-	.2byte ITEM_KELPSY_SMOOTHIE
-	.2byte ITEM_QUALOT_SMOOTHIE
-	.2byte ITEM_HONDEW_SMOOTHIE
-	.2byte ITEM_GREPA_SMOOTHIE
-	.2byte ITEM_TAMATO_SMOOTHIE
 	.2byte ITEM_FRESH_START_MOCHI
 	.2byte ITEM_NONE
 	release

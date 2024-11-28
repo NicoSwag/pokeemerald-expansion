@@ -784,14 +784,20 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	return
 
 LittlerootTown_Text_OurNewHomeLetsGoInside:
-	.string "{PLAYER}, we're here, honey!\p"
-	.string "It must be tiring riding with our things\n"
-	.string "in the moving truck.\p"
-	.string "Well, this is LITTLEROOT TOWN.\p"
+	.string "{PLAYER}, you're home, honey!\p"
+	.string "I'm sorry for making you get here by\n"
+	.string "yourself.\p"
+	.string "It's really hard to reserve a spot on\n"
+	.string "one of those ships, and dad had to rush\l"
+	.string "here for an urgent League meeting.\p"
+	.string "Look at the bright side: by the time\n"
+	.string "you got here, we're already almost\l"
+	.string "finished with moving in!\p"
+	.string "Well, anyway this is Littleroot Town.\p"
 	.string "How do you like it?\n"
 	.string "This is our new home!\p"
-	.string "It's a bit cloudy, but it seems to be\n"
-	.string "a nice place to live, don't you think?\p"
+	.string "It seems to be a nice place to live\n"
+	.string "don't you think?\p"
 	.string "And, you get your own room, {PLAYER}!\n"
 	.string "Let's go inside.$"
 

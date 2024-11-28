@@ -90,12 +90,6 @@ speakername Common_Name_Roxanne
 RustboroGym_EventScript_PostRoxanneContinue::
 speakername Common_Name_Roxanne
 	msgbox RustboroCity_Gym_Text_ExplainSandstorm, MSGBOX_DEFAULT
-	additem ITEM_HP_UP, 2
-	additem ITEM_PROTEIN, 2
-	additem ITEM_IRON, 2
-	additem ITEM_CALCIUM, 2
-	additem ITEM_ZINC, 2
-	additem ITEM_CARBOS,2
 	releaseall
 	end
 

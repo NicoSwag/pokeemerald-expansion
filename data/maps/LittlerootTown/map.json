@@ -48,8 +48,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_2",
-      "x": 12,
-      "y": 16,
+      "x": 11,
+      "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 2,
@@ -152,8 +152,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZIGZAGOON_GALARIAN)",
-      "x": 4,
-      "y": 19,
+      "x": 6,
+      "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 0,
@@ -165,8 +165,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
-      "x": 5,
-      "y": 18,
+      "x": 6,
+      "y": 12,
       "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 2,
@@ -178,7 +178,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PICHU)",
-      "x": 16,
+      "x": 10,
       "y": 25,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -285,16 +285,16 @@
     },
     {
       "type": "sign",
-      "x": 11,
-      "y": 15,
+      "x": 12,
+      "y": 17,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "EventScript_SaveTotem"
     },
     {
       "type": "sign",
-      "x": 13,
-      "y": 22,
+      "x": 14,
+      "y": 20,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "LittlerootTown_EventScript_TownSign"

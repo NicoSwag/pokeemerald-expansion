@@ -75,6 +75,8 @@
 #define MAP_RUSTBORO_FACTORY_TOP  (66 | (0 << 8))
 #define MAP_SLATEPORT_BEACH       (67 | (0 << 8))
 #define MAP_SLATEPORT_BEACH_SOUTH (68 | (0 << 8))
+#define MAP_ROUTE109RIGHT_SIDE    (69 | (0 << 8))
+#define MAP_BOAT_CUTSCENE         (70 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))
@@ -105,6 +107,8 @@
 #define MAP_FOUNDRY                        (7 | (3 << 8))
 #define MAP_GRANITE_COTTAGE                (8 | (3 << 8))
 #define MAP_DEWFORD_GYM_TEST               (9 | (3 << 8))
+#define MAP_DEWFORD_TOWN_GYM_ENTRANCE      (10 | (3 << 8))
+#define MAP_DEWFORD_TOWN_GYM_ARENA         (11 | (3 << 8))
 
 // gMapGroup_IndoorLavaridge
 #define MAP_LAVARIDGE_TOWN_HERB_SHOP         (0 | (4 << 8))

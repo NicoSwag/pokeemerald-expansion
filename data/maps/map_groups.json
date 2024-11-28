@@ -104,7 +104,9 @@
     "RustboroFactory",
     "RustboroFactoryTop",
     "SlateportBeach",
-    "SlateportBeachSouth"
+    "SlateportBeachSouth",
+    "Route109RightSide",
+    "BoatCutscene"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -134,7 +136,9 @@
     "DewfordTown_House3",
     "Foundry",
     "GraniteCottage",
-    "DewfordGymTest"
+    "DewfordGymTest",
+    "DewfordTown_GymEntrance",
+    "DewfordTown_GymArena"
   ],
   "gMapGroup_IndoorLavaridge": [
     "LavaridgeTown_HerbShop",

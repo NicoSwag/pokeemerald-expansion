@@ -970,6 +970,7 @@ $(MID_SUBDIR)/se_ball_throw.s: %.s: %.mid
 $(MID_SUBDIR)/se_ship.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -V075 -P4
 
+
 $(MID_SUBDIR)/se_flee.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -V090 -P5
 
@@ -1370,3 +1371,6 @@ $(MID_SUBDIR)/mus_ramanas_major.s: %.s: %.mid
 
 $(MID_SUBDIR)/mus_route_238.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_ship_loop.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -V075 -P4

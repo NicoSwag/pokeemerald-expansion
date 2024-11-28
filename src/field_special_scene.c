@@ -268,6 +268,14 @@ void ExecuteTruckSequence(void)
     CreateTask(Task_HandleTruckSequence, 0xA);
 }
 
+
+void SetUpTruckSequence(void){
+    gFieldCallback = ExecuteTruckSequence;
+    gFieldCallback2 = NULL;
+}
+
+
+
 void EndTruckSequence(u8 taskId)
 {
     if (!FuncIsActiveTask(Task_HandleTruckSequence))

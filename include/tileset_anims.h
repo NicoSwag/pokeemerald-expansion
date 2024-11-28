@@ -26,12 +26,14 @@ void InitTilesetAnim_BattleFrontierOutsideEast(void);
 void InitTilesetAnim_Building(void);
 void InitTilesetAnim_Cave(void);
 void InitTilesetAnim_GraniteCave(void);
+void InitTilesetAnim_Unused1(void);
 void InitTilesetAnim_BikeShop(void);
 void InitTilesetAnim_Underwater(void);
 void InitTilesetAnim_SootopolisGym(void);
 void InitTilesetAnim_MauvilleGym(void);
 void InitTilesetAnim_EliteFour(void);
 void InitTilesetAnim_BattleDome(void);
+void InitTilesetAnim_BattleArena(void);
 void InitTilesetAnim_BattlePyramid(void);
 
 #endif // GUARD_TILESET_ANIMS_H

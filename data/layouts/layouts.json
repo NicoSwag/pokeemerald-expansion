@@ -4,7 +4,7 @@
     {
       "id": "LAYOUT_PETALBURG_CITY",
       "name": "PetalburgCity_Layout",
-      "width": 30,
+      "width": 32,
       "height": 36,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
@@ -14,7 +14,7 @@
     {
       "id": "LAYOUT_SLATEPORT_CITY",
       "name": "SlateportCity_Layout",
-      "width": 50,
+      "width": 52,
       "height": 60,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Slateport",
@@ -104,7 +104,7 @@
     {
       "id": "LAYOUT_OLDALE_TOWN",
       "name": "OldaleTown_Layout",
-      "width": 23,
+      "width": 28,
       "height": 24,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
@@ -244,7 +244,7 @@
     {
       "id": "LAYOUT_ROUTE109",
       "name": "Route109_Layout",
-      "width": 40,
+      "width": 44,
       "height": 63,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Slateport",
@@ -4690,6 +4690,46 @@
       "secondary_tileset": "gTileset_Slateport",
       "border_filepath": "data/layouts/SlateportBeachSouth/border.bin",
       "blockdata_filepath": "data/layouts/SlateportBeachSouth/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE109RIGHT_SIDE",
+      "name": "Route109RightSide_Layout",
+      "width": 6,
+      "height": 63,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/Route109RightSide/border.bin",
+      "blockdata_filepath": "data/layouts/Route109RightSide/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_TOWN_GYM_ENTRANCE",
+      "name": "DewfordTown_GymEntrance_Layout",
+      "width": 21,
+      "height": 16,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattleArena",
+      "border_filepath": "data/layouts/DewfordTown_GymEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/DewfordTown_GymEntrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_TOWN_GYM_ARENA",
+      "name": "DewfordTown_GymArena_Layout",
+      "width": 14,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_DewfordGym",
+      "border_filepath": "data/layouts/DewfordTown_GymArena/border.bin",
+      "blockdata_filepath": "data/layouts/DewfordTown_GymArena/map.bin"
+    },
+    {
+      "id": "LAYOUT_BOAT_CUTSCENE",
+      "name": "BoatCutscene_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/BoatCutscene/border.bin",
+      "blockdata_filepath": "data/layouts/BoatCutscene/map.bin"
     }
   ]
 }

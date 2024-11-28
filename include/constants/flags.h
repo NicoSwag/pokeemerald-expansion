@@ -696,8 +696,8 @@
 #define FLAG_HIDE_MAY_MINECART_DEWFORD  0x28D // Unused Flag
 #define FLAG_RECEIVED_GRANITE_CAVE_MAGNET  0x28E // Unused Flag
 #define FLAG_HIDE_BRAWLY_GRANITE  0x28F // Unused Flag
-#define FLAG_UNUSED_0x290  0x290 // Unused Flag
-#define FLAG_UNUSED_0x291  0x291 // Unused Flag
+#define FLAG_INTRO_INVISIBLE  0x290 // Unused Flag
+#define FLAG_HIDE_SLATEPORT_CUTSCENE  0x291 // Unused Flag
 #define FLAG_UNUSED_0x292  0x292 // Unused Flag
 #define FLAG_UNUSED_0x293  0x293 // Unused Flag
 #define FLAG_UNUSED_0x294  0x294 // Unused Flag

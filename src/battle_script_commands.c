@@ -3443,9 +3443,9 @@ void SetMoveEffect(bool32 primary, bool32 certain)
             if (sStatusFlagsForMoveEffects[gBattleScripting.moveEffect] == STATUS1_SLEEP)
             {
                 if (B_SLEEP_TURNS >= GEN_5)
-                    gBattleMons[gEffectBattler].status1 |= STATUS1_SLEEP_TURN(0 + RandomUniform(RNG_SLEEP_TURNS, 1, 3));
+                    gBattleMons[gBattlerTarget].status1 |=  STATUS1_SLEEP_TURN((Random() % 3) + 2);
                 else
-                    gBattleMons[gEffectBattler].status1 |= STATUS1_SLEEP_TURN(0 + RandomUniform(RNG_SLEEP_TURNS, 2, 5));
+                    gBattleMons[gBattlerTarget].status1 |=  STATUS1_SLEEP_TURN((Random() % 4) + 3);
             }
             else
             {

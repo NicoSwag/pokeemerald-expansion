@@ -1,0 +1,44 @@
+{
+  "id": "MAP_ROUTE109RIGHT_SIDE",
+  "name": "Route109RightSide",
+  "layout": "LAYOUT_ROUTE109RIGHT_SIDE",
+  "music": "MUS_SLATEPORT",
+  "region_map_section": "MAPSEC_ROUTE_109",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_SLATEPORT_BEACH",
+      "offset": 0,
+      "direction": "dive"
+    },
+    {
+      "map": "MAP_ROUTE109",
+      "offset": 0,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_SLATEPORT_CITY",
+      "offset": -40,
+      "direction": "up"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

@@ -255,16 +255,21 @@ Route104_Text_Sign4:
 
 
 Route104Upper_Text_BerryMaster:
-	.string "Ah, poor me!\n"
-	.string "Ah, sad me!\p"
-	.string "There used to be a beautiful field\n"
-	.string "of CHERI BERRIES here…\p"
-	.string "But, they got rid of it to build\n"
-	.string "this hideous structure.\p"
-	.string "Here. Take this!\p"
-	.string "So you may know how much you missed\n"
-	.string "out!$"
+	.string "There is something strange about the\n"
+	.string "soil of Hoenn, yes.\p"
+	.string "They say that for some reason, berry\n"
+	.string "trees don't grow well on it.\p"
+	.string "But thankfully, Pokémon Centers have\n"
+	.string "their own supply that they distribute\l"
+	.string "to Trainers.\p"
+	.string "Here, take this!$"
 
 Route104Upper_Text_BerryMaster_End:	
-	.string "Ah, sad times!\n"
-	.string "Sad times, indeed!$"
+	.string "Pokémon with berries cannot be deposited\n"
+	.string "in a PC.\p"
+	.string "Why? Simple.\n\p"
+	.string "Pokémon, as well as most items, are very/n"
+	.string "easy to turn into data.\p"
+	.string "But for some reason, they haven't figured\n"
+	.string "out berries quite yet.\p"
+	.string "The same is also true for healing items.$"
