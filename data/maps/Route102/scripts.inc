@@ -165,13 +165,13 @@ Route102_Text_LetsGoBack:
 	.string "Let's go back to the GYM!$"
 
 Route102_Text_ImNotVeryTall:
-	.string "I'm…not very tall, so I sink right\n"
+	.string "I'm not very tall, so I sink right\n"
 	.string "into tall grass.\p"
 	.string "The grass goes up my nose and…\n"
 	.string "Well, you've seen how it goes.$"
 
 Route102_Text_GivePowder:
-	.string "I'm…not very tall, so I sink right\n"
+	.string "I'm not very tall, so I sink right\n"
 	.string "into tall grass.\p"
 	.string "The grass goes up my nose and…\n"
 	.string "Fwafwafwafwafwa…\p"
@@ -187,28 +187,28 @@ Route102_Text_CatchWholeBunchOfPokemon:
 	.string "POKéMON!$"
 
 Route102_Text_RouteSignOldale:
-	.string "SEVIPER RIVER\n"
-	.string "{RIGHT_ARROW} OLDALE TOWN$"
+	.string "Seviper River\n"
+	.string "{RIGHT_ARROW} Oldale Town$"
 
 Route102_Text_RouteSignPetalburg:
-	.string "SEVIPER RIVER\n"
-	.string "{LEFT_ARROW} PETALBURG CITY$"
+	.string "Seviper River\n"
+	.string "{LEFT_ARROW} Petalburg City$"
 
 Route102_Text_YouWillTradeWontYou:
 	.string "Oh, hi!\n"
 	.string "Would you mind giving me a hand with\l"
 	.string "something?\p"
-	.string "You see, I wanted to catch a RALTS,\n"
+	.string "You see, I wanted to catch a Ralts,\n"
 	.string "but…\p"
 	.string "Every time I throw a ball it just\n"
 	.string "teleports away!\p"
 	.string "If you'd be willing to trade me one,\n"
-	.string "I could give you this SWINUB in return.\p"
+	.string "I could give you this Swinub in return.\p"
 	.string "What do you say?$"
 
 Route102_Text_MonYouTakeCare:
 	.string "Oh my, thank you!\p"
-	.string "I'll take good care of your RALTS!$"
+	.string "I'll take good care of your Ralts!$"
 
 Route102_Text_YouWontTradeMe:
 	.string "Aww…\n"
@@ -221,7 +221,7 @@ Route102_Text_ThisIsntAMon:
 	.string "that's not a {STR_VAR_1}.$"
 
 Route102_Text_GoingToMakeVolbeatStrong:
-	.string "I come from PETALBURG CITY, you\n"
+	.string "I come from Slateport City, you\n"
 	.string "see.\p"
 	.string "We got plenty of SWINUB, but psychic-\n"
 	.string "types are more rare.$"

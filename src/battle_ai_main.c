@@ -2919,7 +2919,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         // partner ability checks
         if (!partnerProtecting && moveTarget != MOVE_TARGET_BOTH && !DoesBattlerIgnoreAbilityChecks(aiData->abilities[battlerAtk], move))
         {
-            switch (atkPartnerAbility)
+    switch (atkPartnerAbility)
             {
             case ABILITY_ANGER_POINT:
                 if (gMovesInfo[move].alwaysCriticalHit == TRUE 
@@ -3017,6 +3017,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 }
                 break;
             }
+            
         } // ability checks
 
         // attacker move effects specifically targeting partner
@@ -3142,6 +3143,11 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     RETURN_SCORE_PLUS(WEAK_EFFECT);
                 break;
             } // attacker move effects
+        if(gBattleMons[battlerAtkPartner].status1 & STATUS1_SLEEP &&
+            AI_IsFaster(battlerAtk, battlerAtkPartner, move) &&
+            !CanIndexMoveFaintTarget(battlerAtk, battlerAtkPartner, AI_THINKING_STRUCT->movesetIndex, 1))
+                RETURN_SCORE_PLUS(WEAK_EFFECT);
+            
         } // check partner protecting
 
         ADJUST_SCORE(-30); // otherwise, don't target partner
@@ -3331,6 +3337,15 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
 
     // check status move preference
     if (AI_THINKING_STRUCT->aiFlags[battlerAtk] & AI_FLAG_PREFER_STATUS_MOVES && IS_MOVE_STATUS(move) && effectiveness != AI_EFFECTIVENESS_x0)
+        ADJUST_SCORE(10);
+
+    //prioritizes status moves if asleep
+    
+    if(IS_MOVE_STATUS(move) && 
+    effectiveness != AI_EFFECTIVENESS_x0 && 
+    gBattleMons[battlerDef].status1 & STATUS1_SLEEP &&
+    !CanAIFaintTarget(battlerAtk, battlerDef, 0) &&
+    !(gStatuses4[battlerDef] & STATUS4_RESTING))
         ADJUST_SCORE(10);
 
     // check thawing moves

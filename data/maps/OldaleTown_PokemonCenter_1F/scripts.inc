@@ -88,28 +88,28 @@ OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable::
 	end
 
 OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
-	.string "When you heal your POKéMON you\n"
+	.string "When you heal your Pokémon you\n"
 	.string "also get some healing items for free.\p"
 	.string "I've heard that you can get more by\n"
-	.string "winning BADGES.$"
+	.string "winning Badges.$"
 
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
-	.string "I spent too much money at the MART,\n"
+	.string "I spent too much money at the Mart,\n"
 	.string "and now I'm completely broke.\p"
-	.string "I beg you, TRAINER, don't make the\n"
-	.string "same mistake as me!$"
+	.string "I guess I could go fight more wild\n"
+	.string "Pokémon…$"
 
 OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:
-	.string "The second floor of POKEMON CENTRES\n"
+	.string "The second floor of Pokémon Centers\n"
 	.string "houses a bunch of useful services.\p"
-	.string "You can make your PokéMON forget and\n"
+	.string "You can make your Pokémon forget and\n"
 	.string "remember moves, or even learn brand\l"
 	.string "new ones!$"
 
 OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
-	.string "The second floor of POKEMON CENTRES\n"
+	.string "The second floor of Pokémon Centers\n"
 	.string "houses a bunch of useful services.\p"
-	.string "You can make your PokéMON forget and\n"
+	.string "You can make your Pokémon forget and\n"
 	.string "remember moves, or even learn brand\l"
 	.string "new ones!$"
 
@@ -132,7 +132,7 @@ OldaleTown_PokemonCenter_1F_Text_GiveVoucher:
 OldaleTown_PokemonCenter_1F_Text_GivenVoucher:
 	.string "Oh oh!\p"
 	.string "That is a Berry Voucher!\p"
-	.string "By presenting it at a POKéMON CENTER,\n"
+	.string "By presenting it at a Pokémon Center,\n"
 	.string "you will be given six berries of the\l"
 	.string "corresponding type!\p"
 	.string "One for each of your little friends!\n"

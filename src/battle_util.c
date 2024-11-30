@@ -3399,15 +3399,18 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
         case CANCELLER_ASLEEP: // check being asleep
             if (gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP)
             {
+
                 if (UproarWakeUpCheck(gBattlerAttacker))
                 {
                     gBattleMons[gBattlerAttacker].status1 &= ~STATUS1_SLEEP;
                     gBattleMons[gBattlerAttacker].status2 &= ~STATUS2_NIGHTMARE;
+                    gStatuses4[gBattlerAttacker] &= ~STATUS4_RESTING;
                     BattleScriptPushCursor();
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WOKE_UP_UPROAR;
                     gBattlescriptCurrInstr = BattleScript_MoveUsedWokeUp;
                     effect = 2;
                 }
+            
                 else
                 {
                     u8 toSub;
@@ -3415,8 +3418,10 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                         toSub = 2;
                     else
                         toSub = 1;
-                    if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP) < toSub)
+                    if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP) < toSub){
                         gBattleMons[gBattlerAttacker].status1 &= ~STATUS1_SLEEP;
+                        gStatuses4[gBattlerAttacker] &= ~STATUS4_RESTING;
+                    }
                     else
                         gBattleMons[gBattlerAttacker].status1 -= toSub;
                     if (gBattleMons[gBattlerAttacker].status1 & STATUS1_SLEEP)
@@ -3425,8 +3430,10 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                         {
                             gBattlescriptCurrInstr = BattleScript_MoveUsedIsAsleep;
                             gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
-                            effect = 2;
-gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
+                        effect = 2;
+                        if(!(gStatuses4[gBattlerAttacker] & STATUS4_RESTING))
+                        {
+                        gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
                         if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                         gBattleMoveDamage *= -1;
@@ -3434,6 +3441,9 @@ gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
                         BattleScriptExecute(BattleScript_SleepHeal);
                         effect++;}
                         }
+                        }
+                        
+                        
                     }
                     else
                     {
@@ -3663,6 +3673,8 @@ gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
                 }
                 effect = 2;
             }
+            
+
             if (gBattleMons[gBattlerAttacker].status1 & STATUS1_FROSTBITE && gMovesInfo[gCurrentMove].thawsUser)
             {
                 if (!(MoveHasAdditionalEffectSelfArg(gCurrentMove, MOVE_EFFECT_REMOVE_ARG_TYPE, TYPE_FIRE) && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_FIRE)))
@@ -5050,6 +5062,15 @@ gBattleMons[battler].canTerrainChange = TRUE;
                 effect++;
             }
             break;
+
+            case ABILITY_DAMP:
+            if (!gSpecialStatuses[battler].switchInAbilityDone)
+            {
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                BattleScriptPushCursorAndCallback(BattleScript_DampActivates);
+                effect++;
+            }
+            break;
         case ABILITY_SWORD_OF_RUIN:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
@@ -5237,19 +5258,6 @@ case ABILITY_HONEY_GATHER:
                 {
                     BattleScriptPushCursorAndCallback(BattleScript_InductiveActivates);
                     gBattleMoveDamage = GetNonDynamaxMaxHP(battler) /8;
-                    if (gBattleMoveDamage == 0)
-                        gBattleMoveDamage = 1;
-                    gBattleMoveDamage *= -1;
-                    effect++;
-                }
-                break;
-            case ABILITY_SAND_VEIL:
-                if (IsBattlerWeatherAffected(battler, B_WEATHER_SANDSTORM)
-                 && !BATTLER_MAX_HP(battler)
-                 && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
-                {
-                    BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
-                    gBattleMoveDamage = gBattleMons[battler].maxHP / (gLastUsedAbility == ABILITY_SAND_VEIL * 16);
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
@@ -7764,6 +7772,7 @@ case HOLD_EFFECT_HONEY:
         {
             gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
             gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
+            gStatuses4[battler] &= ~STATUS4_RESTING;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_BerryCureSlpRet;
             effect = ITEM_STATUS_CHANGE;
@@ -8005,6 +8014,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     && !UnnerveOn(battler, gLastUsedItem))
                 {
                     gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
+                    gStatuses4[battler] &= ~STATUS4_RESTING;
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
                     BattleScriptExecute(BattleScript_BerryCureSlpEnd2);
                     effect = ITEM_STATUS_CHANGE;
@@ -8319,6 +8329,7 @@ case HOLD_EFFECT_HONEY:
                 if (gBattleMons[battler].status1 & STATUS1_SLEEP && !UnnerveOn(battler, gLastUsedItem))
                 {
                     gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
+                    gStatuses4[battler] &= ~STATUS4_RESTING;
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
                     BattleScriptExecute(BattleScript_BerryCureSlpEnd2);
                     effect = ITEM_STATUS_CHANGE;
@@ -9828,7 +9839,7 @@ case ABILITY_SNOW_FORCE:
         break;
 case ABILITY_PYROMANIAC:
         if(gMovesInfo[move].type == TYPE_FIRE)
-        modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+        modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
         break;
         case ABILITY_FAE_FORCE:
         if(gMovesInfo[move].type == TYPE_FAIRY && IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_MISTY_TERRAIN))
@@ -10271,12 +10282,6 @@ case ABILITY_FLOWER_GIFT:
         if (gBattleMons[battlerAtk].status1 & STATUS1_ANY && IS_MOVE_SPECIAL(move))
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
             break;
-    case ABILITY_SNOW_CLOAK:
-        if (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SNOW) && IS_MOVE_SPECIAL(move))
-           modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
-    case ABILITY_SAND_VEIL:
-        if (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SANDSTORM) && IS_MOVE_SPECIAL(move))
-           modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
         
     }
@@ -10316,9 +10321,6 @@ case ABILITY_ICE_SCALES || ABILITY_MAGIC_SCALES:
         if(IS_MOVE_SPECIAL(move))
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
         break;
-        case ABILITY_SNOW_CLOAK:
-            if (IsBattlerWeatherAffected(BATTLE_PARTNER(battlerAtk), B_WEATHER_SNOW) && IS_MOVE_SPECIAL(move))
-                modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
             break;
         }
     }
@@ -10338,6 +10340,9 @@ case ABILITY_ICE_SCALES || ABILITY_MAGIC_SCALES:
     // field abilities
     if (IsAbilityOnField(ABILITY_VESSEL_OF_RUIN) && atkAbility != ABILITY_VESSEL_OF_RUIN && IS_MOVE_SPECIAL(move))
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.75));
+
+    if (IsAbilityOnField(ABILITY_DAMP) && atkAbility != ABILITY_DAMP && gMovesInfo[move].type == TYPE_FIRE)
+        modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
 
     if (IsAbilityOnField(ABILITY_TABLETS_OF_RUIN) && atkAbility != ABILITY_TABLETS_OF_RUIN && IS_MOVE_PHYSICAL(move))
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.75));
@@ -10463,10 +10468,6 @@ if (gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 2))
         if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN) && !usesDefStat)
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
-    case ABILITY_SNOW_CLOAK:
-        if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SNOW) && !usesDefStat)
-            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
-        break;
     case ABILITY_PUNK_ROCK:
         if (gMovesInfo[move].soundMove)
            modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
@@ -10486,9 +10487,6 @@ if (gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 2))
             if (IsBattlerWeatherAffected(BATTLE_PARTNER(battlerDef), B_WEATHER_SUN) && !usesDefStat)
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
             break;
-        case ABILITY_SNOW_CLOAK:
-            if (IsBattlerWeatherAffected(BATTLE_PARTNER(battlerDef), B_WEATHER_SUN) && !usesDefStat)
-                modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
             break;
         }
     }
@@ -10718,6 +10716,12 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
         if (typeEffectivenessModifier >= UQ_4_12(2.0))
             return UQ_4_12(0.75);
         break;
+    case ABILITY_SNOW_CLOAK:
+        if (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SNOW) && typeEffectivenessModifier >= UQ_4_12(2.0))
+           return UQ_4_12(0.5);
+    case ABILITY_SAND_VEIL:
+        if (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SANDSTORM) && typeEffectivenessModifier >= UQ_4_12(2.0))
+           return UQ_4_12(0.5);
     case ABILITY_FLUFFY:
         if (!IsMoveMakingContact(move, battlerAtk) && moveType == TYPE_FIRE)
             return UQ_4_12(2.0);

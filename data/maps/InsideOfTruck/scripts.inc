@@ -1,7 +1,27 @@
 InsideOfTruck_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, InsideOfTruck_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, InsideOfTruck_OnFrame
 	map_script MAP_SCRIPT_ON_RESUME, InsideOfTruck_OnResume
 	.byte 0
+
+
+InsideOfTruck_OnFrame:
+	map_script_2 VAR_GAME_INTRO_STATE, 3, InsideOfTruck_EventScript_Cutscene
+	.2byte 0
+
+
+InsideOfTruck_EventScript_Cutscene::
+	lock
+	playse SE_TRUCK_MOVE
+	waitse
+	playse SE_TRUCK_STOP
+	waitse
+	playse SE_TRUCK_UNLOAD
+	waitse
+	msgbox InsideOfTruck_Text_Destination, MSGBOX_DEFAULT
+	release
+	end
+
 
 InsideOfTruck_OnLoad:
 	setmetatile 4, 1, METATILE_InsideOfTruck_ExitLight_Top, FALSE
@@ -55,3 +75,7 @@ InsideOfTruck_Text_BoxPrintedWithMonLogo:
 	.string "The box is printed with a POKéMON logo.\p"
 	.string "It's a POKéMON brand moving and\n"
 	.string "delivery service.$"
+
+InsideOfTruck_Text_Destination:
+	.string "We're here, kid!\n"
+	.string "You can get off!$"

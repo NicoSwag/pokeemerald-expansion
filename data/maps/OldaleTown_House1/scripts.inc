@@ -6,9 +6,11 @@ OldaleTown_House1_EventScript_Woman::
 	end
 
 OldaleTown_House1_Text_LeftPokemonGoesOutFirst:
-	.string "When a POKéMON battle starts, the two\n"
-	.string "at the left of the list go out first.\p"
-	.string "So, when you get more POKéMON in your\n"
-	.string "party, try switching around the order\l"
-	.string "of your POKéMON.\p"
-	.string "It could give you an advantage.$"
+	.string "Wild Pokémon, when they get defeated,\n"
+	.string "can drop some useful material.\p"
+	.string "Things like fur, claws, even minerals…\p"
+	.string "Don't worry! They shed them naturally.\p"
+	.string "Anyway, these are worth a small amount of\n"
+	.string "money.\p"
+	.string "So if you're just short on cash, fighting\n"
+	.string "wild Pokémon can be a good idea.$"

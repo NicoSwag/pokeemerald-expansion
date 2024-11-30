@@ -184,12 +184,12 @@
               {
                 "min_level": 3,
                 "max_level": 5,
-                "species": "SPECIES_ZIGZAGOON_GALARIAN"
+                "species": "SPECIES_RALTS"
               },
               {
                 "min_level": 3,
                 "max_level": 5,
-                "species": "SPECIES_ZIGZAGOON_GALARIAN"
+                "species": "SPECIES_RALTS"
               },
               {
                 "min_level": 3,
@@ -308,12 +308,12 @@
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_SUNKERN"
+                "species": "SPECIES_HOOTHOOT"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_SUNKERN"
+                "species": "SPECIES_HOOTHOOT"
               },
               {
                 "min_level": 2,

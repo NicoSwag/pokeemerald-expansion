@@ -266,7 +266,7 @@ Route103_Text_Revenge::
 	.string "a platter…\p"
 	.string "First we can't get to the ruins…\p"
 	.string "Then a couple of kids show up and\n"
-	.string "attack us!\p"
+	.string "kick our butt!\p"
 	.string "Do you even know who we are?\p"
 	.string "We're Team Magma. An organization\n"
 	.string "dedicated to the betterement of the\l"
@@ -487,18 +487,17 @@ Route103_EventScript_Isabelle::
 	end
 
 Route103_Text_MayRoute103Pokemon:
-	.string "Let's see… The POKéMON found\n"
-	.string "on PILGRIM'S PASSAGE include…$"
+	.string "Let's see… The Pokémon found\n"
+	.string "in Pilgrim's Passage include…$"
 
 Route103_Text_MayLetsBattle:
 	.string "Oh, {PLAYER}{KUN}, it's you.\p"
-	.string "…What, my dad gave you a POKéMON\n"
+	.string "…What, my dad gave you a Pokémon\n"
 	.string "as a gift?\p"
-	.string "…Mhmm.\p"
+	.string "…Things are starting to get interesting.\p"
 	.string "Do you see those two suspicious guys\n"
 	.string "back there?\p"
-	.string "Yeah, they're actually from TEAM\n"
-	.string "MAGMA.\p"
+	.string "Those are members of Team Magma.\p"
 	.string "I've seen them wander around here\n"
 	.string "before, acting all shady and yelling\l"
 	.string "at people…\p"
@@ -509,30 +508,28 @@ Route103_Text_MayLetsBattle:
 
 
 Route103_Text_MayDefeated:
-	.string "Wow! That's great!\n"
-	.string "{PLAYER}{KUN}, you're pretty good!$"
+	.string "Huh, {PLAYER}, you're not too shabby.$"
 
 Route103_Text_MayTimeToHeadBack:
-	.string "MAY: Well, that was decent.\n"
-	.string "I suppose you can handle a POKéMON.\p"
+	.string "Well, that was pretty good.\n"
+	.string "I suppose you can handle a Pokémon.\p"
 	.string "Maybe my dad wasn't wrong on that one.\p"
 	.string "Well, I'm heading back to the lab now.\n"
 	.string "Don't trip over yourself.$"
 
 Route103_Text_BrendanRoute103Pokemon:
-	.string "Okay, so it's this one and\n"
-	.string "that one that live on PILGRIM'S\l"
-	.string "PASSAGE…$"
+	.string "Let's see… The Pokémon found\n"
+	.string "in Pilgrim's Passage include…$"
+
 
 Route103_Text_BrendanLetsBattle:
 	.string "Oh, {PLAYER}{KUN}, it's you.\p"
-	.string "…What, my dad gave you a POKéMON\n"
+	.string "…What, my dad gave you a Pokémon\n"
 	.string "as a gift?\p"
-	.string "…Mhmm.\p"
+	.string "…Things are starting to get interesting.\p"
 	.string "Do you see those two suspicious guys\n"
 	.string "back there?\p"
-	.string "Yeah, they're actually from TEAM\n"
-	.string "MAGMA.\p"
+	.string "Those are members of Team Magma.\p"
 	.string "I've seen them wander around here\n"
 	.string "before, acting all shady and yelling\l"
 	.string "at people…\p"
@@ -541,8 +538,8 @@ Route103_Text_BrendanLetsBattle:
 	.string "really the boss around here.$"
 
 Route103_Text_Suckers:
-	.string "Yo, suckers!\p"
-	.string "Your uniforms are ridicolous!$"
+	.string "Hey, suckers!\p"
+	.string "Come and get some!$"
 
 Route_103_Text_SayWhat:
 	.string "What was that, kid?\p"
@@ -562,16 +559,16 @@ Route103_Text_BrendanDefeated:
 	.string "Huh, {PLAYER}, you're not too shabby.$"
 
 Route103_Text_BrendanTimeToHeadBack:
-	.string "Well, that was decent.\n"
-	.string "I suppose you can handle a POKéMON.\p"
+	.string "Well, that was pretty good.\n"
+	.string "I suppose you can handle a Pokémon.\p"
 	.string "Maybe my dad wasn't wrong on that one.\p"
 	.string "Well, I'm heading back to the lab now.\n"
 	.string "Don't trip over yourself.$"
 
 Route103_Text_ShouldHaveBroughtPotion:
-	.string "I'm waiting for my lover on the other\n"
-	.string "side of the lake to build a bridge.\p"
-	.string "What's taking so long?$"
+	.string "This bridge usually connect to Slateport,\n"
+	.string "but it looks like it's broken.\p"
+	.string "I bet those Team Magma guys did it.$"
 
 Route103_Text_ShortcutToOldale:
 	.string "If you cross the sea from here,\n"
@@ -579,8 +576,8 @@ Route103_Text_ShortcutToOldale:
 	.string "Fufufu, that's useful, isn't it?$"
 
 Route103_Text_RouteSign:
-	.string "PILGRIM'S PASSAGE\n"
-	.string "{DOWN_ARROW} OLDALE TOWN$"
+	.string "Pilgrim's Passage\n"
+	.string "{DOWN_ARROW} Oldale Town$"
 
 Route103_Text_Volcanic_Rocks:
 	.string "Hmm, no doubt about it…\n"
@@ -596,9 +593,11 @@ Common_Name_Courtney:
 
 
 Route103_Message_Pickle:
-	.string "Well, is is a bit of a pickle.\p"
-	.string "This bridge wasn't broken the last\n"
-	.string "time I passed through here.\p"
-	.string "If I don't deliver my cargo to Slateport\n"
-	.string "in time, I'm never going to hear the end\l"
-	.string "of it!$"
+	.string "Oh, hey! It's you!\n"
+	.string "Remember me?\p"
+	.string "I'm the one you hitched a passage\n"
+	.string "from!\p"
+	.string "Well, I got to Rustboro alright, and I\n"
+	.string "was on my way back to Slateport…\p"
+	.string "But now the bridge is broken!\p"
+	.string "How am I going to get back?$"

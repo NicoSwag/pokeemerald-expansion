@@ -6,16 +6,14 @@ LittlerootTown_NeighborsHousr_EventScript_Woman::
 	end
 
 LittlerootTown_NeighborsHousr_Text_Woman:
-	.string "Have you heard of SKY FRAGMENTS?\n"
+	.string "Have you heard of Sky Fragments?\n"
 	.string "They're all the rage, I tell you!\p"
 	.string "Mysterious shards are falling from the\n"
-	.string "sky all throughout HOENN, and no one\l"
+	.string "sky all throughout Hoenn, and no one\l"
 	.string "knows why!\p"
 	.string "I bet that, if you really looked, you\n"
 	.string "could find one in each area.\p"
-	.string "Apparently, TRAINERS are being asked to\n"
+	.string "Apparently, Trainers are being asked to\n"
 	.string "turn them in for a reward.\p"
 	.string "Me, I couldn't care less. They're too\n"
-	.string "pretty to get rid of!\p"
-	.string "But hey, if you find one, do whatever you\n"
-	.string "want with it.$"
+	.string "pretty to get rid of!$"

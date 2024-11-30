@@ -59,9 +59,12 @@ LittlerootTown_MaysHouse_2F_EventScript_WallClock::
 	goto PlayersHouse_2F_EventScript_WallClock
 	end
 
+
 PlayersHouse_2F_EventScript_WallClock::
 	goto_if_set FLAG_SET_WALL_CLOCK, PlayersHouse_2F_EventScript_CheckWallClock
 	msgbox PlayersHouse_2F_Text_ClockIsStopped, MSGBOX_DEFAULT
+	call PlayersHouse_2F_EventScript_SetWallClock
+	delay 30
 	setvar VAR_LITTLEROOT_INTRO_STATE, 6
 	setflag FLAG_SET_WALL_CLOCK
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1
@@ -73,7 +76,6 @@ PlayersHouse_2F_EventScript_WallClock::
 	removeobject VAR_0x8008
 	releaseall
 	end
-
 PlayersHouse_2F_EventScript_MomComesUpstairsMale::
 	setvar VAR_0x8008, LOCALID_MOM_2F
 	speakername Common_Name_Mom
@@ -223,6 +225,8 @@ PlayersHouse_1F_EventScript_WatchGymBroadcast::
 	msgbox PlayersHouse_1F_Text_ReportFromPetalburgGym, MSGBOX_DEFAULT
 	speakername Common_Name_Dad
 	msgbox PlayersHouse_1F_Text_ReportFromPetalburgDad, MSGBOX_DEFAULT
+	speakername Common_Name_Interviewer
+	msgbox PlayersHouse_1F_Text_Cable, MSGBOX_DEFAULT
 	fadedefaultbgm
 	special TurnOffTVScreen
 	setflag FLAG_SYS_TV_HOME
@@ -231,6 +235,10 @@ PlayersHouse_1F_EventScript_WatchGymBroadcast::
 	
 Common_Name_Interviewer:
 	.string "Interviewer$"
+
+PlayersHouse_1F_Text_Cable:
+	.string "Wait, don't step on the ca-$"
+
 
 Common_Name_Dad:
 	.string "Dad$"

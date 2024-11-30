@@ -237,7 +237,6 @@ LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayEast:
 
 RivalsHouse_2F_EventScript_Rival::
 	lockall
-	goto_if_set FLAG_MET_RIVAL_LILYCOVE, RivalsHouse_2F_EventScript_RivalPostLilycove
 	checkplayergender
 	goto_if_eq VAR_RESULT, MALE, RivalsHouse_2F_EventScript_May
 	goto_if_eq VAR_RESULT, FEMALE, RivalsHouse_2F_EventScript_Brendan
@@ -311,22 +310,28 @@ LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC::
 	end
 
 RivalsHouse_2F_Text_MayWhoAreYou:
-	.string "Huh?\n"
 	.string "Who… Who are you?\p"
 	.string "… … … … … … … …\n"
 	.string "… … … … … … … …\p"
-	.string "Oh, you're {PLAYER}{KUN}.\n"
-	.string "Was expecting someone taller.\p"
-	.string "Name's MAY.\n"
-	.string "Nice to meet you, I guess.\p"
+	.string "Oh, you're {PLAYER}{KUN}.\p"
+	.string "So you're the new arrival everyone's\n"
+	.string "Talking about.\p"
+	.string "Nice to meet you, then.\n"
+	.string "Name's {RIVAL}.\p"
 	.string "I heard about you, {PLAYER}{KUN}, from\n"
-	.string "my dad, PROF. BIRCH.\p"
-	.string "I was hoping that you would be nice,\n"
-	.string "{PLAYER}{KUN}, and that we could be friends.\p"
-	.string "Doesn't seem to be the case, though.\n"
-	.string "What, you say I just met you?\p"
-	.string "Yeah, whatever. \p"
-	.string "Oh, yeah, I forgot.\p"
+	.string "my dad, Prof. Birch.\p"
+	.string "Truth to be told, {PLAYER}{KUN}, I'm not\n"
+	.string "sure why you and your family moved here.\p"
+	.string "This place is a bore.\p"
+	.string "In fact, I'm about to start on my Pokémon\n"
+	.string "journey across the region.\p"
+	.string "…You don't suppose your family would let you\n"
+	.string "string along with me?\p"
+	.string "I could use a f-…\n"
+	.string "Rival.\p"
+	.string "I could use a rival to motivate me to get\n"
+	.string "stronger.\p"
+	.string "…Oh, yeah, I forgot.\p"
 	.string "I was supposed to go help Dad catch\n"
 	.string "some wild POKéMON!\p"
 	.string "{PLAYER}{KUN}, catch ya later, huh?$"
@@ -336,31 +341,38 @@ RivalsHouse_2F_Text_MayGettingReady:
 	.string "Items ready, and…$"
 
 RivalsHouse_2F_Text_BrendanWhoAreYou:
-	.string "Huh?\n"
 	.string "Who… Who are you?\p"
 	.string "… … … … … … … …\n"
 	.string "… … … … … … … …\p"
-	.string "Oh, you're {PLAYER}{KUN}.\n"
-	.string "Was expecting someone taller.\p"
-	.string "Name's BRENDAN.\n"
-	.string "Nice to meet you, I guess.\p"
+	.string "Oh, you're {PLAYER}{KUN}.\p"
+	.string "So you're the new arrival everyone's\n"
+	.string "Talking about.\p"
+	.string "Nice to meet you, then.\n"
+	.string "Name's {RIVAL}.\p"
 	.string "I heard about you, {PLAYER}{KUN}, from\n"
-	.string "my dad, PROF. BIRCH.\p"
-	.string "I was hoping that you would be nice,\n"
-	.string "{PLAYER}{KUN}, and that we could be friends.\p"
-	.string "Doesn't seem to be the case, though.\n"
-	.string "What, you say I just met you?\p"
-	.string "Yeah, whatever. \p"
-	.string "Oh, yeah, I forgot.\p"
+	.string "my dad, Prof. Birch.\p"
+	.string "Truth to be told, {PLAYER}{KUN}, I'm not\n"
+	.string "sure why you and your family moved here.\p"
+	.string "This place is a bore.\p"
+	.string "In fact, I'm about to start on my Pokémon\n"
+	.string "journey across the region.\p"
+	.string "…You don't suppose your family would let you\n"
+	.string "string along with me?\p"
+	.string "I could use a f-…\n"
+	.string "Rival.\p"
+	.string "I could use a rival to motivate me to get\n"
+	.string "stronger.\p"
+	.string "…Oh, yeah, I forgot.\p"
 	.string "I was supposed to go help Dad catch\n"
 	.string "some wild POKéMON!\p"
 	.string "{PLAYER}{KUN}, catch ya later, huh?$"
+
 RivalsHouse_2F_Text_BrendanGettingReady:
 	.string "POKéMON fully restored…\n"
 	.string "Items all packed, and…$"
 
 RivalsHouse_2F_Text_ItsRivalsPokeBall:
-	.string "It's {RIVAL}'s POKé BALL!\p"
+	.string "It's {RIVAL}'s Poké Ball!\p"
 	.string "Better leave it right where it is.$"
 
 RivalsHouse_2F_Text_MayJustCheckingMyPokedex:

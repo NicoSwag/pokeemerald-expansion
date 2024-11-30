@@ -1224,7 +1224,7 @@
 #define FLAG_ITEM_DRAGON_FANG                                           0x496 // Unused Flag
 #define FLAG_HIDE_FIRST_SHADOW                                       0x497 // Unused Flag
 #define FLAG_MT_KIRIKIRI_SIDE_FRAGMENT                                          0x498 // Unused Flag
-#define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
+#define FLAG_ITEM_ROUTE_102_NUGGET                                           0x499 // Unused Flag
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
 #define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
 #define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag

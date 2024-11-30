@@ -19323,6 +19323,8 @@ static const u16 sTimburrTeachableLearnset[] = {
     MOVE_BULLDOZE,
     MOVE_RETURN,
     MOVE_ROCK_CLIMB,
+    MOVE_TRAILBLAZE,
+    MOVE_CUT,
     MOVE_UNAVAILABLE,
 };
 

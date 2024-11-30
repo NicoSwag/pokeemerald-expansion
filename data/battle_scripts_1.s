@@ -2897,6 +2897,7 @@ BattleScript_HitFromCritCalc::
 BattleScript_HitFromAtkAnimation::
 	call BattleScript_Hit_RetFromAtkAnimation
 BattleScript_TryFaintMon::
+
 	tryfaintmon BS_TARGET
 BattleScript_MoveEnd::
 	moveendall
@@ -7410,6 +7411,13 @@ BattleScript_DefrostedViaFireMove::
 	updatestatusicon BS_TARGET
 	return
 
+BattleScript_AwakenedByAttack::
+	printstring STRINGID_PKMNWOKEUPINSHOCK
+	waitmessage B_WAIT_TIME_LONG
+	updatestatusicon BS_TARGET
+	return
+
+
 BattleScript_FrostbiteHealedViaFireMove::
 	printstring STRINGID_PKMNFROSTBITEHEALED
 	waitmessage B_WAIT_TIME_LONG
@@ -8265,6 +8273,14 @@ BattleScript_RuinAbilityActivates::
 	printstring STRINGID_ABILITYWEAKENEDSURROUNDINGMONSSTAT
 	waitmessage B_WAIT_TIME_LONG
 	end3
+
+BattleScript_DampActivates::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_ABILITYWEAKENEDFIREMOVES
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
+
 
 BattleScript_SupremeOverlordActivates::
 	pause B_WAIT_TIME_SHORT

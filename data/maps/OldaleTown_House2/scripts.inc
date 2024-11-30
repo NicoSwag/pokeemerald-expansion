@@ -17,11 +17,12 @@ OldaleTown_House2_EventScript_SawGhost::
 	setflag FLAG_RECEIVED_SPELL_TAG
 OldaleTown_House2_EventScript_SpellTag::
 	msgbox OldaleTown_House2_Text_SpellTag, MSGBOX_NPC
+	end
 
 OldaleTown_House2_Text_PokemonLevelUp:
 	.string "I swear! I saw it!\n"
-	.string "A ghost, in MT. KIRIKIRI!\p"
-	.string "And not just a Ghost-type POKéMON!\n"
+	.string "A ghost, in Mt. Kirikiri!\p"
+	.string "And not just a Ghost-type Pokémon!\n"
 	.string "A human ghost!$"
 
 OldaleTown_House2_Text_YoullGoFurtherWithStrongPokemon:
@@ -42,10 +43,8 @@ OldaleTown_House2_Text_IKnewIt:
 	.string "Here, this might be useful.$"
 
 OldaleTown_House2_Text_SpellTag:
-	.string "What I just gave you is a SPELL TAG.\p"
+	.string "What I just gave you is a Speall Tag.\p"
 	.string "It increases the power of Ghost-type\n"
 	.string "moves.\p"
-	.string "Ghost POKéMON are weak to other Ghost\n"
-	.string "POKéMON you see.\p"
-	.string "Perhaps the same is true for human spirits?\n"
-	.string "Further investigation is needed.$"
+	.string "Ghost Pokémon are weak to other Ghost\n"
+	.string "Pokémon, you see.$"

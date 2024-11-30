@@ -777,7 +777,6 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	waitfanfare
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	speakername Common_Name_Mom
-	msgbox LittlerootTown_Text_ExplainRunningShoes, MSGBOX_DEFAULT
 	msgbox LittlerootTown_Text_ComeHomeIfAnythingHappens, MSGBOX_DEFAULT
 	closemessage
 	delay 30
@@ -787,12 +786,13 @@ LittlerootTown_Text_OurNewHomeLetsGoInside:
 	.string "{PLAYER}, you're home, honey!\p"
 	.string "I'm sorry for making you get here by\n"
 	.string "yourself.\p"
-	.string "It's really hard to reserve a spot on\n"
-	.string "one of those ships, and dad had to rush\l"
-	.string "here for an urgent League meeting.\p"
-	.string "Look at the bright side: by the time\n"
-	.string "you got here, we're already almost\l"
-	.string "finished with moving in!\p"
+	.string "Dad had to rush here for an important\n"
+	.string "League meeting, and I had to come and\l"
+	.string "deal with the moving.\p"
+	.string "And it's so hard to get tickets for those\n"
+	.string "cruise ships!\p"
+	.string "But look at the bright side: we're already\n"
+	.string "almost finished with moving in!\p"
 	.string "Well, anyway this is Littleroot Town.\p"
 	.string "How do you like it?\n"
 	.string "This is our new home!\p"
@@ -806,18 +806,23 @@ LittlerootTown_Text_WaitPlayer:
 
 LittlerootTown_Text_WearTheseRunningShoes:
 	.string "{PLAYER}! {PLAYER}! Did you\n"
-	.string "introduce yourself to PROF. BIRCH?\p"
-	.string "Oh! What an adorable POKéMON!\n"
-	.string "You got it from PROF. BIRCH. How nice!\p"
+	.string "introduce yourself to Prof. Birch?\p"
+	.string "Oh! You got a Pokémon!\n"
+	.string "Did you get it from Prof. Birch?\p"
+	.string "… … …\p"
+	.string "Oh, I see how it is.\p"
+	.string "Just got here and already itching to go on\n"
+	.string "an adventure, aren't you?\p"
 	.string "You're your father's child, all right.\n"
-	.string "You look good together with POKéMON!\p"
-	.string "Here, honey! If you're going out on an\n"
-	.string "adventure, wear these RUNNING SHOES.\p"
+	.string "I suppose that's one way to acclimate yourself\n"
+	.string "to a new region.\p"
+	.string "…Well, take these, then! If you're going out\n"
+	.string "on an adventure, wear these Running Shoes.\p"
 	.string "They'll put a zip in your step!$"
 
 LittlerootTown_Text_SwitchShoesWithRunningShoes:
 	.string "{PLAYER} switched shoes with the\n"
-	.string "RUNNING SHOES.$"
+	.string "Running Shoes.$"
 
 LittlerootTown_Text_ExplainRunningShoes:
 	.string "{PLAYER}, those shoes came with\n"
@@ -831,51 +836,49 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens:
 	.string "… … … … … … … …\n"
 	.string "… … … … … … … …\p"
 	.string "To think that you have your very own\n"
-	.string "POKéMON now…\l"
+	.string "Pokémon now…\l"
 	.string "Your father will be overjoyed.\p"
 	.string "…But please be careful.\n"
 	.string "If anything happens, you can come home.\p"
 	.string "Go on, go get them, honey!$"
 
 LittlerootTown_Text_CanUsePCToStoreItems:
-	.string "Did you know that with new technology\n"
-	.string "anybody can make their own fan game?\p"
-	.string "I'm so glad that companies don't employ\n"
-	.string "unethical copyright practices.\p"
-	.string "Right?$"
+	.string "Technology is incredible!\p"
+	.string "Thanks to the PC system, you can\n"
+	.string "encode Pokémon as data and store them\l"
+	.string "in a computer server.\p"
+	.string "Being made out of data…\n"
+	.string "I wonder what that feels like.$"
 
 LittlerootTown_Text_BirchSpendsDaysInLab:
-	.string "The POKEMON LEAGUE has branches in\n"
-	.string "many regions of the world, but it's\l"
-	.string "particularly unique in HOENN.\p"
-	.string "Here, trainers prefer to battle it out\n"
-	.string "with two-on-two fights instead of the\l"
-	.string "usual one-on-one.\p"
-	.string "Why exactly? No idea! I'm not much of a\n"
-	.string "trainer myself…$"
+	.string "The Pokémon League is so cool.\p"
+	.string "They regulate Pokémon fights, and\n"
+	.string "work hard to help the people of Hoenn.\p"
+	.string "And have you seen the Champion?\n"
+	.string "He's so dreamy…$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "Um, um, um!\p"
 	.string "If you go outside and go in the grass,\n"
-	.string "wild POKéMON will jump out!$"
+	.string "wild Pokémon will jump out!$"
 
 LittlerootTown_Text_DangerousIfYouDontHavePokemon:
 	.string "It's dangerous if you don't have\n"
-	.string "your own POKéMON.$"
+	.string "your own Pokémon.$"
 
 LittlerootTown_Text_CanYouGoSeeWhatsHappening:
 	.string "Um, hi!\p"
-	.string "There are scary POKéMON outside!\n"
+	.string "There are scary Pokémon outside!\n"
 	.string "I can hear their cries!\p"
 	.string "I want to go see what's going on,\n"
-	.string "but I don't have any POKéMON…\p"
+	.string "but I don't have any Pokémon\p"
 	.string "Can you go see what's happening\n"
 	.string "for me?$"
 
 LittlerootTown_Text_YouSavedBirch:
-	.string "POKéMON that live in towns are\n"
+	.string "Pokémon that live in towns are\n"
 	.string "peaceful, but you have to be\l"
-	.string "careful when venturing out!$"
+	.string "careful when going into tall grass!$"
 
 LittlerootTown_Text_Sunflora:
 	.string "A perfectly normal flower.\n"
@@ -883,20 +886,20 @@ LittlerootTown_Text_Sunflora:
 
 
 LittlerootTown_Text_GoodLuckCatchingPokemon:
-	.string "Are you going to catch POKéMON?\n"
+	.string "Are you going to catch Pokémon?\n"
 	.string "Good luck!$"
 
 LittlerootTown_Text_TownSign:
-	.string "LITTLEROOT TOWN$"
+	.string "Littleroot Town$"
 
 LittlerootTown_Text_ProfBirchsLab:
-	.string "PROF. BIRCH'S POKéMON LAB$"
+	.string "Prof. Birch's Pokémon Lab$"
 
 LittlerootTown_Text_PlayersHouse:
-	.string "{PLAYER}'s HOUSE$"
+	.string "{PLAYER}'s House$"
 
 LittlerootTown_Text_ProfBirchsHouse:
-	.string "PROF. BIRCH'S HOUSE$"
+	.string "Prof. Birch's House$"
 
 LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "Well, well, {PLAYER}{KUN}!\n"
@@ -910,7 +913,7 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "Let's go to my LAB.$"
 
 LittlerootTown_Text_Zigzagoon:
-	.string "ZIGZAGOON is holding something in\n"
+	.string "Zigzagoon is holding something in\n"
 	.string "its mouth.$"
 
 LittlerootTown_Text_ZigzagoonNoises:
@@ -928,16 +931,17 @@ LittlerootTown_Text_WalkingZigzagoon:
 	.string "…Or something.$"
 
 LittlerootTown_Text_CanYouTakeZigzagoon:
-	.string "Oh, hey, {PLAYER}{KUN}!\n"
+	.string "Oh, hey!\n"
+	.string "You're the new neighbor!\p"
 	.string "I have a favor to ask you.\p"
-	.string "You see, I have always wanted my dear\n"
-	.string "ZIGZAGOON to see the world.\p"
+	.string "You see, I have always wanted for my dear\n"
+	.string "Zigzagoon to see the world.\p"
 	.string "But, I'm afraid, I don't know much about\n"
-	.string "POKéMON battling.\p"
+	.string "Pokémon battling.\p"
 	.string "And you know just how dangerous it is, to\n"
 	.string "travel without knowing how to battle.\p"
-	.string "Anyway, I've heard that PROF. BIRCH\n"
-	.string "finally gave you a POKéMON…\p"
+	.string "Anyway, I've heard that Prof. Birch\n"
+	.string "gave you a Pokémon\p"
 	.string "Which means you're going to travel the\n"
 	.string "world, right?\p"
 	.string "If so, could you take my Zigzagoon with\n"
@@ -960,10 +964,6 @@ LittlerootTown_Text_ThankYouSoMuch:
 	.string "Ah! Thank you so much!$"
 
 
-LittlerootTown_Text_ZigzagoonQuest:
-	.string "Quest accepted:\n"
-	.string "Zigzagoon's day out!$"
-
 
 LittlerootTown_Text_ComeHereNow:
 	.string "Now…\n"
@@ -974,7 +974,7 @@ LittlerootTown_Text_ComeHereNow:
 LittlerootTown_Text_ThankYou:
 	.string "Again, thank you so much.\p"
 	.string "You can tell it's my Zigzagoon because I\n"
-	.string "put him in a special POKé BALL.\p"
+	.string "put him in a special Poké Ball.\p"
 	.string "Let me know how he behaves, ok?$"
 
 
@@ -1071,3 +1071,13 @@ LittlerootTown_EventScript_Text_StrongMove:
 LittlerootTown_EventScript_Text_HowIsObstagoon:
 	.string "Hi, {PLAYER}{KUN}!\n"
 	.string "How is my POKéMON doing?$"
+
+
+LittlerootTown_EventScript_PichuNoises::
+	playmoncry SPECIES_PICHU, CRY_MODE_NORMAL
+	msgbox LittlerootTown_Text_PichuNoises, MSGBOX_NPC
+	end
+
+
+LittlerootTown_Text_PichuNoises:
+	.string "Chu!$"

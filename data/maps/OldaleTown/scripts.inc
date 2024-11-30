@@ -48,7 +48,12 @@ OldaleTown_EventScript_HelpingLedyba::
 	end
 	
 OldaleTown_EventScript_Girl2::
+	goto_if_set FLAG_UTILITY_UMBRELLA, OldaleTown_EventScript_Girl2_GaveUmbrella
 	msgbox OldaleTown_Text_Girl2, MSGBOX_NPC
+	setflag FLAG_UTILITY_UMBRELLA
+	giveitem ITEM_UTILITY_UMBRELLA
+	OldaleTown_EventScript_Girl2_GaveUmbrella::
+	msgbox OldaleTown_Text_Umbrella, MSGBOX_NPC
 	end
 
 OldaleTown_EventScript_LedybaGetUp::	
@@ -83,7 +88,7 @@ OldaleTown_EventScript_TownSign::
 	end
 
 OldaleTown_EventScript_Girl::
-	msgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC
+	msgbox OldaleTown_Text_HeadingOut, MSGBOX_NPC
 	end
 
 OldaleTown_EventScript_MartEmployee::
@@ -446,36 +451,26 @@ OldaleTown_EventScript_FootprintsManDown::
 
 OldaleTown_Movement_FootprintsRight::
 	walk_right
-	walk_down
-	walk_down
 	walk_right
 	walk_right
-	walk_down
 	walk_right
 	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
+	walk_right
+	walk_right
+	walk_right
+
 	step_end
 
 OldaleTown_Movement_FootprintsDown::
 	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	step_end
 
 
@@ -506,20 +501,19 @@ OldaleTown_Text_SavingMyProgress:
 
 OldaleTown_Text_IWorkAtPokemonMart:
 	.string "Hi!\n"
-	.string "I work at a POKéMON MART.$"
+	.string "I work at a Pokémon Mart.$"
 
 OldaleTown_Text_ThisIsAPokemonMart:
-	.string "This is a POKéMON CENTER.\n"
-	.string "The POKéMON MART is inside it!\p"
-	.string "We sell a variety of goods including\n"
-	.string "POKé BALLS for catching POKéMON.\p"
+	.string "This is a Pokémon Center.\n"
+	.string "The Pokémon Mart is inside it!\p"
+	.string "We sell a variety of goods.\p"
 	.string "Here, I'd like you to have this as\n"
 	.string "a promotional item.$"
 
 OldaleTown_Text_PotionExplanation:
-	.string "Running away from wild POKéMON can be\n"
+	.string "Running away from wild Pokémon can be\n"
 	.string "more difficult than expected.\p"
-	.string "With a POKé DOLL, you can disengage the\n"
+	.string "With a Poké Doll, you can disengage the\n"
 	.string "enemy without fail.\p"
 	.string "Prevention is the best medicine, after\n"
 	.string "all.$"
@@ -528,44 +522,44 @@ OldaleTown_Text_WaitDontComeInHere:
 	.string "Oh, hello!\n"
 	.string "Please don't come in here.\p"
 	.string "I just discovered the footprints of\n"
-	.string "a rare POKéMON!\p"
+	.string "a rare Pokémon!\p"
 	.string "Wait until I finish sketching\n"
 	.string "them, okay?$"
 
 OldaleTown_Text_DiscoveredFootprints:
 	.string "I just discovered the footprints of\n"
-	.string "a rare POKéMON!\p"
+	.string "a rare Pokémon!\p"
 	.string "Wait until I finish sketching\n"
 	.string "them, okay?$"
 
 OldaleTown_Text_FinishedSketchingFootprints:
-	.string "Thank you for taking care of EEVEE!\p"
+	.string "Thank you for taking care of Eevee!\p"
 	.string "I'm sure it'll be very happy in your\n"
 	.string "care.$"
 
 OldaleTown_Text_GiveEevee:
 	.string "I was sketching the footprints of\n"
-	.string "a rare POKéMON, but…\p"
+	.string "a rare Pokémon, but…\p"
 	.string "You can imagine my surprise when\n"
-	.string "said POKéMON jumped out of the\l"
+	.string "said Pokémon jumped out of the\l"
 	.string "grass and approached me!\p"
 	.string "Now the little fellow won't leave\n"
-	.string "me alone, but I'm hardly a trainer…\p"
+	.string "me alone, but I'm hardly a Trainer…\p"
 	.string "But you, you look the part!\p"
 	.string "Please, do me a favor and accept it!$"
 
 OldaleTown_Text_MayLetsGoBack:
 	.string "I'm heading back to my dad's\n"
-	.string "LAB now.\l"
+	.string "Lab now.\l"
 	.string "{PLAYER}, hurry up!$"
 
 OldaleTown_Text_BrendanLetsGoBack:
 	.string "I'm heading back to my dad's\n"
-	.string "LAB now.\l"
+	.string "Lab now.\l"
 	.string "{PLAYER}, hurry up!$"
 
 OldaleTown_Text_TownSign:
-	.string "OLDALE TOWN$"
+	.string "Oldale Town$"
 
 OldaleTown_Text_WantToHelpLedyba:
 	.string "This Ledyba looks like it's offering\n"
@@ -575,21 +569,35 @@ OldaleTown_Text_YesOrNoLedyba:
 	.string "Do you grab its hand!$"
 
 OldaleTown_Text_LedybaPresent:
-	.string "LEDYBA looks happy.\p"
+	.string "Ledyba looks happy.\p"
 	.string "Oh, but what's this?\n"
-	.string "It seems like LEDYBA is offering you\l"
+	.string "It seems like Ledyba is offering you\l"
 	.string "a gift!$"
 
 OldaleTown_Text_LedybaHello:
-	.string "LEDYBA is waving to you with all of\n"
+	.string "Ledyba is waving to you with all of\n"
 	.string "its hands.$"
 
 OldaleTown_Text_Girl2:
+	.string "It rains a lot around here.\n"
+	.string "Fire-type moves get weaker in rain.\p"
+	.string "But don't worry!\n"
+	.string "My umbrellas can help.$"
+
+OldaleTown_Text_Umbrella:
+	.string "A Utility Umbrella can protect\n"
+	.string "your Pokémon from the effects of\l"
+	.string "the rain.\p"
+	.string "It can double as a parasol for the sun,\n"
+	.string "too!$"
+
+
+OldaleTown_Text_HeadingOut:
 	.string "Heading out?\n"
 	.string "Here's something you should know.\p"
-	.string "Each area has a LEADER.\p"
+	.string "Each area has a Leader.\p"
 	.string "If you leave an area without defeating\n"
-	.string "its LEADER, you will be rematched by\l"
+	.string "its Leader, you will be rematched by\l"
 	.string "Trainers, even if you've beat them\l"
 	.string "before.\p"
 	.string "Also, just between me and you…\p"

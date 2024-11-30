@@ -317,8 +317,9 @@
 #define MOVEEND_SAME_MOVE_TURNS                   36
 #define MOVEEND_SET_EVOLUTION_TRACKER             37
 #define MOVEEND_SINGER                            38
-#define MOVEEND_CLEAR_BITS                        39
-#define MOVEEND_COUNT                             40
+#define MOVEEND_AWAKE                            39
+#define MOVEEND_CLEAR_BITS                        40
+#define MOVEEND_COUNT                             41
 
 // switch cases
 #define B_SWITCH_NORMAL     0

@@ -1195,13 +1195,7 @@ static void TilesetAnim_Rustboro(u16 timer)
 
 static void TilesetAnim_Petalburg(u16 timer)
 {
-     if (timer % 4 == 0){
-        QueueAnimTiles_Petalburg_Water_Horizontal(timer / 4);
-        QueueAnimTiles_Petalburg_Water_Vertical(timer / 4);
-     }
-     if (timer % 32 == 0){
-        QueueAnimTiles_Petalburg_Water_Overlay(timer / 32);
-     }
+
 }
 
 

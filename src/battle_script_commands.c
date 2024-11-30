@@ -1925,10 +1925,6 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     // Target's ability
     switch (defAbility)
     {
-    case ABILITY_SNOW_CLOAK:
-        if (WEATHER_HAS_EFFECT && (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)))
-            calc = (calc * 80) / 100; // 1.2 snow cloak loss
-        break;
     case ABILITY_TANGLED_FEET:
         if (gBattleMons[battlerDef].status2 & STATUS2_CONFUSION)
             calc = (calc * 50) / 100; // 1.5 tangled feet loss
@@ -6032,6 +6028,26 @@ static void Cmd_moveend(void)
             }
             gBattleScripting.moveendState++;
             break;
+        case MOVEEND_AWAKE:
+        if (gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP
+                && IsBattlerAlive(gBattlerTarget)
+                && gBattlerAttacker != gBattlerTarget
+                && gMovesInfo[gCurrentMove].power > 0
+                && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+                && !(gStatuses4[gBattlerTarget] & STATUS4_RESTING)
+                && GetBattlerAbility(gBattlerAttacker) != ABILITY_COMATOSE)
+            {
+                gBattleMons[gBattlerTarget].status1 &= ~STATUS1_SLEEP;
+                gBattleMons[gBattlerTarget].status2 &= ~STATUS2_NIGHTMARE;
+                gStatuses4[gBattlerTarget] &= ~STATUS4_RESTING;
+                BtlController_EmitSetMonData(gBattlerTarget, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].status1), &gBattleMons[gBattlerTarget].status1);
+                MarkBattlerForControllerExec(gBattlerTarget);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AwakenedByAttack;
+                effect = TRUE;
+            }
+        gBattleScripting.moveendState++;
+        break;
         case MOVEEND_RECOIL:
             if (gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
             {
@@ -12008,7 +12024,7 @@ static void Cmd_trysetrest(void)
 
     const u8 *failInstr = cmd->failInstr;
     gBattlerTarget = gBattlerAttacker;
-    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP * (-0.75);
+    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP * (-1);
 
     if (gBattleMons[gBattlerTarget].hp == gBattleMons[gBattlerTarget].maxHP)
     {
@@ -12030,6 +12046,7 @@ static void Cmd_trysetrest(void)
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_REST;
 
         gBattleMons[gBattlerTarget].status1 = STATUS1_SLEEP_TURN(3);
+        gStatuses4[gBattlerTarget] |= STATUS4_RESTING;
         BtlController_EmitSetMonData(gBattlerTarget, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].status1), &gBattleMons[gBattlerTarget].status1);
         MarkBattlerForControllerExec(gBattlerTarget);
         gBattlescriptCurrInstr = cmd->nextInstr;

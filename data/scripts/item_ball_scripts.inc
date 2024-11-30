@@ -1,7 +1,17 @@
 Route102_EventScript_ItemPotion::
 	finditem ITEM_HEART_SCALE
 	end
+
+Route102_EventScript_ItemNugget::
+	finditem ITEM_NUGGET
+	end
 	
+	
+PilgrimPassage_EventScript_IronBall::
+	finditem ITEM_IRON_BALL
+	end
+
+
 LowerRoute115_EventScript_SkyFragment::
 	finditem ITEM_HEART_SCALE
 	end
