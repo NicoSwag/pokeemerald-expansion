@@ -12,13 +12,12 @@ InsideOfTruck_OnFrame:
 
 InsideOfTruck_EventScript_Cutscene::
 	lock
-	playse SE_TRUCK_MOVE
-	waitse
 	playse SE_TRUCK_STOP
 	waitse
 	playse SE_TRUCK_UNLOAD
 	waitse
 	msgbox InsideOfTruck_Text_Destination, MSGBOX_DEFAULT
+	setvar VAR_GAME_INTRO_STATE, 4
 	release
 	end
 

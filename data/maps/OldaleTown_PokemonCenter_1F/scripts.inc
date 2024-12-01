@@ -88,7 +88,7 @@ OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable::
 	end
 
 OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
-	.string "When you heal your Pokémon you\n"
+	.string "When you cure your Pokémon, you\n"
 	.string "also get some healing items for free.\p"
 	.string "I've heard that you can get more by\n"
 	.string "winning Badges.$"
