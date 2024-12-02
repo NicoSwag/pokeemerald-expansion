@@ -75,9 +75,8 @@ EventScript_PkmnCenterNurse_GiveHealingItems::
 	removeallitem ITEM_CHOPLE_BERRY
 	msgbox gText_HeresYourHealingItems, MSGBOX_DEFAULT
 	goto_if_set FLAG_BADGE01_GET, EventScript_PkmnCenterNurse_GiveHealingItemsStoneBadge
-	additem ITEM_LAVA_COOKIE, 5
-	additem ITEM_POTION, 10
-	additem ITEM_REVIVE, 1
+	additem ITEM_LAVA_COOKIE, 1
+	additem ITEM_POTION, 6
 	EventScript_PkmnCenterNurse_DoneGivingMainItems::
 	checkitem ITEM_ORAN_VOUCHER
 	call_if_eq VAR_RESULT, TRUE, EventScript_PkmnCenterNurse_GiveOranBerries

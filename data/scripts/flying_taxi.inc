@@ -51,7 +51,7 @@ gText_FlyingTaxi_Explanation:
     .string "Thanks to our Pelipper Taxi, you can\n"
     .string "fly to any city you've visited before.\p"
     .string "For a small fee, of course.\p"
-    .string "Oh and don't worry about our PELIPPER.\n"
+    .string "Oh and don't worry about our Pelipper.\n"
     .string "They come back.\p"
     .string "Now then…$"
 

@@ -146,6 +146,7 @@ Debug_EventScript_Script_2::
 	end
 
 Debug_EventScript_Script_3::
+	trainerbattle_two_trainers TRAINER_CALVIN_1, Route102_Text_CalvinDefeated, TRAINER_RICK, Route102_Text_RickDefeated
 	end
 
 

@@ -294,7 +294,7 @@ PlayersHouse_2F_Text_Notebook:
 	.string "Adventure Rule No. 1\n"
 	.string "Open the Menu with Start.\p"
 	.string "Adventure Rule No. 2\n"
-	.string "Record your progress at Save\n"
+	.string "Record your progress at Save\l"
 	.string "Statues.\p"
 	.string "The remaining pages are blank…$"
 

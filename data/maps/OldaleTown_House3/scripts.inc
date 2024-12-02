@@ -11,8 +11,8 @@ OldaleTown_House3_EventScript_Mom::
 
 OldaleTown_House3_Text_Volcano:
 	.string "Did you know?\p"
-	.string "A long time ago, the mountain north of here,\n"
-	.string "Mt. Kirikiri, was a volcano!\p"
+	.string "A long time ago, the mountain north of\n"
+	.string "here, Mt. Kirikiri, was a volcano!\p"
 	.string "That's why there's all sorts of rocks\n"
 	.string "scattered around here.\p"
 	.string "But now it went to sleep, and the only\n"

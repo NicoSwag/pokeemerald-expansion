@@ -674,6 +674,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Pikachu::
 	faceplayer
 	playmoncry SPECIES_PIKACHU, CRY_MODE_NORMAL
 	msgbox Text_LittlerootTown_ProfessorBirchsLab_Pikachu, MSGBOX_DEFAULT
+	closemessage
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_Options::
@@ -1008,7 +1009,7 @@ LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon:
 	.string "nickname to that {STR_VAR_1}?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival:
-	.string "If you work at Pokémon and gain experience,\n"
+	.string "If you work hard and gain experience,\n"
 	.string "I think you'll make an extremely good\l"
 	.string "Trainer.\p"
 	.string "My kid, {RIVAL}, is also studying\n"
@@ -1019,7 +1020,7 @@ LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival:
 LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou:
 	.string "Great!\n"
 	.string "{RIVAL} should be happy, too.\p"
-	.string "{RIVAL} always wanted a friend their age.\p"
+	.string "Theyalways wanted a friend their age.\p"
 	.string "Get {RIVAL} to teach you what it\n"
 	.string "means to be a Trainer.$"
 
@@ -1028,12 +1029,8 @@ LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay:
 	.string "You should go meet my kid.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
-	.string "{RIVAL}?\n"
-	.string "Gone home, I think.\p"
-	.string "Or maybe that kid's scrabbling around\n"
-	.string "in tall grass again somewhere…\p"
-	.string "If you or your Pokémon get tired,\n"
-	.string "you should get some rest at home.$"
+	.string "{RIVAL} is out right now.\n"
+	.string "You should go and meet them!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "Oh, hi, {PLAYER}{KUN}!\p"

@@ -109,11 +109,14 @@ Slateport_Cutscene_DrakeCont::
 	speakername Common_Name_Drake
 	msgbox SlateportCity_Text_JustAJoke, MSGBOX_DEFAULT
 	closemessage
+	playse SE_PIN
 	applymovement LOCALID_ENGINEER Common_Movement_QuestionMark
 	waitmovement 0
 	msgbox SlateportCity_Text_ThePresident, MSGBOX_DEFAULT
 	closemessage
 	speakername Common_Name_Drake
+	msgbox SlateportCity_Text_ScratchThat, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_DRAKE, Common_Movement_FaceLeft
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
@@ -123,7 +126,6 @@ Slateport_Cutscene_DrakeCont::
 	closemessage
 	applymovement LOCALID_ENGINEER, Slateport_Movement_EngineerToTruck
 	applymovement OBJ_EVENT_ID_PLAYER, Slateport_Movement_PlayerToTruck
-	applymovement LOCALID_DRAKE, Common_Movement_FaceUp
 	waitmovement 0
 	setflag FLAG_HIDE_SLATEPORT_CUTSCENE
 	special SetUpTruckSequence
@@ -225,7 +227,7 @@ SlateportCity_Text_ThePresident:
 	.string "Are you referring to Mr. Stone?\p"
 	.string "I'm afraid I can't really do that, sir.\p"
 	.string "But if you wish, I could pass on the\n"
-	.string "message to a subordinate of his."
+	.string "message to a subordinate of his.$"
 
 
 SlateportCity_Text_ScratchThat:

@@ -543,6 +543,7 @@ EventScript_SaveTotem::
 	switch VAR_RESULT
 	case NO, EventScript_SaveTotem_End
 	savegame
+	waitstate
 	closemessage
 	releaseall
 	end
@@ -789,14 +790,14 @@ LittlerootTown_Text_OurNewHomeLetsGoInside:
 	.string "Dad had to rush here for an important\n"
 	.string "League meeting, and I had to come and\l"
 	.string "deal with the moving.\p"
-	.string "And it's so hard to get tickets for those\n"
-	.string "cruise ships!\p"
+	.string "And it's so hard to get tickets for\n"
+	.string "those cruise ships!\p"
 	.string "But look at the bright side: we're already\n"
 	.string "almost finished with moving in!\p"
 	.string "Well, anyway this is Littleroot Town.\p"
 	.string "How do you like it?\n"
 	.string "This is our new home!\p"
-	.string "It seems to be a nice place to live\n"
+	.string "It seems to be a nice place to live in,\n"
 	.string "don't you think?\p"
 	.string "And, you get your own room, {PLAYER}!\n"
 	.string "Let's go inside.$"
@@ -871,7 +872,7 @@ LittlerootTown_Text_CanYouGoSeeWhatsHappening:
 	.string "There are scary Pokémon outside!\n"
 	.string "I can hear their cries!\p"
 	.string "I want to go see what's going on,\n"
-	.string "but I don't have any Pokémon\p"
+	.string "but I don't have any Pokémon.\p"
 	.string "Can you go see what's happening\n"
 	.string "for me?$"
 

@@ -373,8 +373,7 @@ PlayersHouse_1F_Text_Vigoroth2:
 
 PlayersHouse_1F_Text_ReportFromPetalburgGym:
 	.string "…And lastly, any words of advice\n"
-	.string "to aspiring young\l"
-	.string "Trainersr?$"
+	.string "to aspiring young Trainers?"
 
 PlayersHouse_1F_Text_ReportFromPetalburgDad:
 	.string "Well, as I always say…\p"
