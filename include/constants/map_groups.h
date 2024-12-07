@@ -95,6 +95,9 @@
 #define MAP_OLDALE_TOWN_HOUSE3            (5 | (2 << 8))
 #define MAP_OLDALE_RUINS_ENTRANCE_1       (6 | (2 << 8))
 #define MAP_OLDALE_RUINS_ENTRANCE_2       (7 | (2 << 8))
+#define MAP_OLDALE_TOWN_RUIN_HOUSE1       (8 | (2 << 8))
+#define MAP_OLDALE_TOWN_RUIN_HOUSE2       (9 | (2 << 8))
+#define MAP_OLDALE_TOWN_RUINS_HOUSE3      (10 | (2 << 8))
 
 // gMapGroup_IndoorDewford
 #define MAP_DEWFORD_TOWN_HOUSE1            (0 | (3 << 8))
@@ -158,6 +161,7 @@
 #define MAP_PETALBURG_CITY_POKEMON_CENTER_2F (5 | (8 << 8))
 #define MAP_PETALBURG_CITY_MART              (6 | (8 << 8))
 #define MAP_PETALBURG_CITY_GYM_INTERIOR      (7 | (8 << 8))
+#define MAP_PETALBURG_CITY_HOUSE3            (8 | (8 << 8))
 
 // gMapGroup_IndoorSlateport
 #define MAP_SLATEPORT_CITY_STERNS_SHIPYARD_1F      (0 | (9 << 8))

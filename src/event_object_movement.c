@@ -546,6 +546,8 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_MINECART            0x1155
 #define OBJ_EVENT_PAL_TAG_MINECART_MAY            0x1156
 #define OBJ_EVENT_PAL_TAG_UMBRELLA_LADY            0x1157
+#define OBJ_EVENT_PAL_TAG_STARYU            0x1158
+#define OBJ_EVENT_PAL_TAG_SHIINOTIC            0x1159
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -631,6 +633,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Archie,              OBJ_EVENT_PAL_TAG_ARCHIE},
     {gObjectEventPal_Engineer,              OBJ_EVENT_PAL_TAG_ENGINEER},
     {gObjectEventPal_Umbrella_Lady,              OBJ_EVENT_PAL_TAG_UMBRELLA_LADY},
+    {gObjectEventPal_Staryu,              OBJ_EVENT_PAL_TAG_STARYU},
+    {gObjectEventPal_Shiinotic,              OBJ_EVENT_PAL_TAG_SHIINOTIC},
     {gObjectEventPal_Miner,              OBJ_EVENT_PAL_TAG_MINER},
     {gObjectEventPal_Sunflora,              OBJ_EVENT_PAL_TAG_SUNFLORA},
     {gObjectEventPal_Lotad,                 OBJ_EVENT_PAL_TAG_LOTAD},

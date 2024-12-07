@@ -164,32 +164,32 @@ Route103_Movement_North::
 	step_end
 
 Route103_EventScript_StartMayBattleTreecko::
-	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Magma1DefeatText, TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, PARTNER_MAY_ROUTE_103_TREECKO
+	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, TRAINER_ROUTE_103_MAGMAM, Magma2DefeatText, PARTNER_MAY_ROUTE_103_TREECKO
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartMayBattleTorchic::
-	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Magma1DefeatText, TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, PARTNER_MAY_ROUTE_103_TORCHIC
+	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, TRAINER_ROUTE_103_MAGMAM, Magma2DefeatText, PARTNER_MAY_ROUTE_103_TORCHIC
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartMayBattleMudkip::
-	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Magma1DefeatText, TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, PARTNER_MAY_ROUTE_103_MUDKIP
+	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, TRAINER_ROUTE_103_MAGMAM, Magma2DefeatText, PARTNER_MAY_ROUTE_103_MUDKIP
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartBrendanBattleTreecko::
-	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Magma1DefeatText, TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, PARTNER_BRENDAN_ROUTE_103_TREECKO
+	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, TRAINER_ROUTE_103_MAGMAM, Magma2DefeatText, PARTNER_BRENDAN_ROUTE_103_TREECKO
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_StartBrendanBattleTorchic::
-	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Magma1DefeatText, TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, PARTNER_BRENDAN_ROUTE_103_TORCHIC
+	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, TRAINER_ROUTE_103_MAGMAM, Magma2DefeatText, PARTNER_BRENDAN_ROUTE_103_TORCHIC
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_StartBrendanBattleMudkip::
-	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAM, Magma1DefeatText, TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, PARTNER_BRENDAN_ROUTE_103_MUDKIP
+	multi_fixed_2_vs_2 TRAINER_ROUTE_103_MAGMAF, Magma2DefeatText, TRAINER_ROUTE_103_MAGMAM, Magma2DefeatText, PARTNER_BRENDAN_ROUTE_103_MUDKIP
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
@@ -213,14 +213,13 @@ Route103_EventScript_AfterBrendanBattle::
 speakername Common_Name_Courtney
 	msgbox Route103_Text_Revenge, MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER Route103_Movement_Stepup
-	applymovement LOCALID_RIVAL Route103_Movement_Stepup
-	waitmovement 0
 	applymovement LOCALID_MAGMAM Route_103_Magmam_Exit
 	applymovement LOCALID_MAGMAF Route_103_Magmaf_Exit
 	waitmovement 0
 	playbgm MUS_ENCOUNTER_BRENDAN, FALSE
 	call Common_Set_Name_Rival
+	applymovement LOCALID_RIVAL, Common_Movement_FaceLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	msgbox Route103_Text_BrendanTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
@@ -234,7 +233,6 @@ Route103_Movement_Stepup::
 	step_end
 
 Route_103_Magmam_Exit::
-	walk_up
 	walk_left
 	walk_left
 	walk_left
@@ -248,7 +246,6 @@ Route_103_Magmam_Exit::
 	step_end
 
 Route_103_Magmaf_Exit::
-	walk_up
 	walk_right
 	walk_right
 	walk_right
@@ -361,12 +358,10 @@ Route103_Movement_WatchRivalExitFacingNorth:
 	step_end
 
 Route103_Movement_RivalExit1:
-	walk_right
-	walk_right
-	walk_right
 	walk_down
 	walk_down
 	walk_down
+	walk_right
 	walk_right
 	walk_down
 	walk_down
@@ -494,7 +489,8 @@ Route103_Text_MayLetsBattle:
 	.string "Oh, {PLAYER}{KUN}, it's you.\p"
 	.string "…What, my dad gave you a Pokémon\n"
 	.string "as a gift?\p"
-	.string "…Things are starting to get interesting.\p"
+	.string "…Would you look at that.\n"
+	.string "…Things are finally getting interesting.\p"
 	.string "Do you see those two suspicious guys\n"
 	.string "back there?\p"
 	.string "Those are members of Team Magma.\p"
@@ -526,7 +522,8 @@ Route103_Text_BrendanLetsBattle:
 	.string "Oh, {PLAYER}{KUN}, it's you.\p"
 	.string "…What, my dad gave you a Pokémon\n"
 	.string "as a gift?\p"
-	.string "…Things are starting to get interesting.\p"
+	.string "…Would you look at that.\n"
+	.string "…Things are finally getting interesting.\p"
 	.string "Do you see those two suspicious guys\n"
 	.string "back there?\p"
 	.string "Those are members of Team Magma.\p"
@@ -566,7 +563,7 @@ Route103_Text_BrendanTimeToHeadBack:
 	.string "Don't trip over yourself.$"
 
 Route103_Text_ShouldHaveBroughtPotion:
-	.string "This bridge usually connect to Slateport,\n"
+	.string "This bridge connect to Slateport,\n"
 	.string "but it looks like it's broken.\p"
 	.string "I bet those Team Magma guys did it.$"
 

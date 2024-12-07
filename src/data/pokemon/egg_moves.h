@@ -69,6 +69,10 @@ const u16 gEggMoves[] = {
         MOVE_YAWN,
         MOVE_WISH,
         MOVE_SPARKLY_SWIRL),
+
+        egg_moves(STARYU,
+        MOVE_RECOVER,
+        MOVE_HAZE),
     
     egg_moves(SILCOON,
         MOVE_CHARM),

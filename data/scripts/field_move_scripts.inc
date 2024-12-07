@@ -46,16 +46,16 @@ EventScript_CancelCut::
 	end
 
 Text_WantToCut:
-	.string "This tree looks like it can be\n"
-	.string "CUT down!\p"
-	.string "Would you like to CUT it?$"
+	.string "This cactus looks like it\n"
+	.string "can be cut down!\p"
+	.string "Would you like to cut it?$"
 
 Text_MonUsedFieldMove:
 	.string "{STR_VAR_1} used {STR_VAR_2}!$"
 
 Text_CantCut:
-	.string "This tree looks like it can be\n"
-	.string "CUT down!$"
+	.string "This cactus looks like it\n"
+	.string "can be cut down!$"
 
 @ Use rock smash from party menu
 EventScript_UseRockSmash::

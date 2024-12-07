@@ -1,0 +1,53 @@
+{
+  "id": "MAP_OLDALE_TOWN_RUIN_HOUSE2",
+  "name": "OldaleTown_RuinHouse2",
+  "layout": "LAYOUT_OLDALE_TOWN_RUIN_HOUSE2",
+  "music": "MUS_ETERNA_FOREST",
+  "region_map_section": "MAPSEC_OLDALE_RUINS",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 4,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OldaleRuins_EventScript_SkyFragment",
+      "flag": "FLAG_OLDALE_RUINS_SKY_FRAGMENT"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 5,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_OLDALE_RUINS",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 6,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_OLDALE_RUINS",
+      "dest_warp_id": "2"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

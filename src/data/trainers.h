@@ -127,11 +127,10 @@
         .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_AQUA,
         .trainerPic = TRAINER_PIC_SHELLY,
-        .trainerName = _("SHELLY"),
-        .mugshotEnabled = TRUE,
+        .trainerName = _("Shellly"),
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
         .party = TRAINER_PARTY(sParty_GruntPetalburgWoods),
     },
 
@@ -1376,10 +1375,10 @@
         .trainerClass = TRAINER_CLASS_LADY,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_LADY,
-        .trainerName = _("CINDY"),
+        .trainerName = _("Cindy"),
          
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_HP_AWARE,
         .party = TRAINER_PARTY(sParty_Cindy1),
     },
 
@@ -3847,7 +3846,8 @@
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .trainerName = _("Calvin"),
         .items = {},
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_HP_AWARE,
+        .doubleBattle = TRUE,
+        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_HP_AWARE,
         .party = TRAINER_PARTY(sParty_Calvin1),
     },
 
@@ -3856,11 +3856,11 @@
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_YOUNGSTER,
-        .trainerName = _("BILLY"),
+        .trainerName = _("Billy"),
          
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_HP_AWARE,
         .party = TRAINER_PARTY(sParty_Billy),
     },
 
@@ -7252,7 +7252,7 @@
     {
         .trainerClass = TRAINER_CLASS_PARASOL_LADY,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
-        .trainerPic = TRAINER_PIC_LASS,
+        .trainerPic = TRAINER_PIC_PARASOL_LADY,
         .trainerName = _("Tiana"),
         .items = {},
         .doubleBattle = TRUE,
@@ -7411,11 +7411,11 @@
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
-        .trainerName = _("LYLE"),
+        .trainerName = _("Lyle"),
          
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_DOUBLE_BATTLE,
         .party = TRAINER_PARTY(sParty_Lyle),
     },
 
@@ -7473,11 +7473,11 @@
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
-        .trainerName = _("JAMES"),
-         
+        .trainerName = _("James"),
+        .party = TRAINER_PARTY(sParty_James1),
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,        .party = TRAINER_PARTY(sParty_James1),
+        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_HP_AWARE,
     },
 
     [TRAINER_JAMES_2] =
@@ -7906,12 +7906,12 @@
         .trainerClass = TRAINER_CLASS_RIVAL,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_WALLY,
-        .trainerName = _("WALLY"),
+        .trainerName = _("Wally"),
         .items = {},
         .doubleBattle = TRUE,
          
         .mugshotEnabled = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
         .party = TRAINER_PARTY(sParty_Wally1),
     },
 
@@ -8388,11 +8388,10 @@
         .trainerClass = TRAINER_CLASS_FISHERMAN,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
         .trainerPic = TRAINER_PIC_FISHERMAN,
-        .trainerName = _("DARIAN"),
+        .trainerName = _("Darian"),
         .items = {},
         .doubleBattle = TRUE,
-         
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_HP_AWARE,
         .party = TRAINER_PARTY(sParty_Darian),
     },
 

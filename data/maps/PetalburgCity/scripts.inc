@@ -1,4 +1,5 @@
 .set LOCALID_WALLY, 2
+.set LOCALID_GRANNY, 1
 .set LOCALID_BOY, 3
 .set LOCALID_WALLYS_DAD, 5
 .set LOCALID_GYM_BOY, 6
@@ -45,11 +46,11 @@ PetalburgCity_EventScript_Zigzagoon::
 	end
 
 PetalburgCity_Text_ZigzagoonNoises:
-	.string "ZIGZAGOON: Zigza!$"
+	.string "Zigza!$"
 
 
 PetalburgCity_Text_Lotad:
-	.string "LOTAD is sleeping.$"
+	.string "Lotad is sleeping.$"
 
 PetalburgCity_EventScript_DisableMapNameAndMusic::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
@@ -644,9 +645,11 @@ PetalburgCity_EventScript_Scott::
 	speakername Common_Name_Looker
 	msgbox PetalburgCity_Text_LookerDialogue2, MSGBOX_DEFAULT
 	msgbox PetalburgCity_Text_LookerDialogue3, MSGBOX_DEFAULT
+	closemessage
 	giveitem ITEM_TOWN_MAP
 	speakername Common_Name_Looker
 	msgbox PetalburgCity_Text_Looker2, MSGBOX_DEFAULT
+	closemessage
 	setvar VAR_SCOTT_PETALBURG_ENCOUNTER, 1
 	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_LookerExit0
 	call_if_eq VAR_0x8008, 1, PetalburgCity_EventScript_LookerExit1
@@ -699,11 +702,9 @@ PetalburgCity_Movement_ScottApproachPlayer:
 	walk_left
 	walk_left
 	walk_left
-	walk_left
 	step_end
 
 PetalburgCity_Movement_ScottExit0:
-	walk_down
 	walk_down
 	walk_left
 	walk_left
@@ -801,20 +802,20 @@ PetalburgCity_EventScript_GymBoy::
 	end
 
 PetalburgCity_Text_WhereIsWally:
-	.string "Our WALLY has been very sick recently.\p"
+	.string "Our Wally has been very sick recently.\p"
 	.string "We've tried many things to make\n"
 	.string "him feel better, but to no avail.\p"
 	.string "Say, you're a trainer, right?\p"
-	.string "If you happened to find a POKéMON that\n"
+	.string "If you happened to find a Pokémon that\n"
 	.string "knows Aromatherapy, could you show me?$"
 
 
 PetalburgCity_Text_AreYouRookieTrainer:
 	.string "Hiya! Are you maybe…\n"
-	.string "A rookie TRAINER?\p"
-	.string "Do you know what POKéMON TRAINERS\n"
+	.string "A rookie Trainer?\p"
+	.string "Do you know what Pokémon Trainers\n"
 	.string "do when they reach a new town?\p"
-	.string "They first check what kind of GYM\n"
+	.string "They first check what kind of Gym\n"
 	.string "is in the town.$"
 
 PetalburgCity_Text_ThisIsPetalburgGym:
@@ -841,7 +842,7 @@ PetalburgCity_Text_WaterTM:
 	.string "Which is why I want you to have this.$"
 
 PetalburgCity_Text_WaterTMExplain:
-	.string "CHILLING WATER is a move that\n"
+	.string "Chilling Water is a move that\n"
 	.string "targets the opponent's inner fears\l"
 	.string "potentially freezing them.\p"
 	.string "Or perhaps it is the cold water that\n"
@@ -850,32 +851,37 @@ PetalburgCity_Text_WaterTMExplain:
 
 
 PetalburgCity_Text_FullPartyExplanation:
-	.string "Let's say you have six POKéMON.\n"
+	.string "Let's say you have six Pokémon.\n"
 	.string "If you catch another one…\p"
-	.string "It is automatically sent to a STORAGE\n"
-	.string "BOX over a PC connection.$"
+	.string "You can either send it to the PC,\n"
+	.string "or swap it with another one in your\l"
+	.string "party, which will then be sent to\l"
+	.string "the PC.\p"
+	.string "However, in the field, you can only\n"
+	.string "send Pokémon to the PC, but not\l"
+	.string "retrieve them.$"
 
 PetalburgCity_Text_GymSign:
-	.string "PETALBURG CITY POKéMON GYM\n"
-	.string "LEADER: NORMAN\l"
+	.string "Petalburg City's Pokémon Gym\n"
+	.string "Leader: Norman\l"
 	.string "“A man in pursuit of power!”$"
 
 PetalburgCity_Text_CitySign:
-	.string "PETALBURG CITY$"
+	.string "Petalburg City$"
 
 PetalburgCity_Text_WallyHouseSign:
-	.string "WALLY'S HOUSE$"
+	.string "Wally's House$"
 
 PetalburgCity_Text_AreYouATrainer:
 	.string "Excuse me!\p"
 	.string "Let me guess, from the way you're\n"
-	.string "dressed, are you a POKéMON TRAINER?$"
+	.string "dressed, are you a Pokémon Trainer?$"
 
 PetalburgCity_Text_WellMaybeNot:
 	.string "… … … … … …\p"
 	.string "Well, maybe not.\n"
 	.string "Your clothes aren't all that dirty.\p"
-	.string "You're either a rookie TRAINER,\n"
+	.string "You're either a rookie Trainer,\n"
 	.string "or maybe you're just an ordinary kid.$"
 
 PetalburgCity_Text_ImLookingForTalentedTrainers:
@@ -896,25 +902,21 @@ PetalburgCity_Text_LookerDialogue1:
 	.string "My name…\n"
 	.string "Ah, no! That is, of course,\l"
 	.string "classified.\p"
-	.string "But my code name, it is LOOKER.\n"
+	.string "But my code name, it is Looker.\n"
 	.string "It is what they all call me.\p"
 	.string "Yes, I am a globe-trotting\n"
-	.string "elite of the INTERNATIONAL POLICE.$"
+	.string "elite of the International Police.$"
 
 PetalburgCity_Text_LookerDialogue2:
 	.string "I was summoned in this region, you\n"
 	.string "see, by a certain individual.\p"
 	.string "My task, it is to investigate some\n"
-	.string "happenings that are taking place in\l"
-	.string "this region.\p"
-	.string "It would appear that some shady goons\n"
-	.string "wearing colorful suits are currently\l"
-	.string "causing panic amongst the populace…\p"
+	.string "happenings that are taking place here.\p"
 	.string "The thing is, I seem to have judged\n"
 	.string "the situation wrongly.\p"
 	.string "You see, a master investigator, I am\n"
 	.string "that.\p"
-	.string "But a TRAINER, unfortunately, I am not.\p"
+	.string "But a Trainer, unfortunately, I am not.\p"
 	.string "Therefore, I have been looking for a\n"
 	.string "trustworthy aide to help me.\p"
 	.string "Say, your name is…?$"
@@ -923,16 +925,16 @@ PetalburgCity_Text_LookerDialogue3:
 	.string "It is {PLAYER}, then?\n"
 	.string "Magnificent!\p"
 	.string "My friend, I would be grateful\n"
-	.string "if you could meet me in the\l"
-	.string "PETALBURG WOODS.\p"
+	.string "if you could meet me in the Petalburg\l"
+	.string "Woods.\p"
 	.string "According to my sources, an illicit\n"
 	.string "deal is to occur on those very premises.\p"
 	.string "Your assistance, of course, would be\n"
 	.string "very much appreciated.\p"
 	.string "Incidentally…\p"
-	.string "Do you not possess a TOWN MAP?\n"
-	.string "Is it not an invaluable item for every\l"
-	.string "TRAINER that calls themselves such?\p"
+	.string "Do you not possess a Town Map?\p"
+	.string "Is it not an invaluable item for every\n"
+	.string "Trainer that calls themselves such?\p"
 	.string "Ah, but fret not, my friend!\n"
 	.string "Feel free to take this, as compensation\l"
 	.string "in advance for your invaluable help!$"
@@ -942,7 +944,7 @@ PetalburgCity_Text_Looker2:
 	.string "Now, my dear assistant, is the time\n"
 	.string "to take my leave.\p"
 	.string "I shall be awaiting for you in the\n"
-	.string "PETALBURG FOREST.\p"
+	.string "Petalburg Forest.\p"
 	.string "And remember, if anyone asks of me,\n"
 	.string "I am like a ghost: invisible!$"
 
@@ -956,13 +958,49 @@ PetalburgCity_Text_GiveThroatSpray:
 	.string "You can have a sample, of course.$"
 
 PetalburgCity_Text_WallySick:
-	.string "You know, we used to live in VERDANTURF,\n"
-	.string "next to MAUVILLE.\p"
+	.string "You know, we used to live in Verdanturf,\n"
+	.string "next to Mauville.\p"
 	.string "Then the incident with the power plant\n"
 	.string "happened, and…\p"
-	.string "Well, that's when WALLY started being\n"
+	.string "Well, that's when Wally started being\n"
 	.string "sick.\p"
 	.string "We moved here to get some fresh air.$"
 
 Common_Name_Looker:
 	.string "Looker$"
+
+PetalburgCity_EventScript_OldLady::
+	lock
+	goto_if_unset FLAG_ITEM_PETALBURG_MIRACLE_SEED, PetalburgCity_EventScript_OldLadyGivesSeed
+	msgbox PetalburgCity_Text_OldLady, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+
+PetalburgCity_EventScript_OldLadyGivesSeed::
+	msgbox PetalburgCity_Text_Seed, MSGBOX_NPC
+	giveitem ITEM_MIRACLE_SEED
+	setflag FLAG_ITEM_PETALBURG_MIRACLE_SEED
+	applymovement LOCALID_GRANNY, Common_Movement_FaceDown
+	release
+	end
+
+
+PetalburgCity_Text_Seed:
+	.string "Hmmm…\n"
+	.string "The birdie isn't eating my seeds…\p"
+	.string "Here, have one.$"
+
+PetalburgCity_Text_OldLady:
+	.string "Come here, little birdie!\n"
+	.string "Cheep, cheep!$"
+
+PetalburgCity_EventScript_Wingull::
+	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
+	msgbox PetalburgCity_Text_Wingull, MSGBOX_NPC
+	end
+
+
+PetalburgCity_Text_Wingull:
+	.string "Kweh! Kweh!$"

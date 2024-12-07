@@ -5683,12 +5683,6 @@ BattleScript_LocalBattleWonLoseTexts::
 	trainerslidein BS_OPPONENT1
 	waitstate
 	printstring STRINGID_TRAINER1LOSETEXT
-	jumpifnotbattletype BATTLE_TYPE_TWO_OPPONENTS, BattleScript_LocalBattleWonReward
-	trainerslideout BS_OPPONENT1
-	waitstate
-	trainerslidein BS_OPPONENT2
-	waitstate
-	printstring STRINGID_TRAINER2LOSETEXT
 BattleScript_LocalBattleWonReward::
 	getmoneyreward
 	printstring STRINGID_PLAYERGOTMONEY
@@ -10603,12 +10597,7 @@ BattleScript_EffectPiercingWail::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
-	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN_PRIMAL, BattleScript_ExtremelyHarshSunlightWasNotLessened
-	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_NoReliefFromHeavyRain
-	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
 	removeweather
-	printfromtable gWeatherEndsStringIds
-	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_ActivateWeatherAbilities
 	goto BattleScript_MoveEnd
 

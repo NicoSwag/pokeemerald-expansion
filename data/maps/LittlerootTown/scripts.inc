@@ -544,7 +544,6 @@ EventScript_SaveTotem::
 	case NO, EventScript_SaveTotem_End
 	savegame
 	waitstate
-	closemessage
 	releaseall
 	end
 
@@ -773,6 +772,7 @@ LittlerootTown_EventScript_SetReceivedRunningShoes::
 LittlerootTown_EventScript_GiveRunningShoes::
     speakername Common_Name_Mom
 	msgbox LittlerootTown_Text_WearTheseRunningShoes, MSGBOX_DEFAULT
+	closemessage
 	playfanfare MUS_OBTAIN_ITEM
 	message LittlerootTown_Text_SwitchShoesWithRunningShoes
 	waitfanfare
@@ -812,13 +812,14 @@ LittlerootTown_Text_WearTheseRunningShoes:
 	.string "Did you get it from Prof. Birch?\p"
 	.string "… … …\p"
 	.string "Oh, I see how it is.\p"
-	.string "Just got here and already itching to go on\n"
+	.string "Just got here and already itching forn\n"
 	.string "an adventure, aren't you?\p"
-	.string "You're your father's child, all right.\n"
-	.string "I suppose that's one way to acclimate yourself\n"
-	.string "to a new region.\p"
-	.string "…Well, take these, then! If you're going out\n"
-	.string "on an adventure, wear these Running Shoes.\p"
+	.string "You're your father's child, all right.\p"
+	.string "I suppose that's one way to acclimate\n"
+	.string "yourself to a new region.\p"
+	.string "…Well, take these, then!\p"
+	.string "If you're going out on ad adventure,\n"
+	.string "wear these Running Shoes.\p"
 	.string "They'll put a zip in your step!$"
 
 LittlerootTown_Text_SwitchShoesWithRunningShoes:
@@ -935,14 +936,14 @@ LittlerootTown_Text_CanYouTakeZigzagoon:
 	.string "Oh, hey!\n"
 	.string "You're the new neighbor!\p"
 	.string "I have a favor to ask you.\p"
-	.string "You see, I have always wanted for my dear\n"
-	.string "Zigzagoon to see the world.\p"
+	.string "You see, I have always wanted for my\n"
+	.string "dear Zigzagoon to see the world.\p"
 	.string "But, I'm afraid, I don't know much about\n"
 	.string "Pokémon battling.\p"
 	.string "And you know just how dangerous it is, to\n"
 	.string "travel without knowing how to battle.\p"
 	.string "Anyway, I've heard that Prof. Birch\n"
-	.string "gave you a Pokémon\p"
+	.string "gave you a Pokémon.\p"
 	.string "Which means you're going to travel the\n"
 	.string "world, right?\p"
 	.string "If so, could you take my Zigzagoon with\n"

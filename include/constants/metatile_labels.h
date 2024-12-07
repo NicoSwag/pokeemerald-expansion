@@ -2,7 +2,8 @@
 #define GUARD_METATILE_LABELS_H
 
 // gTileset_BattleArena
-#define METATILE_BattleArena_Door  0x21B
+#define METATILE_BattleArena_Door    0x21B
+#define METATILE_BattleArena_PC_Off  0x288
 
 // gTileset_BattleDome
 #define METATILE_BattleDome_Door_Corridor       0x25E
@@ -465,6 +466,7 @@
 // gTileset_Rustboro
 #define METATILE_Rustboro_Door_Gray  0x21F
 #define METATILE_Rustboro_Door_Tan   0x22F
+#define METATILE_Rustboro_Mushroom   0x3EF
 
 // gTileset_RustboroGym
 #define METATILE_RustboroGym_FakeDoorRustboro  0x257

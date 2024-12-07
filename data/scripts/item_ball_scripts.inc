@@ -16,7 +16,7 @@ LowerRoute115_EventScript_SkyFragment::
 	finditem ITEM_HEART_SCALE
 	end
 	
-Route102_EventScript_ItemMuscleBand::
+Route102_EventScript_ItemMiracleSeed::
 	finditem ITEM_MUSCLE_BAND
 	end
 
@@ -51,6 +51,18 @@ MtKirikiri_SideArea_EventScript_ItemSkyFragment::
 
 MtKirikiri_SideArea_EventScript_ItemGyroBall::
 	finditem ITEM_TM_GYRO_BALL
+	end
+
+OldaleRuins_EventScript_SkyFragment::
+	finditem ITEM_HEART_SCALE
+	end
+
+OldaleRuins_EventScript_DragonFang::
+	finditem ITEM_DRAGON_FANG
+	end
+
+OldaleRuins_EventScript_RainbowOre::
+	finditem ITEM_RAINBOW_ORE
 	end
 
 

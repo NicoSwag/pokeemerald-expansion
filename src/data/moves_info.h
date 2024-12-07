@@ -10672,9 +10672,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "Tackles the foe with menace.\n"
             "May cause flinching."),
         .effect = EFFECT_HIT,
-        .power = 100,
+        .power = 110,
         .type = TYPE_DRAGON,
-        .accuracy = 75,
+        .accuracy = 85,
         .pp = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,

@@ -1305,6 +1305,10 @@ static const struct SpriteFrameImage sPicTable_Fossil[] = {
     obj_frame_tiles(gObjectEventPic_Fossil),
 };
 
+static const struct SpriteFrameImage sPicTable_Shiinotic[] = {
+    obj_frame_tiles(gObjectEventPic_ShiinoticOW),
+};
+
 static const struct SpriteFrameImage sPicTable_Regi[] = {
     obj_frame_tiles(gObjectEventPic_RegiOld),
     obj_frame_tiles(gObjectEventPic_RegiOld),
@@ -1315,6 +1319,18 @@ static const struct SpriteFrameImage sPicTable_Regi[] = {
     obj_frame_tiles(gObjectEventPic_RegiOld),
     obj_frame_tiles(gObjectEventPic_RegiOld),
     obj_frame_tiles(gObjectEventPic_RegiOld),
+};
+
+static const struct SpriteFrameImage sPicTable_StaryuObject[] = {
+    obj_frame_tiles(gObjectEventPic_StaryuObject),
+    obj_frame_tiles(gObjectEventPic_StaryuObject),
+    obj_frame_tiles(gObjectEventPic_StaryuObject),
+    obj_frame_tiles(gObjectEventPic_StaryuObject),
+    obj_frame_tiles(gObjectEventPic_StaryuObject),
+    obj_frame_tiles(gObjectEventPic_StaryuObject),
+    obj_frame_tiles(gObjectEventPic_StaryuObject),
+    obj_frame_tiles(gObjectEventPic_StaryuObject),
+    obj_frame_tiles(gObjectEventPic_StaryuObject),
 };
 
 static const struct SpriteFrameImage sPicTable_RayquazaStill[] = {

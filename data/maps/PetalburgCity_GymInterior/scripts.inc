@@ -1110,12 +1110,12 @@ PetalburgCity_GymInterior_EventScript_GymStatue::
 PetalburgCity_GymInterior_Text_DadYoureHereWithYourPokemon:
 	.string "Hm?\p"
 	.string "Well, if it isn't {PLAYER}!\n"
-	.string "So you're all finished moving in?\p"
+	.string "So you're all moved in?\p"
 	.string "I'm just finishing setting things up\n"
 	.string "here myself.\p"
 	.string "I would offer you some Smoothies,\n"
-	.string "but I'm still waiting for the Gym staff\l"
-	.string "to get here.\p"
+	.string "but I'm still waiting for the Gym\l"
+	.string "staff to get here.\p"
 	.string "…Oh, hey!\n"
 	.string "I see you're with some Pokémon.\p"
 	.string "Hm… Then I guess you're going to\n"
@@ -1124,7 +1124,7 @@ PetalburgCity_GymInterior_Text_DadYoureHereWithYourPokemon:
 	.string "I'll be looking forward to it!$"
 
 PetalburgCity_GymInterior_Text_WallyIdLikeAPokemon:
-	.string "Um… Hi Mr. Norman… Cough…\n"
+	.string "Um… Hi Mr. Norman…\n"
 	.string "I caught some Pokémon like you said…$"
 
 PetalburgCity_GymInterior_Text_DadOhYoureWallyRight:
@@ -1161,7 +1161,7 @@ PetalburgCity_GymInterior_Text_WallyOhWowThankYou:
 PetalburgCity_GymInterior_Text_WouldYouReallyComeWithMe:
 	.string "{PLAYER}… You're Mr. Norman's\n"
 	.string "kid who just moved in, right…?\p"
-	.string "I asked him some advice to start my\n"
+	.string "I asked him for some advice to start my\n"
 	.string "journey and he sent me to catch some\l"
 	.string "Pokémon, but I've never battled before…\p"
 	.string "So you'll…\n"

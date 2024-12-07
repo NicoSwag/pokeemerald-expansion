@@ -429,6 +429,7 @@ bool32 IsDamageMoveUnusable(u32 move, u32 battlerAtk, u32 battlerDef)
             break;
         // Fallthrough
     case ABILITY_WATER_ABSORB:
+    case ABILITY_STEAM_BARRIER:
     case ABILITY_DRY_SKIN:
         if (moveType == TYPE_WATER)
             return TRUE;

@@ -2126,7 +2126,7 @@ RustboroCity_Text_MrBrineyOffer:
 	.string "Time to take me leave too, then!\p"
 	.string "But if ye ever find yerself in need of\n"
 	.string "me boat…\p"
-	.string "Ye can find me in me cottage in Pearly\n"
+	.string "Ye can find me in me cottage in Stormy\n"
 	.string "Seaside! Gyaha!\p"
 	.string "Well then! I'm off!\n"
 	.string "Let's go, me boy!$"

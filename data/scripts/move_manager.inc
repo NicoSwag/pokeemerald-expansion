@@ -248,10 +248,10 @@ MoveManager_Introduction_Text_4:
 	.string "Would you like me to do that?$"
 
 MoveManager_CheckItem_Text_0:
-	.string "In that case, I would like\na SKY FRAGMENT.$"
+	.string "In that case, I would like\na Sky Fragment.$"
 
 MoveManager_CheckItem_Text_1:
-	.string "In that case, I would like\na SKY FRAGMENT.$"
+	.string "In that case, I would like\na Sky Fragment.$"
 
 MoveManager_ChooseMon_Text_0:
 	.string "Eggs don't know moves yet.$"
@@ -278,10 +278,10 @@ MoveManager_ChooseMon_Text_7:
 	.string "Which move should I teach?$"
 
 MoveManager_SpendItem_Text_0:
-	.string "{PLAYER} handed over one SKY\nFRAGMENTin exchange.$"
+	.string "{PLAYER} handed over one Sky\nFragment in exchange.$"
 
 MoveManager_SpendItem_Text_1:
-	.string "{PLAYER} handed over one SKY\nFRAGMENTin exchange.$"
+	.string "{PLAYER} handed over one Sky\nFragment in exchange.$"
 
 MoveManager_ComeBack::
 	.string "Come back soon.$"

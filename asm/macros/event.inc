@@ -711,6 +711,12 @@
     .2byte \flag
     .endm
 
+   .macro removeactiveobject
+    callnative ScrCmd_removeactiveobject
+    .endm
+
+
+
 	@ Turns the specified object in the specified direction.
 	.macro turnobject localId:req, direction:req
 	.byte 0x5b
@@ -1466,6 +1472,7 @@
 	.2byte \metatileId
 	.2byte \impassable
 	.endm
+
 
 	@ Queues a weather change to the default weather for the map.
 	.macro resetweather

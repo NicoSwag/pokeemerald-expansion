@@ -389,7 +389,7 @@ static const u8 sText_NextLv[]                              = _("Next Lv.");
 static const u8 sText_RentalPkmn[]                          = _("Rental Pokémon");
 static const u8 sText_None[]                                = _("None");
 #else
-static const u8 sText_Cancel[]                              = _("CANCEL");
+static const u8 sText_Cancel[]                              = _("Cancel");
 static const u8 sText_Switch[]                              = _("SWITCH");
 static const u8 sText_PkmnInfo[]                            = _("POKéMON INFO");
 static const u8 sText_PkmnSkills[]                          = _("POKéMON SKILLS");

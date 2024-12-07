@@ -1264,6 +1264,13 @@ bool8 ScrCmd_faceplayer(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_removeactiveobject(struct ScriptContext *ctx)
+{
+    if (gObjectEvents[gSelectedObjectEvent].active)
+        RemoveObjectEventByLocalIdAndMap(gObjectEvents[gSelectedObjectEvent].localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    return FALSE;
+}
+
 bool8 ScrCmd_turnobject(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
@@ -2341,6 +2348,10 @@ bool8 ScrCmd_setmetatile(struct ScriptContext *ctx)
         MapGridSetMetatileIdAt(x, y, metatileId | MAPGRID_COLLISION_MASK);
     return FALSE;
 }
+
+
+
+
 
 bool8 ScrCmd_opendoor(struct ScriptContext *ctx)
 {

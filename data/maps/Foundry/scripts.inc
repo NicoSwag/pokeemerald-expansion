@@ -1,5 +1,11 @@
+.set LOCALID_SLUGMA, 7
+
+
 Foundry_MapScripts::
 	.byte 0
+
+
+
 
 
 
@@ -21,11 +27,16 @@ DewfordTown_EventScript_FoundryMiner3::
 
 
 DewfordTown_EventScript_FoundryMiner4::
+	goto_if_unset FLAG_FOUNDRY_COMPONENT_GOT, DewfordTown_EventScript_FoundryNotAvailable
 	msgbox DewfordTown_Text_FoundryMiner4, MSGBOX_NPC
 	end
 
+DewfordTown_EventScript_FoundryNotAvailable:
+	msgbox DewfordTown_Text_FoundryNotAvailable, MSGBOX_NPC
+	end
 
 DewfordTown_EventScript_FoundryInteract::
+	goto_if_unset FLAG_FOUNDRY_COMPONENT_GOT, DewfordTown_EventScript_Nothing
 	lock
 	checkitem ITEM_RAINBOW_ORE
 	goto_if_eq VAR_RESULT, FALSE, DewfordTown_EventScript_NoOre
@@ -35,6 +46,11 @@ DewfordTown_EventScript_FoundryInteract::
 	waitstate
 	goto_if_ne VAR_0x8004, PARTY_NOTHING_CHOSEN, DewfordTown_EventScript_FoundryCheckFire
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, DewfordTown_EventScript_FoundryNoMon
+	end
+
+
+DewfordTown_EventScript_Nothing::
+	msgbox Foundry_Text_Broken, MSGBOX_DEFAULT
 	end
 
 
@@ -171,7 +187,8 @@ DewfordTown_Text_FoundryMiner3:
 
 
 DewfordTown_Text_FoundryMiner4:	
-	.string "Slugma isn't feeling it today.\p"
+	.string "The component arrived!\p"
+	.string "A promise is a promise.\p"
 	.string "If you want to use the smelter on the\n"
 	.string "right, go ahead.\p"
 	.string "You'll just need to bring a Fire-type\n"
@@ -192,3 +209,19 @@ DewfordTown_Text_NoOre:
 DewfordTown_Text_ChooseFire:
 	.string "You can smelt your Rainbow Ore with\n"
 	.string "a Fire-Type Pokémon.$"
+
+
+DewfordTown_Text_FoundryNotAvailable:
+	.string "Well, the last furnace on the right\n"
+	.string "broke down.\p"
+	.string "And the only way to repair it is with\n"
+	.string "a component that's manufactured in\l"
+	.string "Slateport City.\p"
+	.string "Say…\n"
+	.string "Could you go to Slateport and ask around\n"
+	.string "for it?\p"
+	.string "I'll let you use the furnace if you do me\n"
+	.string "this favor.$"
+
+Foundry_Text_Broken:
+	.string "It's broken.$"

@@ -11,6 +11,18 @@ PetalburgWoods_HandleTrainers::
 	return
 
 
+PetalburgWoods_EventScript_Mushroom::
+	lock
+	playmoncry SPECIES_MORELULL, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_MORELULL, 6
+	dowildbattle
+	removeactiveobject
+	releaseall
+	end
+
+
 PetalburgWoods_EventScript_ResetTrainers::
 	cleartrainerflag TRAINER_LYLE
 	cleartrainerflag TRAINER_JAMES_1
@@ -31,7 +43,7 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou, MSGBOX_DEFAULT
 	speakername Common_Name_Shady
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou2, MSGBOX_DEFAULT
-	speakername Common_Name_Shelly
+	closemessage
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou3, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
@@ -39,11 +51,11 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	waitmovement 0
 	speakername Common_Name_Shady
 	msgbox PetalburgWoods_Text_DealIsOff, MSGBOX_DEFAULT
+	closemessage
 	waitmovement 0
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonEscapes
 	waitmovement 0
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_GruntFacesPlayerLeft
-	speakername Common_Name_Shelly
 	msgbox PetalburgWoods_Text_HandOverThosePapers, MSGBOX_DEFAULT
 	closemessage
 	trainerbattle_no_intro TRAINER_GRUNT_PETALBURG_WOODS, PetalburgWoods_Text_YoureKiddingMe
@@ -90,19 +102,19 @@ PetalburgWoods_EventScript_DevonResearcherRight::
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou, MSGBOX_DEFAULT
 	speakername Common_Name_Shady
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou2, MSGBOX_DEFAULT
-	speakername Common_Name_Shelly
+	closemessage
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou3, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonLooksDown
 	waitmovement 0
 	speakername Common_Name_Shady
 	msgbox PetalburgWoods_Text_DealIsOff, MSGBOX_DEFAULT
+	closemessage
 	waitmovement 0
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonEscapes
 	waitmovement 0
 	removeobject LOCALID_DEVON_EMPLOYEE
 	applymovement LOCALID_GRUNT, PetalburgWoods_Movement_GruntFacesPlayerRight
-	speakername Common_Name_Shelly
 	msgbox PetalburgWoods_Text_HandOverThosePapers, MSGBOX_DEFAULT
 	closemessage
 	trainerbattle_no_intro TRAINER_GRUNT_PETALBURG_WOODS, PetalburgWoods_Text_YoureKiddingMe
@@ -451,11 +463,11 @@ PetalburgWoods_Text_HaveYouSeenShroomish:
 
 PetalburgWoods_Text_IWasGoingToAmbushYou:
 	.string "Yo, guy.\p"
-	.string "As promised, you got me the\n"
-	.string "Goods, right?$"
+	.string "As promised, you got me the goods\n"
+	.string "right?$"
 	
 PetalburgWoods_Text_IWasGoingToAmbushYou2:
-	.string "O-o-of course, Shelly!\p"
+	.string "O-o-of course, miss!\p"
 	.string "And I made sure to not be\n"
 	.string "followed!$"
 
@@ -473,7 +485,7 @@ PetalburgWoods_Text_DealIsOff:
 PetalburgWoods_Text_HandOverThosePapers:
 	.string "Oh, great.\p"
 	.string "Thanks to you, that guy's run\n"
-	.string "off with the Goods!\p"
+	.string "off with the goods!\p"
 	.string "Do you even have any idea of who\n"
 	.string "you're messing with?\p"
 	.string "Prepare to feel the wrath of\n"
@@ -495,13 +507,11 @@ PetalburgWoods_Text_LookerLate:
 	.string "You say that you already dealt with\l"
 	.string "the situation?\p"
 	.string "And that, additionally…\p"
-	.string "A suited man was attempting to bestow \n"
-	.string "a package to a member of TEAM AQUA?\p"
+	.string "A man in suit was attempting to bestow\n"
+	.string "a package to a member of Team Aqua?\p"
 	.string "Hmm…\p"
-	.string "I must say, my friend, those are\n"
-	.string "some big clues!\p"
-	.string "We already knew of TEAM AQUA, as well as\n"
-	.string "TEAM MAGMA, of course…\p"
+	.string "We already knew of Team Aqua, as well as\n"
+	.string "Team Magma, of course…\p"
 	.string "But a mysterious third party?\p"
 	.string "And that is to say, what if there were a\n"
 	.string "secret fourth party? Or a fifth…?\p"
@@ -509,12 +519,12 @@ PetalburgWoods_Text_LookerLate:
 	.string "investigate further!\p"
 	.string "Oh, but first…\p"
 	.string "To thank you for your outstanding work,\n"
-	.string "I have another gift for you.\p"
-	.string "It is another one of those so-called\n"
-	.string "TRAINER items.\p"
-	.string "Yes, it is an EXP. SHARE.\p"
+	.string "let me heal your Pokémon.\p"
+	.string "And then, of course, I have another gift\n"
+	.string "for you.\p"
+	.string "Yes, it is an Exp. Share.\p"
 	.string "As I am told, it is used to distribute\n"
-	.string "EXPERIENCE evenly amongst POKéMON.\l"
+	.string "Experience evenly amongst Pokémon.\p"
 	.string "Of course, I have no use of it.\p"
 	.string "Then, will you be taking it?$"
 
@@ -522,21 +532,19 @@ PetalburgWoods_Text_LookerFarewell:
 	.string "Now, my friend, we must go quickly.\p"
 	.string "I shall try to find out the location\n"
 	.string "of our mysterious third party.\p"
-	.string "The operation might take some time,\n"
-	.string "however…\p"
 	.string "Ah, while I am asking around…\p"
-	.string "why not challenge the GYM LEADER of\n"
-	.string "RUSTBORO CITY?\p"
+	.string "why not challenge the Gym Leader of\n"
+	.string "Rustboro City?\p"
 	.string "That way, you will look like an ordinary\n"
-	.string "TRAINER instead of an assistant of the\l"
-	.string "world-famous detective LOOKER!\p"
+	.string "Trainer instead of an assistant of the\l"
+	.string "world-famous detective Looker!\p"
 	.string "Well then, a plan it is!\n"
 	.string "I will see you later!$"
 
 PetalburgWoods_Text_NoOneCrossesTeamAqua:
 	.string "Hunh? What do you think you're doing?\n"
 	.string "What, you're going to protect him?\p"
-	.string "No one who crosses TEAM AQUA\n"
+	.string "No one who crosses Team Aqua\n"
 	.string "gets any mercy, not even a kid!\p"
 	.string "Come on and battle me!$"
 
@@ -576,27 +584,27 @@ PetalburgWoods_Text_YoureLoadedWithItems:
 	.string "I can't give you this GREAT BALL.$"
 
 PetalburgWoods_Text_GoBugPokemonTeam:
-	.string "I caught a whole bunch of POKéMON!\p"
+	.string "I caught a whole bunch of Pokémon!\p"
 	.string "Go, go, go!\n"
-	.string "My BUG POKéMON team!$"
+	.string "My Bug Pokémon team!$"
 
 PetalburgWoods_Text_ICouldntWin:
-	.string "I have all these POKéMON,\n"
+	.string "I have all these Pokémon,\n"
 	.string "but I couldn't win…$"
 
 PetalburgWoods_Text_ImOutOfPokeBalls:
-	.string "I caught a bunch of POKéMON.\n"
-	.string "Now I'm out of POKé BALLS.$"
+	.string "I caught a bunch of Pokémon.\n"
+	.string "Now I'm out of Poké Balls.$"
 
 PetalburgWoods_Text_InstantlyPopularWithBugPokemon:
-	.string "If you take BUG POKéMON to school,\n"
+	.string "If you take Bug Pokémon to school,\n"
 	.string "you get to be instantly popular!$"
 
 PetalburgWoods_Text_CantBePopularIfILose:
 	.string "What? Crabs are totally bugs.$"
 
 PetalburgWoods_Text_PeopleRespectYou:
-	.string "What? CORPHISH isn't a crab?\n"
+	.string "What? Corphish isn't a crab?\n"
 	.string "You're right, my bad.\l"
 	.string "It's a lobster.$"
 
@@ -619,21 +627,20 @@ PetalburgWoods_Text_CantBePopularIfLose:
 
 PetalburgWoods_Text_IveBeenTrainingHard:
 	.string "You get to be popular if you have\n"
-	.string "strong POKéMON, right?\l"
+	.string "strong Pokémon, right?\l"
 	.string "So, I've been training hard.$"
 
 PetalburgWoods_Text_StayOutOfTallGrass:
 	.string "Yo, there!\n"
-	.string "Your POKéMON doing okay?\p"
-	.string "If your POKéMON are weak and you want\n"
+	.string "Your Pokémon doing okay?\p"
+	.string "If your Pokémon are weak and you want\n"
 	.string "to avoid battles, you should stay out\l"
 	.string "of tall grass.$"
 
 PetalburgWoods_Text_HiddenItemsExplanation:
-	.string "Sometimes, there are things on the\n"
-	.string "ground even if you can't see them.\p"
-	.string "That's why I always check where I'm\n"
-	.string "walking.$"
+	.string "Sometimes, Pokémon might camouflage\n"
+	.string "as something else.\p"
+	.string "Try checking suspicious things!$"
 
 PetalburgWoods_Text_TryUsingThisItem:
 	.string "Oh, neat!\n"
@@ -650,19 +657,19 @@ PetalburgWoods_Text_MiracleSeedExplanation:
 	.string "to hold.$"
 
 PetalburgWoods_Text_TrainerTipsExperience:
-	.string "TRAINER TIPS\p"
-	.string "Any POKéMON that appears even once\n"
+	.string "Trainer Tips\p"
+	.string "Any Pokémon that appears even once\n"
 	.string "in a battle is awarded EXP Points.\p"
-	.string "To raise a weak POKéMON, put it at the\n"
+	.string "To raise a weak Pokémon, put it at the\n"
 	.string "left of the team list.\p"
 	.string "As soon as a battle starts, switch it\n"
 	.string "out. It will earn EXP Points without\l"
 	.string "being exposed to any harm.$"
 
 PetalburgWoods_Text_TrainerTipsPP:
-	.string "The fantastic FEEBAS PRO SHOP PRISM\n"
+	.string "The fantastic Feebas Pro Shop Prism\n"
 	.string "has just opened!\p"
-	.string "Find us north of PETALBURG WOODS.$"
+	.string "Find us north of Petalburg Woods.$"
 
 Common_Name_Manager:
 	.string "Manager$"

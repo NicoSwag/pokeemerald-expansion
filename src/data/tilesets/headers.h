@@ -926,3 +926,25 @@ const struct Tileset gTileset_Dewford_Final =
     .metatileAttributes = gMetatileAttributes_Dewford_Final,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_RuinsBuildings =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_RuinsBuildings,
+    .palettes = gTilesetPalettes_RuinsBuildings,
+    .metatiles = gMetatiles_RuinsBuildings,
+    .metatileAttributes = gMetatileAttributes_RuinsBuildings,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CaveKirikiri =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CaveKirikiri,
+    .palettes = gTilesetPalettes_CaveKirikiri,
+    .metatiles = gMetatiles_CaveKirikiri,
+    .metatileAttributes = gMetatileAttributes_CaveKirikiri,
+    .callback = NULL,
+};

@@ -4527,7 +4527,7 @@
       "width": 47,
       "height": 45,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Cave",
+      "secondary_tileset": "gTileset_CaveKirikiri",
       "border_filepath": "data/layouts/MtKirikiri_Side_area/border.bin",
       "blockdata_filepath": "data/layouts/MtKirikiri_Side_area/map.bin"
     },
@@ -4730,6 +4730,46 @@
       "secondary_tileset": "gTileset_Unused1",
       "border_filepath": "data/layouts/BoatCutscene/border.bin",
       "blockdata_filepath": "data/layouts/BoatCutscene/map.bin"
+    },
+    {
+      "id": "LAYOUT_PETALBURG_CITY_HOUSE3",
+      "name": "PetalburgCity_House3_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/PetalburgCity_House3/border.bin",
+      "blockdata_filepath": "data/layouts/PetalburgCity_House3/map.bin"
+    },
+    {
+      "id": "LAYOUT_OLDALE_TOWN_RUIN_HOUSE1",
+      "name": "OldaleTown_RuinHouse1_Layout",
+      "width": 12,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RuinsBuildings",
+      "border_filepath": "data/layouts/OldaleTown_RuinHouse1/border.bin",
+      "blockdata_filepath": "data/layouts/OldaleTown_RuinHouse1/map.bin"
+    },
+    {
+      "id": "LAYOUT_OLDALE_TOWN_RUIN_HOUSE2",
+      "name": "OldaleTown_RuinHouse2_Layout",
+      "width": 12,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RuinsBuildings",
+      "border_filepath": "data/layouts/OldaleTown_RuinHouse2/border.bin",
+      "blockdata_filepath": "data/layouts/OldaleTown_RuinHouse2/map.bin"
+    },
+    {
+      "id": "LAYOUT_OLDALE_TOWN_RUINS_HOUSE3",
+      "name": "OldaleTown_RuinsHouse3_Layout",
+      "width": 12,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_RuinsBuildings",
+      "border_filepath": "data/layouts/OldaleTown_RuinsHouse3/border.bin",
+      "blockdata_filepath": "data/layouts/OldaleTown_RuinsHouse3/map.bin"
     }
   ]
 }

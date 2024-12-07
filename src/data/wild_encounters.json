@@ -1781,17 +1781,12 @@
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_MORELULL"
+                "species": "SPECIES_NINCADA"
               },
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_SHROOMISH"
-              },
-              {
-                "min_level": 5,
-                "max_level": 7,
-                "species": "SPECIES_WURMPLE"
+                "species": "SPECIES_NINCADA"
               },
               {
                 "min_level": 5,
@@ -1801,12 +1796,17 @@
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_SHROOMISH"
+                "species": "SPECIES_WURMPLE"
               },
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_SHROOMISH"
+                "species": "SPECIES_PICHU"
+              },
+              {
+                "min_level": 5,
+                "max_level": 7,
+                "species": "SPECIES_PICHU"
               },
               {
                 "min_level": 5,
@@ -11878,7 +11878,7 @@
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_RALTS"
+                "species": "SPECIES_AZURILL"
               },
               {
                 "min_level": 5,

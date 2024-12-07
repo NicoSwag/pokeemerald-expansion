@@ -2573,7 +2573,7 @@ void BtlController_HandleTrainerSlide(u32 battler, u32 trainerPicId)
         gSprites[gBattlerSpriteIds[battler]].x += 32;
         gSprites[gBattlerSpriteIds[battler]].sSpeedX = -2;
     }
-    gSprites[gBattlerSpriteIds[battler]].callback = SpriteCB_TrainerSpawn;
+    gSprites[gBattlerSpriteIds[battler]].callback = SpriteCB_TrainerSlideIn;
 
     gBattlerControllerFuncs[battler] = Controller_WaitForTrainerPic;
 }

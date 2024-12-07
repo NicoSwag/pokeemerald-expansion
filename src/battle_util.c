@@ -2924,7 +2924,7 @@ u8 DoBattlerEndTurnEffects(void)
                  && !IsLeafGuardProtected(battler))
                 {
                     CancelMultiTurnMoves(battler);
-                    gEffectBattler = battler;
+                    gEffectBattler = gBattlerTarget = battler;
                     if (IsBattlerTerrainAffected(battler, STATUS_FIELD_ELECTRIC_TERRAIN))
                     {
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAINPREVENTS_ELECTRIC;
@@ -2938,9 +2938,9 @@ u8 DoBattlerEndTurnEffects(void)
                     else
                     {
                         if (B_SLEEP_TURNS >= GEN_5)
-                    gBattleMons[gBattlerTarget].status1 |=  STATUS1_SLEEP_TURN((Random() % 3) + 2);
-                else
-                    gBattleMons[gBattlerTarget].status1 |=  STATUS1_SLEEP_TURN((Random() % 4) + 3);
+                            gBattleMons[battler].status1 |= ((Random() % 3) + 2);
+                        else
+                            gBattleMons[battler].status1 |= ((Random() % 4) + 3);
 
                         BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
                         MarkBattlerForControllerExec(battler);
@@ -5562,7 +5562,7 @@ case ABILITY_OVERCHARGE:
                 if (B_REDIRECT_ABILITY_IMMUNITY >= GEN_5 && moveType == TYPE_WATER)
                     effect = 2, statId = STAT_SPATK;
                 break;
-case ABILITY_STEAM_BARRIER:
+            case ABILITY_STEAM_BARRIER:
                 if (moveType == TYPE_WATER)
                     effect = 2, statId = STAT_DEF;
                 break;
@@ -11278,6 +11278,7 @@ uq4_12_t GetTypeEffectiveness(struct Pokemon *mon, u8 moveType)
                                        ||  abilityDef == ABILITY_EARTH_EATER))
          || (moveType == TYPE_WATER    && (abilityDef == ABILITY_WATER_ABSORB
                                        || abilityDef == ABILITY_DRY_SKIN
+                                       || abilityDef == ABILITY_STEAM_BARRIER
                                        || abilityDef == ABILITY_STORM_DRAIN))
          || (moveType == TYPE_ELECTRIC && (abilityDef == ABILITY_LIGHTNING_ROD // TODO: Add Gen 3/4 config check
                                        || abilityDef == ABILITY_VOLT_ABSORB

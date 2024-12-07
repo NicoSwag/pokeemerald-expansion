@@ -20,7 +20,7 @@ OldaleRuins_EventScript_Picnicker::
 
 OldaleRuins_Text_Hiker:
 	.string "Hey, how did you get in?\p"
-	.string "Ah, I see. The CUTTER gave you\n"
+	.string "Ah, I see. The Cutter gave you\n"
 	.string "his permission.\p"
 	.string "Very well, then. Just don't disturb\n"
 	.string "these sacred ruins.$"
@@ -35,7 +35,7 @@ OldaleRuins_Text_Cave:
 	.string "things.\p"
 	.string "I'm not going to stop you, but…\p"
 	.string "I'd recommend having at least three\n"
-	.string "gym badges before going too far in.\p"
+	.string "Gym Badges before going too far in.\p"
 	.string "I don't want a rookie Trainer weighing\n"
 	.string "on my coscience.$"
 

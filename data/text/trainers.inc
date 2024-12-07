@@ -378,7 +378,7 @@ Route104_Text_CindyPostRematch:
 	.string "I hope we meet again.$"
 
 Route104_Text_DarianIntro:
-	.string "I fished up a tough-looking POKéMON!\p"
+	.string "I fished up a tough-looking Pokémon!\p"
 	.string "It has this magical quality to it!\n"
 	.string "It surely looks tough, yes it does!$"
 
@@ -386,7 +386,7 @@ Route104_Text_DarianDefeat:
 	.string "What the…$"
 
 Route104_Text_DarianPostBattle:
-	.string "Hey, MAGIKARP, you sure don't live up\n"
+	.string "Hey, Magikarp, you sure don't live up\n"
 	.string "to your name, do you?$"
 
 Route105_Text_FosterIntro:

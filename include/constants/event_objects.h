@@ -282,6 +282,8 @@
 #define OBJ_EVENT_GFX_MINECART_MAY              278
 #define OBJ_EVENT_GFX_TRUCK_RIGHT              279
 #define OBJ_EVENT_GFX_UMBRELLA_LADY              280
+#define OBJ_EVENT_GFX_STARYU              281
+#define OBJ_EVENT_GFX_SHIINOTIC              282
 
 
 // NOTE: By default, the max value for NUM_OBJ_EVENT_GFX is 239.
@@ -293,7 +295,7 @@
 // object graphics that can be removed. If more graphics are needed, anything that
 // stores graphics ids will need to be increased in size. See wiki entry below:
 // https://github.com/pret/pokeemerald/wiki/Feature-Branches#overworld-expansion
-#define NUM_OBJ_EVENT_GFX                        281
+#define NUM_OBJ_EVENT_GFX                        283
 
 
 // These are dynamic object gfx ids.

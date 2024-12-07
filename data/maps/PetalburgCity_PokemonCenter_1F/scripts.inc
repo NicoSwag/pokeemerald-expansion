@@ -61,38 +61,38 @@ PetalburgCity_PokemonCenter_1F_Text_PCStorageSystem:
 	.string "of a scientific wizard!$"
 
 PetalburgCity_PokemonCenter_1F_Text_OranBerryRegainedHP:
-	.string "When my POKéMON ate an\n"
-	.string "ORAN BERRY, it regained HP!$"
+	.string "When my Pokemon ate an\n"
+	.string "Oran Berry, it regained HP!$"
 
 PetalburgCity_PokemonCenter_1F_Text_ManyTypesOfPokemon:
-	.string "There are many types of POKéMON.\p"
+	.string "There are many types of Pokemon.\p"
 	.string "All types have their strengths and\n"
 	.string "weaknesses against other types.\p"
 	.string "Depending on the types of POKéMON,\n"
 	.string "a battle could be easy or hard.$"
 
 PetalburgCity_PokemonCenter_1F_Text_TreeckoIsGrassType:
-	.string "For example, your CHIKORITA\n"
-	.string "is a GRASS type.\p"
-	.string "It's strong against the WATER and\n"
-	.string "GROUND types.\p"
-	.string "But, it's weak against FIRE-type\n"
-	.string "POKéMON.$"
+	.string "For example, your Chikorita\n"
+	.string "is a Grass type.\p"
+	.string "It's strong against the Water and\n"
+	.string "Ground types.\p"
+	.string "But, it's weak against Fire-type\n"
+	.string "Pokemon.$"
 
 PetalburgCity_PokemonCenter_1F_Text_TorchicIsFireType:
-	.string "For example, your FENNEKIN\n"
-	.string "is a FIRE type.\p"
-	.string "It's strong against the GRASS and\n"
-	.string "BUG types.\p"
-	.string "But, it's weak against WATER-type\n"
-	.string "POKéMON.$"
+	.string "For example, your Fennekin\n"
+	.string "is a Fire type.\p"
+	.string "It's strong against the Grass and\n"
+	.string "Bug types.\p"
+	.string "But, it's weak against Water-type\n"
+	.string "Pokemon.$"
 
 PetalburgCity_PokemonCenter_1F_Text_MudkipIsWaterType:
-	.string "For example, your PIPLUP\n"
-	.string "is a WATER type.\p"
-	.string "It's strong against the FIRE type.\p"
-	.string "But, it's weak against GRASS-type\n"
-	.string "and ELECTRIC-type POKéMON.$"
+	.string "For example, your Piplup\n"
+	.string "is a Water type.\p"
+	.string "It's strong against the Fire type.\p"
+	.string "But, it's weak against Grass-type\n"
+	.string "and Electric-type Pokemon.$"
 
 Petalburg_PokemonCenter_1F_EventScript_Mart::
 	lock
@@ -111,3 +111,12 @@ Petalburg_PokemonCenter_1F_EventScript_Mart::
 	.2byte ITEM_NONE
 	release
 	end
+
+PetalburgCity_PokemonCenter_1F_EventScript_Kirlia::
+	playmoncry SPECIES_KIRLIA, CRY_MODE_NORMAL
+	msgbox PetalburgCity_PokemonCenter_1F_Text_Kirlia, MSGBOX_NPC
+	end
+
+
+PetalburgCity_PokemonCenter_1F_Text_Kirlia:
+	.string "Bweeeh!$"

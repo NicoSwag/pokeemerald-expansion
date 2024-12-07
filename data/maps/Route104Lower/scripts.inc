@@ -1,14 +1,48 @@
 @ NOTE: Route 104's sail to Dewford script references local IDs from Dewford's map.
 @  These are labeled in DewfordTown/scripts.inc
 .set LOCALID_RIVAL, 34
+.set LOCALID_STARYU1, 12
+.set LOCALID_STARYU2, 11
+.set LOCALID_STARYU3, 13
+
 
 Route104Lower_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
+	map_script MAP_SCRIPT_ON_RESUME, Route104_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Route104_OnTransition
 	.byte 0
+
+Route104_OnResume:
+	call_if_set FLAG_ROUTE_104_STARYU_1, Route104_RemoveStaryu1
+	call_if_set FLAG_ROUTE_104_STARYU_2, Route104_RemoveStaryu2
+	call_if_set FLAG_ROUTE_104_STARYU_3, Route104_RemoveStaryu3
+	end
+
+Route104_RemoveStaryu1::
+	removeobject LOCALID_STARYU1
+	return
+
+Route104_RemoveStaryu2::
+	removeobject LOCALID_STARYU2
+	return
+
+Route104_RemoveStaryu3::
+	removeobject LOCALID_STARYU3
+	return
 
 Route104_OnFrame:
 	map_script_2 VAR_BOARD_BRINEY_BOAT_STATE, 1, Route104_EventScript_StartSailToDewford
 	.2byte 0
+
+Route104_OnTransition:
+	clearflag FLAG_ROUTE_104_STARYU_1
+	clearflag FLAG_ROUTE_104_STARYU_2
+	clearflag FLAG_ROUTE_104_STARYU_3
+	addobject LOCALID_STARYU1
+	addobject LOCALID_STARYU2
+	addobject LOCALID_STARYU3
+	end
+
 
 Route104_HandleTrainers::
 
@@ -746,7 +780,7 @@ Route104_EventScript_Darian::
 
 Route104_Text_BrineyLivesInSeasideCottage:
 	.string "That seaside cottage is where\n"
-	.string "MR. BRINEY lives.\p"
+	.string "Mr. Briney lives.\p"
 	.string "He was once a mighty sailor who never\n"
 	.string "feared the sea, however stormy.$"
 
@@ -756,16 +790,16 @@ Route104_Text_WhatsItLikeAtBottomOfSea:
 	.string "of the sea?$"
 
 Route104_Text_ThrowBallAtWeakenedPokemon:
-	.string "If you're going to throw a POKé BALL,\n"
-	.string "weaken the wild POKéMON first.\p"
+	.string "If you're going to throw a Poké Ball,\n"
+	.string "weaken the wild Pokémon first.\p"
 	.string "It will be easier to catch if it's been\n"
 	.string "poisoned, burned, or lulled to sleep.$"
 
 Route104_Text_OnlyThrowBallAtWildPokemon:
 	.string "You're a thief if you try to steal\n"
-	.string "someone else's POKéMON.\p"
-	.string "You should throw POKé BALLS only at\n"
-	.string "wild POKéMON.$"
+	.string "someone else's Pokémon….\p"
+	.string "You should throw Poké Balls only at\n"
+	.string "wild Pokémon.$"
 
 Route104_Text_ImNotATrainer:
 	.string "You can only get prize money from\n"
@@ -777,7 +811,7 @@ Route104_Text_LikeFillingMouthWithSeedsTakeThis:
 	.string "I like filling my mouth with seeds,\n"
 	.string "then spitting them out fast!\p"
 	.string "You can have this, so you try it out!\p"
-	.string "Use it on a POKéMON, and it will learn\n"
+	.string "Use it on a Pokémon, and it will learn\n"
 	.string "a move for firing seeds rapidly.$"
 
 Route104_Text_TMsAreOneTimeUse:
@@ -802,11 +836,11 @@ Route104_Text_FlowerShopSellingSaplings:
 	.string "shopping. Where should I put them?$"
 
 Route104_Text_MrBrineysCottage:
-	.string "MR. BRINEY'S COTTAGE$"
+	.string "Mr. Briney's Cottage$"
 
 Route104_Text_RouteSignPetalburg:
-	.string "ROUTE 1O4\n"
-	.string "{RIGHT_ARROW} PETALBURG CITY$"
+	.string "Stormy Seaside\n"
+	.string "{RIGHT_ARROW} Petalburg City$"
 
 Route104_Text_RouteSignRustboro:
 	.string "ROUTE 1O4\n"
@@ -826,3 +860,36 @@ Route104_Text_TrainerTipsDoubleBattles:
 	.string "left of the list and the top one.\l"
 	.string "Watch how POKéMON are lined up.$"
 
+Route104_EventScript_Staryu1::
+	lock
+	playmoncry SPECIES_STARYU, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_STARYU, 6
+	setflag FLAG_ROUTE_104_STARYU_1
+	dowildbattle
+	release
+	end
+
+Route104_EventScript_Staryu2::
+	lock
+	playmoncry SPECIES_STARYU, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_STARYU, 6
+	setflag FLAG_ROUTE_104_STARYU_2
+	dowildbattle
+	release
+	end
+
+
+Route104_EventScript_Staryu3::
+	lock
+	playmoncry SPECIES_STARYU, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_STARYU, 6
+	setflag FLAG_ROUTE_104_STARYU_3
+	dowildbattle
+	release
+	end

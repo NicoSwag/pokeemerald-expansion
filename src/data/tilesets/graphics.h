@@ -1816,3 +1816,41 @@ const u16 gTilesetPalettes_Dewford_Final[][16] =
 };
 
 const u32 gTilesetTiles_Dewford_Final[] = INCBIN_U32("data/tilesets/secondary/dewford_final/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_RuinsBuildings[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/ruins_buildings/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_RuinsBuildings[] = INCBIN_U32("data/tilesets/secondary/ruins_buildings/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_CaveKirikiri[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_kirikiri/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_CaveKirikiri[] = INCBIN_U32("data/tilesets/secondary/cave_kirikiri/tiles.4bpp.lz");

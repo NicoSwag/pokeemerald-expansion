@@ -84,6 +84,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "OldaleRuins_EventScript_Picnicker",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 17,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 63,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OldaleRuins_EventScript_DragonFang",
+      "flag": "ITEM_DRAGON_FANG"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 30,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OldaleRuins_EventScript_RainbowOre",
+      "flag": "FLAG_OLDALE_RUINS_RAINBOW_ORE"
     }
   ],
   "warp_events": [
@@ -92,6 +131,27 @@
       "y": 11,
       "elevation": 0,
       "dest_map": "MAP_MT_KIRIKIRI_SIDE_AREA",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 46,
+      "y": 24,
+      "elevation": 0,
+      "dest_map": "MAP_OLDALE_TOWN_RUIN_HOUSE1",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 56,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_OLDALE_TOWN_RUIN_HOUSE2",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 62,
+      "y": 32,
+      "elevation": 0,
+      "dest_map": "MAP_OLDALE_TOWN_RUINS_HOUSE3",
       "dest_warp_id": "0"
     }
   ],

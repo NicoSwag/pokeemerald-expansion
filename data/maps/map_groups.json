@@ -124,7 +124,10 @@
     "OldaleTown_Mart",
     "OldaleTown_House3",
     "OldaleRuinsEntrance_1",
-    "OldaleRuinsEntrance_2"
+    "OldaleRuinsEntrance_2",
+    "OldaleTown_RuinHouse1",
+    "OldaleTown_RuinHouse2",
+    "OldaleTown_RuinsHouse3"
   ],
   "gMapGroup_IndoorDewford": [
     "DewfordTown_House1",
@@ -187,7 +190,8 @@
     "PetalburgCity_PokemonCenter_1F",
     "PetalburgCity_PokemonCenter_2F",
     "PetalburgCity_Mart",
-    "PetalburgCity_GymInterior"
+    "PetalburgCity_GymInterior",
+    "PetalburgCity_House3"
   ],
   "gMapGroup_IndoorSlateport": [
     "SlateportCity_SternsShipyard_1F",

@@ -78,7 +78,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
+      "graphics_id": "OBJ_EVENT_GFX_UMBRELLA_LADY",
       "x": 32,
       "y": 28,
       "elevation": 3,
@@ -154,6 +154,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PetalburgCity_EventScript_GymBoy",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_STARYU",
+      "x": 26,
+      "y": 52,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route104_EventScript_Staryu2",
+      "flag": "FLAG_ROUTE_104_STARYU_1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_STARYU",
+      "x": 26,
+      "y": 37,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route104_EventScript_Staryu1",
+      "flag": "FLAG_ROUTE_104_STARYU_1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_STARYU",
+      "x": 39,
+      "y": 55,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route104_EventScript_Staryu3",
+      "flag": "FLAG_ROUTE_104_STARYU_3"
     }
   ],
   "warp_events": [

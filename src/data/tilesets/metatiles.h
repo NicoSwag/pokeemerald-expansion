@@ -235,3 +235,9 @@ const u16 gMetatileAttributes_rustboro_inner[] = INCBIN_U16("data/tilesets/secon
 
 const u16 gMetatiles_Dewford_Final[] = INCBIN_U16("data/tilesets/secondary/dewford_final/metatiles.bin");
 const u16 gMetatileAttributes_Dewford_Final[] = INCBIN_U16("data/tilesets/secondary/dewford_final/metatile_attributes.bin");
+
+const u16 gMetatiles_RuinsBuildings[] = INCBIN_U16("data/tilesets/secondary/ruins_buildings/metatiles.bin");
+const u16 gMetatileAttributes_RuinsBuildings[] = INCBIN_U16("data/tilesets/secondary/ruins_buildings/metatile_attributes.bin");
+
+const u16 gMetatiles_CaveKirikiri[] = INCBIN_U16("data/tilesets/secondary/cave_kirikiri/metatiles.bin");
+const u16 gMetatileAttributes_CaveKirikiri[] = INCBIN_U16("data/tilesets/secondary/cave_kirikiri/metatile_attributes.bin");

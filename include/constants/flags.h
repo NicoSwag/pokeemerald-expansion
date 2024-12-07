@@ -698,12 +698,12 @@
 #define FLAG_HIDE_BRAWLY_GRANITE  0x28F // Unused Flag
 #define FLAG_INTRO_INVISIBLE  0x290 // Unused Flag
 #define FLAG_HIDE_SLATEPORT_CUTSCENE  0x291 // Unused Flag
-#define FLAG_UNUSED_0x292  0x292 // Unused Flag
-#define FLAG_UNUSED_0x293  0x293 // Unused Flag
-#define FLAG_UNUSED_0x294  0x294 // Unused Flag
-#define FLAG_UNUSED_0x295  0x295 // Unused Flag
-#define FLAG_UNUSED_0x296  0x296 // Unused Flag
-#define FLAG_UNUSED_0x297  0x297 // Unused Flag
+#define FLAG_OLDALE_RUINS_SKY_FRAGMENT  0x292 // Unused Flag
+#define FLAG_OLDALE_RUINS_RAINBOW_ORE  0x293 // Unused Flag
+#define FLAG_ROUTE_104_STARYU_1  0x294 // Unused Flag
+#define FLAG_ROUTE_104_STARYU_2  0x295 // Unused Flag
+#define FLAG_ROUTE_104_STARYU_3  0x296 // Unused Flag
+#define FLAG_FOUNDRY_COMPONENT_GOT  0x297 // Unused Flag
 #define FLAG_UNUSED_0x298  0x298 // Unused Flag
 #define FLAG_UNUSED_0x299  0x299 // Unused Flag
 #define FLAG_UNUSED_0x29A  0x29A // Unused Flag
@@ -1191,7 +1191,7 @@
 #define FLAG_ITEM_ROUTE_111_ELIXIR                                  0x476
 #define FLAG_ITEM_ROUTE_113_HYPER_POTION                            0x477
 #define FLAG_ITEM_ROUTE_115_HEAL_POWDER                             0x478
-#define FLAG_ITEM_PETALBURG_MUSCLE_BAND                                          0x479 // Unused Flag
+#define FLAG_ITEM_PETALBURG_MIRACLE_SEED                                          0x479 // Unused Flag
 #define FLAG_ITEM_ROUTE_116_POTION                                  0x47A
 #define FLAG_ITEM_ROUTE_119_ELIXIR_2                                0x47B
 #define FLAG_ITEM_ROUTE_120_REVIVE                                  0x47C

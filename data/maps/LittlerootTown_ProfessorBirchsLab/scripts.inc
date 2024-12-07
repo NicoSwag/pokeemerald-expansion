@@ -535,6 +535,7 @@ EventScript_RegisterProfBirch::
 LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 speakername Common_Name_Birch
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex, MSGBOX_DEFAULT
+	closemessage
 	call LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex
 	speakername Common_Name_Birch
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex, MSGBOX_DEFAULT
@@ -979,8 +980,9 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
 	.string "Prof. Birch is studying the effects\n"
-	.string "that the Hoennian Weather has on Pokémon.\p"
-	.string "The Professor enjoys {RIVAL}'s help, too.\n"
+	.string "that the Weather has on Pokémon.\p"
+	.string "The Professor enjoys {RIVAL}'s help,\n"
+	.string "too.\p"
 	.string "Oh, and let's not forget Pikachu's\l"
 	.string "invaluable contributions!\p"
 	.string "Well, I'm not sure what she does, but\n"
@@ -1036,9 +1038,8 @@ LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "Oh, hi, {PLAYER}{KUN}!\p"
 	.string "I heard you and {RIVAL} faced off\n"
 	.string "against some Team Magma goons.\p"
-	.string "Those people have been around for a while.\p"
-	.string "They go around bothering trainers and causing\n"
-	.string "mischief, for some sort of noble goal.\p"
+	.string "They go around bothering trainers for\n"
+	.string "some sort of noble goal.\p"
 	.string "They seem very interested in volcanoes,\n"
 	.string "and I suppose that's admirable, but…\p"
 	.string "It's no excuse to go around stealing\n"
@@ -1073,8 +1074,8 @@ LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "enter the Ever Grande Conference!\p"
 	.string "It's a tournament organized regularly\n"
 	.string "by the Pokémon Lague, where the best\l"
-	.string "Trainers of the region compete with each\l"
-	.string "other.\p"
+	.string "Trainers of the region compete with\l"
+	.string "each other.\p"
 	.string "I really think that both of you\n"
 	.string "have the determination to get that\l"
 	.string "far.\p"
@@ -1088,16 +1089,15 @@ LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese:
 	.string "The Ever Grande Conference…\p"
 	.string "To participate, you're gonna need\n"
 	.string "to defeat the eight Gym Leaders.\p"
-	.string "You're gonna need a strong team for\n"
+	.string "You will need a strong team for\n"
 	.string "that!\p"
 	.string "Well then, here.\n"
-	.string "I guess you're gonna need these.$"
+	.string "I guess you might need these.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls:
 	.string "You know, it's more fun to\n"
 	.string "have a whole bunch of Pokémon.\p"
-	.string "I'm going to explore all over the place\n"
-	.string "to find different Pokémon.\p"
+	.string "I'm going to explore all over the place.\p"
 	.string "If I find any cool Pokémon, you bet\n"
 	.string "I'll try to get them with Poké Balls.$"
 

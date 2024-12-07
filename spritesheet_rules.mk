@@ -450,6 +450,9 @@ $(OBJEVENTGFXDIR)/pokemon_old/deoxys.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/pokemon_old/dusclops.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
+$(OBJEVENTGFXDIR)/pokemon_old/staryu.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(OBJEVENTGFXDIR)/pokemon_old/slugma.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 

@@ -1328,3 +1328,11 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DewfordTown_GymArena/scripts.inc"
 
 	.include "data/maps/BoatCutscene/scripts.inc"
+
+	.include "data/maps/PetalburgCity_House3/scripts.inc"
+
+	.include "data/maps/OldaleTown_RuinHouse1/scripts.inc"
+
+	.include "data/maps/OldaleTown_RuinHouse2/scripts.inc"
+
+	.include "data/maps/OldaleTown_RuinsHouse3/scripts.inc"
