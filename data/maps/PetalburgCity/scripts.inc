@@ -40,6 +40,7 @@ PetalburgCity_EventScript_Lotad::
 	end
 
 PetalburgCity_EventScript_Zigzagoon::
+	lock
 	faceplayer
 	playmoncry SPECIES_ZIGZAGOON_GALARIAN, CRY_MODE_NORMAL
 	msgbox PetalburgCity_Text_ZigzagoonNoises, MSGBOX_NPC

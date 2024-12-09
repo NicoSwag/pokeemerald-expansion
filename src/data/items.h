@@ -10736,19 +10736,19 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_FURY_CUTTER,
     },
 
-    [ITEM_TM_ROAR] =
+    [ITEM_TM_REST] =
     {
         .name = _("TM17"),
-        .price = 3000,
+        .price = 5000,
         .description = COMPOUND_STRING(
-            "Negates all damage,\n"
-            "but may fail if used\n"
-            "in succession."),
+            "The user sleeps for\n"
+            "2 turns to restore\n"
+            "health and status."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_PROTECT,
+        .secondaryId = MOVE_REST,
     },
 
     [ITEM_TM_RAIN_DANCE] =
@@ -11127,7 +11127,7 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_SECRET_POWER,
     },
 
-    [ITEM_TM_REST] =
+    [ITEM_TM_ROAR] =
     {
         .name = _("TM44"),
         .price = 3000,

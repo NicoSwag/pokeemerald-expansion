@@ -990,13 +990,15 @@ static void OpenContextMenu(u8 taskId)
 
 static void PrintMenuActionText_SingleRow(u8 windowId)
 {
-    PrintMenuActionTexts(windowId, FONT_NARROW, 8, 1, 0, 0x10, gPyramidBagMenu->menuActionsCount, sMenuActions, gPyramidBagMenu->menuActionIds);
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(11));
+    PrintMenuActionTextsOverride(windowId, FONT_NARROW, 8, 1, 0, 0x10, gPyramidBagMenu->menuActionsCount, sMenuActions, gPyramidBagMenu->menuActionIds);
     InitMenuInUpperLeftCornerNormal(windowId, gPyramidBagMenu->menuActionsCount, 0);
 }
 
 static void PrintMenuActionText_MultiRow(u8 windowId, u8 horizontalCount, u8 verticalCount)
 {
-    PrintMenuActionGrid(windowId, FONT_NARROW, 8, 1, 56, horizontalCount, verticalCount, sMenuActions, gPyramidBagMenu->menuActionIds);
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(11));
+    PrintMenuActionGridOverride(windowId, FONT_NARROW, 8, 1, 56, horizontalCount, verticalCount, sMenuActions, gPyramidBagMenu->menuActionIds);
     InitMenuActionGrid(windowId, 56, horizontalCount, verticalCount, 0);
 }
 

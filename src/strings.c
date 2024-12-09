@@ -206,6 +206,7 @@ const u8 gText_TM13[] = _("Charge Beam");
 const u8 gText_TM14[] = _("Gyro Ball");
 const u8 gText_TM15[] = _("Sunny Day");
 const u8 gText_TM16[] = _("Fury Cutter");
+const u8 gText_TM17[] = _("Rest");
 const u8 gMenuText_Show[] = _("SHOW");
 const u8 gText_EmptyString2[] = _("");
 const u8 gText_Cancel7[] = _("Cancel"); // Unused

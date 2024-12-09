@@ -340,7 +340,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     TRAINER_CLASS(TUBER_M, "Tuber", 1),
     TRAINER_CLASS(LADY, "Lady", 50),
     TRAINER_CLASS(BEAUTY, "Beauty", 20),
-    TRAINER_CLASS(RICH_BOY, "Rick Boy", 50),
+    TRAINER_CLASS(RICH_BOY, "Rich Boy", 50),
     TRAINER_CLASS(POKEMANIAC, "Pokémaniac", 15),
     TRAINER_CLASS(GUITARIST, "Guitarist", 8),
     TRAINER_CLASS(KINDLER, "Kindler", 8),
@@ -4862,7 +4862,7 @@ s8 GetMovePriority(u32 battler, u16 move)
         move = GetUsableZMove(battler, move);
 
     priority = gMovesInfo[move].priority;
-    if(gBattleMons[battler].status1 & STATUS1_PARALYSIS && priority <= 0)
+    if(gBattleMons[battler].status1 & STATUS1_PARALYSIS)
         priority--;
     
     if(ability == ABILITY_PALEBLOOD && gMovesInfo[move].lunarMove && (gBattleMons[battler].hp >= gBattleMons[battler].maxHP * 0.75))
@@ -5131,6 +5131,7 @@ static void TurnValuesCleanUp(bool8 var0)
 
         gSpecialStatuses[i].parentalBondState = PARENTAL_BOND_OFF;
         gSpecialStatuses[i].fistBarrageState = FIST_BARRAGE_OFF;
+        gSpecialStatuses[i].strikerState = STRIKER_OFF;
     }
 
     gSideStatuses[B_SIDE_PLAYER] &= ~(SIDE_STATUS_QUICK_GUARD | SIDE_STATUS_WIDE_GUARD | SIDE_STATUS_CRAFTY_SHIELD | SIDE_STATUS_MAT_BLOCK);

@@ -29,8 +29,8 @@ static const struct TrainerMon sParty_BrendanRoute103Mudkip[] = {
     {
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 5,
-    .species = SPECIES_CHIKORITA,
-    .nature = NATURE_MODEST,
+    .species = SPECIES_TREECKO,
+    .nature = NATURE_ADAMANT,
     }
 };
 
@@ -38,8 +38,8 @@ static const struct TrainerMon sParty_BrendanRoute103Treecko[] = {
     {
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 5,
-    .species = SPECIES_FENNEKIN,
-    .nature = NATURE_CALM,
+    .species = SPECIES_TORCHIC,
+    .nature = NATURE_ADAMANT,
     }
 };
 
@@ -47,8 +47,8 @@ static const struct TrainerMon sParty_BrendanRoute103Torchic[] = {
     {
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 5,
-    .species = SPECIES_PIPLUP,
-    .nature = NATURE_MODEST,
+    .species = SPECIES_MUDKIP,
+    .nature = NATURE_ADAMANT,
     }
 };
 
@@ -56,8 +56,8 @@ static const struct TrainerMon sParty_MayRoute103Mudkip[] = {
     {
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 5,
-    .species = SPECIES_CHIKORITA,
-    .nature = NATURE_MODEST,
+    .species = SPECIES_TREECKO,
+    .nature = NATURE_ADAMANT,
     }
 };
 
@@ -65,8 +65,8 @@ static const struct TrainerMon sParty_MayRoute103Treecko[] = {
     {
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 5,
-    .species = SPECIES_FENNEKIN,
-    .nature = NATURE_CALM,
+    .species = SPECIES_TORCHIC,
+    .nature = NATURE_ADAMANT,
     }
 };
 
@@ -74,7 +74,7 @@ static const struct TrainerMon sParty_MayRoute103Torchic[] = {
     {
     .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
     .lvl = 5,
-    .species = SPECIES_PIPLUP,
-    .nature = NATURE_MODEST,
+    .species = SPECIES_MUDKIP,
+    .nature = NATURE_ADAMANT,
     }
 };

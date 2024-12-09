@@ -18,7 +18,7 @@
     F(GYRO_BALL) \
     F(SUNNY_DAY) \
     F(FURY_CUTTER) \
-    F(ROAR) \
+    F(REST) \
     F(RAIN_DANCE) \
     F(GIGA_DRAIN) \
     F(SAFEGUARD) \
@@ -44,7 +44,7 @@
     F(TORMENT) \
     F(FACADE) \
     F(SECRET_POWER) \
-    F(REST) \
+    F(ROAR) \
     F(ATTRACT) \
     F(THIEF) \
     F(STEEL_WING) \

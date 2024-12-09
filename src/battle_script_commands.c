@@ -1508,6 +1508,19 @@ static void Cmd_attackcanceler(void)
         return;
     }
     
+    if (gSpecialStatuses[gBattlerAttacker].strikerState == STRIKER_OFF
+    && GetBattlerAbility(gBattlerAttacker) == ABILITY_STRIKER
+    && (gMovesInfo[gCurrentMove].kickingMove)
+    && !(gAbsentBattlerFlags & gBitTable[gBattlerTarget])
+    && GetActiveGimmick(gBattlerAttacker) != GIMMICK_Z_MOVE)
+    {
+        gSpecialStatuses[gBattlerAttacker].strikerState = STRIKER_1ST_HIT;
+        gMultiHitCounter = 2;
+        PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 1, 0)
+        return;
+    }
+
+
     if (gSpecialStatuses[gBattlerAttacker].fistBarrageState == FIST_BARRAGE_OFF
     && GetBattlerAbility(gBattlerAttacker) == ABILITY_FIST_BARRAGE
     && (gMovesInfo[gCurrentMove].punchingMove)
@@ -1686,6 +1699,12 @@ static void Cmd_attackcanceler(void)
         if (gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT)
         {
             gSpecialStatuses[gBattlerAttacker].parentalBondState = PARENTAL_BOND_OFF; // No second hit if first hit was blocked
+            gSpecialStatuses[gBattlerAttacker].multiHitOn = 0;
+            gMultiHitCounter = 0;
+        }
+        if (gSpecialStatuses[gBattlerAttacker].strikerState == STRIKER_1ST_HIT)
+        {
+            gSpecialStatuses[gBattlerAttacker].strikerState = STRIKER_OFF; // No second hit if first hit was blocked
             gSpecialStatuses[gBattlerAttacker].multiHitOn = 0;
             gMultiHitCounter = 0;
         }
@@ -2009,6 +2028,14 @@ static void AccuracyCheck(bool32 recalcDragonDarts, const u8 *nextInstr, const u
         // No acc checks for second hit of Parental Bond or multi hit moves, except Triple Kick/Triple Axel/Population Bomb
         gBattlescriptCurrInstr = nextInstr;
     }
+    else if (gSpecialStatuses[gBattlerAttacker].strikerState == STRIKER_2ND_HIT
+        || (gSpecialStatuses[gBattlerAttacker].multiHitOn
+        && (abilityAtk == ABILITY_SKILL_LINK || holdEffectAtk == HOLD_EFFECT_LOADED_DICE
+        || !(gMovesInfo[move].effect == EFFECT_TRIPLE_KICK || gMovesInfo[move].effect == EFFECT_POPULATION_BOMB))))
+    {
+        // No acc checks for second hit of Parental Bond or multi hit moves, except Triple Kick/Triple Axel/Population Bomb
+        gBattlescriptCurrInstr = nextInstr;
+    }
     else
     {
         u32 accuracy;
@@ -2125,7 +2152,8 @@ static void Cmd_ppreduce(void)
             && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
             && !WasUnableToUseMove(gBattlerAttacker)
             && gSpecialStatuses[gBattlerAttacker].fistBarrageState != FIST_BARRAGE_1ST_HIT
-            && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT) // Don't increment counter on first hit
+            && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT
+            && gSpecialStatuses[gBattlerAttacker].strikerState != STRIKER_1ST_HIT) // Don't increment counter on first hit
                 gBattleStruct->sameMoveTurns[gBattlerAttacker]++;
         else
             gBattleStruct->sameMoveTurns[gBattlerAttacker] = 0;
@@ -2233,21 +2261,21 @@ s32 GetCritHitOdds(s32 critChanceIndex)
         return sCriticalHitOdds[critChanceIndex];
 }
 
+
+
+
 static void Cmd_critcalc(void)
 {
     CMD_ARGS();
 
     u16 partySlot;
-    s32 critChance = CalcCritChanceStage(gBattlerAttacker, gBattlerTarget, gCurrentMove, TRUE);
+    s32 critChance;
+
+
+    critChance = CalcCritChanceStage(gBattlerAttacker, gBattlerTarget, gCurrentMove, TRUE);
+
     gPotentialItemEffectBattler = gBattlerAttacker;
 
-    if(gBattleMons[gBattlerAttacker].ability == ABILITY_BLAZING_FAST){
-        if(Random() % 100 < gBattleMons[gBattlerAttacker].speed * 100/512)
-            gIsCriticalHit = TRUE;
-        else
-            gIsCriticalHit = FALSE;
-    }
-    else
     if (gBattleTypeFlags & (BATTLE_TYPE_WALLY_TUTORIAL | BATTLE_TYPE_FIRST_BATTLE))
         gIsCriticalHit = FALSE;
     else if (critChance == -1)
@@ -2519,6 +2547,11 @@ static void Cmd_attackanimation(void)
     else
     {
         if (gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_2ND_HIT) // No animation on second hit
+        {
+            gBattlescriptCurrInstr = cmd->nextInstr;
+            return;
+        }
+        if (gSpecialStatuses[gBattlerAttacker].strikerState == STRIKER_2ND_HIT) // No animation on second hit
         {
             gBattlescriptCurrInstr = cmd->nextInstr;
             return;
@@ -3128,7 +3161,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
     bool8 activateAfterFaint = FALSE;
 
     
-    if ((gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT || gSpecialStatuses[gBattlerAttacker].fistBarrageState == FIST_BARRAGE_1ST_HIT)
+    if ((gSpecialStatuses[gBattlerAttacker].strikerState == STRIKER_1ST_HIT || gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT || gSpecialStatuses[gBattlerAttacker].fistBarrageState == FIST_BARRAGE_1ST_HIT)
         && gBattleMons[gBattlerTarget].hp != 0
         && IsFinalStrikeEffect(gBattleScripting.moveEffect))
     {
@@ -6586,6 +6619,7 @@ static void Cmd_moveend(void)
             }
             gMultiHitCounter = 0;
             gSpecialStatuses[gBattlerAttacker].parentalBondState = PARENTAL_BOND_OFF;
+            gSpecialStatuses[gBattlerAttacker].strikerState = STRIKER_OFF;
             gSpecialStatuses[gBattlerAttacker].fistBarrageState = FIST_BARRAGE_OFF;
             gSpecialStatuses[gBattlerAttacker].multiHitOn = 0;
             gBattleScripting.moveendState++;
@@ -12164,7 +12198,7 @@ static void Cmd_stockpiletobasedamage(void)
         if (gBattleCommunication[MISS_TYPE] != B_MSG_PROTECTED)
             gBattleScripting.animTurn = gDisableStructs[gBattlerAttacker].stockpileCounter;
 
-        if (!((gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT) || (gSpecialStatuses[gBattlerAttacker].fistBarrageState == FIST_BARRAGE_1ST_HIT)) && gBattleMons[gBattlerTarget].hp != 0)
+        if (!((gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT) || (gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT) || (gSpecialStatuses[gBattlerAttacker].fistBarrageState == FIST_BARRAGE_1ST_HIT)) && gBattleMons[gBattlerTarget].hp != 0)
         {
             gBattleStruct->moveEffect2 = MOVE_EFFECT_STOCKPILE_WORE_OFF;
         }
@@ -12965,7 +12999,7 @@ static void Cmd_givepaydaymoney(void)
 
     if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_TRAINER)))
     {
-        u32 bonusMoney = (50 + (Random() % 100)) * gBattleStruct->moneyMultiplier;
+        u32 bonusMoney = ((Random() % 100)) * gBattleStruct->moneyMultiplier;
         AddMoney(&gSaveBlock1Ptr->money, bonusMoney);
 
         PREPARE_HWORD_NUMBER_BUFFER(gBattleTextBuff1, 5, bonusMoney)

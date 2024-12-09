@@ -92,8 +92,6 @@ static s16 GetReflectionVerticalOffset(struct ObjectEvent *objectEvent)
     return GetObjectEventGraphicsInfo(objectEvent->graphicsId)->height - 2;
 }
 
-#define OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION 0x1102
-
 static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct Sprite *reflectionSprite)
 {
     u8 bridgeType;
@@ -106,8 +104,6 @@ static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct 
     if ((bridgeType = MetatileBehavior_GetBridgeType(objectEvent->previousMetatileBehavior))
         || (bridgeType = MetatileBehavior_GetBridgeType(objectEvent->currentMetatileBehavior)))
     {
-        // When walking on a bridge high above water (Route 120), the reflection is a solid dark blue color.
-        // This is so the sprite blends in with the dark water metatile underneath the bridge.
         reflectionSprite->sReflectionVerticalOffset = bridgeReflectionVerticalOffsets[bridgeType - 1];
         LoadObjectHighBridgeReflectionPalette(objectEvent, reflectionSprite);
     }
@@ -173,7 +169,7 @@ static void LoadObjectRegularReflectionPalette(struct ObjectEvent *objectEvent, 
         u16 filteredData[16];
         struct SpritePalette filteredPal = {.tag = paletteTag, .data = filteredData};
         if (sprite->sIsStillReflection == FALSE)
-        ApplyPondFilter(mainSprite->oam.paletteNum, filteredData);
+            ApplyPondFilter(mainSprite->oam.paletteNum, filteredData);
         else
             ApplyIceFilter(mainSprite->oam.paletteNum, filteredData);
         paletteNum = LoadSpritePalette(&filteredPal);
@@ -223,7 +219,7 @@ static void UpdateObjectReflectionSprite(struct Sprite *reflectionSprite)
             FieldEffectFreePaletteIfUnused(reflectionSprite->oam.paletteNum);
             reflectionSprite->inUse = TRUE;
             if (reflectionSprite->sIsStillReflection == FALSE)
-            ApplyPondFilter(mainSprite->oam.paletteNum, filteredData);
+                ApplyPondFilter(mainSprite->oam.paletteNum, filteredData);
             else
                 ApplyIceFilter(mainSprite->oam.paletteNum, filteredData);
             paletteNum = LoadSpritePalette(&filteredPal);
@@ -420,7 +416,7 @@ u32 FldEff_TallGrass(void)
     s16 x = gFieldEffectArguments[0];
     s16 y = gFieldEffectArguments[1];
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
-        spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TALL_GRASS], x, y, 0);
+    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TALL_GRASS], x, y, 0);
     if (spriteId != MAX_SPRITES)
     {
         struct Sprite *sprite = &gSprites[spriteId];
@@ -1114,7 +1110,7 @@ u32 FldEff_Ash(void)
     bool8 snow = gFieldEffectArguments[6];
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
     if(!snow)
-        spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_ASH], x, y, gFieldEffectArguments[2]);
+    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_ASH], x, y, gFieldEffectArguments[2]);
     else
         spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_SNOW], x, y, gFieldEffectArguments[2]);
     
@@ -1256,10 +1252,10 @@ static void SynchroniseSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sp
         [DIR_NORTH] = 1,
         [DIR_WEST] = 2,
         [DIR_EAST] = 3,
-        [DIR_SOUTHWEST] = 2,
-        [DIR_SOUTHEAST] = 3,
-        [DIR_NORTHWEST] = 2,
-        [DIR_NORTHEAST] = 3,
+        [DIR_SOUTHWEST] = 0,
+        [DIR_SOUTHEAST] = 0,
+        [DIR_NORTHWEST] = 1,
+        [DIR_NORTHEAST] = 1,
     };
 
     if (!GetSurfBlob_DontSyncAnim(sprite))
@@ -1895,12 +1891,6 @@ static void UpdateGrassFieldEffectSubpriority(struct Sprite *sprite, u8 elevatio
         }
     }
 }
-
-
-
-
-
-
 
 // Unused, duplicates of data in event_object_movement.c
 static const s8 sFigure8XOffsets[FIGURE_8_LENGTH] = {

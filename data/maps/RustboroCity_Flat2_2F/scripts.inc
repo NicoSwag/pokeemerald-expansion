@@ -30,13 +30,13 @@ RustboroCity_Flat2_2F_Text_DevonWasTinyInOldDays:
 	.string "Truly a marvelous company.$"
 	
 RustboroCity_Flat2_2F_Text_MyDaddyMadeThisYouCanHaveIt:
-	.string "My daddy's working at the CORPORATION.\p"
+	.string "My daddy's working at Devon.\p"
 	.string "One day, while he wasn't looking, I\n"
 	.string "stole this from his work room!\p"
 	.string "You can have it, as long as you\n"
 	.string "don't tell anyone.$"
 
 RustboroCity_Flat2_2F_Text_GoingToWorkAtDevonToo:
-	.string "My daddy's working at the CORPORATION.\p"
-	.string "When I grow up, I'm going to work for\n"
-	.string "DEVON, too.$"
+	.string "My daddy's working at Devon.\p"
+	.string "When I grow up, I'm going to\n"
+	.string "work for Devon, too.$"

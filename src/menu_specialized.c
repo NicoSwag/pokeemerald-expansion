@@ -755,22 +755,26 @@ static void MoveRelearnerLoadBattleMoveDescription(u32 chosenMove)
     const struct MoveInfo *move;
     u8 buffer[32];
     const u8 *str;
-
-    FillWindowPixelBuffer(RELEARNERWIN_DESC_BATTLE, PIXEL_FILL(1));
+    u8 colors[3];
+    colors[0]=11;
+    colors[1]=1;
+    colors[2]=2;
+    FillWindowPixelBuffer(RELEARNERWIN_DESC_BATTLE, PIXEL_FILL(11));
     str = gText_MoveRelearnerBattleMoves;
     x = GetStringCenterAlignXOffset(FONT_NORMAL, str, 128);
-    AddTextPrinterParameterized(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, str, x, 1, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized4(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, x, 1, 0, 0, colors, 0, str);
 
     str = gText_MoveRelearnerPP;
-    AddTextPrinterParameterized(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, str, 4, 41, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized4(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, 4, 41, 0, 0, colors, 0, str);
 
     str = gText_MoveRelearnerPower;
     x = GetStringRightAlignXOffset(FONT_NORMAL, str, 106);
-    AddTextPrinterParameterized(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, str, x, 25, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized4(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, x, 25, 0, 0, colors, 0, str);
 
     str = gText_MoveRelearnerAccuracy;
     x = GetStringRightAlignXOffset(FONT_NORMAL, str, 106);
-    AddTextPrinterParameterized(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, str, x, 41, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized4(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, x, 41, 0, 0, colors, 0, str);
+
     if (chosenMove == LIST_CANCEL)
     {
         // On "Cancel", skip printing move data
@@ -779,11 +783,11 @@ static void MoveRelearnerLoadBattleMoveDescription(u32 chosenMove)
     }
     move = &gMovesInfo[chosenMove];
     str = gTypesInfo[move->type].name;
-    AddTextPrinterParameterized(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, str, 4, 25, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized4(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, 4, 25, 0, 0, colors, 0, str);
 
     x = 4 + GetStringWidth(FONT_NORMAL, gText_MoveRelearnerPP, 0);
     ConvertIntToDecimalStringN(buffer, move->pp, STR_CONV_MODE_LEFT_ALIGN, 2);
-    AddTextPrinterParameterized(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, buffer, x, 41, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized4(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, x, 41, 0, 0, colors, 0, buffer);
 
     if (move->power < 2)
     {
@@ -794,7 +798,7 @@ static void MoveRelearnerLoadBattleMoveDescription(u32 chosenMove)
         ConvertIntToDecimalStringN(buffer, move->power, STR_CONV_MODE_LEFT_ALIGN, 3);
         str = buffer;
     }
-    AddTextPrinterParameterized(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, str, 106, 25, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized4(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, 106, 25, 0, 0, colors, 0, str);
 
     if (move->accuracy == 0)
     {
@@ -805,14 +809,14 @@ static void MoveRelearnerLoadBattleMoveDescription(u32 chosenMove)
         ConvertIntToDecimalStringN(buffer, move->accuracy, STR_CONV_MODE_LEFT_ALIGN, 3);
         str = buffer;
     }
-    AddTextPrinterParameterized(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, str, 106, 41, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized4(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, 106, 41, 0, 0, colors, 0, str);
 
     if (move->effect != EFFECT_PLACEHOLDER)
         str = gMovesInfo[chosenMove].description;
     else
         str = gNotDoneYetDescription;
 
-    AddTextPrinterParameterized(RELEARNERWIN_DESC_BATTLE, FONT_NARROW, str, 0, 65, 0, NULL);
+    AddTextPrinterParameterized4(RELEARNERWIN_DESC_BATTLE, FONT_NARROW, 0, 65, 0, 0, colors, 0, str);
 }
 
 static void MoveRelearnerMenuLoadContestMoveDescription(u32 chosenMove)
@@ -862,11 +866,15 @@ static void MoveRelearnerCursorCallback(s32 itemIndex, bool8 onInit, struct List
 void MoveRelearnerPrintMessage(u8 *str)
 {
     u8 speed;
-
-    FillWindowPixelBuffer(RELEARNERWIN_MSG, PIXEL_FILL(1));
+    u8 colors[3];
+        colors[0]=11;
+        colors[1]=1;
+        colors[2]=2;
+    FillWindowPixelBuffer(RELEARNERWIN_MSG, PIXEL_FILL(11));
     gTextFlags.canABSpeedUpPrint = TRUE;
     speed = GetPlayerTextSpeedDelay();
-    AddTextPrinterParameterized2(RELEARNERWIN_MSG, FONT_NORMAL, str, speed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, 3);
+    AddTextPrinterParameterized4(RELEARNERWIN_MSG, FONT_NORMAL, 0, 1, 0, 0, colors, speed, str);
+    
 }
 
 bool16 MoveRelearnerRunTextPrinters(void)
@@ -877,7 +885,7 @@ bool16 MoveRelearnerRunTextPrinters(void)
 
 void MoveRelearnerCreateYesNoMenu(void)
 {
-    CreateYesNoMenu(&sMoveRelearnerYesNoMenuTemplate, 1, 0xE, 0);
+    CreateYesNoMenuOverride(&sMoveRelearnerYesNoMenuTemplate, 1, 0xE, 0);
 }
 
 //----------------
@@ -1521,7 +1529,7 @@ void DrawLevelUpWindowPg1(u16 windowId, u16 *statsBefore, u16 *statsAfter, u8 bg
     u8 text[12];
     u8 color[3];
 
-    FillWindowPixelBuffer(windowId, PIXEL_FILL(bgClr));
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(8));
 
     statsDiff[0] = statsAfter[STAT_HP]    - statsBefore[STAT_HP];
     statsDiff[1] = statsAfter[STAT_ATK]   - statsBefore[STAT_ATK];
@@ -1530,9 +1538,9 @@ void DrawLevelUpWindowPg1(u16 windowId, u16 *statsBefore, u16 *statsAfter, u8 bg
     statsDiff[4] = statsAfter[STAT_SPDEF] - statsBefore[STAT_SPDEF];
     statsDiff[5] = statsAfter[STAT_SPEED] - statsBefore[STAT_SPEED];
 
-    color[0] = bgClr;
-    color[1] = fgClr;
-    color[2] = shadowClr;
+    color[0] = 8;
+    color[1] = 14;
+    color[2] = 13;
 
     for (i = 0; i < NUM_STATS; i++)
     {
@@ -1576,7 +1584,7 @@ void DrawLevelUpWindowPg2(u16 windowId, u16 *currStats, u8 bgClr, u8 fgClr, u8 s
     u8 text[12];
     u8 color[3];
 
-    FillWindowPixelBuffer(windowId, PIXEL_FILL(bgClr));
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(8));
 
     stats[0] = currStats[STAT_HP];
     stats[1] = currStats[STAT_ATK];
@@ -1585,9 +1593,9 @@ void DrawLevelUpWindowPg2(u16 windowId, u16 *currStats, u8 bgClr, u8 fgClr, u8 s
     stats[4] = currStats[STAT_SPDEF];
     stats[5] = currStats[STAT_SPEED];
 
-    color[0] = bgClr;
-    color[1] = fgClr;
-    color[2] = shadowClr;
+     color[0] = 8;
+    color[1] = 14;
+    color[2] = 13;
 
     for (i = 0; i < NUM_STATS; i++)
     {
@@ -1618,6 +1626,7 @@ void DrawLevelUpWindowPg2(u16 windowId, u16 *currStats, u8 bgClr, u8 fgClr, u8 s
                                      text);
     }
 }
+
 
 void GetMonLevelUpWindowStats(struct Pokemon *mon, u16 *currStats)
 {

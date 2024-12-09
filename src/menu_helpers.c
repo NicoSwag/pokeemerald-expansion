@@ -147,7 +147,9 @@ void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 palet
         StringExpandPlaceholders(gStringVar4, string);
 
     gTextFlags.canABSpeedUpPrint = 1;
-    AddTextPrinterParameterized2(windowId, fontId, gStringVar4, textSpeed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+        FillWindowPixelBuffer(windowId, PIXEL_FILL(11));
+
+    AddTextPrinterParameterized2(windowId, fontId, gStringVar4, textSpeed, NULL, 1, 11, 2);
     sMessageNextTask = taskFunc;
     gTasks[taskId].func = Task_ContinueTaskAfterMessagePrints;
 }
@@ -173,6 +175,13 @@ void DoYesNoFuncWithChoice(u8 taskId, const struct YesNoFuncTable *data)
 void CreateYesNoMenuWithCallbacks(u8 taskId, const struct WindowTemplate *template, u8 unused1, u8 unused2, u8 unused3, u16 tileStart, u8 palette, const struct YesNoFuncTable *yesNo)
 {
     CreateYesNoMenu(template, tileStart, palette, 0);
+    sYesNo = *yesNo;
+    gTasks[taskId].func = Task_CallYesOrNoCallback;
+}
+
+void CreateYesNoMenuWithCallbacksOverride(u8 taskId, const struct WindowTemplate *template, u8 unused1, u8 unused2, u8 unused3, u16 tileStart, u8 palette, const struct YesNoFuncTable *yesNo)
+{
+    CreateYesNoMenuOverride(template, tileStart, palette, 0);
     sYesNo = *yesNo;
     gTasks[taskId].func = Task_CallYesOrNoCallback;
 }

@@ -253,7 +253,7 @@ Route103_Text_MarcosPostBattle:
 
 Route104_Text_IvanIntro:
 	.string "Why keep it a secret?\n"
-	.string "I'm the WATER POKéMON expert!\p"
+	.string "I'm the Water Pokémon expert!\p"
 	.string "Huh?\n"
 	.string "You don't know me?$"
 
@@ -263,7 +263,7 @@ Route104_Text_IvanDefeat:
 
 Route104_Text_IvanPostBattle:
 	.string "I got too into fishing.\n"
-	.string "I forgot I had to raise my POKéMON…$"
+	.string "I forgot I had to raise my Pokémon$"
 
 Route104_Text_BillyIntro:
 	.string "Leaving footprints in the sand is\n"

@@ -547,6 +547,12 @@
 #define FIST_BARRAGE_3RD_HIT 2
 #define FIST_BARRAGE_4TH_HIT 1
 #define FIST_BARRAGE_OFF    0
+
+#define STRIKER_1ST_HIT 2
+#define STRIKER_2ND_HIT 1
+#define STRIKER_OFF     0
+
+
 // Constants for if HandleScriptMegaPrimalBurst should handle Mega Evolution, Primal Reversion, or Ultra Burst.
 #define HANDLE_TYPE_MEGA_EVOLUTION 0
 #define HANDLE_TYPE_PRIMAL_REVERSION 1

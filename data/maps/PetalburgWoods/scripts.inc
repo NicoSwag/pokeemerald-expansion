@@ -526,7 +526,7 @@ PetalburgWoods_Text_LookerLate:
 	.string "As I am told, it is used to distribute\n"
 	.string "Experience evenly amongst Pokémon.\p"
 	.string "Of course, I have no use of it.\p"
-	.string "Then, will you be taking it?$"
+	.string "And, do not forget to turn it on.$"
 
 PetalburgWoods_Text_LookerFarewell:
 	.string "Now, my friend, we must go quickly.\p"

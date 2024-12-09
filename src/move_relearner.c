@@ -436,7 +436,7 @@ static void CB2_InitLearnMove(void)
     LoadSpritePalette(&sMoveRelearnerPalette);
     CreateUISprites();
 
-    sMoveRelearnerStruct->moveListMenuTask = ListMenuInit(&gMultiuseListMenuTemplate, sMoveRelearnerMenuSate.listOffset, sMoveRelearnerMenuSate.listRow);
+    sMoveRelearnerStruct->moveListMenuTask = ListMenuInitOverride(&gMultiuseListMenuTemplate, sMoveRelearnerMenuSate.listOffset, sMoveRelearnerMenuSate.listRow);
     SetBackdropFromColor(RGB_BLACK);
     SetMainCallback2(CB2_MoveRelearnerMain);
 }
@@ -792,15 +792,21 @@ static void FreeMoveRelearnerResources(void)
 static void HideHeartSpritesAndShowTeachMoveText(bool8 onlyHideSprites)
 {
     s32 i;
-
+    
     for (i = 0; i < 16; i++)
         gSprites[sMoveRelearnerStruct->heartSpriteIds[i]].invisible = TRUE;
 
     if (!onlyHideSprites)
     {
         StringExpandPlaceholders(gStringVar4, gText_TeachWhichMoveToPkmn);
-        FillWindowPixelBuffer(RELEARNERWIN_MSG, 0x11);
-        AddTextPrinterParameterized(RELEARNERWIN_MSG, FONT_NORMAL, gStringVar4, 0, 1, 0, NULL);
+        u8 colors[3];
+        colors[0]=11;
+        colors[1]=1;
+        colors[2]=2;
+        FillWindowPixelBuffer(RELEARNERWIN_MSG, PIXEL_FILL(11));
+        AddTextPrinterParameterized4(RELEARNERWIN_MSG, FONT_NORMAL, 0, 1, 0, 0, colors, 0, gStringVar4);
+
+
     }
 }
 

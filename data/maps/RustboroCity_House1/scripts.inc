@@ -4,10 +4,10 @@ RustboroCity_House1_MapScripts::
 RustboroCity_House1_EventScript_Trader::
 	lock
 	faceplayer
-	goto_if_set FLAG_UTILITY_UMBRELLA, RustboroCity_House1_EventScript_DeclineTrade
+	goto_if_set FLAG_SAFETY_GOGGLES, RustboroCity_House1_EventScript_DeclineTrade
 	msgbox RustboroCity_House1_Text_YouDontWantToThatsOkay, 
-	giveitem ITEM_UTILITY_UMBRELLA
-	setflag FLAG_UTILITY_UMBRELLA
+	giveitem ITEM_SAFETY_GOGGLES
+	setflag FLAG_SAFETY_GOGGLES
 	msgbox RustboroCity_House1_Text_AnyPokemonCanBeCute, MSGBOX_DEFAULT
 	release
 	end
@@ -49,19 +49,21 @@ RustboroCity_House1_Text_DoesntLookLikeMonToMe:
 	.string "a {STR_VAR_1} to me.$"
 
 RustboroCity_House1_Text_YouDontWantToThatsOkay:
-	.string "At least this city isn't affected\n"
-	.string "by the strange weather…\p"
-	.string "But if you're traveling, make sure\n"
-	.string "to prepare for all conditions.$"
-	.string "Here, this can help you!$"
+	.string "It can be hard to breathe with\n"
+	.string "all this pollution…\p"
+	.string "Make sure to make your Pokémon\n"
+	.string "wear a mask.$"
 
 RustboroCity_House1_Text_AnyPokemonCanBeCute:
-	.string "This special umbrella will protect\n"
-	.string "you from the rain and the sun!\p"
-	.string "Won't do much for a sandstorm, though.$"
+	.string "These goggles can protect your\n"
+	.string "Pokémon from the effects of\l"
+	.string "pollution.\p"
+	.string "But that's not all!\p"
+	.string "They also help against sandstorms,\n"
+	.string "as well as moves involving powder.$"
 
 RustboroCity_House1_Text_AllSortsOfPlaces:
 	.string "In all sorts of places, there are all\n"
-	.string "sorts of POKéMON and people.\p"
+	.string "sorts of Pokémon and people.\p"
 	.string "I find that fascinating, so I go to all\n"
 	.string "sorts of places.$"

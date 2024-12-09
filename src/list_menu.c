@@ -70,7 +70,9 @@ struct RedArrowCursor
 
 // this file's functions
 static u8 ListMenuInitInternal(struct ListMenuTemplate *listMenuTemplate, u16 scrollOffset, u16 selectedRow);
+static u8 ListMenuInitInternalOverride(struct ListMenuTemplate *listMenuTemplate, u16 scrollOffset, u16 selectedRow);
 static void ListMenuPrintEntries(struct ListMenu *list, u16 startIndex, u16 yOffset, u16 count);
+static void ListMenuPrintEntriesOverride(struct ListMenu *list, u16 startIndex, u16 yOffset, u16 count);
 static void ListMenuDrawCursor(struct ListMenu *list);
 static void ListMenuCallSelectionChangedCallback(struct ListMenu *list, u8 onInit);
 static u8 ListMenuAddCursorObject(struct ListMenu *list, u32 cursorObjId);
@@ -389,6 +391,15 @@ u8 ListMenuInit(struct ListMenuTemplate *listMenuTemplate, u16 scrollOffset, u16
     return taskId;
 }
 
+u8 ListMenuInitOverride(struct ListMenuTemplate *listMenuTemplate, u16 scrollOffset, u16 selectedRow)
+{
+    u8 taskId = ListMenuInitInternalOverride(listMenuTemplate, scrollOffset, selectedRow);
+    PutWindowTilemap(listMenuTemplate->windowId);
+    CopyWindowToVram(listMenuTemplate->windowId, COPYWIN_GFX);
+
+    return taskId;
+}
+
 // unused
 u8 ListMenuInitInRect(struct ListMenuTemplate *listMenuTemplate, struct ListMenuWindowRect *rect, u16 scrollOffset, u16 selectedRow)
 {
@@ -595,6 +606,76 @@ static u8 ListMenuInitInternal(struct ListMenuTemplate *listMenuTemplate, u16 sc
     return listTaskId;
 }
 
+static u8 ListMenuInitInternalOverride(struct ListMenuTemplate *listMenuTemplate, u16 scrollOffset, u16 selectedRow)
+{
+    u8 listTaskId = CreateTask(ListMenuDummyTask, 0);
+    struct ListMenu *list = (void *) gTasks[listTaskId].data;
+
+    list->template = *listMenuTemplate;
+    list->scrollOffset = scrollOffset;
+    list->selectedRow = selectedRow;
+    list->unk_1C = 0;
+    list->unk_1D = 0;
+    list->taskId = TASK_NONE;
+    list->unk_1F = 0;
+
+    gListMenuOverride.cursorPal = list->template.cursorPal;
+    gListMenuOverride.fillValue = list->template.fillValue;
+    gListMenuOverride.cursorShadowPal = 2;
+    gListMenuOverride.lettersSpacing = list->template.lettersSpacing;
+    gListMenuOverride.fontId = list->template.fontId;
+    gListMenuOverride.enabled = FALSE;
+
+    if (list->template.totalItems < list->template.maxShowed)
+        list->template.maxShowed = list->template.totalItems;
+
+    FillWindowPixelBuffer(list->template.windowId, PIXEL_FILL(list->template.fillValue));
+    ListMenuPrintEntriesOverride(list, list->scrollOffset, 0, list->template.maxShowed);
+    ListMenuDrawCursor(list);
+    ListMenuCallSelectionChangedCallback(list, TRUE);
+
+    return listTaskId;
+}
+
+
+static void ListMenuPrintOverride(struct ListMenu *list, const u8 *str, u8 x, u8 y)
+{
+    u8 colors[3];
+    if (gListMenuOverride.enabled)
+    {
+        u32 fontId = gListMenuOverride.fontId;
+        if (list->template.textNarrowWidth)
+            fontId = GetFontIdToFit(str, fontId, gListMenuOverride.lettersSpacing, list->template.textNarrowWidth);
+        
+        colors[0] = 11;
+        colors[1] = 1;
+        colors[2] = 2;
+        
+        AddTextPrinterParameterized4(list->template.windowId,
+                                     fontId,
+                                     x, y,
+                                     gListMenuOverride.lettersSpacing,
+                                     0, colors, TEXT_SKIP_DRAW, str);
+
+        gListMenuOverride.enabled = FALSE;
+    }
+    else
+    {
+        u32 fontId = list->template.fontId;
+        if (list->template.textNarrowWidth)
+            fontId = GetFontIdToFit(str, fontId, list->template.lettersSpacing, list->template.textNarrowWidth);
+        colors[0] = 11;
+        colors[1] = 1;
+        colors[2] = 2;
+        
+        AddTextPrinterParameterized4(list->template.windowId,
+                                     fontId,
+                                     x, y,
+                                     list->template.lettersSpacing,
+                                     0, colors, TEXT_SKIP_DRAW, str);
+    }
+}
+
 static void ListMenuPrint(struct ListMenu *list, const u8 *str, u8 x, u8 y)
 {
     u8 colors[3];
@@ -630,6 +711,9 @@ static void ListMenuPrint(struct ListMenu *list, const u8 *str, u8 x, u8 y)
     }
 }
 
+
+
+
 static void ListMenuPrintEntries(struct ListMenu *list, u16 startIndex, u16 yOffset, u16 count)
 {
     s32 i;
@@ -652,6 +736,29 @@ static void ListMenuPrintEntries(struct ListMenu *list, u16 startIndex, u16 yOff
     }
 }
 
+
+static void ListMenuPrintEntriesOverride(struct ListMenu *list, u16 startIndex, u16 yOffset, u16 count)
+{
+    s32 i;
+    u8 x, y;
+    u8 yMultiplier = GetFontAttribute(list->template.fontId, FONTATTR_MAX_LETTER_HEIGHT) + list->template.itemVerticalPadding;
+
+    for (i = 0; i < count; i++)
+    {
+        if (list->template.items[startIndex].id != LIST_HEADER)
+            x = list->template.item_X;
+        else
+            x = list->template.header_X;
+
+        y = (yOffset + i) * yMultiplier + list->template.upText_Y;
+        if (list->template.itemPrintFunc != NULL)
+            list->template.itemPrintFunc(list->template.windowId, list->template.items[startIndex].id, y);
+
+        ListMenuPrintOverride(list, list->template.items[startIndex].name, x, y);
+        startIndex++;
+    }
+}
+
 static void ListMenuDrawCursor(struct ListMenu *list)
 {
     u8 yMultiplier = GetFontAttribute(list->template.fontId, FONTATTR_MAX_LETTER_HEIGHT) + list->template.itemVerticalPadding;
@@ -660,7 +767,7 @@ static void ListMenuDrawCursor(struct ListMenu *list)
     switch (list->template.cursorKind)
     {
     case CURSOR_BLACK_ARROW:
-        ListMenuPrint(list, gText_SelectorArrow2, x, y);
+        ListMenuPrintOverride(list, gText_SelectorArrow2, x, y);
         break;
     case CURSOR_INVISIBLE:
         break;
@@ -709,7 +816,7 @@ static void ListMenuErasePrintedCursor(struct ListMenu *list, u16 selectedRow)
         u8 width  = GetMenuCursorDimensionByFont(list->template.fontId, 0);
         u8 height = GetMenuCursorDimensionByFont(list->template.fontId, 1);
         FillWindowPixelRect(list->template.windowId,
-                            PIXEL_FILL(list->template.fillValue),
+                            PIXEL_FILL(11),
                             list->template.cursor_X,
                             selectedRow * yMultiplier + list->template.upText_Y,
                             width,

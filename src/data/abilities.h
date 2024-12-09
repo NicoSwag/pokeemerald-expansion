@@ -1447,6 +1447,17 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .aiRating = 10,
     },
 
+    [ABILITY_STRIKER] =
+    {
+    #if B_EXPANDED_ABILITY_NAMES == TRUE
+        .name = _("Striker"),
+    #else
+        .name = _("Striker"),
+    #endif
+        .description = COMPOUND_STRING("Kicks foe twice."),
+        .aiRating = 9,
+    },
+
     [ABILITY_DARK_AURA] =
     {
         .name = _("Dark Aura"),

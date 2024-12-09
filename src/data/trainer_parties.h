@@ -1702,7 +1702,7 @@ static const struct TrainerMon sParty_Winston1[] = {
     {
     .species = SPECIES_ZIGZAGOON_GALARIAN,
     .moves = {MOVE_FLING, MOVE_HEADBUTT, MOVE_MUD_SLAP, MOVE_NONE},
-    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
     .lvl = 8,
     .ability = ABILITY_QUICK_FEET,
     .heldItem = ITEM_BIG_NUGGET,
@@ -1712,10 +1712,10 @@ static const struct TrainerMon sParty_Winston1[] = {
 
     {
     .species = SPECIES_EEVEE,
-    .moves = {MOVE_YAWN, MOVE_SWIFT, MOVE_BITE, MOVE_NONE},
-    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .moves = {MOVE_PLAY_ROUGH, MOVE_SWIFT, MOVE_BITE, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(8, 8, 8, 8, 8, 8),
     .lvl = 8,
-    .ability = ABILITY_QUICK_FEET,
+    .ability = ABILITY_FRIEND_GUARD,
     .nature = NATURE_DOCILE,
     .ball = ITEM_LUXURY_BALL,
     }
@@ -4621,8 +4621,8 @@ static const struct TrainerMon sParty_Ivan[] = {
     {
     .species = SPECIES_TYNAMO,
     .moves = {MOVE_CHARGE_BEAM, MOVE_PARABOLIC_CHARGE, MOVE_SLUDGE, MOVE_NONE},
-    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
-    .lvl = 9,
+    .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+    .lvl = 10,
     .ball = ITEM_NET_BALL,
     .ability = ABILITY_LEVITATE,
     .nature = NATURE_CALM,
@@ -4630,20 +4630,11 @@ static const struct TrainerMon sParty_Ivan[] = {
     {
     .species = SPECIES_INKAY,
     .moves = {MOVE_PSYBEAM, MOVE_PLUCK, MOVE_PAYBACK, MOVE_NONE},
-    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
-    .lvl = 9,
+    .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+    .lvl = 10,
     .ball = ITEM_NET_BALL,
     .ability = ABILITY_CONTRARY,
     .nature = NATURE_RELAXED,
-    },
-     {
-    .species = SPECIES_BASCULIN_WHITE_STRIPED,
-    .moves = {MOVE_HEADBUTT, MOVE_AQUA_JET, MOVE_FLAIL, MOVE_NONE},
-    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
-    .lvl = 10,
-    .ball = ITEM_NET_BALL,
-    .ability = ABILITY_ADAPTABILITY,
-    .nature = NATURE_QUIET,
     }
 };
 
@@ -6409,8 +6400,8 @@ static const struct TrainerMon sParty_AmyAndLiv2[] = {
 static const struct TrainerMon sParty_GinaAndMia1[] = {
     {
     .species = SPECIES_PLUSLE,
-    .moves = {MOVE_NONE, MOVE_THUNDER_SHOCK, MOVE_WILL_O_WISP, MOVE_EMBER},
-    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .moves = {MOVE_NONE, MOVE_THUNDER_SHOCK, MOVE_HELPING_HAND, MOVE_EMBER},
+    .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
     .lvl = 9,
     .ball = ITEM_REPEAT_BALL,
     .ability = ABILITY_PLUS,
@@ -6418,8 +6409,8 @@ static const struct TrainerMon sParty_GinaAndMia1[] = {
     },
     {
     .species = SPECIES_MINUN,
-    .moves = {MOVE_NONE, MOVE_THUNDER_SHOCK, MOVE_FLASH_FREEZE, MOVE_POWDER_SNOW},
-    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
+    .moves = {MOVE_NONE, MOVE_THUNDER_SHOCK, MOVE_HELPING_HAND, MOVE_POWDER_SNOW},
+    .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
     .lvl = 9,
     .ball = ITEM_REPEAT_BALL,
     .ability = ABILITY_MINUS,
@@ -8290,9 +8281,9 @@ static const struct TrainerMon sParty_Tiana[] = {
 static const struct TrainerMon sParty_Haley1[] = {
     {
     .species = SPECIES_SHROOMISH,
-    .moves = {MOVE_LEECH_SEED, MOVE_BULLET_SEED, MOVE_ENDURE, MOVE_NONE},
-    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
-    .lvl = 9,
+    .moves = {MOVE_LEECH_SEED, MOVE_BULLET_SEED, MOVE_STUN_SPORE, MOVE_NONE},
+    .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+    .lvl = 10,
     .ability = ABILITY_POISON_HEAL,
     .nature = NATURE_BASHFUL,
     .ball = ITEM_POKE_BALL
@@ -8300,8 +8291,8 @@ static const struct TrainerMon sParty_Haley1[] = {
     {
     .species = SPECIES_PICHU,
     .moves = {MOVE_THUNDERSHOCK, MOVE_DOUBLE_KICK, MOVE_CHARM, MOVE_NONE},
-    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
-    .lvl = 9,
+    .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+    .lvl = 10,
     .ability = ABILITY_ROCK_HEAD,
     .nature = NATURE_TIMID,
     .ball = ITEM_POKE_BALL
@@ -8309,8 +8300,8 @@ static const struct TrainerMon sParty_Haley1[] = {
        {
     .species = SPECIES_LOMBRE,
     .moves = {MOVE_KNOCK_OFF, MOVE_MEGA_DRAIN, MOVE_RAIN_DANCE, MOVE_NONE},
-    .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
-    .lvl = 10,
+    .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+    .lvl = 11,
     .ability = ABILITY_RAIN_DISH,
     .nature = NATURE_QUIRKY,
     .ball = ITEM_GREAT_BALL

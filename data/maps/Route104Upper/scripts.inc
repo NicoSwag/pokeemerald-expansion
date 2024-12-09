@@ -105,6 +105,7 @@ Route104Upper_EventScript_BerryMaster::
 	faceplayer
 	goto_if_set FLAG_RECEIVED_CHERI_VOUCHER, Route104Upper_EventScript_BerryMaster_End
 	msgbox Route104Upper_Text_BerryMaster, MSGBOX_DEFAULT
+	giveitem ITEM_CHERI_VOUCHER
 	setflag FLAG_RECEIVED_CHERI_VOUCHER
 	release
 	end
@@ -171,19 +172,19 @@ Route104_EventScript_RematchHaley::
 
 
 Route104_Text_TakeThis:
-	.string "While hiking, being the first,\n"
-	.string "being the first person to carve a\l"
-	.string "new trail can be very dangerous.\p"
+	.string "While hiking, being the first\n"
+	.string "person to carve a new trail can be\l"
+	.string "very dangerous.\p"
 	.string "It does come with its own benefits,\n"
 	.string "though!\p"
 	.string "Here, let me show you…$"
 
 Route104_Text_TMsAreOneTimeUseKinda:
 	.string "A word of advice!\p"
-	.string "A TM, TECHNICAL MACHINE, is good only\n"
+	.string "A TM, Technical Machine, is good only\n"
 	.string "for one-time use.\p"
 	.string "However, once you find one, you can\n"
-	.string "always buy it again from any MART!$"
+	.string "always buy it again from any Mart!$"
 
 Route104_Text_WinstonIntro:
 	.string "Oh, sure, I'll accept your challenge.\n"
@@ -194,64 +195,64 @@ Route104_Text_WinstonDefeat:
 
 Route104_Text_WinstonPostBattle:
 	.string "There are some things money can't buy.\n"
-	.string "That's POKéMON…$"
+	.string "That's skill.$"
 
 
 	Route104_Text_GinaIntro:
-	.string "GINA: Okay, let's battle with our\n"
-	.string "POKéMON!$"
+	.string "Okay, let's battle with our\n"
+	.string "Pokémon!$"
 
 Route104_Text_GinaDefeat:
-	.string "GINA: Losing upsets me!$"
+	.string "Losing upsets me!$"
 
 Route104_Text_GinaPostBattle:
-	.string "GINA: You are strong!\n"
+	.string "You are strong!\n"
 	.string "We have to train lots more!$"
 
 Route104_Text_GinaNotEnoughMons:
-	.string "GINA: Oh? Only one POKéMON?\n"
+	.string "Oh? Only one Pokémon?\n"
 	.string "Then, we don't battle with you.\p"
-	.string "If there's only one POKéMON, it will\n"
+	.string "If there's only one Pokémon, it will\n"
 	.string "be lonesome. That's not nice.$"
 
 Route104_Text_MiaIntro:
-	.string "MIA: We are twins, so we battle\n"
-	.string "POKéMON together.$"
+	.string "We are twins, so we battle\n"
+	.string "Pokémon together.$"
 
 Route104_Text_MiaDefeat:
-	.string "MIA: We battled together, but we\n"
+	.string "We battled together, but we\n"
 	.string "both lost…\p"
 	.string "Gina and Mia were the Area Leaders!$"
 
 Route104_Text_MiaPostBattle:
-	.string "MIA: We will train our POKéMON more\n"
-	.string "and be strong like you.\p"
-	.string "Gina and Mia were the Area Leaders!$"
+	.string "We will train our Pokémon more\n"
+	.string "and be strong like you.$"
 
 Route104_Text_MiaNotEnoughMons:
-	.string "MIA: You want to battle with us?\p"
+	.string "You want to battle with us?\p"
 	.string "It's a big no-no if you don't have two\n"
-	.string "POKéMON with you.\l"
+	.string "Pokémon with you.\l"
 	.string "We're too strong for you!$"
 
 Route104_Text_Sign:
-	.string "World-famous FEEBAS PRO SHOP PRISM\n"
+	.string "World-famous Feebas Pro Shop Prism\n"
 	.string "just one step to the left and six\l"
 	.string "forward!$"
 
 
 Route104_Text_Sign2:
-	.string "World-famous FEEBAS PRO SHOP PRISM\n"
+	.string "World-famous Feebas Pro Shop Prism\n"
 	.string "just one step forward!$"
 
 Route104_Text_Sign3:
 	.string "Leaving?\n"
-	.string "Make sure to check out the FEEBAS P-\p"
-	.string "The rest of the sign is vandalized.$"
+	.string "Make sure to check out the Feebas P-\p"
+	.string "Someone scribbled over the rest of the\n"
+	.string "sign.$"
 
 Route104_Text_Sign4:
-	.string "RUSTBORO CITY.\n"
-	.string "Home of DEVON CORP.$"
+	.string "Rustboro City.\n"
+	.string "Proud home of Devon Corp.$"
 
 
 Route104Upper_Text_BerryMaster:
@@ -267,9 +268,9 @@ Route104Upper_Text_BerryMaster:
 Route104Upper_Text_BerryMaster_End:	
 	.string "Pokémon with berries cannot be deposited\n"
 	.string "in a PC.\p"
-	.string "Why? Simple.\n\p"
-	.string "Pokémon, as well as most items, are very/n"
+	.string "Why? Simple.\p"
+	.string "Pokémon, as well as most items, are very\n"
 	.string "easy to turn into data.\p"
-	.string "But for some reason, they haven't figured\n"
+	.string "But for some reason, they haven't figure\n"
 	.string "out berries quite yet.\p"
 	.string "The same is also true for healing items.$"

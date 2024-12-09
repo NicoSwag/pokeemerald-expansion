@@ -704,7 +704,7 @@
 #define FLAG_ROUTE_104_STARYU_2  0x295 // Unused Flag
 #define FLAG_ROUTE_104_STARYU_3  0x296 // Unused Flag
 #define FLAG_FOUNDRY_COMPONENT_GOT  0x297 // Unused Flag
-#define FLAG_UNUSED_0x298  0x298 // Unused Flag
+#define FLAG_SAFETY_GOGGLES  0x298 // Unused Flag
 #define FLAG_UNUSED_0x299  0x299 // Unused Flag
 #define FLAG_UNUSED_0x29A  0x29A // Unused Flag
 #define FLAG_UNUSED_0x29B  0x29B // Unused Flag

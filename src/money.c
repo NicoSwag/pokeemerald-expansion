@@ -134,6 +134,25 @@ void PrintMoneyAmountInMoneyBox(u8 windowId, int amount, u8 speed)
     PrintMoneyAmount(windowId, CalculateMoneyTextHorizontalPosition(amount), 1, amount, speed);
 }
 
+void PrintMoneyAmountOverride(u8 windowId, u8 x, u8 y, int amount, u8 speed)
+{
+    u8 *txtPtr;
+    s32 strLength;
+
+    ConvertIntToDecimalStringN(gStringVar1, amount, STR_CONV_MODE_LEFT_ALIGN, 6);
+
+    strLength = 6 - StringLength(gStringVar1);
+    txtPtr = gStringVar4;
+
+    while (strLength-- > 0)
+        *(txtPtr++) = CHAR_SPACER;
+
+    StringExpandPlaceholders(txtPtr, gText_PokedollarVar1);
+    const u8 colors[3] = {11,  1,  2};
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(11));
+    AddTextPrinterParameterized4(windowId, FONT_NORMAL, x, y, 0, 0, colors, speed, gStringVar4);
+}
+
 static u32 CalculateLeadingSpacesForMoney(u32 numDigits)
 {
     u32 leadingSpaces = CountDigits(INT_MAX) - StringLength(gStringVar1);

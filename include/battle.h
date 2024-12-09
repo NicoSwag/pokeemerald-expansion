@@ -242,6 +242,7 @@ struct SpecialStatus
     u8 gemBoost:1;
     u8 rototillerAffected:1;  // to be affected by rototiller
     u8 parentalBondState:2;
+    u8 strikerState:2;
     u8 fistBarrageState:4;
     u8 multiHitOn:1;
     u8 announceNeutralizingGas:1;   // See Cmd_switchineffects

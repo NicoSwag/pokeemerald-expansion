@@ -1378,7 +1378,7 @@
         .trainerName = _("Cindy"),
          
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_HP_AWARE,
+        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SETUP_FIRST_TURN | AI_FLAG_HP_AWARE,
         .party = TRAINER_PARTY(sParty_Cindy1),
     },
 
@@ -1639,10 +1639,10 @@
         .trainerClass = TRAINER_CLASS_RICH_BOY,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_RICH,
         .trainerPic = TRAINER_PIC_RICH_BOY,
-        .trainerName = _("WINSTON"),
+        .trainerName = _("Winston"),
          
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_SETUP_FIRST_TURN | AI_FLAG_HP_AWARE,
         .party = TRAINER_PARTY(sParty_Winston1),
     },
 
@@ -3847,7 +3847,7 @@
         .trainerName = _("Calvin"),
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_HP_AWARE,
+        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_HP_AWARE,
         .party = TRAINER_PARTY(sParty_Calvin1),
     },
 
@@ -4077,11 +4077,11 @@
         .trainerClass = TRAINER_CLASS_FISHERMAN,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
         .trainerPic = TRAINER_PIC_FISHERMAN,
-        .trainerName = _("IVAN"),
+        .trainerName = _("Ivan"),
          
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags =  AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_HP_AWARE,
         .party = TRAINER_PARTY(sParty_Ivan),
     },
 
@@ -5875,10 +5875,10 @@
         .trainerClass = TRAINER_CLASS_TWINS,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_TWINS,
         .trainerPic = TRAINER_PIC_TWINS,
-        .trainerName = _("GINA & MIA"),
+        .trainerName = _("Gina & Mia"),
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_SETUP_FIRST_TURN | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
         .party = TRAINER_PARTY(sParty_GinaAndMia1),
         
     },
@@ -7256,7 +7256,7 @@
         .trainerName = _("Tiana"),
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_DOUBLE_BATTLE,
         .party = TRAINER_PARTY(sParty_Tiana),
     },
 
@@ -7265,11 +7265,11 @@
         .trainerClass = TRAINER_CLASS_LASS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_LASS,
-        .trainerName = _("HALEY"),
+        .trainerName = _("Haley"),
          
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags =  AI_FLAG_SETUP_FIRST_TURN | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_HP_AWARE  | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_HP_AWARE,
         .party = TRAINER_PARTY(sParty_Haley1),
     },
 
@@ -7402,7 +7402,7 @@
         .trainerName = _("Rick"),
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT |  AI_FLAG_DOUBLE_BATTLE,
         .party = TRAINER_PARTY(sParty_Rick),
     },
 
@@ -7415,7 +7415,7 @@
          
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_DOUBLE_BATTLE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_DOUBLE_BATTLE,
         .party = TRAINER_PARTY(sParty_Lyle),
     },
 
@@ -8391,7 +8391,7 @@
         .trainerName = _("Darian"),
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_HP_AWARE,
+        .aiFlags = AI_FLAG_DOUBLE_BATTLE | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_HP_AWARE,
         .party = TRAINER_PARTY(sParty_Darian),
     },
 

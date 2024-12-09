@@ -104,21 +104,19 @@ RustboroCity_Flat1_2F_Text_ComingUpWithMealsIsHard:
 
 RustboroCity_Flat1_2F_Text_HelloDoYouKnowFunnyPhrase:
 	.string "Oh, hello!\n"
-	.string "Welcome to the PEPPER household.\p"
+	.string "Welcome to the Pepper household.\p"
 	.string "I would love to greet you properly,\n"
 	.string "but…\p"
 	.string "I'm truly in quite a pickle!\p"
 	.string "You see my daughter, one day, went\n"
 	.string "to play a bit too close to the\l"
-	.string "FORBIDDEN FOREST north of here.\p"
+	.string "Forbidden Forest north of here.\p"
 	.string "Misfortune would have it that she\n"
 	.string "was cursed by a rogue witch!\p"
 	.string "Now she's totally unresponsive, and\n"
-	.string "there is but one way to wake her up.\p"
-	.string "It is a spell, and a puzzle mixed in\n"
-	.string "one!\p"
+	.string "there is but one solution.\p"
 	.string "To wake her I must find a secret word.\n"
-	.string "But ah! I can't figure it out.\p"
+	.string "But, ah! I can't figure it out.\p"
 	.string "If you have any ideas, please, let me\n"
 	.string "know.$"
 
@@ -175,18 +173,18 @@ RustboroCity_Flat1_2F_Text_OhYouDontKnowAny:
 
 RustboroCity_Flat1_2F_Text_ThankYouIllGiveYouWallpaper:
 	.string "It worked!\p"
-	.string "Thanks to you, my darling WALDA\n"
+	.string "Thanks to you, my darling Walda\n"
 	.string "woke up!\p"
 	.string "Please, accept this token of my\n"
 	.string "gratitude.$"
 
 RustboroCity_Flat1_2F_Text_ItsAPokemonPlushDoll:
-	.string "It's a POKéMON plush DOLL!$"
+	.string "It's a Pokémon plush Doll!$"
 
 RustboroCity_Flat1_2F_Text_SoTrue:
 	.string "So true!$"
 
 RustboroCity_Flat1_2F_Text_WaldaAwoken:
-	.string "WALDA is sleeping right now.\p"
+	.string "Walds is sleeping right now.\p"
 	.string "Ah! Don't worry! She's just\n"
 	.string "taking a nap.$"
