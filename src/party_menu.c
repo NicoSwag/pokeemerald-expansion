@@ -574,7 +574,7 @@ static void RefreshPartyMenu(void) //Refreshes the party menu without restarting
     SetMainCallback2(CB2_ReloadPartyMenu);
 }
 
-static void CB2_UpdatePartyMenu(void)
+void CB2_UpdatePartyMenu(void)
 {
     RunTasks();
     AnimateSprites();

@@ -1695,7 +1695,7 @@ static void CreateMainMenu(u8 whichMenu, s16 *windowIdPtr)
     *windowIdPtr = windowId;
 }
 
-static void CB2_ExitPokeStorage(void)
+void CB2_ExitPokeStorage(void)
 {
     sPreviousBoxOption = GetCurrentBoxOption();
     gFieldCallback = FieldTask_ReturnToPcMenu;
@@ -1992,7 +1992,7 @@ static void VBlankCB_PokeStorage(void)
     SetGpuReg(REG_OFFSET_BG2HOFS, sStorage->bg2_X);
 }
 
-static void CB2_PokeStorage(void)
+void CB2_PokeStorage(void)
 {
     RunTasks();
     DoScheduledBgTilemapCopiesToVram();

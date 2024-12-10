@@ -1001,14 +1001,14 @@ static const struct InGameTrade sIngameTrades[] =
         .requestedSpecies = SPECIES_RALTS
     },
     [INGAME_TRADE_SWINUB] =
-    {   .nickname = _("FREDDY"),
+    {   .nickname = _("Freddy"),
         .species = SPECIES_SWINUB,
         .abilityNum = 2,
         .otId = 13603,
         .conditions = {5, 5, 30, 5, 5},
         .personality = 0x6F,
         .mailNum = 0,
-        .otName = _("MICHAEL"),
+        .otName = _("Michael"),
         .otGender = MALE,
         .sheen = 10,
         .requestedSpecies = SPECIES_RALTS

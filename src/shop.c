@@ -129,7 +129,6 @@ static void Task_ReturnToShopMenu(u8 taskId);
 static void ShowShopMenuAfterExitingBuyOrSellMenu(u8 taskId);
 static void BuyMenuDrawGraphics(void);
 static void BuyMenuAddScrollIndicatorArrows(void);
-static void Task_BuyMenu(u8 taskId);
 static void BuyMenuBuildListMenuTemplate(void);
 static void BuyMenuInitBgs(void);
 static void BuyMenuInitWindows(void);
@@ -138,6 +137,7 @@ static void BuyMenuSetListEntry(struct ListMenuItem *, u16, u8 *);
 static void BuyMenuAddItemIcon(u16, u8);
 static void BuyMenuRemoveItemIcon(u16, u8);
 static void BuyMenuPrint(u8 windowId, const u8 *text, u8 x, u8 y, s8 speed, u8 colorSet);
+static void BuyMenuPrintOverride(u8 windowId, const u8 *text, u8 x, u8 y, s8 speed, u8 colorSet);
 static void BuyMenuDrawMapGraphics(void);
 static void BuyMenuCopyMenuBgToBg1TilemapBuffer(void);
 static void BuyMenuCollectObjectEventData(void);
@@ -343,13 +343,12 @@ static const u8 sShopBuyMenuTextColors[][3] =
 {
     [COLORID_NORMAL]      = {1, 2, 3},
     [COLORID_ITEM_LIST]   = {0, 2, 3},
-    [COLORID_GRAY_CURSOR] = {0, 3, 2},
+    [COLORID_GRAY_CURSOR] = {0, 2, 3},
 };
 
 static u8 CreateShopMenu(u8 martType)
 {
     int numMenuItems;
-
     LockPlayerFieldControls();
     sMartInfo.martType = martType;
 
@@ -491,7 +490,7 @@ static void ShowShopMenuAfterExitingBuyOrSellMenu(u8 taskId)
     DestroyTask(taskId);
 }
 
-static void CB2_BuyMenu(void)
+void CB2_BuyMenu(void)
 {
     RunTasks();
     AnimateSprites();
@@ -909,7 +908,14 @@ static void BuyMenuInitWindows(void)
 
 static void BuyMenuPrint(u8 windowId, const u8 *text, u8 x, u8 y, s8 speed, u8 colorSet)
 {
+    
     AddTextPrinterParameterized4(windowId, FONT_NORMAL, x, y, 0, 0, sShopBuyMenuTextColors[colorSet], speed, text);
+}
+
+static void BuyMenuPrintOverride(u8 windowId, const u8 *text, u8 x, u8 y, s8 speed, u8 colorSet)
+{
+    u8 colors[3] = {11, 1, 2};
+    AddTextPrinterParameterized4(windowId, FONT_NORMAL, x, y, 0, 0, colors, speed, text);
 }
 
 static void BuyMenuDisplayMessage(u8 taskId, const u8 *text, TaskFunc callback)
@@ -1142,10 +1148,10 @@ static bool8 BuyMenuCheckForOverlapWithMenuBg(int x, int y)
     return FALSE;
 }
 
-static void Task_BuyMenu(u8 taskId)
+void Task_BuyMenu(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    s32 itemId = ListMenu_ProcessInput(tListTaskId);
+    s32 itemId = ListMenu_ProcessInputOverride(tListTaskId);
     u8 totalberries;
     totalberries = (CheckBagHasItem(itemId, 1) + CheckPCHasItem(itemId, 1));
 
@@ -1402,7 +1408,9 @@ static void BuyMenuPrintItemQuantityAndPrice(u8 taskId)
     s16 *data = gTasks[taskId].data;
 
     FillWindowPixelBuffer(WIN_QUANTITY_PRICE, PIXEL_FILL(1));
-    PrintMoneyAmount(WIN_QUANTITY_PRICE, CalculateMoneyTextHorizontalPosition(sShopData->totalCost), 1, sShopData->totalCost, TEXT_SKIP_DRAW);
+    if (sMartInfo.martType == MART_TYPE_NORMAL)
+        PrintMoneyAmount(WIN_QUANTITY_PRICE, CalculateMoneyTextHorizontalPosition(sShopData->totalCost), 1, sShopData->totalCost, TEXT_SKIP_DRAW);
+
     ConvertIntToDecimalStringN(gStringVar1, tItemCount, STR_CONV_MODE_LEADING_ZEROS, MAX_ITEM_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_xVar1);
     BuyMenuPrint(WIN_QUANTITY_PRICE, gStringVar4, 0, 1, 0, COLORID_NORMAL);

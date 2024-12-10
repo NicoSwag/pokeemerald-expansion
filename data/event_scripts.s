@@ -1047,19 +1047,19 @@ Mart_EventScript_ComeBackWithHeartScale::
 	end
 
 Mart_Text_ImTheMoveTutor:
-	.string "I'm the MOVE TUTOR.\p"
-	.string "I know all the moves that POKéMON\n"
+	.string "I'm the Move Tutor.\p"
+	.string "I know all the moves that Pokémon\n"
 	.string "learn--every one of them--and I can\l"
-	.string "teach POKéMON those moves.\p"
-	.string "I can teach a move to a POKéMON\n"
+	.string "teach Pokémon those moves.\p"
+	.string "I can teach a move to a Pokémon\n"
 	.string "of yours if you'd like.$"
 
 Mart_Text_ThatsAHeartScaleWantMeToTeachMove:
 	.string "Would you like me to teach a\n"
-	.string "move to a POKéMON?$"
+	.string "move to a Pokémon?$"
 
 Mart_Text_TutorWhichMon:
-	.string "Which POKéMON needs tutoring?$"
+	.string "Which Pokémon needs tutoring?$"
 
 Mart_Text_TeachWhichMove:
 	.string "Which move should I teach?$"
@@ -1067,16 +1067,16 @@ Mart_Text_TeachWhichMove:
 Mart_Text_DontHaveMoveToTeachPokemon:
 	.string "Sorry…\p"
 	.string "It doesn't appear as if I have any move\n"
-	.string "I can teach that POKéMON.$"
+	.string "I can teach that Pokémon.$"
 
 
 Mart_Text_ComeBackWithHeartScale:
-	.string "If your POKéMON need to learn a move,\n"
+	.string "If your Pokémon need to learn a move,\n"
 	.string "feel free to come back.$"
 
 Mart_Text_CantTeachEgg:
 	.string "Hunh? There isn't a single move that\n"
-	.string "I can teach an EGG.$"
+	.string "I can teach an Egg.$"
 
 Common_EventScript_WirelessClubAttendant::
 	lockall
@@ -1090,8 +1090,8 @@ Common_EventScript_WirelessClubAttendant::
 
 Text_ICanMakeMonForgetMove:
 	.string "Uh…\n"
-	.string "Oh, yes, I'm the MOVE DELETER.\p"
-	.string "I can make POKéMON forget their moves.\p"
+	.string "Oh, yes, I'm the Move Deleter.\p"
+	.string "I can make Pokémon forget their moves.\p"
 	.string "Would you like me to do that?$"
 
 Mart_EventScript_ChooseMonAndMoveToForget::
@@ -1150,7 +1150,7 @@ Mart_EventScript_LastMonWithSurf::
 
 
 Mart_Text_WhichMonShouldForget:
-	.string "Which POKéMON should forget a move?$"
+	.string "Which Pokémon should forget a move?$"
 	
 Mart_Text_WhichMoveShouldBeForgotten:
 	.string "Which move should be forgotten?$"
@@ -1174,7 +1174,7 @@ Mart_Text_ComeAgain:
 
 Mart_Text_EggCantForgetMoves:
 	.string "What?\n"
-	.string "No EGG should know any moves.$"
+	.string "No Egg should know any moves.$"
 
 Mart_Text_CantForgetSurf:
 	.string "Hm!\p"

@@ -90,6 +90,7 @@ void CB2_GoToItemDepositMenu(void);
 void FavorLadyOpenBagMenu(void);
 void QuizLadyOpenBagMenu(void);
 void ApprenticeOpenBagMenu(void);
+void CB2_Bag(void);
 void CB2_BagMenuFromBattle(void);
 void UpdatePocketListPosition(u8 pocketId);
 void CB2_ReturnToBagMenuPocket(void);
@@ -107,6 +108,8 @@ void Task_FadeAndCloseBagMenu(u8 taskId);
 void BagMenu_YesNo(u8 taskId, u8 windowType, const struct YesNoFuncTable* funcTable);
 void UpdatePocketItemList(u8 pocketId);
 void DisplayItemMessage(u8 taskId, u8 fontId, const u8 *str, void ( *callback)(u8 taskId));
+void DisplayItemMessageSell(u8 taskId, u8 fontId, const u8 *str, void ( *callback)(u8 taskId));
+
 void DisplayItemMessageOnField(u8 taskId, const u8 *src, TaskFunc callback);
 void CloseItemMessage(u8 taskId);
 void ItemMenu_RotomCatalog(u8 taskId);

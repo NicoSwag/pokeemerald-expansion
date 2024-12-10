@@ -221,9 +221,8 @@ Route102_Text_ThisIsntAMon:
 	.string "that's not a {STR_VAR_1}.$"
 
 Route102_Text_GoingToMakeVolbeatStrong:
-	.string "I come from Slateport City, you\n"
-	.string "see.\p"
-	.string "We got plenty of SWINUB, but psychic-\n"
+	.string "I come from Slateport City, you see.\p"
+	.string "We got plenty of Swinub, but psychic-\n"
 	.string "types are more rare.$"
 
 Text_DefeatedAreaBoss:

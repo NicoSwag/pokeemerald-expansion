@@ -22,7 +22,12 @@
 #include "window.h"
 #include "config/overworld.h"
 #include "constants/songs.h"
+#include "party_menu.h"
+#include "overworld.h"
+#include "pokemon_storage_system.h"
 #include "constants/weather.h"
+#include "move_relearner.h"
+#include "shop.h"
 
 #define DLG_WINDOW_PALETTE_NUM 15
 #define DLG_WINDOW_BASE_TILE_NUM 0x200
@@ -869,13 +874,34 @@ void RedrawMenuCursor(u8 oldPos, u8 newPos)
 
     width = GetMenuCursorDimensionByFont(sMenu.fontId, 0);
     height = GetMenuCursorDimensionByFont(sMenu.fontId, 1);
-    FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(11), sMenu.left, sMenu.optionHeight * oldPos + sMenu.top, width, height);
-    u8 color[3];
-    color[0]=11;
-    color[1]=1;
-    color[2]=2;
-    AddTextPrinterParameterized4(sMenu.windowId, sMenu.fontId, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0, color, 0, gText_SelectorArrow3);
+    if(gMain.callback2 == CB2_ReturnToFieldLocal || gMain.callback2 == CB2_UpdatePartyMenu || gMain.callback2 == CB2_Overworld || (FindTaskIdByFunc(Task_CallYesOrNoCallback) != TASK_NONE))    
+    {
+        FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos + sMenu.top, width, height);
+        AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow3, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0);
+    }
+    else
+    {
+        FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(10), sMenu.left, sMenu.optionHeight * oldPos + sMenu.top, width, height);
+        const u8 colors[3] = {10,  1,  2};
+        AddTextPrinterParameterized4(sMenu.windowId, sMenu.fontId, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0, colors, 0, gText_SelectorArrow3);
+    }
 }
+
+void RedrawMenuCursorOverride(u8 oldPos, u8 newPos)
+{
+    u8 width, height;
+
+    width = GetMenuCursorDimensionByFont(sMenu.fontId, 0);
+    height = GetMenuCursorDimensionByFont(sMenu.fontId, 1);
+    const u8 colors[3] = {10,  1,  2};
+    FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(11), sMenu.left, sMenu.optionHeight * oldPos + sMenu.top, width, height);
+    AddTextPrinterParameterized4(sMenu.windowId, sMenu.fontId, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0, colors, 0, gText_SelectorArrow3);
+
+    
+}
+
+
+
 
 u8 Menu_MoveCursor(s8 cursorDelta)
 {
@@ -893,6 +919,24 @@ u8 Menu_MoveCursor(s8 cursorDelta)
     return sMenu.cursorPos;
 }
 
+u8 Menu_MoveCursorOverride(s8 cursorDelta)
+{
+    u8 oldPos = sMenu.cursorPos;
+    int newPos = sMenu.cursorPos + cursorDelta;
+
+    if (newPos < sMenu.minCursorPos)
+        sMenu.cursorPos = sMenu.maxCursorPos;
+    else if (newPos > sMenu.maxCursorPos)
+        sMenu.cursorPos = sMenu.minCursorPos;
+    else
+        sMenu.cursorPos += cursorDelta;
+
+    RedrawMenuCursorOverride(oldPos, sMenu.cursorPos);
+    return sMenu.cursorPos;
+}
+
+
+
 u8 Menu_MoveCursorNoWrapAround(s8 cursorDelta)
 {
     u8 oldPos = sMenu.cursorPos;
@@ -906,6 +950,22 @@ u8 Menu_MoveCursorNoWrapAround(s8 cursorDelta)
         sMenu.cursorPos += cursorDelta;
 
     RedrawMenuCursor(oldPos, sMenu.cursorPos);
+    return sMenu.cursorPos;
+}
+
+u8 Menu_MoveCursorNoWrapAroundOverride(s8 cursorDelta)
+{
+    u8 oldPos = sMenu.cursorPos;
+    int newPos = sMenu.cursorPos + cursorDelta;
+
+    if (newPos < sMenu.minCursorPos)
+        sMenu.cursorPos = sMenu.minCursorPos;
+    else if (newPos > sMenu.maxCursorPos)
+        sMenu.cursorPos = sMenu.maxCursorPos;
+    else
+        sMenu.cursorPos += cursorDelta;
+
+    RedrawMenuCursorOverride(oldPos, sMenu.cursorPos);
     return sMenu.cursorPos;
 }
 
@@ -965,6 +1025,36 @@ s8 Menu_ProcessInputNoWrap(void)
     else if (JOY_NEW(DPAD_DOWN))
     {
         if (oldPos != Menu_MoveCursorNoWrapAround(1))
+            PlaySE(SE_SELECT);
+        return MENU_NOTHING_CHOSEN;
+    }
+
+    return MENU_NOTHING_CHOSEN;
+}
+
+s8 Menu_ProcessInputNoWrapOverride(void)
+{
+    u8 oldPos = sMenu.cursorPos;
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        if (!sMenu.APressMuted)
+            PlaySE(SE_SELECT);
+        return sMenu.cursorPos;
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        return MENU_B_PRESSED;
+    }
+    else if (JOY_NEW(DPAD_UP))
+    {
+        if (oldPos != Menu_MoveCursorNoWrapAroundOverride(-1))
+            PlaySE(SE_SELECT);
+        return MENU_NOTHING_CHOSEN;
+    }
+    else if (JOY_NEW(DPAD_DOWN))
+    {
+        if (oldPos != Menu_MoveCursorNoWrapAroundOverride(1))
             PlaySE(SE_SELECT);
         return MENU_NOTHING_CHOSEN;
     }
@@ -1175,6 +1265,14 @@ s8 Menu_ProcessInputNoWrapClearOnChoose(void)
     return result;
 }
 
+s8 Menu_ProcessInputNoWrapClearOnChooseOverride(void)
+{
+    s8 result = Menu_ProcessInputNoWrapOverride();
+    if (result != MENU_NOTHING_CHOSEN)
+        EraseYesNoWindow();
+    return result;
+}
+
 void EraseYesNoWindow(void)
 {
     ClearStdWindowAndFrameToTransparent(sYesNoWindowId, TRUE);
@@ -1307,15 +1405,29 @@ static void MoveMenuGridCursor(u8 oldCursorPos, u8 newCursorPos)
 
     u8 xPos = (oldCursorPos % sMenu.columns) * sMenu.optionWidth + sMenu.left;
     u8 yPos = (oldCursorPos / sMenu.columns) * sMenu.optionHeight + sMenu.top;
-    FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(11), xPos, yPos, cursorWidth, cursorHeight);
+
+        if(gMain.callback2 == CB2_ReturnToFieldLocal || gMain.callback2 == CB2_UpdatePartyMenu || gMain.callback2 == CB2_Overworld)    {
+
+        FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), xPos, yPos, cursorWidth, cursorHeight);
+    }
+    else
+    {
+        FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(10), xPos, yPos, cursorWidth, cursorHeight);
+    }
 
     xPos = (newCursorPos % sMenu.columns) * sMenu.optionWidth + sMenu.left;
     yPos = (newCursorPos / sMenu.columns) * sMenu.optionHeight + sMenu.top;
-        u8 color[3];
-    color[0]=11;
-    color[1]=1;
-    color[2]=2;
-    AddTextPrinterParameterized4(sMenu.windowId, sMenu.fontId, xPos, yPos, 0, 0, color, 0, gText_SelectorArrow3);}
+
+        if(gMain.callback2 == CB2_ReturnToFieldLocal || gMain.callback2 == CB2_UpdatePartyMenu || gMain.callback2 == CB2_Overworld)    {
+
+        AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow3, xPos, yPos, 0, 0);
+    }
+    else
+    {
+        const u8 colors[3] = {10,  1,  2};
+        AddTextPrinterParameterized4(sMenu.windowId, sMenu.fontId, xPos, yPos, 0, 0, colors, 0, gText_SelectorArrow3);
+    }
+}
 
 u8 ChangeMenuGridCursorPosition(s8 deltaX, s8 deltaY)
 {

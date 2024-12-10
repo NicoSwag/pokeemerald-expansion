@@ -124,7 +124,6 @@ struct TempWallyBag {
     u16 pocket;
 };
 
-static void CB2_Bag(void);
 static bool8 SetupBagMenu(void);
 static void BagMenu_InitBGs(void);
 static bool8 LoadBagMenu_Graphics(void);
@@ -175,6 +174,7 @@ static void ItemMenu_Cancel(u8);
 static void HandleErrorMessage(u8);
 static void PrintItemCantBeHeld(u8);
 static void DisplayCurrentMoneyWindow(void);
+static void DisplayCurrentMoneyWindowOverride(void);
 static void DisplaySellItemPriceAndConfirm(u8);
 static void InitSellHowManyInput(u8);
 static void AskSellItems(u8);
@@ -701,7 +701,7 @@ void VBlankCB_BagMenuRun(void)
 #define tPocketSwitchTimer data[12]
 #define tPocketSwitchState data[13]
 
-static void CB2_Bag(void)
+void CB2_Bag(void)
 {
     while(MenuHelpers_ShouldWaitForLinkRecv() != TRUE && SetupBagMenu() != TRUE && MenuHelpers_IsLinkActive() != TRUE)
         {};
@@ -1213,6 +1213,16 @@ void DisplayItemMessage(u8 taskId, u8 fontId, const u8 *str, void (*callback)(u8
 
     tMsgWindowId = AddItemMessageWindow(ITEMWIN_MESSAGE);
     FillWindowPixelBuffer(tMsgWindowId, PIXEL_FILL(11));
+    DisplayMessageAndContinueTaskOverride(taskId, tMsgWindowId, 10, 13, fontId, GetPlayerTextSpeedDelay(), str, callback);
+    ScheduleBgCopyTilemapToVram(1);
+}
+
+void DisplayItemMessageSell(u8 taskId, u8 fontId, const u8 *str, void (*callback)(u8 taskId))
+{
+    s16 *data = gTasks[taskId].data;
+
+    tMsgWindowId = AddItemMessageWindow(ITEMWIN_MESSAGE);
+    FillWindowPixelBuffer(tMsgWindowId, PIXEL_FILL(11));
     DisplayMessageAndContinueTask(taskId, tMsgWindowId, 10, 13, fontId, GetPlayerTextSpeedDelay(), str, callback);
     ScheduleBgCopyTilemapToVram(1);
 }
@@ -1241,7 +1251,10 @@ static void PrintItemQuantity(u8 windowId, s16 quantity)
 {
     ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEADING_ZEROS, MAX_ITEM_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_xVar1);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, GetStringCenterAlignXOffset(FONT_NORMAL, gStringVar4, 0x28), 2, 0, 0);
+    u8 colors[3] = {11, 1, 2};
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(11));
+    AddTextPrinterParameterized4(windowId, FONT_NORMAL, GetStringCenterAlignXOffset(FONT_NORMAL, gStringVar4, 0x28), 2, 0, 0, colors, 0,  gStringVar4);
+
 }
 
 // Prints the quantity of items to be sold and the amount that would be earned
@@ -1249,8 +1262,10 @@ static void PrintItemSoldAmount(int windowId, int numSold, int moneyEarned)
 {
     ConvertIntToDecimalStringN(gStringVar1, numSold, STR_CONV_MODE_LEADING_ZEROS, MAX_ITEM_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_xVar1);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, 0, 1, TEXT_SKIP_DRAW, 0);
-    PrintMoneyAmount(windowId, CalculateMoneyTextHorizontalPosition(moneyEarned), 1, moneyEarned, 0);
+    u8 colors[3] = {11,  1,  2};
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(11));
+    AddTextPrinterParameterized4(windowId, FONT_NORMAL, 0, 1, 0, 0, colors, 0, gStringVar4);
+    PrintMoneyAmountOverrideNoBG(windowId, CalculateMoneyTextHorizontalPosition(moneyEarned), 1, moneyEarned, 0);
 }
 
 static void Task_BagMenu_HandleInput(u8 taskId)
@@ -1311,7 +1326,7 @@ static void Task_BagMenu_HandleInput(u8 taskId)
             break;
         }
 
-        listPosition = ListMenu_ProcessInput(tListTaskId);
+        listPosition = ListMenu_ProcessInputOverride(tListTaskId);
         ListMenuGetScrollAndRow(tListTaskId, scrollPos, cursorPos);
         switch (listPosition)
         {
@@ -1528,7 +1543,7 @@ static void Task_HandleSwappingItemsInput(u8 taskId)
         }
         else
         {
-            s32 input = ListMenu_ProcessInput(tListTaskId);
+            s32 input = ListMenu_ProcessInputOverride(tListTaskId);
             ListMenuGetScrollAndRow(tListTaskId, &gBagPosition.scrollPosition[gBagPosition.pocket], &gBagPosition.cursorPosition[gBagPosition.pocket]);
             SetItemMenuSwapLineInvisibility(FALSE);
             UpdateItemMenuSwapLinePos(gBagPosition.cursorPosition[gBagPosition.pocket]);
@@ -2163,7 +2178,7 @@ static void Task_ItemContext_Sell(u8 taskId)
         tItemCount = 1;
         if (tQuantity == 1)
         {
-            DisplayCurrentMoneyWindow();
+            DisplayCurrentMoneyWindowOverride();
             DisplaySellItemPriceAndConfirm(taskId);
         }
         else
@@ -2207,7 +2222,7 @@ static void InitSellHowManyInput(u8 taskId)
     u8 windowId = BagMenu_AddWindow(ITEMWIN_QUANTITY_WIDE);
 
         PrintItemSoldAmount(windowId, 1, (ItemId_GetPrice(gSpecialVar_ItemId) / ITEM_SELL_FACTOR) * tItemCount);
-    DisplayCurrentMoneyWindow();
+    DisplayCurrentMoneyWindowOverride();
     gTasks[taskId].func = Task_ChooseHowManyToSell;
 }
 
@@ -2261,7 +2276,7 @@ static void SellItem(u8 taskId)
     LoadBagItemListBuffers(gBagPosition.pocket);
     tListTaskId = ListMenuInitOverride(&gMultiuseListMenuTemplate, *scrollPos, *cursorPos);
     BagMenu_PrintCursor(tListTaskId, COLORID_GRAY_CURSOR);
-    PrintMoneyAmountInMoneyBox(gBagMenu->windowIds[ITEMWIN_MONEY], GetMoney(&gSaveBlock1Ptr->money), 0);
+    PrintMoneyAmountInMoneyBoxOverride(gBagMenu->windowIds[ITEMWIN_MONEY], GetMoney(&gSaveBlock1Ptr->money), 0);
     gTasks[taskId].func = WaitAfterItemSell;
 }
 
@@ -2615,6 +2630,13 @@ static void DisplayCurrentMoneyWindow(void)
 {
     u8 windowId = BagMenu_AddWindow(ITEMWIN_MONEY);
     PrintMoneyAmountInMoneyBoxWithBorder(windowId, 1, 14, GetMoney(&gSaveBlock1Ptr->money));
+    AddMoneyLabelObject(19, 11);
+}
+
+static void DisplayCurrentMoneyWindowOverride(void)
+{
+    u8 windowId = BagMenu_AddWindow(ITEMWIN_MONEY);
+    PrintMoneyAmountInMoneyBoxWithBorderOverride(windowId, 1, 14, GetMoney(&gSaveBlock1Ptr->money));
     AddMoneyLabelObject(19, 11);
 }
 

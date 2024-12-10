@@ -351,7 +351,6 @@ static const struct BgTemplate sMoveRelearnerMenuBackgroundTemplates[] =
 static void DoMoveRelearnerMain(void);
 static void CreateLearnableMovesList(void);
 static void CreateUISprites(void);
-static void CB2_MoveRelearnerMain(void);
 static void Task_WaitForFadeOut(u8 taskId);
 static void CB2_InitLearnMove(void);
 static void CB2_InitLearnMoveReturnFromSelectMove(void);
@@ -480,7 +479,7 @@ static void InitMoveRelearnerBackgroundLayers(void)
     SetGpuReg(REG_OFFSET_BLDCNT, 0);
 }
 
-static void CB2_MoveRelearnerMain(void)
+void CB2_MoveRelearnerMain(void)
 {
     DoMoveRelearnerMain();
     RunTasks();
@@ -519,7 +518,6 @@ static void DoMoveRelearnerMain(void)
 
         HideHeartSpritesAndShowTeachMoveText(FALSE);
         sMoveRelearnerStruct->state++;
-        AddScrollArrows();
         break;
     case MENU_STATE_IDLE_BATTLE_MODE:
         HandleInput(FALSE);
@@ -527,7 +525,6 @@ static void DoMoveRelearnerMain(void)
     case MENU_STATE_SETUP_CONTEST_MODE:
         ShowTeachMoveText(FALSE);
         sMoveRelearnerStruct->state++;
-        AddScrollArrows();
         break;
     case MENU_STATE_IDLE_CONTEST_MODE:
         HandleInput(TRUE);
@@ -722,7 +719,6 @@ static void DoMoveRelearnerMain(void)
         {
             ShowTeachMoveText(TRUE);
         }
-        RemoveScrollArrows();
         CopyWindowToVram(RELEARNERWIN_MSG, COPYWIN_GFX);
         break;
     case MENU_STATE_TRY_OVERWRITE_MOVE:
@@ -779,7 +775,6 @@ static void DoMoveRelearnerMain(void)
 
 static void FreeMoveRelearnerResources(void)
 {
-    RemoveScrollArrows();
     DestroyListMenuTask(sMoveRelearnerStruct->moveListMenuTask, &sMoveRelearnerMenuSate.listOffset, &sMoveRelearnerMenuSate.listRow);
     FreeAllWindowBuffers();
     FREE_AND_SET_NULL(sMoveRelearnerStruct);
@@ -818,37 +813,28 @@ static void HandleInput(bool8 showContest)
     switch (itemId)
     {
     case LIST_NOTHING_CHOSEN:
-        if (!(JOY_NEW(DPAD_LEFT | DPAD_RIGHT)) && !GetLRKeysPressed())
+     if (!(JOY_NEW(DPAD_LEFT | DPAD_RIGHT)) && !GetLRKeysPressed())
             break;
 
-        PlaySE(SE_SELECT);
 
-        if (showContest == FALSE)
-        {
-            PutWindowTilemap(RELEARNERWIN_DESC_CONTEST);
-            sMoveRelearnerStruct->state = MENU_STATE_SETUP_CONTEST_MODE;
-            sMoveRelearnerMenuSate.showContestInfo = TRUE;
-        }
-        else
-        {
+        
+        
             PutWindowTilemap(RELEARNERWIN_DESC_BATTLE);
             sMoveRelearnerStruct->state = MENU_STATE_SETUP_BATTLE_MODE;
             sMoveRelearnerMenuSate.showContestInfo = FALSE;
-        }
+
 
         ScheduleBgCopyTilemapToVram(1);
         MoveRelearnerShowHideHearts(GetCurrentSelectedMove());
         break;
     case LIST_CANCEL:
         PlaySE(SE_SELECT);
-        RemoveScrollArrows();
         sMoveRelearnerStruct->state = MENU_STATE_PRINT_GIVE_UP_PROMPT;
         StringExpandPlaceholders(gStringVar4, gText_MoveRelearnerGiveUp);
         MoveRelearnerPrintMessage(gStringVar4);
         break;
     default:
         PlaySE(SE_SELECT);
-        RemoveScrollArrows();
         sMoveRelearnerStruct->state = MENU_STATE_PRINT_TEACH_MOVE_PROMPT;
         StringCopy(gStringVar2, GetMoveName(itemId));
         StringExpandPlaceholders(gStringVar4, gText_MoveRelearnerTeachMoveConfirm);
@@ -884,7 +870,6 @@ static void CreateUISprites(void)
 
     sMoveRelearnerStruct->moveDisplayArrowTask = TASK_NONE;
     sMoveRelearnerStruct->moveListScrollArrowTask = TASK_NONE;
-    AddScrollArrows();
 
     // These are the appeal hearts.
     for (i = 0; i < 8; i++)

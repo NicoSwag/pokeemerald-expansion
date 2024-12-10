@@ -110,8 +110,12 @@ extern struct ListMenuTemplate gMultiuseListMenuTemplate;
 s32 DoMysteryGiftListMenu(const struct WindowTemplate *windowTemplate, const struct ListMenuTemplate *listMenuTemplate, u8 drawMode, u16 tileNum, u16 palNum);
 u8 ListMenuInit(struct ListMenuTemplate *listMenuTemplate, u16 scrollOffset, u16 selectedRow);
 u8 ListMenuInitOverride(struct ListMenuTemplate *listMenuTemplate, u16 scrollOffset, u16 selectedRow);
+u8 ListMenuInitOverrideBag(struct ListMenuTemplate *listMenuTemplate, u16 scrollOffset, u16 selectedRow);
+
 u8 ListMenuInitInRect(struct ListMenuTemplate *listMenuTemplate, struct ListMenuWindowRect *rect, u16 scrollOffset, u16 selectedRow);
 s32 ListMenu_ProcessInput(u8 listTaskId);
+s32 ListMenu_ProcessInputOverride(u8 listTaskId);
+
 void DestroyListMenuTask(u8 listTaskId, u16 *scrollOffset, u16 *selectedRow);
 void RedrawListMenu(u8 listTaskId);
 void ChangeListMenuPals(u8 listTaskId, u8 cursorPal, u8 fillValue, u8 cursorShadowPal);
@@ -129,6 +133,10 @@ u8 AddScrollIndicatorArrowPairParameterized(u32 arrowType, s32 commonPos, s32 fi
 void RemoveScrollIndicatorArrowPair(u8 taskId);
 void Task_ScrollIndicatorArrowPairOnMainMenu(u8 taskId);
 bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown);
+bool8 ListMenuChangeSelectionOverride(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown);
+
 bool8 ListMenuChangeSelectionFull(struct ListMenu *list, bool32 updateCursor, bool32 callCallback, u8 count, bool8 movingDown);
+bool8 ListMenuChangeSelectionFullOverrides(struct ListMenu *list, bool32 updateCursor, bool32 callCallback, u8 count, bool8 movingDown);
+
 
 #endif //GUARD_LIST_MENU_H

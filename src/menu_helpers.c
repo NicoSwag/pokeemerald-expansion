@@ -20,7 +20,6 @@
 #define TAG_SWAP_LINE 109
 
 static void Task_ContinueTaskAfterMessagePrints(u8 taskId);
-static void Task_CallYesOrNoCallback(u8 taskId);
 
 EWRAM_DATA static struct YesNoFuncTable sYesNo = {0};
 EWRAM_DATA static u8 sMessageWindowId = 0;
@@ -154,6 +153,21 @@ void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 palet
     gTasks[taskId].func = Task_ContinueTaskAfterMessagePrints;
 }
 
+void DisplayMessageAndContinueTaskOverride(u8 taskId, u8 windowId, u16 tileNum, u8 paletteNum, u8 fontId, u8 textSpeed, const u8 *string, void *taskFunc)
+{
+    sMessageWindowId = windowId;
+    DrawDialogFrameWithCustomTileAndPalette(windowId, TRUE, tileNum, paletteNum);
+
+    if (string != gStringVar4)
+        StringExpandPlaceholders(gStringVar4, string);
+
+    gTextFlags.canABSpeedUpPrint = 1;
+        FillWindowPixelBuffer(windowId, PIXEL_FILL(11));
+    AddTextPrinterParameterized2(windowId, fontId, gStringVar4, textSpeed, NULL, 1, 11, 2);    
+    sMessageNextTask = taskFunc;
+    gTasks[taskId].func = Task_ContinueTaskAfterMessagePrints;
+}
+
 bool16 RunTextPrintersRetIsActive(u8 textPrinterId)
 {
     RunTextPrinters();
@@ -183,10 +197,10 @@ void CreateYesNoMenuWithCallbacksOverride(u8 taskId, const struct WindowTemplate
 {
     CreateYesNoMenuOverride(template, tileStart, palette, 0);
     sYesNo = *yesNo;
-    gTasks[taskId].func = Task_CallYesOrNoCallback;
+    gTasks[taskId].func = Task_CallYesOrNoCallbackOverride;
 }
 
-static void Task_CallYesOrNoCallback(u8 taskId)
+void Task_CallYesOrNoCallback(u8 taskId)
 {
     switch (Menu_ProcessInputNoWrapClearOnChoose())
     {
@@ -201,6 +215,23 @@ static void Task_CallYesOrNoCallback(u8 taskId)
         break;
     }
 }
+
+void Task_CallYesOrNoCallbackOverride(u8 taskId)
+{
+    switch (Menu_ProcessInputNoWrapClearOnChooseOverride())
+    {
+    case 0:
+        PlaySE(SE_SELECT);
+        sYesNo.yesFunc(taskId);
+        break;
+    case 1:
+    case MENU_B_PRESSED:
+        PlaySE(SE_SELECT);
+        sYesNo.noFunc(taskId);
+        break;
+    }
+}
+
 
 // Returns TRUE if the quantity was changed, FALSE if it remained the same
 bool8 AdjustQuantityAccordingToDPadInput(s16 *quantity, u16 max)

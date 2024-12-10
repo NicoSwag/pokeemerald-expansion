@@ -19,6 +19,7 @@ void ResetVramOamAndBgCntRegs(void);
 void ResetAllBgsCoordinates(void);
 void SetVBlankHBlankCallbacksToNull(void);
 void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 paletteNum, u8 fontId, u8 textSpeed, const u8 *string, void *taskFunc);
+void DisplayMessageAndContinueTaskOverride(u8 taskId, u8 windowId, u16 tileNum, u8 paletteNum, u8 fontId, u8 textSpeed, const u8 *string, void *taskFunc);
 bool16 RunTextPrintersRetIsActive(u8 textPrinterId);
 void DoYesNoFuncWithChoice(u8 taskId, const struct YesNoFuncTable *data);
 void CreateYesNoMenuWithCallbacks(u8 taskId, const struct WindowTemplate *template, u8 unused1, u8 unused2, u8 unused3, u16 tileStart, u8 palette, const struct YesNoFuncTable *yesNo);
@@ -39,5 +40,8 @@ void DestroySwapLineSprites(u8 *spriteIds, u8 count);
 void SetSwapLineSpritesInvisibility(u8 *spriteIds, u8 count, bool8 invisible);
 void UpdateSwapLineSpritesPos(u8 *spriteIds, u8 count, s16 x, u16 y);
 void ResetAllBgsCoordinatesAndBgCntRegs(void);
+void Task_CallYesOrNoCallback(u8);
+void Task_CallYesOrNoCallbackOverride(u8);
+
 
 #endif //GUARD_MENU_HELPERS_H
