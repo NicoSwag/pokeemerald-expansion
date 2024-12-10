@@ -81,6 +81,7 @@ void CreateYesNoMenu(const struct WindowTemplate *windowTemplate, u16 borderFirs
 void CreateYesNoMenuOverride(const struct WindowTemplate *windowTemplate, u16 borderFirstTileNum, u8 borderPalette, u8 initialCursorPos);
 void DecompressAndLoadBgGfxUsingHeap(u8 bgId, const void *src, u32 size, u16 offset, u8 mode);
 s8 Menu_ProcessInputNoWrapClearOnChoose(void);
+s8 Menu_ProcessInputNoWrapClearOnChooseOverride(void);
 s8 ProcessMenuInput_other(void);
 void DoScheduledBgTilemapCopiesToVram(void);
 void ClearScheduledBgCopiesToVram(void);
@@ -101,6 +102,8 @@ u8 GetStartMenuWindowId(void);
 void ListMenuLoadStdPalAt(u8 palOffset, u8 palId);
 u8 Menu_MoveCursor(s8 cursorDelta);
 u8 Menu_MoveCursorNoWrapAround(s8 cursorDelta);
+u8 Menu_MoveCursorOverride(s8 cursorDelta);
+u8 Menu_MoveCursorNoWrapAroundOverride(s8 cursorDelta);
 void DrawStdWindowFrame(u8 windowId, bool8 CopyToVram);
 u8 AddStartMenuWindow(u8 numActions);
 u8 InitMenuNormal(u8 windowId, u8 fontId, u8 left, u8 top, u8 cursorHeight, u8 numChoices, u8 initialCursorPos);

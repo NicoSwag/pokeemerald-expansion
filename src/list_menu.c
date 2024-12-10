@@ -629,7 +629,7 @@ static u8 ListMenuInitInternalOverride(struct ListMenuTemplate *listMenuTemplate
     if (list->template.totalItems < list->template.maxShowed)
         list->template.maxShowed = list->template.totalItems;
 
-    FillWindowPixelBuffer(list->template.windowId, PIXEL_FILL(list->template.fillValue));
+    FillWindowPixelBuffer(list->template.windowId, PIXEL_FILL(11));
     ListMenuPrintEntriesOverride(list, list->scrollOffset, 0, list->template.maxShowed);
     ListMenuDrawCursor(list);
     ListMenuCallSelectionChangedCallback(list, TRUE);
