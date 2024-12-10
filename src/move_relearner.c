@@ -807,7 +807,7 @@ static void HideHeartSpritesAndShowTeachMoveText(bool8 onlyHideSprites)
 
 static void HandleInput(bool8 showContest)
 {
-    s32 itemId = ListMenu_ProcessInput(sMoveRelearnerStruct->moveListMenuTask);
+    s32 itemId = ListMenu_ProcessInputTeacher(sMoveRelearnerStruct->moveListMenuTask);
     ListMenuGetScrollAndRow(sMoveRelearnerStruct->moveListMenuTask, &sMoveRelearnerMenuSate.listOffset, &sMoveRelearnerMenuSate.listRow);
 
     switch (itemId)

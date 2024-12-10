@@ -1151,7 +1151,7 @@ static bool8 BuyMenuCheckForOverlapWithMenuBg(int x, int y)
 void Task_BuyMenu(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    s32 itemId = ListMenu_ProcessInputOverride(tListTaskId);
+    s32 itemId = ListMenu_ProcessInputShop(tListTaskId);
     u8 totalberries;
     totalberries = (CheckBagHasItem(itemId, 1) + CheckPCHasItem(itemId, 1));
 

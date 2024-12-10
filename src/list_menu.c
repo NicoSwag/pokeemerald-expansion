@@ -422,6 +422,69 @@ u8 ListMenuInitInRect(struct ListMenuTemplate *listMenuTemplate, struct ListMenu
 }
 
 
+s32 ListMenu_ProcessInputShop(u8 listTaskId)
+{
+    struct ListMenu *list = (void *) gTasks[listTaskId].data;
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        return list->template.items[list->scrollOffset + list->selectedRow].id;
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        return LIST_CANCEL;
+    }
+    else if (JOY_REPEAT(DPAD_UP))
+    {
+        ListMenuChangeSelectionShop(list, TRUE, 1, FALSE);
+        return LIST_NOTHING_CHOSEN;
+    }
+    else if (JOY_REPEAT(DPAD_DOWN))
+    {
+        ListMenuChangeSelectionShop(list, TRUE, 1, TRUE);
+        return LIST_NOTHING_CHOSEN;
+    }
+    else // try to move by one window scroll
+    {
+        bool16 rightButton, leftButton;
+        switch (list->template.scrollMultiple)
+        {
+        case LIST_NO_MULTIPLE_SCROLL:
+        default:
+            leftButton = FALSE;
+            rightButton = FALSE;
+            break;
+        case LIST_MULTIPLE_SCROLL_DPAD:
+            // note: JOY_REPEAT won't match here
+            leftButton = JOY_REPEAT(DPAD_LEFT);
+            rightButton = JOY_REPEAT(DPAD_RIGHT);
+            break;
+        case LIST_MULTIPLE_SCROLL_L_R:
+            // same as above
+            leftButton = JOY_REPEAT(L_BUTTON);
+            rightButton = JOY_REPEAT(R_BUTTON);
+            break;
+        }
+
+        if (leftButton)
+        {
+            ListMenuChangeSelectionShop(list, TRUE, list->template.maxShowed, FALSE);
+            return LIST_NOTHING_CHOSEN;
+        }
+        else if (rightButton)
+        {
+            ListMenuChangeSelectionShop(list, TRUE, list->template.maxShowed, TRUE);
+            return LIST_NOTHING_CHOSEN;
+        }
+        else
+        {
+            return LIST_NOTHING_CHOSEN;
+        }
+    }
+}
+
+
+
 s32 ListMenu_ProcessInputOverride(u8 listTaskId)
 {
     struct ListMenu *list = (void *) gTasks[listTaskId].data;
@@ -474,6 +537,67 @@ s32 ListMenu_ProcessInputOverride(u8 listTaskId)
         else if (rightButton)
         {
             ListMenuChangeSelectionOverride(list, TRUE, list->template.maxShowed, TRUE);
+            return LIST_NOTHING_CHOSEN;
+        }
+        else
+        {
+            return LIST_NOTHING_CHOSEN;
+        }
+    }
+}
+
+s32 ListMenu_ProcessInputTeacher(u8 listTaskId)
+{
+    struct ListMenu *list = (void *) gTasks[listTaskId].data;
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        return list->template.items[list->scrollOffset + list->selectedRow].id;
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        return LIST_CANCEL;
+    }
+    else if (JOY_REPEAT(DPAD_UP))
+    {
+        ListMenuChangeSelectionTeacher(list, TRUE, 1, FALSE);
+        return LIST_NOTHING_CHOSEN;
+    }
+    else if (JOY_REPEAT(DPAD_DOWN))
+    {
+        ListMenuChangeSelectionTeacher(list, TRUE, 1, TRUE);
+        return LIST_NOTHING_CHOSEN;
+    }
+    else // try to move by one window scroll
+    {
+        bool16 rightButton, leftButton;
+        switch (list->template.scrollMultiple)
+        {
+        case LIST_NO_MULTIPLE_SCROLL:
+        default:
+            leftButton = FALSE;
+            rightButton = FALSE;
+            break;
+        case LIST_MULTIPLE_SCROLL_DPAD:
+            // note: JOY_REPEAT won't match here
+            leftButton = JOY_REPEAT(DPAD_LEFT);
+            rightButton = JOY_REPEAT(DPAD_RIGHT);
+            break;
+        case LIST_MULTIPLE_SCROLL_L_R:
+            // same as above
+            leftButton = JOY_REPEAT(L_BUTTON);
+            rightButton = JOY_REPEAT(R_BUTTON);
+            break;
+        }
+
+        if (leftButton)
+        {
+            ListMenuChangeSelectionTeacher(list, TRUE, list->template.maxShowed, FALSE);
+            return LIST_NOTHING_CHOSEN;
+        }
+        else if (rightButton)
+        {
+            ListMenuChangeSelectionTeacher(list, TRUE, list->template.maxShowed, TRUE);
             return LIST_NOTHING_CHOSEN;
         }
         else
@@ -1044,6 +1168,48 @@ static void ListMenuScroll(struct ListMenu *list, u8 count, bool8 movingDown)
     }
 }
 
+
+
+static void ListMenuScrollTeacher(struct ListMenu *list, u8 count, bool8 movingDown)
+{
+    if (count >= list->template.maxShowed)
+    {
+        FillWindowPixelBuffer(list->template.windowId, PIXEL_FILL(11));
+        ListMenuPrintEntries(list, list->scrollOffset, 0, list->template.maxShowed);
+    }
+    else
+    {
+        u8 yMultiplier = GetFontAttribute(list->template.fontId, FONTATTR_MAX_LETTER_HEIGHT) + list->template.itemVerticalPadding;
+
+        if (!movingDown)
+        {
+            u16 y, width, height;
+
+            ScrollWindow(list->template.windowId, 1, count * yMultiplier, PIXEL_FILL(11));
+            ListMenuPrintEntriesOverride(list, list->scrollOffset, 0, count);
+
+            y = (list->template.maxShowed * yMultiplier) + list->template.upText_Y;
+            width = GetWindowAttribute(list->template.windowId, WINDOW_WIDTH) * 8;
+            height = (GetWindowAttribute(list->template.windowId, WINDOW_HEIGHT) * 8) - y;
+            FillWindowPixelRect(list->template.windowId,
+                                PIXEL_FILL(11),
+                                0, y, width, height);
+        }
+        else
+        {
+            u16 width;
+
+            ScrollWindow(list->template.windowId, 0, count * yMultiplier, PIXEL_FILL(11));
+            ListMenuPrintEntriesOverride(list, list->scrollOffset + (list->template.maxShowed - count), list->template.maxShowed - count, count);
+
+            width = GetWindowAttribute(list->template.windowId, WINDOW_WIDTH) * 8;
+            FillWindowPixelRect(list->template.windowId,
+                                PIXEL_FILL(11),
+                                0, 0, width, list->template.upText_Y);
+        }
+    }
+}
+
 static void ListMenuScrollOverride(struct ListMenu *list, u8 count, bool8 movingDown)
 {
     if (count >= list->template.maxShowed)
@@ -1133,6 +1299,55 @@ bool8 ListMenuChangeSelectionFull(struct ListMenu *list, bool32 updateCursor, bo
     return FALSE;
 }
 
+bool8 ListMenuChangeSelectionFullTeacher(struct ListMenu *list, bool32 updateCursor, bool32 callCallback, u8 count, bool8 movingDown)
+{
+    u16 oldSelectedRow;
+    u8 selectionChange, i, cursorCount;
+
+    oldSelectedRow = list->selectedRow;
+    cursorCount = 0;
+    selectionChange = 0;
+    for (i = 0; i < count; i++)
+    {
+        do
+        {
+            u8 ret = ListMenuUpdateSelectedRowIndexAndScrollOffset(list, movingDown);
+            selectionChange |= ret;
+            if (ret != 2)
+                break;
+            cursorCount++;
+        } while (list->template.items[list->scrollOffset + list->selectedRow].id == LIST_HEADER);
+    }
+
+    if (updateCursor)
+    {
+        switch (selectionChange)
+        {
+        case 0:
+        default:
+            return TRUE;
+        case 1:
+            ListMenuErasePrintedCursor(list, oldSelectedRow);
+            ListMenuDrawCursor(list);
+            if (callCallback)
+                ListMenuCallSelectionChangedCallback(list, FALSE);
+            CopyWindowToVram(list->template.windowId, COPYWIN_GFX);
+            break;
+        case 2:
+        case 3:
+            ListMenuErasePrintedCursor(list, oldSelectedRow);
+            ListMenuScrollTeacher(list, cursorCount, movingDown);
+            ListMenuDrawCursor(list);
+            if (callCallback)
+                ListMenuCallSelectionChangedCallback(list, FALSE);
+            CopyWindowToVram(list->template.windowId, COPYWIN_GFX);
+            break;
+        }
+    }
+
+    return FALSE;
+}
+
 bool8 ListMenuChangeSelectionFullOverride(struct ListMenu *list, bool32 updateCursor, bool32 callCallback, u8 count, bool8 movingDown)
 {
     u16 oldSelectedRow;
@@ -1183,14 +1398,73 @@ bool8 ListMenuChangeSelectionFullOverride(struct ListMenu *list, bool32 updateCu
 }
 
 
+bool8 ListMenuChangeSelectionFullShop(struct ListMenu *list, bool32 updateCursor, bool32 callCallback, u8 count, bool8 movingDown)
+{
+    u16 oldSelectedRow;
+    u8 selectionChange, i, cursorCount;
+
+    oldSelectedRow = list->selectedRow;
+    cursorCount = 0;
+    selectionChange = 0;
+    for (i = 0; i < count; i++)
+    {
+        do
+        {
+            u8 ret = ListMenuUpdateSelectedRowIndexAndScrollOffset(list, movingDown);
+            selectionChange |= ret;
+            if (ret != 2)
+                break;
+            cursorCount++;
+        } while (list->template.items[list->scrollOffset + list->selectedRow].id == LIST_HEADER);
+    }
+
+    if (updateCursor)
+    {
+        switch (selectionChange)
+        {
+        case 0:
+        default:
+            return TRUE;
+        case 1:
+            ListMenuErasePrintedCursor(list, oldSelectedRow);
+            ListMenuDrawCursorOverride(list);
+            if (callCallback)
+                ListMenuCallSelectionChangedCallback(list, FALSE);
+            CopyWindowToVram(list->template.windowId, COPYWIN_GFX);
+            break;
+        case 2:
+        case 3:
+            ListMenuErasePrintedCursor(list, oldSelectedRow);
+            ListMenuScroll(list, cursorCount, movingDown);
+            ListMenuDrawCursorOverride(list);
+            if (callCallback)
+                ListMenuCallSelectionChangedCallback(list, FALSE);
+            CopyWindowToVram(list->template.windowId, COPYWIN_GFX);
+            break;
+        }
+    }
+
+    return FALSE;
+}
+
 bool8 ListMenuChangeSelection(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)
 {
     return ListMenuChangeSelectionFull(list, updateCursorAndCallCallback, updateCursorAndCallCallback, count, movingDown);
 }
 
+bool8 ListMenuChangeSelectionTeacher(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)
+{
+    return ListMenuChangeSelectionFullTeacher(list, updateCursorAndCallCallback, updateCursorAndCallCallback, count, movingDown);
+}
+
 bool8 ListMenuChangeSelectionOverride(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)
 {
     return ListMenuChangeSelectionFullOverride(list, updateCursorAndCallCallback, updateCursorAndCallCallback, count, movingDown);
+}
+
+bool8 ListMenuChangeSelectionShop(struct ListMenu *list, bool8 updateCursorAndCallCallback, u8 count, bool8 movingDown)
+{
+    return ListMenuChangeSelectionFullShop(list, updateCursorAndCallCallback, updateCursorAndCallCallback, count, movingDown);
 }
 
 static void ListMenuCallSelectionChangedCallback(struct ListMenu *list, u8 onInit)
