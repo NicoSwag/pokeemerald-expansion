@@ -26,19 +26,27 @@ RustboroCity_PokemonCenter_1F_EventScript_Boy::
 	msgbox RustboroCity_PokemonCenter_1F_Text_MaleAndFemalePokemon, MSGBOX_NPC
 	end
 
+RustboroCity_PokemonCenter_1F_EventScript_Skitty::
+	lock
+	playmoncry SPECIES_SKITTY, CRY_MODE_NORMAL
+	msgbox RustboroCity_PokemonCenter_1F_Text_Skitty, MSGBOX_NPC
+	waitmoncry
+	release
+	end
+
 RustboroCity_PokemonCenter_1F_EventScript_Girl::
 	msgbox RustboroCity_PokemonCenter_1F_Text_HMCutNextDoor, MSGBOX_NPC
 	end
 
 RustboroCity_PokemonCenter_1F_Text_PokemonHavePersonalities:
-	.string "My POKéMON has a NAIVE nature, and my\n"
-	.string "friend's has a JOLLY nature.\p"
-	.string "It's fascinating how POKéMON have\n"
+	.string "My Pokémon has a Naive nature, and my\n"
+	.string "friend's has a Jolly nature.\p"
+	.string "It's fascinating how Pokémon have\n"
 	.string "personalities!$"
 
 RustboroCity_PokemonCenter_1F_Text_MaleAndFemalePokemon:
 	.string "Just like people, there are male and\n"
-	.string "female POKéMON.\p"
+	.string "female Pokémon.\p"
 	.string "But just like people, they aren't all\n"
 	.string "that different.$"
 
@@ -71,3 +79,6 @@ DewfordTown_Mart_Pokemart_Basic:
 	.2byte ITEM_NONE
 	release
 	end
+
+RustboroCity_PokemonCenter_1F_Text_Skitty:
+	.string "Myaa!$"

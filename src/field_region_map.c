@@ -154,7 +154,9 @@ static void FieldUpdateRegionMap(void)
         case 1:
             DrawStdFrameWithCustomTileAndPalette(WIN_TITLE, FALSE, 0x27, 0xd);
             offset = GetStringCenterAlignXOffset(FONT_NORMAL, gText_Hoenn, 0x38);
-            AddTextPrinterParameterized(WIN_TITLE, FONT_NORMAL, gText_Hoenn, offset, 1, 0, NULL);
+            u8 colors[3] = {11, 1, 2};
+            FillWindowPixelBuffer(WIN_TITLE, PIXEL_FILL(11));
+            AddTextPrinterParameterized4 (WIN_TITLE, FONT_NORMAL, offset, 1, 0, 0, colors, 0, gText_Hoenn);
             ScheduleBgCopyTilemapToVram(0);
             DrawStdFrameWithCustomTileAndPalette(WIN_MAPSEC_NAME, FALSE, 0x27, 0xd);
             PrintRegionMapSecName();
@@ -207,13 +209,15 @@ static void PrintRegionMapSecName(void)
 {
     if (sFieldRegionMapHandler->regionMap.mapSecType != MAPSECTYPE_NONE)
     {
-        FillWindowPixelBuffer(WIN_MAPSEC_NAME, PIXEL_FILL(1));
-        AddTextPrinterParameterized(WIN_MAPSEC_NAME, FONT_NORMAL, sFieldRegionMapHandler->regionMap.mapSecName, 0, 1, 0, NULL);
-        ScheduleBgCopyTilemapToVram(WIN_MAPSEC_NAME);
+
+        u8 colors[3] = {11, 1, 2};
+            FillWindowPixelBuffer(WIN_MAPSEC_NAME, PIXEL_FILL(11));
+            AddTextPrinterParameterized4 (WIN_MAPSEC_NAME, FONT_NORMAL, 0, 1, 0, 0, colors, 0, sFieldRegionMapHandler->regionMap.mapSecName);
+            ScheduleBgCopyTilemapToVram(WIN_MAPSEC_NAME);
     }
     else
     {
-        FillWindowPixelBuffer(WIN_MAPSEC_NAME, PIXEL_FILL(1));
+        FillWindowPixelBuffer(WIN_MAPSEC_NAME, PIXEL_FILL(11));
         CopyWindowToVram(WIN_MAPSEC_NAME, COPYWIN_FULL);
     }
 }

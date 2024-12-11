@@ -182,7 +182,7 @@ RustboroCity_EventScript_ScientistHelped::
 RustboroCity_Text_WordOfAdvice:
 	.string "We are friends now, yes…?\p"
 	.string "So, I have word of advice for you.\n"
-	.string "Come back to Kanto.\p"
+	.string "Run back to Kanto.\p"
 	.string "Do not get me wrong.\p"
 	.string "I am not saying this due to some inane\n"
 	.string "patriotism.\p"
@@ -190,12 +190,13 @@ RustboroCity_Text_WordOfAdvice:
 	.string "Meddling with some dangerous forces,\n"
 	.string "they are.\p"
 	.string "I do not mean to alarm you, but that\n"
-	.string "Booster Energy you got…\p"
-	.string "It could be a bona fide portable nuclear\n"
-	.string "reactor if completed.\p"
-	.string "Do not worry… Yours is inactive.\p"
+	.string "device you got…\p"
+	.string "It is like a battery for a very dangerous\n"
+	.string "form of energy.\p"
+	.string "Do not worry… This one is too small\n"
+	.string "to pose a problem.\p"
 	.string "But… You have heard of the Mauville\n"
-	.string "Disaster…?\p"
+	.string "Disaster, yes…?\p"
 	.string "In the near future, similar tragedies\n"
 	.string "could be commonplace.\p"
 	.string "I need to investigate further…$"
@@ -210,24 +211,25 @@ RustboroCity_Text_ScientistWondering:
 
 RustboroCity_Text_BoosterEnergy:
 	.string "You…\p"
-	.string "My energy detector, which of course I\n"
-	.string "always carry with me, is going bananas…\p"
-	.string "You have some strange technology,\n"
-	.string "don't you…?\p"
+	.string "My energy detector is going crazy.\p"
+	.string "You have somemething with you, don't\n"
+	.string "you…?\p"
 	.string "Oh, please… Do not worry…\n"
 	.string "I only intend to take a look at it…\p"
 	.string "… … … … …\p"
-	.string "Ah, this… Booster Energy…?\n"
+	.string "Ah, this…\n"
 	.string "This is top secret Devon technology…\p"
 	.string "How in the world did you…?\p"
+	.string "… … … … …\p"
 	.string "Well then, I will be introducing myself.\p"
-	.string "I am a scientist from the cutting edge\n"
-	.string "company Silph Co., from Kanto…\p"
+	.string "I am a scientist working for the cutting\n"
+	.string "edge company Silph Co., from Kanto…\p"
 	.string "…Ah, you are from Kanto yourself?\n"
-	.string "Splendid…\p"
-	.string "You see, we think that the Devon crooks\n"
-	.string "are close to a major breakthrough…\p"
-	.string "And this Booster Energy… Intriguing.\p"
+	.string "Splendid.\p"
+	.string "You see, we think that Devon is very\n"
+	.string "close to a major breakthrough…\p"
+	.string "And this… Booster Energy, is it?\n"
+	.string "Intriguing.\p"
 	.string "Oh, you can keep it.\n"
 	.string "At the present state, it is useless.\p"
 	.string "But… Such concentrated energy…\n"
@@ -370,9 +372,7 @@ RustboroCity_Text_Engineer_3_Fight:
 
 RustboroCity_EventScript_GirlProtest::
 	lock
-	applymovement LOCALID_GIRLPROTESTER, Common_Movement_FaceRight
 	msgbox RustboroCity_Text_GirlProtest, MSGBOX_DEFAULT
-	applymovement LOCALID_GIRLPROTESTER, Common_Movement_FaceRight
 	closemessage
 	release
 	end
@@ -450,6 +450,8 @@ RustboroCity_EventScript_Twin::
 
 RustboroCity_EventScript_Looker::
 	msgbox RustboroCity_Text_LookerDisguise, MSGBOX_NPC
+	speakername Common_Name_Looker
+	msgbox RustboroCity_Text_LookerDisguise2, MSGBOX_NPC
 	end
 
 RustboroCity_EventScript_NinjaBoy::
@@ -1598,8 +1600,8 @@ RustboroCity_EventScript_Boy1::
 
 RustboroCity_Text_WeShortenItToDevon:
 	.string "Devon wants to expand in the forest\n"
-	.string "up north, but it seems that a strange\l"
-	.string "group is giving them trouble.\p"
+	.string "up north, but some strange women are\l"
+	.string "giving them trouble.\p"
 	.string "I fear that the situation may turn\n"
 	.string "violent…$"
 
@@ -1652,7 +1654,7 @@ RustboroCity_Text_MrBrineyLovesPeeko:
 RustboroCity_Text_WowYouHavePokemon:
 	.string "Wow, you have Pokémon with you, too.\p"
 	.string "When I get bigger, I'm going to get\n"
-	.string "Pokémon too and leave this stinky\l"
+	.string "Pokémon too, and leave this stinky\l"
 	.string "place.$"
 
 RustboroCity_Text_CatchRarePokemonIfIGoToSchool:
@@ -1671,7 +1673,7 @@ RustboroCity_Text_PokemonChangeShape:
 
 RustboroCity_Text_TradePokemonGrowFast:
 	.string "Looks like there's construction\n"
-	.string "going on even in the ROUTES around\l"
+	.string "going on even in the Routes around\l"
 	.string "our city…\p"
 	.string "Where will our kids play?$"
 
@@ -1829,7 +1831,7 @@ RustboroCity_Text_DevonCorpBranchOfficeSign:
 	.string "and authorized personnel.”$"
 
 RustboroCity_Text_CitySign:
-	.string "RUSTBORO CITY$"
+	.string "Rustboro City$"
 
 RustboroCity_Text_TrainersSchoolSign:
 	.string "TRAINER'S SCHOOL LECTURE HALL\p"
@@ -1871,7 +1873,7 @@ RustboroCity_Text_YouCanHave2On2Battle:
 	.string "Devon is a multiregional corporation\n"
 	.string "that deals with, well, pretty much\l"
 	.string "everything.\p"
-	.string "Real estate, technology, POKEMON…\p"
+	.string "Real estate, technology, Pokémon…\p"
 	.string "If you can name it, you can buy it\n"
 	.string "from Devon.\p"
 	.string "Recently, they've been targeted\n"
@@ -1897,22 +1899,25 @@ RustboroCity_Text_DumbBird:
 	.string "carrying construction material to\l"
 	.string "its proper place, but…\p"
 	.string "It doesn't look like he's quite got\n"
-	.string "what the assignement is.$"
+	.string "it.$"
 
 RustboroCity_Text_Delibird:
 	.string "Kwaaah!$"
 
 RustboroCity_Text_LookerDisguise:
 	.string "Psst! Hey!\n"
-	.string "It is me, Looker!\p"
+	.string "It is me, Looker!$"
+
+RustboroCity_Text_LookerDisguise2:
 	.string "Quite the disguise, is it not?\p"
 	.string "You see, I have reason to believe that\n"
 	.string "the suspicious man we encountered\l"
-	.string "is, in fact, an employee of DEVON!\p"
+	.string "is, in fact, an employee of Devon!\p"
 	.string "Therefore, I am snooping around here to\n"
 	.string "try and find out where he has gone.\p"
 	.string "If I uncover any leads, I will let you\n"
 	.string "know, yes!$"
+
 
 RustboroCity_Text_Bodyguards:
 	.string "Hm, yes?\n"
@@ -1925,9 +1930,7 @@ RustboroCity_Text_MagmaProtest:
 	.string "I'm protesting for a good cause!$"
 
 RustboroCity_Text_BoyProtest:
-	.string "Devon wants to demolish this park to\n"
-	.string "build a new department store, since\l"
-	.string "the one in Lilycove was closed.\p"
+	.string "Devon wants to demolish this park.\p"
 	.string "But we won't stand for it!$"
 
 RustboroCity_Text_GirlProtest:
@@ -1936,10 +1939,10 @@ RustboroCity_Text_GirlProtest:
 
 RustboroCity_Text_Engineer_3:
 	.string "What's wrong, huh?\n"
-	.string "You got some problem?$"
+	.string "You got a problem?$"
 
 RustboroCity_Text_Rhydon:
-	.string "RHYDON: Gwraaaaaaa!$"
+	.string "Gwraaaaaaa!$"
 
 RustboroCity_Text_CantPass:
 	.string "Sorry, kid, but I can't let you through.\n"
@@ -2190,3 +2193,100 @@ RustboroCity_Text_Manhole:
 
 Common_Name_Briney:
 	.string "Mr. Briney$"
+
+
+RustboroCity_EventScript_Drilbur::
+	lock
+	playmoncry SPECIES_DRILBUR, CRY_MODE_NORMAL
+	msgbox RustboroCity_Text_Drilbur, MSGBOX_NPC
+	waitmoncry
+	release
+	end
+
+
+RustboroCity_Text_Drilbur:
+	.string "Fshshah!$"
+
+
+RustboroCity_EventScript_Scraggy::
+	lock
+	playmoncry SPECIES_SCRAGGY, CRY_MODE_NORMAL
+	msgbox RustboroCity_Text_Scraggy, MSGBOX_NPC
+	waitmoncry
+	release
+	end
+
+
+RustboroCity_Text_Scraggy:
+	.string "Weeoh!$"
+
+RustboroCity_EventScript_Trubbish::
+	lock
+	playmoncry SPECIES_TRUBBISH, CRY_MODE_NORMAL
+	msgbox RustboroCity_Text_Trubbish, MSGBOX_NPC
+	waitmoncry
+	release
+	end
+
+
+RustboroCity_Text_Trubbish:
+	.string "Bwrrrwrr!$"
+
+
+
+RustboroCity_EventScript_ManChemicals::
+	msgbox RustboroCity_EventScript_Text, MSGBOX_NPC
+	end
+
+
+RustboroCity_EventScript_Text:
+	.string "Devon is releasing, like, these\n"
+	.string "crazy chemicals in the air and in\l"
+	.string "the water, man.\p"
+	.string "The sky's dark all the time, and the\n"
+	.string "sea has this weird color…\p"
+	.string "I dunno, man.\n"
+	.string "Bad vibes.$"
+
+
+RustboroCity_EventScript_ManFactory::
+	msgbox RustboroCity_EventScript_ManFactory, MSGBOX_NPC
+	end
+
+RustboroCity_EventScript_Factory:
+	.string "I wonder what's inside the factory.\p"
+	.string "They don't let anyone it, and those\n"
+	.string "who work there never talk about it.$"
+
+RustboroCity_EventScript_GarbageLady::
+	lock
+	playse SE_PIN
+	applymovement LOCALID_GARBAGE_LADY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_GARBAGE_LADY, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_GARBAGE_LADY, Common_Movement_WalkDown
+	waitmovement 0
+	applymovement LOCALID_GARBAGE_LADY, Common_Movement_WalkDown
+	applymovement OBJ_EVENT_ID_PLAYER, RustboroCity_Movement_BackUp
+	waitmovement 0
+	msgbox RustboroCity_Text_GarbageLady, MSGBOX_NPC
+	applymovement LOCALID_GARBAGE_LADY, Common_Movement_WalkUp
+	waitmovement 0
+	applymovement LOCALID_GARBAGE_LADY, Common_Movement_WalkUp
+	waitmovement 0
+	release
+	end
+
+
+
+
+RustboroCity_Movement_BackUp:
+	lock_facing_direction
+	walk_down
+	face_up
+	unlock_facing_direction
+	step_end
+
+RustboroCity_Text_GarbageLady:
+	.string "Stay away from my garbage!$"

@@ -28,6 +28,7 @@
 #include "constants/weather.h"
 #include "move_relearner.h"
 #include "shop.h"
+#include "main_menu.h"
 
 #define DLG_WINDOW_PALETTE_NUM 15
 #define DLG_WINDOW_BASE_TILE_NUM 0x200
@@ -874,7 +875,7 @@ void RedrawMenuCursor(u8 oldPos, u8 newPos)
 
     width = GetMenuCursorDimensionByFont(sMenu.fontId, 0);
     height = GetMenuCursorDimensionByFont(sMenu.fontId, 1);
-    if(gMain.callback2 == CB2_ReturnToFieldLocal || gMain.callback2 == CB2_UpdatePartyMenu || gMain.callback2 == CB2_Overworld || (FindTaskIdByFunc(Task_CallYesOrNoCallback) != TASK_NONE))    
+    if(gMain.callback2 == CB2_ReturnToFieldLocal || gMain.callback2 == CB2_NewGameBirchSpeech_FromNewMainMenu || gMain.callback2 == CB2_UpdatePartyMenu || gMain.callback2 == CB2_Overworld || (FindTaskIdByFunc(Task_CallYesOrNoCallback) != TASK_NONE))    
     {
         FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos + sMenu.top, width, height);
         AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow3, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0);
@@ -1682,10 +1683,39 @@ u8 InitMenuInUpperLeftCorner(u8 windowId, u8 itemCount, u8 initialCursorPos, boo
     return Menu_MoveCursor(0);
 }
 
+
+u8 InitMenuInUpperLeftCornerOverride(u8 windowId, u8 itemCount, u8 initialCursorPos, bool8 APressMuted)
+{
+    s32 pos;
+
+    sMenu.left = 0;
+    sMenu.top = 1;
+    sMenu.minCursorPos = 0;
+    sMenu.maxCursorPos = itemCount - 1;
+    sMenu.windowId = windowId;
+    sMenu.fontId = FONT_NORMAL;
+    sMenu.optionHeight = 16;
+    sMenu.APressMuted = APressMuted;
+
+    pos = initialCursorPos;
+
+    if (pos < 0 || pos > sMenu.maxCursorPos)
+        sMenu.cursorPos = 0;
+    else
+        sMenu.cursorPos = pos;
+
+    return Menu_MoveCursorOverride(0);
+}
+
 // There is no muted version of this function, so the version that plays sound when A is pressed is the "Normal" one.
 u8 InitMenuInUpperLeftCornerNormal(u8 windowId, u8 itemCount, u8 initialCursorPos)
 {
     return InitMenuInUpperLeftCorner(windowId, itemCount, initialCursorPos, FALSE);
+}
+
+u8 InitMenuInUpperLeftCornerNormalOverride(u8 windowId, u8 itemCount, u8 initialCursorPos)
+{
+    return InitMenuInUpperLeftCornerOverride(windowId, itemCount, initialCursorPos, FALSE);
 }
 
 void PrintMenuTable(u8 windowId, u8 itemCount, const struct MenuAction *menuActions)

@@ -1336,3 +1336,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/OldaleTown_RuinHouse2/scripts.inc"
 
 	.include "data/maps/OldaleTown_RuinsHouse3/scripts.inc"
+
+	.include "data/maps/RustboroCity_House4/scripts.inc"
+
+	.include "data/maps/RustboroCity_Toilet/scripts.inc"

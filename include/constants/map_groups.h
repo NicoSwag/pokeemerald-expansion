@@ -211,6 +211,8 @@
 #define MAP_RUSTBORO_CITY_GYM_ARENA         (17 | (11 << 8))
 #define MAP_RUSTBORO_CITY_GYM_INTERIOR      (18 | (11 << 8))
 #define MAP_NEW_MAP1                        (19 | (11 << 8))
+#define MAP_RUSTBORO_CITY_HOUSE4            (20 | (11 << 8))
+#define MAP_RUSTBORO_CITY_TOILET            (21 | (11 << 8))
 
 // gMapGroup_IndoorFortree
 #define MAP_FORTREE_CITY_HOUSE1            (0 | (12 << 8))
