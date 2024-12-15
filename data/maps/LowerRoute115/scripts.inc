@@ -3,7 +3,6 @@ LowerRoute115_MapScripts::
 
 
 Route115_HandleTrainers::
-	settrainerflag TRAINER_HECTOR
 	return
 
 
@@ -36,6 +35,7 @@ Route115_EventScript_Engineer3::
 Route115_EventScript_Scizor::
 	playmoncry SPECIES_SCIZOR, CRY_MODE_NORMAL
 	msgbox Route115_Text_Scizor, MSGBOX_DEFAULT
+	waitmoncry
 	closemessage
 	end
 
@@ -53,14 +53,14 @@ Route115_Text_Door:
 	.string "I forgot to install a door!$"
 
 Route115_Text_DestroyBarrier:
-	.string "Come on, SCIZOR!\n"
+	.string "Come on, Scizor!\n"
 	.string "We have a forest to cut down!$"
 
 Route115_Text_Scizor:
-	.string "SCIZOR: Hya! Hya! Hya!$"
+	.string "Hya! Hya! Hya!$"
 
 Route115_Text_Aqua:
-	.string "DEVON is discharing their waste\n"
+	.string "Devon is discharing their waste\n"
 	.string "in the sea.\p"
 	.string "Unforgivable!\p"
 	.string "Look at what they're doing to\n"

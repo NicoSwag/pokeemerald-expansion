@@ -1024,7 +1024,7 @@ const u16 gEggMoves[] = {
         MOVE_ME_FIRST),
 
     egg_moves(GIRAFARIG,
-        MOVE_TRICK_ROOM,
+        MOVE_MEAN_LOOK,
         MOVE_ALLY_SWITCH),
 
     egg_moves(PINECO,

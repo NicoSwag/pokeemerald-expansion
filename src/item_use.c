@@ -1270,7 +1270,7 @@ bool32 CannotUseItemsInBattle(u16 itemId, struct Pokemon *mon)
         }
         break;
     case EFFECT_ITEM_RESTORE_HP:
-        if (hp == 0 || hp == GetMonData(mon, MON_DATA_MAX_HP))
+        if (hp == 0 || hp == GetMonData(mon, MON_DATA_MAX_HP) || GetCurrentMapBattleScene() == MAP_BATTLE_SCENE_GYM)
             cannotUse = TRUE;
         break;
     case EFFECT_ITEM_CURE_STATUS:

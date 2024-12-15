@@ -277,6 +277,7 @@ OldaleTown_EventScript_Eevee_Get::
 	goto Common_EventScript_NoMoreRoomForPokemon
 	release
 	end
+	
 
 OldaleTown_EventScript_SendEeveeParty::
 	call OldaleTown_EventScript_ReceivedEeveeFanfare
@@ -322,7 +323,7 @@ OldaleTown_EventScript_ReceivedEevee::
 
 
 OldaleTown_Text_ObtainedEevee:
-	.string "{PLAYER} obtained EEVEE.$"
+	.string "{PLAYER} obtained Eevee.$"
 
 OldaleTown_EventScript_Rival::
 	lockall

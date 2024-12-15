@@ -131,8 +131,8 @@ Route115_EventScript_Marlene::
 
 Route115_Text_NeverKnowWhenCavePokemonWillAppear:
 	.string "Rumor has it that an extremely\n"
-	.string "powerful POKEMON lives in the\l"
-	.string "FORBIDDEN FOREST.\p"
+	.string "powerful Pokémon lives in the\l"
+	.string "Forbidden Forest.\p"
 	.string "No one is allowed to enter,\n"
 	.string "however.$"
 

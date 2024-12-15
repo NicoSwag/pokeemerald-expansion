@@ -2061,15 +2061,15 @@ Route115_Text_CyndyPostRematch:
 	.string "It must be that I love POKéMON.$"
 
 Route115_Text_HectorIntro:
-	.string "I have a rare POKéMON!\n"
+	.string "I have some rare Pokémon!\n"
 	.string "Would you like me to show you?$"
 
 Route115_Text_HectorDefeat:
 	.string "You…\n"
-	.string "You want my POKéMON, don't you?$"
+	.string "You want my Pokémon, don't you?$"
 
 Route115_Text_HectorPostBattle:
-	.string "I have this rare POKéMON.\n"
+	.string "I have these rare Pokémon.\n"
 	.string "It's enough to keep me satisfied.$"
 
 Route115_Text_KyraIntro:

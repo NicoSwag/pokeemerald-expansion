@@ -125,10 +125,8 @@ RustboroCity_Gym_Text_DefeatAllTrainers:
 	.string "That's the rule!$"
 
 RustboroCity_Gym_Text_CanChallengeRoxanne:
-	.string "Hi! I'm ROXANNE's assistant.\p"
-	.string "It looks like you defeated every\n"
-	.string "TRAINER in this GYM!\p"
-	.string "Very well, then.\n"
+	.string "Hi! I'm Roxanne's assistant.\p"
+	.string "Roxanne will be here shortly.\n"
 	.string "Come with me!$"
 
 RustboroCity_Gym_Text_WaitHere:
@@ -145,10 +143,9 @@ RustboroCity_Gym_Text_ClassStarting:
 RustboroCity_Gym_Text_GymBattles:
 	.string "Gym challenges are special\n"
 	.string "battles designed by Gym Leaders.\p"
-	.string "Their purpose is to make sure\n"
-	.string "that Trainers that want to sign\l"
-	.string "up to the Ever Grande Conference\l"
-	.string "are up to standards.$"
+	.string "Their purpose is to push Trainers\n"
+	.string "to improve themselves, and verify\n"
+	.string "that they are up to standards.$"
 
 RustboroCity_Gym_Text_DifferentChallenges:
 	.string "Each Gym Leaders usually\n"
@@ -279,6 +276,7 @@ RustboroCity_Gym_EventScript_Tommy::
 
 
 RustboroCity_Gym_EventScript_Marc::
+	speakername Common_Name_Roxanne
 	trainerbattle_single TRAINER_MARC, RustboroCity_Gym_Text_MarcIntro, RustboroCity_Gym_Text_MarcDefeat
 	msgbox RustboroCity_Gym_Text_MarcPostBattle, MSGBOX_AUTOCLOSE
 	end
@@ -335,8 +333,9 @@ RustboroCity_Gym_EventScript_RegisterRoxanne::
 
 RustboroCity_Gym_Text_GymGuideAdvice:
 	.string "Well met, young trainer!\n"
-	.string "If you hope to challenge the Ever Grande\l"
-	.string "Conference, you better heed my advice.\p"
+	.string "If you hope to challenge the Ever\l"
+	.string "Grande Conference, you better heed my\l"
+	.string "advice.\p"
 	.string "It's your goal as a Trainer to collect\n"
 	.string "Gym Badges, am I right?\p"
 	.string "But Gym Leaders aren't pushovers!\p"
@@ -347,24 +346,28 @@ RustboroCity_Gym_Text_GymGuideAdvice:
 	.string "Once you go enter, there is no way out\n"
 	.string "until you defeat the Gym Leader.\p"
 	.string "So make sure to bring your best team!\p"
-	.string "Each fight is designed to test your skills\n"
-	.string "and knowledge.\p"
-	.string "Therefore, even regular Trainers will provide\n"
-	.string "much more of a challenge.\p"
-	.string "On the flip side, your team will be healed after\n"
-	.string "every battle, so feel free to go all out.\p"
+	.string "Each fight is designed to test your\n"
+	.string "skill and knowledge.\p"
+	.string "Therefore, even regular Trainers will\n"
+	.string "provide much more of a challenge.\p"
+	.string "Keep in mind that the usage of items\n"
+	.string "from the bag during battle is forbidden.\p"
+	.string "However, your team gets healed after\n"
+	.string "each fight, so feel free to go all out.\p"
 	.string "Now, about the Gym Leader.\p"
-	.string "ROXANNE is a user of ROCK-type POKéMON.\p"
-	.string "The ROCK type is very durable, but\n"
-	.string "it can't stand WATER-type and\l"
-	.string "GRASS-type moves.\p"
-	.string "Well, go for it!$"
+	.string "Roxanne is a user of Rock-type\n"
+	.string "Pokémon.\p"
+	.string "The Rock type is very durable, but\n"
+	.string "it can't stand Water-type and\l"
+	.string "Grass-type moves.\p"
+	.string "Well, that's all.\n"
+	.string "Go for it!$"
 
 RustboroCity_Gym_Text_GymGuidePostVictory:
 	.string "Whoa! What a breathtaking victory!\n"
 	.string "I knew you could do it!\p"
 	.string "Check your Trainer Card.\p"
-	.string "The Stome Badge you got should be\n"
+	.string "The Stone Badge you got should be\n"
 	.string "properly recorded on it.\p"
 	.string "In other words…\p"
 	.string "You've climbed the first step on\n"
@@ -408,9 +411,10 @@ RustboroCity_Gym_Text_MarcDefeat:
 RustboroCity_Gym_Text_MarcPostBattle:
 	.string "A hint to defeat Roxanne?\n"
 	.string "Sure, you've earned it.\p"
-	.string "The secondary types of her Pokémon\n"
-	.string "are Flying, Steel, Water and Ground,\l"
-	.string "in this order.\p"
+	.string "Roxanne leads with Anorith and\n"
+	.string "Lileep.\p"
+	.string "Those are a Grass type and a Steel\n"
+	.string "type.\p"
 	.string "If you need a refresher on types,\n"
 	.string "you should go to Rustboro's Trainer\l"
 	.string "School.$"
@@ -437,8 +441,8 @@ RustboroCity_Gym_Text_RoxanneDefeat:
 	.string "LEAGUE STONE BADGE.$"
 
 RustboroCity_Gym_Text_ReceivedStoneBadge:
-	.string "{PLAYER} received the STONE BADGE\n"
-	.string "from ROXANNE.$"
+	.string "{PLAYER} received the Stone Badge\n"
+	.string "from Roxanne.$"
 
 RustboroCity_Gym_Text_StoneBadgeInfoTakeThis:
 	.string "The STONE BADGE heightens the ATTACK\n"

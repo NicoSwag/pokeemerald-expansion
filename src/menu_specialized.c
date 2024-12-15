@@ -1627,7 +1627,6 @@ void DrawLevelUpWindowPg2(u16 windowId, u16 *currStats, u8 bgClr, u8 fgClr, u8 s
     }
 }
 
-
 void GetMonLevelUpWindowStats(struct Pokemon *mon, u16 *currStats)
 {
     currStats[STAT_HP]    = GetMonData(mon, MON_DATA_MAX_HP);
@@ -1636,4 +1635,110 @@ void GetMonLevelUpWindowStats(struct Pokemon *mon, u16 *currStats)
     currStats[STAT_SPEED] = GetMonData(mon, MON_DATA_SPEED);
     currStats[STAT_SPATK] = GetMonData(mon, MON_DATA_SPATK);
     currStats[STAT_SPDEF] = GetMonData(mon, MON_DATA_SPDEF);
+}
+
+
+void DrawLevelUpWindowPg1Override(u16 windowId, u16 *statsBefore, u16 *statsAfter, u8 bgClr, u8 fgClr, u8 shadowClr)
+{
+    u16 i, x;
+    s16 statsDiff[NUM_STATS];
+    u8 text[12];
+    u8 color[3];
+
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(11));
+
+    statsDiff[0] = statsAfter[STAT_HP]    - statsBefore[STAT_HP];
+    statsDiff[1] = statsAfter[STAT_ATK]   - statsBefore[STAT_ATK];
+    statsDiff[2] = statsAfter[STAT_DEF]   - statsBefore[STAT_DEF];
+    statsDiff[3] = statsAfter[STAT_SPATK] - statsBefore[STAT_SPATK];
+    statsDiff[4] = statsAfter[STAT_SPDEF] - statsBefore[STAT_SPDEF];
+    statsDiff[5] = statsAfter[STAT_SPEED] - statsBefore[STAT_SPEED];
+
+    color[0] = 11;
+    color[1] = 2;
+    color[2] = 3;
+
+
+    for (i = 0; i < NUM_STATS; i++)
+    {
+
+        AddTextPrinterParameterized3(windowId,
+                                     FONT_NORMAL,
+                                     0,
+                                     15 * i,
+                                     color,
+                                     TEXT_SKIP_DRAW,
+                                     sLvlUpStatStrings[i]);
+
+        StringCopy(text, (statsDiff[i] >= 0) ? gText_Plus : gText_Dash);
+        AddTextPrinterParameterized3(windowId,
+                                     FONT_NORMAL,
+                                     56,
+                                     15 * i,
+                                     color,
+                                     TEXT_SKIP_DRAW,
+                                     text);
+        if (abs(statsDiff[i]) <= 9)
+            x = 18;
+        else
+            x = 12;
+
+        ConvertIntToDecimalStringN(text, abs(statsDiff[i]), STR_CONV_MODE_LEFT_ALIGN, 2);
+        AddTextPrinterParameterized3(windowId,
+                                     FONT_NORMAL,
+                                     56 + x,
+                                     15 * i,
+                                     color,
+                                     TEXT_SKIP_DRAW,
+                                     text);
+    }
+}
+
+void DrawLevelUpWindowPg2Override(u16 windowId, u16 *currStats, u8 bgClr, u8 fgClr, u8 shadowClr)
+{
+    u16 i, numDigits, x;
+    s16 stats[NUM_STATS];
+    u8 text[12];
+    u8 color[3];
+
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(11));
+
+    stats[0] = currStats[STAT_HP];
+    stats[1] = currStats[STAT_ATK];
+    stats[2] = currStats[STAT_DEF];
+    stats[3] = currStats[STAT_SPATK];
+    stats[4] = currStats[STAT_SPDEF];
+    stats[5] = currStats[STAT_SPEED];
+
+    color[0] = 11;
+    color[1] = 2;
+    color[2] = 3;
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        if (stats[i] > 99)
+            numDigits = 3;
+        else if (stats[i] > 9)
+            numDigits = 2;
+        else
+            numDigits = 1;
+
+        ConvertIntToDecimalStringN(text, stats[i], STR_CONV_MODE_LEFT_ALIGN, numDigits);
+        x = 6 * (4 - numDigits);
+
+        AddTextPrinterParameterized3(windowId,
+                                     FONT_NORMAL,
+                                     0,
+                                     15 * i,
+                                     color,
+                                     TEXT_SKIP_DRAW,
+                                     sLvlUpStatStrings[i]);
+
+        AddTextPrinterParameterized3(windowId,
+                                     FONT_NORMAL,
+                                     56 + x,
+                                     15 * i,
+                                     color,
+                                     TEXT_SKIP_DRAW,
+                                     text);
+    }
 }

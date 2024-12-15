@@ -165,14 +165,57 @@ RustboroCity_EventScript_Scientist_BoosterEnergy::
 	playse SE_PIN
 	applymovement LOCALID_SILPH_SCIENTIST, Common_Movement_ExclamationMark
 	waitmovement 0
+	applymovement LOCALID_SILPH_SCIENTIST, Common_Movement_Delay48
+	waitmovement 0
 	faceplayer
 	msgbox RustboroCity_Text_BoosterEnergy, MSGBOX_DEFAULT
 	givemon SPECIES_PORYGON, 10
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RustboroCity_EventScript_SendPorygonParty
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RustboroCity_EventScript_SendPorygonPC
+	goto Common_EventScript_NoMoreRoomForPokemon
+	RustboroCity_EventScript_ReceivedPorygon::
 	msgbox RustboroCity_Text_Porygon, MSGBOX_DEFAULT
 	setflag FLAG_SILPH_SCIENTIST
 	release
 	end
 
+
+RustboroCity_EventScript_SendPorygonParty::
+	call RustboroCity_EventScript_ReceivedPorygonFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RustboroCity_EventScript_ReceivedPorygon
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	goto RustboroCity_EventScript_ReceivedPorygon
+	end
+
+
+RustboroCity_EventScript_PorygonTransferredToPC::
+	call Common_EventScript_TransferredToPC
+	goto RustboroCity_EventScript_ReceivedPorygon
+	end
+
+
+RustboroCity_EventScript_SendPorygonPC::
+	call RustboroCity_EventScript_ReceivedPorygonFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, RustboroCity_EventScript_PorygonTransferredToPC
+	call Common_EventScript_NameReceivedBoxMon
+	goto RustboroCity_EventScript_PorygonTransferredToPC
+	end
+
+
+RustboroCity_EventScript_ReceivedPorygonFanfare::
+	bufferspeciesname STR_VAR_2, SPECIES_PORYGON
+	playfanfare MUS_OBTAIN_ITEM
+	message RustboroCity_Text_ObtainedPorygon
+	waitmessage
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_PORYGON
+	return
+
+RustboroCity_Text_ObtainedPorygon:
+	.string "{PLAYER} obtained Porygon.$"
 
 RustboroCity_EventScript_ScientistHelped::
 	msgbox RustboroCity_Text_WordOfAdvice, MSGBOX_DEFAULT
@@ -364,9 +407,9 @@ RustboroCity_Text_Engineer_3_Scram:
 RustboroCity_Text_Engineer_3_Fight:
 	.string "Oh, trust me kid, I would love to\n"
 	.string "teach you a lesson.\p"
-	.string "Fortunately for you, the developer hasn't \n"
-	.string "gotten around to coding this event\l"
-	.string "quite yet.\p"
+	.string "Fortunately for you, the developer\n"
+	.string "hasn't gotten around to coding this\l"
+	.string "event quite yet.\p"
 	.string "But one day, kid.\n"
 	.string "One day.$"
 
@@ -1632,16 +1675,16 @@ RustboroCity_Text_YoureNewAroundHere:
 RustboroCity_Text_GymLeaderIsntEasyWithFire:
 	.string "Rustboro City wasn't always like this.\p"
 	.string "But things changed Devon's current CEO,\n"
-	.string "Joseph Stone, inherited the company from\l"
-	.string "his grandfather.\p"
+	.string "Joseph Stone, inherited the company\l"
+	.string "from his grandfather.\p"
 	.string "Believe it or not, when I was a young\n"
 	.string "lass, this place was so much greener\l"
 	.string "and the water so much bluer…$"
 
 RustboroCity_Text_MrBrineyWalksInTheTunnel:
-	.string "With all of the houses that DEVON\n"
+	.string "With all of the houses that Devon\n"
 	.string "built, I have to wonder…\p"
-	.string "How come I'm still homeless?$"
+	.string "When will the build one for me?$"
 
 RustboroCity_Text_MrBrineyLovesPeeko:
 	.string "The old sailor Mr. Briney lives in\n"
@@ -1678,8 +1721,7 @@ RustboroCity_Text_TradePokemonGrowFast:
 	.string "Where will our kids play?$"
 
 RustboroCity_Text_OutOfTheWay:
-	.string "Come back here, suspicious\n"
-	.string "man!$"
+	.string "Come back here!$"
 
 RustboroCity_Text_WaitDontTakeMyGoods:
 	.string "Wait! Pleeeaaase!\p"
@@ -2253,7 +2295,11 @@ RustboroCity_EventScript_ManFactory::
 	msgbox RustboroCity_EventScript_ManFactory, MSGBOX_NPC
 	end
 
-RustboroCity_EventScript_Factory:
+RustboroCity_EventScript_Factory::
+	msgbox RustboroCity_Text_Factory, MSGBOX_NPC
+	end
+
+RustboroCity_Text_Factory:
 	.string "I wonder what's inside the factory.\p"
 	.string "They don't let anyone it, and those\n"
 	.string "who work there never talk about it.$"

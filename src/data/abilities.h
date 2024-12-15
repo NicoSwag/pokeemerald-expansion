@@ -1008,7 +1008,12 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Lowered stats up Attack."),
         .aiRating = 5,
     },
-
+    [ABILITY_SADIST] =
+    {
+        .name = _("Sadist"),
+        .description = COMPOUND_STRING("Lowered stats hurt."),
+        .aiRating = 5,
+    },
     [ABILITY_DEFEATIST] =
     {
         .name = _("Defeatist"),

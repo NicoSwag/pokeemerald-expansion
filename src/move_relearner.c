@@ -460,7 +460,7 @@ static void CB2_InitLearnMoveReturnFromSelectMove(void)
     LoadSpritePalette(&sMoveRelearnerPalette);
     CreateUISprites();
 
-    sMoveRelearnerStruct->moveListMenuTask = ListMenuInit(&gMultiuseListMenuTemplate, sMoveRelearnerMenuSate.listOffset, sMoveRelearnerMenuSate.listRow);
+    sMoveRelearnerStruct->moveListMenuTask = ListMenuInitOverride(&gMultiuseListMenuTemplate, sMoveRelearnerMenuSate.listOffset, sMoveRelearnerMenuSate.listRow);
     SetBackdropFromColor(RGB_BLACK);
     SetMainCallback2(CB2_MoveRelearnerMain);
 }
@@ -538,7 +538,7 @@ static void DoMoveRelearnerMain(void)
         break;
     case MENU_STATE_TEACH_MOVE_CONFIRM:
         {
-            s8 selection = Menu_ProcessInputNoWrapClearOnChoose();
+            s8 selection = Menu_ProcessInputNoWrapClearOnChooseOverride();
 
             if (selection == 0)
             {
@@ -575,7 +575,7 @@ static void DoMoveRelearnerMain(void)
         break;
     case MENU_STATE_GIVE_UP_CONFIRM:
         {
-            s8 selection = Menu_ProcessInputNoWrapClearOnChoose();
+            s8 selection = Menu_ProcessInputNoWrapClearOnChooseOverride();
 
             if (selection == 0)
             {
@@ -608,7 +608,7 @@ static void DoMoveRelearnerMain(void)
         break;
     case MENU_STATE_CONFIRM_DELETE_OLD_MOVE:
         {
-            s8 selection = Menu_ProcessInputNoWrapClearOnChoose();
+            s8 selection = Menu_ProcessInputNoWrapClearOnChooseOverride();
 
             if (selection == 0)
             {
@@ -635,7 +635,7 @@ static void DoMoveRelearnerMain(void)
         break;
     case MENU_STATE_CONFIRM_STOP_TEACHING:
         {
-            s8 selection = Menu_ProcessInputNoWrapClearOnChoose();
+            s8 selection = Menu_ProcessInputNoWrapClearOnChooseOverride();
 
             if (selection == 0)
             {

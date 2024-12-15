@@ -2877,7 +2877,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_RECHARGE] =
     {
-        .name = COMPOUND_STRING("RECHARGE"),
+        .name = COMPOUND_STRING("Recharge"),
         .description = COMPOUND_STRING(
             "Recovers more if in\n"
             "Electric Terrain."),

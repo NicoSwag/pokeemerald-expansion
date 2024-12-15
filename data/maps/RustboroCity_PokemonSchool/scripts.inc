@@ -2,10 +2,15 @@ RustboroCity_PokemonSchool_MapScripts::
 	.byte 0
 
 RustboroCity_PokemonSchool_EventScript_Blackboard::
-	lockall
-	msgbox RustboroCity_PokemonSchool_Text_BlackboardListsStatusChanges, MSGBOX_DEFAULT
-	goto RustboroCity_PokemonSchool_EventScript_ChooseBlackboardTopic
+	msgbox RustboroCity_PokemonSchool_Text_Blackboard, MSGBOX_DEFAULT
+	closemessage
 	end
+
+
+RustboroCity_PokemonSchool_Text_Blackboard:
+	.string "The writing is unintelligible.\p"
+	.string "Maybe you should ask someone for notes.$"
+
 
 RustboroCity_PokemonSchool_EventScript_ChooseBlackboardTopic::
 	message RustboroCity_PokemonSchool_Text_ReadWhichTopic
@@ -60,7 +65,10 @@ RustboroCity_PokemonSchool_EventScript_SchoolKidM::
 	end
 
 RustboroCity_PokemonSchool_EventScript_StudentNotebook::
-	msgbox RustboroCity_PokemonSchool_Text_StudentsNotes, MSGBOX_SIGN
+	lockall
+	msgbox RustboroCity_PokemonSchool_Text_BlackboardListsStatusChanges, MSGBOX_DEFAULT
+	goto RustboroCity_PokemonSchool_EventScript_ChooseBlackboardTopic
+	end
 	end
 
 RustboroCity_PokemonSchool_EventScript_Assistant::
@@ -98,7 +106,7 @@ RustboroCity_PokemonSchool_EventScript_AssistantAfter::
 RustboroCity_PokemonSchool_Text_NewDiscoveries:
 	.string "It's almost strange how many new things\n"
 	.string "we are still discovering about Pokémon…\p"
-	.string "Notions we thought certain are being\n"
+	.string "Things we thought were certain are being\n"
 	.string "called into question.\p"
 	.string "That's the scientific method for you.$"
 
@@ -134,14 +142,15 @@ RustboroCity_PokemonSchool_Text_Wrong:
 
 RustboroCity_PokemonSchool_Text_Field:
 	.string "Let's say that, during a battle, you\n"
-	.string "switch in your Pelipper with Drizzle.\p"
+	.string "switch in your Pelipper with the\l"
+	.string "Drizzle ability.\p"
 	.string "Naturally, it will start raining.\p"
-	.string "But will it keep raining if you switch it\n"
-	.string "out right away?$"
+	.string "But will it keep raining if you switch the\n"
+	.string "Pelipper out?$"
 
 RustboroCity_PokemonSchool_Text_Paralysis:	
 	.string "In the absence of other ailments, can a\n"
-	.string "paralyzed POKéMON always act?$"
+	.string "paralyzed Pokémon always act?$"
 
 RustboroCity_PokemonSchool_EventScript_Teacher::
 	lock
@@ -150,7 +159,7 @@ RustboroCity_PokemonSchool_EventScript_Teacher::
 	call_if_eq VAR_FACING, DIR_EAST, RustboroCity_PokemonSchool_EventScript_TeacherCheckOnStudentsEast
 	call_if_eq VAR_FACING, DIR_WEST, RustboroCity_PokemonSchool_EventScript_TeacherCheckOnStudentsWest
 	msgbox RustboroCity_PokemonSchool_Text_StudentsWhoDontStudyGetQuickClaw, MSGBOX_DEFAULT
-	giveitem ITEM_DRAGON_FANG
+	giveitem ITEM_QUICK_CLAW
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
@@ -269,77 +278,76 @@ RustboroCity_PokemonSchool_EventScript_ScottWatchStudents::
 	end
 
 RustboroCity_PokemonSchool_Text_BlackboardListsStatusChanges:
-	.string "The blackboard lists newly discovered\n"
-	.string "information about POKéMON.$"
+	.string "The notes list newly discovered\n"
+	.string "information about Pokémon.$"
 
 RustboroCity_PokemonSchool_Text_ReadWhichTopic:
 	.string "Which topic do you want to read?$"
 
 RustboroCity_PokemonSchool_Text_ExplainTypes:
 	.string "New discoveries in the field:\p"
-	.string "BUG hits FAIRY for neutral damage,\n"
-	.string "and resists FAIRY and DARK. It's also\l"
+	.string "Bug hits Fairy for neutral damage,\n"
+	.string "and resists Fairy and Dark. It's also\l"
 	.string "unaffected by confusion.\p"
-	.string "PSYCHIC is unaffected by flinching.\n"
-	.string "NORMAL can only be affected by status\n"
-	.string "if applied directly, and not by side\l"
-	.string "effects.\p"
-	.string "ROCK types take neutral damage from GROUND\n"
-	.string "attacks, and resist other ROCKs.\p"
-	.string "DRAGON types resist FAIRY.\p"
-	.string "Ice resists water and flying.\p"
-	.string "Finally, FIGHTING is completely immune\n"
-	.string "to GHOST, and is unaffected by Taunt,\l"
+	.string "Psychic is unaffected by flinching.\p"
+	.string "Normal types are only be affected by\n"
+	.string "status if applied directly, and not by\l"
+	.string "side effects.\p"
+	.string "Rock types take neutral damage from\n"
+	.string "ground attacks, and resist other Rock.\p"
+	.string "Dragon types resist Fairy.\p"
+	.string "Ice resists Water and Flying.\p"
+	.string "Finally, Fighting is completely immune\n"
+	.string "to Ghost, and is unaffected by Taunt,\l"
 	.string "Encore and Torment.$"  
 
 RustboroCity_PokemonSchool_Text_ExplainField_Changes:
-	.string "FIELD EFFECTS: umbrella term coined by\n"
-	.string "PROF. BIRCH to refer to any battle-altering\l"
-	.string "effect, such as WEATHER or TERRAINS.\p"
-	.string "POKéMON can induce a FIELD change\n"
-	.string "through moves, in which case the effect\l"
-	.string "lasts five to eight turns.\p"
-	.string "Some POKéMON are able to provoke such\n"
-	.string "such changes with their ABILITY.\p"
+	.string "Field Effects: umbrella term coined by\n"
+	.string "Prof. Birch to refer to effects such\l"
+	.string "as Weather and Terrain.\p"
+	.string "Pokémon can induce a Field change\n"
+	.string "through moves.\p"
+	.string "By default, it lasts five turns.\p"
+	.string "But with the aid of certain items, it\n"
+	.string "can last indefinitely.\p"
+	.string "Some Pokémon are able to provoke such\n"
+	.string "such changes with their Ability.\p"
 	.string "In this case, the alteration will last\n"
-	.string "until the timer ends or the POKéMON\l"
-	.string "leaves the field for any reason.$"
+	.string "until the Pokémon leaves the field for\l"
+	.string "any reason.$"
 
 RustboroCity_PokemonSchool_Text_ExplainStatuses:
-	.string "POKéMON in the HOENN region seem to\n"
-	.string "have evolved different responses to\l"
-	.string "debilitating STATUS conditions.\p"
-	.string "Of particular note is that sleeping\n"
-	.string "POKéMON heal some of their HP for every\l"
-	.string "turn they're asleep.\p"
-	.string "PARALYZED POKéMON will move slower, and\n"
-	.string "evade attacks less, but will never skip\l"
-	.string "turns.$"
-	.string "In addition, POKéMON affected by\n"
-	.string "FROSTBITE will be able to act, albeit\l"
-	.string "losing some of their HP every turn and\l"
-	.string "with their SP. ATK halved.$"
+	.string "Pokémon in the Hoenn have evolved\n"
+	.string "different responses to debilitating\l"
+	.string "Status conditions.\p"
+	.string "For instance, sleeping Pokémon wake\n"
+	.string "up immediately if hit by an attack.\p"
+	.string "They also heal some HP while they're\n"
+	.string "sleeping.\p"
+	.string "Paralyzed Pokémon have less evasion,\n"
+	.string "and their attacks have lower priority.\l"
+	.string "However, they will never skip turns.\p"
+	.string "Finally, Pokémon affected by Frostbite\n"
+	.string "will be able to act, but will lose some\l"
+	.string "of their HP every turn, and their Sp.\l"
+	.string "Atk. will be halved.$"
 
 
 RustboroCity_PokemonSchool_Text_StudentsWhoDontStudyGetQuickClaw:
 	.string "Students who don't study get a little\n"
-	.string "taste of my DRAGON FANG.\p"
+	.string "taste of my Quick Claw.\p"
 	.string "Whether or not you are a good student \n"
 	.string "will be evident from the way you use\l"
 	.string "this item.$"
 
 RustboroCity_PokemonSchool_Text_ExplainQuickClaw:
-	.string "A POKéMON holding the DRAGON FANG\n"
-	.string "will have its own DRAGON-TYPE moves\l"
-	.string "empowered.\p"
-	.string "I found it in the OLDALE RUINS during\n"
-	.string "a field trip with my students.\p"
-	.string "Too bad the location is closed for visitors.\p"
-	.string "At least I got a souvenir I can threaten my\n"
-	.string "students with. Ha ha!$"
+	.string "A Pokémon holding the Quick Claw\n"
+	.string "will occasionally go first.\p"
+	.string "It's not the most reliable item,\n"
+	.string "but it can get you out of a pinch.$"
 
 RustboroCity_PokemonSchool_Text_TradingRightNow:
-	.string "I'm trading CAPUMON with my friend\n"
+	.string "I'm trading Capumon with my friend\n"
 	.string "right now.\p"
 	.string "Heard of it?\n"
 	.string "It's the hot new game!$"
@@ -349,18 +357,18 @@ RustboroCity_PokemonSchool_Text_AlwaysWantedSeedot:
 	.string "I wish they got rid of them.$"
 
 RustboroCity_PokemonSchool_Text_PokemontCantUseManMadeItems:
-	.string "This school mostly teaches POKEMON\n"
+	.string "This school mostly teaches Pokémon\n"
 	.string "battling.\p"
-	.string "Down in PACIFIDLOG TOWN, they have\n"
+	.string "Down in Pacifidlog Town, they have\n"
 	.string "an university where you can learn\l"
 	.string "science, or history, or whatever.\p"
 	.string "I don't see why you'd wanna do that\n"
-	.string "over being a TRAINER, though!$"
+	.string "over being a Trainer, though!$"
 
 RustboroCity_PokemonSchool_Text_ConfusedPokemonAttacksItself:
 	.string "This building is the lecture hall of\n"
-	.string "the TRAINER SCHOOL.\p"
-	.string "Our second location is the POKEMON GYM,\n"
+	.string "the Trainer School.\p"
+	.string "Our second location is the Pokémon Gym,\n"
 	.string "which acts as a library, museum, and\l"
 	.string "battleground all at once.\p"
 	.string "Convenient!$"
