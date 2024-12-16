@@ -740,7 +740,12 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Cures status in rain."),
         .aiRating = 4,
     },
-
+ [ABILITY_ACID_BATH] =
+    {
+        .name = _("Hydration"),
+        .description = COMPOUND_STRING("Cures status in pollution."),
+        .aiRating = 4,
+    },
     [ABILITY_SOLAR_POWER] =
     {
         .name = _("Solar Power"),

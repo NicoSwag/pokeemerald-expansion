@@ -5195,17 +5195,18 @@ Cry_Carkol::
 	.align 2
 Cry_Coalossal::
 	.incbin "sound/direct_sound_samples/cries/coalossal.bin"
-
+	
+	.align 2
 Cry_Emeroll::
-	.incbin "sound/direct_sound_samples/cries/rolycoly.bin"
+	.incbin "sound/direct_sound_samples/cries/emeroll.bin"
 
 	.align 2
 Cry_Emerail::
-	.incbin "sound/direct_sound_samples/cries/carkol.bin"
+	.incbin "sound/direct_sound_samples/cries/emerail.bin"
 
 	.align 2
 Cry_Behemerald::
-	.incbin "sound/direct_sound_samples/cries/coalossal.bin"
+	.incbin "sound/direct_sound_samples/cries/behemerald.bin"
 .endif @ P_FAMILY_ROLYCOLY
 
 .if P_FAMILY_APPLIN == TRUE

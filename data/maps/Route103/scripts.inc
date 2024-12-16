@@ -259,25 +259,24 @@ Route_103_Magmaf_Exit::
 	step_end
 
 Route103_Text_Revenge::
-	.string "Maxie will have our head on\n"
-	.string "a platter…\p"
-	.string "First we can't get to the ruins…\p"
-	.string "Then a couple of kids show up and\n"
-	.string "kick our butt!\p"
-	.string "Do you even know who we are?\p"
-	.string "We're Team Magma. An organization\n"
-	.string "dedicated to the betterement of the\l"
-	.string "world, at any cost.\p"
-	.string "We won't let anyone stand in the way of\n"
-	.string "our goals.\p"
-	.string "So you better remember it!$"
+	.string "Leader Maxie…\n"
+	.string "I disappointed you…\p"
+	.string "But at least…\n"
+	.string "We got the samples.\p"
+	.string "Remember it well.\n"
+	.string "We are Team Magma.\p"
+	.string "We will make the world…\n"
+	.string "A better place.\l"
+	.string "No matter the cost.\p"
+	.string "Soon, no one…\n"
+	.string "Will stand in our way.$"
 
 Magma1DefeatText::
 	.string "U… Unbelievable…$"
 
 Magma2DefeatText::
-	.string "No! This isn't how it was\n"
-	.string "supposed to go!$"
+	.string "Processing…\n"
+	.string "…We lost?$"
 
 Route103_EventScript_RivalExit::
 	closemessage
@@ -539,18 +538,19 @@ Route103_Text_Suckers:
 	.string "Come and get some!$"
 
 Route_103_Text_SayWhat:
-	.string "What was that, kid?\p"
-	.string "I'll let you know, I'm already\n"
-	.string "in a bad mood!\p"
-	.string "We've been sent here to investigate\n"
-	.string "the ruins up north, but we can't get\l"
-	.string "past those stupid trees…\p"
-	.string "At least we can still get the volcanic\n"
-	.string "samples we need from here, but…\p"
-	.string "Gah! Why am I saying this to you?!\n"
-	.string "Now I'm even more upset!\p"
-	.string "Get ready to face the wrath of\n"
-	.string "Courtney of Team Magma!$"
+	.string "What… Was that…?\p"
+	.string "More nuisances?\n"
+	.string "Great…\p"
+	.string "The ruins… blocked off.\p"
+	.string "We sabotaged the bridge, at\n"
+	.string "least…\p"
+	.string "But now…\p"
+	.string "… … …\p"
+	.string "Are you…\n"
+	.string "Trying to oppose us?\p"
+	.string "That… Simply won't do.\p"
+	.string "Get ready…\n"
+	.string "To face Courtney of Team Magma!$"
 
 Route103_Text_BrendanDefeated:
 	.string "Huh, {PLAYER}, you're not too shabby.$"
@@ -577,9 +577,9 @@ Route103_Text_RouteSign:
 	.string "{DOWN_ARROW} Oldale Town$"
 
 Route103_Text_Volcanic_Rocks:
-	.string "Hmm, no doubt about it…\n"
+	.string "Hmm… No doubt about it…\n"
 	.string "These are volcanic formations.\p"
-	.string "Better take some samples.$"
+	.string "Better take some samples…$"
 
 Route103_Text_Complaining:
 	.string "Why do we always have to do\n"

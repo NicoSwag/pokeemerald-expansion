@@ -1147,6 +1147,7 @@ void PrepareStringBattle(u16 stringId, u32 battler)
 {
     u32 targetSide = GetBattlerSide(gBattlerTarget);
     u16 battlerAbility = GetBattlerAbility(battler);
+    u16 partnerAbility = GetBattlerAbility(BATTLE_PARTNER(battler));
     u16 targetAbility = GetBattlerAbility(gBattlerTarget);
     // Support for Contrary ability.
     // If a move attempted to raise stat - print "won't increase".
@@ -1161,6 +1162,37 @@ void PrepareStringBattle(u16 stringId, u32 battler)
     else if (stringId == STRINGID_STATSWONTINCREASE2 && battlerAbility == ABILITY_CONTRARY)
         stringId = STRINGID_STATSWONTDECREASE2;
 
+
+
+
+    //sadist ability
+    else if ((stringId == STRINGID_DEFENDERSSTATFELL || stringId == STRINGID_PKMNCUTSATTACKWITH || stringId == STRINGID_PKMNCUTSSPATTACKWITH)
+            && gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != BATTLE_PARTNER(gBattlerTarget)
+            && (gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != gBattlerTarget)
+            && battlerAbility == ABILITY_SADIST)
+            {
+                gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerTarget) / (B_ROUGH_SKIN_DMG >= GEN_4 ? 8 : 16);
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                gBattlerAbility = battler;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_SadistActivates;
+                
+            }
+    else if ((stringId == STRINGID_DEFENDERSSTATFELL || stringId == STRINGID_PKMNCUTSATTACKWITH || stringId == STRINGID_PKMNCUTSSPATTACKWITH)
+            && gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != BATTLE_PARTNER(gBattlerTarget)
+            && (gSpecialStatuses[gBattlerTarget].changedStatsBattlerId != gBattlerTarget)
+            && partnerAbility == ABILITY_SADIST)
+            {
+                gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerTarget) / (B_ROUGH_SKIN_DMG >= GEN_4 ? 8 : 16);
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                gBattlerAttacker = BATTLE_PARTNER(battler);
+                gBattlerAbility = BATTLE_PARTNER(battler);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_SadistActivates;
+                
+            }
     // Check Defiant and Competitive stat raise whenever a stat is lowered.
     else if ((stringId == STRINGID_DEFENDERSSTATFELL || stringId == STRINGID_PKMNCUTSATTACKWITH || stringId == STRINGID_PKMNCUTSSPATTACKWITH)
               && ((targetAbility == ABILITY_DEFIANT && CompareStat(gBattlerTarget, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
@@ -2123,7 +2155,7 @@ case ENDTURN_POLLUTION:
                     {
                         if (!BATTLER_MAX_HP(i) && !(gStatuses3[i] & STATUS3_HEAL_BLOCK))
                             {
-                                gBattleMoveDamage = gBattleMons[i].maxHP / 8;
+                                gBattleMoveDamage = gBattleMons[i].maxHP / 16;
                                 if (gBattleMoveDamage == 0)
                                     gBattleMoveDamage = 1;
                              gBattleMoveDamage *= -1;
@@ -2615,7 +2647,7 @@ u8 DoBattlerEndTurnEffects(void)
                 {
                     if (!BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
                     {
-                        gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 8;
+                        gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 16;
                         if (gBattleMoveDamage == 0)
                             gBattleMoveDamage = 1;
                         gBattleMoveDamage *= -1;
@@ -2644,7 +2676,7 @@ u8 DoBattlerEndTurnEffects(void)
                 {
                     if (!BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
                     {
-                        gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 8;
+                        gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 16;
                         if (gBattleMoveDamage == 0)
                             gBattleMoveDamage = 1;
                         gBattleMoveDamage *= -1;
@@ -5244,7 +5276,7 @@ case ABILITY_HONEY_GATHER:
                  && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
                 {
                     BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
-                    gBattleMoveDamage = GetNonDynamaxMaxHP(battler) /8;
+                    gBattleMoveDamage = GetNonDynamaxMaxHP(battler) /16;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
@@ -5257,7 +5289,7 @@ case ABILITY_HONEY_GATHER:
                  && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
                 {
                     BattleScriptPushCursorAndCallback(BattleScript_InductiveActivates);
-                    gBattleMoveDamage = GetNonDynamaxMaxHP(battler) /8;
+                    gBattleMoveDamage = GetNonDynamaxMaxHP(battler) /16;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
@@ -5266,6 +5298,13 @@ case ABILITY_HONEY_GATHER:
                 break;
             case ABILITY_HYDRATION:
                 if (IsBattlerWeatherAffected(battler, B_WEATHER_RAIN)
+                 && gBattleMons[battler].status1 & STATUS1_ANY)
+                {
+                    goto ABILITY_HEAL_MON_STATUS;
+                }
+                break;
+            case ABILITY_ACID_BATH:
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_POLLUTION)
                  && gBattleMons[battler].status1 & STATUS1_ANY)
                 {
                     goto ABILITY_HEAL_MON_STATUS;

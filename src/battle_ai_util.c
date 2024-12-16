@@ -1700,6 +1700,7 @@ bool32 ShouldSetPollution(u32 battler, u32 ability, u32 holdEffect)
 
     if (ability == ABILITY_FOUL_RUSH
       || ability == ABILITY_POISON_HEAL
+      || ability == ABILITY_ACID_BATH
       || IS_BATTLER_OF_TYPE(battler, TYPE_POISON)
       || IS_BATTLER_OF_TYPE(battler, TYPE_GHOST)
       || IS_BATTLER_OF_TYPE(battler, TYPE_DARK)

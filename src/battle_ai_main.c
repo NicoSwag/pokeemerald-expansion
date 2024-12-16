@@ -3626,7 +3626,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
               || HasMoveEffect(EFFECT_SNORE, battlerAtk)
               || aiData->abilities[battlerAtk] == ABILITY_SHED_SKIN
               || aiData->abilities[battlerAtk] == ABILITY_EARLY_BIRD
-              || (AI_GetWeather(aiData) & B_WEATHER_RAIN && gWishFutureKnock.weatherDuration != 1 && aiData->abilities[battlerAtk] == ABILITY_HYDRATION && aiData->holdEffects[battlerAtk] != HOLD_EFFECT_UTILITY_UMBRELLA))
+              || (AI_GetWeather(aiData) & B_WEATHER_RAIN && gWishFutureKnock.weatherDuration != 1 && aiData->abilities[battlerAtk] == ABILITY_HYDRATION && aiData->holdEffects[battlerAtk] != HOLD_EFFECT_UTILITY_UMBRELLA)
+               || (AI_GetWeather(aiData) & B_WEATHER_POLLUTION && gWishFutureKnock.weatherDuration != 1 && aiData->abilities[battlerAtk] == ABILITY_ACID_BATH && aiData->holdEffects[battlerAtk] != HOLD_EFFECT_SAFETY_GOGGLES)) 
+                
                 ADJUST_SCORE(GOOD_EFFECT);
         }
         break;
