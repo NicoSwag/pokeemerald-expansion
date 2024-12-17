@@ -9,6 +9,8 @@
 .set LOCALID_MINECART, 21
 .set LOCALID_MINECART_BRENDAN, 22
 .set LOCALID_MINECART_MAY, 23
+.set LOCALID_TY, 24
+.set LOCALID_GABBY, 25
 
 GraniteCaveEntrance_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, GraniteCaveEntrance_MapScripts_OnTransition
@@ -97,15 +99,111 @@ Route106_EventScript_MoveEveryone::
 	setobjectmovementtype LOCALID_BRAWLY, MOVEMENT_TYPE_FACE_LEFT
 	return
 
+
+
 Route106_EventScript_BrawlyGoesToGym::
 	applymovement LOCALID_BRAWLY, Route106_Movement_BrawlyGoesToYou
 	waitmovement 0
 	speakername Common_Name_Brawly
 	msgbox Route106_Text_BrawlyCongrats, MSGBOX_NPC
 	closemessage
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkDown4
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown4
+	waitmovement 0
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkRight
+	waitmovement 0
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	playse SE_PIN
+	applymovement LOCALID_GABBY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_GABBY, Common_Movement_Delay32
+	waitmovement 0
+	applymovement LOCALID_GABBY, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement LOCALID_GABBY, Common_Movement_WalkInPlaceFasterLeft
+	waitmovement 0
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkLeft3
+	waitmovement 0
+	applymovement LOCALID_BRAWLY, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_GABBY, Common_Movement_WalkLeft2
+	applymovement LOCALID_TY, Common_Movement_WalkLeft2
+	waitmovement 0
+	applymovement LOCALID_TY, Common_Movement_FaceUp
+	applymovement LOCALID_GABBY, Common_Movement_WalkLeft
+	waitmovement 0
+	applymovement LOCALID_GABBY, Common_Movement_WalkUp
+	waitmovement 0
+	applymovement LOCALID_GABBY, Common_Movement_FaceDown
+	waitmovement 0
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDown2
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_MAGMA, FALSE
+	speakername Common_Name_Gabby
+	msgbox Route106_Text_GabbyNewsReport, MSGBOX_DEFAULT
+	applymovement LOCALID_GABBY, Common_Movement_FaceRight
+	msgbox Route106_Text_GabbyNewsReport2, MSGBOX_DEFAULT
+	applymovement LOCALID_GABBY, Common_Movement_FaceDown
+	msgbox Route106_Text_GabbyNewsReport3, MSGBOX_DEFAULT
+	applymovement LOCALID_GABBY, Common_Movement_FaceRight
+	waitmovement 0
+	msgbox Route106_Text_GabbyNewsReport4, MSGBOX_DEFAULT
+	multichoicedefault 20, 8, MULTI_INTERVIEW, 1, TRUE
+	speakername Common_Name_Gabby
+	applymovement LOCALID_GABBY, Common_Movement_FaceDown
+	waitmovement 0
+	switch VAR_RESULT
+	case 0, Route106_EventScript_EasyDefeat
+	case 1, Route106_EventScript_HardDefeat
+	case 2, Route106_EventScript_HumbleDefeat
+	end
+
+Route106_EventScript_EasyDefeat::
+	msgbox Route106_Text_EasyDefeat, MSGBOX_DEFAULT
+	goto Route106_EventScript_BrawlyGoesToGymContinue
+
+Route106_EventScript_HardDefeat::
+	msgbox Route106_Text_HardDefeat, MSGBOX_DEFAULT
+	goto Route106_EventScript_BrawlyGoesToGymContinue
+
+Route106_EventScript_HumbleDefeat::
+	msgbox Route106_Text_HumbleDefeat, MSGBOX_DEFAULT
+	goto Route106_EventScript_BrawlyGoesToGymContinue
+	
+
+
+Route106_EventScript_BrawlyGoesToGymContinue::
+	msgbox Route106_Text_GabbyNewsReport5, MSGBOX_DEFAULT
+	applymovement LOCALID_GABBY, Common_Movement_FaceRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
+	msgbox Route106_Text_GabbyNewsReport6, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUp2
+	waitmovement 0
+	applymovement LOCALID_GABBY, Common_Movement_WalkDown3
+	waitmovement 0
+	applymovement LOCALID_GABBY, Common_Movement_WalkDown
+	applymovement LOCALID_TY, Common_Movement_WalkLeft
+	waitmovement 0
+	applymovement LOCALID_GABBY, Common_Movement_WalkDown4
+	applymovement LOCALID_TY, Common_Movement_WalkDown4
+	waitmovement 0
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkUp
+	waitmovement 0
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkRight
+	waitmovement 0
+	speakername Common_Name_Brawly
+	msgbox Route106_Text_BrawlyGoesBack, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_BRAWLY, Common_Movement_WalkDown6
 	waitmovement 0
+	removeobject LOCALID_GABBY
+	removeobject LOCALID_TY
 	removeobject LOCALID_BRAWLY
+	special RemoveCameraObject
 	setflag FLAG_HIDE_BRAWLY_GRANITE
 	setvar VAR_TEMP_A, 0
 	release
@@ -187,18 +285,78 @@ Route106_EventScript_BrawlyEvent::
 
 Route106_EventScript_Wally::
 	lock
-	msgbox Route106_Text_Wally, MSGBOX_NPC
 	speakername Common_Name_Wally
+	msgbox Route106_Text_Wally, MSGBOX_NPC
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight2
+	waitmovement 0
+	applymovement LOCALID_WALLY, Common_Movement_WalkDown
+	waitmovement 0
+	applymovement LOCALID_WALLY, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement LOCALID_GABBY, Route106_Movement_GabbyAndTyFilming
+	applymovement LOCALID_TY, Route106_Movement_GabbyAndTyFilming
+	waitmovement 0
+	applymovement LOCALID_WALLY, Common_Movement_Delay32
+	waitmovement 0
+	applymovement LOCALID_WALLY, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_WALLY, Common_Movement_Delay32
+	waitmovement 0
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDown2
+	waitmovement 0
+	speakername Common_Name_Wally
+	msgbox Route106_Text_WallyWhoAreYou, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_INTERVIEWER, FALSE
+	msgbox Route106_Text_ImGabby, MSGBOX_DEFAULT
+	speakername Common_Name_Ty
+	msgbox Route106_Text_TySup, MSGBOX_DEFAULT
+	speakername Common_Name_Gabby
+	msgbox Route106_Text_GabbyWondering, MSGBOX_DEFAULT
+	speakername Common_Name_Wally
+	msgbox Route106_Text_WallyToGabby, MSGBOX_DEFAULT
+	speakername Common_Name_Gabby
+	msgbox Route106_Text_GabbyToWally, MSGBOX_DEFAULT
+	speakername Common_Name_Wally
+	msgbox Route106_Text_WallyFine, MSGBOX_DEFAULT
+	applymovement LOCALID_WALLY, Common_Movement_FaceRight
+	waitmovement 0
+	speakername Common_Name_Wally
+	msgbox Route106_Text_ReallyGottaBeatYou, MSGBOX_DEFAULT
+	special RemoveCameraObject
 	trainerbattle_no_intro TRAINER_WALLY_2, Route106_Text_WallyDefeat
+	applymovement LOCALID_GABBY, Common_Movement_Delay32
+	waitmovement 0
+	playse SE_PIN
+	applymovement LOCALID_GABBY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_GABBY, Common_Movement_Delay32
+	waitmovement 0
+	applymovement LOCALID_GABBY, Common_Movement_FaceDown
+	waitmovement 0
+	speakername Common_Name_Gabby
+	msgbox Route106_Text_Splendid, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_TY, Route106_Movement_GabbyAndTyWalkAway
+	applymovement LOCALID_GABBY, Route106_Movement_GabbyAndTyWalkAway
+	waitmovement 0
+	applymovement LOCALID_TY, Common_Movement_FaceUp
+	applymovement LOCALID_GABBY, Common_Movement_FaceDown
+	waitmovement 0
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUp2
+	waitmovement 0
+	special RemoveCameraObject
 	addobject LOCALID_RIVAL
 	speakername Common_Name_Wally
 	clearflag FLAG_HIDE_GRANITE_RIVAL
 	msgbox Route106_Text_DontUnderstand, MSGBOX_NPC
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
+	applymovement LOCALID_RIVAL, Route106_Movement_WalkUp2Fast
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement 0
-	applymovement LOCALID_WALLY, Route106_Movement_WalkDown2Normal
+	applymovement LOCALID_WALLY, Common_Movement_WalkDown
 	applymovement LOCALID_RIVAL, Route106_Movement_WalkUp4Fast
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
@@ -209,9 +367,11 @@ Route106_EventScript_Wally::
 	waitmovement 0
 	removeobject LOCALID_WALLY
 	setflag FLAG_HIDE_WALLY_106
-	applymovement LOCALID_RIVAL, Common_Movement_WalkUp
+	applymovement LOCALID_RIVAL, Common_Movement_WalkRight
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	applymovement LOCALID_RIVAL, Common_Movement_WalkUp2
+	waitmovement 0
+	applymovement LOCALID_RIVAL, Common_Movement_FaceRight
 	waitmovement 0
 	call Common_Set_Name_Rival
 	msgbox Route106_Text_WhoWasThat, MSGBOX_NPC
@@ -223,10 +383,51 @@ Route106_EventScript_Wally::
 	end
 
 
+Route106_EventScript_Ty::
+	lock
+	goto_if_set FLAG_HIDE_WALLY_106, Route106_EventScript_TyPostWally
+	msgbox Route106_Text_TyMove, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+
+Route106_EventScript_TyPostWally:
+	speakername Common_Name_Ty
+	msgbox Route106_Text_TyCool, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+Route106_EventScript_Gabby::
+	lock
+	call_if_set FLAG_HIDE_WALLY_106, Route106_EventScript_GabbyName
+	goto_if_eq VAR_FACING, DIR_NORTH, Route106_EventScript_GabbyMove
+	msgbox Route106_Text_GabbyTalking, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+Route106_EventScript_GabbyName::
+	speakername Common_Name_Gabby
+	return
+
+Route106_EventScript_GabbyMove::
+	msgbox Route106_Text_GabbyMove, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
 Route106_Movement_WalkDown2Normal:
 	walk_down
 	walk_down
 	step_end
+
+Route106_Movement_WalkUp2Fast:
+	walk_fast_up
+	walk_fast_up
+	step_end
+
 
 Route106_Movement_WalkUp4Fast:
 	walk_fast_up
@@ -293,15 +494,78 @@ Route106_Text_Brawly:
 
 Route106_Text_Wally:
 	.string "{PLAYER}!\n"
-	.string "You're here too, huh…\p"
+	.string "You're here too, huh…?\p"
+	.string "Have you heard…?\n"
+	.string "The mines have been taken over…\p"
+	.string "I'd go and check it out, but…\n"
+	.string "Cough…\p"
+	.string "Well, it's not very good for my health…\p"
+	.string "… … …\p"
+	.string "Listen, {PLAYER}…\p"
 	.string "I've-\n"
 	.string "Cough…\p"
 	.string "I've trained since the last time\n"
-	.string "we battled, {PLAYER}…\p"
+	.string "we battled…\p"
 	.string "I know you're busy, but we need to\n"
 	.string "have a battle, right now!\p"
 	.string "I'll beat you this time!\n"
 	.string "I will!$"
+
+
+Route106_Text_WallyWhoAreYou:
+	.string "… … …\n"
+	.string "Erm…\p"
+	.string "Who are you…?$"
+
+
+Route106_Text_ImGabby:
+	.string "Oh, yes, hi!\n"
+	.string "Please don't mind us.\p"
+	.string "We're here to film a news report.\p"
+	.string "Name's Gabby, by the way.\n"
+	.string "And that one's over there is Ty.$"
+
+Route106_Text_TySup:
+	.string "'Sup.$"
+
+
+Route106_Text_GabbyWondering:
+	.string "You're about to do battle,\n"
+	.string "right?\p"
+	.string "We were wondering if you could\n"
+	.string "let us film you.\p"
+	.string "You know, for the people at home!$"
+
+Route106_Text_WallyToGabby:
+	.string "But…\n"
+	.string "…Weren't you covering Team Magma?$"
+
+Route106_Text_GabbyToWally:
+	.string "Well, yes.\p"
+	.string "But you don't get to see two young\n"
+	.string "rival Trainers battling it out to their\l"
+	.string "fullest every day, do you?\p"
+	.string "…Besides, I don't just do news.\p"
+	.string "I'm a prolific battle commentator,\n"
+	.string "you know?$"
+
+Route106_Text_WallyFine:
+	.string "… … …\n"
+	.string "So I'd get to be on TV…?\p"
+	.string "… … …\n"
+	.string "Ok…$"
+
+Route106_Text_ReallyGottaBeatYou:
+	.string "I really gotta beat you now, don't I…?\p"
+	.string "…I won't lose this time.\p"
+	.string "Pre-\n"
+	.string "Cough…\p"
+	.string "Prepare yourself…!$"
+
+Route106_Text_Splendid:
+	.string "Did you catch all of that, Ty?\n"
+	.string "That was explosive!\p"
+	.string "We need to review the footage, now!$"
 
 Route106_Text_WallyDefeat:
 	.string "…Huh?$"
@@ -499,15 +763,19 @@ Route106_Text_BrawlyCongrats:
 	.string "I think we can call this a victory.\p"
 	.string "Ahh, now I'm itching to face off with\n"
 	.string "our new hero!\p"
-	.string "Very well, then!\n"
-	.string "Meet ya at the gym, yeah?$"
+	.string "But first…\n"
+	.string "Well, follow me!$"
 
 Common_Name_Brawly:
 	.string "Brawly$"
 
 
 Route106_Text_WhoWasThat:
-	.string "Hey, {PLAYER}, that was…\n"
+	.string "Hey, {PLAYER}, what's going on\n"
+	.string "here?\p"
+	.string "There's cameras, and people fighting,\n"
+	.string "and…\p"
+	.string "That was…\n"
 	.string "Wally, right?\p"
 	.string "I know he lives in Petalburg, but I've\n"
 	.string "never really spoken to him before.\p"
@@ -523,22 +791,44 @@ Route106_Text_WhoWasThat:
 	.string "That's a bit of a shock.\p"
 	.string "… … …\p"
 	.string "You know, I came here to find the Gym\n"
-	.string "Leader but…\p"
+	.string "Leader, but…\p"
 	.string "Having a sparring match with that Wally\n"
 	.string "sounds more fun.\p"
 	.string "You know, to teach him the ropes!\p"
 	.string "Oh, but don't worry!\n"
 	.string "I won't beat him too hard.\p"
-	.string "Well, I better run after him before he\n"
+	.string "Well, I better go after him before he\n"
 	.string "decides to run off the island.\p"
 	.string "See ya around!$"
 
+Route106_Text_TyMove:
+	.string "Uhm…\p"
+	.string "I'm trying to film, here.$"
+
+Route106_Text_TyCool:
+	.string "Hey, I know we're cool, but…\n"
+	.string "Still trying to do my job here.$"
+
+Route106_Text_GabbyTalking:
+	.string "Special report from the Granite\n"
+	.string "Mines!\p"
+	.string "The organization known as 'Team Magma'\n"
+	.string "has seized control of the cave!\p"
+	.string "Their goals and demands are so far\n"
+	.string "unknown!$"
+
+Route106_Text_GabbyMove:
+	.string "Could you…\n"
+	.string "Not stand in front of me, please?\p"
+	.string "We're trying to film a news report.$"
 
 Route106_Text_RideMinecart:
 	.string "Ride the minecart to Dewford?$"
 
 Route106_Movement_RunAfterWally:
-	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
 	walk_fast_down
 	walk_fast_down
 	walk_fast_down
@@ -719,3 +1009,97 @@ Route106_Movement_BrawlyGoesToYou:
 	walk_up
 	step_end
 
+Route106_Movement_GabbyAndTyFilming:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+
+Route106_Movement_GabbyAndTyWalkAway:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	step_end
+
+Common_Name_Gabby:
+	.string "Gabby$"
+
+Common_Name_Ty:
+	.string "Ty$"
+
+Route106_Text_GabbyNewsReport:
+	.string "…And we're back at the Granite\n"
+	.string "Mine, with a flash update on the\l"
+	.string "situation!\p"
+	.string "It would appear that Team Magma, which\n"
+	.string "was previously terrorizing the arean,\l"
+	.string "has been defeated thanks to the efforts\l"
+	.string "of one young Trainer!$"
+
+Route106_Text_GabbyNewsReport2:
+	.string "Would you be so kind as to tell us\n"
+	.string "your name?\p"
+	.string "… … …\p"
+	.string "{PLAYER}!\n"
+	.string "I see!\p"
+	.string "But…\n"
+	.string "Hold onto your horses!\p"
+	.string "Would your father happen to be\n"
+	.string "Petalburg's Gym Leader?\p"
+	.string "… … …\p"
+	.string "Gasp!\n"
+	.string "What a shocking twist!$"
+
+Route106_Text_GabbyNewsReport3:
+	.string "Our viewers will remember that we\n"
+	.string "previously interviewed Petalburg\l"
+	.string "City's Gym Leader on this very program!\p"
+	.string "And now, we have the pleasure to have\n"
+	.string "here none other than {PLAYER}!$"
+
+Route106_Text_GabbyNewsReport4:
+	.string "Do you have any comments on your\n"
+	.string "defeat of Team Magma?$"
+
+Route106_Text_EasyDefeat:
+	.string "A confident Trainer!\p"
+	.string "We love to see it, ladies and\n"
+	.string "gentlemen!$"
+
+Route106_Text_HardDefeat:
+	.string "A humble Trainer!\p"
+	.string "We love to see it, ladies and\n"
+	.string "gentlemen!$"
+
+Route106_Text_HumbleDefeat:
+	.string "A case of stage fright!\p"
+	.string "We love to see it, ladies and\n"
+	.string "gentlemen!$"
+
+Route106_Text_GabbyNewsReport5:
+	.string "Anyway…\p"
+	.string "It looks like the situation has been\n"
+	.string "solved, so we'll end the report here.\p"
+	.string "Make sure to follow us for more breaking\n"
+	.string "news!\p"
+	.string "Until next time!$"
+
+Route106_Text_GabbyNewsReport6:
+	.string "And there we go!\p"
+	.string "Thanks for allowing me to interview you.\n"
+	.string "This is gonna be a great story!\p"
+	.string "See you around!$"
+
+Route106_Text_BrawlyGoesBack:
+	.string "Right on!\n"
+	.string "You're pretty much a celebrity now!\p"
+	.string "Well, I'll be back at the Gym.\n"
+	.string "I got a real itch to fight you!\p"
+	.string "Well, then, see you later!$"

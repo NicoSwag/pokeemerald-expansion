@@ -637,6 +637,9 @@ extern const u8 gText_Daughter[];
 
 // Multichoice strings
 extern const u8 gText_Exit[];
+extern const u8 gText_Easy[];
+extern const u8 gText_Hard[];
+extern const u8 gText_Erm[];
 extern const u8 gText_1F[];
 extern const u8 gText_2F[];
 extern const u8 gText_3F[];
