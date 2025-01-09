@@ -7,7 +7,7 @@
 .set LOCALID_BOYPROTESTER, 18
 .set LOCALID_MAGMA_GRUNT, 22
 .set LOCALID_GIRLPROTESTER, 23
-.set LOCALID_STEVEN, 36
+.set LOCALID_STEVEN, 35
 .set LOCALID_ENGINEER, 29
 .set LOCALID_WANDAS_BF, 40
 .set LOCALID_PEEKO, 41
@@ -39,7 +39,6 @@ RustboroCity_EventScript_GameBoy::
 
 RustboroCity_OnTransition:
 	call PetalburgToRustboroHandleTrainers
-	call Route116_HandleTrainers
 	call Route115_HandleTrainers
 	setflag FLAG_VISITED_RUSTBORO_CITY
 	call Common_EventScript_SetupRivalGfxId
@@ -100,6 +99,7 @@ RustboroCity_EventScript_Mr_BrineyHappy:
 
 
 RustboroCity_EventScript_WandasBf::
+	speakername Common_Name_Riley
 	msgbox RustboroCity_Text_Wandasbf, MSGBOX_NPC
 	end
 
@@ -663,10 +663,14 @@ RustboroCity_EventScript_Looker_CutsceneFinal::
 	playse SE_PIN
 	applymovement LOCALID_LOOKER, Common_Movement_ExclamationMark
 	waitmovement 0
+	applymovement LOCALID_LOOKER, Common_Movement_Delay48
+	waitmovement 0
 	speakername Common_Name_Looker
 	msgbox RustboroCity_Text_LookerISee, MSGBOX_NPC
 	playse SE_PIN
 	applymovement LOCALID_MR_BRINEY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_MR_BRINEY, Common_Movement_Delay48
 	waitmovement 0
 	applymovement LOCALID_MR_BRINEY, Common_Movement_FaceDown
 	waitmovement 0
@@ -676,6 +680,7 @@ RustboroCity_EventScript_Looker_CutsceneFinal::
 	waitmovement 0
 	speakername Common_Name_Looker
 	msgbox RustboroCity_Text_LookerVeryGood, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_LOOKER, Common_Movement_FacePlayer
 	waitmovement 0
 	speakername Common_Name_Looker
@@ -719,10 +724,12 @@ RustboroCity_EventScript_Looker_CutsceneFinal::
 	playse SE_PIN
 	applymovement LOCALID_WANDAS_BF, Common_Movement_ExclamationMark
 	waitmovement 0
+	applymovement LOCALID_WANDAS_BF, Common_Movement_Delay48
+	waitmovement 0
 	applymovement LOCALID_WANDAS_BF, RustboroCity_Movement_DownAndRight
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	speakername NULL
+	speakername Common_Name_Riley
 	msgbox RustboroCity_Text_BoyfriendLeave, MSGBOX_NPC
 	fadedefaultbgm
 	applymovement LOCALID_WANDAS_BF, RustboroCity_Movement_BoyfriendLeave
@@ -831,6 +838,7 @@ speakername Common_Name_Looker
 	applymovement LOCALID_STEVEN, RustboroCity_Movement_StevenLeave
 	waitmovement 0
 	setflag FLAG_REAL_LOOKER_RUSTBORO
+	removeobject LOCALID_LOOKER
 	removeobject LOCALID_STEVEN
 	release
 	end
@@ -1999,23 +2007,23 @@ Rustborocity_Text_OldMan:
 RustboroCity_Text_Mr_Briney:
 	.string "Oh, the misery…\n"
 	.string "Oh, poor little old me!\p"
-	.string "Ye see, I was walking me PEEKO as usual,\n"
-	.string "when…\p"
+	.string "Ye see, I was walking me Peeko as\n"
+	.string "usual, when…\p"
 	.string "The rascal decided to fly over the\n"
-	.string "fence!\p"
-	.string "Now he's on the other side, but…\n"
+	.string "wall!\p"
+	.string "Now she's on the other side, but…\n"
 	.string "This rapscallion of a man isn't letting\l"
-	.string "me go through to save me boy!\p"
+	.string "me go through to save me lass!\p"
 	.string "Oh, Peeko, me love…\n"
 	.string "Oh, Peeko, me girl!\p"
 	.string "I can but pray for yer safety!$"
 
 RustboroCity_Text_AhMyFriend:
-	.string "Ah, my friend… Huff!\p"
-	.string "That scoundrel, he… Puff!\n"
+	.string "Ah, my friend… Huff!\n"
+	.string "That scoundrel, he… Puff!\p"
 	.string "Slithered away, yes…\p"
-	.string "And now, this man here taking\n"
-	.string "the post isn't letting us pass!\p"
+	.string "And now, this man here is not\n"
+	.string "letting us pass!\p"
 	.string "Ah, but… Worry not.\p"
 	.string "As you know, I am a master of\n"
 	.string "the disguise.\p"
@@ -2028,17 +2036,16 @@ RustboroCity_Text_WatchAndLearn:
 RustboroCity_Text_TheWayIsOpen:
 	.string "And as we say in my\n"
 	.string "home region: voilà!\p"
-	.string "Yes my friend, the way is clear,\n"
-	.string "and we can proceed after our ruffian.\p"
+	.string "Yes my friend, the way is clear.\p"
 	.string "Who is it I'm masquerading as, you ask?\p"
 	.string "Oh oh! It would be a shame to spoil the\n"
 	.string "surprise, would it not?\p"
 	.string "After all, I have a feeling that you\n"
 	.string "shall meet him soon.\p"
-	.string "Anyway, my apprentice… I have a favor\n"
-	.string "to ask you once more.\p"
-	.string "As you know, I'm no TRAINER… Well,\n"
-	.string "not anymore, but…\p"
+	.string "Anyway, my assistant…\n"
+	.string "I have a favor to ask you once more.\p"
+	.string "As you know, I'm no Trainer.\n"
+	.string "Well, not anymore, but…\p"
 	.string "…Well! Long story short, I am going to\n"
 	.string "need you to find that man.\p"
 	.string "You will be compensated for it,\n"
@@ -2055,14 +2062,14 @@ RustboroCity_Text_Advice:
 	.string "But let me give you a piece of\n"
 	.string "advice.\p"
 	.string "If you keep sticking your nose in\n"
-	.string "things too complex for you…\p"
+	.string "these kinds of things…\p"
 	.string "Well, it just might end up badly.$"
 
 RustboroCity_Text_Wandasbf:
 	.string "All's well that ends well!$"
 
 RustboroCity_Text_PeekoCry:
-	.string "PEEKO: Kyahh!$"
+	.string "Kyahh!$"
 
 RustboroCity_Text_Mr_BrineyHappy:
 	.string "Oh, Peeko!\n"
@@ -2092,27 +2099,28 @@ RustboroCity_Text_LookerDotDotDot:
 RustboroCity_Text_LookerISee:
 	.string "Ah! I see!\n"
 	.string "Terrific job, terrific!\p"
-	.string "And, those GOODS you've mentioned…\p"
+	.string "And, those Goods you've mentioned…\p"
 	.string "Would you care for me to take a look?\p"
 	.string "… … …\p"
 	.string "Ah! I see!\n"
 	.string "Well, not fully.\p"
-	.string "Yes, these GOODS? Unmistakeable DEVON\n"
+	.string "Yes, these Goods? Unmistakeable Devon\n"
 	.string "make.\p"
 	.string "Machine parts of some sort, it would\n"
-	.string "seem. An engine, perhaps.\p"
+	.string "seem.\p"
+	.string "An engine, perhaps.\p"
 	.string "But other than this? I cannot say.\p"
 	.string "Luckily, however, I do know someone\n"
-	.string "who might know.\p"
+	.string "who might be able to tell.\p"
 	.string "Unluckily, they are currently in\n"
-	.string "DEWFORD.\p"
+	.string "Dewford.\p"
 	.string "Quite far from here, indeed.$"
 
 RustboroCity_Text_MrBrineyDewford:
 	.string "Dewford?\n"
 	.string "Why, me young fellow, I can take ye\l"
 	.string "there!\p"
-	.string "Me Speed Boat always welcomes friends\n"
+	.string "Me Speed-Boat always welcomes friends\n"
 	.string "of Peeko!$"
 
 RustboroCity_Text_LookerVeryGood:
@@ -2120,7 +2128,7 @@ RustboroCity_Text_LookerVeryGood:
 
 RustboroCity_Text_LookerMission:
 	.string "My friend, you have a new mission.\p"
-	.string "You must go to DEWFORD at once and meet\n"
+	.string "You must go to Dewford at once and meet\n"
 	.string "with my employer.\p"
 	.string "He will certainly be able to give us\n"
 	.string "some leads.\p"
@@ -2137,9 +2145,10 @@ RustboroCity_Text_LookerMission:
 	.string "I am in need of doing some of my own\n"
 	.string "investigating.\p"
 	.string "But, my friend, once we meet back up,\n"
-	.string "you must tell me everything new!\p"
+	.string "you must tell me everything that is\l"
+	.string "new!\p"
 	.string "Until then…\p"
-	.string "Special agent LOOKER bid his farewell!$"
+	.string "Special agent Looker bids his farewell!$"
 
 RustboroCity_Movement_DownAndRight:
 	delay_16
@@ -2154,7 +2163,7 @@ RustboroCity_Text_BoyfriendLeave:
 	.string "Today has been a crazy day…\p"
 	.string "Speaking of which, I'm gonna go and\n"
 	.string "visit my Wanda.\p"
-	.string "If you happen to pass by VERDANTURF\n"
+	.string "If you happen to pass by Verdanturf\n"
 	.string "feel free to stop by, eh?$"
 
 RustboroCity_Movement_BoyfriendLeave:
@@ -2170,17 +2179,19 @@ RustboroCity_Movement_BoyfriendLeave:
 RustboroCity_Text_MrBrineyOffer:
 	.string "Time to take me leave too, then!\p"
 	.string "But if ye ever find yerself in need of\n"
-	.string "me boat…\p"
+	.string "me Speed Boat…\p"
 	.string "Ye can find me in me cottage in Stormy\n"
 	.string "Seaside! Gyaha!\p"
 	.string "Well then! I'm off!\n"
-	.string "Let's go, me boy!$"
+	.string "Let's go, lass!$"
 
 
 RustboroCity_Movement_BrineyLeave:
 	walk_left
 	walk_left
 	walk_down
+	walk_left
+	walk_left
 	walk_left
 	walk_left
 	walk_left
@@ -2194,6 +2205,7 @@ RustboroCity_Movement_PeekoLeave:
 	walk_left
 	walk_left
 	walk_down
+	walk_left
 	walk_left
 	walk_left
 	walk_left

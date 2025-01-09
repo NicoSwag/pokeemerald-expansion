@@ -13,11 +13,14 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cop;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Tabitha;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Matt;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Engineer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scammer_Young;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Umbrella_Lady;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Miner;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BogManSleeping;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BogManStanding;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LittleBoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LittleGirl;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy3;
@@ -306,11 +309,14 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_TABITHA] =                    &gObjectEventGraphicsInfo_Tabitha,
     [OBJ_EVENT_GFX_MATT] =                    &gObjectEventGraphicsInfo_Matt,
     [OBJ_EVENT_GFX_ENGINEER] =                    &gObjectEventGraphicsInfo_Engineer,
+    [OBJ_EVENT_GFX_SCAMMER_YOUNG] =                    &gObjectEventGraphicsInfo_Scammer_Young,
     [OBJ_EVENT_GFX_UMBRELLA_LADY] =                    &gObjectEventGraphicsInfo_Umbrella_Lady,
     [OBJ_EVENT_GFX_MINER] =                    &gObjectEventGraphicsInfo_Miner,
     [OBJ_EVENT_GFX_GIRL_1] =                   &gObjectEventGraphicsInfo_Girl1,
     [OBJ_EVENT_GFX_BOY_2] =                    &gObjectEventGraphicsInfo_Boy2,
     [OBJ_EVENT_GFX_GIRL_2] =                   &gObjectEventGraphicsInfo_Girl2,
+    [OBJ_EVENT_GFX_BOG_MAN_SLEEPING] =         &gObjectEventGraphicsInfo_BogManSleeping,
+    [OBJ_EVENT_GFX_BOG_MAN_STANDING] =         &gObjectEventGraphicsInfo_BogManStanding,
     [OBJ_EVENT_GFX_LITTLE_BOY] =               &gObjectEventGraphicsInfo_LittleBoy,
     [OBJ_EVENT_GFX_LITTLE_GIRL] =              &gObjectEventGraphicsInfo_LittleGirl,
     [OBJ_EVENT_GFX_BOY_3] =                    &gObjectEventGraphicsInfo_Boy3,

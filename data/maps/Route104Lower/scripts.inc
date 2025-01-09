@@ -267,6 +267,8 @@ Route104_EventScript_ThanksPlayer::
 
 Route104_EventScript_LandedInDewford::
 	msgbox DewfordTown_Text_BrineyLandedInDewford, MSGBOX_DEFAULT
+	applymovement LOCALID_BRINEY_DEWFORD, Common_Movement_FaceUp
+	waitmovement 0
 	releaseall
 	end
 
@@ -510,7 +512,6 @@ Route104_Movement_SailToDewford:
 	walk_fast_down
 	walk_fast_down
 	walk_faster_down
-	
 	walk_faster_down
 	walk_faster_down
 	walk_faster_down

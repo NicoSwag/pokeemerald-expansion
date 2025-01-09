@@ -45,6 +45,7 @@ static const struct SpriteFrameImage sPicTable_QuintyPlump[] = {
     overworld_ascending_frames(gObjectEventPic_QuintyPlump, 4, 4),
 };
 
+
 static const struct SpriteFrameImage sPicTable_NinjaBoy[] = {
     overworld_ascending_frames(gObjectEventPic_NinjaBoy, 2, 2),
 };
@@ -142,6 +143,18 @@ static const struct SpriteFrameImage sPicTable_Engineer[] = {
     overworld_frame(gObjectEventPic_Engineer, 2, 4, 8),
 };
 
+static const struct SpriteFrameImage sPicTable_Scammer_Young[] = {
+    overworld_frame(gObjectEventPic_Scammer_Young, 2, 4, 0),
+    overworld_frame(gObjectEventPic_Scammer_Young, 2, 4, 1),
+    overworld_frame(gObjectEventPic_Scammer_Young, 2, 4, 2),
+    overworld_frame(gObjectEventPic_Scammer_Young, 2, 4, 3),
+    overworld_frame(gObjectEventPic_Scammer_Young, 2, 4, 4),
+    overworld_frame(gObjectEventPic_Scammer_Young, 2, 4, 5),
+    overworld_frame(gObjectEventPic_Scammer_Young, 2, 4, 6),
+    overworld_frame(gObjectEventPic_Scammer_Young, 2, 4, 7),
+    overworld_frame(gObjectEventPic_Scammer_Young, 2, 4, 8),
+};
+
 static const struct SpriteFrameImage sPicTable_Umbrella_Lady[] = {
     overworld_frame(gObjectEventPic_Umbrella_Lady, 2, 4, 0),
     overworld_frame(gObjectEventPic_Umbrella_Lady, 2, 4, 1),
@@ -176,6 +189,10 @@ static const struct SpriteFrameImage sPicTable_Boy2[] = {
 
 static const struct SpriteFrameImage sPicTable_Girl2[] = {
     overworld_ascending_frames(gObjectEventPic_Girl2, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_BogManStanding[] = {
+    overworld_ascending_frames(gObjectEventPic_Bog_Man_Standing, 2, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_LittleBoy[] = {
@@ -1151,6 +1168,10 @@ static const struct SpriteFrameImage sPicTable_BigVenusaurDoll[] = {
 
 static const struct SpriteFrameImage sPicTable_BigCharizardDoll[] = {
     obj_frame_tiles(gObjectEventPic_BigCharizardDoll),
+};
+
+static const struct SpriteFrameImage sPicTable_BogManSleeping[] = {
+    obj_frame_tiles(gObjectEventPic_Bog_Man_Sleeping),
 };
 
 static const struct SpriteFrameImage sPicTable_BigBlastoiseDoll[] = {

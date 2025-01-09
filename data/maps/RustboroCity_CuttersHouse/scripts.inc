@@ -36,6 +36,7 @@ RustboroCity_CuttersHouse_Text_StayAway:
 
 RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse:
 	.string "W-who are you?!\p"
+	.string "… … …\p"
 	.string "Oh… Roxanne sent you?\p"
 	.string "Very well, then… I guess I can trust\n"
 	.string "you.\p"
@@ -49,7 +50,7 @@ RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse:
 	.string "live in here, in defiance of them.\p"
 	.string "But, they're still after me, and my\n"
 	.string "Cutting skills.\p"
-	.string "Pleae, Trainer. Take this burden off\n"
+	.string "Please, Trainer. Take this burden off\n"
 	.string "these tired hands.$"
 
 RustboroCity_CuttersHouse_Text_ExplainCut:
@@ -61,12 +62,13 @@ RustboroCity_CuttersHouse_Text_ExplainCut:
 	.string "reusable.\p"
 	.string "Second, you don't actually need\n"
 	.string "to teach them to a Pokémon in order\l"
-	.string "for them to use their unique powers.\p"
-	.string "But please, don't make my same\n"
-	.string "mistakes.\p"
+	.string "to use them.\p"
+	.string "But you still need to have a Pokémon\n"
+	.string "in your party that is compatible with\l"
+	.string "them.\p"
 	.string "If you wanted to use it on something,\n"
 	.string "I would suggest to try and cut down\l"
-	.string "those pesky invasive cacti.\p"
+	.string "those pesky, invasive cacti.\p"
 	.string "That would actually help people, and\n"
 	.string "help redeem this foolish old man.$"
 

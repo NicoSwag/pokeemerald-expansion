@@ -778,6 +778,22 @@ const struct BattleBackground sBattleTerrainTable[] =
         .entryTilemap = gBattleTerrainAnimTilemap_Cave,
         .palette = gBattleTerrainPalette_CaveRust,
     },
+    [BATTLE_TERRAIN_CAVEBLUE] =
+    {
+        .tileset = gBattleTerrainTiles_Cave,
+        .tilemap = gBattleTerrainTilemap_Cave,
+        .entryTileset = gBattleTerrainAnimTiles_Cave,
+        .entryTilemap = gBattleTerrainAnimTilemap_Cave,
+        .palette = gBattleTerrainPalette_CaveBlue,
+    },
+    [BATTLE_TERRAIN_CAVEWHITE] =
+    {
+        .tileset = gBattleTerrainTiles_Cave,
+        .tilemap = gBattleTerrainTilemap_Cave,
+        .entryTileset = gBattleTerrainAnimTiles_Cave,
+        .entryTilemap = gBattleTerrainAnimTilemap_Cave,
+        .palette = gBattleTerrainPalette_CaveWhite,
+    },
     [BATTLE_TERRAIN_CAVEGRANITE] =
     {
         .tileset = gBattleTerrainTiles_Cave,
@@ -1792,6 +1808,14 @@ case MAP_BATTLE_SCENE_GYM:
                             }
                         else if (GetCurrentRegionMapSectionId() == MAPSEC_GRANITE_CAVE){
                             LoadCompressedPalette(gBattleTerrainPalette_CaveGranite, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+                            break;
+                            }
+                        else if (GetCurrentRegionMapSectionId() == MAPSEC_BRINE_CAVE){
+                            LoadCompressedPalette(gBattleTerrainPalette_CaveBlue, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+                            break;
+                            }
+                        else if (GetCurrentRegionMapSectionId() == MAPSEC_MT_KIRIKIRI){
+                            LoadCompressedPalette(gBattleTerrainPalette_CaveWhite, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
                             break;
                             }
                         else

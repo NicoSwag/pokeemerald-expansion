@@ -889,6 +889,13 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .aiRating = 6,
     },
 
+[ABILITY_ANTI_AIR] =
+    {
+        .name = _("Anti-Air"),
+        .description = COMPOUND_STRING("Ground hits airborne foes."),
+        .aiRating = 6,
+    },
+
     [ABILITY_STORM_DRAIN] =
     {
         .name = _("Storm Drain"),
@@ -1129,6 +1136,12 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Poisons foe on contact."),
         .aiRating = 4,
     },
+    [ABILITY_HIGH_VOLTAGE] =
+    {
+        .name = _("High Voltage"),
+        .description = COMPOUND_STRING("Paralyzes in Elec. Terrain."),
+        .aiRating = 4,
+    },
 
     [ABILITY_REGENERATOR] =
     {
@@ -1203,6 +1216,13 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Moxie"),
         .description = COMPOUND_STRING("KOs raise Attack."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_SCAVENGER] =
+    {
+        .name = _("Scavenger"),
+        .description = COMPOUND_STRING("KOs regain health."),
         .aiRating = 7,
     },
 
@@ -2017,6 +2037,13 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .aiRating = 5,
     },
 
+    [ABILITY_HARVEST_BELL] =
+    {
+        .name = _("Harvest Bell"),
+        .description = COMPOUND_STRING("Creates rain if hit."),
+        .aiRating = 5,
+    },
+
     [ABILITY_ICE_SCALES] =
     {
         .name = _("Ice Scales"),
@@ -2079,6 +2106,14 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("SteelySpirit"),
     #endif
         .description = COMPOUND_STRING("Boosts ally's Steel moves."),
+        .aiRating = 2,
+    },
+
+    [ABILITY_PLASMA_ARC] =
+    {
+        .name = _("Plasma Arc"),
+
+        .description = COMPOUND_STRING("Boosts ally's Fire moves."),
         .aiRating = 2,
     },
 
@@ -2797,6 +2832,12 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Decommissioner"),
         .description = COMPOUND_STRING("Makes Steel strong on Steel."),
+        .aiRating = 6,
+    },
+    [ABILITY_HYPER_DRILL] =
+    {
+        .name = _("Hyper Drill"),
+        .description = COMPOUND_STRING("Makes Steel strong on Ground."),
         .aiRating = 6,
     },
     [ABILITY_CAUSTIC_BODY] =

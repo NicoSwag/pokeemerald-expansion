@@ -111,6 +111,7 @@ static void Task_GridSquares(u8);
 static void Task_AngledWipes(u8);
 static void Task_Mugshot(u8);
 static void Task_Aqua(u8);
+static void Task_Devon(u8);
 static void Task_Magma(u8);
 static void Task_Regice(u8);
 static void Task_Registeel(u8);
@@ -156,6 +157,8 @@ static bool8 Shuffle_Init(struct Task *);
 static bool8 Shuffle_End(struct Task *);
 static bool8 Aqua_Init(struct Task *);
 static bool8 Aqua_SetGfx(struct Task *);
+static bool8 Devon_Init(struct Task *);
+static bool8 Devon_SetGfx(struct Task *);
 static bool8 Magma_Init(struct Task *);
 static bool8 Magma_SetGfx(struct Task *);
 static bool8 FramesCountdown(struct Task *);
@@ -303,6 +306,9 @@ static const u32 sTeamAqua_Tileset[] = INCBIN_U32("graphics/battle_transitions/t
 static const u32 sTeamAqua_Tilemap[] = INCBIN_U32("graphics/battle_transitions/team_aqua.bin.lz");
 static const u32 sTeamMagma_Tileset[] = INCBIN_U32("graphics/battle_transitions/team_magma.4bpp.lz");
 static const u32 sTeamMagma_Tilemap[] = INCBIN_U32("graphics/battle_transitions/team_magma.bin.lz");
+static const u16 sDevon_Palette[] = INCBIN_U16("graphics/battle_transitions/devon.gbapal");
+static const u32 sDevon_Tileset[] = INCBIN_U32("graphics/battle_transitions/devon.4bpp.lz");
+static const u32 sDevon_Tilemap[] = INCBIN_U32("graphics/battle_transitions/devon.bin.lz");
 static const u32 sRegis_Tileset[] = INCBIN_U32("graphics/battle_transitions/regis.4bpp");
 static const u16 sRegice_Palette[] = INCBIN_U16("graphics/battle_transitions/regice.gbapal");
 static const u16 sRegisteel_Palette[] = INCBIN_U16("graphics/battle_transitions/registeel.gbapal");
@@ -356,6 +362,7 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_ANGLED_WIPES] = Task_AngledWipes,
     [B_TRANSITION_MUGSHOT] = Task_Mugshot,
     [B_TRANSITION_AQUA] = Task_Aqua,
+    [B_TRANSITION_DEVON] = Task_Devon,
     [B_TRANSITION_MAGMA] = Task_Magma,
     [B_TRANSITION_REGICE] = Task_Regice,
     [B_TRANSITION_REGISTEEL] = Task_Registeel,
@@ -413,6 +420,17 @@ static const TransitionStateFunc sAqua_Funcs[] =
 {
     Aqua_Init,
     Aqua_SetGfx,
+    PatternWeave_Blend1,
+    PatternWeave_Blend2,
+    PatternWeave_FinishAppear,
+    FramesCountdown,
+    PatternWeave_CircularMask
+};
+
+static const TransitionStateFunc sDevon_Funcs[] =
+{
+    Devon_Init,
+    Devon_SetGfx,
     PatternWeave_Blend1,
     PatternWeave_Blend2,
     PatternWeave_FinishAppear,
@@ -1313,6 +1331,11 @@ static void Task_Aqua(u8 taskId)
     while (sAqua_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
 }
 
+static void Task_Devon(u8 taskId)
+{
+    while (sDevon_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
+}
+
 static void Task_Magma(u8 taskId)
 {
     while (sMagma_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
@@ -1372,6 +1395,22 @@ static bool8 Aqua_Init(struct Task *task)
     CpuFill16(0, tilemap, BG_SCREEN_SIZE);
     LZ77UnCompVram(sTeamAqua_Tileset, tileset);
     LoadPalette(sEvilTeam_Palette, BG_PLTT_ID(15), sizeof(sEvilTeam_Palette));
+
+    task->tState++;
+    return FALSE;
+}
+
+
+static bool8 Devon_Init(struct Task *task)
+{
+    u16 *tilemap, *tileset;
+
+    task->tEndDelay = 60;
+    InitPatternWeaveTransition(task);
+    GetBg0TilesDst(&tilemap, &tileset);
+    CpuFill16(0, tilemap, BG_SCREEN_SIZE);
+    LZ77UnCompVram(sDevon_Tileset, tileset);
+    LoadPalette(sDevon_Palette, BG_PLTT_ID(15), sizeof(sDevon_Palette));
 
     task->tState++;
     return FALSE;
@@ -1446,6 +1485,18 @@ static bool8 Aqua_SetGfx(struct Task *task)
 
     GetBg0TilesDst(&tilemap, &tileset);
     LZ77UnCompVram(sTeamAqua_Tilemap, tilemap);
+    SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
+
+    task->tState++;
+    return FALSE;
+}
+
+static bool8 Devon_SetGfx(struct Task *task)
+{
+    u16 *tilemap, *tileset;
+
+    GetBg0TilesDst(&tilemap, &tileset);
+    LZ77UnCompVram(sDevon_Tilemap, tilemap);
     SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
 
     task->tState++;

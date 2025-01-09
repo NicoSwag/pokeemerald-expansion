@@ -10,7 +10,7 @@
 .equ LOCALID_BOAT_R104, 8
 .equ LOCALID_BRINEY_R104, 9
 
-.set LOCALID_RIVAL, 15
+.set LOCALID_RIVAL, 14
 .set LOCALID_MAGNEZONE, 27
 .set LOCALID_SLAKOTH, 24
 .set LOCALID_YOUNGSTER, 28
@@ -19,13 +19,41 @@
 .set LOCALID_MINECART_DEWFORD, 29
 .set LOCALID_MINECART_BRENDAN_DEWFORD, 30
 .set LOCALID_MINECART_MAY_DEWFORD, 31
+.set LOCALID_BRAWLY, 32
 
 DewfordTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, DewfordTown_OnTransition
 	.byte 0
 
+
+DewfordTown_HandleTrainers::
+	call_if_unset FLAG_HIDE_TABITHA_CAVE, DewfordTown_EventScript_ResetTrainers
+	call_if_set FLAG_HIDE_TABITHA_CAVE, DewfordTown_EventScript_SetTrainers
+	return
+
+DewfordTown_EventScript_ResetTrainers::
+	cleartrainerflag TRAINER_KYLA
+	cleartrainerflag TRAINER_ELLEN
+	cleartrainerflag TRAINER_ELLEN
+	cleartrainerflag TRAINER_CHRISTINA
+	cleartrainerflag TRAINER_ELLIOT_1
+	cleartrainerflag TRAINER_KRYSTA
+	cleartrainerflag TRAINER_KASSANDRA
+	return
+
+DewfordTown_EventScript_SetTrainers::
+	setifnotbeaten TRAINER_KYLA
+	setifnotbeaten TRAINER_ELLEN
+	setifnotbeaten TRAINER_ELLEN
+	setifnotbeaten TRAINER_CHRISTINA
+	setifnotbeaten TRAINER_ELLIOT_1
+	setifnotbeaten TRAINER_KRYSTA
+	setifnotbeaten TRAINER_KASSANDRA
+	return
+
 DewfordTown_OnTransition:
 	setflag FLAG_VISITED_DEWFORD_TOWN
+	call DewfordTown_HandleTrainers
 	call Common_EventScript_SetupRivalGfxId
 	setvar VAR_PELIPPER, 13
 	call_if_unset FLAG_HIDE_MINECART_DEWFORD, DewfordTown_EventScript_SetMinecart
@@ -56,6 +84,10 @@ DewfordTown_EventScript_MinecartInteract::
 	releaseall
 	end
 
+
+DewfordTown_EventScript_SlakothGuy::
+	msgbox DewfordTown_Text_Slakoth, MSGBOX_NPC
+	end
 
 DewfordTown_EventScript_MinecartInteractBrendan::
 	
@@ -426,6 +458,9 @@ DewfordTown_EventScript_Briney::
 	lock
 	faceplayer
 	speakername Common_Name_Briney
+	goto_if_set FLAG_BADGE02_GET, DewfordTown_EventScript_Briney_GoToSlateport
+	goto_if_set FLAG_TALKED_TO_BRINEY_DEWFORD, DewfordTown_EventScript_Briney_GoDoGym
+	goto_if_set FLAG_HIDE_BRAWLY_GRANITE, DewfordTown_EventScript_Briney_BeforeBeatingGym
 	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_ReturnToPetalburgPrompt
 	message DewfordTown_Text_WhereAreWeBound
 	waitmessage
@@ -435,6 +470,50 @@ DewfordTown_EventScript_Briney::
 	case 2, DewfordTown_EventScript_CancelSailSelect
 	case MULTI_B_PRESSED, DewfordTown_EventScript_CancelSailSelect
 	end
+
+DewfordTown_EventScript_Briney_GoDoGym:
+	msgbox DewfordTown_Text_Briney_GoDoGym, MSGBOX_DEFAULT
+	releaseall
+	end
+
+DewfordTown_EventScript_Briney_GoToSlateport:
+	msgbox DewfordTown_Text_Briney_GoToSlateport, MSGBOX_DEFAULT
+	releaseall
+	end
+
+
+DewfordTown_EventScript_Briney_BeforeBeatingGym:
+	clearflag FLAG_HIDE_BRAWLY_DEWFORD
+	addobject LOCALID_BRAWLY
+	msgbox DewfordTown_Text_Briney_BeforeBeatingGym, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkUp3
+	waitmovement 0
+	playse SE_PIN
+	applymovement LOCALID_BRAWLY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_BRAWLY, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkUp2
+	waitmovement 0
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkRight2
+	waitmovement 0
+	speakername Common_Name_Brawly
+	msgbox DewfordTown_Text_Briney_BrawlyHey, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkLeft2
+	waitmovement 0
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkDown6
+	waitmovement 0
+	removeobject LOCALID_BRAWLY
+	speakername Common_Name_Briney
+	msgbox DewfordTown_Text_Briney_Youth, MSGBOX_DEFAULT
+	setflag FLAG_TALKED_TO_BRINEY_DEWFORD
+	releaseall
+	end
+
+
+
 
 DewfordTown_EventScript_ChoosePetalburg::
 	msgbox DewfordTown_Text_PetalburgWereSettingSail, MSGBOX_DEFAULT
@@ -457,9 +536,9 @@ DewfordTown_EventScript_CancelSailSelect::
 	end
 
 DewfordTown_EventScript_ReturnToPetalburgPrompt::
-	msgbox DewfordTown_Text_SetSailBackToPetalburg, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, DewfordTown_EventScript_SailBackToPetalburg
-	msgbox DewfordTown_Text_GoDeliverIllBeWaiting, MSGBOX_DEFAULT
+	msgbox DewfordTown_Text_SetSailBackToPetalburg, MSGBOX_NPC
+	applymovement LOCALID_BRINEY_DEWFORD, Common_Movement_FaceUp
+	waitmovement 0
 	release
 	end
 
@@ -502,8 +581,7 @@ DewfordTown_EventScript_NotGettingItchToFish::
 	end
 
 DewfordTown_EventScript_HowsFishing::
-	message DewfordTown_Text_HowsYourFishing
-	waitmessage
+	msgbox DewfordTown_Text_HowsYourFishing, MSGBOX_NPC
 	end
 
 
@@ -520,17 +598,11 @@ DewfordTown_EventScript_WarehouseMinerPostCave::
 DewfordTown_Text_MinecraftPreCave:
 	.string "Normally you can ride a minecart\n"
 	.string "all the way to the mines, but…\p"
-	.string "Something odd is happening there.\p"
-	.string "Our Gym Leader, Brawly, went to\n"
-	.string "check out the situation.\p"
-	.string "Until it gets resolved, I'm afraid\n"
-	.string "that you will have to go on foot.$"
-
+	.string "Something odd is happening there.$"
 
 DewfordTown_Text_MinecraftPostCave:
-	.string "The minecart is back!\p"
-	.string "You can ride it if you want to get\n"
-	.string "to the Emerald Mines quickly.$"
+	.string "I heard the mine situation got resolved.\n"
+	.string "I'm relieved to hear it.$"
 
 DewfordTown_Sign_Foundry::
 	msgbox DewfordTown_Text_FoundrySign, MSGBOX_SIGN
@@ -571,7 +643,7 @@ DewfordTown_EventScript_SailToPetalburg::
 	clearflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
 	clearflag FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT
 	setflag FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN
-	hideobjectat LOCALID_BOAT_DEWFORD, MAP_DEWFORD_TOWN
+	removeobject LOCALID_BOAT_DEWFORD
 	setvar VAR_BOARD_BRINEY_BOAT_STATE, 2
 	resetobjectsubpriority OBJ_EVENT_ID_PLAYER, MAP_DEWFORD_TOWN
 	warp MAP_ROUTE104_MR_BRINEYS_HOUSE, 5, 4
@@ -641,7 +713,21 @@ DewfordTown_Movement_SailToPetalburg:
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
-	walk_fast_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
 	walk_fast_up
 	walk_fast_up
 	walk_up
@@ -692,6 +778,10 @@ DewfordTown_Movement_SailToPetalburg:
 	walk_faster_left
 	walk_faster_left
 	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
 	walk_fast_left
 	walk_fast_left
 	walk_fast_left
@@ -700,6 +790,10 @@ DewfordTown_Movement_SailToPetalburg:
 	walk_fast_up
 	walk_fast_up
 	walk_fast_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
 	walk_faster_up
 	walk_faster_up
 	walk_faster_up
@@ -799,8 +893,8 @@ DewfordTown_Movement_SailToPetalburg:
 	walk_fast_left
 	walk_fast_up
 	walk_fast_up
-	walk_faster_up
-	walk_faster_up
+	walk_fast_up
+	walk_fast_up
 	walk_faster_up
 	walk_faster_up
 	walk_faster_up
@@ -1043,13 +1137,19 @@ DewfordTown_EventScript_OldWoman::
 	end
 
 DewfordTown_EventScript_Kid::
-	lockall
 	goto_if_set FLAG_RECEIVED_SHELL_BELL, DewfordTown_EventScript_KidPostSand
+	checkitem ITEM_SEASHELL, 5
+	goto_if_eq VAR_RESULT, TRUE, DewfordTown_EventScript_HaveAllSeashells
 	msgbox DewfordTown_Text_KidShop, MSGBOX_NPC
-	closemessage
-	giveitem ITEM_SOFT_SAND
-	setflag FLAG_RECEIVED_SHELL_BELL
 	release
+	end
+
+
+DewfordTown_EventScript_HaveAllSeashells::
+	removeitem ITEM_SEASHELL, 5
+	msgbox DewfordTown_Text_HaveAllSeashells, MSGBOX_NPC
+	giveitem ITEM_SHELL_BELL
+	setflag FLAG_RECEIVED_SHELL_BELL
 	end
 
 
@@ -1064,23 +1164,33 @@ DewfordTown_EventScript_Ribbon::
 DewfordTown_Text_KidShop:
 	.string "Hey, hey!\n"
 	.string "I'm running a shop!\p"
-	.string "Here, buy a seashell!\p"
-	.string "The price is, uhm…\p"
-	.string "Uhm…………\p"
+	.string "I'm selling seashells!\n"
+	.string "But no one wants to but them…\p"
+	.string "I think it's because there are already\n"
+	.string "seashells everywhere!\p"
+	.string "So I have an idea!\p"
+	.string "I counted five seashells around here!\p"
+	.string "If you could pick them up, people would\n"
+	.string "start buying them from me!$"
+
+DewfordTown_Text_HaveAllSeashells:
+	.string "Oh! Oh!\n"
+	.string "You got all of them!\p"
+	.string "Now I can sell you one of mine!\n"
+	.string "At the price of…\l"
 	.string "Zero!!!!$"
 
 DewfordTown_Text_GoodAtBusiness:
 	.string "When I grow up I want to be a business\n"
-	.string "woman! I'm practicing for it!$"
+	.string "woman!\p"
+	.string "I'm good at it, right?$"
 
 
 DewfordTown_Text_OldWoman:
-	.string "My husband used to work in SLATEPORT\n"
+	.string "My husband used to work in Slateport\n"
 	.string "back when we were young.\p"
-	.string "Well, and back before everything froze\n"
-	.string "over.\p"
-	.string "Living here is the happiest he's ever been\n"
-	.string "though.$"
+	.string "Living here is the happiest I've ever seen\n"
+	.string "him, though.$"
 
 
 DewfordTown_EventScript_MinerTrail::
@@ -1102,17 +1212,17 @@ DewfordTown_EventScript_Boy::
 	end
 
 DewfordTown_Text_LookingForBrawly::
-	.string "Ah! Looking for our LEADER?\p"
+	.string "Ah! Looking for our Leader?\p"
 	.string "I'm afraid he is not here at the\n"
 	.string "moment.\p"
-	.string "He's been requested at GRANITE CAVE\n"
+	.string "He's been requested at the Granite Cave\n"
 	.string "to deal with some sensitive matters.\p"
 	.string "You may find him there, if you wish\n"
 	.string "to speak to him.\p"
-	.string "GRANITE CAVE is just west of here.$"
+	.string "Granite Cave is just west of here.$"
 
 DewfordTown_Text_Boy:
-	.string "Recently I've seen some people in lab\n"
+	.string "Recently, I've seen some people in lab\n"
 	.string "coats come here and argue with the\l"
 	.string "miners.\p"
 	.string "What's going on…?$"
@@ -1120,17 +1230,17 @@ DewfordTown_Text_Boy:
 
 
 DewfordTown_Text_ILoveMining:
-	.string "GRANITE CAVE is full of all sorts\n"
+	.string "Granite Cave is full of all sorts\n"
 	.string "of things.\p"
 	.string "There's granite, of course, but you\n"
 	.string "can also find many ores and stones.\p"
-	.string "Rare POKéMON, too!\n"
+	.string "Rare Pokémon, too!\n"
 	.string "Although we try not to bother them.$"
 
 DewfordTown_Text_DewfordBoring:
 	.string "Man, this place is boring.\p"
 	.string "I'd rather leave somewhere cool, like\n"
-	.string "RUSTBORO, or SLATEPORT!$"
+	.string "Rustboro, or Slateport!$"
 
 DewfordTown_EventScript_ConfirmTrendyPhrase::
 	msgbox DewfordTown_Text_YeahDefinitionOfInRightNow, MSGBOX_DEFAULT
@@ -1171,14 +1281,13 @@ DewfordTown_EventScript_TownMiner::
 
 DewfordTown_Text_TownMiner:
 	.string "The mine is our livelihood.\p"
-	.string "Recently DEVON has tried to pressure\n"
-	.string "us into selling it to them, but of\l"
-	.string "course we refused.\p"
+	.string "Recently Devon has tried to pressure\n"
+	.string "us into selling it, but we refused.\p"
 	.string "It's just too important for us.$"
 
 
 DewfordTown_Text_TinyIslandCommunity:
-	.string "There's a bit of a weird lady living\n"
+	.string "There's a weird lady living\n"
 	.string "in the forest west of here.\p"
 	.string "She's not bad, but…\n"
 	.string "How to put it…\p"
@@ -1190,12 +1299,12 @@ DewfordTown_Text_TinyIslandCommunity:
 
 
 DewfordTown_Text_TownSign:
-	.string "DEWFORD TOWN\n"
-	.string "“A tiny island in the blue sea.”$"
+	.string "Dewford Town\n"
+	.string "“A mining town in the blue sea.”$"
 
 DewfordTown_Text_GymSign:
-	.string "DEWFORD TOWN POKéMON GYM\n"
-	.string "LEADER: BRAWLY\l"
+	.string "Dewford Town Pokémon Gym\n"
+	.string "Leader: Brawly\l"
 	.string "“A big wave in fighting!”$"
 
 DewfordTown_Text_HallSign:
@@ -1204,14 +1313,16 @@ DewfordTown_Text_HallSign:
 
 Route104_Text_LandedInDewfordDeliverLetter:
 	.string "Ahoy!\n"
-	.string "We've hit land in Dewford.\p"
-	.string "Well, if ye need me, I'll be\n"
-	.string "waiting here!$"
+	.string "We've hit land in Dewford.$"
 
 DewfordTown_Text_SetSailBackToPetalburg:
-	.string "Have ye done what you needed?$"
-	.string "Or were ye meaning to sail back to\n"
-	.string "Petalburg?$"
+	.string "Oh, don't mind me.\n"
+	.string "Just inspecting me boat, is all.\p"
+	.string "I might need a favor from ye,\n"
+	.string "at some point.\p"
+	.string "But for now, go do what ye gotta\n"
+	.string "do!\p"
+	.string "Wah ah ah!$"
 
 DewfordTown_Text_PetalburgWereSettingSail2:
 	.string "Petalburg it is, then!\p"
@@ -1223,10 +1334,13 @@ DewfordTown_Text_GoDeliverIllBeWaiting:
 	.string "I'll be waiting.$"
 
 DewfordTown_Text_BrineyLandedInDewford:
-	.string "Ahoy!\n"
-	.string "We've hit land in Dewford!\p"
-	.string "You just go on and tell me whenever\n"
-	.string "ye want to set sail again!$"
+	.string "Well, I'll be here, now.\n"
+	.string "I need to check something about\l"
+	.string "me boat.\p"
+	.string "If ye wanna go back, ye can always\n"
+	.string "use them Pelipper service.\p"
+	.string "But if ye need to sail off to some\n"
+	.string "new place, let me know, aye?$"
 
 DewfordTown_Text_WhereAreWeBound:
 	.string "Ahoy!\n"
@@ -1270,7 +1384,7 @@ DewfordTown_Text_ThrowInFishingAdvice:
 	.string "to haul them in.$"
 
 Route104_Text_WantToThankYe:
-	.string "…Actually, hold on a moment.\p"
+	.string "…Hold on a moment.\p"
 	.string "I just wanted to say… Thank ye.\p"
 	.string "It's been a long time since I\n"
 	.string "sailed the seven seas.\p"
@@ -1281,7 +1395,7 @@ Route104_Text_WantToThankYe:
 	.string "Ye motivated me, ye have.\p"
 	.string "…Sniff.\p"
 	.string "Oh, pay me no mind, pay me no mind.\n"
-	.string "i'm just happy, is all.$"
+	.string "I'm just happy, is all.$"
 
 
 
@@ -1291,11 +1405,11 @@ DewfordTown_Text_ThatsTooBadThen:
 
 DewfordTown_Text_HowsYourFishing:
 	.string "Have you heard about the power plant\n"
-	.string "that TEAM AQUA blew up to protect\l"
+	.string "that Team Aqua blew up to protect\l"
 	.string "the sea life?\p"
-	.string "I don't know about such extreme ends,\n"
-	.string "but…\p"
-	.string "Honestly, I get it.$"
+	.string "I don't know about going to such\n"
+	.string "extremes, but…\p"
+	.string "Honestly, I do get it a little bit.$"
 
 DewfordTown_Text_GreatHaulInSomeBigOnes:
 	.string "Is that right! That's great!\n"
@@ -1369,7 +1483,7 @@ DewfordTown_Text_YeahDefinitionOfInRightNow:
 
 
 DewfordTown_Text_FanClub:
-	.string "“UNEVOLVED POKéMON FAN CLUB”$"
+	.string "“Unevolved Pokémon Fan Club”$"
 
 
 Route104_EventScript_RivalTriggerFirst::
@@ -1486,6 +1600,7 @@ Route104_EventScript_BattleMay::
 Route104_EventScript_MayDefeated::
 call Common_Set_Name_Rival
 	msgbox Route104_Text_MayPostBattle, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_RIVAL, Route104_Movement_RivalGoesAway
 	waitmovement 0
 	call_if_eq VAR_0x8008, 0, Route104_EventScript_RestoreMusic
@@ -1604,14 +1719,14 @@ Route104_Text_MayHowsYourPokedex:
 	.string "Guessing you're here for that too, huh?$"
 
 Route104_Text_MayMinesDecentLetsBattle:
-	.string "By the way, how's your POKéDEX looking?\p"
+	.string "By the way, how's your Pokédex looking?\p"
 	.string "Mine rules.\n"
 	.string "How about a little battle?$"
 
 Route104_Text_MayHaventRaisedPokemon:
 	.string "Oh, come on, {PLAYER}{KUN}, don't be\n"
 	.string "such a bore.\p"
-	.string "Don't you know that a TRAINER always\n"
+	.string "Don't you know that a Trainer always\n"
 	.string "has to be ready for battle?\p"
 	.string "Let's put that into practice.$"
 
@@ -1620,7 +1735,7 @@ Route104_Text_MayLetsBattle:
 	.string "How about a little battle here?$"
 
 Route104_Text_MayIntro:
-	.string "You just became a TRAINER,\n"
+	.string "You just became a Trainer,\n"
 	.string "{PLAYER}{KUN}. I'm not going to lose!$"
 
 Route104_Text_MayDefeat:
@@ -1637,7 +1752,6 @@ Route104_Text_MayPostBattle:
 	.string "So when you moved here, I thought you\n"
 	.string "were going to be really boring, too.\p"
 	.string "But the way you fight…\n"
-	.string "It's unlike anything I've seen.\p"
 	.string "Maybe it's that Johtoan spark, huh?\p"
 	.string "Well, either way, this was just a fluke.\p"
 	.string "There's no chance I'm gonna let you\n"
@@ -1663,7 +1777,7 @@ Route104_Text_BrendanHowsYourPokedex:
 	.string "Oh, hey, {PLAYER}{KUN}.\n"
 	.string "Fancy meeting you here.\p"
 	.string "The old sailor Mr. Briney started\n"
-	.string "offering free trips to Dewford\p"
+	.string "offering free trips to Dewford.\p"
 	.string "And there's no chance I'll say no to\n"
 	.string "anything free, so here I am.\p"
 	.string "Guessing you're here for that too, huh?$"
@@ -1734,7 +1848,7 @@ DewfordTown_Text_ISee:
 	.string "I see.\n"
 	.string "That's ok. I understand!\p"
 	.string "Not everyone is ready to part with\n"
-	.string "their iron balls.$"
+	.string "their balls.$"
 
 
 DewfordTown_Movement_PlayerMove:
@@ -1779,3 +1893,74 @@ DewfordTown_Text_ThanksForTheHelp:
 
 DewfordTown_Text_FoundrySign:
 	.string "Dewford Foundry$"
+
+DewfordTown_Text_Slakoth:
+	.string "This Slakoth's been asleep for\n"
+	.string "days, at this point.\p"
+	.string "I can't get it to move, no matter\n"
+	.string "how hard I try.$"
+
+DewfordTown_Text_Briney_BeforeBeatingGym:
+	.string "Well, ahoy there!\p"
+	.string "Ye finished with what ye needed\n"
+	.string "to do?\p"
+	.string "I just finished inspecting me boat,\n"
+	.string "meself.\p"
+	.string "So, we off to somewhere?\p"
+	.string "… … …\p"
+	.string "Slateport, eh?\n"
+	.string "Aye, I can do that\p"
+	.string "Hop off, then!$"
+
+DewfordTown_Text_Briney_BrawlyHey:
+	.string "Well hey, there!\p"
+	.string "I was just, yeah, I just happened\n"
+	.string "to be walking past here, right, and\l"
+	.string "I couldn't help but spot you.\p"
+	.string "You still coming to the Gym, right?\n"
+	.string "You know, to fight me and all…?\p"
+	.string "I'm just, ahah, looking forward to our\n"
+	.string "little bout, yeah?\p"
+	.string "… … …\p"
+	.string "No pressure, though!\n"
+	.string "Ahah!\p"
+	.string "Well, see ya soon!$"
+
+DewfordTown_Text_Briney_Youth:
+	.string "I'll say, who was that, hm?\n"
+	.string "Some kind of boisterous youth?\p"
+	.string "Well, it seems to me that ye made\n"
+	.string "a committment.\p"
+	.string "It's bad manners to make people wait,\n"
+	.string "ye know.\p"
+	.string "Go and do what ye gotta do.\n"
+	.string "I'll be waiting for ye here, I will.$"
+
+DewfordTown_Text_Briney_GoDoGym:
+	.string "It seems to me that ye made a\n"
+	.string "committment.\p"
+	.string "It's bad manners to make people wait,\n"
+	.string "ye know.\p"
+	.string "Go and do what ye gotta do.\n"
+	.string "I'll be waiting for ye here, I will.$"
+
+DewfordTown_Text_Briney_GoToSlateport:
+	.string "Now hold up a moment, there.\n"
+	.string "Going to Slateport?\p"
+	.string "I'd love to take ye, but…\n"
+	.string "Well, the demo's over, ye know.\p"
+	.string "I could try sailing to there, but there's\n"
+	.string "many dangers about.\p"
+	.string "I could, ye know, fall into the void.\p"
+	.string "Or become the prey of some anomalous,\n"
+	.string "glitched-out, rectangular sea-beast…\p"
+	.string "Nah, it'll have to wait, I'm afraid.\p"
+	.string "You can always go back and see if ye\n"
+	.string "missed anything.\p"
+	.string "But thanks for playing until here!\n"
+	.string "There's more to come, yessir.\p"
+	.string "Until then…\n"
+	.string "… … …\p"
+	.string "… … …\p"
+	.string "Eh, I forget was I was supposed to say.\n"
+	.string "Me bad.$"

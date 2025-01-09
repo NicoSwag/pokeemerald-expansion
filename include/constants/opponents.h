@@ -43,9 +43,9 @@
 #define TRAINER_ROSE_1                       37
 #define TRAINER_FELIX                        38
 #define TRAINER_VIOLET                       39
-#define TRAINER_ROSE_2                       40
-#define TRAINER_ROSE_3                       41
-#define TRAINER_ROSE_4                       42
+#define TRAINER_BOG_MAN                       40
+#define TRAINER_KRYSTA                       41
+#define TRAINER_KASSANDRA                      42
 #define TRAINER_ROSE_5                       43
 #define TRAINER_DUSTY_1                      44
 #define TRAINER_CHIP                         45
@@ -331,7 +331,7 @@
 #define TRAINER_KATELYNN                    325
 #define TRAINER_JAYLEN                      326
 #define TRAINER_DILLON                      327
-#define TRAINER_CALVIN_2                    328
+#define TRAINER_ROBBERS                    328
 #define TRAINER_CALVIN_3                    329
 #define TRAINER_CALVIN_4                    330
 #define TRAINER_CALVIN_5                    331

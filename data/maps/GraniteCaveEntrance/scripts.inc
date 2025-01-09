@@ -2,8 +2,8 @@
 .set LOCALID_MAGMA, 11
 .set LOCALID_MINER_LEFT, 12
 .set LOCALID_MINER_RIGHT, 13
-.set LOCALID_CLOBBOPUS, 10
-.set LOCALID_POOCHYENA, 11
+.set LOCALID_CLOBBOPUS, 9
+.set LOCALID_POOCHYENA, 10
 .set LOCALID_WALLY, 14
 .set LOCALID_RIVAL, 20
 .set LOCALID_MINECART, 21
@@ -17,6 +17,7 @@ GraniteCaveEntrance_MapScripts::
 	.byte 0
 
 GraniteCaveEntrance_MapScripts_OnTransition:
+    call GraniteCave_HandleTrainers
 	call_if_eq VAR_ROUTE106_STATE, 1, Route106_EventScript_MoveEveryone
 	goto_if_set FLAG_HIDE_BRAWLY_GRANITE, GraniteCaveEntrance_MapScripts_End
 	call_if_set FLAG_HIDE_TABITHA_CAVE, Route106_EventScript_MoveBrawly
@@ -28,6 +29,37 @@ Route106_EventScript_MoveBrawly::
 	setobjectmovementtype LOCALID_BRAWLY, MOVEMENT_TYPE_LOOK_AROUND
 	setvar VAR_TEMP_A, 1
 	return
+
+
+GraniteCave_HandleTrainers::
+	call_if_unset FLAG_HIDE_TABITHA_CAVE, GraniteCave_EventScript_ResetTrainers
+	call_if_set FLAG_HIDE_TABITHA_CAVE, GraniteCave_EventScript_SetTrainers
+	return
+
+GraniteCave_EventScript_ResetTrainers::
+	cleartrainerflag TRAINER_GRANITE_GRUNT_1
+	cleartrainerflag TRAINER_GRANITE_GRUNT_2
+	cleartrainerflag TRAINER_GRANITE_GRUNT_3
+	cleartrainerflag TRAINER_GRANITE_GRUNT_4
+	cleartrainerflag TRAINER_GRANITE_GRUNT_5
+	cleartrainerflag TRAINER_GRANITE_GRUNT_6
+	cleartrainerflag TRAINER_GRANITE_GRUNT_7
+	cleartrainerflag TRAINER_GRANITE_GRUNT_8
+	cleartrainerflag TRAINER_GRANITE_GRUNT_9
+	return
+
+GraniteCave_EventScript_SetTrainers::
+	setifnotbeaten TRAINER_GRANITE_GRUNT_1
+	setifnotbeaten TRAINER_GRANITE_GRUNT_2
+	setifnotbeaten TRAINER_GRANITE_GRUNT_3
+	setifnotbeaten TRAINER_GRANITE_GRUNT_4
+	setifnotbeaten TRAINER_GRANITE_GRUNT_5
+	setifnotbeaten TRAINER_GRANITE_GRUNT_6
+	setifnotbeaten TRAINER_GRANITE_GRUNT_7
+	setifnotbeaten TRAINER_GRANITE_GRUNT_8
+	setifnotbeaten TRAINER_GRANITE_GRUNT_9
+	return
+
 
 
 Route106_EventScript_MinecartInteract::
@@ -104,6 +136,7 @@ Route106_EventScript_MoveEveryone::
 Route106_EventScript_BrawlyGoesToGym::
 	applymovement LOCALID_BRAWLY, Route106_Movement_BrawlyGoesToYou
 	waitmovement 0
+	playse SE_PIN
 	speakername Common_Name_Brawly
 	msgbox Route106_Text_BrawlyCongrats, MSGBOX_NPC
 	closemessage
@@ -140,7 +173,7 @@ Route106_EventScript_BrawlyGoesToGym::
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDown2
 	waitmovement 0
-	playbgm MUS_ENCOUNTER_MAGMA, FALSE
+	playbgm MUS_ENCOUNTER_INTERVIEWER, FALSE
 	speakername Common_Name_Gabby
 	msgbox Route106_Text_GabbyNewsReport, MSGBOX_DEFAULT
 	applymovement LOCALID_GABBY, Common_Movement_FaceRight
@@ -150,7 +183,7 @@ Route106_EventScript_BrawlyGoesToGym::
 	applymovement LOCALID_GABBY, Common_Movement_FaceRight
 	waitmovement 0
 	msgbox Route106_Text_GabbyNewsReport4, MSGBOX_DEFAULT
-	multichoicedefault 20, 8, MULTI_INTERVIEW, 1, TRUE
+	multichoicedefault 20, 8, MULTI_INTERVIEW, 0, TRUE
 	speakername Common_Name_Gabby
 	applymovement LOCALID_GABBY, Common_Movement_FaceDown
 	waitmovement 0
@@ -179,6 +212,7 @@ Route106_EventScript_BrawlyGoesToGymContinue::
 	applymovement LOCALID_GABBY, Common_Movement_FaceRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
+	fadedefaultbgm
 	msgbox Route106_Text_GabbyNewsReport6, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_WalkUp2
@@ -359,6 +393,7 @@ Route106_EventScript_Wally::
 	applymovement LOCALID_WALLY, Common_Movement_WalkDown
 	applymovement LOCALID_RIVAL, Route106_Movement_WalkUp4Fast
 	waitmovement 0
+	playse SE_PIN
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Route106_Movement_LetWallyPass
@@ -443,7 +478,7 @@ Route106_Movement_LetWallyPass:
 
 Route106_Text_GoClobbopus:
 	.string "Go, Clobbopus!\n"
-	.string "Use Karate Chop!$"
+	.string "Use Storm Throw!$"
 
 
 Route106_Text_NoMyPokemon:
@@ -478,7 +513,7 @@ Route106_Text_Brawly:
 	.string "They got here from the sea.\p"
 	.string "Hard to see that one coming, to be\n"
 	.string "fair.\p"
-	.string "So now a bunch of Team Magma goons\n"
+	.string "So now a bunch of Team Magma grunts\n"
 	.string "are partying it up in the mines.\p"
 	.string "To make matters worse, I've been\n"
 	.string "told that someone entered the mines\l"
@@ -661,7 +696,7 @@ Route106_Text_MineLivelihood:
 	.string "Wouldn't it have been easier to\n"
 	.string "just raid the forge?\p"
 	.string "…I guess the mind of a criminal\n"
-	.string "just works in strange ways.$"
+	.string "works in strange ways.$"
 
 
 Route106_Text_MinerLeft:
@@ -703,7 +738,7 @@ Route106_Text_MinerBottom:
 Route106_Text_MinerBottom_Post:
 	.string "The Trainer that went in the cave…\n"
 	.string "Was Steven Stone?\p"
-	.string "Like, THE, Steven Stone?\p"
+	.string "Like, THE Steven Stone?\p"
 	.string "I'm so jealous you got to meet him.\p"
 	.string "I really wanted to ask for an autograph.$"
 
@@ -810,10 +845,10 @@ Route106_Text_TyCool:
 	.string "Still trying to do my job here.$"
 
 Route106_Text_GabbyTalking:
-	.string "Special report from the Granite\n"
-	.string "Mines!\p"
+	.string "Special report from Granite\n"
+	.string "Cave!\p"
 	.string "The organization known as 'Team Magma'\n"
-	.string "has seized control of the cave!\p"
+	.string "has seized control of the mines!\p"
 	.string "Their goals and demands are so far\n"
 	.string "unknown!$"
 
@@ -1035,13 +1070,13 @@ Common_Name_Ty:
 	.string "Ty$"
 
 Route106_Text_GabbyNewsReport:
-	.string "…And we're back at the Granite\n"
-	.string "Mine, with a flash update on the\l"
+	.string "…And we're back at Granite\n"
+	.string "Cave, with a flash update on the\l"
 	.string "situation!\p"
 	.string "It would appear that Team Magma, which\n"
-	.string "was previously terrorizing the arean,\l"
-	.string "has been defeated thanks to the efforts\l"
-	.string "of one young Trainer!$"
+	.string "was previously terrorizing the area,\l"
+	.string "has been defeated thanks to the\l"
+	.string "efforts of one young Trainer!$"
 
 Route106_Text_GabbyNewsReport2:
 	.string "Would you be so kind as to tell us\n"
@@ -1050,7 +1085,7 @@ Route106_Text_GabbyNewsReport2:
 	.string "{PLAYER}!\n"
 	.string "I see!\p"
 	.string "But…\n"
-	.string "Hold onto your horses!\p"
+	.string "Hold onto your Ponytas!\p"
 	.string "Would your father happen to be\n"
 	.string "Petalburg's Gym Leader?\p"
 	.string "… … …\p"

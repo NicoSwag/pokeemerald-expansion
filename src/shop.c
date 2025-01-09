@@ -575,6 +575,7 @@ static void BuyMenuBuildListMenuTemplate(void)
     + FlagGet(FLAG_RECEIVED_PLAY_ROUGH)
     + FlagGet(FLAG_RECEIVED_FURY_CUTTER)
     + FlagGet(FLAG_WALDA_AWOKEN)
+    + FlagGet(FLAG_RECEIVED_VENOSHOCK)
     + FlagGet(FLAG_RECEIVED_GYRO_BALL)
     + FlagGet(FLAG_RECEIVED_CHARGE_BEAM);
     sListMenuItems = Alloc((sMartInfo.itemCount + 1 + added_TMs) * sizeof(*sListMenuItems));
@@ -703,6 +704,12 @@ static void BuyMenuBuildListMenuTemplate(void)
     StringCopy(sItemNames[i], gText_TM17);
     sListMenuItems[i].name = sItemNames[i];
     sListMenuItems[i].id = ITEM_TM17;
+    i++;
+    }
+    if((FlagGet(FLAG_RECEIVED_VENOSHOCK) == TRUE) && currentMusic == MUS_POKE_CENTER){
+    StringCopy(sItemNames[i], gText_TM18);
+    sListMenuItems[i].name = sItemNames[i];
+    sListMenuItems[i].id = ITEM_TM18;
     i++;
     }
     StringCopy(sItemNames[i], gText_Cancel2);

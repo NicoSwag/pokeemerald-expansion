@@ -97,7 +97,8 @@ GraniteCave_Text_Magma5Defeated:
 	.string "I guess not.$"
 
 GraniteCave_Text_Magma5Post:
-	.string "How do I know that you're not Team Aqua?\p"
+	.string "How do I know that you're not\n"
+	.string "a Team Aqua member?\p"
 	.string "Easy. You're too strong to be one of\n"
 	.string "them. Hah!$"
 

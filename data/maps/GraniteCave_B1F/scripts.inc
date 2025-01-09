@@ -3,9 +3,7 @@
 
 
 GraniteCave_B1F_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, CaveHole_CheckFallDownHole
 	map_script MAP_SCRIPT_ON_LOAD, GraniteCave_B1F_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, GraniteCave_B1F_SetHoleWarp
 	.byte 0
 
 GraniteCave_B1F_SetHoleWarp:
@@ -148,9 +146,9 @@ Granite_EventScript_Tabitha::
 	removeobject LOCALID_TABITHA
 	removeobject LOCALID_BEHEMERALD
 	setvar VAR_GRANITE_CAVE_STATE, 1
-	createmon 1, 0, SPECIES_BEHEMERALD, 24, ITEM_SITRUS_BERRY, NATURE_SASSY, 1, MON_FEMALE, 252, 252, 252, 252, 252, 252, 31, 31, 31, 31, 31, 31, MOVE_CLEAN_SLATE, MOVE_CONFUSION, MOVE_STRUGGLE_BUG, MOVE_ANCIENT_POWER
+	createmon 1, 0, SPECIES_EMEROLL, 22, ITEM_NONE, NATURE_HARDY, 0
+	createmon 1, 1, SPECIES_BEHEMERALD, 22, ITEM_SITRUS_BERRY, NATURE_SASSY, 1, MON_FEMALE, 252, 252, 252, 252, 252, 252, 31, 31, 31, 31, 31, 31, MOVE_CLEAN_SLATE, MOVE_CONFUSION, MOVE_STRUGGLE_BUG, MOVE_ANCIENT_POWER
 	setwilddoubleflag
-	settotemboost B_POSITION_OPPONENT_LEFT, 0, 1, 0, 0, 2, 0
 	dowildbattle
 	clearflag FLAG_PREVENT_RUNNING
 	clearflag FLAG_CANNOT_USE_BALLS
@@ -215,7 +213,7 @@ Granite_Text_TabithaMyPoint:
 	.string "If you just.\l"
 	.string "Would.\l"
 	.string "Stand.\l"
-	.string "Asi-…$"
+	.string "Asi-$"
 
 Granite_Text_Yikes:
 	.string "Yikes!\p"

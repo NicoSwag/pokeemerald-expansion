@@ -141,7 +141,8 @@
     "GraniteCottage",
     "DewfordGymTest",
     "DewfordTown_GymEntrance",
-    "DewfordTown_GymArena"
+    "DewfordTown_GymArena",
+    "DewfordTown_House4"
   ],
   "gMapGroup_IndoorLavaridge": [
     "LavaridgeTown_HerbShop",

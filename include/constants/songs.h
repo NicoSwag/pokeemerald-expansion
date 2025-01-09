@@ -578,7 +578,8 @@
 #define MUS_RAMANAS_MAJOR 643
 #define MUS_ROUTE_238 644
 #define MUS_SHIP_LOOP 645
-#define END_MUS                     645
+#define MUS_ENCOUNTER_DEVON 646
+#define END_MUS                     646
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
 #define MUS_NONE                    0xFFFF

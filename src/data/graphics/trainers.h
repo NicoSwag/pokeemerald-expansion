@@ -127,6 +127,9 @@ const u32 gTrainerPalette_EliteFourDrake[] = INCBIN_U32("graphics/trainers/front
 const u32 gTrainerFrontPic_LeaderRoxanne[] = INCBIN_U32("graphics/trainers/front_pics/leader_roxanne.4bpp.lz");
 const u32 gTrainerPalette_LeaderRoxanne[] = INCBIN_U32("graphics/trainers/front_pics/leader_roxanne.gbapal.lz");
 
+const u32 gTrainerFrontPic_BogMan[] = INCBIN_U32("graphics/trainers/front_pics/bog_man.4bpp.lz");
+const u32 gTrainerPalette_BogMan[] = INCBIN_U32("graphics/trainers/front_pics/bog_man.gbapal.lz");
+
 const u32 gTrainerFrontPic_LeaderBrawly[] = INCBIN_U32("graphics/trainers/front_pics/leader_brawly.4bpp.lz");
 const u32 gTrainerPalette_LeaderBrawly[] = INCBIN_U32("graphics/trainers/front_pics/leader_brawly.gbapal.lz");
 
@@ -201,6 +204,10 @@ const u32 gTrainerPalette_DevonEmployee[] = INCBIN_U32("graphics/trainers/front_
 
 const u32 gTrainerFrontPic_Engineer[] = INCBIN_U32("graphics/trainers/front_pics/engineer.4bpp.lz");
 const u32 gTrainerPalette_Engineer[] = INCBIN_U32("graphics/trainers/front_pics/engineer.gbapal.lz");
+
+const u32 gTrainerFrontPic_Scammers[] = INCBIN_U32("graphics/trainers/front_pics/scammers.4bpp.lz");
+const u32 gTrainerPalette_Scammers[] = INCBIN_U32("graphics/trainers/front_pics/scammers.gbapal.lz");
+
 
 
 const u32 gTrainerFrontPic_Miner[] = INCBIN_U32("graphics/trainers/front_pics/miner.4bpp.lz");
@@ -383,6 +390,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(ELITE_FOUR_GLACIA, EliteFourGlacia, -4, 4, 0x1B0),
     TRAINER_SPRITE(ELITE_FOUR_DRAKE, EliteFourDrake, 0, 5, 0x1A0),
     TRAINER_SPRITE(LEADER_ROXANNE, LeaderRoxanne),
+    TRAINER_SPRITE(BOG_MAN, BogMan),
     TRAINER_SPRITE(LEADER_BRAWLY, LeaderBrawly),
     TRAINER_SPRITE(LEADER_WATTSON, LeaderWattson),
     TRAINER_SPRITE(LEADER_FLANNERY, LeaderFlannery),
@@ -437,6 +445,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(RS_MAY, RubySapphireMay),
     TRAINER_SPRITE(SHADOW_M, ShadowM),
     TRAINER_SPRITE(ENGINEER, Engineer),
+    TRAINER_SPRITE(SCAMMERS, Scammers),
     TRAINER_SPRITE(SCIENTIST, Scientist),
     TRAINER_SPRITE(DEVON_EMPLOYEE, DevonEmployee),
     TRAINER_SPRITE(COURTNEY, Courtney),

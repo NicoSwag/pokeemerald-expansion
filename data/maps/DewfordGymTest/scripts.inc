@@ -1,5 +1,15 @@
 DewfordGymTest_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, DewfordCity_Gym_OnLoad
 	.byte 0
+
+DewfordCity_Gym_OnLoad:
+	goto_if_set FLAG_BADGE02_GET, DewfordCity_Gym_UnlockDoors
+	end
+
+DewfordCity_Gym_UnlockDoors::
+	setmetatile 5, 38, METATILE_DewfordGym_DoorReal, FALSE
+	special DrawWholeMapView
+	end
 
 DewfordGymTest_EventScript_StartClimbing::
 	call DewfordGym_EventScript_SlipperyWallOn

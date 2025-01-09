@@ -22,6 +22,7 @@ RusturfTunnel_OnTransition::
 	end
 
 RusturfTunnel_EventScript_SetAquaGruntAndPeekoPos::
+	speakername Common_Name_Riley
 	msgbox RustturfTunnel_Message_AfterHim, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_WANDAS_BF, RustturfTunnel_Movement_AfterHim
@@ -58,6 +59,7 @@ RusturfTunnel_EventScript_Wanda::
 
 RusturfTunnel_EventScript_WandasBoyfriend::
 	faceplayer
+	speakername Common_Name_Riley
 	msgbox RusturfTunnel_Text_WhyCantTheyKeepDigging, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_WANDAS_BF, Common_Movement_FaceRight
@@ -284,6 +286,8 @@ RustturfTunnel_Movement_AfterHim:
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
+	walk_fast_right
+	walk_fast_right
 	step_end
 
 RusturfTunnel_Movement_WandasBoyfriendApproachPlayer:
@@ -358,6 +362,7 @@ RusturfTunnel_EventScript_Grunt::
 	copyobjectxytoperm LOCALID_PEEKO
 	setobjectmovementtype LOCALID_PEEKO, MOVEMENT_TYPE_FACE_LEFT
 	setobjectmovementtype LOCALID_DEVON_EMPLOYEE, MOVEMENT_TYPE_FACE_LEFT
+	speakername Common_Name_Riley
 	msgbox RusturfTunnel_Message_CornerHim, MSGBOX_NPC
 	closemessage
 	applymovement LOCALID_WANDAS_BF, RustturfTunnel_Movement_BlackBeltRight
@@ -379,11 +384,13 @@ RusturfTunnel_EventScript_Grunt2Bottom::
 
 RusturfTunnel_EventScript_Grunt2::
 	lock
+	speakername Common_Name_Manager
 	msgbox RusturfTunnel_Message_StopIt, MSGBOX_NPC
 	closemessage
 	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_FaceDown
 	applymovement LOCALID_WANDAS_BF, RustturfTunnel_Movement_BlockExit
 	waitmovement 0
+	speakername Common_Name_Riley
 	msgbox RusturfTunnel_Message_Noyoudont, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_DEVON_EMPLOYEE, Common_Movement_FaceLeft
@@ -413,6 +420,7 @@ RusturfTunnel_EventScript_Grunt2::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
+	speakername Common_Name_Riley
 	msgbox RusturfTunnel_Message_HolyMiltank, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
@@ -422,6 +430,7 @@ RusturfTunnel_EventScript_Grunt2::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
+	speakername Common_Name_Riley
 	msgbox RusturfTunnel_Message_NoClue, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_WANDAS_BF, RusturfTunnel_Movement_GetToPeeko
@@ -529,8 +538,6 @@ RustturfTunnel_Movement_BlackBeltRight:
 RustturfTunnel_Movement_BlockExit:
 	walk_fast_down
 	walk_fast_right
-	walk_fast_right
-	walk_fast_right
 	walk_fast_down
 	face_up
 	step_end
@@ -598,7 +605,7 @@ RustturfTunnel_Message_AfterHim:
 RusturfTunnel_Message_dontyoudare:
 	.string "S-stop it right there!\p"
 	.string "Don't you dare move a step…\n"
-	.string "Or this WINGULL is gonna get it!$"
+	.string "Or this Wingull is gonna get it!$"
 
 RusturfTunnel_Text_WhyCantTheyKeepDigging:
 	.string "What are you waiting for?$"
@@ -651,11 +658,11 @@ RusturfTunnel_Text_MikePostBattle:
 
 
 RusturfTunnel_Message_StopIt:
-	.string "DEVON MANAGER: G-gah!\n"
+	.string "G-gah!\n"
 	.string "I'm outta here!$"
 
 RusturfTunnel_Message_Noyoudont:
-	.string "No you don't!$"
+	.string "No you aren't!$"
 
 
 RusturfTunnel_Message_Fine:
@@ -663,8 +670,8 @@ RusturfTunnel_Message_Fine:
 	.string "You want me so badly?\n"
 	.string "Come and get me, then!\p"
 	.string "I-I'll let you know…\p"
-	.string "I didn't rise to my position by\n"
-	.string "being a weakling…!$"
+	.string "I didn't climb the corporate\n"
+	.string "ladder by being a pushover…!$"
 
 
 RustturfTunnel_Message_DevonDefeat:
@@ -728,9 +735,9 @@ RusturfTunnel_Message_HolyMiltank:
 RusturfTunnel_Message_NoClue:
 	.string "Yeah, huh, I got no clue.\n"
 	.string "You can keep that.\p"
-	.string "I'm just glad old PEEKO is safe,\n"
+	.string "I'm just glad old Peeko is safe,\n"
 	.string "really.\p"
-	.string "I'll bring him back to MR. BRINEY.\n"
+	.string "I'll bring him back to Mr. Briney.\n"
 	.string "See you there, eh?$"
 
 RusturfTunnel_Movement_GetToPeeko:

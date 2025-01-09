@@ -9,7 +9,7 @@ static const u32 sLevelCapFlagMap[][2] =
     {
         {FLAG_BADGE01_GET, 10},
         {FLAG_BADGE02_GET, 14},
-        {FLAG_BADGE03_GET, 24},
+        {FLAG_BADGE03_GET, 23},
         {FLAG_BADGE04_GET, 30},
         {FLAG_BADGE05_GET, 31},
         {FLAG_BADGE06_GET, 33},
@@ -34,6 +34,25 @@ u32 GetLevelCeiling(void)
 
     return MAX_LEVEL;
 }
+
+u32 GetLevelCeilingPlusOne(void)
+{
+
+    
+    u32 i;
+        if(FlagGet(FLAG_IS_CHAMPION))
+            return MAX_LEVEL;
+
+        for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
+        {
+            if (!FlagGet(sLevelCapFlagMap[i][0]))
+                return (sLevelCapFlagMap[i+1][1] - 1);
+        }
+
+
+    return MAX_LEVEL;
+}
+
 
 
 
@@ -71,11 +90,11 @@ u32 GetClosestLevelCapToLevel(u8 monLevel)
 
 u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
 {
-    static const u32 sExpScalingDown[5] = { 4, 8, 16, 32, 64 };
+    static const u32 sExpScalingDown[7] = { 1.1, 1.2, 1.4, 1.8, 3, 5, 10 };
     static const u32 sExpScalingUp[5]   = { 16, 8, 4, 2, 1 };
 
     u32 levelDifference;
-    u32 currentLevelCap = GetLevelCeiling();
+    u32 currentLevelCap = GetLevelCeilingPlusOne();
 
     if (B_EXP_CAP_TYPE == EXP_CAP_NONE)
         return expValue;

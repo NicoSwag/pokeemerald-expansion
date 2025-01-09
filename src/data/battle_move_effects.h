@@ -1620,6 +1620,12 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleTvScore = 0, // TODO: Assign points
     },
 
+    [EFFECT_REMOVE_WEATHER_TERRAIN] =
+    {
+        .battleScript = BattleScript_EffectRemoveWeatherTerrain,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+
     [EFFECT_HIT_ENEMY_HEAL_ALLY] =
     {
         .battleScript = BattleScript_EffectHitEnemyHealAlly,

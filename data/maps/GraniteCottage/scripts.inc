@@ -40,10 +40,10 @@ Route106_EventScript_MinerTalkMagma::
 
 Route106_Text_Generator:
 	.string "The power system in the mine is pretty\n"
-	.string "archaic.\p"
-	.string "There are a bunch of generators supplying\n"
-	.string "power, but even if only one of them goes\l"
-	.string "out, it all goes out of whack.$"
+	.string "old.\p"
+	.string "There are a few generators supplying\n"
+	.string "power, but even a single one of them\l"
+	.string "fails, it all goes out of whack.$"
 
 Route106_Text_Generator_Post:
 	.string "Yeah, so one of the generators is broken.\p"
@@ -55,4 +55,4 @@ Route106_Text_MinerTalkMagma:
 	.string "We get some time off?\n"
 	.string "Score!\p"
 	.string "Uh, I mean…\n"
-	.string "What a disaster, yes.$"
+	.string "What a disaster.$"

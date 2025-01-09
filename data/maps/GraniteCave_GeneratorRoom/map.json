@@ -4,7 +4,7 @@
   "layout": "LAYOUT_GRANITE_CAVE_GENERATOR_ROOM",
   "music": "MUS_AEGIS_CAVE",
   "region_map_section": "MAPSEC_GRANITE_CAVE",
-  "requires_flash": true,
+  "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",
   "allow_cycling": false,
@@ -45,6 +45,30 @@
       "type": "sign",
       "x": 2,
       "y": 6,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "GraniteCave_EventScript_BrokenGenerator"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 6,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "GraniteCave_EventScript_BrokenGenerator"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "GraniteCave_EventScript_BrokenGenerator"
+    },
+    {
+      "type": "sign",
+      "x": 2,
+      "y": 5,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "GraniteCave_EventScript_BrokenGenerator"

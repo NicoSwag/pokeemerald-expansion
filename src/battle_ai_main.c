@@ -2077,6 +2077,7 @@ case EFFECT_FLASH_FREEZE:
                 {
                     if (GetBattlerSecondaryDamage(battlerAtk) >= gBattleMons[battlerAtk].hp
                       && aiData->abilities[battlerDef] != ABILITY_MOXIE
+                      && aiData->abilities[battlerDef] != ABILITY_SCAVENGER
                       && aiData->abilities[battlerDef] != ABILITY_BEAST_BOOST)
                     {
                         ADJUST_SCORE(-10); //Don't protect if you're going to faint after protecting
@@ -4961,10 +4962,6 @@ case EFFECT_FLASH_FREEZE:
     case EFFECT_QUIVER_DANCE:
     case EFFECT_ATTACK_SPATK_UP:
     case EFFECT_ATTACK_ACCURACY_UP:
-    case EFFECT_PSYCHIC_TERRAIN:
-    case EFFECT_GRASSY_TERRAIN:
-    case EFFECT_ELECTRIC_TERRAIN:
-    case EFFECT_MISTY_TERRAIN:
     case EFFECT_EMP:
     case EFFECT_STEALTH_ROCK:
     case EFFECT_TOXIC_SPIKES:
@@ -4975,16 +4972,24 @@ case EFFECT_FLASH_FREEZE:
     case EFFECT_DRAGON_DANCE:
     case EFFECT_TIDY_UP:
     case EFFECT_STICKY_WEB:
+    case EFFECT_HAIL:
+    case EFFECT_FLING:
+    case EFFECT_GEOMANCY:
+    case EFFECT_VICTORY_DANCE:
+    case EFFECT_PIERCING_WAIL:
+    case EFFECT_REMOVE_WEATHER_TERRAIN:
+        ADJUST_SCORE(DECENT_EFFECT);
+        break;
     case EFFECT_RAIN_DANCE:
     case EFFECT_SUNNY_DAY:
     case EFFECT_SANDSTORM:
     case EFFECT_ACID_RAIN:
-    case EFFECT_HAIL:
-    case EFFECT_FLING:
     case EFFECT_SNOWSCAPE:
-    case EFFECT_GEOMANCY:
-    case EFFECT_VICTORY_DANCE:
-        ADJUST_SCORE(DECENT_EFFECT);
+    case EFFECT_PSYCHIC_TERRAIN:
+    case EFFECT_GRASSY_TERRAIN:
+    case EFFECT_ELECTRIC_TERRAIN:
+    case EFFECT_MISTY_TERRAIN:
+        ADJUST_SCORE(BEST_EFFECT);
         break;
     case EFFECT_HIT:
     {

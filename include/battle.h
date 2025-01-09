@@ -758,6 +758,7 @@ struct BattleStruct
     struct LostItem itemLost[NUM_BATTLE_SIDES][PARTY_SIZE];  // Pokemon that had items consumed or stolen (two bytes per party member per side)
     u8 forcedSwitch:4; // For each battler
     u8 blunderPolicy:1; // should blunder policy activate
+    u8 angerPoint:1;
     u8 swapDamageCategory:1; // Photon Geyser, Shell Side Arm, Light That Burns the Sky
     u8 additionalEffectsCounter:4; // A counter for the additionalEffects applied by the current move in Cmd_setadditionaleffects
     u8 bouncedMoveIsUsed:1;

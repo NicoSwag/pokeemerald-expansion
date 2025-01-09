@@ -949,12 +949,6 @@ static void GetItemName(u8 *dest, u16 itemId)
             StringExpandPlaceholders(dest, gText_NumberItem_TMBerry);
         }
         break;
-    case BERRIES_POCKET:
-        ConvertIntToDecimalStringN(gStringVar1, itemId - FIRST_BERRY_INDEX + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
-        end = CopyItemName(itemId, gStringVar2);
-        PrependFontIdToFit(gStringVar2, end, FONT_NARROW, 73);
-        StringExpandPlaceholders(dest, gText_NumberItem_TMBerry);
-        break;
     default:
         end = CopyItemName(itemId, dest);
         PrependFontIdToFit(dest, end, FONT_NARROW, 88);
@@ -1003,8 +997,8 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
         itemQuantity = BagGetQuantityByPocketPosition(gBagPosition.pocket + 1, itemIndex);
 
         // Draw HM icon
-        if (itemId >= ITEM_HM01 && itemId <= ITEM_HM08)
-            BlitBitmapToWindow(windowId, gBagMenuHMIcon_Gfx, 8, y - 1, 16, 16);
+        //if (itemId >= ITEM_HM01 && itemId <= ITEM_HM08)
+            //BlitBitmapToWindow(windowId, gBagMenuHMIcon_Gfx, 8, y - 1, 16, 16);
 
         if (gBagPosition.pocket != KEYITEMS_POCKET && ItemId_GetImportance(itemId) == FALSE)
         {

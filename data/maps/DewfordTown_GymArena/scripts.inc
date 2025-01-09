@@ -48,6 +48,7 @@ Dewford_Gym_PlayerFacesWest::
 
 Dewford_Gym_EventScript_StartBrawlyFight::
 	waitmovement 0
+	speakername Common_Name_Brawly
 	trainerbattle_single TRAINER_BRAWLY_1, Dewford_Gym_Text_BrawlyStart, Dewfordy_Gym_Text_BrawlyDefeated, Dewford_Gym_EventScript_BrawlyPostBattle
 	end
 	
@@ -100,10 +101,11 @@ Dewford_Gym_Text_WelcomeBrawly:
 	.string "than a blood-pumping fight?\p"
 	.string "Very well, then!\n"
 	.string "Let me properly introduce myself.\p"
-	.string "Name's Brawly!\n"
-	.string "Extreme sports enthusiast, and fighting-type\n"
-	.string "specialist!\p"
-	.string "To get here, you had to climb to the very top!\n"
+	.string "Name's Brawly!\p"
+	.string "Extreme sports enthusiast, and Fighting\n"
+	.string "Type specialist!\p"
+	.string "To get here, you had to climb to the very\n"
+	.string "top!\p"
 	.string "But…$"
 
 Dewfordy_Gym_Text_BrawlyDefeated:
@@ -115,13 +117,13 @@ Dewford_Gym_Text_Congratulations:
 	.string "You've really got me!\n"
 	.string "I haven't had this much fun in ages!\p"
 	.string "Not even rock-climbing is as much of a\n"
-	.string "thrill as Pokémon battles, would you agree?\p"
+	.string "thrill as Pokémon battles, right?\p"
 	.string "…Yeah, you get me! I know you do!\n"
 	.string "Here, take this badge!$"
 
 DewfordTown_Gym_Text_KnuckleBadge:
 	.string "Here, this Knuckle Badge certifies\n"
-	.string "your victory against me, fair and square!\p"
+	.string "you won against me, fair and square!\p"
 	.string "That's your second one, isn't it?\p"
 	.string "You still have a ways to go, but you're\n"
 	.string "doing great!\p"
@@ -135,10 +137,9 @@ Dewford_Gym_Text_ExplainTm:
 	.string "Basically, the less health your Pokémon\n"
 	.string "has, the more damage it deals.\p"
 	.string "Risk-reward, see? Just how I like it!\p"
-	.string "Well! I believe we're done here!\p"
-	.string "{PLAYER}. thanks again for the fight!\p"
-	.string "Hopefully we can catch each other around.\n"
-	.string "But either way…/l"
+	.string "{PLAYER}. Thanks again for the fight!\p"
+	.string "Hopefully I can catch you around.\n"
+	.string "But either way…\l"
 	.string "I'm rooting for you!$"
 
 Dewford_Gym_Text_GoodLuckBrawly:

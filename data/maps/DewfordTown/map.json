@@ -48,7 +48,7 @@
       "x": 12,
       "y": 9,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -391,7 +391,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "DewfordTown_EventScript_TrendyPhraseBoy",
+      "script": "DewfordTown_EventScript_SlakothGuy",
       "flag": "0"
     },
     {
@@ -432,6 +432,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_HIDE_MAY_MINECART_DEWFORD"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BRAWLY",
+      "x": 8,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_BRAWLY_DEWFORD"
     }
   ],
   "warp_events": [
@@ -483,6 +496,13 @@
       "elevation": 0,
       "dest_map": "MAP_DEWFORD_TOWN_GYM_ENTRANCE",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 2,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_DEWFORD_TOWN_HOUSE4",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

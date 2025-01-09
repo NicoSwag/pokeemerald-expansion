@@ -15,6 +15,7 @@
 #endif
 
 u32 GetLevelCeiling(void);
+u32 GetLevelCeilingPlusOne(void);
 u32 GetLevelFloor(void);
 u32 GetClosestLevelCapToLevel(u8);
 u32 GetSoftLevelCapExpValue(u32 level, u32 expValue);

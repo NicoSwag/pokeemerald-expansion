@@ -19,7 +19,7 @@
     F(SUNNY_DAY) \
     F(FURY_CUTTER) \
     F(REST) \
-    F(RAIN_DANCE) \
+    F(VENOSHOCK) \
     F(GIGA_DRAIN) \
     F(SAFEGUARD) \
     F(FRUSTRATION) \

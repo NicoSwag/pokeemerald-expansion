@@ -112,6 +112,7 @@
 #define MAP_DEWFORD_GYM_TEST               (9 | (3 << 8))
 #define MAP_DEWFORD_TOWN_GYM_ENTRANCE      (10 | (3 << 8))
 #define MAP_DEWFORD_TOWN_GYM_ARENA         (11 | (3 << 8))
+#define MAP_DEWFORD_TOWN_HOUSE4            (12 | (3 << 8))
 
 // gMapGroup_IndoorLavaridge
 #define MAP_LAVARIDGE_TOWN_HERB_SHOP         (0 | (4 << 8))

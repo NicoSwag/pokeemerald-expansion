@@ -125,6 +125,7 @@
 #define SPECIAL_OPTIONS_MENU               114
 #define MULTI_BERRY_PLOT                   115
 #define MULTI_INTERVIEW                     116
+#define MULTI_SCAMMERS                     117
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

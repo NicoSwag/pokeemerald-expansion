@@ -385,11 +385,7 @@ PetalburgWoods_EventScript_Boy2::
 PetalburgWoods_EventScript_Girl::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_MIRACLE_SEED, PetalburgWoods_EventScript_ExplainMiracleSeed
 	msgbox PetalburgWoods_Text_TryUsingThisItem, MSGBOX_DEFAULT
-	giveitem ITEM_MIRACLE_SEED
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_MIRACLE_SEED
 	release
 	end
 
@@ -643,10 +639,17 @@ PetalburgWoods_Text_HiddenItemsExplanation:
 	.string "Try checking suspicious things!$"
 
 PetalburgWoods_Text_TryUsingThisItem:
-	.string "Oh, neat!\n"
-	.string "That's the BADGE from RUSTBORO GYM!\p"
-	.string "You must be a TRAINER.\n"
-	.string "You should try using this item.$"
+	.string "Oh, hi!\p"
+	.string "Not many people come around here.\p"
+	.string "Roxanne stops by sometimes to look\n"
+	.string "for fossils.\p"
+	.string "There's some sort of swamp around here,\n"
+	.string "you see.\p"
+	.string "You can find lots of strange things.\p"
+	.string "But there are strange people too,\n"
+	.string "sometimes.\p"
+	.string "I would be very careful before going\n"
+	.string "in unprepared.$"
 
 PetalburgWoods_Text_MiracleSeedExplanation:
 	.string "It's a MIRACLE SEED.\n"

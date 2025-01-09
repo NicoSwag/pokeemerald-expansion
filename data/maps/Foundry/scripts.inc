@@ -51,6 +51,7 @@ DewfordTown_EventScript_FoundryInteract::
 
 DewfordTown_EventScript_Nothing::
 	msgbox Foundry_Text_Broken, MSGBOX_DEFAULT
+	closemessage
 	end
 
 
@@ -183,7 +184,7 @@ DewfordTown_Text_FoundryMiner3:
 	.string "But I would not have it any other\n"
 	.string "way.\p"
 	.string "What humans and Pokémon can accomplish\n"
-	.string "together astounding.$"
+	.string "together is astounding.$"
 
 
 DewfordTown_Text_FoundryMiner4:	
@@ -217,9 +218,9 @@ DewfordTown_Text_FoundryNotAvailable:
 	.string "And the only way to repair it is with\n"
 	.string "a component that's manufactured in\l"
 	.string "Slateport City.\p"
-	.string "Say…\n"
-	.string "Could you go to Slateport and ask around\n"
-	.string "for it?\p"
+	.string "Say…\p"
+	.string "Could you go to Slateport and ask\n"
+	.string "around for it?\p"
 	.string "I'll let you use the furnace if you do me\n"
 	.string "this favor.$"
 

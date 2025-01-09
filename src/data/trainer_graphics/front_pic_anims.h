@@ -162,6 +162,10 @@ static const union AnimCmd *const sAnims_LeaderRoxanne[] ={
     sAnim_GeneralFrame0,
 };
 
+static const union AnimCmd *const sAnims_BogMan[] ={
+    sAnim_GeneralFrame0,
+};
+
 static const union AnimCmd *const sAnims_LeaderBrawly[] ={
     sAnim_GeneralFrame0,
 };
@@ -303,6 +307,10 @@ static const union AnimCmd *const sAnims_DevonEmployee[] ={
 };
 
 static const union AnimCmd *const sAnims_Engineer[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Scammers[] ={
     sAnim_GeneralFrame0,
 };
 
@@ -453,6 +461,7 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_ELITE_FOUR_GLACIA] = sAnims_EliteFourGlacia,
     [TRAINER_PIC_ELITE_FOUR_DRAKE] = sAnims_EliteFourDrake,
     [TRAINER_PIC_LEADER_ROXANNE] = sAnims_LeaderRoxanne,
+    [TRAINER_PIC_BOG_MAN] = sAnims_BogMan,
     [TRAINER_PIC_LEADER_BRAWLY] = sAnims_LeaderBrawly,
     [TRAINER_PIC_LEADER_WATTSON] = sAnims_LeaderWattson,
     [TRAINER_PIC_LEADER_FLANNERY] = sAnims_LeaderFlannery,
@@ -489,6 +498,7 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_SHELLY] = sAnims_Shelly,
     [TRAINER_PIC_DEVON_EMPLOYEE] = sAnims_DevonEmployee,
     [TRAINER_PIC_ENGINEER] = sAnims_Engineer,
+    [TRAINER_PIC_SCAMMERS] = sAnims_Scammers,
     [TRAINER_PIC_MINER] = sAnims_Miner,
     [TRAINER_PIC_SCIENTIST] = sAnims_Scientist,
     [TRAINER_PIC_WALLY] = sAnims_Wally,

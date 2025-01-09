@@ -1,5 +1,5 @@
 
-.set LOCALID_WANDAS_BF_OUTSIDE, 12
+.set LOCALID_WANDAS_BF_OUTSIDE, 8
 
 Route116_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route116_OnTransition
@@ -8,6 +8,7 @@ Route116_MapScripts::
 	.byte 0
 
 Route116_OnTransition:
+	call Route116_HandleTrainers
 	call_if_set FLAG_RECOVERED_DEVON_GOODS, Route116_EventScript_SetWandasBoyfriendPos
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_NORTH, AbnormalWeather_StartGroudonWeather
@@ -175,10 +176,14 @@ Route116_EventScript_WandasBoyfriendJumps::
 	playse SE_WALL_HIT
 	delay 4
 	msgbox Route116_Text_Greetings, MSGBOX_NPC
+	speakername Common_Name_Riley
+	msgbox Route116_Text_Riley, MSGBOX_NPC
 	applymovement LOCALID_WANDAS_BF_OUTSIDE, Route116_Movement_BfEntersCave
 	waitmovement 0
 	playse SE_EXIT
 	removeobject LOCALID_WANDAS_BF_OUTSIDE
+	clearflag FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT
+	setvar VAR_RUSTURF_TUNNEL_STATE, 2
 	setvar VAR_ROUTE116_STATE, 2
 	end
 
@@ -481,7 +486,7 @@ Route116_Text_MayISeeThoseGlasses:
 
 Route116_Text_NotWhatImLookingForMaybeTheyArentHere:
 	.string "Hmm…\n"
-	.string "These are BLACKGLASSES.\l"
+	.string "These are Black Glasses.\l"
 	.string "They're not what I'm looking for…\p"
 	.string "Maybe my glasses aren't around\n"
 	.string "here…$"
@@ -499,14 +504,12 @@ Route116_Text_NotWhatImLookingFor:
 	.string "You could have just told me so!$"
 
 Route116_Text_RouteSignRustboro:
-	.string "ROUTE 116\n"
-	.string "{LEFT_ARROW} RUSTBORO CITY$"
+	.string "Rustboro Hills\n"
+	.string "{LEFT_ARROW} Rustboro City$"
 
 Route116_Text_RusturfTunnelSign:
-	.string "RUSTURF TUNNEL\n"
-	.string "“Linking RUSTBORO and VERDANTURF\p"
-	.string "“The tunnel project has been\n"
-	.string "canceled.”$"
+	.string "Rusturf Tunnel\n"
+	.string "Linking Rustboro and Verdanturf$"
 
 Route116_Text_TunnelersRestHouse:
 	.string "TUNNELER'S REST HOUSE$"
@@ -539,9 +542,9 @@ Route116_Text_Engineer2:
 
 Route116_Text_Engineer3:
 	.string "Oh, this?\p"
-	.string "Why, this is PRESIDENT STONE's\n"
+	.string "Why, this is President Stone's\n"
 	.string "fancy new vacation house.\p"
-	.string "Yes, he does live in RUSTBORO\n"
+	.string "Yes, he does live in Rustboro\n"
 	.string "already.\p"
 	.string "But this area, you see, is just\n"
 	.string "for him.\p"
@@ -565,33 +568,37 @@ Route116_Text_Wait:
 	.string "Waaaaait!$"
 
 Route116_Text_Greetings:
-	.string "Greetings.\p"
+	.string "Hey, there.\n"
+	.string "You can call me Riley.\p"
 	.string "I will cut straight to\n"
-	.string "the chase.\p"
-	.string "I am but a humble BLACK BELT.\p"
-	.string "Not like the other ones you've met,\n"
-	.string "but a BLACK BELT regardless.\p"
-	.string "Anyway…\p"
-	.string "Me and my WANDA, we've had this dream\n"
+	.string "the chase.$"
+
+
+Route116_Text_Riley:
+	.string "Me and my Wanda, we've had this dream\n"
 	.string "for a while.\p"
+	.string "She lives in Verdanturf, you see.\p"
 	.string "We've been hoping to, eventually,\n"
 	.string "dig a hole in this cave.\p"
 	.string "That way, our aching hearts would\n"
 	.string "finally be connected.\p"
-	.string "We thought that with DEVON starting\n"
+	.string "We thought that with Devon starting\n"
 	.string "to drill, it could finally come true.\p"
 	.string "But the way they're doing it…\n"
-	.string "It's just not right, man.\p"
-	.string "They're displacing the POKéMON from\n"
+	.string "It's just not right.\p"
+	.string "They're displacing the Pokémon from\n"
 	.string "their habitat, scaring them…\p"
 	.string "To put it simply, I don't like it.\n"
 	.string "So here's the deal.\p"
 	.string "I saw what happened from up here.\p"
-	.string "A DEVON crook barged in and took old\n"
-	.string "MR. BRINEY's WINGULL as hostage.\p"
+	.string "A Devon grunt barged in and took old\n"
+	.string "Mr. Briney's Peeko as hostage.\p"
 	.string "I don't know if I can do much by\n"
 	.string "myself, but with you?\p"
 	.string "I've seen you fight.\n"
 	.string "You're a one-man army.\p"
 	.string "So, meet me inside.\n"
 	.string "We'll give him a lesson.$"
+
+Common_Name_Riley:
+	.string "Riley$"

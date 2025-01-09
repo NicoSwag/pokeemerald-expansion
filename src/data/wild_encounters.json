@@ -213,6 +213,36 @@
               }
             ]
           },
+          "rock_smash_mons": {
+            "encounter_rate": 30,
+            "mons": [
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              }
+            ]
+          },
           "fishing_mons": {
             "encounter_rate": 30,
             "mons": [
@@ -1303,63 +1333,63 @@
             "encounter_rate": 20,
             "mons": [
               {
-                "min_level": 11,
-                "max_level": 14,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_SCRAGGY"
               },
               {
-                "min_level": 11,
-                "max_level": 14,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_TIMBURR"
               },
               {
-                "min_level": 11,
-                "max_level": 14,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_SKITTY"
               },
               {
-                "min_level": 11,
-                "max_level": 14,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_SKITTY"
               },
               {
-                "min_level": 11,
-                "max_level": 14,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_POOCHYENA"
               },
               {
-                "min_level": 11,
-                "max_level": 14,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_POOCHYENA"
               },
               {
-                "min_level": 11,
-                "max_level": 14,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_TINKATINK"
               },
               {
-                "min_level": 11,
-                "max_level": 14,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_TINKATINK"
               },
               {
-                "min_level": 11,
-                "max_level": 14,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_CHARCADET"
               },
               {
-                "min_level": 11,
-                "max_level": 14,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_CHARCADET"
               },
               {
-                "min_level": 11,
-                "max_level": 14,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_CHARCADET"
               },
               {
-                "min_level": 11,
-                "max_level": 14,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_CHARCADET"
               }
             ]
@@ -1830,6 +1860,36 @@
               }
             ]
           },
+          "rock_smash_mons": {
+            "encounter_rate": 30,
+            "mons": [
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              }
+            ]
+          },
           "fishing_mons": {
             "encounter_rate": 0,
             "mons": [
@@ -1893,63 +1953,63 @@
             "encounter_rate": 20,
             "mons": [
               {
-                "min_level": 12,
-                "max_level": 15,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_NOIBAT"
               },
               {
-                "min_level": 12,
-                "max_level": 15,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_WHISMUR"
               },
               {
-                "min_level": 12,
-                "max_level": 15,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_NOIBAT"
               },
               {
-                "min_level": 12,
-                "max_level": 15,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_DRILBUR"
               },
               {
-                "min_level": 12,
-                "max_level": 15,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_DRILBUR"
               },
               {
-                "min_level": 12,
-                "max_level": 15,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_ARON"
               },
               {
-                "min_level": 12,
-                "max_level": 15,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_ARON"
               },
               {
-                "min_level": 12,
-                "max_level": 15,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_NOSEPASS"
               },
               {
-                "min_level": 12,
-                "max_level": 15,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_NOSEPASS"
               },
               {
-                "min_level": 12,
-                "max_level": 15,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_NOSEPASS"
               },
               {
-                "min_level": 12,
-                "max_level": 15,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_NOSEPASS"
               },
               {
-                "min_level": 12,
-                "max_level": 15,
+                "min_level": 10,
+                "max_level": 13,
                 "species": "SPECIES_NOSEPASS"
               }
             ]
@@ -12294,6 +12354,36 @@
               }
             ]
           },
+          "rock_smash_mons": {
+            "encounter_rate": 30,
+            "mons": [
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 15,
+                "species": "SPECIES_CACNEA"
+              }
+            ]
+          },
           "fishing_mons": {
             "encounter_rate": 0,
             "mons": [
@@ -12663,6 +12753,75 @@
                 "min_level": 5,
                 "max_level": 5,
                 "species": "SPECIES_NONE"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_PETALBURG_BOG",
+          "base_label": "gPetalburg_Bog0",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_WOOPER_PALDEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_YANMA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_WOOPER_PALDEA"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_SHROOMISH"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_SHROOMISH"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_PHANTUMP"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_PHANTUMP"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_CROAGUNK"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_CROAGUNK"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_CROAGUNK"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_CROAGUNK"
+              },
+              {
+                "min_level": 10,
+                "max_level": 13,
+                "species": "SPECIES_CROAGUNK"
               }
             ]
           }

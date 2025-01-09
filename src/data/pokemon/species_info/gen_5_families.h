@@ -1774,7 +1774,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_MOLD_BREAKER, ABILITY_NONE, ABILITY_SAND_RUSH},
+        .abilities = { ABILITY_MOLD_BREAKER, ABILITY_HYPER_DRILL, ABILITY_SAND_FORCE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Drilbur"),
@@ -1831,7 +1831,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD },
-        .abilities = { ABILITY_MOLD_BREAKER, ABILITY_NONE, ABILITY_SAND_RUSH},
+        .abilities = { ABILITY_MOLD_BREAKER, ABILITY_HYPER_DRILL, ABILITY_SAND_FORCE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Excadrill"),
@@ -3627,7 +3627,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
 #if P_FAMILY_SCRAGGY
     [SPECIES_SCRAGGY] =
     {
-        .baseHP        = 50,
+        .baseHP        = 60,
         .baseAttack    = 75,
         .baseDefense   = 70,
         .baseSpeed     = 50,
@@ -3642,7 +3642,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .evYield_Attack = 1,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_DRAGON},
-        .abilities = {ABILITY_GANGSTER, ABILITY_MOXIE, ABILITY_NONE},
+        .abilities = {ABILITY_SHED_SKIN, ABILITY_MOXIE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Scraggy"),
         .cryId = CRY_SCRAGGY,
@@ -3678,13 +3678,13 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Scraggy,
             gShinyOverworldPalette_Scraggy
         )
-        .evolutions = EVOLUTION({EVO_LEVEL, 39, SPECIES_SCRAFTY}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_SCRAFTY}),
     },
 
     [SPECIES_SCRAFTY] =
     {
-        .baseHP        = 65,
-        .baseAttack    = 90,
+        .baseHP        = 85,
+        .baseAttack    = 100,
         .baseDefense   = 115,
         .baseSpeed     = 60,
         .baseSpAttack  = 45,
@@ -3699,7 +3699,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_DRAGON},
-        .abilities = {ABILITY_GANGSTER, ABILITY_MOXIE, ABILITY_NONE},
+        .abilities = {ABILITY_SHED_SKIN, ABILITY_MOXIE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Scrafty"),
         .cryId = CRY_SCRAFTY,

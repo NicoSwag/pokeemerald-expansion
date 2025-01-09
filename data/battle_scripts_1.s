@@ -5552,6 +5552,7 @@ BattleScript_FaintTarget::
 	cleareffectsonfaint BS_TARGET
 	tryactivatefellstinger BS_ATTACKER
 	tryactivatesoulheart
+	tryactivatescavenger BS_ATTACKER
 	tryactivatereceiver BS_TARGET
 	tryactivatemoxie BS_ATTACKER
 	tryactivatecometpunch BS_ATTACKER         @ and chilling neigh, as one ice rider
@@ -7361,6 +7362,10 @@ BattleScript_PoisonHealActivates::
 	datahpupdate BS_ATTACKER
 	end2
 
+BattleScript_PoisonHealActivatesPollution::
+	call BattleScript_AbilityHpHeal
+	end3
+
 BattleScript_SleepHeal::
 	printstring STRINGID_SLEEPHEALHPUP
 	waitmessage B_WAIT_TIME_LONG
@@ -7869,6 +7874,16 @@ BattleScript_RainDishActivates::
 	call BattleScript_AbilityHpHeal
 	end3
 
+BattleScript_ScavengerActivates::
+	copybyte gBattlerAbility, gBattlerAttacker	
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSXRESTOREDHPALITTLE2
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	return
+
 BattleScript_InductiveActivates::
 	call BattleScript_AbilityHpHeal
 	end3
@@ -7968,6 +7983,16 @@ BattleScript_SandSpitActivates::
 	playanimation BS_BATTLER_0, B_ANIM_SANDSTORM_CONTINUES
 	call BattleScript_ActivateWeatherAbilities
 	return
+
+BattleScript_HarvestBellActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_STARTEDTORAIN
+	waitstate
+	playanimation BS_BATTLER_0, B_ANIM_RAIN_CONTINUES
+	call BattleScript_ActivateWeatherAbilities
+	return
+
 
 BattleScript_ShedSkinActivates::
 	call BattleScript_AbilityPopUp
@@ -8636,6 +8661,19 @@ BattleScript_ElectricTerrainContinues::
 	playanimation BS_ATTACKER, B_ANIM_ELECTRIC_TERRAIN
 	end2
 
+BattleScript_GrassyTerrainContinues::
+	setbyte gBattleCommunication, 0
+	copyarraywithindex gBattlerAttacker, gBattlerByTurnOrder, gBattleCommunication, 1
+	printstring STRINGID_NATUREBLOOMING
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	addbyte gBattleCommunication, 1
+	bicword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	jumpifword CMP_COMMON_BITS, gFieldStatuses, STATUS_FIELD_TERRAIN_PERMANENT, BattleScript_GrassyTerrainEnd
+	BattleScript_GrassyTerrainEnd:
+	playanimation BS_ATTACKER, B_ANIM_GRASSY_TERRAIN
+	end2
+
 BattleScript_PsychicTerrainContinues::
 	setbyte gBattleCommunication, 0
 	copyarraywithindex gBattlerAttacker, gBattlerByTurnOrder, gBattleCommunication, 1
@@ -8762,7 +8800,7 @@ BattleScript_TargetsStatWasMaxedOut::
 	statbuffchange STAT_CHANGE_NOT_PROTECT_AFFECTED | MOVE_EFFECT_CERTAIN, NULL
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	printstring STRINGID_TARGETSSTATWASMAXEDOUT
+	printstring STRINGID_TARGETABILITYSTATRAISE
 	waitmessage B_WAIT_TIME_LONG
 	return
 
@@ -8841,6 +8879,8 @@ BattleScript_RaiseStatOnFaintingTarget::
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_RaiseStatOnFaintingTarget_End:
 	return
+
+
 
 BattleScript_AttackerAbilityStatRaise::
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_AttackerAbilityStatRaise_End
@@ -10617,10 +10657,46 @@ BattleScript_EffectPiercingWail::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_ANY, BattleScript_EffectPiercingWail_RemoveWeather
+	goto BattleScript_MoveEnd
+	BattleScript_EffectPiercingWail_RemoveWeather:
 	removeweather
+	printstring STRINGID_WEATHERREMOVED
 	call BattleScript_ActivateWeatherAbilities
 	goto BattleScript_MoveEnd
 
+BattleScript_EffectRemoveWeatherTerrain::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_TARGET
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_ANY, BattleScript_EffectRemoveWeatherTerrain_RemoveWeather
+	goto BattleScript_EffectRemoveWeatherTerrain_Continue
+	BattleScript_EffectRemoveWeatherTerrain_RemoveWeather:
+	removeweather
+	printstring STRINGID_WEATHERREMOVED
+	BattleScript_EffectRemoveWeatherTerrain_Continue:
+	jumpifhalfword CMP_COMMON_BITS, gFieldStatuses, STATUS_FIELD_TERRAIN_ANY, BattleScript_EffectRemoveWeatherTerrain_RemoveTerrain
+	goto BattleScript_MoveEnd
+	BattleScript_EffectRemoveWeatherTerrain_RemoveTerrain:
+	removeterrain
+	printstring STRINGID_FIELDEFFECTSREMOVED
+	goto BattleScript_MoveEnd
 
 
 

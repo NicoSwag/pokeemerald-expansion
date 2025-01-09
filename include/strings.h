@@ -640,6 +640,7 @@ extern const u8 gText_Exit[];
 extern const u8 gText_Easy[];
 extern const u8 gText_Hard[];
 extern const u8 gText_Erm[];
+extern const u8 gText_What[];
 extern const u8 gText_1F[];
 extern const u8 gText_2F[];
 extern const u8 gText_3F[];
@@ -3222,6 +3223,8 @@ extern const u8 gText_TM14[];
 extern const u8 gText_TM15[];
 extern const u8 gText_TM16[];
 extern const u8 gText_TM17[];
+extern const u8 gText_TM18[];
+
 
 // Exp. Share
 extern const u8 gText_ExpShareOn[];

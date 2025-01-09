@@ -91,7 +91,7 @@ EventScript_PkmnCenterNurse_GiveHealingItems::
 EventScript_PkmnCenterNurse_GiveHealingItemsStoneBadge::
 	additem ITEM_LAVA_COOKIE, 5
 	additem ITEM_SUPER_POTION, 10
-	additem ITEM_REVIVE, 1
+	additem ITEM_REVIVE, 3
 	goto EventScript_PkmnCenterNurse_DoneGivingMainItems
 
 EventScript_PkmnCenterNurse_GiveOranBerries::

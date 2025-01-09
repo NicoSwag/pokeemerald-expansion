@@ -4016,6 +4016,11 @@ static u8 CreateRockClimbBlob(void)
     return spriteId;
 }
 
+
+
+
+
+
 bool8 (*const sRockClimbFieldEffectFuncs[])(struct Task *, struct ObjectEvent *) =
 {
     [STATE_ROCK_CLIMB_INIT]          = RockClimb_Init,
@@ -4091,12 +4096,16 @@ static bool8 RockClimb_JumpOnRockClimbBlob(struct Task *task, struct ObjectEvent
         gFieldEffectArguments[0] = task->tDestX;
         gFieldEffectArguments[1] = task->tDestY;
         gFieldEffectArguments[2] = gPlayerAvatar.objectEventId;
-        objectEvent->fieldEffectSpriteId = CreateRockClimbBlob();
+        objectEvent->fieldEffectSpriteId = FieldEffectStart(FLDEFF_SURF_BLOB);
         task->tState++;
     }
     
     return FALSE;
 }
+
+
+
+
 
 static bool8 RockClimb_WaitJumpOnRockClimbBlob(struct Task *task, struct ObjectEvent *objectEvent)
 {

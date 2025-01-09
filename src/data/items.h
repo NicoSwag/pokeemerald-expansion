@@ -10664,7 +10664,7 @@ const struct Item gItemsInfo[] =
     [ITEM_TM_PLAY_ROUGH] =
     {
         .name = _("TM12"),
-        .price = 5000,
+        .price = 6000,
         .description = COMPOUND_STRING(
             "Play roughs with\n"
             "the foe. May lower\n"
@@ -10751,19 +10751,19 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_REST,
     },
 
-    [ITEM_TM_RAIN_DANCE] =
+    [ITEM_TM_VENOSHOCK] =
     {
         .name = _("TM18"),
-        .price = 2000,
+        .price = 4000,
         .description = COMPOUND_STRING(
-            "Raises the power of\n"
-            "Water-type moves\n"
-            "for 5 turns."),
+            "Does Double damage\n"
+            "if the foe is\n"
+            "poisoneds."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_RAIN_DANCE,
+        .secondaryId = MOVE_VENOSHOCK,
     },
 
     [ITEM_TM_GIGA_DRAIN] =

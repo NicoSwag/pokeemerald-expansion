@@ -497,7 +497,7 @@ Route105_Text_JosuePostBattle:
 	.string "match than the sea.$"
 
 Route106_Text_ElliotIntro:
-	.string "You can find cool POKéMON by fishing\n"
+	.string "You can find cool Pokémon by fishing\n"
 	.string "in the rock pools!\p"
 	.string "Watch this!$"
 
@@ -553,12 +553,35 @@ Route106_Text_KylaIntro:
 	.string "Are you one of them?$"
 
 Route106_Text_KylaDefeated:
-	.string "Ah, no…\p"
+	.string "Ah, no…\n"
 	.string "You're just another kid.$"
 
 Route106_Text_KylaPostBattle:
 	.string "Apologies, I can't see very well.\n"
 	.string "I forgot my glasses home today.$"
+
+Route106_Text_KrystaIntro:
+	.string "I'm runnin'!\n"
+	.string "I'm swimmin'!\l"
+	.string "I'm bikin'!$"
+
+Route106_Text_KrystaDefeated:
+	.string "This is what the triathlon\p"
+	.string "is all about!$"
+
+Route106_Text_KrystaPostBattle:
+	.string "I choose my Pokémon to complement\n"
+	.string "my athletic prowess.$"
+
+Route106_Text_KassandraIntro:
+	.string "Kyaaaaaa!$"
+
+Route106_Text_KassandraDefeated:
+	.string "You spooked me!$"
+
+Route106_Text_KassandraPostBattle:
+	.string "Don't sneak up on people while\n"
+	.string "they're working!$"
 
 Route107_Text_DarrinIntro:
 	.string "Yawn…\p"
@@ -2178,7 +2201,7 @@ Route116_Text_WyllDefeat:
 	.string "yourself…$"
 
 Route116_Text_WyllPostBattle:
-	.string "What? The guy at the entrance\n"
+	.string "What? The guard at the entrance\n"
 	.string "gave you permission?\p"
 	.string "I guess you can stay, then.$"
 
@@ -2225,14 +2248,13 @@ Route116_Text_JerryPostRematch:
 	.string "If I don't, ROXANNE will be steamed.$"
 
 Route116_Text_KarenIntro:
-	.string "Hello, my name is KARL.\n"
+	.string "Hello.\n"
 	.string "Please, go away.$"
 
 Route116_Text_KarenDefeat:
 	.string "Oh no.$"
 
 Route116_Text_KarenPostBattle:
-	.string "Hello, my name is KARL.\p"
 	.string "You can pass, but I do not\n"
 	.string "like it.$"
 
@@ -2285,14 +2307,14 @@ Route116_Text_DawsonPostBattle:
 	.string "I'll have to call my stylist now!$"
 
 Route116_Text_DevanIntro:
-	.string "We'll shock you hard!$"
+	.string "Prepare for trouble!$"
 
 Route116_Text_DevanDefeat:
 	.string "Aiyiyi!\n"
 	.string "No contest at all!$"
 
 Route116_Text_DevanPostBattle:
-	.string "I should try different POKéMON\n"
+	.string "I should try different Pokémon\n"
 	.string "types, that's what I ought to do.$"
 
 Route116_Text_JohnsonIntro:

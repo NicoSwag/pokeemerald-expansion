@@ -341,7 +341,7 @@ DewfordTown_Hall_Text_PlayRough:
 
 DewfordTown_Hall_Text_Tch:
 	.string "…Tch.\p"
-	.string "A million curses on your, and your\n"
+	.string "A million curses on you, and your\n"
 	.string "family, and your children, for a hundred\l"
 	.string "generation henceforth.$"
 
@@ -360,7 +360,7 @@ DewfordTown_Hall_Text_Eviolite:
 DewfordTown_Hall_Text_CantImagineLifeWithoutTrend:
 	.string "Personally, I could not associate\n"
 	.string "with people who use elemental stones.\p"
-	.string "I've heard that they can make POKéMON\n"
+	.string "I've heard that they can make Pokémon\n"
 	.string "evolve with some horrid radiation!\p"
 	.string "It's just not natural!$"
 
@@ -406,13 +406,13 @@ DewfordTown_Hall_Text_IsTrendMorePopularAcrossSea:
 
 DewfordTown_Hall_Text_CollectTrendMerchandise:
 	.string "Hi! I'm the president of this\n"
-	.string "FAN CLUB!\p"
+	.string "Fan Club!\p"
 	.string "Yeah, that's right!\p"
 	.string "Oh, the man at the end of the table?\n"
 	.string "That's just his favorite spot.\p"
 	.string "Anyway!\p"
 	.string "This club is dedicated to the beauty of\n"
-	.string "unevolved POKéMON!\p"
+	.string "unevolved Pokémon!\p"
 	.string "They're not only cute, but they can\n"
 	.string "be strong, too!\p"
 	.string "Here's a gift to celebrate our meeting!$"
@@ -539,11 +539,11 @@ DewfordTown_Hall_Text_LoveSludgeBombButTrendInToo:
 	.string "called Eviolite?\p"
 	.string "Allegedly, it makes unevolved Pokémon\n"
 	.string "super strong.\p"
-	.string "Such power… I can only dream about even\n"
-	.string "touching a potent artefact like that…$"
+	.string "Such power… I can only dream about\n"
+	.string "a potent artefact like that…$"
 
 DewfordTown_Hall_Text_Wynaut:
-	.string "Oh! A rare POKéMON!\p"
+	.string "Oh! A rare Pokémon!\p"
 	.string "…Actually, it's just a doll.$"
 
 DewfordTown_Hall_Text_ILoveDolls:
@@ -567,7 +567,7 @@ DewfordTown_Hall_Text_GiveSubstitute:
 
 DewfordTown_Hall_Text_Unevolved:
 	.string "Some of the club members are a bit…\n"
-	.string "Extra.\p"
+	.string "Overenthusiastic.\p"
 	.string "However, it is true that some unevolved\n"
 	.string "Pokémon can be as strong as their\l"
 	.string "evolution, if not more.\p"
@@ -584,7 +584,7 @@ DewfordTown_Text_ShowMeEmeroll:
 	.string "a Berry Master, yes.\p"
 	.string "You see, there is something I am curious\n"
 	.string "about.\p"
-	.string "Those emerald-looking Pokémon in the mines,\n"
+	.string "Those emerald Pokémon in the mines,\n"
 	.string "they look similar to ones in my region.\p"
 	.string "I would like to see one, yes.\n"
 	.string "I will reward you, if you will help.$"

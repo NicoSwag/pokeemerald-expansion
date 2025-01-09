@@ -785,6 +785,8 @@ void RockSmashWildEncounter(void)
     }
 }
 
+
+
 bool8 SweetScentWildEncounter(void)
 {
     s16 x, y;

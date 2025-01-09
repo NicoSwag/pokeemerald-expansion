@@ -23,6 +23,13 @@ EventScript_CutTreeDown:: @ fallthrough
 	applymovement VAR_LAST_TALKED, Movement_CutTreeDown
 	waitmovement 0
 	removeobject VAR_LAST_TALKED
+	special RockSmashWildEncounter
+	goto_if_eq VAR_RESULT, FALSE, EventScript_EndCut
+	waitstate
+	releaseall
+	end
+
+EventScript_EndCut::
 	releaseall
 	end
 

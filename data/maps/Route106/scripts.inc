@@ -19,6 +19,15 @@ Route106_EventScript_Kyla::
 	msgbox Route106_Text_KylaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route106_EventScript_Krysta::
+	trainerbattle_single TRAINER_KRYSTA, Route106_Text_KrystaIntro, Route106_Text_KrystaDefeated
+	msgbox Route106_Text_KrystaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route106_EventScript_Kassandra::
+	trainerbattle_single TRAINER_KASSANDRA, Route106_Text_KassandraIntro, Route106_Text_KassandraDefeated
+	msgbox Route106_Text_KassandraPostBattle, MSGBOX_AUTOCLOSE
+	end
 
 Route106_EventScript_Ellen::
 	trainerbattle_single TRAINER_ELLEN, Route106_Text_EllenIntro, Route106_Text_EllenDefeated
@@ -31,7 +40,7 @@ Route106_EventScript_Christina::
 	end
 
 Route106_EventScript_Elliot::
-	trainerbattle_single TRAINER_ELLIOT_1, Route106_Text_ElliotIntro, Route106_Text_ElliotDefeated, Route106_EventScript_ElliotRegisterMatchCallAfterBattle
+	trainerbattle_single TRAINER_ELLIOT_1, Route106_Text_ElliotIntro, Route106_Text_ElliotDefeated
 	msgbox Route106_Text_ElliotPostBattle, MSGBOX_DEFAULT
 	release
 	end

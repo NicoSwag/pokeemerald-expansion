@@ -561,7 +561,7 @@
       "flag": "FLAG_HIDE_PEEKO_EVENT"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WINGULL",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WINGULL)",
       "x": 35,
       "y": 8,
       "elevation": 0,

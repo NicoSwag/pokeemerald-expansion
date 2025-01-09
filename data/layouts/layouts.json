@@ -114,7 +114,7 @@
     {
       "id": "LAYOUT_DEWFORD_TOWN",
       "name": "DewfordTown_Layout",
-      "width": 36,
+      "width": 42,
       "height": 42,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Dewford",
@@ -4790,6 +4790,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/RustboroCity_Toilet/border.bin",
       "blockdata_filepath": "data/layouts/RustboroCity_Toilet/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEWFORD_TOWN_HOUSE4",
+      "name": "DewfordTown_House4_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/DewfordTown_House4/border.bin",
+      "blockdata_filepath": "data/layouts/DewfordTown_House4/map.bin"
     }
   ]
 }

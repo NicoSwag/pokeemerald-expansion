@@ -1080,6 +1080,7 @@ SECTIONS {
         sound/songs/midi/mus_contest_winner.o(.rodata);
         sound/songs/midi/mus_contest.o(.rodata);
         sound/songs/midi/mus_encounter_magma.o(.rodata);
+        sound/songs/midi/mus_encounter_devon.o(.rodata);
         sound/songs/midi/mus_intro_battle.o(.rodata);
         sound/songs/midi/mus_abnormal_weather.o(.rodata);
         sound/songs/midi/mus_weather_groudon.o(.rodata);

@@ -198,7 +198,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     }
     if (input->pressedAButton && TrySetupDiveDownScript() == TRUE)
         return TRUE;
-    if (input->pressedStartButton)
+    if (input->pressedStartButton && !FlagGet(FLAG_CLIMBING))
     {
         PlaySE(SE_WIN_OPEN);
         ShowStartMenu();

@@ -3832,7 +3832,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
 
                     if (B_RARE_CANDY_CAP && B_EXP_CAP_TYPE == EXP_CAP_HARD)
                     {
-                        u32 currentLevelCap = GetLevelCeiling();
+                        u32 currentLevelCap = GetLevelCeilingPlusOne();
                         if (dataUnsigned > gExperienceTables[gSpeciesInfo[species].growthRate][currentLevelCap])
                             dataUnsigned = gExperienceTables[gSpeciesInfo[species].growthRate][currentLevelCap];
                     }
@@ -5605,28 +5605,21 @@ u8 GetMoveTutorMoves(struct Pokemon *mon, u16 *moves)
     switch (moveTutorType) {
 
     case MOVE_TUTOR_EGG_MOVES:
-        eggSpecies = species;
-        numEggMoves = GetEggMovesSpecies(eggSpecies, eggMoves);
+        numEggMoves = GetEggMovesSpecies(species, eggMoves);
 
 // i is the number of egg moves we've iterated through
 // j is for checking that the move is not learned
 // k is for checking that the move is not in the list already
-        for (i = 0; i < EGG_MOVES_ARRAY_COUNT; i++)
-        {
-           for (j = 0; j < MAX_MON_MOVES && learnedMoves[j] != eggMoves[i]; j++)
-               ;
-
-           if (j == MAX_MON_MOVES)
-           {
-               for (k = 0; k < numMoves && moves[k] != eggMoves[i]; k++)
-                   ;
-
-               if (k == numMoves)
-                   moves[numMoves++] = eggMoves[i];
-            }
-        }
-        break;
+        
+        for (i=0; i < numEggMoves; i++)
+    {
+        moves[numMoves++] = eggMoves[i];
+        numMoves++;
     }
+        
+        break;
+        }
+
     if(species == SPECIES_EEVEE)
         numMoves--;
     return (numMoves);
@@ -5692,14 +5685,18 @@ u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves)
 
     return numMoves;
     case MOVE_TUTOR_EGG_MOVES:
-        eggSpecies = GetEggSpecies(species);
-        numEggMoves = GetEggMoves(eggSpecies, eggMoves);
+
+    for (i = 0; i < MAX_MON_MOVES; i++)
+        learnedMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, 0);
+        
+    numEggMoves = GetEggMoves(species, eggMoves);
 
 // i is the number of egg moves we've iterated through
 // j is for checking that the move is not learned
 // k is for checking that the move is not in the list already
         for (i = 0; i < EGG_MOVES_ARRAY_COUNT; i++)
         {
+           
            for (j = 0; j < MAX_MON_MOVES && learnedMoves[j] != eggMoves[i]; j++)
                ;
 
@@ -5711,6 +5708,8 @@ u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves)
                if (k == numMoves)
                    moves[numMoves++] = eggMoves[i];
             }
+        else
+            numEggMoves--;
         }
         numEggMoves--;
         return numEggMoves;

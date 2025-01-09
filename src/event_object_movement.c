@@ -536,6 +536,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_CORPHISH               0x1147
 #define OBJ_EVENT_PAL_TAG_MAKUHITA               0x1148
 #define OBJ_EVENT_PAL_TAG_SLAKOTH               0x1149
+#define OBJ_EVENT_PAL_TAG_BOG_MAN           0x114A
 #define OBJ_EVENT_PAL_TAG_EEVEE               0x1150
 #define OBJ_EVENT_PAL_TAG_OBSTAGOON               0x1151
 #define OBJ_EVENT_PAL_TAG_CUT_TREE              0x1152
@@ -546,6 +547,8 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_UMBRELLA_LADY            0x1157
 #define OBJ_EVENT_PAL_TAG_STARYU            0x1158
 #define OBJ_EVENT_PAL_TAG_SHIINOTIC            0x1159
+#define OBJ_EVENT_PAL_TAG_SCAMMER            0x1160
+
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -620,6 +623,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
    {gObjectEventPal_DarkSkin2,              OBJ_EVENT_PAL_TAG_DARK_SKIN_2},
    {gObjectEventPal_RichBoy,              OBJ_EVENT_PAL_TAG_RICH_BOY},
    {gObjectEventPal_DarkSkin3,              OBJ_EVENT_PAL_TAG_DARK_SKIN_3},
+   {gObjectEventPal_BogMan,              OBJ_EVENT_PAL_TAG_BOG_MAN},
    {gObjectEventPal_DarkSkin4,              OBJ_EVENT_PAL_TAG_DARK_SKIN_4},
    {gObjectEventPal_PitchBlack,              OBJ_EVENT_PAL_TAG_PITCH_BLACK},
     {gObjectEventPal_Aqua,              OBJ_EVENT_PAL_TAG_AQUA},
@@ -630,6 +634,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Maxie,              OBJ_EVENT_PAL_TAG_MAXIE},
     {gObjectEventPal_Archie,              OBJ_EVENT_PAL_TAG_ARCHIE},
     {gObjectEventPal_Engineer,              OBJ_EVENT_PAL_TAG_ENGINEER},
+    {gObjectEventPal_Scammer,              OBJ_EVENT_PAL_TAG_SCAMMER},
     {gObjectEventPal_Umbrella_Lady,              OBJ_EVENT_PAL_TAG_UMBRELLA_LADY},
     {gObjectEventPal_Staryu,              OBJ_EVENT_PAL_TAG_STARYU},
     {gObjectEventPal_Shiinotic,              OBJ_EVENT_PAL_TAG_SHIINOTIC},

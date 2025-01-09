@@ -1374,3 +1374,6 @@ $(MID_SUBDIR)/mus_route_238.s: %.s: %.mid
 
 $(MID_SUBDIR)/mus_ship_loop.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G127 -V075 -P4
+
+$(MID_SUBDIR)/mus_encounter_devon.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5

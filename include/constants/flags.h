@@ -707,16 +707,16 @@
 #define FLAG_SAFETY_GOGGLES  0x298 // Unused Flag
 #define FLAG_IN_SHOP  0x299 // Unused Flag
 #define FLAG_HIDE_ROXANNE  0x29A // Unused Flag
-#define FLAG_UNUSED_0x29B  0x29B // Unused Flag
-#define FLAG_UNUSED_0x29C  0x29C // Unused Flag
-#define FLAG_UNUSED_0x29D  0x29D // Unused Flag
-#define FLAG_UNUSED_0x29E  0x29E // Unused Flag
-#define FLAG_UNUSED_0x29F  0x29F // Unused Flag
-#define FLAG_UNUSED_0x2A0  0x2A0 // Unused Flag
-#define FLAG_UNUSED_0x2A1  0x2A1 // Unused Flag
-#define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
-#define FLAG_UNUSED_0x2A3  0x2A3 // Unused Flag
-#define FLAG_UNUSED_0x2A4  0x2A4 // Unused Flag
+#define FLAG_HIDE_BOG_MAN_STANDING  0x29B // Unused Flag
+#define FLAG_HIDE_BOG_MAN_SLEEPING  0x29C // Unused Flag
+#define FLAG_BOG_SKY_FRAGMENT  0x29D // Unused Flag
+#define FLAG_BOG_POISON_BARB  0x29E // Unused Flag
+#define FLAG_PETALBURG_BOG_CLAW_FOSSIL  0x29F // Unused Flag
+#define FLAG_PETALBURG_BOG_ROOT_FOSSIL  0x2A0 // Unused Flag
+#define FLAG_HIDE_CLOBBOPUS  0x2A1 // Unused Flag
+#define FLAG_HIDE_POOCHYENA  0x2A2 // Unused Flag
+#define FLAG_HIDE_BRAWLY_DEWFORD  0x2A3 // Unused Flag
+#define FLAG_TALKED_TO_BRINEY_DEWFORD 0x2A4 // Unused Flag
 #define FLAG_UNUSED_0x2A5  0x2A5 // Unused Flag
 #define FLAG_UNUSED_0x2A6  0x2A6 // Unused Flag
 #define FLAG_UNUSED_0x2A7  0x2A7 // Unused Flag
@@ -879,7 +879,7 @@
 #define FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER                0x340
 #define FLAG_HIDE_GRANITE_CAVE_STEVEN                               0x341
 #define FLAG_HIDE_ROUTE_128_STEVEN                                  0x342
-#define FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY                       0x343
+#define FLAG_HIDE_SLATEPORT_CITY_SCAMMERS                       0x343
 #define FLAG_HIDE_BATTLE_FRONTIER_RECEPTION_GATE_SCOTT              0x344
 #define FLAG_HIDE_ROUTE_110_BIRCH                                   0x345
 #define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_POKEBALL_CHIKORITA     0x346
@@ -1225,7 +1225,7 @@
 #define FLAG_HIDE_FIRST_SHADOW                                       0x497 // Unused Flag
 #define FLAG_MT_KIRIKIRI_SIDE_FRAGMENT                                          0x498 // Unused Flag
 #define FLAG_ITEM_ROUTE_102_NUGGET                                           0x499 // Unused Flag
-#define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
+#define FLAG_RECEIVED_VENOSHOCK                                           0x49A // Unused Flag
 #define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
 #define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
 #define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag

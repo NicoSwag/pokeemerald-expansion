@@ -145,6 +145,8 @@
 #define METATILE_Dewford_Door_BattleTower  0x25D
 
 // gTileset_DewfordGym
+#define METATILE_DewfordGym_DoorDummy        0x272
+#define METATILE_DewfordGym_DoorReal         0x275
 #define METATILE_DewfordGym_NonSlipperyWall  0x268
 #define METATILE_DewfordGym_SlipperyWall     0x24D
 

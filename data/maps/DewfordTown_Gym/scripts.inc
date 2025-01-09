@@ -294,8 +294,10 @@ DewfordTown_Gym_Text_TakaoDefeat:
 	.string "Not enough power…$"
 
 DewfordTown_Gym_Text_TakaoPostBattle:
-	.string "Your skill overcame my strength!\n"
-	.string "Your technique is commendable!$"
+	.string "You gotta watch out for Brawly's\n"
+	.string "Azumarill, man.\p"
+	.string "You think you got it in the bag with\n"
+	.string "a Grass move, but it just absorbs it!$"
 
 DewfordTown_Gym_Text_JocelynIntro:
 	.string "There's no need for Brawly to be\n"
@@ -322,8 +324,9 @@ DewfordTown_Gym_Text_LauraDefeat:
 	.string "I lost!$"
 
 DewfordTown_Gym_Text_LauraPostBattle:
-	.string "If you keep falling down, you'll\n"
-	.string "never get to reach Brawly.$"
+	.string "Be careful about Brawly's Makuhita.\n"
+	.string "He's gonna knock your socks off!\p"
+	.string "As well as your items.$"
 
 DewfordTown_Gym_Text_LilithIntro:
 	.string "Ufufu…\n"
@@ -334,8 +337,15 @@ DewfordTown_Gym_Text_LilithDefeat:
 	.string "I don't want to know you!$"
 
 DewfordTown_Gym_Text_LilithPostBattle:
-	.string "You deserve to fall down and end up\n"
-	.string "back at the entrance again!$"
+	.string "Brawly's signature move is Storm\n"
+	.string "Throw.\p"
+	.string "It's a Fighting-Type move that\n"
+	.string "is normally nothing special.\p"
+	.string "But if it's used when it's raining,\n"
+	.string "it becomes a critical hit.\p"
+	.string "It ignores all protection, as well.\p"
+	.string "You better have a way to get rid of rain,\n"
+	.string "or be ready to take a big hit!$"
 
 DewfordTown_Gym_Text_BrendenIntro:
 	.string "I'll show you the gumption of\n"
@@ -346,8 +356,12 @@ DewfordTown_Gym_Text_BrendenDefeat:
 	.string "It's not like me to lose this way!$"
 
 DewfordTown_Gym_Text_BrendenPostBattle:
-	.string "Oh, aye! You're worthy of seeing\n"
-	.string "our Gym Leader.$"
+	.string "Brawly starts out with Makuhita and\n"
+	.string "Meditite.\p"
+	.string "Then he could send either Mankey or\n"
+	.string "Azumarill.\p"
+	.string "But he will always save Clobbopus for\n"
+	.string "last.$"
 
 DewfordTown_Gym_Text_CristianIntro:
 	.string "If you mean to pass, it has to be\n"
@@ -358,8 +372,11 @@ DewfordTown_Gym_Text_CristianDefeat:
 	.string "Vastly overpowered!$"
 
 DewfordTown_Gym_Text_CristianPostBattle:
-	.string "You win!\n"
-	.string "Go after that BADGE!$"
+	.string "Need a hint?\n"
+	.string "Fine, I can give it to you.\p"
+	.string "Brawly's big into surfing.\p"
+	.string "He may be a Fighting expert, but\n"
+	.string "he also carries Water types with him.\p"
 
 DewfordTown_Gym_Text_BrawlyIntro:
 	.string "I'm BRAWLY!\n"

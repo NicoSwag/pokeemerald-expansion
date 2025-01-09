@@ -101,24 +101,24 @@ Route104_MrBrineysHouse_EventScript_Peeko::
 
 Route104_MrBrineysHouse_Text_WaitUpPeeko:
 	.string "Hold on, lass!\n"
-	.string "Wait up, PEEKO!$"
+	.string "Wait up, Peeko!$"
 
 Route104_MrBrineysHouse_Text_ItsYouLetsSailToDewford:
 	.string "Hm? Yer {PLAYER}{KUN}!\n"
-	.string "You saved me darling PEEKO!\l"
+	.string "You saved me darling Peeko!\l"
 	.string "We owe so much to ye!\p"
 	.string "What's that?\n"
 	.string "Ye want to sail with me?\p"
 	.string "Hmhm…\p"
-	.string "Certainly, what you're asking is\n"
+	.string "Certainly, what yer asking is\n"
 	.string "no problem at all.\p"
 	.string "Ye come to the right man!\n"
-	.string "We'll set sail for DEWFORD.$"
+	.string "We'll set sail for Dewford.$"
 
 Route104_MrBrineysHouse_Text_SetSailForDewford:
-	.string "DEWFORD it is, then!\p"
+	.string "Dewford it is, then!\p"
 	.string "Anchors aweigh!\n"
-	.string "PEEKO, we're setting sail, me darling!$"
+	.string "Peeko, we're setting sail, me darling!$"
 
 Route104_MrBrineysHouse_Text_DeclineDeliverySail:
 	.string "Is that so?\n"
@@ -131,14 +131,14 @@ Route104_MrBrineysHouse_Text_NeedToMakeDeliveriesSailToDewford:
 	.string "I know exactly what ye want to say!\p"
 	.string "What ye need me to do is no problem\n"
 	.string "at all--I'm the man for the job!\p"
-	.string "We'll set sail for DEWFORD.$"
+	.string "We'll set sail for Dewford.$"
 
 Route104_MrBrineysHouse_Text_NeedToDeliverPackageSailToDewford:
 	.string "Ahoy!\n"
 	.string "I know exactly what ye want to say!\p"
 	.string "What you need me to do is no problem\n"
 	.string "at all--I'm the man for the job!\p"
-	.string "We'll set sail for DEWFORD.$"
+	.string "We'll set sail for Dewford.$"
 
 Route104_MrBrineysHouse_Text_WhereAreWeBound:
 	.string "Ahoy!\n"
@@ -147,7 +147,7 @@ Route104_MrBrineysHouse_Text_WhereAreWeBound:
 
 Route104_MrBrineysHouse_Text_TellMeWheneverYouWantToSail:
 	.string "Is that so?\n"
-	.string "Well, PEEKO owes her life to ye.\p"
+	.string "Well, Peeko owes her life to ye.\p"
 	.string "Ye just go on and tell me whenever\n"
 	.string "ye want to set sail!$"
 

@@ -5,8 +5,8 @@
 .set LOCALID_COOK, 6
 .set LOCALID_OLD_WOMAN, 7
 .set LOCALID_GIRL, 8
-.set LOCALID_TY, 9
-.set LOCALID_GABBY, 10
+.set LOCALID_SCAMMER_2, 9
+.set LOCALID_SCAMMER_1, 10
 .set LOCALID_CAPT_STERN, 11
 .set LOCALID_DRAKE, 26
 .set LOCALID_ENGINEER, 29
@@ -278,7 +278,6 @@ SlateportCity_OnTransition:
 	end
 
 SlateportCity_EventScript_EnterSlateport::
-	setflag FLAG_VISITED_SLATEPORT_CITY
 	setvar VAR_CONTEST_HALL_STATE, 0
 	setflag FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER
 	return
@@ -814,60 +813,6 @@ SlateportCity_Pokemart_PowerTMs:
 
 @ Scene with Capt Sterns interview and Team Aqua announcing plans to steal Submarine
 SlateportCity_EventScript_CaptStern::
-	lockall
-	msgbox SlateportCity_Text_SternMoveAheadWithExploration, MSGBOX_DEFAULT
-	msgbox SlateportCity_Text_GabbyWonderfulThanksForInterview, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_GABBY, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	delay 10
-	applymovement LOCALID_TY, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	delay 25
-	applymovement LOCALID_CAPT_STERN, SlateportCity_Movement_SternWatchGabbyAndTyExit
-	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PlayerFaceStern
-	applymovement LOCALID_GABBY, SlateportCity_Movement_GabbyExit
-	applymovement LOCALID_TY, SlateportCity_Movement_TyExit
-	waitmovement 0
-	removeobject LOCALID_GABBY
-	removeobject LOCALID_TY
-	msgbox SlateportCity_Text_SternWhewFirstInterview, MSGBOX_DEFAULT
-	applymovement LOCALID_CAPT_STERN, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	msgbox SlateportCity_Text_OhPlayerWeMadeDiscovery, MSGBOX_DEFAULT
-	playbgm MUS_ENCOUNTER_AQUA, FALSE
-	msgbox SlateportCity_Text_AquaWillAssumeControlOfSubmarine, MSGBOX_DEFAULT
-	applymovement LOCALID_COOK, Common_Movement_WalkInPlaceFasterLeft
-	applymovement LOCALID_FAT_MAN, Common_Movement_WalkInPlaceFasterLeft
-	applymovement LOCALID_OLD_WOMAN, SlateportCity_Movement_OldWomanConcern
-	applymovement LOCALID_RICH_BOY, Common_Movement_QuestionMark
-	applymovement LOCALID_MAN_1, SlateportCity_Movement_ManConcern
-	waitmovement 0
-	applymovement LOCALID_CAPT_STERN, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	msgbox SlateportCity_Text_SternWhatWasAllThat, MSGBOX_DEFAULT
-	playse SE_PIN
-	applymovement LOCALID_CAPT_STERN, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_CAPT_STERN, Common_Movement_Delay48
-	waitmovement 0
-	applymovement LOCALID_CAPT_STERN, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	msgbox SlateportCity_Text_FromHarborTryingToTakeSub, MSGBOX_DEFAULT
-	msgbox SlateportCity_Text_PleaseComeWithMe, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_CAPT_STERN, SlateportCity_Movement_SternEnterHarbor
-	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_PlayerEnterHarbor
-	waitmovement 0
-	removeobject LOCALID_CAPT_STERN
-	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN
-	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW
-	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT
-	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE
-	setvar VAR_SLATEPORT_CITY_STATE, 2
-	warp MAP_SLATEPORT_CITY_HARBOR, 11, 14
-	waitstate
-	releaseall
 	end
 
 SlateportCity_Movement_OldWomanConcern:
@@ -1628,3 +1573,414 @@ SlateportCity_Text_Areyoulost:
 	.string "The exit's on top.\n"
 	.string "This is the cargo handling area.\p"
 	.string "Now, move it.$"
+
+
+SlateportCity_EventScript_ScammersFront::
+	lock
+	setvar VAR_TEMP_A, 1
+	playse SE_PIN
+	applymovement LOCALID_SCAMMER_1, Common_Movement_ExclamationMark
+	applymovement LOCALID_SCAMMER_2, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_Delay48
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	goto SlateportCity_EventScript_Scammers
+	
+SlateportCity_EventScript_ScammersBack::
+	lock
+	setvar VAR_TEMP_A, 2
+	playse SE_PIN
+	applymovement LOCALID_SCAMMER_1, Common_Movement_ExclamationMark
+	applymovement LOCALID_SCAMMER_2, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_Delay48
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_WalkDown
+	applymovement LOCALID_SCAMMER_2, Common_Movement_WalkDown
+	goto SlateportCity_EventScript_Scammers
+	
+
+SlateportCity_EventScript_Scammers::
+	setvar VAR_SLATEPORT_SCAMMERS, 1
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_Prejudices, MSGBOX_DEFAULT
+	multichoicedefault 20, 8, MULTI_SCAMMERS 0, TRUE
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_WeDontBite, MSGBOX_DEFAULT
+	speakername Common_Name_Scammer2
+	msgbox SlateportCity_Text_OrCrunch, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SCAMMER_1, SlateportCity_Movement_ScammerLooksAtOther
+	waitmovement 0
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_YeahListen, MSGBOX_DEFAULT
+	speakername Common_Name_Scammer2
+	msgbox SlateportCity_Text_Orphans, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SCAMMER_1, SlateportCity_Movement_ScammerLooksAtOther
+	waitmovement 0
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_YeahOrphans, MSGBOX_DEFAULT
+	speakername NULL
+	msgbox SlateportCity_Text_ShovePokedoll, MSGBOX_DEFAULT
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_LittleBuddies, MSGBOX_DEFAULT
+	speakername Common_Name_Scammer2
+	msgbox SlateportCity_Text_AndTheirPokemon, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SCAMMER_1, SlateportCity_Movement_ScammerLooksAtOther
+	waitmovement 0
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_ItsCheap, MSGBOX_DEFAULT
+	showmoneybox 0, 0
+	msgbox SlateportCity_Text_Offer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, SlateportCity_Eventscript_BoughtDoll
+	hidemoneybox
+	msgbox SlateportCity_Text_CantDoThat, MSGBOX_DEFAULT
+	speakername Common_Name_Scammer2
+	msgbox SlateportCity_Text_OnChristmas, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SCAMMER_1, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_Delay32
+	waitmovement 0
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_ItsNotChristmas, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_SCAMMER_1, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_FaceDown
+	waitmovement 0
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_ItsIsChristmasAfterAll, MSGBOX_DEFAULT
+	showmoneybox 0, 0
+	msgbox SlateportCity_Text_ItsNotMuch, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, SlateportCity_Eventscript_BoughtDoll
+	hidemoneybox
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_FuckYou, MSGBOX_DEFAULT
+	SlateportCity_Scammers_Fight::
+	trainerbattle_no_intro TRAINER_ROBBERS, SlateportCity_Defeat_Scammers
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_IllLeave, MSGBOX_DEFAULT
+	closemessage
+	call_if_eq VAR_TEMP_A, 1, SlateportCity_EventScript_Scammer1LeavesBack
+	call_if_eq VAR_TEMP_A, 2, SlateportCity_EventScript_Scammer1LeavesFront
+	speakername Common_Name_Scammer2
+	msgbox SlateportCity_Text_OnChristmasToo, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SCAMMER_2, Common_Movement_WalkLeft5
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_2, Common_Movement_WalkUp6
+	waitmovement 0
+	removeobject LOCALID_SCAMMER_1
+	removeobject LOCALID_SCAMMER_2
+	msgbox SlateportCity_Text_GotPokeDoll, MSGBOX_DEFAULT
+	giveitem ITEM_POKE_DOLL
+	release
+	end
+
+
+SlateportCity_EventScript_Scammer1LeavesBack:
+	applymovement OBJ_EVENT_ID_PLAYER, SlateportCity_Movement_BackUp
+	applymovement LOCALID_SCAMMER_1, SlateportCity_Movement_BackUp
+	applymovement LOCALID_SCAMMER_2, SlateportCity_Movement_BackUp
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_WalkLeft5
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_WalkUp6
+	waitmovement 0
+	return
+
+SlateportCity_EventScript_Scammer1LeavesFront:
+	applymovement LOCALID_SCAMMER_1, Common_Movement_WalkLeft5
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_WalkUp6
+	waitmovement 0
+	return
+
+SlateportCity_Eventscript_BoughtDoll::
+	checkmoney 5000
+	goto_if_eq VAR_RESULT, FALSE, SlateportCity_Eventscript_NoMoney
+	removemoney 5000
+	hidemoneybox
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_YoureSoKind, MSGBOX_DEFAULT
+	speakername NULL
+	giveitem ITEM_POKE_DOLL
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_LifeSaver, MSGBOX_DEFAULT
+	waitmovement 0
+	msgbox SlateportCity_Text_OnChristmas, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SCAMMER_1, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_Delay32
+	waitmovement 0
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_ItsNotChristmas, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_SCAMMER_1, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_FaceDown
+	waitmovement 0
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_YeahOnChristmasBye, MSGBOX_DEFAULT
+	closemessage
+	call_if_eq VAR_TEMP_A, 1, SlateportCity_EventScript_Scammer1LeavesBack
+	call_if_eq VAR_TEMP_A, 2, SlateportCity_EventScript_Scammer1LeavesFront
+	speakername Common_Name_Scammer2
+	msgbox SlateportCity_Text_AndMerryChristmas, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SCAMMER_2, Common_Movement_WalkLeft5
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_2, Common_Movement_WalkUp6
+	waitmovement 0
+	removeobject LOCALID_SCAMMER_1
+	removeobject LOCALID_SCAMMER_2
+	release
+	end
+
+
+SlateportCity_Eventscript_NoMoney::
+	hidemoneybox
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_WaitASecond, MSGBOX_DEFAULT
+	speakername Common_Name_Scammer2
+	msgbox SlateportCity_Text_OnChristmas, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_SCAMMER_1, Common_Movement_FaceRight
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_Delay32
+	waitmovement 0
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_ItsNotChristmas, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_SCAMMER_1, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_SCAMMER_1, Common_Movement_FaceDown
+	waitmovement 0
+	speakername Common_Name_Scammer1
+	msgbox SlateportCity_Text_YeahOnChristmas, MSGBOX_DEFAULT
+	goto SlateportCity_Scammers_Fight
+
+SlateportCity_Movement_BackUp:
+	lock_facing_direction
+	walk_down
+	unlock_facing_direction
+	step_end
+
+SlateportCity_Text_Prejudices:
+	.string "Hi there!\n"
+	.string "Can we borrow a minute or two?\p"
+	.string "Great!\p"
+	.string "Say, do you have any prejudices\n"
+	.string "against former anti-establishment\l"
+	.string "entrepreneurs?$"
+
+SlateportCity_Text_WeDontBite:
+	.string "Hey, no, don't worry!\n"
+	.string "We don't bite!$"
+
+SlateportCity_Text_OrCrunch:
+	.string "Or crunch.$"
+
+SlateportCity_Text_YeahListen:
+	.string "…Yeah, or crunch.\n"
+	.string "No, look…\p"
+	.string "I happen to be an ex-member of\n"
+	.string "Team Aqua.\p"
+	.string "And this guy, he was in Team Magma.\p"
+	.string "And you know how we managed to get past\n"
+	.string "our differences?$"
+
+SlateportCity_Text_Orphans:
+	.string "Orphans.$"
+
+SlateportCity_Text_YeahOrphans:
+	.string "…Yeah, orphans.\p"
+	.string "Listen, we've turned over a new leaf,\n"
+	.string "right?\p"
+	.string "And we're doing a fundraiser.\n"
+	.string "For orphans.\p"
+	.string "We're selling Poké Dolls.\n"
+	.string "Also made by orphans.\p"
+	.string "All the profits are going to them,\n"
+	.string "of course.\p"
+	.string "And the dolls are great quality!\n"
+	.string "Not like the kind you find in stores.\p"
+	.string "Here, look, check it out.$"
+
+SlateportCity_Text_ShovePokedoll:
+	.string "The man forcefully shoves a Poké Doll\n"
+	.string "in your hands.$"
+
+SlateportCity_Text_LittleBuddies:
+	.string "See?\n"
+	.string "Great, ain't it?\p"
+	.string "And you're a Trainer, no?\p"
+	.string "I'm sure your little buddies will\n"
+	.string "love it, if you bought it.\p"
+	.string "The orphans would love it, too.$"
+
+SlateportCity_Text_AndTheirPokemon:
+	.string "And their Pokémon too!$"
+
+SlateportCity_Text_ItsCheap:
+	.string "…Yeah, and their Pokémon too.\n"
+	.string "The Pokémon are orphans, as well.\p"
+	.string "Tragic story.$"
+
+SlateportCity_Text_Offer:
+	.string "Anyway, listen.\p"
+	.string "This doll?\n"
+	.string "Yours for just ¥5,000.\p"
+	.string "It's a steal, right?$"
+
+SlateportCity_Text_CantDoThat:
+	.string "No, look, you can't…\n"
+	.string "You're already holding it, man.\p"
+	.string "You've touched it, you got your\n"
+	.string "hands on it.\p"
+	.string "You can't just give it back.\p"
+	.string "Look, think of the orphans.\n"
+	.string "They're crying.\p"
+	.string "And I mean, you got money, right?\n"
+	.string "Look at you.\p"
+	.string "Your parents bought you those clothes?\n"
+	.string "They're pretty fancy.\p"
+	.string "Come on, man.\p"
+	.string "Would you really do this to the poor\n"
+	.string "orphans?$"
+
+SlateportCity_Text_OnChristmas:
+	.string "And on Christmas, too.$"
+
+SlateportCity_Text_ItsNotChristmas:
+	.string "It's not C…$"
+
+SlateportCity_Text_ItsIsChristmasAfterAll:
+	.string "Yeah!\n"
+	.string "On Christmas, too!\p"
+	.string "You'd be heartless to say no.\p"
+	.string "They'll die.\n"
+	.string "They'll die, and it'll be your fault.$"
+
+SlateportCity_Text_ItsNotMuch:
+	.string "Come on.\n"
+	.string "It's just ¥5,000.$"
+
+SlateportCity_Text_FuckYou:
+	.string "… … …\p"
+	.string "… … … … … … … … …\n"
+	.string "… … … … … … … … …\p"
+	.string "…Look.\n"
+	.string "I get how it is.\p"
+	.string "You're a smart one, eh?\p"
+	.string "Did your parents tell you not to talk\n"
+	.string "to strangers?\p"
+	.string "Well, great job.\n"
+	.string "You got me.\p"
+	.string "There were never any orphans.\n"
+	.string "Kid orphans, Pokémon orphans, whatever.\p"
+	.string "We were trying to scam you.\p"
+	.string "But now…\n"
+	.string "This is no longer a scam.\p"
+	.string "This is a robbery.\p"
+	.string "Could have prevented it if you just\n"
+	.string "gave us the dough.\p"
+	.string "So…\n"
+	.string "Get ready, kid.$"
+
+SlateportCity_Text_IllLeave:
+	.string "Ok, ok, yeesh!\n"
+	.string "I get it!\p"
+	.string "I'll leave!\p"
+	.string "Can't even work an honest job\n"
+	.string "anymore!$"
+
+SlateportCity_Text_OnChristmasToo:
+	.string "…And on Christmas, too.\n"
+	.string "For shame.$"
+
+SlateportCity_Text_GotPokeDoll:
+	.string "… … …\p"
+	.string "You're left with a Poké Doll\n"
+	.string "in your hands.$"
+
+SlateportCity_Text_WaitASecond:
+	.string "Thanks a-\n"
+	.string "Wait a second.\p"
+	.string "That's not enough money, is it?\p"
+	.string "You're trying to pull a fast one\n"
+	.string "on us, aren't you?$"
+
+SlateportCity_Text_YeahOnChristmas:
+	.string "…Yeah, on Christmas too.\n"
+	.string "No shame at all.\p"
+	.string "I guess we're alike, then.\n"
+	.string "See, the orphans? Not real.\p"
+	.string "Kid orphans, Pokémon orphans, whatever.\n"
+	.string "We were trying to scam you.\p"
+	.string "But now…\n"
+	.string "This is no longer a scam.\p"
+	.string "This is a robbery.\p"
+	.string "Could have prevented it if you just\n"
+	.string "gave us the dough.\p"
+	.string "So…\n"
+	.string "Get ready.$"
+	
+SlateportCity_Text_YoureSoKind:
+	.string "That's right!\n"
+	.string "You made the right choice, man!\p"
+	.string "Those orphans are gonna be so\n"
+	.string "happy!\p"
+	.string "Their Pokémon too!\p"
+	.string "What can I say?\n"
+	.string "The doll is yours!$"
+
+SlateportCity_Text_LifeSaver:
+	.string "I don't…\n"
+	.string "I don't even know how to thank you!\p"
+	.string "Those orphans, they would have starved\n"
+	.string "starved without you!\p"
+	.string "And you saved them all!$"
+
+SlateportCity_Text_YeahOnChristmasBye:
+	.string "Yeah! You saved Christmas!\p"
+	.string "Well, catch you around, then\n"
+	.string "eh?$"
+
+SlateportCity_Text_AndMerryChristmas:
+	.string "And merry Christmas!$"
+
+
+SlateportCity_Defeat_Scammers:
+	.string "That backfired.$"
+
+Common_Name_Scammer1:
+	.string "Weird Guy$"
+
+Common_Name_Scammer2:
+	.string "Weird Guy 2$"
+
+SlateportCity_Movement_ScammerLooksAtOther:
+	face_right
+	delay_16
+	delay_16
+	delay_16
+	face_down
+	step_end

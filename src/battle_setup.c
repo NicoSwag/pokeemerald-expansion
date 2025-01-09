@@ -286,7 +286,7 @@ static const struct TrainerBattleParameter sTrainerTwoTrainerBattleParams[] =
 
 const struct RematchTrainer gRematchTable[REMATCH_TABLE_ENTRIES] =
 {
-    [REMATCH_ROSE] = REMATCH(TRAINER_ROSE_1, TRAINER_ROSE_2, TRAINER_ROSE_3, TRAINER_ROSE_4, TRAINER_ROSE_5, ROUTE118),
+    [REMATCH_ROSE] = REMATCH(TRAINER_ROSE_1, TRAINER_ROSE_1, TRAINER_ROSE_1, TRAINER_ROSE_1, TRAINER_ROSE_5, ROUTE118),
     [REMATCH_ANDRES] = REMATCH(TRAINER_ANDRES_1, TRAINER_ANDRES_2, TRAINER_ANDRES_3, TRAINER_ANDRES_4, TRAINER_ANDRES_5, ROUTE105),
     [REMATCH_DUSTY] = REMATCH(TRAINER_DUSTY_1, TRAINER_DUSTY_2, TRAINER_DUSTY_3, TRAINER_DUSTY_4, TRAINER_DUSTY_5, ROUTE111),
     [REMATCH_LOLA] = REMATCH(TRAINER_LOLA_1, TRAINER_LOLA_2, TRAINER_LOLA_3, TRAINER_LOLA_4, TRAINER_LOLA_5, ROUTE109),
@@ -776,6 +776,10 @@ u8 BattleSetup_GetTerrainId(void)
             return BATTLE_TERRAIN_POND;
         if (GetCurrentRegionMapSectionId() == MAPSEC_RUSTURF_TUNNEL)
             return BATTLE_TERRAIN_CAVERUST;
+        if (GetCurrentRegionMapSectionId() == MAPSEC_MT_KIRIKIRI)
+            return BATTLE_TERRAIN_CAVEWHITE;
+        if (GetCurrentRegionMapSectionId() == MAPSEC_BRINE_CAVE)
+            return BATTLE_TERRAIN_CAVEBLUE;
         if (GetCurrentRegionMapSectionId() == MAPSEC_GRANITE_CAVE)
             return BATTLE_TERRAIN_CAVEGRANITE;
         return BATTLE_TERRAIN_CAVE;
@@ -925,10 +929,16 @@ u8 GetTrainerBattleTransition(void)
     if (DoesTrainerHaveMugshot(trainerId))
         return B_TRANSITION_MUGSHOT;
 
-    if (trainerClass == TRAINER_CLASS_TEAM_MAGMA
+    if ((trainerClass == TRAINER_CLASS_TEAM_MAGMA
         || trainerClass == TRAINER_CLASS_MAGMA_LEADER
         || trainerClass == TRAINER_CLASS_MAGMA_ADMIN)
+        && GetCurrentRegionMapSectionId() != MAPSEC_GRANITE_CAVE)
         return B_TRANSITION_MAGMA;
+
+    if(trainerClass == TRAINER_CLASS_ENGINEER
+        || trainerClass == TRAINER_CLASS_COP
+        || trainerClass == TRAINER_CLASS_DEVON_EMPLOYEE)
+        return B_TRANSITION_DEVON;
 
     if (trainerClass == TRAINER_CLASS_TEAM_AQUA
         || trainerClass == TRAINER_CLASS_AQUA_LEADER
@@ -1613,6 +1623,9 @@ void PlayTrainerEncounterMusic(void)
             break;
         case TRAINER_ENCOUNTER_MUSIC_MAGMA:
             music = MUS_ENCOUNTER_MAGMA;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DEVON:
+            music = MUS_ENCOUNTER_DEVON;
             break;
         case TRAINER_ENCOUNTER_MUSIC_SWIMMER:
             music = MUS_ENCOUNTER_SWIMMER;

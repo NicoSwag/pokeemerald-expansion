@@ -207,6 +207,7 @@ const u8 gText_TM14[] = _("Gyro Ball");
 const u8 gText_TM15[] = _("Sunny Day");
 const u8 gText_TM16[] = _("Fury Cutter");
 const u8 gText_TM17[] = _("Rest");
+const u8 gText_TM18[] = _("Venoshock");
 const u8 gMenuText_Show[] = _("Show");
 const u8 gText_EmptyString2[] = _("");
 const u8 gText_Cancel7[] = _("Cancel"); // Unused
@@ -317,7 +318,7 @@ const u8 *const gPocketNamesStringsTable[] =
 };
 
 const u8 gText_NumberItem_TMBerry[] = _("{NO}{STR_VAR_1}{CLEAR 0x07}{STR_VAR_2}");
-const u8 gText_NumberItem_HM[] = _("{CLEAR_TO 0x11}{STR_VAR_1}{CLEAR 0x05}{STR_VAR_2}");
+const u8 gText_NumberItem_HM[] =  _("HM {STR_VAR_1}{CLEAR 0x07}{STR_VAR_2}");
 const u8 gText_SizeSlash[] = _("SIZE /");
 const u8 gText_FirmSlash[] = _("FIRM /");
 const u8 gText_Var1DotVar2[] = _("{STR_VAR_1}.{STR_VAR_2}”");
@@ -908,6 +909,7 @@ const u8 gText_MtPyre[] = _("MT. PYRE");
 const u8 gText_Easy[] = _("It was easy.");
 const u8 gText_Hard[] = _("It was hard.");
 const u8 gText_Erm[] = _("Uhm…");
+const u8 gText_What[] = _("What?");
 const u8 gText_SkyPillar[] = _("SKY PILLAR");
 const u8 gText_DontRemember[] = _("Don't remember");
 const u8 gText_Exit[] = _("EXIT");

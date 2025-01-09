@@ -65,8 +65,8 @@ static const u8 sUTurnDescription[] = _(
     "out the user.");
 
 static const u8 sStormThrowDescription[] = _(
-    "This attack always results\n"
-    "in a critical hit.");
+    "If it rains, crits and\n"
+    "ignores protection.");
 
 static const u8 sCircleThrowDescription[] = _(
     "Knocks the foe away to end\n"
@@ -208,7 +208,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_MAGICAL_WHIP] =
     {
-        .name = COMPOUND_STRING("MAGICAL WHIP"),
+        .name = COMPOUND_STRING("Magical Whip"),
         .description = COMPOUND_STRING(
             "Slaps the foe with a\n"
             "mysterious whip."),
@@ -1180,7 +1180,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_THORNY_BUSH] =
     {
-        .name = COMPOUND_STRING("THORNY BUSH"),
+        .name = COMPOUND_STRING("Thorny Bush"),
         .description = COMPOUND_STRING(
             "A toxic attack with needles,\n"
             "that may badly poison."),
@@ -1688,7 +1688,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_NATURES_MALICE] =
     {
-        .name = COMPOUND_STRING("NATURE GRUDGE"),
+        .name = COMPOUND_STRING("Nature's Grudge"),
         .description = COMPOUND_STRING(
             "Hits the foe with the\n"
             "vengeance of nature."),
@@ -2409,7 +2409,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_GRAVEL_ROCK] =
     {
-        .name = COMPOUND_STRING("GRAVEL ROCK"),
+        .name = COMPOUND_STRING("Gravel Rock"),
         .description = COMPOUND_STRING(
             "Throws small rocks that\n"
             "stay on the ground."),
@@ -2435,7 +2435,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_SPIKY_ARROW] =
     {
-        .name = COMPOUND_STRING("SPIKY ARROW"),
+        .name = COMPOUND_STRING("Spiky Arrow"),
         .description = COMPOUND_STRING(
             "Shoots an arrow that\n"
             "remains if it misses."),
@@ -3546,7 +3546,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "Sprays star-shaped rays\n"
             "that never miss."),
         .effect = EFFECT_HIT,
-        .power = 60,
+        .power = 40,
         .type = TYPE_NORMAL,
         .accuracy = 0,
         .pp = 20,
@@ -4168,7 +4168,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_COMBUSTION] =
     {
-        .name = COMPOUND_STRING("COMBUSTION"),
+        .name = COMPOUND_STRING("Combustion"),
         .description = COMPOUND_STRING(
             "Inflicts severe damage but\n"
             "makes the user faint."),
@@ -6169,7 +6169,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_DING_DOOM] =
     {
-        .name = COMPOUND_STRING("DING DOOM"),
+        .name = COMPOUND_STRING("Ding Doom"),
         .description = COMPOUND_STRING(
             "Attacks the foe with a bell\n"
             "and summons rain."),
@@ -7766,20 +7766,16 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     {
         .name = COMPOUND_STRING("Secret Power"),
         .description = COMPOUND_STRING(
-            "An attack with effects\n"
-            "that vary by location."),
-        .effect = EFFECT_HIT,
-        .power = 70,
+            "An attack that removes\n"
+            "weather and terrain."),
+        .effect = EFFECT_REMOVE_WEATHER_TERRAIN,
+        .power = 40,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 20,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_SECRET_POWER,
-            .chance = 30,
-        }),
         .contestEffect = CONTEST_EFFECT_BETTER_WITH_GOOD_CONDITION,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -10366,10 +10362,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     {
         .name = COMPOUND_STRING("Force Palm"),
         .description = COMPOUND_STRING(
-            "A shock wave attack that\n"
-            "may paralyze the foe."),
+            "Deals better of Physical\n"
+            "and Special Damage."),
         .effect = EFFECT_SHELL_SIDE_ARM,
-        .power = 80,
+        .power = 60,
         .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 10,
@@ -12495,16 +12491,15 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     {
         .name = COMPOUND_STRING("Storm Throw"),
         .description = sStormThrowDescription,
-        .effect = EFFECT_HIT,
-        .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 60 : 40,
-        .type = TYPE_WATER,
+        .effect = EFFECT_STORM_THROW,
+        .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 65 : 40,
+        .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
-        .alwaysCriticalHit = TRUE,
         .contestEffect = CONTEST_EFFECT_AFFECTED_BY_PREV_APPEAL,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = 0,
@@ -13094,12 +13089,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_HOT_COALS] =
     {
-        .name = COMPOUND_STRING("HOT COALS"),
+        .name = COMPOUND_STRING("Hot Coals"),
         .description = COMPOUND_STRING(
             "Shoots burning coals at the\n"
             "foe. May inflict a burn."),
         .effect = EFFECT_HIT,
-        .power = 70,
+        .power = 60,
         .type = TYPE_ROCK,
         .accuracy = 100,
         .pp = 15,
@@ -14561,7 +14556,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_MONSOON] =
     {
-        .name = COMPOUND_STRING("MONSOON"),
+        .name = COMPOUND_STRING("Monsoon"),
         .description = COMPOUND_STRING(
             "This attack does Flying\n"
             "and Water-type damage."),
@@ -15912,7 +15907,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_SONIC_STOMP] =
     {
-        .name = COMPOUND_STRING("SONIC STOMP"),
+        .name = COMPOUND_STRING("Sonic Stomp"),
         .description = COMPOUND_STRING(
             "Stomps the ground and raises\n"
             "the user's Sp. Attack."),
@@ -18181,7 +18176,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_POLARITY] =
     {
-        .name = COMPOUND_STRING("POLARITY"),
+        .name = COMPOUND_STRING("Polarity"),
         .description = COMPOUND_STRING(
             "Does more damage the\n"
             "higher the user's SpDef."),
@@ -18205,7 +18200,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_MISSILE_DIVE] =
     {
-        .name = COMPOUND_STRING("MISSILE DIVE"),
+        .name = COMPOUND_STRING("Missile Dive"),
         .description = COMPOUND_STRING(
             "Does more damage the\n"
             "higher the user's Speed."),
@@ -19118,7 +19113,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_SAFETY_COURSE] =
     {
-        .name = COMPOUND_STRING("SAFETY_COURSE"),
+        .name = COMPOUND_STRING("Safety Course"),
         .description = COMPOUND_STRING(
             "Properly coaches allies to\n"
             "up their Def. and Sp. Def."),

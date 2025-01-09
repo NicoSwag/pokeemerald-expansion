@@ -44,7 +44,7 @@ DewfordTown_Smoothies_Shop:
 
 DewfordGymEntrance_Text_BlackBelt:
 	.string "Gahhhhh!\p"
-	.string "I'm training to beat Brawly, I am!$"
+	.string "I'm training to beat Brawly!$"
 
 DewfordGymEntrance_Text_Maniac:
 	.string "To defeat a Gym Leader, you must utilize\n"

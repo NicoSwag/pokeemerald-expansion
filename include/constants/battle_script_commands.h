@@ -239,6 +239,7 @@
 #define VARIOUS_HIT_SWITCH_TARGET_FAILED             147
 #define VARIOUS_TRY_REVIVAL_BLESSING                 148
 #define VARIOUS_TRY_ACTIVATE_COMET_PUNCH             149
+#define VARIOUS_TRY_ACTIVATE_SCAVENGER               150
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

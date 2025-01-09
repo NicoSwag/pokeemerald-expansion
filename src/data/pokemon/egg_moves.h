@@ -4,12 +4,12 @@
 
 const u16 gEggMoves[] = {
     egg_moves(FENNEKIN,
-        MOVE_RECHARGE,
-        MOVE_GRAVITY),
-
-    egg_moves(PORYGON,
         MOVE_INCINERATE,
         MOVE_ALLY_SWITCH),
+
+    egg_moves(PORYGON,
+        MOVE_RECHARGE,
+        MOVE_GRAVITY),
 
         egg_moves(BRAIXEN,
         MOVE_INCINERATE,
@@ -796,14 +796,14 @@ const u16 gEggMoves[] = {
         MOVE_TAILWIND),
 
     egg_moves(LEDYBA,
-        MOVE_MACH_PUNCH,
-        MOVE_DRAIN_PUNCH),
+        MOVE_SHADOW_PUNCH,
+        MOVE_TAUNT),
 
         egg_moves(LEDIAN,
+        MOVE_SHADOW_PUNCH,
+        MOVE_TAUNT,
         MOVE_MACH_PUNCH,
-        MOVE_DRAIN_PUNCH,
-        MOVE_FOCUS_PUNCH,
-        MOVE_TAUNT),
+        MOVE_DRAIN_PUNCH),
 
     egg_moves(SPINARAK,
         MOVE_PSYBEAM,
@@ -969,7 +969,7 @@ const u16 gEggMoves[] = {
 
     egg_moves(YANMA,
         MOVE_WHIRLWIND,
-        MOVE_BUG_BUZZ),
+        MOVE_U_TURN),
 
     egg_moves(WOOPER,
         MOVE_BODY_SLAM,
@@ -1561,20 +1561,14 @@ const u16 gEggMoves[] = {
         MOVE_VACUUM_WAVE),
 
     egg_moves(ELECTRIKE,
-        MOVE_CRUNCH,
-        MOVE_HEADBUTT,
-        MOVE_UPROAR,
-        MOVE_CURSE,
-        MOVE_SWIFT,
-        MOVE_DISCHARGE,
-        MOVE_ICE_FANG,
-        MOVE_FIRE_FANG,
-        MOVE_THUNDER_FANG,
-        MOVE_SWITCHEROO,
-        MOVE_ELECTRO_BALL,
-        MOVE_SHOCK_WAVE,
-        MOVE_FLAME_BURST,
+        MOVE_WEATHER_BALL,
         MOVE_EERIE_IMPULSE),
+
+    egg_moves(MANECTRIC,
+        MOVE_WEATHER_BALL,
+        MOVE_EERIE_IMPULSE,
+        MOVE_FLAME_BURST,
+        MOVE_EXTRASENSORY),
 
     egg_moves(PLUSLE,
         MOVE_WISH,
@@ -3544,6 +3538,12 @@ const u16 gEggMoves[] = {
         MOVE_ICE_SPINNER),
 
    egg_moves(EMEROLL,
+        MOVE_SHARPEN,
+        MOVE_CLEAN_SLATE,
+        MOVE_GRAVITY,
+        MOVE_CHARGE_BEAM),
+    
+    egg_moves(EMERAIL,
         MOVE_SHARPEN,
         MOVE_CLEAN_SLATE),
 

@@ -13,7 +13,9 @@ GraniteCave_StevensRoom_EventScript_Steven::
 	waitse
 	applymovement LOCALID_STEVEN, Common_Movement_Delay32
 	waitmovement 0
-	faceplayer
+		call_if_eq VAR_FACING, DIR_NORTH, Granite_EventScript_TurnStevenDown
+	call_if_eq VAR_FACING, DIR_EAST, Granite_EventScript_TurnStevenLeft
+	call_if_eq VAR_FACING, DIR_WEST, Granite_EventScript_TurnStevenRight
 	msgbox GraniteCave_Text_ThereYouAre, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_FACING, DIR_NORTH, Granite_EventScript_MovePlayer
@@ -24,7 +26,6 @@ GraniteCave_StevensRoom_EventScript_Steven::
 	applymovement LOCALID_STEVEN, Common_Movement_FaceUp
 	waitmovement 0
 	msgbox GraniteCave_Text_Carvings, MSGBOX_DEFAULT
-	closemessage
 	msgbox GraniteCave_Text_Note, MSGBOX_DEFAULT
 	closemessage
 	giveitem ITEM_ODD_CARVING
@@ -40,20 +41,16 @@ GraniteCave_StevensRoom_EventScript_Steven::
 	call_if_eq VAR_TEMP_A, 1, Granite_EventScript_TurnStevenLeft
 	call_if_eq VAR_TEMP_A, 0, Granite_EventScript_TurnStevenRight
 	msgbox GraniteCave_Text_IAmSteven, MSGBOX_DEFAULT
-	closemessage
 	speakername Common_Name_Steven
 	msgbox GraniteCave_Text_KnowAboutYou, MSGBOX_DEFAULT
-	closemessage
+	speakername NULL
 	msgbox GraniteCave_Text_Goods, MSGBOX_DEFAULT
-	closemessage
 	speakername Common_Name_Steven
 	msgbox GraniteCave_Text_OhThis, MSGBOX_DEFAULT
-	closemessage
 	applymovement LOCALID_STEVEN, Common_Movement_FaceDown
 	waitmovement 0
 	speakername Common_Name_Steven
 	msgbox GraniteCave_Text_LayMan, MSGBOX_DEFAULT
-	closemessage
 	call_if_eq VAR_TEMP_A, 1, Granite_EventScript_TurnStevenLeft
 	call_if_eq VAR_TEMP_A, 0, Granite_EventScript_TurnStevenRight
 	speakername Common_Name_Steven
@@ -70,12 +67,12 @@ GraniteCave_StevensRoom_EventScript_Steven::
 	call_if_eq VAR_TEMP_A, 0, Granite_EventScript_TurnStevenRight
 	speakername Common_Name_Steven
 	msgbox GraniteCave_Text_RockClimb, MSGBOX_DEFAULT
-	closemessage
+	speakername NULL
 	giveitem ITEM_HM_ROCK_CLIMB
 	setflag FLAG_RECEIVED_ROCK_CLIMB
 	speakername Common_Name_Steven
 	msgbox GraniteCave_Text_RockClimbExplanation, MSGBOX_DEFAULT
-	closemessage
+	speakername NULL
 	giveitem ITEM_RAINBOW_ORE
 	speakername Common_Name_Steven
 	msgbox GraniteCave_Text_Bye, MSGBOX_DEFAULT
@@ -90,6 +87,11 @@ GraniteCave_StevensRoom_EventScript_Steven::
 	setflag FLAG_HIDE_GRANITE_CAVE_STEVEN
 	release
 	end
+
+Granite_EventScript_TurnStevenDown::
+	applymovement LOCALID_STEVEN, Common_Movement_FaceDown
+	waitmovement 0
+	return
 
 Granite_EventScript_TurnStevenLeft::
 	applymovement LOCALID_STEVEN, Common_Movement_FaceLeft
@@ -158,8 +160,8 @@ Granite_Movement_MovePlayer:
 GraniteCave_Text_Carvings:
 	.string "See these carvings, here?\n"
 	.string "Fascinating, aren't they?\p"
-	.string "They can be found all over, if\n"
-	.string "you know where to look.\p"
+	.string "They can be found all over, if you\n"
+	.string "know where to look.\p"
 	.string "They were left behind by the previous\n"
 	.string "inhabitants of Hoenn.\p"
 	.string "Those who were here before us.\p"
@@ -206,45 +208,54 @@ GraniteCave_Text_LayMan:
 	.string "Mhh…\p"
 	.string "I'm a layman in this area, but…\p"
 	.string "This, to me, looks like a component\n"
-	.string "for some sort of sonar device.\p"
+	.string "for a sonar device.\p"
 	.string "And right here, it says it was made\n"
 	.string "by Stern's Shipyard.\p"
 	.string "That's in Slateport.\p"
-	.string "And a Devon employee was handing\n"
+	.string "And you say a Devon manager was handing\n"
 	.string "it to Team Aqua?\p"
 	.string "…Mhh.\n"
 	.string "This might be bad news…$"
 
 GraniteCave_Text_Explanation:
-	.string "I think some explanations are due.\p"
-	.string "You might have guessed it already,\n"
-	.string "but…\p"
-	.string "My father is the president of Devon.\p"
-	.string "Me and him…\n"
-	.string "Well, we don't really get along.\p"
-	.string "If you've been to Rustboro, you must\n"
-	.string "have seen the damage Devon is doing.\p"
-	.string "As a geologist- and Champion of the\n"
-	.string "Pokémon League…\p"
-	.string "I can't just let this stand.\p"
-	.string "Unfortunately, Devon is very powerful.\p"
-	.string "If we stepped in too directly, there is\n"
-	.string "no telling what could happen.\p"
-	.string "However…\n"
-	.string "That's far from my only concern.\p"
 	.string "Team Magma and Team Aqua…\p"
-	.string "Recently, their methods have grown more\n"
-	.string "extreme.\p"
-	.string "This mine takeover has been the least\n"
-	.string "of it.\p"
-	.string "And this Devon employee…\n"
-	.string "Is collaborating with them?\l"
+	.string "Their methods have been growning\n"
+	.string "more violent.\p"
+	.string "This mine takeover has been the\n"
+	.string "least of it.\p"
+	.string "And this manager…\n"
+	.string "You say he's collaborating with them?\l"
 	.string "The sworn enemies of Devon?\p"
 	.string "I don't understand fully, but…\n"
-	.string "I feel like a war might be brewing.\p"
+	.string "Something is brewing, that's for sure.\p"
+	.string "… … …\p"
+	.string "You might have guessed it already,\n"
+	.string "but…\p"
+	.string "My father is the president of Devon,\n"
+	.string "Joseph Stone.\p"
+	.string "Me and him…\n"
+	.string "Well, we don't really get along.\p"
+	.string "He meant for me to succeed his\n"
+	.string "position, but instead I decided to\l"
+	.string "pursue a career in the League.\p"
+	.string "I couldn't join Devon in good\n"
+	.string "conscience.\p"
+	.string "If you've been to Rustboro, you must\n"
+	.string "have seen what they are doing.\p"
+	.string "It just doesn't sit right with me.\p"
+	.string "And yet…\p"
+	.string "We may be estranged, but I still fear\n"
+	.string "for his safety.\p"
+	.string "I have reasons to believe that he might\n"
+	.string "have become target of a conspiracy.\p"
+	.string "He certainly isn't lacking in enemies,\n"
+	.string "after all.\p"
+	.string "Your story only makes me more convinced\n"
+	.string "of it.\p"
+	.string "Of course, he is too stubborn to even\n"
+	.string "talk to me, let alone listen.\p"
 	.string "What a headache, right?\p"
-	.string "This is why I called Looker here to help\n"
-	.string "unravel the situation.$"
+	.string "This is why I called Looker here to help.$"
 
 GraniteCave_Text_Favor:
 	.string "… … …\p"

@@ -310,7 +310,7 @@ static const u8 sText_PkmnTraced[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} Traced\n
 static const u8 sText_PkmnsXPreventsBurns[] = _("{B_EFF_NAME_WITH_PREFIX}'s {B_EFF_ABILITY}\nprevents burns!");
 static const u8 sText_PkmnsXBlocksY[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\nblocks {B_CURRENT_MOVE}!");
 static const u8 sText_PkmnsXBlocksY2[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nblocks {B_CURRENT_MOVE}!");
-static const u8 sText_PkmnsXRestoredHPALittle2[] = _("{B_ATK_NAME_WITH_PREFIX} ate\nrestored its HP a little!");
+static const u8 sText_PkmnsXRestoredHPALittle2[] = _("{B_ATK_NAME_WITH_PREFIX}\nrestored its HP!");
 static const u8 sText_SharedHoney[] = _("{B_ATK_NAME_WITH_PREFIX} shared its\nhoney with {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnsXWhippedUpSandstorm[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nwhipped up a sandstorm!");
 static const u8 sText_SummonedPollution[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\npolluted the air!");
@@ -705,6 +705,9 @@ static const u8 sText_GravityGrounding[] = _("{B_DEF_NAME_WITH_PREFIX} can't sta
 static const u8 sText_MistyTerrainPreventsStatus[] = _("{B_DEF_NAME_WITH_PREFIX} surrounds itself\nwith a protective mist!");
 static const u8 sText_GrassyTerrainHeals[] = _("{B_ATK_NAME_WITH_PREFIX} is healed\nby the grassy terrain!");
 static const u8 sText_ElectricityCrackles[] = _("Electricity crackles around the field.");
+static const u8 sText_NatureBlooming[] = _("Nature is blooming around the field.");
+static const u8 sText_FieldEffectsRemoved[] = _("The anomalous terrain disappeared");
+static const u8 sText_WeatherRemoved[] = _("The weather dissipated.");
 static const u8 sText_PsychicEnergy[] = _("Psychic energy permeates the field.");
 static const u8 sText_MistSwirls[] = _("Mist swirls around the field.");
 static const u8 sText_ElectricTerrainPreventsSleep[] = _("{B_DEF_NAME_WITH_PREFIX} surrounds itself\nwith electrified terrain!");
@@ -1571,7 +1574,9 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_GRAVITYGROUNDING - BATTLESTRINGS_TABLE_START] = sText_GravityGrounding,
     [STRINGID_MISTYTERRAINPREVENTS - BATTLESTRINGS_TABLE_START] = sText_MistyTerrainPreventsStatus,
     [STRINGID_GRASSYTERRAINHEALS - BATTLESTRINGS_TABLE_START] = sText_GrassyTerrainHeals,
-    [STRINGID_ELECTRICITYCRACKLES - BATTLESTRINGS_TABLE_START] = sText_ElectricityCrackles,
+    [STRINGID_NATUREBLOOMING - BATTLESTRINGS_TABLE_START] = sText_NatureBlooming,
+    [STRINGID_FIELDEFFECTSREMOVED - BATTLESTRINGS_TABLE_START] = sText_FieldEffectsRemoved,
+    [STRINGID_WEATHERREMOVED - BATTLESTRINGS_TABLE_START] = sText_WeatherRemoved,
     [STRINGID_PSYCHICENERGY - BATTLESTRINGS_TABLE_START] = sText_PsychicEnergy,
     [STRINGID_MISTSWIRLS - BATTLESTRINGS_TABLE_START] = sText_MistSwirls,
     [STRINGID_ELECTRICTERRAINPREVENTS - BATTLESTRINGS_TABLE_START] = sText_ElectricTerrainPreventsSleep,
@@ -2596,16 +2601,16 @@ static const struct BattleWindowText sTextOnWindowsInfo_Normal[] =
     },
 
 [B_WIN_MOVE_DESCRIPTION] = {
-        .fillValue = PIXEL_FILL(0xE),
+        .fillValue = PIXEL_FILL(8),
         .fontId = FONT_NARROW,
         .x = 0,
         .y = 1,
         .letterSpacing = 0,
         .lineSpacing = 0,
         .speed = 0,
-        .fgColor = TEXT_DYNAMIC_COLOR_4,
-        .bgColor = TEXT_DYNAMIC_COLOR_5,
-        .shadowColor = TEXT_DYNAMIC_COLOR_6,
+        .fgColor = 14,
+        .bgColor = 8,
+        .shadowColor = 13,
     },
  
 };

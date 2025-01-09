@@ -483,7 +483,19 @@ PetalburgWoods_EventScript_ItemXAttack::
 	end
 
 PetalburgWoods_EventScript_ItemGreatBall::
-	finditem ITEM_GREAT_BALL
+	finditem ITEM_TM_QUASH
+	end
+
+PetalburgBog_EventScript_SkyFragment::
+	finditem ITEM_HEART_SCALE
+	end
+
+PetalburgBog_EventScript_PoisonBarb::
+	finditem ITEM_POISON_BARB
+	end
+
+PetalburgBog_EventScript_Venoshock::
+	finditem ITEM_TM_VENOSHOCK
 	end
 
 PetalburgWoods_EventScript_ItemEther::
@@ -613,7 +625,7 @@ AbandonedShip_HiddenFloorRooms_EventScript_ItemWaterStone::
 	end
 
 AbandonedShip_HiddenFloorRooms_EventScript_ItemTMRainDance::
-	finditem ITEM_TM_RAIN_DANCE
+	finditem ITEM_TM_VENOSHOCK
 	end
 
 ScorchedSlab_EventScript_ItemTMSunnyDay::

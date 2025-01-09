@@ -1971,8 +1971,8 @@ static const u8 sSmackDownDescription[] = _(
     "foe down to the ground.");
 
 static const u8 sStormThrowDescription[] = _(
-    "This attack always results\n"
-    "in a critical hit.");
+    "If it rains, crits and\n"
+    "ignores protection.");
 
 static const u8 sFlameBurstDescription[] = _(
     "A bursting flame that does\n"

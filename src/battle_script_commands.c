@@ -12,6 +12,7 @@
 #include "item.h"
 #include "util.h"
 #include "pokemon.h"
+#include "bw_summary_screen.h"
 #include "random.h"
 #include "battle_controllers.h"
 #include "battle_interface.h"
@@ -598,7 +599,7 @@ const u16 sLevelCapFlags[NUM_SOFT_CAPS] =
     FLAG_BADGE05_GET, FLAG_BADGE06_GET, FLAG_BADGE07_GET, FLAG_BADGE08_GET,
 };
 
-const u16 sLevelCaps[NUM_SOFT_CAPS] = { 14, 24, 30, 40, 50, 60, 70, 80 };
+const u16 sLevelCaps[NUM_SOFT_CAPS] = { 14, 23, 30, 40, 50, 60, 70, 80 };
 const double sLevelCapReduction[7] = { .01, .01, .01, .01, .01, .01, .01};
 const double sRelativePartyScaling[27] =
 {
@@ -2061,7 +2062,8 @@ static void AccuracyCheck(bool32 recalcDragonDarts, const u8 *nextInstr, const u
             gMoveResultFlags |= MOVE_RESULT_MISSED;
             if (holdEffectAtk == HOLD_EFFECT_BLUNDER_POLICY)
                 gBattleStruct->blunderPolicy = TRUE;    // Only activates from missing through acc/evasion checks
-
+            if(abilityAtk == ABILITY_ANGER_POINT)
+                gBattleStruct->angerPoint = TRUE; 
             if (gMovesInfo[gCurrentMove].effect == EFFECT_DRAGON_DARTS
                 && !recalcDragonDarts // So we don't jump back and forth between targets
                 && CanTargetPartner(gBattlerAttacker, gBattlerTarget)
@@ -2205,6 +2207,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
     else if (gStatuses3[battlerAtk] & STATUS3_LASER_FOCUS
         || gMovesInfo[gCurrentMove].alwaysCriticalHit
         || (abilityAtk == ABILITY_MERCILESS && gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
+        || (gMovesInfo[gCurrentMove].effect == EFFECT_STORM_THROW && IsBattlerWeatherAffected(battlerAtk, B_WEATHER_RAIN))
         || (abilityAtk == ABILITY_CRUELTY && gBattleMons[battlerDef].status1 & STATUS1_PARALYSIS))
     {
         critChance = -2;
@@ -4105,92 +4108,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                     gBattlescriptCurrInstr = BattleScript_SyrupBombActivates;
                 }
                 break;
-            case MOVE_EFFECT_SECRET_POWER:
-                if (gFieldStatuses & STATUS_FIELD_TERRAIN_ANY)
-                {
-                    switch (gFieldStatuses & STATUS_FIELD_TERRAIN_ANY)
-                    {
-                    case STATUS_FIELD_MISTY_TERRAIN:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_SP_ATK_MINUS_1;
-                        break;
-                    case STATUS_FIELD_GRASSY_TERRAIN:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_SLEEP;
-                        break;
-                    case STATUS_FIELD_ELECTRIC_TERRAIN:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_PARALYSIS;
-                        break;
-                    case STATUS_FIELD_PSYCHIC_TERRAIN:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_SPD_MINUS_1;
-                        break;
-                    default:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_PARALYSIS;
-                        break;
-                    }
-                }
-                else
-                {
-                    switch (gBattleTerrain)
-                    {
-                    case BATTLE_TERRAIN_GRASS:
-                        gBattleScripting.moveEffect = (B_SECRET_POWER_EFFECT >= GEN_4 ? MOVE_EFFECT_SLEEP : MOVE_EFFECT_POISON);
-                        break;
-                    case BATTLE_TERRAIN_UNDERWATER:
-                        gBattleScripting.moveEffect = (B_SECRET_POWER_EFFECT >= GEN_6 ? MOVE_EFFECT_ATK_MINUS_1 : MOVE_EFFECT_DEF_MINUS_1);
-                        break;
-                    case BATTLE_TERRAIN_POND:
-                        gBattleScripting.moveEffect = (B_SECRET_POWER_EFFECT >= GEN_4 ? MOVE_EFFECT_ATK_MINUS_1 : MOVE_EFFECT_SPD_MINUS_1);
-                        break;
-                    case BATTLE_TERRAIN_MOUNTAIN:
-                        if (B_SECRET_POWER_EFFECT >= GEN_5)
-                            gBattleScripting.moveEffect = MOVE_EFFECT_ACC_MINUS_1;
-                        else if (B_SECRET_POWER_EFFECT >= GEN_4)
-                            gBattleScripting.moveEffect = MOVE_EFFECT_FLINCH;
-                        else
-                            gBattleScripting.moveEffect = MOVE_EFFECT_CONFUSION;
-                        break;
-                    case BATTLE_TERRAIN_PUDDLE:
-                        gBattleScripting.moveEffect = (B_SECRET_POWER_EFFECT >= GEN_5 ? MOVE_EFFECT_SPD_MINUS_1 : MOVE_EFFECT_ACC_MINUS_1);
-                        break;
-                    case BATTLE_TERRAIN_LONG_GRASS:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_SLEEP;
-                        break;
-                    case BATTLE_TERRAIN_SAND:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_ACC_MINUS_1;
-                        break;
-                    case BATTLE_TERRAIN_WATER:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_ATK_MINUS_1;
-                        break;
-                    case BATTLE_TERRAIN_CAVE:
-                    case BATTLE_TERRAIN_CAVERUST:
-                    case BATTLE_TERRAIN_CAVEGRANITE:
-                    case BATTLE_TERRAIN_YELLOW_FOREST:
-                    case BATTLE_TERRAIN_BURIAL_GROUND:
-                    case BATTLE_TERRAIN_SPACE:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_FLINCH;
-                        break;
-                    case BATTLE_TERRAIN_SOARING:
-                    case BATTLE_TERRAIN_SKY_PILLAR:
-                    case BATTLE_TERRAIN_MARSH:
-                    case BATTLE_TERRAIN_SWAMP:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_SPD_MINUS_1;
-                        break;
-                    case BATTLE_TERRAIN_SNOW:
-                    case BATTLE_TERRAIN_ICE:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_FREEZE_OR_FROSTBITE;
-                        break;
-                    case BATTLE_TERRAIN_VOLCANO:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_BURN;
-                        break;
-                    case BATTLE_TERRAIN_ULTRA_SPACE:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_1;
-                        break;
-                    default:
-                        gBattleScripting.moveEffect = MOVE_EFFECT_PARALYSIS;
-                        break;
-                    }
-                }
-                SetMoveEffect(primary, certain);
-                break;
+            
             case MOVE_EFFECT_PSYCHIC_NOISE:
                 battlerAbility = IsAbilityOnSide(gEffectBattler, ABILITY_AROMA_VEIL);
 
@@ -4452,15 +4370,15 @@ static void Cmd_cleareffectsonfaint(void)
         }
 
         if(gBattleMons[battler].ability==ABILITY_DROUGHT && gBattleMons[battler].canWeatherChange == TRUE && B_WEATHER_SUN)
-            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
+            gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[battler].ability==ABILITY_DRIZZLE && gBattleMons[battler].canWeatherChange == TRUE && B_WEATHER_RAIN)
-            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
+             gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[battler].ability==ABILITY_NOXIOUS_FUMES && gBattleMons[battler].canWeatherChange == TRUE && B_WEATHER_POLLUTION)
-            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
+            gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[battler].ability==ABILITY_SAND_STREAM && gBattleMons[battler].canWeatherChange == TRUE && B_WEATHER_SANDSTORM)
-            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
+             gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[battler].ability==ABILITY_SNOW_WARNING && gBattleMons[battler].canWeatherChange == TRUE && B_WEATHER_SNOW)
-            gBattleWeather = gBattleWeather = gBattleStruct->weatherStore;
+             gBattleWeather = gBattleStruct->weatherStore;
         if(gBattleMons[battler].ability==ABILITY_GRASSY_SURGE && gBattleMons[battler].canTerrainChange == TRUE && STATUS_FIELD_GRASSY_TERRAIN){
             DrawMainBattleBackground();
             gFieldStatuses &= ~STATUS_FIELD_GRASSY_TERRAIN;
@@ -6274,6 +6192,8 @@ static void Cmd_moveend(void)
             && gBattleStruct->moveTarget[BATTLE_PARTNER(gBattlerAttacker)] == gBattlerTarget
             && gMovesInfo[gCurrentMove].category != DAMAGE_CATEGORY_STATUS
             && gMovesInfo[gChosenMoveByBattler[BATTLE_PARTNER(gBattlerAttacker)]].category != DAMAGE_CATEGORY_STATUS
+            && gMovesInfo[gCurrentMove].priority == 0
+            && gMovesInfo[gChosenMoveByBattler[BATTLE_PARTNER(gBattlerAttacker)]].priority == 0
             && gBattleMons[gBattlerAttacker].speed > gBattleMons[BATTLE_PARTNER(gBattlerAttacker)].speed
             && gBattleMons[gBattlerTarget].hp
             && gMovesInfo[gCurrentMove].target != (MOVE_TARGET_ALL_BATTLERS || MOVE_TARGET_ALLY || MOVE_TARGET_BOTH || MOVE_TARGET_FOES_AND_ALLY || MOVE_TARGET_OPPONENTS_FIELD || MOVE_TARGET_RANDOM)
@@ -8158,7 +8078,11 @@ static void Cmd_yesnoboxlearnmove(void)
         if (!gPaletteFade.active)
         {
             FreeAllWindowBuffers();
-            ShowSelectMovePokemonSummaryScreen(gPlayerParty, gBattleStruct->expGetterMonId, gPlayerPartyCount - 1, ReshowBattleScreenAfterMenu, gMoveToLearn);
+            if (BW_SUMMARY_SCREEN)
+                ShowSelectMovePokemonSummaryScreen_BW(gPlayerParty, gBattleStruct->expGetterMonId, gPlayerPartyCount - 1, ReshowBattleScreenAfterMenu, gMoveToLearn);
+            else
+                ShowSelectMovePokemonSummaryScreen(gPlayerParty, gBattleStruct->expGetterMonId, gPlayerPartyCount - 1, ReshowBattleScreenAfterMenu, gMoveToLearn);
+            
             gBattleScripting.learnMoveState++;
         }
         break;
@@ -8198,7 +8122,7 @@ static void Cmd_yesnoboxlearnmove(void)
                         RemoveBattleMonPPBonus(&gBattleMons[0], movePosition);
                         SetBattleMonMoveSlot(&gBattleMons[0], gMoveToLearn, movePosition);
                     }
-                    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE
+                    if (IsDoubleBattle()
                         && gBattlerPartyIndexes[2] == gBattleStruct->expGetterMonId
                         && MOVE_IS_PERMANENT(2, movePosition))
                     {
@@ -8221,6 +8145,7 @@ static void Cmd_yesnoboxlearnmove(void)
         break;
     }
 }
+
 
 static void Cmd_yesnoboxstoplearningmove(void)
 {
@@ -8321,6 +8246,7 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_BLACK_BELT, 8},
     {TRAINER_CLASS_DEVON_EMPLOYEE, 25},
     {TRAINER_CLASS_ENGINEER, 10},
+    {TRAINER_CLASS_SCAMMERS, 10},
     {TRAINER_CLASS_MINER, 8},
     {TRAINER_CLASS_COP, 10},
     {TRAINER_CLASS_SCIENTIST, 15},
@@ -8334,6 +8260,7 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_ELITE_FOUR, 25},
     {TRAINER_CLASS_LEADER, 50},
     {TRAINER_CLASS_SCHOOL_KID, 5},
+    {TRAINER_CLASS_BOG_MAN, 5},
     {TRAINER_CLASS_SR_AND_JR, 4},
     {TRAINER_CLASS_POKEFAN, 20},
     {TRAINER_CLASS_EXPERT, 10},
@@ -10370,7 +10297,28 @@ static void Cmd_various(void)
         }
         break;
     }
-        
+
+    case VARIOUS_TRY_ACTIVATE_SCAVENGER:   
+        VARIOUS_ARGS();
+        u16 battlerAbility = GetBattlerAbility(battler);
+        if (GetBattlerAbility(battler) == ABILITY_SCAVENGER
+            && HasAttackerFaintedTarget()
+            && !BATTLER_MAX_HP(battler)
+            && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+        {
+             gBattleMoveDamage = GetNonDynamaxMaxHP(battler) /4;
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+            gBattleMoveDamage *= -1;
+            gLastUsedAbility = battlerAbility;
+            BattleScriptPush(cmd->nextInstr);
+            gBattlescriptCurrInstr = BattleScript_ScavengerActivates;
+            return;
+        }
+        break;
+                
+    
+                
     case VARIOUS_PLAY_MOVE_ANIMATION:
     {
         VARIOUS_ARGS(u16 move);
@@ -17148,6 +17096,8 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
 
         value *= sExperienceScalingFactors[(faintedLevel * 2) + 10];
         value /= sExperienceScalingFactors[faintedLevel + expGetterLevel + 10];
+        if(expGetterLevel < faintedLevel)
+            value *= 1.5;
         *expAmount = value + 1;
     }
 }

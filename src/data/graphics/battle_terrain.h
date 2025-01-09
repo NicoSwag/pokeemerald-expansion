@@ -44,6 +44,8 @@ const u32 gBattleTerrainTilemap_Rock[] = INCBIN_U32("graphics/battle_terrain/roc
 const u32 gBattleTerrainTiles_Cave[] = INCBIN_U32("graphics/battle_terrain/cave/tiles.4bpp.lz");
 const u32 gBattleTerrainPalette_Cave[] = INCBIN_U32("graphics/battle_terrain/cave/palette.gbapal.lz");
 const u32 gBattleTerrainPalette_CaveRust[] = INCBIN_U32("graphics/battle_terrain/cave/cave_rust.gbapal.lz");
+const u32 gBattleTerrainPalette_CaveBlue[] = INCBIN_U32("graphics/battle_terrain/cave/cave_blue.gbapal.lz");
+const u32 gBattleTerrainPalette_CaveWhite[] = INCBIN_U32("graphics/battle_terrain/cave/cave_white.gbapal.lz");
 const u32 gBattleTerrainPalette_CaveGranite[] = INCBIN_U32("graphics/battle_terrain/cave/cave_granite.gbapal.lz");
 const u32 gBattleTerrainTilemap_Cave[] = INCBIN_U32("graphics/battle_terrain/cave/map.bin.lz");
 
