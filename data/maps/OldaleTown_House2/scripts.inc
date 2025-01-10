@@ -23,13 +23,13 @@ OldaleTown_House2_Text_PokemonLevelUp:
 	.string "I swear! I saw it!\n"
 	.string "A ghost, in Mt. Kirikiri!\p"
 	.string "And not just a Ghost-type Pokémon!\n"
-	.string "A human ghost!$"
+	.string "The ghost of a person!$"
 
 OldaleTown_House2_Text_YoullGoFurtherWithStrongPokemon:
 	.string "I keep telling my husband to stay\n"
 	.string "away from that place.\p"
 	.string "It's cursed.\p"
-	.string "Thankfully they barred the entrance.$"
+	.string "Good thing they barred the entrance.$"
 
 OldaleTown_House2_Text_IKnewIt:
 	.string "What? You saw a ghost too?\n"

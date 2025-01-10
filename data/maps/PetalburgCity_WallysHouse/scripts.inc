@@ -133,8 +133,8 @@ PetalburgCity_WallysHouse_Text_WallyLeftWithoutTelling:
 	.string "and sound one day!$"
 
 PetalburgCity_WallysHouse_Text_WheresWally:
-	.string "Our WALLY should be outside catching\n"
-	.string "some POKéMON.\p"
+	.string "Our Wally should be outside catching\n"
+	.string "some Pokémon.\p"
 	.string "Between you and me…\n"
 	.string "I'm not sure if he's quite built for\l"
-	.string "being a TRAINER.$"
+	.string "being a Trainer.$"

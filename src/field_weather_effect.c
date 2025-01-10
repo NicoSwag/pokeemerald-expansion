@@ -188,7 +188,7 @@ static void CreateCloudSprites(void)
         return;
 
     LoadSpriteSheet(&sCloudSpriteSheet);
-    (gCloudsWeatherPalette);
+    LoadCustomWeatherSpritePalette(gCloudsWeatherPalette);
     for (i = 0; i < NUM_CLOUD_SPRITES; i++)
     {
         spriteId = CreateSprite(&sCloudSpriteTemplate, 0, 0, 0xFF);
@@ -790,9 +790,6 @@ void Snow_InitVars(void)
     gWeatherPtr->colorMapStepDelay = 20;
     gWeatherPtr->targetSnowflakeSpriteCount = NUM_SNOWFLAKE_SPRITES;
     gWeatherPtr->snowflakeVisibleCounter = 0;
-    if(!gWeatherPtr->snowflakeSpriteCount)
-    
-        Weather_SetBlendCoeffs(8, 12);
 }
 
 void Snow_InitAll(void)
@@ -1527,14 +1524,10 @@ void FogHorizontal_Main(void)
     {
     case 0:
         CreateFogHorizontalSprites();
-        if (gWeatherPtr->currWeather == WEATHER_FOG_HORIZONTAL || gWeatherPtr->currWeather == WEATHER_POLLUTION)
-        {
+        if (gWeatherPtr->currWeather == WEATHER_FOG_HORIZONTAL)
             Weather_SetTargetBlendCoeffs(12, 8, 3);
-        }
         else
-        {
             Weather_SetTargetBlendCoeffs(4, 16, 0);
-        }
         gWeatherPtr->initStep++;
         break;
     case 1:
@@ -2280,7 +2273,7 @@ static void CreateSandstormSprites(void)
     if (!gWeatherPtr->sandstormSpritesCreated)
     {
         LoadSpriteSheet(&sSandstormSpriteSheet);
-        (gSandstormWeatherPalette);
+        LoadCustomWeatherSpritePalette(gSandstormWeatherPalette);
         for (i = 0; i < NUM_SANDSTORM_SPRITES; i++)
         {
             spriteId = CreateSpriteAtEnd(&sSandstormSpriteTemplate, 0, (i / 5) * 64, 1);

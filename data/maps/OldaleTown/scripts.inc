@@ -269,7 +269,7 @@ OldaleTown_EventScript_Eevee_Check::
 
 
 OldaleTown_EventScript_Eevee_Get::
-	msgbox OldaleTown_Text_GiveEevee, MSGBOX_DEFAULT
+	msgbox OldaleTown_Text_GiveEevee, MSGBOX_NPC
 	setvar VAR_TEMP_1, SPECIES_EEVEE
 	givemon SPECIES_EEVEE, 5
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, OldaleTown_EventScript_SendEeveeParty
@@ -434,7 +434,7 @@ OldaleTown_Movement_BackUp:
 	step_end
 
 OldaleTown_EventScript_FootprintsManRight::
-	applymovement LOCALID_FOOTPRINTS_MAN OldaleTown_Movement_FootprintsRight
+	applymovement LOCALID_FOOTPRINTS_MAN, OldaleTown_Movement_FootprintsRight
 	waitmovement 0
 	removeobject LOCALID_FOOTPRINTS_MAN
 	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 10, 6
@@ -443,7 +443,7 @@ OldaleTown_EventScript_FootprintsManRight::
 	end
 
 OldaleTown_EventScript_FootprintsManDown::
-	applymovement LOCALID_FOOTPRINTS_MAN OldaleTown_Movement_FootprintsDown
+	applymovement LOCALID_FOOTPRINTS_MAN, OldaleTown_Movement_FootprintsDown
 	waitmovement 0
 	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 10, 6
 	setobjectmovementtype LOCALID_FOOTPRINTS_MAN, MOVEMENT_TYPE_WANDER_UP_AND_DOWN
@@ -453,18 +453,21 @@ OldaleTown_EventScript_FootprintsManDown::
 OldaleTown_Movement_FootprintsRight::
 	walk_right
 	walk_right
+	walk_diag_northeast
 	walk_right
 	walk_right
 	walk_right
 	walk_right
 	walk_right
 	walk_right
-
+	walk_right
 	step_end
 
 OldaleTown_Movement_FootprintsDown::
 	walk_down
 	walk_right
+	walk_right
+	walk_diag_northeast
 	walk_right
 	walk_right
 	walk_right
@@ -534,7 +537,7 @@ OldaleTown_Text_DiscoveredFootprints:
 	.string "them, okay?$"
 
 OldaleTown_Text_FinishedSketchingFootprints:
-	.string "Thank you for taking care of Eevee!\p"
+	.string "Thank you for taking this Eevee!\p"
 	.string "I'm sure it'll be very happy in your\n"
 	.string "care.$"
 
@@ -599,14 +602,12 @@ OldaleTown_Text_HeadingOut:
 	.string "Each area has a Leader.\p"
 	.string "If you leave an area without defeating\n"
 	.string "its Leader, you will be rematched by\l"
-	.string "Trainers, even if you've beat them\l"
-	.string "before.\p"
+	.string "Trainers.\p"
 	.string "Also, just between me and you…\p"
 	.string "Being defeated might set you back\n"
 	.string "a lot more than expected.\p"
 	.string "As my grandpa always said:\n"
-	.string "Losing might make you end up\l"
-	.string "back to the title screen!\p"
-	.string "I don't think he was all quite there,\n"
-	.string "but I'm sure there's some good advice\l"
-	.string "in what he said.$"
+	.string "Losing might send you back to\l"
+	.string "the title screen!\p"
+	.string "I'm not sure what he meant by that,\n"
+	.string "but it's probably good advice.$"

@@ -247,12 +247,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_PC::
 	end
 
 LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC::
-	setvar VAR_0x8004, PC_LOCATION_BRENDANS_HOUSE
-	special DoPCTurnOnEffect
-	playse SE_PC_ON
 	msgbox gText_PlayerHouseBootPC, MSGBOX_DEFAULT
-	special BedroomPC
-	waitstate
 	releaseall
 	end
 
@@ -286,8 +281,7 @@ PlayersHouse_2F_Text_HowDoYouLikeYourRoom:
 	.string "They finished moving everything in\n"
 	.string "downstairs, too.\p"
 	.string "Pokémon movers are so convenient!\p"
-	.string "Oh, you should make sure that\n"
-	.string "everything's all there on your desk.$"
+	.string "Well, come down when you're ready.$"
 
 PlayersHouse_2F_Text_Notebook:
 	.string "{PLAYER} flipped open the notebook.\p"

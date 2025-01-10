@@ -293,14 +293,10 @@ LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC::
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC::
-	setvar VAR_0x8004, PC_LOCATION_MAYS_HOUSE
-	special DoPCTurnOnEffect
-	playse SE_PC_ON
 	msgbox gText_PlayerHouseBootPC, MSGBOX_DEFAULT
-	special BedroomPC
-	waitstate
 	releaseall
 	end
+
 
 LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC::
 	setvar VAR_0x8004, PC_LOCATION_MAYS_HOUSE
@@ -327,10 +323,9 @@ RivalsHouse_2F_Text_MayWhoAreYou:
 	.string "journey across the region.\p"
 	.string "…You don't suppose your family would\n"
 	.string "let you string along with me?\p"
-	.string "I could use a fr-…\p"
+	.string "I could use a-\p"
 	.string "Rival.\p"
-	.string "I could use a rival to motivate me to get\n"
-	.string "stronger.\p"
+	.string "To motivate me to get stronger, and all.\p"
 	.string "…Oh, yeah, I forgot.\p"
 	.string "I was supposed to go help Dad catch\n"
 	.string "some wild Pokémon!\p"
@@ -338,7 +333,7 @@ RivalsHouse_2F_Text_MayWhoAreYou:
 	
 
 RivalsHouse_2F_Text_MayGettingReady:
-	.string "POKéMON fully restored!\n"
+	.string "Pokémon fully restored!\n"
 	.string "Items ready, and…$"
 
 RivalsHouse_2F_Text_BrendanWhoAreYou:
@@ -359,10 +354,9 @@ RivalsHouse_2F_Text_BrendanWhoAreYou:
 	.string "journey across the region.\p"
 	.string "…You don't suppose your family would\n"
 	.string "let you string along with me?\p"
-	.string "I could use a fr-…\p"
+	.string "I could use a-\p"
 	.string "Rival.\p"
-	.string "I could use a rival to motivate me to get\n"
-	.string "stronger.\p"
+	.string "To motivate me to get stronger, and all.\p"
 	.string "…Oh, yeah, I forgot.\p"
 	.string "I was supposed to go help Dad catch\n"
 	.string "some wild Pokémon!\p"

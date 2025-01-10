@@ -59,7 +59,7 @@ BoatCutscene_Text_Hoenn:
 	.string "lasses and lads, you will be able\l"
 	.string "to see quite the terrible storm.\p"
 	.string "We are now traversing what is known\n"
-	.string "as the 'Zone of Death'.\p"
+	.string "as the 'Forbidden Zone'.\p"
 	.string "…Ah, but have no fear!\p"
 	.string "Thanks to our state of the art cruiser,\n"
 	.string "'tis only a minor breeze.\p"

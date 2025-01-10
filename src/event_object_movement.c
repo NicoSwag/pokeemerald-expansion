@@ -2292,6 +2292,7 @@ static void RefreshFollowerGraphics(struct ObjectEvent *objEvent)
         UpdateSpritePalette(&sObjectEventSpritePalettes[i], sprite);
         if (gWeatherPtr->currWeather != WEATHER_FOG_HORIZONTAL) // don't want to weather blend in fog
             UpdateSpritePaletteWithWeather(sprite->oam.paletteNum);
+            ;
     }
 }
 

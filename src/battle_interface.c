@@ -2107,11 +2107,11 @@ void UpdateHealthboxAttribute(u8 healthboxSpriteId, struct Pokemon *mon, u8 elem
 s32 MoveBattleBar(u8 battlerId, u8 healthboxSpriteId, u8 whichBar, u8 unused)
 {
     u32 s;
-    u32 speedScale = Rogue_GetBattleSpeedScale(TRUE);
+    //u32 speedScale = Rogue_GetBattleSpeedScale(TRUE);
     s32 currentBarValue = 0;
 
-    for(s = 0; s < speedScale; ++s)
-    {
+    // for(s = 0; s < speedScale; ++s)
+    // {
         if (whichBar == HEALTH_BAR) // health bar
         {
             currentBarValue = CalcNewBarValue(gBattleSpritesDataPtr->battleBars[battlerId].maxValue,
@@ -2120,7 +2120,7 @@ s32 MoveBattleBar(u8 battlerId, u8 healthboxSpriteId, u8 whichBar, u8 unused)
                         &gBattleSpritesDataPtr->battleBars[battlerId].currValue,
                         B_HEALTHBAR_PIXELS / 8, 1);
         }
-        else // exp bar
+        /*else // exp bar
         {
             // Instant
             if (gBattleSpritesDataPtr->battleBars[battlerId].currValue == -32768) // first function call
@@ -2132,30 +2132,45 @@ s32 MoveBattleBar(u8 battlerId, u8 healthboxSpriteId, u8 whichBar, u8 unused)
                 currentBarValue = -1;
             }
 
-            //if(gBattleSpritesDataPtr->battleBars[battlerId].oldValue == gBattleSpritesDataPtr->battleBars[battlerId].currValue)
-//
-            //u16 expFraction = GetScaledExpFraction(gBattleSpritesDataPtr->battleBars[battlerId].oldValue,
-            //            gBattleSpritesDataPtr->battleBars[battlerId].receivedValue,
-            //            gBattleSpritesDataPtr->battleBars[battlerId].maxValue, 8);
-            //if (expFraction == 0)
-            //    expFraction = 1;
-            //expFraction = abs(gBattleSpritesDataPtr->battleBars[battlerId].receivedValue / expFraction);
-//
-            //// RogueNote: Fast exp bar
-            //expFraction = 100;
-//
-            //currentBarValue = CalcNewBarValue(gBattleSpritesDataPtr->battleBars[battlerId].maxValue,
-            //            gBattleSpritesDataPtr->battleBars[battlerId].oldValue,
-            //            gBattleSpritesDataPtr->battleBars[battlerId].receivedValue,
-            //            &gBattleSpritesDataPtr->battleBars[battlerId].currValue,
-            //            B_EXPBAR_PIXELS / 8, expFraction);
-//
-            //gBattleSpritesDataPtr->battleBars[battlerId].currValue = gBattleSpritesDataPtr->battleBars[battlerId].maxValue;
+            if(gBattleSpritesDataPtr->battleBars[battlerId].oldValue == gBattleSpritesDataPtr->battleBars[battlerId].currValue)
+
+            expFraction = GetScaledExpFraction(gBattleSpritesDataPtr->battleBars[battlerId].oldValue,
+                       gBattleSpritesDataPtr->battleBars[battlerId].receivedValue,
+                       gBattleSpritesDataPtr->battleBars[battlerId].maxValue, 8);
+            if (expFraction == 0)
+               expFraction = 1;
+            expFraction = abs(gBattleSpritesDataPtr->battleBars[battlerId].receivedValue / expFraction);
+
+            // RogueNote: Fast exp bar
+            expFraction = 100;
+
+            currentBarValue = CalcNewBarValue(gBattleSpritesDataPtr->battleBars[battlerId].maxValue,
+                       gBattleSpritesDataPtr->battleBars[battlerId].oldValue,
+                       gBattleSpritesDataPtr->battleBars[battlerId].receivedValue,
+                       &gBattleSpritesDataPtr->battleBars[battlerId].currValue,
+                       B_EXPBAR_PIXELS / 8, expFraction);
+
+            gBattleSpritesDataPtr->battleBars[battlerId].currValue = gBattleSpritesDataPtr->battleBars[battlerId].maxValue;
         }
 
         if(currentBarValue == -1)
             break;
-    }
+    }*/
+        else // exp bar
+        {
+            u16 expFraction = GetScaledExpFraction(gBattleSpritesDataPtr->battleBars[battlerId].oldValue,
+                        gBattleSpritesDataPtr->battleBars[battlerId].receivedValue,
+                        gBattleSpritesDataPtr->battleBars[battlerId].maxValue, 8);
+            if (expFraction == 0)
+                expFraction = 1;
+            expFraction = abs(gBattleSpritesDataPtr->battleBars[battlerId].receivedValue / expFraction);
+
+            currentBarValue = CalcNewBarValue(gBattleSpritesDataPtr->battleBars[battlerId].maxValue,
+                        gBattleSpritesDataPtr->battleBars[battlerId].oldValue,
+                        gBattleSpritesDataPtr->battleBars[battlerId].receivedValue,
+                        &gBattleSpritesDataPtr->battleBars[battlerId].currValue,
+                        B_EXPBAR_PIXELS / 8, expFraction);
+        }
 
     if (whichBar == EXP_BAR || (whichBar == HEALTH_BAR && !gBattleSpritesDataPtr->battlerData[battlerId].hpNumbersNoBars))
         MoveBattleBarGraphically(battlerId, whichBar);
@@ -2165,6 +2180,7 @@ s32 MoveBattleBar(u8 battlerId, u8 healthboxSpriteId, u8 whichBar, u8 unused)
 
     return currentBarValue;
 }
+
 
 static void MoveBattleBarGraphically(u8 battlerId, u8 whichBar)
 {
@@ -2791,7 +2807,7 @@ void CreateAbilityPopUp(u8 battlerId, u32 ability, bool32 isDoubleBattle)
         LoadSpriteSheet(&sSpriteSheet_AbilityPopUp);
         LoadSpritePalette(&sSpritePalette_AbilityPopUp);
     }
-    gBattleStruct->activeAbilityPopUps |= gBitTable[battlerId];
+    gBattleStruct->activeAbilityPopUps |= 1u << battlerId;
     battlerPosition = GetBattlerPosition(battlerId);
 
     if (isDoubleBattle)
@@ -2882,7 +2898,7 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
                 ||(sprite->tRightToLeft && (sprite->x -= 4) <= sprite->tOriginalX - ABILITY_POP_UP_POS_X_SLIDE)
                )
             {
-                gBattleStruct->activeAbilityPopUps &= ~(gBitTable[sprite->tBattlerId]);
+                gBattleStruct->activeAbilityPopUps &= ~(1u << sprite->tBattlerId);
                 DestroySprite(sprite);
             }
         }
@@ -2896,13 +2912,15 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
 
 void DestroyAbilityPopUp(u8 battlerId)
 {
-    if (gBattleStruct->activeAbilityPopUps & gBitTable[battlerId])
+    if (gBattleStruct->activeAbilityPopUps & (1u << battlerId))
     {
         gSprites[gBattleStruct->abilityPopUpSpriteIds[battlerId][0]].tFrames = 0;
         gSprites[gBattleStruct->abilityPopUpSpriteIds[battlerId][1]].tFrames = 0;
     }
     gBattleScripting.fixedPopup = FALSE;
 }
+
+
 
 static void Task_FreeAbilityPopUpGfx(u8 taskId)
 {

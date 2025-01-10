@@ -23,6 +23,7 @@ enum {
     FONT_SHORT_NARROW,
     FONT_TRANSPARENT,
     FONT_BW_SUMMARY_SCREEN,
+    FONT_SHORT_NARROWER,
 };
 
 // Return values for font functions

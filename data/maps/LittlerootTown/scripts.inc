@@ -101,7 +101,7 @@ LittlerootTown_EventScript_SetMomStandingInFrontOfDoorPos::
 	return
 
 LittlerootTown_EventScript_SetMomInFrontOfDoorMale::
-	setobjectxyperm LOCALID_MOM, 5, 7
+	setobjectxyperm LOCALID_MOM, 5, 8
 	return
 
 LittlerootTown_EventScript_SetMomInFrontOfDoorFemale::
@@ -321,6 +321,7 @@ LittlerootTown_EventScript_ThankYouSoMuch::
 	end
 
 LittlerootTown_EventScript_Boy::
+	faceplayer
 	msgbox LittlerootTown_Text_WalkingZigzagoon, MSGBOX_NPC
 	end
 
@@ -813,13 +814,13 @@ LittlerootTown_Text_WearTheseRunningShoes:
 	.string "Did you get it from Prof. Birch?\p"
 	.string "… … …\p"
 	.string "Oh, I see how it is.\p"
-	.string "Just got here and already itching forn\n"
+	.string "Just got here and already itching for\n"
 	.string "an adventure, aren't you?\p"
 	.string "You're your father's child, all right.\p"
 	.string "I suppose that's one way to acclimate\n"
 	.string "yourself to a new region.\p"
 	.string "…Well, take these, then!\p"
-	.string "If you're going out on ad adventure,\n"
+	.string "If you're going out on an adventure,\n"
 	.string "wear these Running Shoes.\p"
 	.string "They'll put a zip in your step!$"
 
@@ -854,11 +855,12 @@ LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "I wonder what that feels like.$"
 
 LittlerootTown_Text_BirchSpendsDaysInLab:
-	.string "The Pokémon League is so cool.\p"
-	.string "They regulate Pokémon fights, and\n"
-	.string "work hard to help the people of Hoenn.\p"
-	.string "And have you seen the Champion?\n"
-	.string "He's so dreamy…$"
+	.string "Oh, hey!\n"
+	.string "You're the new neighbor!\p"
+	.string "I have a favor to ask you.\p"
+	.string "Oh, but…\n"
+	.string "You don't have any Pokémon.\n"
+	.string "I don't think you can help me, then.$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "Um, um, um!\p"
@@ -920,7 +922,7 @@ LittlerootTown_Text_Zigzagoon:
 	.string "its mouth.$"
 
 LittlerootTown_Text_ZigzagoonNoises:
-	.string "Zigza!$"
+	.string "Krryah!$"
 
 LittlerootTown_Text_WalkingZigzagoon:
 	.string "Pretty cool, huh?\p"
@@ -1047,11 +1049,11 @@ LittlerootTown_EventScript_Text_Obstagoon:
 
 
 LittlerootTown_EventScript_Text_CanIHaveItBack:
-	.string "Could I have my POKéMON back?$"
+	.string "Could I have my Pokémon back?$"
 
 LittlerootTown_EventScript_Text_HoldingItem:
 	.string "Oh, but wait.\n"
-	.string "My POKéMON is holding an item.\p"
+	.string "My Pokémon is holding an item.\p"
 	.string "Make sure to take it off first, okay?$"
 
 LittlerootTown_EventScript_Text_Geez:

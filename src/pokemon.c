@@ -5685,18 +5685,14 @@ u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves)
 
     return numMoves;
     case MOVE_TUTOR_EGG_MOVES:
-
-    for (i = 0; i < MAX_MON_MOVES; i++)
-        learnedMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, 0);
-        
-    numEggMoves = GetEggMoves(species, eggMoves);
+        eggSpecies = GetEggSpecies(species);
+        numEggMoves = GetEggMoves(eggSpecies, eggMoves);
 
 // i is the number of egg moves we've iterated through
 // j is for checking that the move is not learned
 // k is for checking that the move is not in the list already
         for (i = 0; i < EGG_MOVES_ARRAY_COUNT; i++)
         {
-           
            for (j = 0; j < MAX_MON_MOVES && learnedMoves[j] != eggMoves[i]; j++)
                ;
 
@@ -5708,8 +5704,6 @@ u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves)
                if (k == numMoves)
                    moves[numMoves++] = eggMoves[i];
             }
-        else
-            numEggMoves--;
         }
         numEggMoves--;
         return numEggMoves;

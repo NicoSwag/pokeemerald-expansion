@@ -23,12 +23,17 @@
 #define tSound data[4]
 #define tButtonMode data[5]
 #define tWindowFrameType data[6]
+#define tWildBattleSpeed data[7]
+#define tTrainerBattleSpeed data[8]
+#define tImportantBattleSpeed data[9]
 
 enum
 {
-    MENUITEM_BATTLESCENE,
     MENUITEM_SOUND,
     MENUITEM_BUTTONMODE,
+    MENUITEM_BATTLESCENE_WILD_BATTLES,
+    MENUITEM_BATTLESCENE_TRAINER_BATTLES,
+    MENUITEM_BATTLESCENE_KEY_BATTLES,
     MENUITEM_CANCEL,
     MENUITEM_COUNT,
 };
@@ -39,9 +44,12 @@ enum
     WIN_OPTIONS
 };
 
-#define YPOS_BATTLESCENE  (MENUITEM_BATTLESCENE * 16)
+
 #define YPOS_SOUND        (MENUITEM_SOUND * 16)
 #define YPOS_BUTTONMODE   (MENUITEM_BUTTONMODE * 16)
+#define YPOS_BATTLESCENE_WILD  (MENUITEM_BATTLESCENE_WILD_BATTLES * 16)
+#define YPOS_BATTLESCENE_TRAINER (MENUITEM_BATTLESCENE_TRAINER_BATTLES * 16)
+#define YPOS_BATTLESCENE_IMPORTANT (MENUITEM_BATTLESCENE_KEY_BATTLES * 16)
 
 static void Task_OptionMenuFadeIn(u8 taskId);
 static void Task_OptionMenuProcessInput(u8 taskId);
@@ -51,7 +59,9 @@ static void HighlightOptionMenuItem(u8 selection);
 static u8 TextSpeed_ProcessInput(u8 selection);
 static void TextSpeed_DrawChoices(u8 selection);
 static u8 BattleScene_ProcessInput(u8 selection);
-static void BattleScene_DrawChoices(u8 selection);
+static void BattleScene_DrawChoicesWild(u8 selection);
+static void BattleScene_DrawChoicesTrainer(u8 selection);
+static void BattleScene_DrawChoicesKey(u8 selection);
 static u8 BattleStyle_ProcessInput(u8 selection);
 static void BattleStyle_DrawChoices(u8 selection);
 static u8 Sound_ProcessInput(u8 selection);
@@ -72,11 +82,15 @@ static const u8 sEqualSignGfx[] = INCBIN_U8("graphics/interface/option_menu_equa
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
-    [MENUITEM_BATTLESCENE] = gText_BattleScene,
     [MENUITEM_SOUND]       = gText_Sound,
     [MENUITEM_BUTTONMODE]  = gText_ButtonMode,
     [MENUITEM_CANCEL]      = gText_OptionMenuCancel,
+    [MENUITEM_BATTLESCENE_WILD_BATTLES] = gText_OptionMenuWildBattles,
+    [MENUITEM_BATTLESCENE_TRAINER_BATTLES] = gText_OptionMenuTrainerBattles,
+    [MENUITEM_BATTLESCENE_KEY_BATTLES] = gText_OptionMenuImportantBattles,
 };
+
+
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
 {
@@ -222,11 +236,17 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].tBattleSceneOff = gSaveBlock2Ptr->optionsBattleSceneOff;
         gTasks[taskId].tSound = gSaveBlock2Ptr->optionsSound;
         gTasks[taskId].tButtonMode = gSaveBlock2Ptr->optionsButtonMode;
+        gTasks[taskId].tWildBattleSpeed = gSaveBlock2Ptr->optionsWildBattleSpeed;
+        gTasks[taskId].tTrainerBattleSpeed = gSaveBlock2Ptr->optionsTrainerBattleSpeed;
+        gTasks[taskId].tImportantBattleSpeed = gSaveBlock2Ptr->optionsImportantBattleSpeed;
 
-        BattleScene_DrawChoices(gTasks[taskId].tBattleSceneOff);
         Sound_DrawChoices(gTasks[taskId].tSound);
         ButtonMode_DrawChoices(gTasks[taskId].tButtonMode);
         HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
+        BattleScene_DrawChoicesWild(gTasks[taskId].tWildBattleSpeed);
+        BattleScene_DrawChoicesTrainer(gTasks[taskId].tTrainerBattleSpeed);
+        BattleScene_DrawChoicesKey(gTasks[taskId].tImportantBattleSpeed);
+
 
         CopyWindowToVram(WIN_OPTIONS, COPYWIN_FULL);
         gMain.state++;
@@ -279,13 +299,6 @@ static void Task_OptionMenuProcessInput(u8 taskId)
 
         switch (gTasks[taskId].tMenuSelection)
         {
-        case MENUITEM_BATTLESCENE:
-            previousOption = gTasks[taskId].tBattleSceneOff;
-            gTasks[taskId].tBattleSceneOff = BattleScene_ProcessInput(gTasks[taskId].tBattleSceneOff);
-
-            if (previousOption != gTasks[taskId].tBattleSceneOff)
-                BattleScene_DrawChoices(gTasks[taskId].tBattleSceneOff);
-            break;
         case MENUITEM_SOUND:
             previousOption = gTasks[taskId].tSound;
             gTasks[taskId].tSound = Sound_ProcessInput(gTasks[taskId].tSound);
@@ -299,6 +312,27 @@ static void Task_OptionMenuProcessInput(u8 taskId)
 
             if (previousOption != gTasks[taskId].tButtonMode)
                 ButtonMode_DrawChoices(gTasks[taskId].tButtonMode);
+            break;
+        case MENUITEM_BATTLESCENE_WILD_BATTLES:
+            previousOption = gTasks[taskId].tWildBattleSpeed;
+            gTasks[taskId].tWildBattleSpeed = BattleScene_ProcessInput(gTasks[taskId].tWildBattleSpeed);
+
+            if (previousOption != gTasks[taskId].tWildBattleSpeed)
+                BattleScene_DrawChoicesWild(gTasks[taskId].tWildBattleSpeed);
+            break;
+        case MENUITEM_BATTLESCENE_TRAINER_BATTLES:
+            previousOption = gTasks[taskId].tTrainerBattleSpeed;
+            gTasks[taskId].tTrainerBattleSpeed = BattleScene_ProcessInput(gTasks[taskId].tTrainerBattleSpeed);
+
+            if (previousOption != gTasks[taskId].tTrainerBattleSpeed)
+                BattleScene_DrawChoicesTrainer(gTasks[taskId].tTrainerBattleSpeed);
+            break;
+        case MENUITEM_BATTLESCENE_KEY_BATTLES:
+            previousOption = gTasks[taskId].tImportantBattleSpeed;
+            gTasks[taskId].tImportantBattleSpeed = BattleScene_ProcessInput(gTasks[taskId].tImportantBattleSpeed);
+
+            if (previousOption != gTasks[taskId].tImportantBattleSpeed)
+                BattleScene_DrawChoicesKey(gTasks[taskId].tImportantBattleSpeed);
             break;
         default:
             return;
@@ -320,6 +354,9 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsSound = gTasks[taskId].tSound;
     gSaveBlock2Ptr->optionsButtonMode = gTasks[taskId].tButtonMode;
     gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].tWindowFrameType;
+    gSaveBlock2Ptr->optionsWildBattleSpeed = gTasks[taskId].tWildBattleSpeed;
+    gSaveBlock2Ptr->optionsTrainerBattleSpeed = gTasks[taskId].tTrainerBattleSpeed;
+    gSaveBlock2Ptr->optionsImportantBattleSpeed = gTasks[taskId].tImportantBattleSpeed;
 
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
@@ -406,35 +443,146 @@ static void TextSpeed_DrawChoices(u8 selection)
 
 static u8 BattleScene_ProcessInput(u8 selection)
 {
-    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    if (JOY_NEW(DPAD_RIGHT))
     {
-        selection ^= 1;
+        if (selection < OPTIONS_BATTLE_SCENE_COUNT - 1)
+            selection++;
+        else
+            selection = 0;
+
         sArrowPressed = TRUE;
     }
+    if (JOY_NEW(DPAD_LEFT))
+    {
+        if (selection != 0)
+            selection--;
+        else
+            selection = OPTIONS_BATTLE_SCENE_COUNT - 1;
 
+        sArrowPressed = TRUE;
+    }
     return selection;
 }
 
-static void BattleScene_DrawChoices(u8 selection)
+static void BattleScene_DrawChoicesWild(u8 selection)
 {
-    u8 styles[2];
+    
+    u8 text[16] = {EOS};
+    u8 n = selection + 1;
+    u16 i;
 
-    styles[0] = 0;
-    styles[1] = 0;
-    styles[selection] = 1;
+    for (i = 0; gText_FrameTypeNumber[i] != EOS && i <= 5; i++)
+        text[i] = gText_FrameTypeNumber[i];
 
-    DrawOptionMenuChoice(gText_BattleSceneOn, 104, YPOS_BATTLESCENE, styles[0]);
-    DrawOptionMenuChoice(gText_BattleSceneOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleSceneOff, 198), YPOS_BATTLESCENE, styles[1]);
+    // Convert a number to decimal string
+    if (n / 10 != 0)
+    {
+        text[i] = n / 10 + CHAR_0;
+        i++;
+        text[i] = n % 10 + CHAR_0;
+        i++;
+    }
+    else
+    {
+        text[i] = n % 10 + CHAR_0;
+        i++;
+        text[i] = CHAR_SPACER;
+        i++;
+    }
+
+    text[i] = EOS;
+
+    DrawOptionMenuChoice(text, 150, YPOS_BATTLESCENE_WILD, 1);
+    DrawOptionMenuChoice(gText_BattleSpeed, 158, YPOS_BATTLESCENE_WILD, 0);
+
+}
+
+static void BattleScene_DrawChoicesTrainer(u8 selection)
+{
+    
+    u8 text[16] = {EOS};
+    u8 n = selection + 1;
+    u16 i;
+
+    for (i = 0; gText_FrameTypeNumber[i] != EOS && i <= 5; i++)
+        text[i] = gText_FrameTypeNumber[i];
+
+    // Convert a number to decimal string
+    if (n / 10 != 0)
+    {
+        text[i] = n / 10 + CHAR_0;
+        i++;
+        text[i] = n % 10 + CHAR_0;
+        i++;
+    }
+    else
+    {
+        text[i] = n % 10 + CHAR_0;
+        i++;
+        text[i] = CHAR_SPACER;
+        i++;
+    }
+
+    text[i] = EOS;
+
+    DrawOptionMenuChoice(text, 150, YPOS_BATTLESCENE_TRAINER, 1);
+    DrawOptionMenuChoice(gText_BattleSpeed, 158, YPOS_BATTLESCENE_TRAINER, 0);
+
+}
+
+
+static void BattleScene_DrawChoicesKey(u8 selection)
+{
+    
+    u8 text[16] = {EOS};
+    u8 n = selection + 1;
+    u16 i;
+
+    for (i = 0; gText_FrameTypeNumber[i] != EOS && i <= 5; i++)
+        text[i] = gText_FrameTypeNumber[i];
+
+    // Convert a number to decimal string
+    if (n / 10 != 0)
+    {
+        text[i] = n / 10 + CHAR_0;
+        i++;
+        text[i] = n % 10 + CHAR_0;
+        i++;
+    }
+    else
+    {
+        text[i] = n % 10 + CHAR_0;
+        i++;
+        text[i] = CHAR_SPACER;
+        i++;
+    }
+
+    text[i] = EOS;
+
+    DrawOptionMenuChoice(text, 150, YPOS_BATTLESCENE_IMPORTANT, 1);
+    DrawOptionMenuChoice(gText_BattleSpeed, 158, YPOS_BATTLESCENE_IMPORTANT, 0);
+
 }
 
 static u8 BattleStyle_ProcessInput(u8 selection)
 {
-    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    if (JOY_NEW(DPAD_RIGHT))
     {
-        selection ^= 1;
+        if (selection < 3)
+            selection++;
+        else
+            selection = 0;
         sArrowPressed = TRUE;
     }
+    if (JOY_NEW(DPAD_LEFT))
+    {
+        if (selection != 0)
+            selection--;
+        else
+            selection = 3;
 
+        sArrowPressed = TRUE;
+    }
     return selection;
 }
 
@@ -549,6 +697,32 @@ static u8 ButtonMode_ProcessInput(u8 selection)
     }
     return selection;
 }
+
+
+static u8 BattleSpeed_ProcessInput(u8 selection)
+{
+    if (JOY_NEW(DPAD_RIGHT))
+    {
+        if (selection <= 1)
+            selection++;
+        else
+            selection = 0;
+
+        sArrowPressed = TRUE;
+    }
+    if (JOY_NEW(DPAD_LEFT))
+    {
+        if (selection != 0)
+            selection--;
+        else
+            selection = 3;
+
+        sArrowPressed = TRUE;
+    }
+    return selection;
+}
+
+
 
 static void ButtonMode_DrawChoices(u8 selection)
 {

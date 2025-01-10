@@ -12664,7 +12664,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_CHERI_VOUCHER] =
     {
-        .name = _("Oran Voucher"),
+        .name = _("Cheri Voucher"),
         .price = 0,
         .description = COMPOUND_STRING(
             "Used to redeem\n"

@@ -4,7 +4,7 @@
 .set LOCALID_WALLYS_DAD, 5
 .set LOCALID_GYM_BOY, 6
 .set LOCALID_SCOTT, 7
-.set LOCALID_LOOKER, 18
+.set LOCALID_LOOKER, 17
 
 PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_OnTransition
@@ -48,6 +48,10 @@ PetalburgCity_EventScript_Zigzagoon::
 
 PetalburgCity_Text_ZigzagoonNoises:
 	.string "Zigza!$"
+
+PetalburgCity_EventScript_RainyLady::
+	msgbox PetalburgCity_Text_RainyLady, MSGBOX_NPC
+	end
 
 
 PetalburgCity_Text_Lotad:
@@ -945,7 +949,7 @@ PetalburgCity_Text_Looker2:
 	.string "Now, my dear assistant, is the time\n"
 	.string "to take my leave.\p"
 	.string "I shall be awaiting for you in the\n"
-	.string "Petalburg Forest.\p"
+	.string "Petalburg Woods.\p"
 	.string "And remember, if anyone asks of me,\n"
 	.string "I am like a ghost: invisible!$"
 
@@ -1005,3 +1009,8 @@ PetalburgCity_EventScript_Wingull::
 
 PetalburgCity_Text_Wingull:
 	.string "Kweh! Kweh!$"
+
+PetalburgCity_Text_RainyLady:
+	.string "The weather here is often rainy.\n"
+	.string "I've heard it's more sunny in Dewford.\p"
+	.string "I quite like the rain, myself.$"

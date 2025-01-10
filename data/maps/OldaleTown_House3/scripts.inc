@@ -19,7 +19,7 @@ OldaleTown_House3_Text_Volcano:
 	.string "active volcano in the region is Mt.\l"
 	.string "Chimney.\p"
 	.string "It seems that a bunch of Slugma kept\n"
-	.string "living here, though, despite the rain!$"
+	.string "living here, despite the rain!$"
 
 OldaleTown_House3_Text_Mom:
 	.string "My son is very interested in science.\n"

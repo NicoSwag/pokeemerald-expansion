@@ -127,7 +127,6 @@ PetalburgCity_GymInterior_EventScript_BeginWallyTutorial::
 	msgbox PetalburgCity_GymInterior_Text_IllLoanYouMyZigzagoon, MSGBOX_DEFAULT
 	speakername Common_Name_Wally
 	msgbox PetalburgCity_GymInterior_Text_WallyThankYouAndDadGivesPokeBall, MSGBOX_DEFAULT
-	closemessage
 	speakername Common_Name_Dad
 	msgbox PetalburgCity_GymInterior_Text_WallyOhWowThankYou, MSGBOX_DEFAULT
 	call_if_eq VAR_0x8008, 0, PetalburgCity_GymInterior_EventScript_NormanFaceDoorSouth
@@ -1163,7 +1162,9 @@ PetalburgCity_GymInterior_Text_WouldYouReallyComeWithMe:
 	.string "kid who just moved in, right…?\p"
 	.string "I asked him for some advice to start my\n"
 	.string "journey and he sent me to catch some\l"
-	.string "Pokémon, but I've never battled before…\p"
+	.string "Pokémon…\p"
+	.string "But I…\n"
+	.string "I've never battled before…\p"
 	.string "So you'll…\n"
 	.string "You'll be my first…\p"
 	.string "Don't go easy on me, ok…?$"

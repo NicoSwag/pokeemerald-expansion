@@ -1,6 +1,6 @@
 .set LOCALID_GRUNT, 3
 .set LOCALID_DEVON_EMPLOYEE, 4
-.set LOCALID_LOOKER, 14
+.set LOCALID_LOOKER, 13
 
 PetalburgWoods_MapScripts::
 	.byte 0
@@ -43,7 +43,7 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou, MSGBOX_DEFAULT
 	speakername Common_Name_Shady
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou2, MSGBOX_DEFAULT
-	closemessage
+	speakername NULL
 	msgbox PetalburgWoods_Text_IWasGoingToAmbushYou3, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
@@ -305,11 +305,11 @@ PetalburgWoods_Movement_DevonLooksDown:
 
 
 PetalburgWoods_Movement_DevonEscapes:
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
 	step_end
 
 PetalburgWoods_Movement_AquaBackOff:
@@ -459,7 +459,7 @@ PetalburgWoods_Text_HaveYouSeenShroomish:
 
 PetalburgWoods_Text_IWasGoingToAmbushYou:
 	.string "Yo, guy.\p"
-	.string "As promised, you got me the goods\n"
+	.string "As promised, you got me the Goods,\n"
 	.string "right?$"
 	
 PetalburgWoods_Text_IWasGoingToAmbushYou2:

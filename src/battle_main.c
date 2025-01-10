@@ -2003,7 +2003,7 @@ u8 GetEnemyHighestLevel(const struct Trainer *trainer)
 
 u8 getLevelScaled(u8 monLevel, u8 levelCap, u8 previousLevelCap)
 {
-    if (previousLevelCap == 0 || monLevel >= levelCap || DoesTrainerNotScale(gTrainerBattleOpponent_A)) 
+    if (previousLevelCap == 0 || monLevel >= levelCap) 
         return monLevel;
 
     u16 levelPercent;

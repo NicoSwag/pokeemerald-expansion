@@ -883,7 +883,9 @@ gText_PokemonTrainerSchoolEmail::
 	.string "… … … … … …$"
 
 gText_PlayerHouseBootPC::
-	.string "{PLAYER} booted up the PC.$"
+	.string "It's an old computer.\n"
+	.string "You don't have time for it,\l"
+	.string "right now.$"
 
 gText_PokeblockLinkCanceled::
 	.string "The link was canceled.$"

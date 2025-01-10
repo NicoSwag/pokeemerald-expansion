@@ -105,15 +105,15 @@ Slateport_Cutscene_DrakeCont::
 	applymovement LOCALID_ENGINEER, Common_Movement_Delay48
 	waitmovement 0
 	msgbox SlateportCity_Text_Hey, MSGBOX_DEFAULT
-	closemessage
 	speakername Common_Name_Drake
 	msgbox SlateportCity_Text_JustAJoke, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
 	applymovement LOCALID_ENGINEER Common_Movement_QuestionMark
 	waitmovement 0
+	applymovement LOCALID_ENGINEER, Common_Movement_Delay48
+	waitmovement 0
 	msgbox SlateportCity_Text_ThePresident, MSGBOX_DEFAULT
-	closemessage
 	speakername Common_Name_Drake
 	msgbox SlateportCity_Text_ScratchThat, MSGBOX_DEFAULT
 	closemessage
@@ -183,7 +183,7 @@ SlateportCity_Text_Parents:
 	.string "They made you do the trip by yourself,\n"
 	.string "and they're waiting for you in\l"
 	.string "Littleroot Town?\p"
-	.string "I swear, parents these days…\p"
+	.string "Good Grief, parents these days…\p"
 	.string "Well now, we have to find a way to ship\n"
 	.string "you all the way to Littleroot, don't we?\p"
 	.string "Hmmm…$"
@@ -205,7 +205,7 @@ SlateportCity_Text_ISuppose:
 	.string "Don't worry, kid, I deal with Devon all\n"
 	.string "the time.\p"
 	.string "They ain't the most agreeable, that's for\n"
-	.string "sure, but they ain't gonna kindap you or\l"
+	.string "sure, but they ain't gonna kidnap you or\l"
 	.string "anything.$"
 
 SlateportCity_Text_Hey:

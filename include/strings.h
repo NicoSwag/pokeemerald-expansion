@@ -303,6 +303,7 @@ extern const u8 gText_BattleStyleSet[];
 extern const u8 gText_SoundMono[];
 extern const u8 gText_SoundStereo[];
 extern const u8 gText_FrameTypeNumber[];
+extern const u8 gText_BattleSpeed[];
 extern const u8 gText_FrameType[];
 extern const u8 gText_ButtonTypeNormal[];
 extern const u8 gText_ButtonTypeLR[];
@@ -316,6 +317,9 @@ extern const u8 gText_Sound[];
 extern const u8 gText_Frame[];
 extern const u8 gText_OptionMenuCancel[];
 extern const u8 gText_ButtonMode[];
+extern const u8 gText_OptionMenuWildBattles[];
+extern const u8 gText_OptionMenuTrainerBattles[];
+extern const u8 gText_OptionMenuImportantBattles[];
 
 extern const u8 gText_MaleSymbol[];
 extern const u8 gText_FemaleSymbol[];

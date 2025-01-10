@@ -1764,6 +1764,7 @@ static bool32 EndTurnTerrain(u32 terrainFlag, u32 stringTableId)
         
         else if (terrainFlag & STATUS_FIELD_MISTY_TERRAIN)
             BattleScriptExecute(BattleScript_MistyTerrainContinues);
+        
         if (!(gFieldStatuses & STATUS_FIELD_TERRAIN_PERMANENT) && --gFieldTimers.terrainTimer == 0)
         {
             gFieldStatuses &= ~terrainFlag;
@@ -12102,7 +12103,6 @@ void TryRestoreHeldItems(void)
 {
     u32 i;
     bool32 returnNPCItems = B_RETURN_STOLEN_NPC_ITEMS >= GEN_5 && gBattleTypeFlags & BATTLE_TYPE_TRAINER;
-    u16 lostItem = ITEM_NONE;
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
@@ -12119,8 +12119,6 @@ void TryRestoreHeldItems(void)
             if ((lostItem != ITEM_NONE || returnNPCItems) && ItemId_GetPocket(lostItem) != POCKET_BERRIES)
                 SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &lostItem);
         }
-if (lostItem == ITEM_NONE)
-            SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &lostItem);
     }
 }
 

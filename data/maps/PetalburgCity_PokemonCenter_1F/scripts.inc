@@ -55,7 +55,7 @@ PetalburgCity_PokemonCenter_1F_EventScript_SayMudkipType::
 	return
 
 PetalburgCity_PokemonCenter_1F_Text_PCStorageSystem:
-	.string "That PC-based POKéMON Storage\n"
+	.string "That PC-based Pokémon Storage\n"
 	.string "System…\p"
 	.string "Whoever made it must be some kind\n"
 	.string "of a scientific wizard!$"
@@ -68,7 +68,7 @@ PetalburgCity_PokemonCenter_1F_Text_ManyTypesOfPokemon:
 	.string "There are many types of Pokemon.\p"
 	.string "All types have their strengths and\n"
 	.string "weaknesses against other types.\p"
-	.string "Depending on the types of POKéMON,\n"
+	.string "Depending on the types of Pokémon,\n"
 	.string "a battle could be easy or hard.$"
 
 PetalburgCity_PokemonCenter_1F_Text_TreeckoIsGrassType:

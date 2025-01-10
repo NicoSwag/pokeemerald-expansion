@@ -1022,7 +1022,7 @@ LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival:
 LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou:
 	.string "Great!\n"
 	.string "{RIVAL} should be happy, too.\p"
-	.string "Theyalways wanted a friend their age.\p"
+	.string "They always wanted a friend their age.\p"
 	.string "Get {RIVAL} to teach you what it\n"
 	.string "means to be a Trainer.$"
 
@@ -1037,9 +1037,8 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "Oh, hi, {PLAYER}{KUN}!\p"
 	.string "I heard you and {RIVAL} faced off\n"
-	.string "against some Team Magma goons.\p"
-	.string "They go around bothering trainers for\n"
-	.string "some sort of noble goal.\p"
+	.string "against some Team Magma grunts.\p"
+	.string "Ah, the youth of today…\p"
 	.string "They seem very interested in volcanoes,\n"
 	.string "and I suppose that's admirable, but…\p"
 	.string "It's no excuse to go around stealing\n"

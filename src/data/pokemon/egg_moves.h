@@ -1265,7 +1265,7 @@ const u16 gEggMoves[] = {
         MOVE_FEINT),
 
     egg_moves(BALTOY,
-        MOVE_SIGNAL_BEAM,
+        MOVE_CHARGE_BEAM,
         MOVE_STEALTH_ROCK),
 
     egg_moves(ELEKID,
