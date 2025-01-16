@@ -4713,6 +4713,9 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_ROUTE_238) \
     X(MUS_SHIP_LOOP) \
     X(MUS_ENCOUNTER_DEVON) \
+    X(MUS_WALLY_ENCOUNTER) \
+    X(MUS_VS_PRESIDENT) \
+    X(MUS_VS_RIVAL_FINAL) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \

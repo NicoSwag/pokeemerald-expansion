@@ -12678,6 +12678,23 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
+
+    [ITEM_CHARTI_VOUCHER] =
+    {
+        .name = _("Charti Voucher"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Used to redeem\n"
+            "Charti Berries at\n"
+            "a Pokémon Center."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .iconPic = gItemIcon_BikeVoucher,
+        .iconPalette = gItemIconPalette_BikeVoucher,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    },
+
     [ITEM_PASSHO_VOUCHER] =
     {
         .name = _("Passho Voucher"),

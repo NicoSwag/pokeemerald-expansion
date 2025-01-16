@@ -86,6 +86,7 @@ DewfordTown_EventScript_MinecartInteract::
 
 
 DewfordTown_EventScript_SlakothGuy::
+	faceplayer
 	msgbox DewfordTown_Text_Slakoth, MSGBOX_NPC
 	end
 
@@ -494,7 +495,7 @@ DewfordTown_EventScript_Briney_BeforeBeatingGym:
 	waitmovement 0
 	applymovement LOCALID_BRAWLY, Common_Movement_Delay48
 	waitmovement 0
-	applymovement LOCALID_BRAWLY, Common_Movement_WalkUp2
+	applymovement LOCALID_BRAWLY, Common_Movement_WalkUp
 	waitmovement 0
 	applymovement LOCALID_BRAWLY, Common_Movement_WalkRight2
 	waitmovement 0
@@ -1831,7 +1832,7 @@ DewfordTown_Text_Aron:
 	.string "This Aron here is very hungry.\n"
 	.string "It keeps trying to eat our emeralds.\p"
 	.string "Maybe if I had an Iron Ball, I could\n"
-	.string "get it to stop.$"
+	.string "feed it to it and get it to stop.$"
 
 
 DewfordTown_Text_IronBall:
@@ -1873,6 +1874,7 @@ Common_Movement_AronMoves:
 
 
 DewfordTown_Movement_MinerGoesUp:
+	walk_up
 	walk_up
 	step_end
 

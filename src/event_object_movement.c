@@ -3142,7 +3142,9 @@ u8 LoadObjectEventPalette(u16 paletteTag)
     u16 i = FindObjectEventPaletteIndexByTag(paletteTag);
     if (i == 0xFF)
         return i;
-    return LoadSpritePaletteIfTagExists(&sObjectEventSpritePalettes[i]);
+    u8 palIndex = LoadSpritePaletteIfTagExists(&sObjectEventSpritePalettes[i]);
+    UpdateSpritePaletteWithWeather(palIndex);
+    return palIndex;
 }
 
 u8 LoadPlayerObjectEventPalette(u8 gender)

@@ -857,14 +857,8 @@ PetalburgCity_Text_WaterTMExplain:
 
 PetalburgCity_Text_FullPartyExplanation:
 	.string "Let's say you have six Pokémon.\n"
-	.string "If you catch another one…\p"
-	.string "You can either send it to the PC,\n"
-	.string "or swap it with another one in your\l"
-	.string "party, which will then be sent to\l"
-	.string "the PC.\p"
-	.string "However, in the field, you can only\n"
-	.string "send Pokémon to the PC, but not\l"
-	.string "retrieve them.$"
+	.string "If you catch another one…\l"
+	.string "It will get sent to the PC.$"
 
 PetalburgCity_Text_GymSign:
 	.string "Petalburg City's Pokémon Gym\n"

@@ -666,7 +666,7 @@ RusturfTunnel_Message_Noyoudont:
 
 
 RusturfTunnel_Message_Fine:
-	.string " …F-fine!\p"
+	.string "…F-fine!\p"
 	.string "You want me so badly?\n"
 	.string "Come and get me, then!\p"
 	.string "I-I'll let you know…\p"

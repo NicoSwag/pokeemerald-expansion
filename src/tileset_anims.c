@@ -65,6 +65,7 @@ static void QueueAnimTiles_Rustboro_WindyWater(u16, u8);
 static void QueueAnimTiles_General_WaterPolluted(u16);
 static void QueueAnimTiles_Rustboro_Fountain(u16);
 static void QueueAnimTiles_Rustboro_Smoke(u16);
+static void QueueAnimTiles_Rustboro_Camera(u16);
 static void QueueAnimTiles_Petalburg_Water_Horizontal(u16);
 static void QueueAnimTiles_Petalburg_Water_Overlay(u16);
 static void QueueAnimTiles_Petalburg_Water_Vertical(u16);
@@ -489,6 +490,12 @@ const u16 gTilesetAnims_Rustboro_Smoke_Frame6[] = INCBIN_U16("data/tilesets/seco
 const u16 gTilesetAnims_Rustboro_Smoke_Frame7[] = INCBIN_U16("data/tilesets/secondary/rustboro_surroundings/anim/smoke/7.4bpp");
 
 
+const u16 gTilesetAnims_Rustboro_Camera_Frame0[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/anim/camera/0.4bpp");
+const u16 gTilesetAnims_Rustboro_Camera_Frame1[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/anim/camera/1.4bpp");
+const u16 gTilesetAnims_Rustboro_Camera_Frame2[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/anim/camera/2.4bpp");
+const u16 gTilesetAnims_Rustboro_Camera_Frame3[] = INCBIN_U16("data/tilesets/secondary/rustboro_inner/anim/camera/3.4bpp");
+
+
 u16 *const gTilesetAnims_Rustboro_WindyWater_VDests[] = {
     (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 128)),
     (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(NUM_TILES_IN_PRIMARY + 132)),
@@ -534,6 +541,14 @@ const u16 *const gTilesetAnims_Rustboro_Smoke[] = {
     gTilesetAnims_Rustboro_Smoke_Frame5,
     gTilesetAnims_Rustboro_Smoke_Frame6,
     gTilesetAnims_Rustboro_Smoke_Frame7
+};
+
+
+const u16 *const gTilesetAnims_Rustboro_Camera[] = {
+    gTilesetAnims_Rustboro_Camera_Frame0,
+    gTilesetAnims_Rustboro_Camera_Frame1,
+    gTilesetAnims_Rustboro_Camera_Frame2,
+    gTilesetAnims_Rustboro_Camera_Frame3
 };
 
 const u16 gTilesetAnims_Rustboro_Fountain_Frame0[] = INCBIN_U16("data/tilesets/secondary/rustboro/anim/fountain/0.4bpp");
@@ -1190,6 +1205,10 @@ static void TilesetAnim_Rustboro(u16 timer)
 {
      if (timer % 8 == 0)
         QueueAnimTiles_Rustboro_Smoke(timer / 8);
+        
+     
+     if (timer % 16 == 0)
+        QueueAnimTiles_Rustboro_Camera(timer / 16);
 }
 
 
@@ -1361,6 +1380,14 @@ static void QueueAnimTiles_Rustboro_Smoke(u16 timer_div)
 
         u8 i = timer_div % ARRAY_COUNT(gTilesetAnims_Rustboro_Smoke);
         AppendTilesetAnimToBuffer(gTilesetAnims_Rustboro_Smoke[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(944)), 4 * TILE_SIZE_4BPP);
+}
+
+
+static void QueueAnimTiles_Rustboro_Camera(u16 timer_div)
+{
+
+        u8 i = timer_div % ARRAY_COUNT(gTilesetAnims_Rustboro_Camera);
+        AppendTilesetAnimToBuffer(gTilesetAnims_Rustboro_Camera[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(700)), 1 * TILE_SIZE_4BPP);
 }
 
 

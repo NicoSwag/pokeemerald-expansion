@@ -8227,67 +8227,67 @@ struct TrainerMoney
 
 const struct TrainerMoney gTrainerMoneyTable[] =
 {
-    {TRAINER_CLASS_TEAM_AQUA, 10},
-    {TRAINER_CLASS_AQUA_ADMIN, 20},
-    {TRAINER_CLASS_AQUA_LEADER, 20},
-    {TRAINER_CLASS_AROMA_LADY, 10},
-    {TRAINER_CLASS_RUIN_MANIAC, 15},
-    {TRAINER_CLASS_INTERVIEWER, 12},
+    {TRAINER_CLASS_TEAM_AQUA, 5},
+    {TRAINER_CLASS_AQUA_ADMIN, 10},
+    {TRAINER_CLASS_AQUA_LEADER, 15},
+    {TRAINER_CLASS_AROMA_LADY, 5},
+    {TRAINER_CLASS_RUIN_MANIAC, 5},
+    {TRAINER_CLASS_INTERVIEWER, 7},
     {TRAINER_CLASS_TUBER_F, 1},
     {TRAINER_CLASS_TUBER_M, 1},
     {TRAINER_CLASS_SIS_AND_BRO, 3},
-    {TRAINER_CLASS_COOLTRAINER, 12},
-    {TRAINER_CLASS_HEX_MANIAC, 6},
-    {TRAINER_CLASS_LADY, 10},
-    {TRAINER_CLASS_BEAUTY, 8},
-    {TRAINER_CLASS_RICH_BOY, 30},
-    {TRAINER_CLASS_POKEMANIAC, 15},
+    {TRAINER_CLASS_COOLTRAINER, 9},
+    {TRAINER_CLASS_HEX_MANIAC, 7},
+    {TRAINER_CLASS_LADY, 5},
+    {TRAINER_CLASS_BEAUTY, 5},
+    {TRAINER_CLASS_RICH_BOY, 20},
+    {TRAINER_CLASS_POKEMANIAC, 7},
     {TRAINER_CLASS_SWIMMER_M, 2},
-    {TRAINER_CLASS_BLACK_BELT, 8},
-    {TRAINER_CLASS_DEVON_EMPLOYEE, 25},
-    {TRAINER_CLASS_ENGINEER, 10},
+    {TRAINER_CLASS_BLACK_BELT, 7},
+    {TRAINER_CLASS_DEVON_EMPLOYEE, 15},
+    {TRAINER_CLASS_ENGINEER, 8},
     {TRAINER_CLASS_SCAMMERS, 10},
-    {TRAINER_CLASS_MINER, 8},
-    {TRAINER_CLASS_COP, 10},
-    {TRAINER_CLASS_SCIENTIST, 15},
-    {TRAINER_CLASS_GUITARIST, 8},
-    {TRAINER_CLASS_KINDLER, 8},
+    {TRAINER_CLASS_MINER, 6},
+    {TRAINER_CLASS_COP, 9},
+    {TRAINER_CLASS_SCIENTIST, 8},
+    {TRAINER_CLASS_GUITARIST, 5},
+    {TRAINER_CLASS_KINDLER, 7},
     {TRAINER_CLASS_CAMPER, 4},
-    {TRAINER_CLASS_OLD_COUPLE, 10},
-    {TRAINER_CLASS_BUG_MANIAC, 15},
-    {TRAINER_CLASS_PSYCHIC, 6},
-    {TRAINER_CLASS_GENTLEMAN, 20},
+    {TRAINER_CLASS_OLD_COUPLE, 5},
+    {TRAINER_CLASS_BUG_MANIAC, 7},
+    {TRAINER_CLASS_PSYCHIC, 7},
+    {TRAINER_CLASS_GENTLEMAN, 10},
     {TRAINER_CLASS_ELITE_FOUR, 25},
-    {TRAINER_CLASS_LEADER, 50},
+    {TRAINER_CLASS_LEADER, 20},
     {TRAINER_CLASS_SCHOOL_KID, 5},
     {TRAINER_CLASS_BOG_MAN, 5},
     {TRAINER_CLASS_SR_AND_JR, 4},
-    {TRAINER_CLASS_POKEFAN, 20},
-    {TRAINER_CLASS_EXPERT, 10},
+    {TRAINER_CLASS_POKEFAN, 6},
+    {TRAINER_CLASS_EXPERT, 8},
     {TRAINER_CLASS_YOUNGSTER, 4},
     {TRAINER_CLASS_CHAMPION, 50},
     {TRAINER_CLASS_FISHERMAN, 6},
-    {TRAINER_CLASS_TRIATHLETE, 10},
+    {TRAINER_CLASS_TRIATHLETE, 7},
     {TRAINER_CLASS_CREEPING, 0},
-    {TRAINER_CLASS_DRAGON_TAMER, 12},
-    {TRAINER_CLASS_BIRD_KEEPER, 8},
+    {TRAINER_CLASS_DRAGON_TAMER, 10},
+    {TRAINER_CLASS_BIRD_KEEPER, 7},
     {TRAINER_CLASS_NINJA_BOY, 3},
-    {TRAINER_CLASS_BATTLE_GIRL, 8},
-    {TRAINER_CLASS_PARASOL_LADY, 10},
+    {TRAINER_CLASS_BATTLE_GIRL, 5},
+    {TRAINER_CLASS_PARASOL_LADY, 5},
     {TRAINER_CLASS_SWIMMER_F, 2},
     {TRAINER_CLASS_PICNICKER, 4},
-    {TRAINER_CLASS_TWINS, 9},
-    {TRAINER_CLASS_SAILOR, 8},
-    {TRAINER_CLASS_COLLECTOR, 15},
+    {TRAINER_CLASS_TWINS, 7},
+    {TRAINER_CLASS_SAILOR, 5},
+    {TRAINER_CLASS_COLLECTOR, 9},
     {TRAINER_CLASS_RIVAL, 20},
     {TRAINER_CLASS_PKMN_BREEDER, 10},
-    {TRAINER_CLASS_PKMN_RANGER, 12},
-    {TRAINER_CLASS_TEAM_MAGMA, 10},
-    {TRAINER_CLASS_MAGMA_ADMIN, 20},
-    {TRAINER_CLASS_MAGMA_LEADER, 20},
-    {TRAINER_CLASS_LASS, 7},
+    {TRAINER_CLASS_PKMN_RANGER, 8},
+    {TRAINER_CLASS_TEAM_MAGMA, 5},
+    {TRAINER_CLASS_MAGMA_ADMIN, 10},
+    {TRAINER_CLASS_MAGMA_LEADER, 15},
+    {TRAINER_CLASS_LASS, 5},
     {TRAINER_CLASS_BUG_CATCHER, 5},
-    {TRAINER_CLASS_HIKER, 10},
+    {TRAINER_CLASS_HIKER, 5},
     {TRAINER_CLASS_YOUNG_COUPLE, 8},
     {TRAINER_CLASS_WINSTRATE, 10},
     {0xFF, 5}, // Any trainer class not listed above uses this
@@ -16106,7 +16106,7 @@ static void Cmd_handleballthrow(void)
 
 static void Cmd_givecaughtmon(void)
 {
-    CMD_ARGS(const u8 *passInstr);
+    CMD_ARGS();
 
     if (B_RESTORE_HELD_BATTLE_ITEMS >= GEN_9)
     {
@@ -16115,135 +16115,32 @@ static void Cmd_givecaughtmon(void)
             SetMonData(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]], MON_DATA_HELD_ITEM, &lostItem);  // Restore non-berry items
     }
 
-    switch (gBattleCommunication[MULTIUSE_STATE])
+    if (GiveMonToPlayer(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]]) != MON_GIVEN_TO_PARTY)
     {
-    case 0:
-        if (CalculatePlayerPartyCount() == PARTY_SIZE)
+        if (!ShouldShowBoxWasFullMessage())
         {
-            PrepareStringBattle(STRINGID_SENDCAUGHTMONPARTYORBOX, gBattlerAttacker);
-            gBattleCommunication[MSG_DISPLAY] = 1;
-            gBattleCommunication[MULTIUSE_STATE]++;
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SENT_SOMEONES_PC;
+            StringCopy(gStringVar1, GetBoxNamePtr(VarGet(VAR_PC_BOX_TO_SEND_MON)));
+            GetMonData(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]], MON_DATA_NICKNAME, gStringVar2);
         }
         else
         {
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_NO_MESSSAGE_SKIP;
-            gBattleCommunication[MULTIUSE_STATE] = 5;
-        }
-        break;
-    case 1:
-        HandleBattleWindow(YESNOBOX_X_Y, 0);
-        BattlePutTextOnWindow(gText_BattleYesNoChoice, B_WIN_YESNO);
-        gBattleCommunication[MULTIUSE_STATE]++;
-        gBattleCommunication[CURSOR_POSITION] = 0;
-        BattleCreateYesNoCursorAt(0);
-        break;
-    case 2:
-        if (JOY_NEW(DPAD_UP) && gBattleCommunication[CURSOR_POSITION] != 0)
-        {
-            PlaySE(SE_SELECT);
-            BattleDestroyYesNoCursorAt(gBattleCommunication[CURSOR_POSITION]);
-            gBattleCommunication[CURSOR_POSITION] = 0;
-            BattleCreateYesNoCursorAt(0);
-        }
-        if (JOY_NEW(DPAD_DOWN) && gBattleCommunication[CURSOR_POSITION] == 0)
-        {
-            PlaySE(SE_SELECT);
-            BattleDestroyYesNoCursorAt(gBattleCommunication[CURSOR_POSITION]);
-            gBattleCommunication[CURSOR_POSITION] = 1;
-            BattleCreateYesNoCursorAt(1);
-        }
-        if (JOY_NEW(A_BUTTON))
-        {
-            PlaySE(SE_SELECT);
-            if (gBattleCommunication[CURSOR_POSITION] == 0)
-            {
-                gBattleCommunication[MULTIUSE_STATE]++;
-            }
-            else
-            {
-                gBattleCommunication[MULTIUSE_STATE] = 5;
-            }
-        }
-        else if (JOY_NEW(B_BUTTON))
-        {
-            PlaySE(SE_SELECT);
-            gBattleCommunication[MULTIUSE_STATE] = 5;
-        }
-        break;
-    case 3:
-        if (!gPaletteFade.active)
-        {
-            BtlController_EmitChoosePokemon(gBattlerAttacker, BUFFER_A, PARTY_ACTION_SEND_MON_TO_BOX, PARTY_SIZE, ABILITY_NONE, gBattleStruct->battlerPartyOrders[gBattlerAttacker]);
-            MarkBattlerForControllerExec(gBattlerAttacker);
-            gBattleCommunication[MULTIUSE_STATE]++;
-        }
-        break;
-    case 4:
-        if (gSelectedMonPartyId != PARTY_SIZE)
-        {
-            if (gSelectedMonPartyId > PARTY_SIZE)
-            {
-                // Choosing Pokemon was cancelled
-                gSelectedMonPartyId = PARTY_SIZE;
-                gBattleCommunication[MULTIUSE_STATE]++;
-            }
-            else
-            {
-                // Mon chosen, try to put it in the PC
-                if (CopyMonToPC(&gPlayerParty[gSelectedMonPartyId]) == MON_GIVEN_TO_PC)
-                {
-                    GetMonNickname(&gPlayerParty[gSelectedMonPartyId], gStringVar2);
-                    StringCopy(gStringVar1, GetBoxNamePtr(GetPCBoxToSendMon()));
-                    ZeroMonData(&gPlayerParty[gSelectedMonPartyId]);
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWAPPED_INTO_PARTY;
-                    gSelectedMonPartyId = PARTY_SIZE;
-                    gBattleCommunication[MULTIUSE_STATE]++;
-                }
-                else
-                {
-                    gSelectedMonPartyId = PARTY_SIZE;
-                    gBattleCommunication[MULTIUSE_STATE]++;
-                }
-            }
-        }
-        break;
-    case 5:
-
-        if (GiveMonToPlayer(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]]) != MON_GIVEN_TO_PARTY
-         && gBattleCommunication[MULTISTRING_CHOOSER] != B_MSG_SWAPPED_INTO_PARTY)
-        {
-            if (!ShouldShowBoxWasFullMessage())
-            {
-                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SENT_SOMEONES_PC;
-                StringCopy(gStringVar1, GetBoxNamePtr(VarGet(VAR_PC_BOX_TO_SEND_MON)));
-                GetMonData(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]], MON_DATA_NICKNAME, gStringVar2);
-            }
-            else
-            {
-                StringCopy(gStringVar1, GetBoxNamePtr(VarGet(VAR_PC_BOX_TO_SEND_MON))); // box the mon was sent to
-                GetMonData(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]], MON_DATA_NICKNAME, gStringVar2);
-                StringCopy(gStringVar3, GetBoxNamePtr(GetPCBoxToSendMon())); //box the mon was going to be sent to
-                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SOMEONES_BOX_FULL;
-            }
-
-            // Change to B_MSG_SENT_LANETTES_PC or B_MSG_LANETTES_BOX_FULL
-            if (FlagGet(FLAG_SYS_PC_LANETTE))
-                gBattleCommunication[MULTISTRING_CHOOSER]++;
+            StringCopy(gStringVar1, GetBoxNamePtr(VarGet(VAR_PC_BOX_TO_SEND_MON))); // box the mon was sent to
+            GetMonData(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]], MON_DATA_NICKNAME, gStringVar2);
+            StringCopy(gStringVar3, GetBoxNamePtr(GetPCBoxToSendMon())); //box the mon was going to be sent to
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SOMEONES_BOX_FULL;
         }
 
-        gBattleResults.caughtMonSpecies = GetMonData(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]], MON_DATA_SPECIES, NULL);
-        GetMonData(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]], MON_DATA_NICKNAME, gBattleResults.caughtMonNick);
-        gBattleResults.caughtMonBall = GetMonData(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]], MON_DATA_POKEBALL, NULL);
-
-        gSelectedMonPartyId = PARTY_SIZE;
-        gBattleCommunication[MULTIUSE_STATE] = 0;
-
-        if (gBattleCommunication[MULTISTRING_CHOOSER] == B_MSG_NO_MESSSAGE_SKIP)
-            gBattlescriptCurrInstr = cmd->passInstr;
-        else
-            gBattlescriptCurrInstr = cmd->nextInstr;
-        break;
+        // Change to B_MSG_SENT_LANETTES_PC or B_MSG_LANETTES_BOX_FULL
+        if (FlagGet(FLAG_SYS_PC_LANETTE))
+            gBattleCommunication[MULTISTRING_CHOOSER]++;
     }
+
+    gBattleResults.caughtMonSpecies = GetMonData(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]], MON_DATA_SPECIES, NULL);
+    GetMonData(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]], MON_DATA_NICKNAME, gBattleResults.caughtMonNick);
+    gBattleResults.caughtMonBall = GetMonData(&gEnemyParty[gBattlerPartyIndexes[GetCatchingBattler()]], MON_DATA_POKEBALL, NULL);
+
+    gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
 static void Cmd_trysetcaughtmondexflags(void)
@@ -16392,7 +16289,7 @@ void BattleDestroyYesNoCursorAt(u8 cursorPosition)
 
 static void Cmd_trygivecaughtmonnick(void)
 {
-    CMD_ARGS();
+    CMD_ARGS(const u8 *successInstr);
 
     switch (gBattleCommunication[MULTIUSE_STATE])
     {
@@ -16447,7 +16344,7 @@ static void Cmd_trygivecaughtmonnick(void)
                            GetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerTarget]], MON_DATA_SPECIES),
                            GetMonGender(&gEnemyParty[gBattlerPartyIndexes[gBattlerTarget]]),
                            GetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerTarget]], MON_DATA_PERSONALITY, NULL),
-                           ReshowBattleScreenAfterMenu);
+                           BattleMainCB2);
 
             gBattleCommunication[MULTIUSE_STATE]++;
         }
@@ -16456,16 +16353,17 @@ static void Cmd_trygivecaughtmonnick(void)
         if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
         {
             SetMonData(&gEnemyParty[gBattlerPartyIndexes[gBattlerTarget]], MON_DATA_NICKNAME, gBattleStruct->caughtMonNick);
-            gBattleCommunication[MULTIUSE_STATE]++;
+            gBattlescriptCurrInstr = cmd->successInstr;
         }
         break;
     case 4:
-        gBattleCommunication[MULTIUSE_STATE] = 0;
-        gBattlescriptCurrInstr = cmd->nextInstr;
+        if (CalculatePlayerPartyCount() == PARTY_SIZE)
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        else
+            gBattlescriptCurrInstr = cmd->successInstr;
         break;
     }
 }
-
 static void Cmd_subattackerhpbydmg(void)
 {
     CMD_ARGS();
@@ -17091,6 +16989,7 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
     {
         // Note: There is an edge case where if a pokemon receives a large amount of exp, it wouldn't be properly calculated
         //       because of multiplying by scaling factor(the value would simply be larger than an u32 can hold). Hence u64 is needed.
+        // new exp formula
         u64 value = *expAmount;
         u8 faintedLevel = gBattleMons[faintedBattler].level;
         u8 expGetterLevel = GetMonData(&gPlayerParty[expGetterMonId], MON_DATA_LEVEL);
@@ -17099,6 +16998,8 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
         value /= sExperienceScalingFactors[faintedLevel + expGetterLevel + 10];
         if(expGetterLevel < faintedLevel)
             value *= 1.5;
+        if(expGetterLevel > faintedLevel)
+            value *= 0.7;
         *expAmount = value + 1;
     }
 }

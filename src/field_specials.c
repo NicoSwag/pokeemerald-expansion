@@ -1602,6 +1602,18 @@ u16 ScriptIsPartyMonFireType(void)
 }
 
 
+u16 ScriptIsPartyMonRockType(void)
+{
+    if(gSpeciesInfo[GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES_OR_EGG, NULL)].types[0] == TYPE_ROCK
+    || gSpeciesInfo[GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES_OR_EGG, NULL)].types[1] == TYPE_ROCK)
+
+        return TRUE;
+    
+    else return FALSE;
+}
+
+
+
 u16 ScriptGetPartyMonBall(void)
 {
     return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_POKEBALL, NULL);

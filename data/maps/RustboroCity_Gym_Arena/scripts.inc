@@ -64,6 +64,7 @@ RustboroCity_Gym_EventScript_RoxannePostBattle::
 	waitmovement 0
 	speakername Common_Name_Roxanne
 	msgbox RustboroCity_Gym_Text_DropTheAct, MSGBOX_DEFAULT
+	speakername NULL
 	message RustboroCity_Gym_Text_ReceivedStoneBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare	

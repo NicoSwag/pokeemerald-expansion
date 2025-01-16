@@ -166,6 +166,11 @@ Route106_EventScript_ItemSeashell3::
 	finditem ITEM_SEASHELL
 	end
 
+Foundry_EventScript_Charcoal::
+	finditem ITEM_CHARCOAL
+	end
+
+
 Route106_EventScript_ItemSeashell4::
 	finditem ITEM_SEASHELL
 	end
@@ -467,7 +472,7 @@ MauvilleCity_EventScript_ItemXSpeed::
 	end
 
 RustboroCity_EventScript_ItemXDefend::
-	finditem ITEM_TM_FIRE_SPIN
+	finditem ITEM_TM_CHARGE_BEAM
 	end
 
 LilycoveCity_EventScript_ItemMaxRepel::
@@ -508,6 +513,10 @@ PetalburgWoods_EventScript_ItemFuryCutter::
 	
 Route104Upper_EventScript_HeartScale2::
 	finditem ITEM_HEART_SCALE
+	end
+
+Route104Upper_EventScript_Nugget::
+	finditem ITEM_NUGGET
 	end
 
 RusturfTunnel_EventScript_ItemPokeBall::

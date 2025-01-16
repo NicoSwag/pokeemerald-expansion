@@ -1082,6 +1082,9 @@ SECTIONS {
         sound/songs/midi/mus_encounter_magma.o(.rodata);
         sound/songs/midi/mus_encounter_devon.o(.rodata);
         sound/songs/midi/mus_intro_battle.o(.rodata);
+        sound/songs/midi/mus_wally_encounter.o(.rodata);
+        sound/songs/midi/mus_vs_president.o(.rodata);
+        sound/songs/midi/mus_vs_rival_final.o(.rodata);
         sound/songs/midi/mus_abnormal_weather.o(.rodata);
         sound/songs/midi/mus_weather_groudon.o(.rodata);
         sound/songs/midi/mus_sootopolis.o(.rodata);

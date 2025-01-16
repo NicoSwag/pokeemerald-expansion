@@ -225,11 +225,8 @@ RustboroCity_EventScript_ScientistHelped::
 RustboroCity_Text_WordOfAdvice:
 	.string "We are friends now, yes…?\p"
 	.string "So, I have word of advice for you.\n"
-	.string "Run back to Kanto.\p"
-	.string "Do not get me wrong.\p"
-	.string "I am not saying this due to some inane\n"
-	.string "patriotism.\p"
-	.string "But, Devon…\p"
+	.string "Run back to Johto.\p"
+	.string "You see, Devon…\p"
 	.string "Meddling with some dangerous forces,\n"
 	.string "they are.\p"
 	.string "I do not mean to alarm you, but that\n"
@@ -267,7 +264,7 @@ RustboroCity_Text_BoosterEnergy:
 	.string "Well then, I will be introducing myself.\p"
 	.string "I am a scientist working for the cutting\n"
 	.string "edge company Silph Co., from Kanto…\p"
-	.string "…Ah, you are from Kanto yourself?\n"
+	.string "…Ah, you are from Johto, yourself?\n"
 	.string "Splendid.\p"
 	.string "You see, we think that Devon is very\n"
 	.string "close to a major breakthrough…\p"
@@ -492,9 +489,12 @@ RustboroCity_EventScript_Twin::
 	end
 
 RustboroCity_EventScript_Looker::
-	msgbox RustboroCity_Text_LookerDisguise, MSGBOX_NPC
+	lock
+	faceplayer
+	msgbox RustboroCity_Text_LookerDisguise, MSGBOX_DEFAULT
 	speakername Common_Name_Looker
-	msgbox RustboroCity_Text_LookerDisguise2, MSGBOX_NPC
+	msgbox RustboroCity_Text_LookerDisguise2, MSGBOX_DEFAULT
+	release
 	end
 
 RustboroCity_EventScript_NinjaBoy::
@@ -1719,7 +1719,7 @@ RustboroCity_Text_PokemonCanChangeLookFromExp:
 	.string "you're an adult?$"
 
 RustboroCity_Text_PokemonChangeShape:
-	.string "I wanna work at DEVON, just like\n"
+	.string "I wanna work at Devon, just like\n"
 	.string "dad!$"
 
 RustboroCity_Text_TradePokemonGrowFast:

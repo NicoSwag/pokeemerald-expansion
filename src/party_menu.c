@@ -1526,22 +1526,7 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
             }
             break;
         }
-        case PARTY_ACTION_SEND_MON_TO_BOX:
-        {
-            u8 partyId = GetPartyIdFromBattleSlot((u8)*slotPtr);
-            if (((gBattleTypeFlags & BATTLE_TYPE_MULTI) && partyId >= (PARTY_SIZE / 2)))
-            {
-                // Can't select if mon is currently on the field, or doesn't belong to you
-                PlaySE(SE_FAILURE);
-            }
-            else
-            {
-                PlaySE(SE_SELECT);
-                gSelectedMonPartyId = partyId;
-                Task_ClosePartyMenu(taskId);
-            }
-            break;
-        }
+
         default:
         case PARTY_ACTION_ABILITY_PREVENTS:
         case PARTY_ACTION_SWITCHING:
@@ -1578,11 +1563,6 @@ static void HandleChooseMonCancel(u8 taskId, s8 *slotPtr)
     case PARTY_ACTION_MINIGAME:
         PlaySE(SE_SELECT);
         CancelParticipationPrompt(taskId);
-        break;
-    case PARTY_ACTION_SEND_MON_TO_BOX:
-        PlaySE(SE_SELECT);
-        gSelectedMonPartyId = PARTY_SIZE + 1;
-        Task_ClosePartyMenu(taskId);
         break;
     default:
         PlaySE(SE_SELECT);
@@ -7188,14 +7168,8 @@ static u8 GetPartyLayoutFromBattleType(void)
 
 void OpenPartyMenuInBattle(u8 partyAction)
 {
-    u8 partyMessage;
-
-    if (partyAction == PARTY_ACTION_SEND_MON_TO_BOX)
-        partyMessage = PARTY_MSG_CHOOSE_MON_FOR_BOX;
-    else
-        partyMessage = PARTY_MSG_CHOOSE_MON;
-
-    InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), partyAction, FALSE, partyMessage, Task_HandleChooseMonInput, CB2_SetUpReshowBattleScreenAfterMenu);    ReshowBattleScreenDummy();
+    InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), partyAction, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_SetUpReshowBattleScreenAfterMenu);    
+    ReshowBattleScreenDummy();
     UpdatePartyToBattleOrder();
 }
 

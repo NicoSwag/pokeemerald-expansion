@@ -1277,9 +1277,8 @@
 	.byte 0xef
 	.endm
 
-	.macro givecaughtmon passInstr:req
+	.macro givecaughtmon
 	.byte 0xf0
-	.4byte \passInstr
 	.endm
 
 	.macro trysetcaughtmondexflags failInstr:req
@@ -1291,8 +1290,9 @@
 	.byte 0xf2
 	.endm
 
-	.macro trygivecaughtmonnick
+	.macro trygivecaughtmonnick successInstr:req
 	.byte 0xf3
+	.4byte \successInstr
 	.endm
 
 	.macro subattackerhpbydmg

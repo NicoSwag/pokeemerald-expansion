@@ -392,8 +392,6 @@ static void VBlankCB_NamingScreen(void);
 static void NamingScreen_ShowBgs(void);
 static bool8 IsWideLetter(u8);
 
-extern void BattleMainCB2(void);
-
 void DoNamingScreen(u8 templateNum, u8 *destBuffer, u16 monSpecies, u16 monGender, u32 monPersonality, MainCallback returnCallback)
 {
     sNamingScreen = Alloc(sizeof(struct NamingScreenData));
@@ -674,8 +672,18 @@ static bool8 MainState_PressedOKButton(void)
     SetInputState(INPUT_STATE_DISABLED);
     SetCursorFlashing(FALSE);
     TryStartButtonFlash(BUTTON_COUNT, FALSE, TRUE);
-    sNamingScreen->state = STATE_FADE_OUT;
-    return TRUE;
+    if (sNamingScreen->templateNum == NAMING_SCREEN_CAUGHT_MON
+        && CalculatePlayerPartyCount() >= PARTY_SIZE)
+    {
+        DisplaySentToPCMessage();
+        sNamingScreen->state = STATE_WAIT_SENT_TO_PC_MESSAGE;
+        return FALSE;
+    }
+    else
+    {
+        sNamingScreen->state = STATE_FADE_OUT;
+        return TRUE;
+    }
 }
 
 static bool8 MainState_FadeOut(void)
@@ -691,11 +699,7 @@ static bool8 MainState_Exit(void)
     {
         if (sNamingScreen->templateNum == NAMING_SCREEN_PLAYER)
             SeedRngAndSetTrainerId();
-                if (sNamingScreen->templateNum == NAMING_SCREEN_CAUGHT_MON
-         && CalculatePlayerPartyCount() < PARTY_SIZE)
-            SetMainCallback2(BattleMainCB2);
-        else
-            SetMainCallback2(sNamingScreen->returnCallback);
+        SetMainCallback2(sNamingScreen->returnCallback);
         DestroyTask(FindTaskIdByFunc(Task_NamingScreen));
         FreeAllWindowBuffers();
         FREE_AND_SET_NULL(sNamingScreen);
@@ -2598,5 +2602,4 @@ static const struct SpritePalette sSpritePalettes[] =
     {gNamingScreenMenu_Pal[4], PALTAG_OK_BUTTON},
     {}
 };
-
 

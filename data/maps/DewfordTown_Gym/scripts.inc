@@ -230,7 +230,6 @@ DewfordTown_Gym_EventScript_Lilith::
 	end
 
 DewfordTown_Gym_EventScript_LilithBrightenRoom::
-	call DewfordTown_Gym_EventScript_BrightenRoom
 	release
 	end
 
@@ -376,7 +375,7 @@ DewfordTown_Gym_Text_CristianPostBattle:
 	.string "Fine, I can give it to you.\p"
 	.string "Brawly's big into surfing.\p"
 	.string "He may be a Fighting expert, but\n"
-	.string "he also carries Water types with him.\p"
+	.string "he also carries Water types with him.$"
 
 DewfordTown_Gym_Text_BrawlyIntro:
 	.string "I'm BRAWLY!\n"

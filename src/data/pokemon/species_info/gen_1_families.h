@@ -8771,6 +8771,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     [SPECIES_VOLTORB_HISUIAN] =
     {
         VOLTORB_MISC_INFO,
+        .speciesName = _("Voltorb"),
         .types = { TYPE_ELECTRIC, TYPE_GRASS },
         .categoryName = _("Sphere"),
         .weight = 130,

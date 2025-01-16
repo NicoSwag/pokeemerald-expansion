@@ -33,7 +33,7 @@ DewfordTown_PokemonCenter_1F_Text_StoneCavern:
 	.string "stones there.$"
 
 DewfordTown_PokemonCenter_1F_Text_FaintedMonCanUseHM:
-	.string "Pokémon can USE Hidden Machines\n"
+	.string "Pokémon can use Hidden Machines\n"
 	.string "without having to know the move.\p"
 	.string "Handy!$"
 

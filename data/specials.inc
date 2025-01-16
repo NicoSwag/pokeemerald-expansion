@@ -343,6 +343,7 @@ gSpecials::
 	def_special GetContestMultiplayerId
 	def_special ScriptGetPartyMonSpecies
 	def_special ScriptIsPartyMonFireType
+	def_special ScriptIsPartyMonRockType
 	def_special ScriptGetPartyMonBall
 	def_special ScriptGetPartyMonItem
 	def_special IsSelectedMonEgg

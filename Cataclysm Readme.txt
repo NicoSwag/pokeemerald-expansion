@@ -1,16 +1,31 @@
 READ HERE BEFORE EVERYTHING
 
-Known Bugs:
+Known Issues:
 - Sometimes the text in the UI, or the background of the UI, is the wrong color. WILL FIX
 - Learning a move you already know from the Special Tutor will waste the Sky Fragment. WILL FIX
 - Pokédex description and numbers are completely broken and unfinished. WILL FIX
 - World map doesn't reflect the new layout of the world. WILL FIX
 - Some moves or abilities might have a wrong description. WILL FIX
 - Pokémon belonging to major trainers may change gender between battles. BASED, BUT WILL PROBABLY CHANGE (1984)
+- Some problems with water reflections. EXPANSION BUG, THEY NEED TO FIX IT
+- Some problems with fog. SAME
 - Pokémon movesets and evo methods are only updated up to level 24-ish. OK THIS IS NOT A BUG AND I OBVIOUSLY WILL FIX IT BUT BE AWARE OF THIS. NO, MAGIKARP CANT EVOLVE YET
-- NPC colors act weird with some overworld weather that's meant to darken them. EXPANSION ISSUE, MOST LIKELY WILL BE FIXED AT SOME POINT
-- Speedup in battles will sometimes cause glitchy animations. NOT MY SYSTEM, MINOR ISSUE, WONT FIX
-- 
+- Speedup in battles will sometimes cause glitchy animations if using dig or similar moves. NOT MY SYSTEM, MINOR ISSUE, WONT FIX
+
+Todo:
+- Timburr & evolutions are meant to have a new sprite to complement the new typing.
+- Polish some sprites
+. All new battle backgrounds (and add the missing ones)
+- New move animations
+- PP rebalance
+- Economy rebalance
+- Shops rebalance
+- Overall rebalance if needed
+- Pokédex entry writing and cleanup
+- World map
+- Add music for wally (possibly commission a unique rival theme too? Mayhaps.)
+. The rest of the fucking game
+
 
 OK HERE'S THE FUN STUFF NOW
 
@@ -23,13 +38,12 @@ Do also note that this game is NOT MEANT TO BE NUZLOCKED so if you try and it's 
 Anyway, without further ado, here's the list of all features.
 
 FEATURING:
-- A completely new reimagined Hoenn. Old areas are completely different, and a large number of new ones have been added,
-all with their unique vibe and climate. Exploration is more than encouraged: (almost) everyone has something new to
+- A new and reimagined Hoenn. Old areas are completely different, and a large number of new ones to discover have been added,
+all with their unique vibe and climate. Exploration is more than encouraged: everyone has something new to
 say, and mysterious shards hidden in every area can be exchanged to learn powerful moves.
-keep in mind that balance changes aren't final! For example, I will be doing a major redo of PPs at some point.
 
 - A completely new story. What starts out as a small scale adventure quickly turns into a big conspiracy, as Team Magma,
-Team Aqua and Devon Corporation race to uncover the secrets of an ancient civilization, whose power could forever change the
+Team Aqua and Devon Corporation race to uncover the secrets of an ancient civilization, whose power could change the
 world. This is a brand new world, and what you remember from the original setting may be turned upside down.
 
 - A new difficulty system. Inspired by RPGs such as Shin Megami Tensei and Dark Souls, the new system aims to provide a
@@ -39,8 +53,8 @@ scarce resources and trainer rematches, you will need to think about your strate
 Speaking of…
 
 - Comprehensive rebalancing of everything. Not only a myriad of new moves, abilities and mechanics have been added (and even Pokémon!), but
-many existing ones got reworked in order to fit into a vision of the game able to generate exciting moments, work alongside the story and
-result in a more pleasant experience. Of course, you will also need to relearn many things about the game, but don't worry! Many NPCs will
+many existing ones got reworked in order to fit into a vision of the game able to produce exciting moments, work alongside the story and
+result in a more pleasant experience. Of course, you will also need to relearn many things about the basics, but don't worry! Many NPCs will
 put you back up to speed with what's changed. Try visiting the Rustboro Trainer's School for a crash course!
 
 SPECIFIC CHANGES

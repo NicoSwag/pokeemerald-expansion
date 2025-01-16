@@ -1,5 +1,10 @@
 GraniteCave_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, GraniteCave_1F_OnTransition
 	.byte 0
+
+GraniteCave_1F_OnTransition:
+	call DewfordTown_HandleTrainers
+	end
 
 GraniteCave_EventScript_Magma1::
 	trainerbattle_single TRAINER_GRANITE_GRUNT_1, GraniteCave_Text_Magma1Intro, GraniteCave_Text_Magma1Defeated

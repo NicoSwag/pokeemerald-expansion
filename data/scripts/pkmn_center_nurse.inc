@@ -82,6 +82,8 @@ EventScript_PkmnCenterNurse_GiveHealingItems::
 	call_if_eq VAR_RESULT, TRUE, EventScript_PkmnCenterNurse_GiveOranBerries
 	checkitem ITEM_CHERI_VOUCHER
 	call_if_eq VAR_RESULT, TRUE, EventScript_PkmnCenterNurse_GiveCheriBerries
+	checkitem ITEM_CHARTI_VOUCHER
+	call_if_eq VAR_RESULT, TRUE, EventScript_PkmnCenterNurse_GiveChartiBerries
 	checkitem ITEM_PASSHO_VOUCHER
 	call_if_eq VAR_RESULT, TRUE, EventScript_PkmnCenterNurse_GivePasshoBerries
 	checkitem ITEM_CHOPLE_VOUCHER
@@ -100,6 +102,10 @@ EventScript_PkmnCenterNurse_GiveOranBerries::
 
 EventScript_PkmnCenterNurse_GiveCheriBerries::
 	additem ITEM_CHERI_BERRY, 6
+	return
+
+EventScript_PkmnCenterNurse_GiveChartiBerries::
+	additem ITEM_CHARTI_BERRY, 6
 	return
 
 EventScript_PkmnCenterNurse_GivePasshoBerries::

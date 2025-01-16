@@ -103,6 +103,7 @@ PetalburgCity_GymInterior_EventScript_BeginWallyTutorialEast::
 	end
 
 PetalburgCity_GymInterior_EventScript_BeginWallyTutorial::
+	playbgm MUS_WALLY_ENCOUNTER, FALSE
 	addobject LOCALID_WALLY
 	call_if_eq VAR_0x8008, 0, PetalburgCity_GymInterior_EventScript_WallyArriveSouth
 	call_if_eq VAR_0x8008, 1, PetalburgCity_GymInterior_EventScript_WallyArriveNorth

@@ -782,6 +782,7 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_ORAN_VOUCHER] = {gItemIcon_EonTicket, gItemIconPalette_EonTicket},
     [ITEM_PASSHO_VOUCHER] = {gItemIcon_EonTicket, gItemIconPalette_EonTicket},
     [ITEM_CHERI_VOUCHER] = {gItemIcon_EonTicket, gItemIconPalette_EonTicket},
+    [ITEM_CHARTI_VOUCHER] = {gItemIcon_EonTicket, gItemIconPalette_EonTicket},
     [ITEM_CHOPLE_VOUCHER] = {gItemIcon_EonTicket, gItemIconPalette_EonTicket},
     [ITEM_MYSTIC_TICKET] = {gItemIcon_MysticTicket, gItemIconPalette_MysticTicket},
     [ITEM_AURORA_TICKET] = {gItemIcon_AuroraTicket, gItemIconPalette_AuroraTicket},

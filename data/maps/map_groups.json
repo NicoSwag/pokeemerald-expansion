@@ -243,7 +243,8 @@
     "RustboroCity_GymInterior",
     "NewMap1",
     "RustboroCity_House4",
-    "RustboroCity_Toilet"
+    "RustboroCity_Toilet",
+    "RustboroCity_House5"
   ],
   "gMapGroup_IndoorFortree": [
     "FortreeCity_House1",

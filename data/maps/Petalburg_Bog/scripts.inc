@@ -26,6 +26,7 @@ PetalburgBog_EventScript_OldManSleeping::
 	closemessage
 	applymovement LOCALID_BOG_MAN, PetalburgBog_Movement_BogManGoesInCorner
 	waitmovement 0
+	setobjectxyperm LOCALID_BOG_MAN, 26, 32
 	releaseall
 	end
 

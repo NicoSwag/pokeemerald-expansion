@@ -134,9 +134,11 @@ Route106_EventScript_MoveEveryone::
 
 
 Route106_EventScript_BrawlyGoesToGym::
-	applymovement LOCALID_BRAWLY, Route106_Movement_BrawlyGoesToYou
+	applymovement LOCALID_BRAWLY, Route106_Movement_BrawlyGoesToYou1
 	waitmovement 0
 	playse SE_PIN
+	applymovement LOCALID_BRAWLY, Route106_Movement_BrawlyGoesToYou2
+	waitmovement 0
 	speakername Common_Name_Brawly
 	msgbox Route106_Text_BrawlyCongrats, MSGBOX_NPC
 	closemessage
@@ -319,6 +321,7 @@ Route106_EventScript_BrawlyEvent::
 
 Route106_EventScript_Wally::
 	lock
+	playbgm MUS_WALLY_ENCOUNTER, FALSE
 	speakername Common_Name_Wally
 	msgbox Route106_Text_Wally, MSGBOX_NPC
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight2
@@ -338,6 +341,7 @@ Route106_EventScript_Wally::
 	waitmovement 0
 	applymovement LOCALID_WALLY, Common_Movement_Delay32
 	waitmovement 0
+	playbgm MUS_ENCOUNTER_INTERVIEWER, FALSE
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, Common_Movement_WalkDown2
 	waitmovement 0
@@ -1029,7 +1033,7 @@ Route106_Movement_MinecartToDewford:
 
 
 
-Route106_Movement_BrawlyGoesToYou:
+Route106_Movement_BrawlyGoesToYou1:
 	face_down
 	delay_16
 	face_right
@@ -1039,6 +1043,8 @@ Route106_Movement_BrawlyGoesToYou:
 	face_up
 	delay_16
 	emote_exclamation_mark
+	step_end
+Route106_Movement_BrawlyGoesToYou2:
 	delay_16
 	walk_up
 	walk_up

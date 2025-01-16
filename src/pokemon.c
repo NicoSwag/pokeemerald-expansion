@@ -3341,7 +3341,7 @@ void CopyMon(void *dest, void *src, size_t size)
 u8 GiveMonToPlayer(struct Pokemon *mon)
 {
     s32 i;
-
+   
     SetMonData(mon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
     SetMonData(mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
     SetMonData(mon, MON_DATA_OT_ID, gSaveBlock2Ptr->playerTrainerId);
@@ -3356,7 +3356,7 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
         return CopyMonToPC(mon);
 
     CopyMon(&gPlayerParty[i], mon, sizeof(*mon));
-    gPlayerPartyCount = i + 1;
+    u16 item = ITEM_NONE;
     return MON_GIVEN_TO_PARTY;
 }
 
@@ -4635,7 +4635,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 break;
 
             case EVO_MONEY:
-                if(IsEnoughMoney(&gSaveBlock1Ptr->money, 50000))
+                if(IsEnoughMoney(&gSaveBlock1Ptr->money, 100000))
                     targetSpecies = evolutions[i].targetSpecies;
                 break;
             case EVO_LEVEL_RAIN:

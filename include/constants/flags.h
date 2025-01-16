@@ -717,7 +717,7 @@
 #define FLAG_HIDE_POOCHYENA  0x2A2 // Unused Flag
 #define FLAG_HIDE_BRAWLY_DEWFORD  0x2A3 // Unused Flag
 #define FLAG_TALKED_TO_BRINEY_DEWFORD 0x2A4 // Unused Flag
-#define FLAG_UNUSED_0x2A5  0x2A5 // Unused Flag
+#define FLAG_RECEIVED_CHARTI_VOUCHER  0x2A5 // Unused Flag
 #define FLAG_UNUSED_0x2A6  0x2A6 // Unused Flag
 #define FLAG_UNUSED_0x2A7  0x2A7 // Unused Flag
 #define FLAG_UNUSED_0x2A8  0x2A8 // Unused Flag
@@ -1226,7 +1226,7 @@
 #define FLAG_MT_KIRIKIRI_SIDE_FRAGMENT                                          0x498 // Unused Flag
 #define FLAG_ITEM_ROUTE_102_NUGGET                                           0x499 // Unused Flag
 #define FLAG_RECEIVED_VENOSHOCK                                           0x49A // Unused Flag
-#define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
+#define FLAG_ITEM_ROUTE104_NUGGET                                           0x49B // Unused Flag
 #define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
 #define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag
 #define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag

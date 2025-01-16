@@ -579,7 +579,10 @@
 #define MUS_ROUTE_238 644
 #define MUS_SHIP_LOOP 645
 #define MUS_ENCOUNTER_DEVON 646
-#define END_MUS                     646
+#define MUS_WALLY_ENCOUNTER 647
+#define MUS_VS_PRESIDENT 648
+#define MUS_VS_RIVAL_FINAL 649
+#define END_MUS                     649
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
 #define MUS_NONE                    0xFFFF
