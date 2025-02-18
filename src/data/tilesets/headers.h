@@ -53,6 +53,18 @@ const struct Tileset gTileset_Slateport =
     .callback = InitTilesetAnim_Slateport,
 };
 
+
+const struct Tileset gTileset_SlateportSurroundings =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SlateportSurroundings,
+    .palettes = gTilesetPalettes_SlateportSurroundings,
+    .metatiles = gMetatiles_SlateportSurroundings,
+    .metatileAttributes = gMetatileAttributes_SlateportSurroundings,
+    .callback = InitTilesetAnim_SlateportSurroundings,
+};
+
 const struct Tileset gTileset_Mauville =
 {
     .isCompressed = TRUE,

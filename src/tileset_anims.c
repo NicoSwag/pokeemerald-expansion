@@ -1045,6 +1045,13 @@ void InitTilesetAnim_Slateport(void)
     sSecondaryTilesetAnimCallback = TilesetAnim_Slateport;
 }
 
+void InitTilesetAnim_SlateportSurroundings(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = NULL;
+}
+
 void InitTilesetAnim_Mauville(void)
 {
     sSecondaryTilesetAnimCounter = sPrimaryTilesetAnimCounter;

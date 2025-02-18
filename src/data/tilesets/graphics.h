@@ -65,6 +65,7 @@ const u16 gTilesetPalettes_Dewford[][16] =
 };
 
 const u32 gTilesetTiles_Slateport[] = INCBIN_U32("data/tilesets/secondary/slateport/tiles.4bpp.lz");
+const u32 gTilesetTiles_SlateportSurroundings[] = INCBIN_U32("data/tilesets/secondary/slateport_surroundings/tiles.4bpp.lz");
 
 const u16 gTilesetPalettes_Slateport[][16] =
 {
@@ -84,6 +85,26 @@ const u16 gTilesetPalettes_Slateport[][16] =
     INCBIN_U16("data/tilesets/secondary/slateport/palettes/13.gbapal"),
     INCBIN_U16("data/tilesets/secondary/slateport/palettes/14.gbapal"),
     INCBIN_U16("data/tilesets/secondary/slateport/palettes/15.gbapal"),
+};
+
+const u16 gTilesetPalettes_SlateportSurroundings[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/12.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/13.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/14.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/slateport_surroundings/palettes/15.gbapal"),
 };
 
 const u32 gTilesetTiles_Mauville[] = INCBIN_U32("data/tilesets/secondary/mauville/tiles.4bpp.lz");

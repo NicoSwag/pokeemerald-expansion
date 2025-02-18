@@ -72,6 +72,7 @@ EventScript_PkmnCenterNurse_GiveHealingItems::
 	removeallitem ITEM_ORAN_BERRY
 	removeallitem ITEM_PASSHO_BERRY
 	removeallitem ITEM_CHERI_BERRY
+	removeallitem ITEM_CHARTI_BERRY
 	removeallitem ITEM_CHOPLE_BERRY
 	msgbox gText_HeresYourHealingItems, MSGBOX_DEFAULT
 	goto_if_set FLAG_BADGE01_GET, EventScript_PkmnCenterNurse_GiveHealingItemsStoneBadge

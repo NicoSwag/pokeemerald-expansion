@@ -1346,3 +1346,9 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DewfordTown_House4/scripts.inc"
 
 	.include "data/maps/RustboroCity_House5/scripts.inc"
+
+	.include "data/maps/Route110Bridge/scripts.inc"
+
+	.include "data/maps/Route103East/scripts.inc"
+
+	.include "data/maps/SlateportTownNorthWest/scripts.inc"

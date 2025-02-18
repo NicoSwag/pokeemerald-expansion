@@ -184,7 +184,7 @@
     {
       "id": "LAYOUT_ROUTE103",
       "name": "Route103_Layout",
-      "width": 80,
+      "width": 50,
       "height": 22,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
@@ -254,10 +254,10 @@
     {
       "id": "LAYOUT_ROUTE110",
       "name": "Route110_Layout",
-      "width": 40,
+      "width": 41,
       "height": 100,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Mauville",
+      "secondary_tileset": "gTileset_SlateportSurroundings",
       "border_filepath": "data/layouts/Route110/border.bin",
       "blockdata_filepath": "data/layouts/Route110/map.bin"
     },
@@ -315,7 +315,7 @@
       "id": "LAYOUT_ROUTE116",
       "name": "Route116_Layout",
       "width": 104,
-      "height": 28,
+      "height": 34,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_RustboroSurroundings",
       "border_filepath": "data/layouts/Route116/border.bin",
@@ -4810,6 +4810,36 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/RustboroCity_House5/border.bin",
       "blockdata_filepath": "data/layouts/RustboroCity_House5/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE110BRIDGE",
+      "name": "Route110Bridge_Layout",
+      "width": 20,
+      "height": 100,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_SlateportSurroundings",
+      "border_filepath": "data/layouts/Route110Bridge/border.bin",
+      "blockdata_filepath": "data/layouts/Route110Bridge/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE103EAST",
+      "name": "Route103East_Layout",
+      "width": 26,
+      "height": 34,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_SlateportSurroundings",
+      "border_filepath": "data/layouts/Route103East/border.bin",
+      "blockdata_filepath": "data/layouts/Route103East/map.bin"
+    },
+    {
+      "id": "LAYOUT_SLATEPORT_TOWN_NORTH_WEST",
+      "name": "SlateportTownNorthWest_Layout",
+      "width": 10,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/SlateportTownNorthWest/border.bin",
+      "blockdata_filepath": "data/layouts/SlateportTownNorthWest/map.bin"
     }
   ]
 }

@@ -859,7 +859,7 @@ LittlerootTown_Text_BirchSpendsDaysInLab:
 	.string "You're the new neighbor!\p"
 	.string "I have a favor to ask you.\p"
 	.string "Oh, but…\n"
-	.string "You don't have any Pokémon.\n"
+	.string "You don't have any Pokémon.\p"
 	.string "I don't think you can help me, then.$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:

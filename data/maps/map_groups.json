@@ -106,7 +106,10 @@
     "SlateportBeach",
     "SlateportBeachSouth",
     "Route109RightSide",
-    "BoatCutscene"
+    "BoatCutscene",
+    "Route110Bridge",
+    "Route103East",
+    "SlateportTownNorthWest"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

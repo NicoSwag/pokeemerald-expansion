@@ -718,9 +718,9 @@
 #define FLAG_HIDE_BRAWLY_DEWFORD  0x2A3 // Unused Flag
 #define FLAG_TALKED_TO_BRINEY_DEWFORD 0x2A4 // Unused Flag
 #define FLAG_RECEIVED_CHARTI_VOUCHER  0x2A5 // Unused Flag
-#define FLAG_UNUSED_0x2A6  0x2A6 // Unused Flag
-#define FLAG_UNUSED_0x2A7  0x2A7 // Unused Flag
-#define FLAG_UNUSED_0x2A8  0x2A8 // Unused Flag
+#define FLAG_FAT_MAN_MOVED  0x2A6 // Unused Flag
+#define FLAG_OBTAINED_SNOWBALL  0x2A7 // Unused Flag
+#define FLAG_SLATEPORT_WOMAN_WISDOM  0x2A8 // Unused Flag
 #define FLAG_UNUSED_0x2A9  0x2A9 // Unused Flag
 #define FLAG_UNUSED_0x2AA  0x2AA // Unused Flag
 #define FLAG_UNUSED_0x2AB  0x2AB // Unused Flag

@@ -19,14 +19,19 @@
       "direction": "down"
     },
     {
-      "map": "MAP_ROUTE110",
-      "offset": -60,
-      "direction": "right"
-    },
-    {
       "map": "MAP_OLDALE_RUINS",
       "offset": -10,
       "direction": "up"
+    },
+    {
+      "map": "MAP_ROUTE103",
+      "offset": 28,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_ROUTE103EAST",
+      "offset": -12,
+      "direction": "right"
     }
   ],
   "object_events": [

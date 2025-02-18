@@ -9031,6 +9031,36 @@ else if (gMovesInfo[move].type == TYPE_WATER
     return targetBattler;
 }
 
+bool32 IsSwitchOutEffect(u32 effect)
+{
+    // Switch out effects like U-Turn, Volt Switch, etc.
+    switch (effect)
+    {
+    case EFFECT_HIT_ESCAPE:
+    case EFFECT_PARTING_SHOT:
+    case EFFECT_BATON_PASS:
+    case EFFECT_CHILLY_RECEPTION:
+    case EFFECT_SHED_TAIL:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+u32 AI_WhoStrikesFirstPartyMon(u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, u32 moveConsidered)
+{
+    struct BattlePokemon *savedBattleMons = AllocSaveBattleMons();
+    gBattleMons[battlerAtk] = switchinCandidate;
+
+    SetBattlerAiData(battlerAtk, AI_DATA);
+    u32 aiMonFaster = AI_IsFaster(battlerAtk, battlerDef, moveConsidered);
+    FreeRestoreBattleMons(savedBattleMons);
+    SetBattlerAiData(battlerAtk, AI_DATA);
+
+    return aiMonFaster;
+}
+
+
 static bool32 IsBattlerModernFatefulEncounter(u32 battler)
 {
     return TRUE;

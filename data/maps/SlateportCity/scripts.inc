@@ -38,6 +38,16 @@ SlateportCity_EventScript_WrongWay::
 	msgbox SlateportCity_Text_Areyoulost, MSGBOX_NPC
 	end
 
+
+SlateportCity_EventScript_BoyFire::
+	msgbox SlateportCity_Text_BoyFire, MSGBOX_NPC
+	end
+
+
+SlateportCity_EventScript_Sailor3::
+	msgbox SlateportCity_Text_Sailor, MSGBOX_NPC
+	end
+
 SlateportCity_EventScript_Cutscene:
 	lock
 	setobjectmovementtype OBJ_EVENT_ID_PLAYER, MOVEMENT_TYPE_PLAYER
@@ -183,7 +193,7 @@ SlateportCity_Text_Parents:
 	.string "They made you do the trip by yourself,\n"
 	.string "and they're waiting for you in\l"
 	.string "Littleroot Town?\p"
-	.string "Good Grief, parents these days…\p"
+	.string "Good grief, parents these days…\p"
 	.string "Well now, we have to find a way to ship\n"
 	.string "you all the way to Littleroot, don't we?\p"
 	.string "Hmmm…$"
@@ -272,6 +282,7 @@ SlateportCity_OnResume:
 
 SlateportCity_OnTransition:
 	setvar VAR_SLATEPORT_MUSEUM_1F_STATE, 0
+	call_if_set FLAG_FAT_MAN_MOVED, SlateportCity_EventScript_MoveFatMan
 	call SlateportCity_EventScript_EnterSlateport
 	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_MovePeopleForSternInterview
 	call_if_eq VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 1, SlateportCity_EventScript_SetReadyForScottScene
@@ -282,20 +293,23 @@ SlateportCity_EventScript_EnterSlateport::
 	setflag FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER
 	return
 
+
+SlateportCity_EventScript_MoveFatMan:
+	setobjectxyperm LOCALID_FAT_MAN, 22, 9
+	return
+
 SlateportCity_EventScript_MovePeopleForSternInterview::
 	setobjectxyperm LOCALID_CAPT_STERN, 28, 13
 	setobjectxyperm LOCALID_OLD_WOMAN, 25, 13
 	setobjectxyperm LOCALID_RICH_BOY, 25, 14
 	setobjectxyperm LOCALID_COOK, 27, 16
 	setobjectxyperm LOCALID_GIRL, 28, 16
-	setobjectxyperm LOCALID_FAT_MAN, 29, 16
 	setobjectxyperm LOCALID_MAN_1, 31, 14
 	setobjectmovementtype LOCALID_CAPT_STERN, MOVEMENT_TYPE_FACE_DOWN
 	setobjectmovementtype LOCALID_OLD_WOMAN, MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT
 	setobjectmovementtype LOCALID_RICH_BOY, MOVEMENT_TYPE_FACE_UP_AND_RIGHT
 	setobjectmovementtype LOCALID_COOK, MOVEMENT_TYPE_FACE_UP
 	setobjectmovementtype LOCALID_GIRL, MOVEMENT_TYPE_FACE_UP
-	setobjectmovementtype LOCALID_FAT_MAN, MOVEMENT_TYPE_FACE_UP
 	setobjectmovementtype LOCALID_MAN_1, MOVEMENT_TYPE_FACE_LEFT
 	return
 
@@ -439,13 +453,17 @@ SlateportCity_EventScript_CookSternInterview::
 	release
 	end
 
-SlateportCity_EventScript_OldWoman::
-	lock
-	faceplayer
-	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_OldWomanSternInterview
-	msgbox SlateportCity_Text_HowTownIsBornAndGrows, MSGBOX_DEFAULT
+SlateportCity_EventScript_OldMan::
+	msgbox SlateportCity_Text_IWasThere, MSGBOX_NPC
 	release
 	end
+
+SlateportCity_EventScript_Camper::
+	msgbox SlateportCity_Text_Camper, MSGBOX_NPC
+	release
+	end
+
+
 
 SlateportCity_EventScript_OldWomanSternInterview::
 	msgbox SlateportCity_Text_CaptSternBeingInterviewed, MSGBOX_DEFAULT
@@ -474,8 +492,7 @@ SlateportCity_EventScript_GirlSecretBase::
 SlateportCity_EventScript_RichBoy::
 	lock
 	faceplayer
-	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_RichBoySternInterview
-	msgbox SlateportCity_Text_GoingToCompeteInBattleTent, MSGBOX_DEFAULT
+	msgbox SlateportCity_Text_Casino, MSGBOX_DEFAULT
 	release
 	end
 
@@ -485,9 +502,62 @@ SlateportCity_EventScript_RichBoySternInterview::
 	end
 
 SlateportCity_EventScript_FatMan::
-	goto_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_FatManSternInterview
-	msgbox SlateportCity_Text_BushedHikingFromMauville, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_FAT_MAN_MOVED, SlateportCity_EventScript_FatManMoved
+	msgbox SlateportCity_Text_ThisIsMySpot, MSGBOX_DEFAULT
+	showmoneybox 0, 0
+	msgbox SlateportCity_Text_Money, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, SlateportCity_Eventscript_FatManMoves
+	hidemoneybox
+	msgbox SlateportCity_Text_ThenIWontMove, MSGBOX_DEFAULT
+	closemessage
+	release
 	end
+
+
+SlateportCity_Eventscript_FatManMoves::
+	checkmoney 2000
+	goto_if_eq VAR_RESULT, FALSE, SlateportCity_Eventscript_NoMoneyFatMan
+	removemoney 2000
+	hidemoneybox
+	msgbox SlateportCity_Text_FatManMoves, MSGBOX_DEFAULT
+	closemessage
+	specialvar VAR_RESULT, GetPlayerFacingDirection
+	goto_if_eq VAR_RESULT, DIR_NORTH, SlateportCity_Eventscript_FatManMovesLeft
+	applymovement LOCALID_FAT_MAN, Common_Movement_WalkDown2
+	waitmovement 0
+	applymovement LOCALID_FAT_MAN, Common_Movement_WalkLeft
+	waitmovement 0
+	applymovement LOCALID_FAT_MAN, Common_Movement_FaceDown
+	waitmovement 0
+	setobjectxyperm LOCALID_FAT_MAN, 22, 9
+	setflag FLAG_FAT_MAN_MOVED
+	release
+	end
+
+
+SlateportCity_Eventscript_FatManMovesLeft::
+	applymovement LOCALID_FAT_MAN, Common_Movement_WalkLeft
+	waitmovement 0
+	applymovement LOCALID_FAT_MAN, Common_Movement_FaceDown
+	waitmovement 0
+	setflag FLAG_FAT_MAN_MOVED
+	setobjectxyperm LOCALID_FAT_MAN, 22, 7
+	release
+	end
+
+
+SlateportCity_EventScript_FatManMoved:
+	msgbox SlateportCity_Text_LikeThisSpotBetter, MSGBOX_NPC
+	release
+	end
+
+SlateportCity_EventScript_Umbrella_Lady:
+	msgbox SlateportCity_Text_LoveTheCasino, MSGBOX_NPC
+	release
+	end
+
 
 SlateportCity_EventScript_FatManSternInterview::
 	msgbox SlateportCity_Text_AmIOnTV, MSGBOX_SIGN
@@ -509,7 +579,6 @@ SlateportCity_EventScript_Man1SternInterview::
 SlateportCity_EventScript_Woman1::
 	lock
 	faceplayer
-	goto_if_set FLAG_DOCK_REJECTED_DEVON_GOODS, SlateportCity_EventScript_Woman1AquaGone
 	msgbox SlateportCity_Text_WhatsLongLineOverThere, MSGBOX_DEFAULT
 	release
 	end
@@ -576,14 +645,12 @@ SlateportCity_EventScript_NameRatersHouseSign::
 SlateportCity_EventScript_Maniac::
 	lock
 	faceplayer
-	call_if_eq VAR_SLATEPORT_CITY_STATE, 1, SlateportCity_EventScript_ManiacSternInterview
-	msgbox SlateportCity_Text_GetNameRaterToHelpYou, MSGBOX_DEFAULT
+	msgbox SlateportCity_Text_HousesAllTheSame, MSGBOX_DEFAULT
 	release
 	end
 
 @ Unclear if the text here was meant to be different, but its not
 SlateportCity_EventScript_ManiacSternInterview::
-	msgbox SlateportCity_Text_GetNameRaterToHelpYou, MSGBOX_DEFAULT
 	release
 	end
 
@@ -675,6 +742,11 @@ SlateportCity_EventScript_AquaGrunt7::
 	applymovement LOCALID_GRUNT_7, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
+	end
+
+
+SlateportCity_EventScript_Sailor4::
+	msgbox SlateportCity_Text_ThisCityIsCraxy, MSGBOX_NPC
 	end
 
 SlateportCity_EventScript_AquaGrunt8::
@@ -930,6 +1002,13 @@ SlateportCity_EventScript_BerryPowderClerk::
 	release
 	end
 
+SlateportCity_EventScript_SnowballFight::
+	msgbox SlateportCity_Text_SnowballFight, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+
 SlateportCity_EventScript_ReceivedPowderJar::
 	setvar VAR_0x8004, 1
 	specialvar VAR_RESULT, HasEnoughBerryPowder
@@ -1067,6 +1146,46 @@ SlateportCity_EventScript_TryBuyBerryPowderItem::
 	release
 	end
 
+SlateportCity_EventScript_OldLady::
+	lock
+	faceplayer
+	goto_if_set FLAG_SLATEPORT_WOMAN_WISDOM, SlateportCity_EventScript_OldLadyWisdom
+	msgbox SlateportCity_Text_OldLady, MSGBOX_DEFAULT
+	showmoneybox 0, 0
+	msgbox SlateportCity_Text_OldLadyMoney, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, TRUE, SlateportCity_EventScript_OldLadyTellsYouWisdom
+	hidemoneybox
+	msgbox SlateportCity_Text_OldLadyDisappointed, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+
+SlateportCity_EventScript_OldLadyTellsYouWisdom::
+	checkmoney 1000
+	goto_if_eq VAR_RESULT, FALSE, SlateportCity_Eventscript_NoMoneyOldLady
+	removemoney 1000
+	hidemoneybox
+	setflag FLAG_SLATEPORT_WOMAN_WISDOM
+	msgbox SlateportCity_Text_OldLadyTellsYouWisdom, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+
+SlateportCity_Eventscript_NoMoneyOldLady:
+	hidemoneybox
+	msgbox SlateportCity_Text_NoMoneyOldLady, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+
+SlateportCity_EventScript_OldLadyWisdom:
+	msgbox SlateportCity_Text_KnowledgeIsPower, MSGBOX_NPC
+	release
+	end
+
 SlateportCity_EventScript_NoRoomForBerryPowderItem::
 	msgbox gText_TheBagIsFull, MSGBOX_DEFAULT
 	special RemoveBerryPowderVendorMenu
@@ -1167,7 +1286,7 @@ SlateportCity_Text_EffortRibbonLooksGoodOnIt:
 SlateportCity_Text_WonderIfLighthouseStartlesPokemon:
 	.string "The light of the lighthouse reaches\n"
 	.string "dozens of miles away.\p"
-	.string "I wonder if it doesn't startle POKéMON\n"
+	.string "I wonder if it doesn't startle Pokémon\n"
 	.string "in the sea.$"
 
 SlateportCity_Text_SeaweedFullOfLife:
@@ -1196,11 +1315,20 @@ SlateportCity_Text_BuyBricksSoDecorWontGetDirty:
 	.string "DOLLS and CUSHIONS won't get dirty\l"
 	.string "when I leave them out.$"
 
-SlateportCity_Text_GoingToCompeteInBattleTent:
-	.string "Wroooar! I'm going to compete in\n"
-	.string "the BATTLE TENT, too!\p"
-	.string "But before that, I need to catch\n"
-	.string "some POKéMON!$"
+SlateportCity_Text_Casino:
+	.string "I was so scared when Mauville got\n"
+	.string "quarantined.\p"
+	.string "There was something there that I\n"
+	.string "couldn't bear to lose…\p"
+	.string "I am of course talking about the\n"
+	.string "casino.\p"
+	.string "But the response to this tragic\n"
+	.string "humanitarian crisis was swift.\p"
+	.string "Efforts to build a new casino in\n"
+	.string "Slateport were sperheaded by Devon,\l"
+	.string "and it got finished in a year.\p"
+	.string "Nothing short of admirable!$"
+
 
 SlateportCity_Text_BushedHikingFromMauville:
 	.string "Whew… I'm just bushed…\p"
@@ -1216,8 +1344,9 @@ SlateportCity_Text_EveryoneCallsHimCaptStern:
 	.string "So, everyone calls him CAPT. STERN.$"
 
 SlateportCity_Text_WhatsLongLineOverThere:
-	.string "What is that over there?\n"
-	.string "That long line…$"
+	.string "I must say, Slateport is simply lovely\n"
+	.string "at this time of the year.\p"
+	.string "Or any time of the year.$"
 
 SlateportCity_Text_VisitedMuseumOften:
 	.string "When I was a child, I visited\n"
@@ -1300,13 +1429,17 @@ SlateportCity_Text_SinkOldBoats:
 	.string "become habitats for POKéMON.$"
 
 SlateportCity_Text_BuyTooMuch:
-	.string "Whenever I visit here, I get carried\n"
-	.string "away and buy too much.$"
+	.string "Every time I go to the market plaza,\n"
+	.string "I end up spending all my money.\p"
+	.string "The deals are just irresistible!$"
 
-SlateportCity_Text_GetNameRaterToHelpYou:
-	.string "If you want to change your POKéMON's\n"
-	.string "nickname, you'll have to get the NAME\l"
-	.string "RATER to help you.$"
+SlateportCity_Text_HousesAllTheSame:
+	.string "I have a suspicion that no\n"
+	.string "one actually lives here.\p"
+	.string "Everyone else I talk to just says\n"
+	.string "that they're here for the holidays.\p"
+	.string "What holidays? It's like this all\n"
+	.string "year round!$"
 
 SlateportCity_Text_CantChangeTradeMonName:
 	.string "Any POKéMON you get in a trade,\n"
@@ -1752,6 +1885,14 @@ SlateportCity_Eventscript_BoughtDoll::
 	end
 
 
+
+SlateportCity_Eventscript_NoMoneyFatMan::
+	hidemoneybox
+	msgbox SlateportCity_Text_NoMoneyFatMan, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
 SlateportCity_Eventscript_NoMoney::
 	hidemoneybox
 	speakername Common_Name_Scammer1
@@ -1977,6 +2118,134 @@ Common_Name_Scammer1:
 Common_Name_Scammer2:
 	.string "Weird Guy 2$"
 
+SlateportCity_Text_ThisIsMySpot:
+	.string "Hey, what's up, buddy?\p"
+	.string "What, you wanna pass?\n"
+	.string "But it's comfortable here.\p"
+	.string "Although, I could be persuaded to\n"
+	.string "move…\p"
+	.string "At the right price.$"
+
+SlateportCity_Text_Money:
+	.string "How does ¥2.000 sound?\p"
+	.string "Unless you'd prefer taking the long\n"
+	.string "way, that is.$"
+
+SlateportCity_Text_ThenIWontMove:	
+	.string "Then I'll keep staying here.\p"
+	.string "Tough luck to you, buddy.$"
+
+SlateportCity_Text_NoMoneyFatMan:
+	.string "Hey, buddy, that's not enough\n"
+	.string "money.\p"
+	.string "I'll just keep standing here, then.\p"
+	.string "Take the long way, will ya?$"
+
+SlateportCity_Text_FatManMoves:
+	.string "My, how generous!\n"
+	.string "It's hard to say no to that.\p"
+	.string "Very well.\n"
+	.string "I'll find another spot!$"
+
+
+SlateportCity_Text_LikeThisSpotBetter:
+	.string "Hey there, buddy.\n"
+	.string "I found a new spot to stay.\p"
+	.string "I like this one much better, I\n"
+	.string "have to say.$"
+
+SlateportCity_Text_IWasThere:
+	.string "I was there, you know?\n"
+	.string "Oh, how I remember!\p"
+	.string "It must have been fifty, sixty\n"
+	.string "years ago!\p"
+	.string "I was out, in the middle of the\n"
+	.string "night, minding by business…\p"
+	.string "And then a giant monster appeared!\p"
+	.string "It tore through the middle of the\n"
+	.string "city, freezing everything in its path!\p"
+	.string "But no one believes me!\p"
+	.string "The say the cause of the freezing is\n"
+	.string "unknown.\p"
+	.string "But I saw it!\n"
+	.string "The giant colossus!$"
+
+SlateportCity_Text_BoyFire:
+	.string "Brr…\n"
+	.string "It's so cold…\p"
+	.string "I really hate this weather.$"
+
+SlateportCity_Text_SnowballFight:
+	.string "Snowball fight!\n"
+	.string "Snowball fight!$"
+
+SlateportCity_Text_Camper:
+	.string "How do you like Slateport?\n"
+	.string "We're Hoenn shining capital!\p"
+	.string "Both Devon and the Pokédex League\n"
+	.string "have a big presence here.$"
+
+SlateportCity_Text_Sailor:
+	.string "If you're sending a package from\n"
+	.string "anywhere in Hoenn, chances are it's\l"
+	.string "gonna go through here!\p"
+	.string "Whether by land or sea, Slateport can\n"
+	.string "get you anywhere.$"
+
+SlateportCity_Text_OldLady:
+	.string "Are you talking to me?\n"
+	.string "Not so fast!\p"
+	.string "I have lived a long life full\n"
+	.string "of experiences, you know.\p"
+	.string "And with those experiences comes\n"
+	.string "wisdom!\p"
+	.string "And wisdom is not for free!\p"
+	.string "I would be inclined to share my\n"
+	.string "wisdom with a little tip.$"
+
+SlateportCity_Text_OldLadyMoney:
+	.string "Say, ¥1.000.\n"
+	.string "Good deal, right?$"
+
+SlateportCity_Text_OldLadyDisappointed:
+	.string "What a cheapstake.$"
+
+SlateportCity_Text_NoMoneyOldLady:
+	.string "What?\n"
+	.string "That's not enough money.\p"
+	.string "Too bad for you.$"
+
+SlateportCity_Text_OldLadyTellsYouWisdom:
+	.string "Ah, you respect your elders.\n"
+	.string "Good, good.\p"
+	.string "As promised, here is my ultimate\n"
+	.string "wisdom.\p"
+	.string "… … … …\p"
+	.string "… … … … … … … … … … … … … … …\n"
+	.string "… … … … … … … … … … … … … … …\l"
+	.string "…\p"
+	.string "Here it comes…\p"
+	.string "… … …\p"
+	.string "…\p"
+	.string "Always remember to brush your teeth.$"
+
+
+SlateportCity_Text_KnowledgeIsPower:
+	.string "Knowledge is power.\n"
+	.string "And power is money.\p"
+	.string "Remember that.$"
+
+
+SlateportCity_Text_ThisCityIsCraxy:
+	.string "This city is crazy!\n"
+	.string "Everyone is obsessed with money!\p"
+	.string "I tried to chat with an old lady\n"
+	.string "earlier, and she demanded compensation!$"
+
+SlateportCity_Text_LoveTheCasino:
+	.string "I love the casino.\n"
+	.string "It's where all the cool boys are!$"
+
 SlateportCity_Movement_ScammerLooksAtOther:
 	face_right
 	delay_16
@@ -1984,3 +2253,4 @@ SlateportCity_Movement_ScammerLooksAtOther:
 	delay_16
 	face_down
 	step_end
+

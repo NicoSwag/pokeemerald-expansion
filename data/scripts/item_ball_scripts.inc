@@ -207,6 +207,11 @@ Route110_EventScript_ItemElixir::
 	finditem ITEM_ELIXIR
 	end
 
+
+SlateportCity_EventScript_ItemSnowball::
+	finditem ITEM_SNOWBALL
+	end
+
 Route111_EventScript_ItemTMSandstorm::
 	finditem ITEM_TM_SANDSTORM
 	end

@@ -169,6 +169,7 @@ RustboroCity_EventScript_Scientist_BoosterEnergy::
 	waitmovement 0
 	faceplayer
 	msgbox RustboroCity_Text_BoosterEnergy, MSGBOX_DEFAULT
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_PORYGON
 	givemon SPECIES_PORYGON, 10
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RustboroCity_EventScript_SendPorygonParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RustboroCity_EventScript_SendPorygonPC
@@ -1692,7 +1693,7 @@ RustboroCity_Text_GymLeaderIsntEasyWithFire:
 RustboroCity_Text_MrBrineyWalksInTheTunnel:
 	.string "With all of the houses that Devon\n"
 	.string "built, I have to wonder…\p"
-	.string "When will the build one for me?$"
+	.string "When will they build one for me?$"
 
 RustboroCity_Text_MrBrineyLovesPeeko:
 	.string "The old sailor Mr. Briney lives in\n"
@@ -2304,7 +2305,7 @@ RustboroCity_EventScript_Text:
 
 
 RustboroCity_EventScript_ManFactory::
-	msgbox RustboroCity_EventScript_ManFactory, MSGBOX_NPC
+	msgbox RustboroCity_Text_Factory, MSGBOX_NPC
 	end
 
 RustboroCity_EventScript_Factory::
@@ -2312,9 +2313,9 @@ RustboroCity_EventScript_Factory::
 	end
 
 RustboroCity_Text_Factory:
-	.string "I wonder what's inside the factory.\p"
-	.string "They don't let anyone it, and those\n"
-	.string "who work there never talk about it.$"
+	.string "I wonder what's in the factory.\p"
+	.string "They don't let anyone it, and\n"
+	.string "the workers never talk about it.$"
 
 RustboroCity_EventScript_GarbageLady::
 	lock
@@ -2340,10 +2341,7 @@ RustboroCity_EventScript_GarbageLady::
 
 
 RustboroCity_Movement_BackUp:
-	lock_facing_direction
 	walk_down
-	face_up
-	unlock_facing_direction
 	step_end
 
 RustboroCity_Text_GarbageLady:

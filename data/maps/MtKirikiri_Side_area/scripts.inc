@@ -21,7 +21,7 @@ EventScript_MtKirikiri_Shadow_1::
 	setvar VAR_DEFEATED_KIRIKIRI_SHADOW_1, 1
 	end
 
-EventScript_MtKirikiri_StrangeWall:
+EventScript_MtKirikiri_StrangeWall::
 	goto_if_set FLAG_OLDALE_ODD_INSCRIPTION, EventScript_MtKirikiri_StrangeWall2
 	msgbox Text_MtKirikiri_StrangeWall, MSGBOX_SIGN
 	giveitem ITEM_ODD_CARVING
@@ -98,18 +98,18 @@ Kirkiri_Text_SomethingIsComing::
 	.string "…Something is coming.$"
 
 
-Kirikiri_Text_DotDotDot::
+Kirikiri_Text_DotDotDot:
 	.string "… … …$"
 
 
-Text_MtKirikiri_StrangeWall::
+Text_MtKirikiri_StrangeWall:
 	.string "You examine the strange symbols on\n"
 	.string "the cave wall.\p"
 	.string "For some reason, it's as if you're\n"
 	.string "drawn to them.\p"
 	.string "You decide to write them down.$"
 
-Text_MtKirikiri_StrangeWall2::
+Text_MtKirikiri_StrangeWall2:
 	.string "You examine the strange symbols on\n"
 	.string "the cave wall.\p"
 	.string "For some reason, it's as if you're\n"
