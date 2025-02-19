@@ -3,6 +3,7 @@ const struct SpritePalette gSpritePalette_GeneralFieldEffect1 = {gFieldEffectObj
 const struct SpritePalette gSpritePalette_GeneralFieldEffect2 = {gFieldEffectObjectPalette2, FLDEFF_PAL_TAG_GENERAL_2};
 const struct SpritePalette gSpritePalette_GeneralFieldEffect3 = {gFieldEffectObjectPalette2, FLDEFF_PAL_TAG_GENERAL_3};
 const struct SpritePalette gSpritePalette_GeneralFieldEffect4 = {gFieldEffectObjectPalette4, FLDEFF_PAL_TAG_GENERAL_4};
+const struct SpritePalette gSpritePalette_GeneralFieldEffect5 = {gFieldEffectObjectPalette0, FLDEFF_PAL_TAG_SECRET_POWER_TREE};
 
 
 static const union AnimCmd sAnim_Shadow[] =
@@ -433,7 +434,7 @@ static const union AnimCmd *const sAnimTable_SandFootprints[] =
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_SandFootprints = {
     .tileTag = TAG_NONE,
-    .paletteTag = FLDEFF_PAL_TAG_GENERAL_0,
+    .paletteTag = FLDEFF_PAL_TAG_SECRET_POWER_PLANT,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_SandFootprints,
     .images = sPicTable_SandFootprints,

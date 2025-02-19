@@ -31,6 +31,7 @@ const u8 gWeatherAshTiles[] = INCBIN_U8("graphics/weather/ash.4bpp");
 const u8 gWeatherPollutionTiles[] = INCBIN_U8("graphics/weather/pollution_layer.4bpp");
 const u8 gWeatherRainTiles[] = INCBIN_U8("graphics/weather/rain.4bpp");
 const u8 gWeatherSandstormTiles[] = INCBIN_U8("graphics/weather/sandstorm.4bpp");
+const u8 gWeatherBlizzardTiles[] = INCBIN_U8("graphics/weather/blizzard.4bpp");
 
 const struct SpritePalette sFogSpritePalette = {gFogPalette, 0x1201};
 const struct SpritePalette sCloudsSpritePalette = {gCloudsWeatherPalette, 0x1207};
@@ -2374,6 +2375,216 @@ static void UpdateSandstormSwirlSprite(struct Sprite *sprite)
     }
 }
 
+//------------------------------------------------------------------------------
+// WEATHER_BLIZZARD
+//------------------------------------------------------------------------------
+static void UpdateBlizzardMovement(void);
+static void CreateBlizzardSprites(void);
+static void UpdateBlizzardSprite(struct Sprite *);
+static void DestroyBlizzardSprites(void);
+
+#define MIN_BLIZZARD_WAVE_INDEX 0x20
+
+void Blizzard_InitVars(void)
+{
+    gWeatherPtr->initStep = 0;
+    gWeatherPtr->weatherGfxLoaded = 0;
+    gWeatherPtr->targetColorMapIndex = 3;
+    gWeatherPtr->colorMapStepDelay = 20;
+    if (!gWeatherPtr->blizzardSpritesCreated)
+    {
+        gWeatherPtr->blizzardXOffset = gWeatherPtr->blizzardYOffset = 0;
+        gWeatherPtr->blizzardWaveIndex = 8;
+        gWeatherPtr->blizzardWaveCounter = 0;
+        // Dead code. How does the compiler not optimize this out?
+        if (gWeatherPtr->blizzardWaveIndex >= 0x80 - MIN_BLIZZARD_WAVE_INDEX)
+            gWeatherPtr->blizzardWaveIndex = 0x80 - gWeatherPtr->blizzardWaveIndex;
+
+        Weather_SetBlendCoeffs(0, 16);
+    }
+}
+
+void Blizzard_InitAll(void)
+{
+    Blizzard_InitVars();
+    while (!gWeatherPtr->weatherGfxLoaded)
+        Blizzard_Main();
+}
+
+void Blizzard_Main(void)
+{
+    UpdateBlizzardMovement();
+    if (gWeatherPtr->blizzardWaveIndex >= 0x80 - MIN_BLIZZARD_WAVE_INDEX)
+        gWeatherPtr->blizzardWaveIndex = MIN_BLIZZARD_WAVE_INDEX;
+
+    switch (gWeatherPtr->initStep)
+    {
+    case 0:
+        CreateBlizzardSprites();
+        gWeatherPtr->initStep++;
+        break;
+    case 1:
+        Weather_SetTargetBlendCoeffs(16, 0, 0);
+        gWeatherPtr->initStep++;
+        break;
+    case 2:
+        if (Weather_UpdateBlend())
+        {
+            gWeatherPtr->weatherGfxLoaded = TRUE;
+            gWeatherPtr->initStep++;
+        }
+        break;
+    }
+}
+
+bool8 Blizzard_Finish(void)
+{
+    UpdateBlizzardMovement();
+    switch (gWeatherPtr->finishStep)
+    {
+    case 0:
+        Weather_SetTargetBlendCoeffs(0, 16, 0);
+        gWeatherPtr->finishStep++;
+        break;
+    case 1:
+        if (Weather_UpdateBlend())
+            gWeatherPtr->finishStep++;
+        break;
+    case 2:
+        DestroyBlizzardSprites();
+        gWeatherPtr->finishStep++;
+        break;
+    default:
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+static const struct OamData sBlizzardSpriteOamData =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_BLEND,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .x = 0,
+    .size = SPRITE_SIZE(64x64),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0,
+};
+
+static const union AnimCmd sBlizzardSpriteAnimCmd0[] =
+{
+    ANIMCMD_FRAME(0, 3),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sBlizzardSpriteAnimCmd1[] =
+{
+    ANIMCMD_FRAME(64, 3),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sBlizzardSpriteAnimCmds[] =
+{
+    sBlizzardSpriteAnimCmd0,
+    sSandstormSpriteAnimCmd1,
+};
+
+static const struct SpriteTemplate sBlizzardSpriteTemplate =
+{
+    .tileTag = GFXTAG_BLIZZARD,
+    .paletteTag = PALTAG_WEATHER,
+    .oam = &sBlizzardSpriteOamData,
+    .anims = sBlizzardSpriteAnimCmds,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateBlizzardSprite,
+};
+
+static const struct SpriteSheet sBlizzardSpriteSheet =
+{
+    .data = gWeatherBlizzardTiles,
+    .size = sizeof(gWeatherBlizzardTiles),
+    .tag = GFXTAG_BLIZZARD,
+};
+
+static void CreateBlizzardSprites(void)
+{
+    u16 i;
+    u8 spriteId;
+
+    if (!gWeatherPtr->blizzardSpritesCreated)
+    {
+        LoadSpriteSheet(&sBlizzardSpriteSheet);
+        for (i = 0; i < NUM_BLIZZARD_SPRITES; i++)
+        {
+            spriteId = CreateSpriteAtEnd(&sBlizzardSpriteTemplate, 0, (i / 5) * 64, 1);
+            if (spriteId != MAX_SPRITES)
+            {
+                gWeatherPtr->sprites.s2.blizzardSprites1[i] = &gSprites[spriteId];
+                gWeatherPtr->sprites.s2.blizzardSprites1[i]->tSpriteColumn = i % 5;
+                gWeatherPtr->sprites.s2.blizzardSprites1[i]->tSpriteRow = i / 5;
+            }
+            else
+            {
+                gWeatherPtr->sprites.s2.blizzardSprites1[i] = NULL;
+            }
+        }
+
+        gWeatherPtr->blizzardSpritesCreated = TRUE;
+    }
+}
+
+static void DestroyBlizzardSprites(void)
+{
+    u16 i;
+
+    if (gWeatherPtr->blizzardSpritesCreated)
+    {
+        for (i = 0; i < NUM_BLIZZARD_SPRITES; i++)
+        {
+            if (gWeatherPtr->sprites.s2.blizzardSprites1[i])
+                DestroySprite(gWeatherPtr->sprites.s2.blizzardSprites1[i]);
+        }
+
+        gWeatherPtr->blizzardSpritesCreated = FALSE;
+        FreeSpriteTilesByTag(GFXTAG_BLIZZARD);
+    }
+
+    if (gWeatherPtr->blizzardSwirlSpritesCreated)
+    {
+        for (i = 0; i < NUM_SWIRL_BLIZZARD_SPRITES; i++)
+        {
+            if (gWeatherPtr->sprites.s2.blizzardSprites2[i] != NULL)
+                DestroySprite(gWeatherPtr->sprites.s2.blizzardSprites2[i]);
+        }
+
+        gWeatherPtr->blizzardSwirlSpritesCreated = FALSE;
+    }
+}
+
+static void UpdateBlizzardMovement(void)
+{
+    gWeatherPtr->blizzardXOffset -= gSineTable[gWeatherPtr->blizzardWaveIndex] * 6;
+    gWeatherPtr->blizzardYOffset += gSineTable[gWeatherPtr->blizzardWaveIndex] * 12;
+    gWeatherPtr->blizzardBaseSpritesX = (gSpriteCoordOffsetX + (gWeatherPtr->blizzardXOffset >> 8)) & 0xFF;
+    gWeatherPtr->blizzardPosY = gSpriteCoordOffsetY + (gWeatherPtr->blizzardYOffset >> 8);
+}
+
+static void UpdateBlizzardSprite(struct Sprite *sprite)
+{
+    sprite->y2 = gWeatherPtr->blizzardPosY;
+    sprite->x = gWeatherPtr->blizzardBaseSpritesX + 32 + sprite->tSpriteColumn * 64;
+    if (sprite->x >= DISPLAY_WIDTH + 32)
+    {
+        sprite->x = gWeatherPtr->blizzardBaseSpritesX + (DISPLAY_WIDTH * 2) - (4 - sprite->tSpriteColumn) * 64;
+        sprite->x &= 0x1FF;
+    }
+}
+
 #undef tSpriteColumn
 #undef tSpriteRow
 
@@ -2759,6 +2970,7 @@ static u8 TranslateWeatherNum(u8 weather)
     case WEATHER_ABNORMAL:           return WEATHER_ABNORMAL;
     case WEATHER_ROUTE119_CYCLE:     return sWeatherCycleRoute119[gSaveBlock1Ptr->weatherCycleStage];
     case WEATHER_ROUTE123_CYCLE:     return sWeatherCycleRoute123[gSaveBlock1Ptr->weatherCycleStage];
+    case WEATHER_BLIZZARD:           return WEATHER_BLIZZARD;
     default:                         return WEATHER_NONE;
     }
 }

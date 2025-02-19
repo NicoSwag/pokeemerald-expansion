@@ -41,6 +41,7 @@
 #define COORD_EVENT_WEATHER_ROUTE123_CYCLE      21
 #define COORD_EVENT_WEATHER_POLLUTION           22
 #define COORD_EVENT_WEATHER_SCORCHING           23
+#define COORD_EVENT_WEATHER_BLIZZARD            24
 
 // These are the "abnormal weather events" that are used
 // to find Kyogre and Groudon.

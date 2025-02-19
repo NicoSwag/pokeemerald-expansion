@@ -548,12 +548,12 @@ SlateportCity_Eventscript_FatManMovesLeft::
 	end
 
 
-SlateportCity_EventScript_FatManMoved:
+SlateportCity_EventScript_FatManMoved::
 	msgbox SlateportCity_Text_LikeThisSpotBetter, MSGBOX_NPC
 	release
 	end
 
-SlateportCity_EventScript_Umbrella_Lady:
+SlateportCity_EventScript_Umbrella_Lady::
 	msgbox SlateportCity_Text_LoveTheCasino, MSGBOX_NPC
 	release
 	end

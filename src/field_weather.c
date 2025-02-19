@@ -18,6 +18,7 @@
 #include "trig.h"
 #include "gpu_regs.h"
 #include "field_camera.h"
+#include "constants/field_effects.h"
 
 #define DROUGHT_COLOR_INDEX(color) ((((color) >> 1) & 0xF) | (((color) >> 2) & 0xF0) | (((color) >> 3) & 0xF00))
 
@@ -64,7 +65,7 @@ static u8 None_Finish(void);
 EWRAM_DATA struct Weather gWeather = {0};
 EWRAM_DATA static u8 ALIGNED(2) sFieldEffectPaletteColorMapTypes[32] = {0};
 
-static const u8 *sPaletteColorMapTypes;
+EWRAM_DATA u8 *sPaletteColorMapTypes;
 
 static const u8 sDarkenedContrastColorMaps[NUM_WEATHER_COLOR_MAPS][32] =
 {
@@ -148,6 +149,7 @@ static const struct WeatherCallbacks sWeatherFuncs[] =
     [WEATHER_DOWNPOUR]           = {Downpour_InitVars,      Thunderstorm_Main,  Downpour_InitAll,      Thunderstorm_Finish},
     [WEATHER_UNDERWATER_BUBBLES] = {Bubbles_InitVars,       Bubbles_Main,       Bubbles_InitAll,       Bubbles_Finish},
     [WEATHER_POLLUTION]     = {Pollution_InitVars,          Pollution_Main,          Pollution_InitAll,          Pollution_Finish},
+    [WEATHER_BLIZZARD]           = {Blizzard_InitVars,      Blizzard_Main,      Blizzard_InitAll,      Blizzard_Finish},
 };
 
 void (*const gWeatherPalStateFuncs[])(void) =
@@ -222,6 +224,8 @@ void StartWeather(void)
         gWeatherPtr->sandstormSwirlSpritesCreated = 0;
         gWeatherPtr->bubblesSpritesCreated = 0;
         gWeatherPtr->lightenedFogSpritePalsCount = 0;
+        gWeatherPtr->blizzardSpritesCreated = 0;
+        gWeatherPtr->blizzardSwirlSpritesCreated = 0;
         Weather_SetBlendCoeffs(16, 0);
         gWeatherPtr->currWeather = 0;
         gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
@@ -352,6 +356,7 @@ static void FadeInScreenWithWeather(void)
     case WEATHER_RAIN_THUNDERSTORM:
     case WEATHER_DOWNPOUR:
     case WEATHER_POLLUTION:
+    case WEATHER_BLIZZARD:
     case WEATHER_SHADE:
         if (FadeInScreen_RainShowShade() == FALSE)
         {
@@ -747,6 +752,7 @@ void FadeScreen(u8 mode, s8 delay)
     case WEATHER_FOG_HORIZONTAL:
     case WEATHER_SHADE:
     case WEATHER_POLLUTION:
+    case WEATHER_BLIZZARD:
     case WEATHER_DROUGHT:
         useWeatherPal = TRUE;
         break;
@@ -1008,6 +1014,9 @@ static void UNUSED SetFieldWeather(u8 weather)
         break;
     case COORD_EVENT_WEATHER_POLLUTION:
         SetWeather(WEATHER_POLLUTION);
+        break;
+    case COORD_EVENT_WEATHER_BLIZZARD:
+        SetWeather(WEATHER_BLIZZARD);
         break;
     }
 }
