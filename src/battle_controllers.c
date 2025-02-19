@@ -2648,14 +2648,15 @@ void BtlController_HandleFaintAnimation(u32 battler)
         
         if(gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
         {
-            if(IsBattlerAlive(BATTLE_PARTNER(BATTLE_OPPOSITE(battler)))){
+            if(IsBattlerAlive(BATTLE_PARTNER(BATTLE_OPPOSITE(battler))))
+            {
 
             
             LaunchAnimationTaskForFrontSprite(&gSprites[gBattlerSpriteIds[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]], gSpeciesInfo[gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species].frontAnimId);
             PlayCry_Normal(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species, CRY_PRIORITY_NORMAL);
-        if (HasTwoFramesAnimation(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species))
+            if (HasTwoFramesAnimation(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species))
                 StartSpriteAnim(&gSprites[gBattlerSpriteIds[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]], 1);
-        }
+            }
         }
     }
     else if(GetBattlerSide(battler) == B_SIDE_OPPONENT)

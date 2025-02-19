@@ -2606,6 +2606,24 @@ BattleScript_EffectTelekinesis::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
+
+BattleScript_EffectFairyDust::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, NO_ACC_CALC_CHECK_LOCK_ON
+	attackstring
+	ppreduce
+	settelekinesis BattleScript_ButItFailed
+
+	critcalc
+	damagecalc
+	adjustdamage
+	call BattleScript_Hit_RetFromAtkAnimation
+	tryfaintmon BS_TARGET
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	printstring STRINGID_HURLEDINTOTHEAIR
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectStealthRock::
 	attackcanceler
 	attackstring
@@ -2897,7 +2915,6 @@ BattleScript_HitFromCritCalc::
 BattleScript_HitFromAtkAnimation::
 	call BattleScript_Hit_RetFromAtkAnimation
 BattleScript_TryFaintMon::
-
 	tryfaintmon BS_TARGET
 BattleScript_MoveEnd::
 	moveendall
@@ -10700,8 +10717,6 @@ BattleScript_EffectRemoveWeatherTerrain::
 
 
 
-
-
 BattleScript_EffectEmp::
 	attackcanceler
 	attackstring
@@ -10709,13 +10724,20 @@ BattleScript_EffectEmp::
 	tryexplosion
 	setatkhptozero
 	waitstate
-	tryfaintmon BS_ATTACKER
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	critcalc
+	damagecalc
+	adjustdamage
+	call BattleScript_Hit_RetFromAtkAnimation
 	setremoveterrain BattleScript_ButItFailed
 	printfromtable gTerrainStringIds
 	waitmessage B_WAIT_TIME_LONG
 	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
 	call BattleScript_ActivateTerrainEffects
-	goto BattleScript_MoveEnd
+	tryfaintmon BS_TARGET
+	tryfaintmon BS_ATTACKER
+	moveendall
 	end
 
 BattleScript_EffectThundersnow::

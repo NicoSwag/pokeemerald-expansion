@@ -743,6 +743,14 @@ const u16 gEggMoves[] = {
         MOVE_DRAINING_KISS,
         MOVE_LIFE_DEW),
 
+    egg_moves(MEGANIUM,
+        MOVE_SYNTHESIS, 
+        MOVE_LEECH_SEED,
+        MOVE_DRAINING_KISS,
+        MOVE_LIFE_DEW,
+        MOVE_SPRINGTIDE_STORM,
+        MOVE_MATCHA_GOTCHA),
+
     egg_moves(CYNDAQUIL,
         MOVE_FURY_SWIPES,
         MOVE_QUICK_ATTACK,

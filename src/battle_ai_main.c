@@ -2405,6 +2405,7 @@ case EFFECT_FLASH_FREEZE:
                 ADJUST_SCORE(-10);
             break;
         case EFFECT_TELEKINESIS:
+        case EFFECT_FAIRY_DUST:
             if (gStatuses3[battlerDef] & (STATUS3_TELEKINESIS | STATUS3_ROOTED | STATUS3_SMACKED_DOWN)
               || gFieldStatuses & STATUS_FIELD_GRAVITY
               || aiData->holdEffects[battlerDef] == HOLD_EFFECT_IRON_BALL
@@ -4402,6 +4403,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_TELEKINESIS:
+    case EFFECT_FAIRY_DUST:
         if (HasMoveWithLowAccuracy(battlerAtk, battlerDef, 90, FALSE, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], aiData->holdEffects[battlerAtk], aiData->holdEffects[battlerDef])
           || !IsBattlerGrounded(battlerDef))
             ADJUST_SCORE(DECENT_EFFECT);

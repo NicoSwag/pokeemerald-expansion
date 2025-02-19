@@ -9309,6 +9309,8 @@ bool32 IsBattlerProtected(u32 battlerAtk, u32 battlerDef, u32 move)
         return TRUE;
     else if (gProtectStructs[battlerDef].burningBulwarked)
         return TRUE;
+        else if (gProtectStructs[battlerDef].electroShielded)
+        return TRUE;
     else if ((gProtectStructs[battlerDef].obstructed || gProtectStructs[battlerDef].silkTrapped) && !IS_MOVE_STATUS(move))
         return TRUE;
     else if (gProtectStructs[battlerDef].spikyShielded)

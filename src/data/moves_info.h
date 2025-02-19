@@ -6671,6 +6671,36 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .battleAnimScript = Move_FUTURE_SIGHT,
     },
 
+
+    [MOVE_BUTTERFLY_EFFECT] =
+    {
+        .name = COMPOUND_STRING("Butterfly Effect"),
+        .description = COMPOUND_STRING(
+            "Slightly beat wings and\n"
+            "strike 2 turns later."),
+        #if B_UPDATED_MOVE_DATA >= GEN_6
+            .power = 120,
+        #elif B_UPDATED_MOVE_DATA >= GEN_5
+            .power = 100,
+        #else
+            .power = 80,
+        #endif
+        .effect = EFFECT_FUTURE_SIGHT,
+        .type = TYPE_BUG,
+        .accuracy = B_UPDATED_MOVE_DATA >= GEN_5 ? 100 : 90,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_5 ? 10 : 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_DONT_EXCITE_AUDIENCE,
+        .contestCategory = CONTEST_CATEGORY_SMART,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_CALM_MIND, COMBO_STARTER_CONFUSION, COMBO_STARTER_KINESIS, COMBO_STARTER_PSYCHIC},
+        .battleAnimScript = Move_FUTURE_SIGHT,
+    },
+
     [MOVE_ROCK_SMASH] =
     {
         .name = COMPOUND_STRING("Rock Smash"),
@@ -6695,6 +6725,32 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = Move_ROCK_SMASH,
+    },
+
+    [MOVE_PINPOINT_THRUST] =
+    {
+        .name = COMPOUND_STRING("Pinpoint Thrust"),
+        .description = COMPOUND_STRING(
+            "An accurate strike\n"
+            "that lowers Defense."),
+        .effect = EFFECT_HIT,
+        .power = 90,
+        .type = TYPE_DARK,
+        .accuracy = 100,
+        .pp = 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_DEF_MINUS_1,
+            .chance = 100,
+        }),
+        .contestEffect = CONTEST_EFFECT_BETTER_WITH_GOOD_CONDITION,
+        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = Move_LUNGE,
     },
 
     [MOVE_WHIRLPOOL] =
@@ -12437,6 +12493,29 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = Move_TELEKINESIS,
+    },
+
+    [MOVE_FAIRY_DUST] =
+    {
+        .name = COMPOUND_STRING("Fairy Dust"),
+        .description = COMPOUND_STRING(
+            "Sprinkles magic dust on\n"
+            "the foe, making it float."),
+        .effect = EFFECT_FAIRY_DUST,
+        .power = 40,
+        .type = TYPE_FAIRY,
+        .accuracy = 100,
+        .pp = 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .zMove = { .effect = Z_EFFECT_SPATK_UP_1 },
+        .gravityBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_SHIFT_JUDGE_ATTENTION,
+        .contestCategory = CONTEST_CATEGORY_SMART,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = Move_STUN_SPORE,
     },
 
     [MOVE_MAGIC_ROOM] =
@@ -20454,6 +20533,24 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .battleAnimScript = Move_FLOWER_TRICK,
     },
 
+    [MOVE_PYROTECHNICS] =
+    {
+        .name = COMPOUND_STRING("Pyrotechnics"),
+        .description = COMPOUND_STRING(
+            "Firework explosion. Always\n"
+            "a critical hit, never misses."),
+        .effect = EFFECT_HIT,
+        .power = 70,
+        .type = TYPE_FIRE,
+        .accuracy = 0,
+        .pp = 10,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .alwaysCriticalHit = TRUE,
+        .battleAnimScript = Move_FIRE_BLAST,
+    },
+
     [MOVE_TORCH_SONG] =
     {
         .name = COMPOUND_STRING("Torch Song"),
@@ -21284,6 +21381,29 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .copycatBanned = TRUE,
         .assistBanned = TRUE,
         .battleAnimScript = Move_BURNING_BULWARK,
+    },
+
+    [MOVE_ELECTROSHIELD] =
+    {
+        .name = COMPOUND_STRING("Electroshield"),
+        .description = COMPOUND_STRING(
+            "Evades attack, and paralyzes\n"
+            "the foe if struck."),
+        .effect = EFFECT_PROTECT,
+        .power = 0,
+        .type = TYPE_ELECTRIC,
+        .accuracy = 0,
+        .pp = 10,
+        .target = MOVE_TARGET_USER,
+        .priority = 4,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .zMove = { .effect = Z_EFFECT_RESET_STATS },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .metronomeBanned = TRUE,
+        .copycatBanned = TRUE,
+        .assistBanned = TRUE,
+        .battleAnimScript = Move_PROTECT,
     },
 
     [MOVE_THUNDERCLAP] =

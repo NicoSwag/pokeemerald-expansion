@@ -434,7 +434,7 @@ static const union AnimCmd *const sAnimTable_SandFootprints[] =
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_SandFootprints = {
     .tileTag = TAG_NONE,
-    .paletteTag = FLDEFF_PAL_TAG_SECRET_POWER_PLANT,
+    .paletteTag = FLDEFF_PAL_TAG_GENERAL_0,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_SandFootprints,
     .images = sPicTable_SandFootprints,

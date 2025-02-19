@@ -1340,6 +1340,13 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .encourageEncore = TRUE,
     },
 
+    [EFFECT_FAIRY_DUST] =
+    {
+        .battleScript = BattleScript_EffectFairyDust,
+        .battleTvScore = 0, // TODO: Assign points
+        .encourageEncore = TRUE,
+    },
+
     [EFFECT_POWER_SWAP] =
     {
         .battleScript = BattleScript_EffectPowerSwap,

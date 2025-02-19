@@ -3428,6 +3428,7 @@ const u8* FaintClearSetData(u32 battler)
     gProtectStructs[battler].obstructed = FALSE;
     gProtectStructs[battler].silkTrapped = FALSE;
     gProtectStructs[battler].burningBulwarked = FALSE;
+    gProtectStructs[battler].electroShielded = FALSE;
     gProtectStructs[battler].endured = FALSE;
     gProtectStructs[battler].noValidMoves = FALSE;
     gProtectStructs[battler].helpingHand = FALSE;
