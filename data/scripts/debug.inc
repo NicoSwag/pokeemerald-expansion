@@ -142,18 +142,19 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
-	trainerbattle_no_intro TRAINER_BOBBY, Route104_Text_MayDefeat
+	givemon species=SPECIES_MACHAMP, level=100, item=0, move1=MOVE_HORN_DRILL, move2=MOVE_MEMENTO, abilityNum=1, move3=MOVE_SPLASH
+    givemon species=SPECIES_MACHAMP, level=100, item=0, move1=MOVE_HORN_DRILL, move2=MOVE_MEMENTO, abilityNum=1, move3=MOVE_SPLASH
 	end
 
 Debug_EventScript_Script_3::
-	trainerbattle_two_trainers TRAINER_CALVIN_1, Route102_Text_CalvinDefeated, TRAINER_RICK, Route102_Text_RickDefeated
+	multi_fixed_2_vs_2 TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, PARTNER_STEVEN
 	end
 
 
 
 
 Debug_EventScript_Script_4::
-	release
+	trainerbattle_no_intro TRAINER_WALLY_1 Route104_Text_MayDefeat
 	end
 
 Debug_EventScript_Script_5::

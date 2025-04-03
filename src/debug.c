@@ -4716,6 +4716,7 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_WALLY_ENCOUNTER) \
     X(MUS_VS_PRESIDENT) \
     X(MUS_VS_RIVAL_FINAL) \
+    X(MUS_VS_WALLY_COMMON) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \

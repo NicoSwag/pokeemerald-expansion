@@ -893,6 +893,8 @@ static bool32 AI_IsMoveEffectInMinus(u32 battlerAtk, u32 battlerDef, u32 move, s
     case EFFECT_MAX_HP_50_RECOIL:
     case EFFECT_MIND_BLOWN:
     case EFFECT_EXPLOSION:
+    case EFFECT_EMP:
+    case EFFECT_DIRTY_BOMB:
     case EFFECT_FINAL_GAMBIT:
         return TRUE;
     case EFFECT_RECOIL_IF_MISS:
@@ -1415,6 +1417,8 @@ u32 AI_GetBattlerMoveTargetType(u32 battlerId, u32 move)
 {
     if (gMovesInfo[move].effect == EFFECT_EXPANDING_FORCE && AI_IsTerrainAffected(battlerId, STATUS_FIELD_PSYCHIC_TERRAIN))
         return MOVE_TARGET_BOTH;
+    else if (gMovesInfo[move].effect == EFFECT_SUPERNOVA && AI_GetWeather(AI_DATA) & B_WEATHER_SUN)
+        return MOVE_TARGET_BOTH;
     else
         return gMovesInfo[move].target;
 }
@@ -1661,7 +1665,6 @@ bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, u32 holdEffect)
       || HasMoveEffect(battlerAtk, EFFECT_SOLAR_BEAM)
       || HasMoveEffect(battlerAtk, EFFECT_MORNING_SUN)
       || HasMoveEffect(battlerAtk, EFFECT_SYNTHESIS)
-      || HasMoveEffect(battlerAtk, EFFECT_MOONLIGHT)
       || HasMoveEffect(battlerAtk, EFFECT_WEATHER_BALL)
       || HasMoveEffect(battlerAtk, EFFECT_GROWTH)
       || HasMoveWithType(battlerAtk, TYPE_FIRE)))
@@ -1704,6 +1707,7 @@ bool32 ShouldSetPollution(u32 battler, u32 ability, u32 holdEffect)
       || IS_BATTLER_OF_TYPE(battler, TYPE_POISON)
       || IS_BATTLER_OF_TYPE(battler, TYPE_GHOST)
       || IS_BATTLER_OF_TYPE(battler, TYPE_DARK)
+      || HasMove(battler, MOVE_MOONLIGHT)
       || HasMove(battler, MOVE_NATURES_MALICE)
       || HasMove(battler, MOVE_VENOSHOCK)
       || HasMove(battler, MOVE_HEX)
@@ -3328,6 +3332,8 @@ bool32 IsMoveEffectWeather(u32 move)
       || gMovesInfo[move].effect == EFFECT_RAIN_DANCE
       || gMovesInfo[move].effect == EFFECT_SANDSTORM
     || gMovesInfo[move].effect == EFFECT_ACID_RAIN
+    || gMovesInfo[move].effect == EFFECT_DIRTY_BOMB
+    || gMovesInfo[move].effect == EFFECT_RAIN_HIT
       || gMovesInfo[move].effect == EFFECT_HAIL
 || gMovesInfo[move].effect == EFFECT_THUNDERSNOW
       || gMovesInfo[move].effect == EFFECT_SNOWSCAPE))
@@ -3344,6 +3350,7 @@ bool32 PartnerMoveEffectIsTerrain(u32 battlerAtkPartner, u32 partnerMove)
     if (partnerMove != MOVE_NONE
      && (gMovesInfo[partnerMove].effect == EFFECT_GRASSY_TERRAIN
       || gMovesInfo[partnerMove].effect == EFFECT_MISTY_TERRAIN
+      || gMovesInfo[partnerMove].effect == EFFECT_MIST_HIT
       || gMovesInfo[partnerMove].effect == EFFECT_ELECTRIC_TERRAIN
 || gMovesInfo[partnerMove].effect == EFFECT_THUNDERSNOW
       || gMovesInfo[partnerMove].effect == EFFECT_PSYCHIC_TERRAIN))

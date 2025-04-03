@@ -9176,7 +9176,7 @@ u8 IsMonDisobedient(void)
             }
             if (i == gBattlersCount)
             {
-                gBattlescriptCurrInstr = BattleScript_IgnoresAndFallsAsleep;
+                gBattlescriptCurrInstr = BattleScript_MoveUsedLoafingAround;
                 return 1;
             }
         }
@@ -9782,6 +9782,10 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_RISING_VOLTAGE:
         if (IsBattlerTerrainAffected(battlerDef, STATUS_FIELD_ELECTRIC_TERRAIN))
             basePower *= 2;
+        break;
+    case EFFECT_SUPERNOVA:
+        if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN))
+        basePower = uq4_12_multiply(basePower, UQ_4_12(1.5));
         break;
     case EFFECT_BEAT_UP:
         if (B_BEAT_UP >= GEN_5)
@@ -11230,7 +11234,7 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
         mod = UQ_4_12(1.0);
     if (move == MOVE_EXTRASENSORY && defType == TYPE_STEEL)
         mod = UQ_4_12(2.0);
-    if (move == MOVE_SKY_UPPERCUT && defType == TYPE_FLYING)
+    if (move == MOVE_SKY_UPPERCUT && !IsBattlerGrounded(battlerDef))
         mod = UQ_4_12(2.0);
     if (gMovesInfo[move].effect == EFFECT_SUPER_EFFECTIVE_ON_ARG && defType == gMovesInfo[move].argument)
         mod = UQ_4_12(2.0);
@@ -12386,6 +12390,9 @@ u32 GetBattlerMoveTargetType(u32 battler, u32 move)
     else if (gMovesInfo[move].effect == EFFECT_EXPANDING_FORCE
         && IsBattlerTerrainAffected(battler, STATUS_FIELD_PSYCHIC_TERRAIN))
         return MOVE_TARGET_BOTH;
+    else if (gMovesInfo[move].effect == EFFECT_SUPERNOVA
+            && IsBattlerWeatherAffected(battler, B_WEATHER_SUN))
+            return MOVE_TARGET_FOES_AND_ALLY;
     else if (gMovesInfo[move].effect == EFFECT_TERA_STARSTORM
         && gBattleMons[battler].species == SPECIES_TERAPAGOS_STELLAR)
         return MOVE_TARGET_BOTH;

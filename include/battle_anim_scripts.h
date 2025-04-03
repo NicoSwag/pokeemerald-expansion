@@ -304,6 +304,7 @@ extern const u8 Move_TEETER_DANCE[];
 extern const u8 Move_BLAZE_KICK[];
 extern const u8 Move_MUD_SPORT[];
 extern const u8 Move_ICE_BALL[];
+extern const u8 Move_SUPERNOVA[];
 extern const u8 Move_NEEDLE_ARM[];
 extern const u8 Move_SLACK_OFF[];
 extern const u8 Move_HYPER_VOICE[];

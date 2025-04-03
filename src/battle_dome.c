@@ -4072,8 +4072,9 @@ static bool32 IsDomeComboMoveEffect(u32 effect)
     case EFFECT_WEATHER_BALL:
     // Moves dependent on terrain
     case EFFECT_EXPANDING_FORCE:
+    case EFFECT_MISTY_EXPLOSION:
+    case EFFECT_SUPERNOVA:
     case EFFECT_GRASSY_GLIDE:
-    //case EFFECT_MISTY_EXPLOSION: (needs a unique effect in gMovesInfo!)
     case EFFECT_PSYBLADE:
     case EFFECT_RISING_VOLTAGE:
     case EFFECT_TERRAIN_PULSE:

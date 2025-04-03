@@ -592,6 +592,7 @@ static void Cmd_averagestats(void);
 static void Cmd_jumpifoppositegenders(void);
 static void Cmd_unused(void);
 static void Cmd_tryworryseed(void);
+static void Cmd_trymistyexplosion(void);
 static void Cmd_callnative(void);
 const u16 sLevelCapFlags[NUM_SOFT_CAPS] =
 {
@@ -867,7 +868,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_swapstatstages,                          //0xFA
     Cmd_averagestats,                            //0xFB
     Cmd_jumpifoppositegenders,                   //0xFC
-    Cmd_unused,                                  //0xFD
+    Cmd_trymistyexplosion,                                  //0xFD
     Cmd_tryworryseed,                            //0xFE
     Cmd_callnative,                              //0xFF
 };
@@ -1948,6 +1949,9 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     case ABILITY_TANGLED_FEET:
         if (gBattleMons[battlerDef].status2 & STATUS2_CONFUSION)
             calc = (calc * 50) / 100; // 1.5 tangled feet loss
+        break;
+    case ABILITY_GLITTERY:
+        calc = (calc*130)/100;
         break;
     }
 
@@ -4191,7 +4195,6 @@ static void Cmd_setadditionaleffects(void)
                     );
                 }
             }
-
             // Move script along if we haven't jumped elsewhere
             if (gBattlescriptCurrInstr == currentPtr)
                 gBattlescriptCurrInstr = cmd->nextInstr;
@@ -6161,6 +6164,7 @@ static void Cmd_moveend(void)
                     gBattlescriptCurrInstr = BattleScript_MoveEffectSnapTrap;
                 }
                 break;
+
             case MOVE_EFFECT_REMOVE_STATUS: // Smelling salts, Wake-Up Slap, Sparkling Aria
                 if ((gBattleMons[gBattlerTarget].status1 & gMovesInfo[gCurrentMove].argument)
                  && IsBattlerAlive(gBattlerTarget)
@@ -10327,7 +10331,6 @@ static void Cmd_various(void)
         }
         break;
                 
-    
                 
     case VARIOUS_PLAY_MOVE_ANIMATION:
     {
@@ -14416,14 +14419,20 @@ static void Cmd_recoverbasedonsunlight(void)
             else
                 gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 2;
         }
-        if (gBattlerAbility==ABILITY_SUN_WITHIN){
-            gBattleMoveDamage = 20 * gBattleMons[gBattlerAttacker].maxHP / 30;
+        else if (gCurrentMove == MOVE_MOONLIGHT)
+        {
+            if(gBattleWeather & B_WEATHER_SUN || gBattlerAbility==ABILITY_SUN_WITHIN)
+                gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 4;
+            else if(gBattleWeather & B_WEATHER_POLLUTION)
+                gBattleMoveDamage = 20 * GetNonDynamaxMaxHP(gBattlerAttacker) / 30;
+            else
+                gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 2;
         }
         else
         {
             if (!(gBattleWeather & B_WEATHER_ANY) || !WEATHER_HAS_EFFECT || GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_UTILITY_UMBRELLA)
                 gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 2;
-            else if (gBattleWeather & B_WEATHER_SUN)
+            else if (gBattleWeather & B_WEATHER_SUN || gBattlerAbility==ABILITY_SUN_WITHIN)
                 gBattleMoveDamage = 20 * GetNonDynamaxMaxHP(gBattlerAttacker) / 30;
             else // not sunny weather
                 gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 4;
@@ -16502,6 +16511,31 @@ static void Cmd_unused(void)
 {
 }
 
+
+static void Cmd_trymistyexplosion(void)
+{
+    CMD_ARGS(const u8 *failInstr);
+
+    if (gAbilitiesInfo[gBattleMons[gBattlerTarget].ability].cantBeOverwritten
+      || gBattleMons[gBattlerTarget].ability == ABILITY_GLITTERY
+    || !IsBattlerTerrainAffected(gBattlerTarget, STATUS_FIELD_MISTY_TERRAIN))
+    {
+        RecordAbilityBattle(gBattlerTarget, gBattleMons[gBattlerTarget].ability);
+        gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
+        gBattlescriptCurrInstr = cmd->failInstr;
+    }
+    else if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
+    {
+        RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD);
+        gBattlescriptCurrInstr = cmd->failInstr;
+    }
+    else
+    {
+        gBattleMons[gBattlerTarget].ability = gBattleStruct->overwrittenAbilities[gBattlerTarget] = ABILITY_GLITTERY;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+}
+
 static void Cmd_tryworryseed(void)
 {
     CMD_ARGS(const u8 *failInstr);
@@ -17336,6 +17370,7 @@ void BS_SetRemoveTerrain(void)
     switch (gMovesInfo[gCurrentMove].effect)
     {
     case EFFECT_MISTY_TERRAIN:
+    case EFFECT_MIST_HIT:
         statusFlag = STATUS_FIELD_MISTY_TERRAIN;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_MISTY;
         break;

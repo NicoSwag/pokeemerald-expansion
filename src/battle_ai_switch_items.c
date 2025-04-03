@@ -125,6 +125,8 @@ static bool32 HasBadOdds(u32 battler, bool32 emitResult)
             if (aiMoveEffect == EFFECT_REFLECT || aiMoveEffect == EFFECT_LIGHT_SCREEN
             || aiMoveEffect == EFFECT_SPIKES || aiMoveEffect == EFFECT_TOXIC_SPIKES || aiMoveEffect == EFFECT_STEALTH_ROCK || aiMoveEffect == EFFECT_STICKY_WEB || aiMoveEffect == EFFECT_LEECH_SEED
             || aiMoveEffect == EFFECT_EXPLOSION
+            || aiMoveEffect == EFFECT_EMP
+            || aiMoveEffect == EFFECT_DIRTY_BOMB
             || aiMoveEffect == EFFECT_SLEEP || aiMoveEffect == EFFECT_YAWN || aiMoveEffect == EFFECT_TOXIC || aiMoveEffect == EFFECT_WILL_O_WISP || aiMoveEffect == EFFECT_PARALYZE
             || aiMoveEffect == EFFECT_TRICK || aiMoveEffect == EFFECT_TRICK_ROOM || aiMoveEffect== EFFECT_WONDER_ROOM || aiMoveEffect ==  EFFECT_PSYCHO_SHIFT || aiMoveEffect == EFFECT_FIRST_TURN_ONLY
             )
@@ -2055,7 +2057,7 @@ static u32 GetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, 
                 }
 
                 // If a self destruction move doesn't OHKO, don't factor it into revenge killing
-                if (gMovesInfo[aiMove].effect == EFFECT_EXPLOSION && damageDealt < playerMonHP)
+                if ((gMovesInfo[aiMove].effect == EFFECT_EXPLOSION || gMovesInfo[aiMove].effect == EFFECT_EMP || gMovesInfo[aiMove].effect == EFFECT_DIRTY_BOMB) && damageDealt < playerMonHP)
                     continue;
 
                 // Check that mon isn't one shot and set best damage mon

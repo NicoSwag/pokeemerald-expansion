@@ -2327,7 +2327,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         ICON(Inkay, 0),
         .footprint = gMonFootprint_Inkay,
         LEARNSETS(Inkay),
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_MALAMAR}),
+        .evolutions = EVOLUTION({EVO_MOVE, MOVE_TOPSY_TURVY, SPECIES_MALAMAR}),
     },
 
     [SPECIES_MALAMAR] =

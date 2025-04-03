@@ -27077,6 +27077,24 @@ IceBallImpactShard:
 	createsprite gIceBallImpactShardSpriteTemplate, ANIM_TARGET, 4, -12, -16
 	return
 
+
+Move_SUPERNOVA::
+	loadspritegfx ANIM_TAG_SMALL_EMBER
+	createsprite gWeatherBallFireDownSpriteTemplate, ANIM_TARGET, 2, -30, -100, 25, 1, 40, 10
+	playsewithpan SE_M_FLAME_WHEEL, SOUND_PAN_TARGET
+	delay 10
+	createsprite gWeatherBallFireDownSpriteTemplate, ANIM_TARGET, 2, -30, -100, 25, 1, -40, 20
+	playsewithpan SE_M_FLAME_WHEEL, SOUND_PAN_TARGET
+	delay 10
+	createsprite gWeatherBallFireDownSpriteTemplate, ANIM_TARGET, 2, -30, -100, 25, 1, 0, 0
+	playsewithpan SE_M_FLAME_WHEEL, SOUND_PAN_TARGET
+	waitforvisualfinish
+	playsewithpan SE_M_FLAME_WHEEL2, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, 3, 8, 1
+	waitforvisualfinish
+	end
+
+
 Move_WEATHER_BALL::
 	loadspritegfx ANIM_TAG_WEATHER_BALL
 	createsprite gVerticalDipSpriteTemplate, ANIM_ATTACKER, 2, 8, 1, ANIM_ATTACKER

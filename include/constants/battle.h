@@ -419,7 +419,7 @@
 #define MOVE_EFFECT_PSYCHIC_NOISE       86
 #define MOVE_EFFECT_TERA_BLAST          87
 
-#define NUM_MOVE_EFFECTS                85
+#define NUM_MOVE_EFFECTS                87
 
 #define MOVE_EFFECT_AFFECTS_USER        0x2000
 #define MOVE_EFFECT_CERTAIN             0x4000

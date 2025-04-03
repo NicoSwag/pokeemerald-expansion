@@ -1336,13 +1336,14 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro unused ptr:req
-	.byte 0xfd
-	.4byte \ptr
-	.endm
 
 	.macro tryworryseed failInstr:req
 	.byte 0xfe
+	.4byte \failInstr
+	.endm
+
+	.macro trymistyexplosion failInstr:req
+	.byte 0xfd
 	.4byte \failInstr
 	.endm
 
@@ -1877,6 +1878,12 @@
 
 	.macro suckerpunchcheck failInstr:req
 	various BS_ATTACKER, VARIOUS_SUCKER_PUNCH_CHECK
+	.4byte \failInstr
+	.endm
+
+
+	.macro checkifalreadysupernovad failInstr:req
+	various BS_ATTACKER, VARIOUS_SUPERNOVA_CHECK
 	.4byte \failInstr
 	.endm
 

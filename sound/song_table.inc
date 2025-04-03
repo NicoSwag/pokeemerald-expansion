@@ -651,6 +651,7 @@ gSongTable::
 	song mus_wally_encounter, 0, 0
 	song mus_vs_president, 0, 0
 	song mus_vs_rival_final, 0, 0
+	song mus_vs_wally_common, 0, 0
 	.align 2
 dummy_song_header:
 	.byte 0, 0, 0, 0

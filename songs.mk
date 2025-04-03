@@ -1386,3 +1386,6 @@ $(MID_SUBDIR)/mus_vs_president.s: %.s: %.mid
 
 $(MID_SUBDIR)/mus_vs_rival_final.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5
+
+$(MID_SUBDIR)/mus_vs_wally_common.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -v100 -P5

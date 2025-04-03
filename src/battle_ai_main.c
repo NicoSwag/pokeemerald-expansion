@@ -1067,6 +1067,7 @@ case MOVE_ACID_RAIN:
             break;
         case EFFECT_EXPLOSION:
         case EFFECT_EMP:
+        
             if (!(AI_THINKING_STRUCT->aiFlags[battlerAtk] & AI_FLAG_WILL_SUICIDE))
                 ADJUST_SCORE(-2);
 
@@ -1652,6 +1653,7 @@ case MOVE_ACID_RAIN:
                 ADJUST_SCORE(-8);
             break;
 case EFFECT_ACID_RAIN:
+case EFFECT_DIRTY_BOMB:
             if (gBattleWeather & (B_WEATHER_POLLUTION | B_WEATHER_PRIMAL_ANY)
              || IsMoveEffectWeather(aiData->partnerMove))
                 score -= 8;
@@ -1883,7 +1885,7 @@ case EFFECT_FLASH_FREEZE:
         case EFFECT_MORNING_SUN:
         case EFFECT_SYNTHESIS:
         case EFFECT_MOONLIGHT:
-            if ((AI_GetWeather(aiData) & (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_SNOW | B_WEATHER_POLLUTION)))
+            if ((AI_GetWeather(aiData) & (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_SNOW | B_WEATHER_SUN)))
                 ADJUST_SCORE(-3);
             else if (AtMaxHp(battlerAtk))
                 ADJUST_SCORE(-10);
@@ -2302,6 +2304,7 @@ case EFFECT_FLASH_FREEZE:
                 ADJUST_SCORE(-10);
             break;
         case EFFECT_MISTY_TERRAIN:
+        case EFFECT_MIST_HIT:
             if (PartnerMoveEffectIsTerrain(BATTLE_PARTNER(battlerAtk), aiData->partnerMove) || gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)
                 ADJUST_SCORE(-10);
             break;
@@ -2400,6 +2403,7 @@ case EFFECT_FLASH_FREEZE:
                 ADJUST_SCORE(-10);
             break;
         case EFFECT_POWDER:
+        case EFFECT_POWDER_BOMB:
             if (!HasMoveWithType(battlerDef, TYPE_FIRE)
               || PartnerMoveIsSameAsAttacker(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
                 ADJUST_SCORE(-10);
@@ -2685,7 +2689,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     if (gMovesInfo[move].power == 0)
         return score; // can't make anything faint with no power
 
-    if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && gMovesInfo[move].effect != EFFECT_EXPLOSION)
+    if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && (gMovesInfo[move].effect != EFFECT_EXPLOSION && gMovesInfo[move].effect != EFFECT_EMP && gMovesInfo[move].effect != EFFECT_DIRTY_BOMB))
     {
         if (AI_IsFaster(battlerAtk, battlerDef, move))
             ADJUST_SCORE(FAST_KILL);
@@ -2745,6 +2749,8 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_RAIN_DANCE:
         case EFFECT_SANDSTORM:
         case EFFECT_ACID_RAIN:
+        case EFFECT_DIRTY_BOMB:
+        case EFFECT_RAIN_HIT:
             if (IsMoveEffectWeather(move))
                 ADJUST_SCORE(-10);
             break;
@@ -2831,6 +2837,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         }
         break;
         case EFFECT_ACID_RAIN:
+        case EFFECT_DIRTY_BOMB:
         if (IsBattlerAlive(battlerAtkPartner)
          && ShouldSetPollution(battlerAtkPartner, atkPartnerAbility, atkPartnerHoldEffect))
         {
@@ -3302,6 +3309,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_BIG_ROOT && effectiveness >= AI_EFFECTIVENESS_x1)
             ADJUST_SCORE(DECENT_EFFECT);
     case EFFECT_EXPLOSION:
+    case EFFECT_EMP:
+    case EFFECT_DIRTY_BOMB:
     case EFFECT_MEMENTO:
         if (AI_THINKING_STRUCT->aiFlags[battlerAtk] & AI_FLAG_WILL_SUICIDE && gBattleMons[battlerDef].statStages[STAT_EVASION] < 7)
         {
@@ -3872,11 +3881,12 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 ADJUST_SCORE(WEAK_EFFECT);
             if (HasMoveWithType(battlerDef, TYPE_WATER) || HasMoveWithType(BATTLE_PARTNER(battlerDef), TYPE_WATER))
                 ADJUST_SCORE(WEAK_EFFECT);
-            if (HasMoveEffect(battlerDef, EFFECT_THUNDER) || HasMoveEffect(BATTLE_PARTNER(battlerDef), EFFECT_THUNDER))
+            if (HasMoveEffect(battlerDef, EFFECT_THUNDER) || HasMoveEffect(BATTLE_PARTNER(battlerDef), EFFECT_THUNDER) || HasMoveEffect(battlerDef, EFFECT_MOONLIGHT))
                 ADJUST_SCORE(WEAK_EFFECT);
         }
         break;
         case EFFECT_ACID_RAIN:
+        
         if (ShouldSetPollution(battlerAtk, aiData->abilities[battlerAtk], aiData->holdEffects[battlerAtk]))
         {
             ADJUST_SCORE(DECENT_EFFECT);
@@ -3906,7 +3916,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         if (predictedMove != MOVE_NONE && !isDoubleBattle)
         {
             if ((AI_IsFaster(battlerAtk, battlerDef, move))
-             && (gMovesInfo[predictedMove].effect == EFFECT_EXPLOSION || gMovesInfo[predictedMove].effect == EFFECT_PROTECT))
+             && (gMovesInfo[predictedMove].effect == EFFECT_EXPLOSION || gMovesInfo[predictedMove].effect == EFFECT_DIRTY_BOMB ||  gMovesInfo[predictedMove].effect == EFFECT_EMP || gMovesInfo[predictedMove].effect == EFFECT_PROTECT))
                 ADJUST_SCORE(GOOD_EFFECT);
             else if (gMovesInfo[predictedMove].effect == EFFECT_SEMI_INVULNERABLE && !(gStatuses3[battlerDef] & STATUS3_SEMI_INVULNERABLE))
                 ADJUST_SCORE(GOOD_EFFECT);
@@ -4322,6 +4332,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     case EFFECT_ELECTRIC_TERRAIN:
     case EFFECT_MISTY_TERRAIN:
+    case EFFECT_MIST_HIT:
         if (gStatuses3[battlerAtk] & STATUS3_YAWN && IsBattlerGrounded(battlerAtk))
             ADJUST_SCORE(BEST_EFFECT);
     case EFFECT_GRASSY_TERRAIN:
@@ -4399,6 +4410,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_POWDER:
+    case EFFECT_POWDER_BOMB:
         if (predictedMove != MOVE_NONE && !IS_MOVE_STATUS(predictedMove) && gMovesInfo[predictedMove].type == TYPE_FIRE)
             ADJUST_SCORE(DECENT_EFFECT);
         break;
@@ -4888,6 +4900,7 @@ case EFFECT_FLASH_FREEZE:
     case EFFECT_ATTACK_SPATK_UP:
     case EFFECT_ATTACK_ACCURACY_UP:
     case EFFECT_EMP:
+    case EFFECT_DIRTY_BOMB:
     case EFFECT_STEALTH_ROCK:
     case EFFECT_TOXIC_SPIKES:
     case EFFECT_TRICK_ROOM:
@@ -4914,6 +4927,7 @@ case EFFECT_FLASH_FREEZE:
     case EFFECT_GRASSY_TERRAIN:
     case EFFECT_ELECTRIC_TERRAIN:
     case EFFECT_MISTY_TERRAIN:
+    case EFFECT_MIST_HIT:
         ADJUST_SCORE(BEST_EFFECT);
         break;
     case EFFECT_HIT:
@@ -4964,6 +4978,8 @@ static s32 AI_Risky(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             ADJUST_SCORE(STRONG_RISKY_EFFECT);
         break;
     case EFFECT_EXPLOSION:
+    case EFFECT_EMP:
+    case EFFECT_DIRTY_BOMB:
         ADJUST_SCORE(STRONG_RISKY_EFFECT);
         break;
 
@@ -5114,6 +5130,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             {
             case EFFECT_EXPLOSION:
 case EFFECT_EMP:
+case EFFECT_DIRTY_BOMB:
             case EFFECT_RESTORE_HP:
             case EFFECT_REST:
             case EFFECT_DESTINY_BOND:
@@ -5144,6 +5161,7 @@ case EFFECT_RECHARGE_HEALING:
             {
             case EFFECT_EXPLOSION:
 case EFFECT_EMP:
+case EFFECT_DIRTY_BOMB:
             case EFFECT_BIDE:
             case EFFECT_CONVERSION:
             case EFFECT_LIGHT_SCREEN:
@@ -5186,6 +5204,7 @@ case EFFECT_EMP:
             case EFFECT_SUNNY_DAY:
             case EFFECT_SANDSTORM:
                     case EFFECT_ACID_RAIN:
+                    case EFFECT_DIRTY_BOMB:
             case EFFECT_HAIL:
             case EFFECT_SNOWSCAPE:
 case EFFECT_THUNDERSNOW:
@@ -5346,6 +5365,7 @@ static s32 AI_PowerfulStatus(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
         break;
         case EFFECT_ACID_RAIN:
+        case EFFECT_DIRTY_BOMB:
         if (!(AI_GetWeather(AI_DATA) & (B_WEATHER_POLLUTION | B_WEATHER_PRIMAL_ANY)))
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
         break;

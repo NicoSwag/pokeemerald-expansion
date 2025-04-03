@@ -582,7 +582,8 @@
 #define MUS_WALLY_ENCOUNTER 647
 #define MUS_VS_PRESIDENT 648
 #define MUS_VS_RIVAL_FINAL 649
-#define END_MUS                     649
+#define MUS_VS_WALLY_COMMON 650
+#define END_MUS                     650
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
 #define MUS_NONE                    0xFFFF

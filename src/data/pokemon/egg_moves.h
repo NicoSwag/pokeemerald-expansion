@@ -17,6 +17,14 @@ const u16 gEggMoves[] = {
         MOVE_NASTY_PLOT,
         MOVE_CHARGE_BEAM),
 
+    egg_moves(DELPHOX,
+        MOVE_INCINERATE,
+        MOVE_ALLY_SWITCH,
+        MOVE_NASTY_PLOT,
+        MOVE_CHARGE_BEAM,
+        MOVE_AURORA_BEAM,
+        MOVE_MISTY_EXPLOSION),
+
     egg_moves(GLIMMET,
         MOVE_MAGNITUDE,
         MOVE_TOXIC),
@@ -803,6 +811,12 @@ const u16 gEggMoves[] = {
         MOVE_HYPNOSIS,
         MOVE_TAILWIND),
 
+    egg_moves(NOCTOWL,
+        MOVE_HYPNOSIS,
+        MOVE_TAILWIND,
+        MOVE_DAZZLING_GLEAM,
+        MOVE_HYPER_VOICE),
+
     egg_moves(LEDYBA,
         MOVE_SHADOW_PUNCH,
         MOVE_TAUNT),
@@ -1104,6 +1118,12 @@ const u16 gEggMoves[] = {
 
         egg_moves(QWILFISH_HISUIAN,
         MOVE_AQUA_JET,
+        MOVE_DESTINY_BOND),
+
+        egg_moves(OVERQWIL,
+        MOVE_AQUA_JET,
+        MOVE_DESTINY_BOND,
+        MOVE_DIRTY_BOMB,
         MOVE_EXPLOSION),
 
     egg_moves(SHUCKLE,
@@ -1153,6 +1173,12 @@ const u16 gEggMoves[] = {
     egg_moves(SLUGMA,
         MOVE_ACID_ARMOR,
         MOVE_HAZE),
+
+    egg_moves(MAGCARGO,
+        MOVE_ACID_ARMOR,
+        MOVE_HAZE,
+        MOVE_BODY_PRESS,
+        MOVE_STEALTH_ROCK),
 
     egg_moves(SWINUB,
         MOVE_AVALANCHE,
@@ -1795,6 +1821,11 @@ const u16 gEggMoves[] = {
     egg_moves(FEEBAS,
         MOVE_MIRROR_COAT),
 
+    egg_moves(MILOTIC,
+        MOVE_MIRROR_COAT,
+        MOVE_HAZE,
+        MOVE_MISTY_EXPLOSION),
+
     egg_moves(CASTFORM,
         MOVE_FUTURE_SIGHT,
         MOVE_LUCKY_CHANT,
@@ -1990,6 +2021,14 @@ const u16 gEggMoves[] = {
         MOVE_FLASH_FREEZE,
         MOVE_GLACIATE,
         MOVE_ROOST),
+
+    egg_moves(PRINPLUP,
+        MOVE_ICY_WIND,
+        MOVE_FLASH_FREEZE,
+        MOVE_GLACIATE,
+        MOVE_ROOST,
+        MOVE_FREEZE_DRY,
+        MOVE_FREEFALL),
 
     egg_moves(STARLY,
         MOVE_FEATHER_DANCE,
@@ -3143,6 +3182,12 @@ const u16 gEggMoves[] = {
         MOVE_SIMPLE_BEAM,
         MOVE_POWER_SPLIT),
 
+    egg_moves(MALAMAR,
+        MOVE_SIMPLE_BEAM,
+        MOVE_POWER_SPLIT,
+        MOVE_HAMMER_ARM,
+        MOVE_EXPANDING_FORCE),
+
     egg_moves(BINACLE,
         MOVE_TICKLE,
         MOVE_SWITCHEROO,
@@ -3812,11 +3857,19 @@ const u16 gEggMoves[] = {
         MOVE_QUICK_GUARD,
         MOVE_KNOCK_OFF),
 
-        egg_moves(ZIGZAGOON_GALARIAN,
+        egg_moves(LINOONE_GALARIAN,
         MOVE_QUICK_GUARD,
         MOVE_KNOCK_OFF,
         MOVE_EXTREME_SPEED,
         MOVE_COMEUPPANCE),
+        
+        egg_moves(OBSTAGOON,
+            MOVE_QUICK_GUARD,
+            MOVE_KNOCK_OFF,
+            MOVE_EXTREME_SPEED,
+            MOVE_COMEUPPANCE,
+            MOVE_PARTING_SHOT,
+            MOVE_LASH_OUT),
 
 #if P_GEN_5_POKEMON == TRUE
     egg_moves(DARUMAKA_GALARIAN,

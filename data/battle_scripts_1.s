@@ -1363,6 +1363,34 @@ BattleScript_EffectPowder::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
+
+BattleScript_EffectPowderBomb::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	setadditionaleffects
+	jumpifstatus2 BS_TARGET, STATUS2_POWDER, BattleScript_SkipPowderBomb
+	setpowder BS_TARGET
+	printstring STRINGID_COVEREDINPOWDER
+	waitmessage B_WAIT_TIME_LONG
+	BattleScript_SkipPowderBomb::
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectAromaticMist::
 	attackcanceler
 	attackstring
@@ -1702,6 +1730,12 @@ BattleScript_MoveEffectSmackDown::
 	printstring STRINGID_FELLSTRAIGHTDOWN
 	waitmessage B_WAIT_TIME_LONG
 	return
+
+BattleScript_MoveEffectRemoveSun::
+	printstring STRINGID_FELLSTRAIGHTDOWN
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 
 BattleScript_MoveEffectSnapTrap::
 	printstring STRINGID_PKMNINSNAPTRAP
@@ -2421,6 +2455,8 @@ BattleScript_EffectSuckerPunch::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	goto BattleScript_HitFromAtkString
 
+
+
 BattleScript_EffectLuckyChant::
 	attackcanceler
 	attackstring
@@ -2510,6 +2546,35 @@ BattleScript_EffectWorrySeed::
 	trytoclearprimalweather
 	tryrevertweatherform
 	flushtextbox
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectMistyExplosion::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	setadditionaleffects
+	trymistyexplosion BattleScript_SkipMistyExplosion
+	printstring STRINGID_PKMNACQUIREDABILITY
+	waitmessage B_WAIT_TIME_LONG
+	trytoclearprimalweather
+	tryrevertweatherform
+	flushtextbox
+	BattleScript_SkipMistyExplosion::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectPowerSplit::
@@ -4549,13 +4614,15 @@ BattleScript_EffectFixedDamageArg::
 
 BattleScript_EffectMorningSun::
 BattleScript_EffectSynthesis::
-BattleScript_EffectMoonlight::
 BattleScript_EffectShoreUp::
+BattleScript_EffectMoonlight::
 	attackcanceler
 	attackstring
 	ppreduce
 	recoverbasedonsunlight BattleScript_AlreadyAtFullHp
 	goto BattleScript_PresentHealTarget
+
+	
 
 BattleScript_EffectRainDance::
 	attackcanceler
@@ -10654,6 +10721,33 @@ BattleScript_EffectRainHit::
 	call BattleScript_ActivateWeatherAbilities
 	goto BattleScript_MoveEnd
 
+BattleScript_EffectMistHit::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_TARGET
+	setremoveterrain BattleScript_MoveEnd
+	printfromtable gTerrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
+	call BattleScript_ActivateTerrainEffects
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectPiercingWail::
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
@@ -10735,6 +10829,32 @@ BattleScript_EffectEmp::
 	waitmessage B_WAIT_TIME_LONG
 	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
 	call BattleScript_ActivateTerrainEffects
+	tryfaintmon BS_TARGET
+	tryfaintmon BS_ATTACKER
+	moveendall
+	end
+
+	BattleScript_EffectDirtyBomb::
+	attackcanceler
+	attackstring
+	ppreduce
+	tryexplosion
+	setatkhptozero
+	waitstate
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	critcalc
+	damagecalc
+	adjustdamage
+	call BattleScript_Hit_RetFromAtkAnimation
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN_PRIMAL, BattleScript_SkipSetPollution
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_SkipSetPollution
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_SkipSetPollution
+	setpollution
+	printfromtable gMoveWeatherChangeStringIds
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_ActivateWeatherAbilities
+	BattleScript_SkipSetPollution::
 	tryfaintmon BS_TARGET
 	tryfaintmon BS_ATTACKER
 	moveendall

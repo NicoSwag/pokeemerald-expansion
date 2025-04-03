@@ -1455,6 +1455,12 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleTvScore = 0, // TODO: Assign points
     },
 
+    [EFFECT_MIST_HIT] =
+    {
+        .battleScript = BattleScript_EffectMistHit,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+
     [EFFECT_GRASSY_TERRAIN] =
     {
         .battleScript = BattleScript_EffectGrassyTerrain,
@@ -1725,6 +1731,12 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
     [EFFECT_POWDER] =
     {
         .battleScript = BattleScript_EffectPowder,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+
+    [EFFECT_POWDER_BOMB] =
+    {
+        .battleScript = BattleScript_EffectPowderBomb,
         .battleTvScore = 0, // TODO: Assign points
     },
 
@@ -2059,6 +2071,12 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleTvScore = 0, // TODO: Assign points
     },
 
+    [EFFECT_SUPERNOVA] =
+    {
+        .battleScript = BattleScript_EffectHit,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+
     [EFFECT_DARK_VOID] =
     {
         .battleScript = BattleScript_EffectDarkVoid,
@@ -2260,6 +2278,11 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleScript = BattleScript_EffectEmp,
         .battleTvScore = 0, // TODO: Assign points
     },
+    [EFFECT_DIRTY_BOMB] =
+        {
+        .battleScript = BattleScript_EffectDirtyBomb,
+        .battleTvScore = 0, // TODO: Assign points
+    },
     [EFFECT_PIERCING_WAIL] =
         {
         .battleScript = BattleScript_EffectPiercingWail,
@@ -2270,6 +2293,7 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleScript = BattleScript_EffectRainHit,
         .battleTvScore = 0, // TODO: Assign points
     },
+
     [EFFECT_RECHARGE_HEALING] =
         {
         .battleScript = BattleScript_Effect_RechargeHealing,
@@ -2337,6 +2361,11 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
     [EFFECT_SHELL_SIDE_ARM] =
     {
         .battleScript = BattleScript_EffectHit,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+    [EFFECT_MISTY_EXPLOSION] =
+    {
+        .battleScript = BattleScript_EffectMistyExplosion,
         .battleTvScore = 0, // TODO: Assign points
     },
 };

@@ -75,6 +75,14 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .breakable = TRUE,
     },
 
+    [ABILITY_GLITTERY] =
+    {
+        .name = _("Glittery"),
+        .description = COMPOUND_STRING("The user is easier to hit."),
+        .aiRating = 0,
+        .breakable = TRUE,
+    },
+
     [ABILITY_STATIC] =
     {
         .name = _("Static"),

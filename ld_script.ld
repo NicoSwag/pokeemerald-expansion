@@ -1085,6 +1085,7 @@ SECTIONS {
         sound/songs/midi/mus_wally_encounter.o(.rodata);
         sound/songs/midi/mus_vs_president.o(.rodata);
         sound/songs/midi/mus_vs_rival_final.o(.rodata);
+        sound/songs/midi/mus_vs_wally_common.o(.rodata);
         sound/songs/midi/mus_abnormal_weather.o(.rodata);
         sound/songs/midi/mus_weather_groudon.o(.rodata);
         sound/songs/midi/mus_sootopolis.o(.rodata);

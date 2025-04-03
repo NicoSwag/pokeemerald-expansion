@@ -1688,7 +1688,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_NATURES_MALICE] =
     {
-        .name = COMPOUND_STRING("Nature's Grudge"),
+        .name = COMPOUND_STRING("Nature's Malice"),
         .description = COMPOUND_STRING(
             "Hits the foe with the\n"
             "vengeance of nature."),
@@ -1702,7 +1702,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .category = DAMAGE_CATEGORY_SPECIAL,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SP_ATK_MINUS_1,
-            .chance = 10,
+            .chance = 20,
         }),
         .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
@@ -3433,13 +3433,38 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .battleAnimScript = Move_FIRE_BLAST,
     },
 
+    [MOVE_SUPERNOVA] =
+    {
+        .name = COMPOUND_STRING("Supernova"),
+        .description = COMPOUND_STRING(
+            "Power goes up and damages\n"
+            "everyone under sun."),
+        .effect = EFFECT_SUPERNOVA,
+        .power = 75,
+        .type = TYPE_FIRE,
+        .accuracy = 100,
+        .pp = 5,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_BURN,
+            .chance = 20,
+        }),
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_SUNNY_DAY},
+        .battleAnimScript = Move_FUSION_FLARE,
+    },
+
     [MOVE_POWDER_BOMB] =
     {
         .name = COMPOUND_STRING("Powder Bomb"),
         .description = COMPOUND_STRING(
-            "Throws pollen on the opponent\n"
-            "and makes it explode."),
-        .effect = EFFECT_HIT,
+            "Covers the opponent with\n"
+            "explosive powder."),
+        .effect = EFFECT_POWDER_BOMB,
         .power = 110,
         .type = TYPE_BUG,
         .accuracy = 85,
@@ -4201,13 +4226,35 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .pp = 5,
         .target = MOVE_TARGET_FOES_AND_ALLY,
         .priority = 0,
-        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .category = DAMAGE_CATEGORY_SPECIAL,
         .parentalBondBanned = TRUE,
         .contestEffect = CONTEST_EFFECT_GREAT_APPEAL_BUT_NO_MORE_MOVES,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = Move_EMP,
+    },
+
+    [MOVE_DIRTY_BOMB] =
+    {
+        .name = COMPOUND_STRING("Dirty Bomb"),
+        .description = COMPOUND_STRING(
+            "Sets Pollution but\n"
+            "makes the user faint."),
+        .effect = EFFECT_DIRTY_BOMB,
+        .power = 100,
+        .type = TYPE_POISON,
+        .accuracy = 100,
+        .pp = 5,
+        .target = MOVE_TARGET_FOES_AND_ALLY,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .parentalBondBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_GREAT_APPEAL_BUT_NO_MORE_MOVES,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = Move_EXPLOSION
     },
 
 
@@ -6299,7 +6346,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "varies with the weather."),
         .effect = EFFECT_MOONLIGHT,
         .power = 0,
-        .type = B_UPDATED_MOVE_TYPES >= GEN_6 ? TYPE_FAIRY : TYPE_NORMAL,
+        .type = B_UPDATED_MOVE_TYPES >= GEN_6 ? TYPE_DARK : TYPE_NORMAL,
         .accuracy = 0,
         .pp = 5,
         .target = MOVE_TARGET_USER,
@@ -7968,9 +8015,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .name = COMPOUND_STRING("Mist Ball"),
         .description = COMPOUND_STRING(
             "Attacks with a flurry of\n"
-            "down. May lower Sp. Atk."),
-        .effect = EFFECT_HIT,
-        .power = (B_UPDATED_MOVE_DATA >= GEN_9) ? 95 : 70,
+            "down. Sets Misty Terrain."),
+        .effect = EFFECT_MIST_HIT,
+        .power = 70,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
         .pp = 5,
@@ -7978,10 +8025,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .ballisticMove = TRUE,
-        .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_SP_ATK_MINUS_1,
-            .chance = 50,
-        }),
         .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -9796,11 +9839,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_HIT_AND_RUN] =
     {
-        .name = COMPOUND_STRING("U-turn"),
+        .name = COMPOUND_STRING("Hit and Run"),
         .description = sUTurnDescription,
-        .effect = EFFECT_ESCAPE_HEAL,
-        .power = 60,
-        .type = TYPE_FLYING,
+        .effect = EFFECT_HIT_ESCAPE,
+        .power = 70,
+        .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 20,
         .target = MOVE_TARGET_SELECTED,
@@ -15642,7 +15685,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .type = TYPE_BUG,
         .accuracy = 100,
         .pp = 20,
-        .target = MOVE_TARGET_SELECTED,
+        .target = MOVE_TARGET_BOTH,
         .priority = 1,
         .category = DAMAGE_CATEGORY_STATUS,
         .zMove = { .effect = Z_EFFECT_SPDEF_UP_2 },
@@ -18966,10 +19009,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     {
         .name = HANDLE_EXPANDED_MOVE_NAME("MstyExplsion", "Misty Explosion"),
         .description = COMPOUND_STRING(
-            "Hit everything and faint.\n"
-            "Powers up on Misty Terrain."),
-        .effect = EFFECT_EXPLOSION,
-        .power = 100,
+            "Covers in glitter in Misty\n"
+            "Terrain, decreasing evasion."),
+        .effect = EFFECT_MISTY_EXPLOSION,
+        .power = 65,
         .type = TYPE_FAIRY,
         .accuracy = 100,
         .pp = 5,
@@ -20543,7 +20586,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .power = 70,
         .type = TYPE_FIRE,
         .accuracy = 0,
-        .pp = 10,
+        .ballisticMove = TRUE,
+        .pp = 5,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
