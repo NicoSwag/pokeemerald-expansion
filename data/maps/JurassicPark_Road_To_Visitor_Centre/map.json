@@ -20,7 +20,7 @@
     },
     {
       "map": "MAP_JURASSIC_PARK_DINO_ENCLOSURE",
-      "offset": 3,
+      "offset": -5,
       "direction": "right"
     }
   ],

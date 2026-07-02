@@ -420,3 +420,6 @@ const u16 gMetatileAttributes_Visitor_Centre_Secondary[] = INCBIN_U16("data/tile
 
 const u16 gMetatiles_Dino_Enclosure_Secondary[] = INCBIN_U16("data/tilesets/secondary/dino_enclosure_secondary/metatiles.bin");
 const u16 gMetatileAttributes_Dino_Enclosure_Secondary[] = INCBIN_U16("data/tilesets/secondary/dino_enclosure_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_Secret_Lab_Secondary[] = INCBIN_U16("data/tilesets/secondary/secret_lab_secondary/metatiles.bin");
+const u16 gMetatileAttributes_Secret_Lab_Secondary[] = INCBIN_U16("data/tilesets/secondary/secret_lab_secondary/metatile_attributes.bin");

@@ -1586,3 +1586,14 @@ const struct Tileset gTileset_Dino_Enclosure_Secondary =
     .metatileAttributes = gMetatileAttributes_Dino_Enclosure_Secondary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Secret_Lab_Secondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Secret_Lab_Secondary,
+    .palettes = gTilesetPalettes_Secret_Lab_Secondary,
+    .metatiles = gMetatiles_Secret_Lab_Secondary,
+    .metatileAttributes = gMetatileAttributes_Secret_Lab_Secondary,
+    .callback = NULL,
+};
