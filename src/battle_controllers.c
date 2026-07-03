@@ -2370,6 +2370,8 @@ void BtlController_HandleLoadMonSprite(enum BattlerId battler)
         gSprites[gBattlerSpriteIds[battler]].x2 = DISPLAY_WIDTH;
     else
         gSprites[gBattlerSpriteIds[battler]].x2 = -DISPLAY_WIDTH;
+    if (GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
+        StartSpriteAffineAnim(&gSprites[gBattlerSpriteIds[battler]], BATTLER_AFFINE_FLIPPED);
     gSprites[gBattlerSpriteIds[battler]].data[0] = battler;
     gSprites[gBattlerSpriteIds[battler]].data[2] = species;
     gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
