@@ -1178,7 +1178,7 @@ bool8 TryDoDoubleWildBattle(void)
         return FALSE;
     if (FollowerNPCIsBattlePartner() && FNPC_FLAG_PARTNER_WILD_BATTLES != 0
      && (FNPC_FLAG_PARTNER_WILD_BATTLES == FNPC_ALWAYS || FlagGet(FNPC_FLAG_PARTNER_WILD_BATTLES)) && FNPC_NPC_FOLLOWER_WILD_BATTLE_VS_2 == TRUE)
-        return TRUE;
+        return FlagGet(WE_FLAG_FORCE_DOUBLE_WILD);
     else if (FlagGet(WE_FLAG_FORCE_DOUBLE_WILD))
         return TRUE;
     else if (RandomPercentage(RNG_NONE, WE_DOUBLE_WILD_CHANCE))
