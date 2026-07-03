@@ -22,7 +22,6 @@ enum {
     BATTLER_AFFINE_EMERGE,
     BATTLER_AFFINE_RETURN,
 };
-#define BATTLER_AFFINE_FLIPPED 9
 
 struct MonCoords
 {

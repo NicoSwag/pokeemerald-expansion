@@ -143,7 +143,6 @@ const union AffineAnimCmd *const gAffineAnims_BattleSpritePlayerSide[] =
     sAffineAnim_Battler_GrowLarge,
     sAffineAnim_Battler_TipRight,
     sAffineAnim_Battler_BigToSmall,
-    [BATTLER_AFFINE_FLIPPED] = sAffineAnim_Battler_Flipped,
 };
 
 static const union AffineAnimCmd sAffineAnim_Battler_SpinShrink[] =
