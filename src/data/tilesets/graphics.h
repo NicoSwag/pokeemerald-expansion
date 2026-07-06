@@ -3163,9 +3163,7 @@ const u16 ALIGNED(4) gTilesetPalettes_Marshlands_Primary[][16] =
     INCGFX_U16("data/tilesets/primary/marshlands_primary/palettes/10.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/primary/marshlands_primary/palettes/11.pal", ".gbapal"),
     INCGFX_U16("data/tilesets/primary/marshlands_primary/palettes/12.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/primary/marshlands_primary/palettes/13.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/primary/marshlands_primary/palettes/14.pal", ".gbapal"),
-    INCGFX_U16("data/tilesets/primary/marshlands_primary/palettes/15.pal", ".gbapal"),
+
 };
 
 const u32 gTilesetTiles_Marshlands_Primary[] = INCGFX_U32("data/tilesets/primary/marshlands_primary/tiles.png", ".4bpp.smol");
