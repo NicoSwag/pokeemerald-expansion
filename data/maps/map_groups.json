@@ -3,6 +3,7 @@
     "gMapGroup_JurassicPark_Test",
     "gMapGroup_JurassicPark_Beach",
     "gMapGroup_JurassicPark_Forest",
+    "gMapGroup_JurassicPark_Marshlands",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -90,6 +91,9 @@
     "JurassicPark_Dino_Enclosure",
     "Jurassic_Park_Road_To_Bridge",
     "JurassicPark_Bridge_And_Lab"
+  ],
+  "gMapGroup_JurassicPark_Marshlands": [
+    "JurassicPark_Marshlands_Main"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

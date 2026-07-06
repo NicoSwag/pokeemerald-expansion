@@ -10277,6 +10277,18 @@
       "secondary_tileset": "gTileset_Secret_Lab_Secondary",
       "border_filepath": "data/layouts/JurassicPark_Bridge_And_Lab/border.bin",
       "blockdata_filepath": "data/layouts/JurassicPark_Bridge_And_Lab/map.bin"
+    },
+    {
+      "id": "LAYOUT_JURASSIC_PARK_MARSHLANDS_MAIN",
+      "name": "JurassicPark_Marshlands_Main_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Marshlands_Primary",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/JurassicPark_Marshlands_Main/border.bin",
+      "blockdata_filepath": "data/layouts/JurassicPark_Marshlands_Main/map.bin"
     }
   ]
 }

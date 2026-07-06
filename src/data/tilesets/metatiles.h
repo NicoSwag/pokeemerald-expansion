@@ -423,3 +423,6 @@ const u16 gMetatileAttributes_Dino_Enclosure_Secondary[] = INCBIN_U16("data/tile
 
 const u16 gMetatiles_Secret_Lab_Secondary[] = INCBIN_U16("data/tilesets/secondary/secret_lab_secondary/metatiles.bin");
 const u16 gMetatileAttributes_Secret_Lab_Secondary[] = INCBIN_U16("data/tilesets/secondary/secret_lab_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_Marshlands_Primary[] = INCBIN_U16("data/tilesets/primary/marshlands_primary/metatiles.bin");
+const u16 gMetatileAttributes_Marshlands_Primary[] = INCBIN_U16("data/tilesets/primary/marshlands_primary/metatile_attributes.bin");
