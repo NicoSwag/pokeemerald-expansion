@@ -1608,3 +1608,14 @@ const struct Tileset gTileset_Marshlands_Primary =
     .metatileAttributes = gMetatileAttributes_Marshlands_Primary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Marshlands_Secondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Marshlands_Secondary,
+    .palettes = gTilesetPalettes_Marshlands_Secondary,
+    .metatiles = gMetatiles_Marshlands_Secondary,
+    .metatileAttributes = gMetatileAttributes_Marshlands_Secondary,
+    .callback = NULL,
+};

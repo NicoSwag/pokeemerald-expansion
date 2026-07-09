@@ -10281,14 +10281,26 @@
     {
       "id": "LAYOUT_JURASSIC_PARK_MARSHLANDS_MAIN",
       "name": "JurassicPark_Marshlands_Main_Layout",
-      "width": 80,
+      "width": 63,
       "height": 80,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Marshlands_Primary",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Marshlands_Secondary",
       "border_filepath": "data/layouts/JurassicPark_Marshlands_Main/border.bin",
       "blockdata_filepath": "data/layouts/JurassicPark_Marshlands_Main/map.bin"
+    },
+    {
+      "id": "LAYOUT_JURASSIC_PARK_MARSHLANDS_MAZE_TEST",
+      "name": "JurassicPark_Marshlands_Maze_Test_Layout",
+      "width": 46,
+      "height": 44,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Marshlands_Primary",
+      "secondary_tileset": "gTileset_Marshlands_Secondary",
+      "border_filepath": "data/layouts/JurassicPark_Marshlands_Maze_Test/border.bin",
+      "blockdata_filepath": "data/layouts/JurassicPark_Marshlands_Maze_Test/map.bin"
     }
   ]
 }
