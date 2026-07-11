@@ -429,3 +429,9 @@ const u16 gMetatileAttributes_Marshlands_Primary[] = INCBIN_U16("data/tilesets/p
 
 const u16 gMetatiles_Marshlands_Secondary[] = INCBIN_U16("data/tilesets/secondary/marshlands_secondary/metatiles.bin");
 const u16 gMetatileAttributes_Marshlands_Secondary[] = INCBIN_U16("data/tilesets/secondary/marshlands_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_Desert_Primary[] = INCBIN_U16("data/tilesets/primary/desert_primary/metatiles.bin");
+const u16 gMetatileAttributes_Desert_Primary[] = INCBIN_U16("data/tilesets/primary/desert_primary/metatile_attributes.bin");
+
+const u16 gMetatiles_Desert_Secondary[] = INCBIN_U16("data/tilesets/secondary/desert_secondary/metatiles.bin");
+const u16 gMetatileAttributes_Desert_Secondary[] = INCBIN_U16("data/tilesets/secondary/desert_secondary/metatile_attributes.bin");
