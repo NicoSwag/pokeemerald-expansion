@@ -2,7 +2,7 @@
   "id": "MAP_JURASSIC_PARK_MARSHLANDS_MAIN",
   "name": "JurassicPark_Marshlands_Main",
   "layout": "LAYOUT_JURASSIC_PARK_MARSHLANDS_MAIN",
-  "music": "MUS_DUMMY",
+  "music": "MUS_FORGOTTEN_SWAMP",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

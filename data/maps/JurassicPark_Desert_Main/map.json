@@ -1,8 +1,8 @@
 {
-  "id": "MAP_JURASSIC_PARK_MARSHLANDS_MAZE_TEST",
-  "name": "JurassicPark_Marshlands_Maze_Test",
-  "layout": "LAYOUT_JURASSIC_PARK_MARSHLANDS_MAZE_TEST",
-  "music": "MUS_FORGOTTEN_SWAMP",
+  "id": "MAP_JURASSIC_PARK_DESERT_MAIN",
+  "name": "JurassicPark_Desert_Main",
+  "layout": "LAYOUT_JURASSIC_PARK_DESERT_MAIN",
+  "music": "MUS_ANCIENT_DESERT",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -14,7 +14,15 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 9,
+      "y": 77,
+      "elevation": 0,
+      "dest_map": "MAP_JURASSIC_PARK_DESERT_MAIN",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

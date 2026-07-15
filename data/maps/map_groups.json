@@ -97,7 +97,9 @@
     "JurassicPark_Marshlands_Main",
     "JurassicPark_Marshlands_Maze_Test"
   ],
-  "gMapGroup_JurassicPark_Desert": [],
+  "gMapGroup_JurassicPark_Desert": [
+    "JurassicPark_Desert_Main"
+  ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
     "SlateportCity",
